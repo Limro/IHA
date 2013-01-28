@@ -9,6 +9,8 @@
 %\usepackage{fancyhdr}					% Header-style
 %\pagestyle{fancy}
 
+\usepackage{subfiles} 
+
 %----------------------------------------------------------
 % Følgende er til tabeller
 %----------------------------------------------------------
@@ -20,34 +22,32 @@
 % Følgende er til koder.
 % Indsættes mellem \begin{lstlisting} og \end{lstlisting}
 %----------------------------------------------------------
-%
-%\usepackage{listings}
-%\usepackage{color}
-%\usepackage{textcomp}
-%\definecolor{listinggray}{gray}{0.9}
-%\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
-%\lstset{
-%	language		= [Visual]C++,
-%	keywordstyle	= \bfseries\ttfamily\color[rgb]{0,0,1},
-%	identifierstyle	= \ttfamily,
-%	commentstyle	= \color[rgb]{0.133,0.545,0.133},
-%	stringstyle		= \ttfamily\color[rgb]{0.627,0.126,0.941},
-%	showstringspaces= false,
-%	basicstyle		= \small,
-%	numberstyle		= \footnotesize,
-%	numbers			= left, % Tal? Udkommenter hvis ikke
-%	stepnumber		= 1,
-%	numbersep		= 10pt,
-%	tabsize			= 2,
-%	breaklines		= true,
-%	prebreak 		= \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
-%	breakatwhitespace= false,
-%	aboveskip		= {1.5\baselineskip},
-%  columns			= fixed,
-%  upquote			= true,
-%  extendedchars		= true,
 
+\usepackage{listings}
+\usepackage{color}
+\usepackage{textcomp}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+	language		= [Visual]C++,
+	keywordstyle	= \bfseries\ttfamily\color[rgb]{0,0,1},
+	identifierstyle	= \ttfamily,
+	commentstyle	= \color[rgb]{0.133,0.545,0.133},
+	stringstyle		= \ttfamily\color[rgb]{0.627,0.126,0.941},
+	showstringspaces= false,
+	basicstyle		= \small,
+	numberstyle		= \footnotesize,
+	numbers			= left, % Tal? Udkommenter hvis ikke
+	stepnumber		= 1,
+	numbersep		= 10pt,
+	tabsize			= 2,
+	breaklines		= true,
+	prebreak 		= \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	breakatwhitespace= false,
+	aboveskip		= {1.5\baselineskip},
+  columns			= fixed,
+  upquote			= true,
+  extendedchars		= true,
 % frame=single,
-% backgroundcolor=\color{lbcolor},
-
-%}
+ backgroundcolor=\color{lbcolor}
+}

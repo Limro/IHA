@@ -36,3 +36,39 @@
 *.log
 *.synctex.gz
 *.toc
+
+#Temporary folders
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+ipch/
+*.[Oo]bj/
+
+#Resharper folders
+_ReSharper*/
+*.resharper
+
+#NuGet
+packages/
+
+#Visual Studio files
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild

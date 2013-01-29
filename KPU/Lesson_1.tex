@@ -1,6 +1,83 @@
 \documentclass[Notes]{subfiles}
 \begin{document}
-\subsection{Lektion 1}
+\section{Lektion 1}
+
+	\begin{itemize}
+	\item WIN RT stammer fra både COM og .NET teknologien
+	\end{itemize}
+	
+\subsection{Komponenter}
+
+	\begin{itemize}
+	\item Komponenter er udskiftelige.
+
+	\item Kan interagere med hinanden.
+
+	\item Kommer af "komponere" altså sætte sammen med andre komponenter.
+	
+	\item Forskellige producenter kan lave en enhed, sålænge de har det samme interface.
+	
+	\item På denne måde er det nemmere at lave nye ting.
+	\end{itemize}
+	
+De var oprindeligt tænkt som hardwarekomponenter, da man havde lavet hardware der kunne yde meget. 
+Man manglede desværre software, der kunne udnytte hardwaren.
+\\
+Man lavede derfor nogle små dele (komponenter), der kunne bruges til noget af hardwaren.
+\\
+\\
+Eftersom komponenter kan genbruges, kan de sælges til andre.
+Dette kan også reducere udviklingstiden.
+\\
+En grov regel siger, at den skal kunne genbruges 3 gange, før det er tidsbesparende - men dette er måske lidt outdatet.
+\\
+\\
+Bruges gerne på store projekter, da det er nemmere for andre folk ikke at se på source kode, men på et interface og magi.
+Det kræver derfor, at man får lavet nogle ordenlige interfaces.
+
+
+
+\subsection{Load-time Dynamic Linking}
+
+Udviklingen
+	\begin{itemize}
+	\item Man skriver et program (gerne i flere sourcefiler)
+	\item En compiler laver objekt-filer
+	\item En linker laver binære .exe-filer og .dll-filer
+	\item Ved at køre .exe-filen siger den "jeg skal bruge en .dll-fil"
+	\item Den leder så efter en .dll med et bestemt navn - her kan man indsætte sin egen.
+	\end{itemize}
+Fordele:
+	\begin{itemize}
+	\item Dynamic linking sparrer plads
+	\item Skal ikke rekompileres
+	\end{itemize}
+
+\subsection{Run-time Dynamic Linking}
+	\begin{itemize}
+	\item Her fortælles hvilken dll, der ønskes loaded.
+	\item Når loaded har man en klub kode
+	\item Så kaldes "GetProcAdrdress", hvilket giver os en funktions pointer"
+	\end{itemize}
+
+
+
+\subsection{DLL typer}
+Traditionelle C-Style Win32 DLL'er:
+	\begin{itemize}
+	\item Standard som er en del af Windows.
+	\item Bruger lavet
+	\end{itemize}
+COM DLL'er:
+	\begin{itemize}
+	\item Indeholder kun 4 funktioner 
+	\end{itemize}
+.NET DLL:
+
+
+\subsection{DLL'er og Memory Management}
+En dll kan bruges fra flere programmer og loades i hver sit program, med hver sin ram.
+
 
 
 \end{document} 

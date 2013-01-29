@@ -28,8 +28,8 @@
 \usepackage{textcomp}
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
-\lstset{
-	language		= [Visual]C++,
+\lstdefinestyle{Code}
+{
 	keywordstyle	= \bfseries\ttfamily\color[rgb]{0,0,1},
 	identifierstyle	= \ttfamily,
 	commentstyle	= \color[rgb]{0.133,0.545,0.133},
@@ -45,9 +45,12 @@
 	prebreak 		= \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
 	breakatwhitespace= false,
 	aboveskip		= {1.5\baselineskip},
-  columns			= fixed,
-  upquote			= true,
-  extendedchars		= true,
-% frame=single,
- backgroundcolor=\color{lbcolor}
+  	columns			= fixed,
+  	upquote			= true,
+  	extendedchars	= true,
+ 	backgroundcolor =\color{lbcolor}
 }
+
+\lstdefinestyle{Code-C} {language=C, style=Code}
+\lstdefinestyle{Code-C++} {language=[Visual]C++, style=Code}
+\lstdefinestyle{Code-C++} {language=VHDL, style=Code}

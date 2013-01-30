@@ -72,3 +72,13 @@ packages/
 *.sdf
 *.opensdf
 *.unsuccessfulbuild
+
+#VHDL files
+*.qws
+db/
+incremental_db/
+.qsys_edit/
+simulation/
+output_files/
+*.bak
+*.jdi

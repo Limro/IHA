@@ -1,0 +1,44 @@
+\documentclass[Notes]{subfiles}
+\begin{document}
+\section{Brush up}
+
+VHDL er ikke assembler kode - det er digitale kredsløb.
+
+	\begin{itemize}
+	\item Designflow - måden man vil bygge sit program på
+	\item Synthesis - Man alver et diagram over sin kode med clock signals
+	\item Entity declaration - et interface til en "metode"
+	\item Architecture body - Selve implementationen af "metoden"
+	\item Dataflow Style - kører parallelt, normalt på gate niveau og bool's algebra
+	\item Behavioural - Sekvensielt i en \textit{process}, normalt algoritmer (if, else)
+	\item Strucktural - Flere elementer sat sammen
+	\item Signals - kommunikationen mellem to processes. Opdateres først, ved slutningen af en process
+	\item Variables - Opdateres med det samme i en process
+	\item Sekventiel system - Husker hvad der er sket
+	\end{itemize}
+
+
+\section{What gives}
+Mux
+	\begin{itemize}
+	\item When
+	\item Case - husk en "others"
+	\end{itemize}
+Infered Latch (skal undgås)
+	\begin{itemize}
+	\item if uden "then"(med mindre der er clk med)
+	\item Vises ved, at et output går tilbage til sammes input
+	\end{itemize}
+Flip-flop
+	\begin{itemize}
+	\item if med clk'event eller rising\_edge(clk) og falling\_edge(clk)
+	\item Kommer hver gang '<=' forekommer
+	\end{itemize}
+
+
+
+
+
+
+
+\end{document} 

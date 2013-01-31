@@ -72,6 +72,7 @@ packages/
 *.sdf
 *.opensdf
 *.unsuccessfulbuild
+*.sln.DotSettings
 
 #VHDL files
 *.qws

@@ -17,7 +17,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	LPFNDLLFUNC2 func2;    // Function pointer
 	LPFNDLLFUNC3 func3;    // Function pointer
 
-	HINSTANCE hDLL = LoadLibrary(TEXT("LAB1.dll")); //(LPCWSTR)
+	HINSTANCE hDLL = LoadLibrary(TEXT("LAB1.dll")); 
 	if (hDLL != NULL)
 	{
 		func1 = (LPFNDLLFUNC1)GetProcAddress(hDLL, "?AddDoubles@LAB@@YANNN@Z");
@@ -28,6 +28,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	   {
 		  // handle the error
 		  FreeLibrary(hDLL);
+		  std::cout << "Function was not loaded" << std::endl;
+		  getchar();
 		  return -1;
 	   }
 	   else

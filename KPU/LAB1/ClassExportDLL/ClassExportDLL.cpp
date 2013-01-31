@@ -1,5 +1,4 @@
 // ClassExportDLL.cpp : Defines the exported functions for the DLL application.
-//
 
 #include "stdafx.h"
 #include "ClassExportDLL.h"
@@ -10,9 +9,9 @@ namespace SmoothDLL
 	SMOOTH void ClassExportDLL::Output()
 	{
 		std::cout << "It works" << std::endl;
-		int x;
-		while(!getchar())
-		{}
+		
+		getchar();
+		
 	}
 
 	SMOOTH ClassExportDLL::ClassExportDLL()

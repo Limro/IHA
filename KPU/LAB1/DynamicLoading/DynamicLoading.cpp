@@ -10,16 +10,9 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 	int a = LAB::AddDoubles(2.1, 1.9);
-	char* first = "2.1";
-	char* second = "1.9";
-	std::string third = "2.1";
-	std::string fourth = "1.9";
-
-	int b = LAB::AddCharStrings(first, second);
-	int c = LAB::AddCharStrings(third, fourth);
-	
-
+	int b = LAB::AddCharStrings((char*)"2.1", (char*)"1.9");
+	int c = LAB::AddStrings((std::string)"2.1", (std::string)"1.9");
 	std::cout << a << " " << b << " " << c << std::endl;
-	std::cin >> a;
+	getchar();
 }
 

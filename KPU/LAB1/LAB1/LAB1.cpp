@@ -12,17 +12,17 @@
 
 namespace LAB
 {
-	extern "C" LAB1_MATH double AddDoubles(double a, double b)
+	LAB1_MATH double AddDoubles(double a, double b)
 	{
 		return a + b;
 	}
 
-	extern "C" LAB1_MATH double AddCharStrings(char* a, char* b)
+	LAB1_MATH double AddCharStrings(char* a, char* b)
 	{
 		return atof(a) + atof(b);
 	}
 
-	LAB1_MATH double AddCharStrings(std::string a, std::string b)
+	LAB1_MATH double AddStrings(std::string a, std::string b)
 	{
 		return stod(a) + stod(b);
 	}

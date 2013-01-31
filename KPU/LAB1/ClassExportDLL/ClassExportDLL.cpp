@@ -8,10 +8,8 @@ namespace SmoothDLL
 {
 	SMOOTH void ClassExportDLL::Output()
 	{
-		std::cout << "It works" << std::endl;
-		
-		getchar();
-		
+		std::cout << "It works" << std::endl;		
+		getchar();		
 	}
 
 	SMOOTH ClassExportDLL::ClassExportDLL()

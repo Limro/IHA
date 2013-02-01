@@ -83,3 +83,7 @@ simulation/
 output_files/
 *.bak
 *.jdi
+
+#NIOS files
+[Oo]bj/
+.metadata/

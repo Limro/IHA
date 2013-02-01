@@ -1,0 +1,18 @@
+Analysis & Synthesis Status : Successful - Fri Feb 01 15:10:32 2013
+Quartus II 64-Bit Version : 12.1 Build 177 11/07/2012 SJ Full Version
+Revision Name : SOPC
+Top-level Entity Name : MyFirstSopc_Top
+Family : Cyclone IV GX
+Total logic elements : 2,230
+    Total combinational functions : 1,907
+    Dedicated logic registers : 1,203
+Total registers : 1203
+Total pins : 78
+Total virtual pins : 0
+Total memory bits : 11,264
+Embedded Multiplier 9-bit elements : 0
+Total GXB Receiver Channel PCS : 0
+Total GXB Receiver Channel PMA : 0
+Total GXB Transmitter Channel PCS : 0
+Total GXB Transmitter Channel PMA : 0
+Total PLLs : 1

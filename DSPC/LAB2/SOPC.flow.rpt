@@ -1,0 +1,116 @@
+Flow report for SOPC
+Fri Feb 01 15:10:38 2013
+Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------+
+; Flow Summary                                                                   ;
++------------------------------------+-------------------------------------------+
+; Flow Status                        ; Flow Failed - Fri Feb 01 15:10:38 2013    ;
+; Quartus II 64-Bit Version          ; 12.1 Build 177 11/07/2012 SJ Full Version ;
+; Revision Name                      ; SOPC                                      ;
+; Top-level Entity Name              ; MyFirstSopc_Top                           ;
+; Family                             ; Cyclone IV GX                             ;
+; Total logic elements               ; 2,230 / 21,280 ( 10 % )                   ;
+;     Total combinational functions  ; 1,907 / 21,280 ( 9 % )                    ;
+;     Dedicated logic registers      ; 1,203 / 21,280 ( 6 % )                    ;
+; Total registers                    ; 1203                                      ;
+; Total pins                         ; 78 / 167 ( 47 % )                         ;
+; Total virtual pins                 ; 0                                         ;
+; Total memory bits                  ; 11,264 / 774,144 ( 1 % )                  ;
+; Embedded Multiplier 9-bit elements ; 0 / 80 ( 0 % )                            ;
+; Total GXB Receiver Channel PCS     ; 0 / 4 ( 0 % )                             ;
+; Total GXB Receiver Channel PMA     ; 0 / 4 ( 0 % )                             ;
+; Total GXB Transmitter Channel PCS  ; 0 / 4 ( 0 % )                             ;
+; Total GXB Transmitter Channel PMA  ; 0 / 4 ( 0 % )                             ;
+; Total PLLs                         ; 1 / 4 ( 25 % )                            ;
+; Device                             ; EP4CGX22CF19C6                            ;
+; Timing Models                      ; Final                                     ;
++------------------------------------+-------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 02/01/2013 15:10:15 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; SOPC                ;
++-------------------+---------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                     ;
++-------------------------------------+---------------------------------+---------------+-----------------+------------+
+; Assignment Name                     ; Value                           ; Default Value ; Entity Name     ; Section Id ;
++-------------------------------------+---------------------------------+---------------+-----------------+------------+
+; COMPILER_SIGNATURE_ID               ; 246473185242691.135972781404468 ; --            ; --              ; --         ;
+; PARTITION_COLOR                     ; 16764057                        ; --            ; MyFirstSopc_Top ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING           ; --            ; MyFirstSopc_Top ; Top        ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                          ; --            ; MyFirstSopc_Top ; Top        ;
+; TOP_LEVEL_ENTITY                    ; MyFirstSopc_Top                 ; SOPC          ; --              ; --         ;
++-------------------------------------+---------------------------------+---------------+-----------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:00:17     ; 1.0                     ; 603 MB              ; 00:00:16                           ;
+; Fitter               ; 00:00:05     ; 1.0                     ; 583 MB              ; 00:00:04                           ;
+; Total                ; 00:00:22     ; --                      ; --                  ; 00:00:20                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++-----------------------------------------------------------------------------------+
+; Flow OS Summary                                                                   ;
++----------------------+------------------+-----------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++----------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis ; Becks_Laptop     ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter               ; Becks_Laptop     ; Windows 7 ; 6.1        ; x86_64         ;
++----------------------+------------------+-----------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off SOPC -c SOPC
+quartus_fit --read_settings_files=off --write_settings_files=off SOPC -c SOPC
+
+
+

@@ -3,8 +3,10 @@
 #else
 #define CDLLCLASS23_API __declspec(dllimport)
 #endif
+#include "CDllClass.h"
 
-class CDLLCLASS23_API CCDLLClass23 {
+extern "C" class CDLLCLASS23_API GLOBAL {
 public:
-	CCDLLClass23(void);
+	CDllClass CreateDllObject(void);
+	void DeleteDllObj(CDllClass* obj);
 };

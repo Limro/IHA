@@ -1,7 +1,7 @@
 #include "../CAppUtil.hpp"
 #include "../CDLLclass.hpp"
 
-class CDllClass : public CDLLclass
+class CDllClass : public 
 {
 public:
 	CDllClass();	

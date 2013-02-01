@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-class CAppUtil
+class IAppUtil
 {
 public:
   virtual string GetName() = 0;

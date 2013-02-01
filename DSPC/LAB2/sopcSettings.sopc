@@ -127,27 +127,11 @@
          type = "int";
       }
    }
-   element pio_input_0.s1
+   element pio_output_1.s1
    {
       datum baseAddress
       {
-         value = "1052752";
-         type = "String";
-      }
-   }
-   element timer_timestamp.s1
-   {
-      datum baseAddress
-      {
-         value = "1052704";
-         type = "String";
-      }
-   }
-   element pio_output_0.s1
-   {
-      datum baseAddress
-      {
-         value = "1052784";
+         value = "1052768";
          type = "String";
       }
    }
@@ -159,11 +143,27 @@
          type = "String";
       }
    }
-   element pio_output_1.s1
+   element timer_timestamp.s1
    {
       datum baseAddress
       {
-         value = "1052768";
+         value = "1052704";
+         type = "String";
+      }
+   }
+   element pio_input_0.s1
+   {
+      datum baseAddress
+      {
+         value = "1052752";
+         type = "String";
+      }
+   }
+   element pio_output_0.s1
+   {
+      datum baseAddress
+      {
+         value = "1052784";
          type = "String";
       }
    }
@@ -214,7 +214,7 @@
  <parameter name="projectName" value="SOPC.qpf" />
  <parameter name="sopcBorderPoints" value="true" />
  <parameter name="systemHash" value="12491613822" />
- <parameter name="timeStamp" value="1359722085662" />
+ <parameter name="timeStamp" value="1359726929919" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <module kind="clock_source" version="12.1" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />

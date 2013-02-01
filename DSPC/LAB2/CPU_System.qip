@@ -18,7 +18,7 @@ set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "clocks
 # sysid
 # null
 set_global_assignment -name SDC_FILE [file join $::quartus(ip_rootpath) "altera/sopc_builder_ip/altera_avalon_clock_adapter/altera_avalon_clock_adapter.sdc"]
-set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID "00000000000000E00000013C95C0B3E9"
+set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID "00000000000000E00000013C960A87F4"
 set_global_assignment -entity "CPU_System" -name IP_TOOL_NAME "sopc"
 set_global_assignment -entity "CPU_System" -name IP_TOOL_VERSION "12.1"
 set_global_assignment -entity "CPU_System" -name IP_TOOL_ENV "sopc"

@@ -1,0 +1,171 @@
+\documentclass[Notes]{subfiles}
+\begin{document}
+\section{Design}
+Design er ikke diagrammer. 
+Disse kan bruges til at forstå og kommunikere det.
+\\
+\\
+Source code er det egentlige design
+
+\subsection{Agile Design}
+
+	\begin{itemize}
+	\item Lad vær at tegne UML diagrammer i ugevis, men tænk over hvad du laver
+	\item Dit projekt udvikler sig
+	\item Arbejd i iterationer
+	\item Lav et design for hver iteration 
+	\item Husk, at du bliver klogere undervejs i projektet - ændringerne må gerne indføres
+	\end{itemize}
+	
+\subsection{Dårligt design}
+
+	\begin{itemize}
+	\item Svært at ændre
+	\item Arkitektur låst til én platform
+	\item Ændringer skal ske for mange steder
+	\item Overdesignet
+	\item For mange gentagelser (underdesignet)
+	\item Kan nemt gå i stykker
+	\item For kompliceret til, at se hvor ændringer skal foretages
+	\end{itemize}
+Ingen laver bevidst dårlig kode, men det kan forekomme, fordi en ny mand kommer på teamet, og måske ikke forstår filosofien af, hvordan koden skal håndteres.
+Tiden gør også, at man tænker anderledes.
+\\
+Fejl introduceres over tid.
+
+
+\subsection{SOLID}
+Idéen er, at det skal bruges, når koden begynder at stinke.
+Undlad, hvis der ikke er.
+Det kan føre til overdesign
+	\begin{itemize}
+	\item SRP (Single Responsebility Principle)
+		\begin{itemize}
+		\item "\textit{A class should have only one reason to change}"
+		\item Den skal kun køre det, den er designet til
+		\item Den er også med til at holde lav kobling, da den ikke er afhængig af så mange andre
+		\item Alle klasser afhængig af klasse A, bliver påvirket, når klasse A ændres
+		\end{itemize}
+	
+	
+	\item OCP (Open/Close Principle)
+		\begin{itemize}
+		\item Man kan udvide koden, uden at ændre koden.
+		\item Dette gøres ved at kode op imod et interface
+		\item Således kan det skiftes ud med andre implementeringer 
+		\item Et modul er dog ikke altid lukket helt
+		
+			\begin{itemize}
+			\item Hvis et interface skal ændres, skal koden også ændre
+			\end{itemize}
+
+		\item Koden kan dog blive for lukket og kompliceret, hvis man gør for meget med det.
+		\end{itemize}	
+	
+	\item LSP
+
+		\begin{itemize}
+		\item En nedarbede klasse skal overholde interfacet. Dvs, at de skal overholde de regler, der er stillet for interfacets funktioner.
+		\end{itemize}
+	
+		
+	
+	\item ISP (Interface Segregation Principle)
+	
+		\begin{itemize}
+		\item Der er flere funktioner i et interface, end det der bruges
+		\item Man skal ikke tvinges til dette og unyttige funktioner
+		\item Et interface skal have SRP til sig.
+		\item Har man implementering man ønsker at lave mange gange, så lav en adaptor.
+		\end{itemize}
+	
+	
+	
+	
+	\item DIP (Dependency Inversion Principle)
+		\begin{itemize}
+		\item En klasse er afhængig af en bestemt implementering
+		\item Dette løses med indirection som en implementation fra et interface
+		
+		\begin{lstlisting}[style=Code-C++]
+		void doStuff(IStuffToDo obj)
+		{ 
+			obj.Stuff1();
+		}
+		
+		class SomeStuff : IStuffToDo
+		{
+			public Stuff1();
+			...
+		}
+	
+		class OtherStuff : IStuffToDo
+		{
+			public Stuff1();
+			...
+		}
+	
+		\end{lstlisting}
+		\end{itemize}
+	
+	
+	\end{itemize}
+
+
+
+
+
+\section{Plugins}
+\subsection{Regler}
+
+	\begin{itemize}
+	\item REP (Reuse/Release Equivalency Principle)
+
+		\begin{itemize}
+		\item Hvis du laver tingene for små, kommer der mange små opdateringer
+		\item Det kan give en masse administrationsarbejde	
+		\end{itemize}
+
+	\item CRP (The Common Reuse Principle)
+
+		\begin{itemize}
+		\item Du du pakker sammen, skal bruges samme
+		\end{itemize}
+
+	\item CCP (Common Closure Principle)
+	
+		\begin{itemize}
+		\item Hav god overenstemmelse med virkeligheden, da dette giver bedre implementering.
+		\item De må dog ikke blive for store (altså ikke database, samt kommunikation i én pakke)
+		\end{itemize}
+		
+	\item ADP (The Acyclic Dependencies Princples)
+	
+		\begin{itemize}
+		\item Du må ikke have dependency løkker
+		\end{itemize}
+	
+	\item SDP (The Stable Dependencies Principle)
+	
+		\begin{itemize}
+		\item Afhængigheden skal gå i retningen af stabiliteten
+		\item Ting nederst i et hierarki skal være stabile - ellers skal de have et interface.
+		\end{itemize}
+		
+	\item SAP (The Stable Abstrction Prinicple)
+	
+		\begin{itemize}
+		\item Hvis mange er afhægige, skal de være abstrakte
+		\end{itemize}
+	
+	
+	
+	
+	
+	
+	
+	\end{itemize}
+
+
+	
+\end{document} 

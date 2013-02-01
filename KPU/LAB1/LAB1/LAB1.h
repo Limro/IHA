@@ -4,7 +4,7 @@
 // that uses this DLL. This way any other project whose source files include this file see 
 // LAB1_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
-#ifdef LAB1_EXPORTS
+#ifdef LAB1_EXPORTS //Project name
 #define LAB1_MATH __declspec(dllexport)
 #else
 #define LAB1_MATH __declspec(dllimport)
@@ -14,7 +14,7 @@
 
 namespace LAB
 {
-	LAB1_MATH double AddDoubles(double a, double b);
-	LAB1_MATH double AddCharStrings(char* a, char* b);
-	LAB1_MATH double AddStrings(std::string a, std::string b);
+	extern "C" LAB1_MATH double AddDoubles(double a, double b);
+	extern "C" LAB1_MATH double AddCharStrings(char* a, char* b);
+	extern "C" LAB1_MATH double AddStrings(std::string a, std::string b);
 }

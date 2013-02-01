@@ -67,7 +67,7 @@ packages/
 *.[Cc]ache
 *.ilk
 *.log
-*.lib
+*.lib #nåda...
 *.sbr
 *.sdf
 *.opensdf

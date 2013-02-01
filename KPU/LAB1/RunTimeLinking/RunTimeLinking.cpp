@@ -17,12 +17,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	LPFNDLLFUNC2 func2;    // Function pointer
 	LPFNDLLFUNC3 func3;    // Function pointer
 
-	HINSTANCE hDLL = LoadLibrary(TEXT("LAB1.dll")); //(LPCWSTR)
+	std::wstring dllFile = TEXT("LAB1.dll");
+
+	HINSTANCE hDLL = LoadLibrary(dllFile.c_str());
 	if (hDLL != NULL)
 	{
-		func1 = (LPFNDLLFUNC1)GetProcAddress(hDLL, "?AddDoubles@LAB@@YANNN@Z");
-		func2 = (LPFNDLLFUNC2)GetProcAddress(hDLL, "?AddCharStrings@LAB@@YANPAD0@Z");
-		func3 = (LPFNDLLFUNC3)GetProcAddress(hDLL, "?AddStrings@LAB@@YANV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z");
+		func1 = (LPFNDLLFUNC1)GetProcAddress(hDLL, "AddDoubles");
+		func2 = (LPFNDLLFUNC2)GetProcAddress(hDLL, "AddCharStrings");
+		func3 = (LPFNDLLFUNC3)GetProcAddress(hDLL, "AddStrings");
 
 	   if (func1 == NULL)
 	   {
@@ -38,5 +40,6 @@ int _tmain(int argc, _TCHAR* argv[])
 			std::cout << d << " " << e << " " << f << std::endl;
 			getchar();
 	   }
+	   FreeLibrary(hDLL);
 	}
 }

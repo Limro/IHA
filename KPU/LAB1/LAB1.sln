@@ -6,6 +6,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamicLoading", "DynamicLoading\DynamicLoading.vcxproj", "{EABF9BB0-F3E9-4AAE-83CD-E012CD3BD49D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RunTimeLinking", "RunTimeLinking\RunTimeLinking.vcxproj", "{5CCB6E07-B8A6-4642-ABD4-BC246C14C45F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BC7B3D92-2C06-454E-8480-FF5DF6D4C0A5} = {BC7B3D92-2C06-454E-8480-FF5DF6D4C0A5}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClassExportDLL", "ClassExportDLL\ClassExportDLL.vcxproj", "{62A32E95-8D2A-44D8-AB76-FD7979DC58A7}"
 EndProject

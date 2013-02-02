@@ -6,6 +6,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <stdio.h>
+#include <conio.h>
 
 using namespace std;
 
@@ -20,32 +21,48 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	while(hDLL == NULL)
 	{
-		cout << "Please enter the location of the .dll file without the '.dll' extention" << std::endl;
-		string input;
-		cin >> input;
+		cout << "Please enter the location of the .dll"
+			<< " file without the '.dll' extention" << endl;
+		wstring input;
+		wcin >> input;
 
-		std::wstring dllFile;
+		wstring dllFile;
 		dllFile.assign(input.begin(), input.end());
 
 		hDLL = LoadLibrary(dllFile.c_str());
 	}
-	if (hDLL != NULL)
-	{
-		func1 = (DLLFUNC1)GetProcAddress(hDLL, "CreateDllObject");
-		func2 = (DLLFUNC2)GetProcAddress(hDLL, "DeleteDllObj");
 
-		if (func1 == NULL || func2 == NULL)
-		{
-			std::cout << "One of your functions were not loaded" << std::endl;
-			getchar();
-			FreeLibrary(hDLL);
-			return -1;
-		}
-		else
-		{
-			IDLLclass* obj = func1();
-			//obj->Init(
-		}
+
+	func1 = (DLLFUNC1)GetProcAddress(hDLL, "CreateDllObject");
+	func2 = (DLLFUNC2)GetProcAddress(hDLL, "DeleteDllObj");
+
+	if (func1 == NULL || func2 == NULL)
+	{
+		cout << "One of your functions were not loaded" << endl;
+		getchar();
 		FreeLibrary(hDLL);
+		return -1;
 	}
+	else
+	{
+		IDLLclass* obj = func1();
+		AppUtillMp* obj2 = new AppUtillMp("User");
+
+		string theName = obj2->GetName();
+		cout << theName << endl;
+
+		string newName = obj2->MyAddString(theName, "name");
+		cout << newName << endl;
+
+		obj->Init(obj2);
+		bool isRunning = obj->Run();
+		if(isRunning == true)
+			std::cout << "It is... " << std::endl;
+
+		obj->TearDown();
+
+		_getch();
+	}
+	FreeLibrary(hDLL);
+
 }

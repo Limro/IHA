@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "CappUtillMp.h"
+#include "AppUtillMp.h"
+#include "../IDLLclass.hpp"
 
 #include <string>
 #include <iostream>
@@ -8,36 +9,43 @@
 
 using namespace std;
 
+typedef IDLLclass* (*DLLFUNC1)(void);
+typedef void (*DLLFUNC2)(IDLLclass* obj);
+
+DLLFUNC1 func1;    // Function pointer
+DLLFUNC2 func2;    // Function pointer
+HINSTANCE hDLL = NULL;
+
 int _tmain(int argc, _TCHAR* argv[])
 {
-	cout << "Please enter the location of the .dll file without the '.dll' extention" << std:endl;
-	string input;
-	cin >> input;
+	while(hDLL == NULL)
+	{
+		cout << "Please enter the location of the .dll file without the '.dll' extention" << std::endl;
+		string input;
+		cin >> input;
 
-	typedef double (*DLLFUNC1)(double, double);
-	typedef double (*DLLFUNC2)(char*, char*);
+		std::wstring dllFile;
+		dllFile.assign(input.begin(), input.end());
 
-	DLLFUNC1 func1;    // Function pointer
-	DLLFUNC2 func2;    // Function pointer
-
-	std::wstring dllFile = input;
-
-	HINSTANCE hDLL = LoadLibrary(dllFile.c_str());
+		hDLL = LoadLibrary(dllFile.c_str());
+	}
 	if (hDLL != NULL)
 	{
-		func1 = (DLLFUNC1)GetProcAddress(hDLL, "AddDoubles");
-		func2 = (DLLFUNC2)GetProcAddress(hDLL, "AddCharStrings");
+		func1 = (DLLFUNC1)GetProcAddress(hDLL, "CreateDllObject");
+		func2 = (DLLFUNC2)GetProcAddress(hDLL, "DeleteDllObj");
 
 		if (func1 == NULL || func2 == NULL)
-	   {
-		  // handle the error
-		  FreeLibrary(hDLL);
-		  return;
-	   }
-	   else
-	   {
-
+		{
+			std::cout << "One of your functions were not loaded" << std::endl;
+			getchar();
+			FreeLibrary(hDLL);
+			return -1;
 		}
-	   FreeLibrary(hDLL);
+		else
+		{
+			IDLLclass* obj = func1();
+			//obj->Init(
+		}
+		FreeLibrary(hDLL);
 	}
 }

@@ -5,11 +5,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CAppUtillMP", "CAppUtillMP\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BA6E394A-8AB5-461E-B240-BD5C68EF1FA8}"
 	ProjectSection(SolutionItems) = preProject
-		CAppUtil.hpp = CAppUtil.hpp
-		CDLLclass.hpp = CDLLclass.hpp
+		IAppUtil.hpp = IAppUtil.hpp
+		IDLLclass.hpp = IDLLclass.hpp
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CDLLClass23", "CDLLClass23\CDLLClass23.vcxproj", "{D36EFE60-9540-4A7C-A49D-92AEE1111E69}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DLLClass", "CDLLClass23\CDLLClass23.vcxproj", "{D36EFE60-9540-4A7C-A49D-92AEE1111E69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

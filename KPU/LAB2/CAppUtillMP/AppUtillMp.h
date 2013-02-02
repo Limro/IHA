@@ -1,12 +1,12 @@
 #pragma once
-#include "../CAppUtil.hpp"
+#include "../IAppUtil.hpp"
 
-class CAppUtillMp : public CAppUtil
+class AppUtillMp : public IAppUtil
 {
 public:
-	CAppUtillMp(void);
-	CAppUtillMp(string name);
-	~CAppUtillMp();
+	AppUtillMp(void);
+	AppUtillMp(string name);
+	~AppUtillMp();
 	
 	virtual string GetName();
 	virtual string MyAddString(string str1, string str2);

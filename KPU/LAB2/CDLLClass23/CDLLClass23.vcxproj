@@ -14,6 +14,7 @@
     <ProjectGuid>{D36EFE60-9540-4A7C-A49D-92AEE1111E69}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>CDLLClass23</RootNamespace>
+    <ProjectName>DLLClass</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -79,14 +80,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CDllClass.h" />
-    <ClInclude Include="CDLLClass23.h" />
+    <ClInclude Include="DllClass.h" />
+    <ClInclude Include="Global.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CDllClass.cpp" />
-    <ClCompile Include="CDLLClass23.cpp" />
+    <ClCompile Include="DllClass.cpp" />
+    <ClCompile Include="Global.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

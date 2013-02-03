@@ -4,26 +4,24 @@
 #include "stdafx.h"
 #include "LAB1.h"
 #include <stdlib.h>
-//#include <string>
 
-
-// This is an example of an exported variable
-// LAB1_MATH int nLAB1=0;
-
-namespace LAB
+extern "C" 
 {
-	extern "C" LAB1_MATH double AddDoubles(double a, double b)
+	namespace LAB
 	{
-		return a + b;
-	}
+		LAB1_MATH double AddDoubles(double a, double b)
+		{
+			return a + b;
+		}
 
-	extern "C" LAB1_MATH double AddCharStrings(char* a, char* b)
-	{
-		return atof(a) + atof(b);
-	}
+		LAB1_MATH double AddCharStrings(char* a, char* b)
+		{
+			return atof(a) + atof(b);
+		}
 
-	extern "C" LAB1_MATH double AddStrings(std::string a, std::string b)
-	{
-		return stod(a) + stod(b);
-	}
-};
+		LAB1_MATH double AddStrings(std::string a, std::string b)
+		{
+			return stod(a) + stod(b);
+		}
+	};
+}

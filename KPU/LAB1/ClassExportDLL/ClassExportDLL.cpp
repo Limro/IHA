@@ -3,17 +3,16 @@
 #include "stdafx.h"
 #include "ClassExportDLL.h"
 #include <iostream>
+#include <conio.h>
 
 namespace SmoothDLL
 {
 	SMOOTH void ClassExportDLL::Output()
 	{
 		std::cout << "It works" << std::endl;		
-		getchar();		
+		getch();		
 	}
 
 	SMOOTH ClassExportDLL::ClassExportDLL()
-	{
-		return;
-	}
+	{}
 }

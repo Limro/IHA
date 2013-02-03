@@ -7,9 +7,9 @@ class DllClass : public IDLLclass
 public:
 	DllClass();	
 	~DllClass();
-	bool Init(IAppUtil* pUtil);
-	bool Run();
-	void TearDown();
+	virtual bool Init(IAppUtil* pUtil);
+	virtual bool Run();
+	virtual void TearDown();
 
 private:
 	IAppUtil* _pAppUtil;

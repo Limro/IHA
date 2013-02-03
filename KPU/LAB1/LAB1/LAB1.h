@@ -12,9 +12,12 @@
 
 #include <string>
 
-namespace LAB
+extern "C" 
 {
-	extern "C" LAB1_MATH double AddDoubles(double a, double b);
-	extern "C" LAB1_MATH double AddCharStrings(char* a, char* b);
-	extern "C" LAB1_MATH double AddStrings(std::string a, std::string b);
+	namespace LAB
+	{
+		LAB1_MATH double AddDoubles(double a, double b);
+		LAB1_MATH double AddCharStrings(char* a, char* b);
+		LAB1_MATH double AddStrings(std::string a, std::string b);
+	}
 }

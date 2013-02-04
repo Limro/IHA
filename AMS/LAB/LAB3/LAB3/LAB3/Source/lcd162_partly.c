@@ -106,27 +106,6 @@ static void sendInstruction( unsigned char data )
   E_Low();
 }
 
-static unsigned char GetData()
-{
-	unsigned char buffer = 0b00000000;
-	buffer = buffer<<4 | 0b11
-}
-
-static unsigned char[,] RecieveData()
-{
-	
-	unsigned char buffer[16,2];
-	for(int y = 0 ; y < 2 ; y++)
-	{
-		for(int x = 0 ; x < 16 ; x++)
-		{
-			LCDGotoXY(x,y);
-			buffer[x,y] = //...
-		}
-	}
-	
-}
-
 static void sendData( unsigned char data )
 {      
     // Wait for display controller ready
@@ -140,7 +119,7 @@ static void sendData( unsigned char data )
     E_Low();
 
     // Write low nibble ::
-    // RS = 0, RW = 0, E = 0, DB7-DB4 = Data low nibble
+    // RS = 1, RW = 0, E = 0, DB7-DB4 = Data low nibble
     PORT_lcd = (data & 0x0F)<<4 | 0b00000001;
     // Set pin E high (tAS > 40 ns is gained via calling E_High() )
     E_High();
@@ -246,7 +225,16 @@ void LCDDispInteger( int i )
 // pre-defined in an 8 byte const array
 void LCDLoadUDC( unsigned char UDCNo, const unsigned char *UDCTab )
 {
+	int i;
+	unsigned char CGRam = 0b00000001;
+	sendInstruction(((CGRam<<3) | UDCNo)<<3 ); 
 	
+	for(i = 0 ; i < 8 ; i++)
+	{
+		sendData(UDCTab[i]);
+	}
+	
+	LCDGotoXY(0,0);
 }
 
 // Selects, if the cursor has to be visible, and if the character at
@@ -275,12 +263,11 @@ void LCDCursorRight()
 // Moves the display text one position to the left
 void LCDShiftLeft()
 {
+	sendInstruction( 0b00011000 );
 }
 
 // Moves the display text one position to the right
 void LCDShiftRight()
 {
-
+	sendInstruction( 0b00011100 );
 }
-
-//----------------------------------------------------------------------

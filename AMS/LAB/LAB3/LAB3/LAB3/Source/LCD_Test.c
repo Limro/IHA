@@ -14,6 +14,7 @@
 
    Henning Hargaard, January 9, 2012
  *****************************************/
+
 #include <avr/io.h>
 #define F_CPU 3686400
 #include <avr/delay.h>
@@ -74,7 +75,7 @@ const unsigned char minor_aa[8]= {
 0b0010010,
 0b0001101,
 0b0000000};
-/*
+
 int main()
 {
 char SRAMstring[] = "String in SRAM";
@@ -176,4 +177,3 @@ int i;
     }
   }
 }
-*/

@@ -1,0 +1,32 @@
+\documentclass[Notes]{subfiles}
+\begin{document}
+\section{SPI'er}
+
+	\begin{itemize}
+	\item Anvendes over korte afstande.
+	\item Ingen error correction
+	\item Køre Master/slave\underline{s} princippet
+		\begin{itemize}
+		\item Typisk kun 1:n
+		\end{itemize}
+	\item Sender 1 bit pr. clock
+	
+		\begin{itemize}
+		\item MSB sendes først og derefter skubber man bare ind
+		\end{itemize}
+	\item Data flyttes synkront og begge veje
+	\item Master styrer klokken
+		
+	\end{itemize}
+
+\subsection{SPI timing}
+
+	\begin{itemize}
+	\item CPOL (polaritet) - På rising eller falling edge der læses på
+	\item CPHA (fase) - Læser data og gør data klar
+	\end{itemize}
+
+
+
+
+\end{document} 

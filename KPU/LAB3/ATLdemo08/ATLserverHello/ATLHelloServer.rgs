@@ -1,0 +1,26 @@
+HKCR
+{
+	ATLserverHello.ATLHelloServer.1 = s 'ATLHelloServer Class'
+	{
+		CLSID = s '{3F54C640-E0B7-4192-B86C-6ABA767BB07B}'
+	}
+	ATLserverHello.ATLHelloServer = s 'ATLHelloServer Class'
+	{
+		CLSID = s '{3F54C640-E0B7-4192-B86C-6ABA767BB07B}'
+		CurVer = s 'ATLserverHello.ATLHelloServer.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {3F54C640-E0B7-4192-B86C-6ABA767BB07B} = s 'ATLHelloServer Class'
+		{
+			ProgID = s 'ATLserverHello.ATLHelloServer.1'
+			VersionIndependentProgID = s 'ATLserverHello.ATLHelloServer'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{DBA949FD-2272-4BCF-9450-574F4CB44FC3}'
+		}
+	}
+}

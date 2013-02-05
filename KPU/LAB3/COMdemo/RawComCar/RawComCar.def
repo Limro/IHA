@@ -1,0 +1,9 @@
+; RawComCar.def : Declares the module parameters.
+
+LIBRARY	"RawComCar"
+
+EXPORTS
+	DllCanUnloadNow     PRIVATE
+	DllGetClassObject   PRIVATE
+	DllRegisterServer   PRIVATE
+	DllUnregisterServer PRIVATE

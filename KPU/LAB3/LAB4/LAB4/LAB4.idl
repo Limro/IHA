@@ -1,0 +1,38 @@
+// LAB4.idl : IDL source for LAB4
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (LAB4.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(DE77138F-DEE8-466B-BAD2-07A78E44D77D),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IMath2 : IDispatch{
+	[id(1)] HRESULT Add([in] DOUBLE firstNumber, [in] DOUBLE secondNumber, [out, retval] DOUBLE* retvalue);
+	[id(2)] HRESULT Sub([in] DOUBLE first, [in] DOUBLE second, [out,retval] DOUBLE* retValue);
+	[propget, id(3)] HRESULT Offset([out, retval] DOUBLE* pVal);
+	[propput, id(3)] HRESULT Offset([in] DOUBLE newVal);
+};
+[
+	uuid(E1E00474-CC46-4DAE-BC5B-A27C5FE9F84E),
+	version(1.0),
+]
+library LAB4Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(FB23BCAB-9120-4114-A3AA-890695B3C565)		
+	]
+	coclass Math2
+	{
+		[default] interface IMath2;
+	};
+};
+

@@ -1,0 +1,65 @@
+\documentclass[Notes]{subfiles}
+\begin{document}
+
+\section{COM}
+Distribuering af .dll-filer
+	\begin{itemize}
+	\item Førhen brugte man .obj-filer. Disse fylder dog meget, og man kan ikke ændre i dem (kun udviklerne kan). Disse kan dog linkes til en .exe-fil.
+	
+	\item I stedet kan man tage en .dll-fil, som kun tager det nødvendige fra en .obj-fil.
+	
+	\item En .dll bliver kun oprettet én gang og alle applikationer der bruger den, bliver opdateret.
+	
+	\item C++ er dog kun standardiseret på Source-niveau og ikke på Binary-niveau - dette kan medføre problemer.
+	
+	\item Laver man en opdatering på en .dll-fil, skal de programmer der bruger dem recompileres
+	\end{itemize}
+Måden man omgår dette på:
+
+	\begin{itemize}
+	\item Man laver en handler, der blot indeholder en pointer til det konkrete objekts funktioner. På den måde udvider .dll-filen sig ikke.
+	
+	\item Man laver en abstrakt base-class (pure virtual). Clienten har kun brug for interfacet. Her skal man dog have et .dll, der har en 'create new concrete object' samt en 'delte concrete object'.
+	\end{itemize}
+	
+\subsection{Resource Management}
+
+	\begin{itemize}
+	\item Hold styr på, hvor mange der bruger et object. Når der ikke er flere, kan det nedlægges.
+	\end{itemize}
+
+
+\subsection{Goals of COM}
+
+	\begin{itemize}
+	\item Binary encapsulation: Clienter skal ikke recompilere kode
+	\item Binary compatibility: Filer kan bruges påtvær at platforme
+	\end{itemize}
+
+\subsection{Priciples}
+
+	\begin{itemize}
+	\item Alt info går igennem et interface
+	\item Ret aldrig i et udgivet interface
+	\end{itemize}
+	
+\subsection{Arkitektur}
+Bruges lokalt, men er så godt som helt dødt på remote.
+	\begin{itemize}
+	\item Client spørger COM Runtime (CR) efter et objekt.
+	\item CR spørger server efter pointer, der returneres
+	\item Client bruger pointer til server.
+	\end{itemize}
+COM bruger Registreringsdatabasen.
+Her ligger alle informationerne om COM-elementerne.
+
+
+
+
+
+
+
+
+
+	
+\end{document} 

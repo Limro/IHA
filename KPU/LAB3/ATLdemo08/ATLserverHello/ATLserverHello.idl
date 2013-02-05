@@ -1,0 +1,37 @@
+// ATLserverHello.idl : IDL source for ATLserverHello
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ATLserverHello.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(43BBAF03-BB8B-41EB-8C46-CF3CB9A08B78),
+	dual,
+	nonextensible,
+	helpstring("IATLHelloServer Interface"),
+	pointer_default(unique)
+]
+interface IATLHelloServer : IDispatch{
+	[id(1), helpstring("method Hello")] HRESULT Hello([in] CHAR* arg);
+};
+[
+	uuid(DBA949FD-2272-4BCF-9450-574F4CB44FC3),
+	version(1.0),
+	helpstring("ATLserverHello 1.0 Type Library")
+]
+library ATLserverHelloLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(3F54C640-E0B7-4192-B86C-6ABA767BB07B),
+		helpstring("ATLHelloServer Class")
+	]
+	coclass ATLHelloServer
+	{
+		[default] interface IATLHelloServer;
+	};
+};

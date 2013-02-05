@@ -1,0 +1,4 @@
+For at registrere COM-serveren korrekt er det nødvendigt at tilpasse fil-stierne i filen
+RawComCar.reg, så de er i overensstemmelse med projektets aktuelle placering!
+Derefter skal man så højre-klikke på reg-filen i file-exploren og vælge merge 
+(eller man kan blot dobbelt-klikke på filen i file-exploren).

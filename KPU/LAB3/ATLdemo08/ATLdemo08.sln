@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D73A1D36-57F8-4272-B7FF-FF053DA431A5}"
+	ProjectSection(SolutionItems) = preProject
+		CallingCOMFromHtml.htm = CallingCOMFromHtml.htm
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATLserverHello", "ATLserverHello\ATLserverHello.vcxproj", "{B1DFE1DF-2AB9-4319-974D-4F8BF16A59AE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATLserverHelloPS", "ATLserverHello\ATLserverHelloPS.vcxproj", "{6E39C21A-6013-4FFB-B8A5-CCB149DA7C22}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleClient", "SimpleClient\SimpleClient.vcxproj", "{BA2C00A8-5B59-4244-9AB3-3BFA4DED9ED2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SmartClient", "SmartClient\SmartClient.vcxproj", "{C64BF8D6-8365-418C-8D53-E43820A36266}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATLBetterHello", "ATLBetterHello\ATLBetterHello.vcxproj", "{8EED466E-E372-492B-85D3-800DB4EFDF65}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ATLBetterHelloPS", "ATLBetterHello\ATLBetterHelloPS.vcxproj", "{392E18BB-F676-47DA-8E54-D2F076CE54FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1DFE1DF-2AB9-4319-974D-4F8BF16A59AE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B1DFE1DF-2AB9-4319-974D-4F8BF16A59AE}.Debug|Win32.Build.0 = Debug|Win32
+		{B1DFE1DF-2AB9-4319-974D-4F8BF16A59AE}.Release|Win32.ActiveCfg = Release|Win32
+		{B1DFE1DF-2AB9-4319-974D-4F8BF16A59AE}.Release|Win32.Build.0 = Release|Win32
+		{6E39C21A-6013-4FFB-B8A5-CCB149DA7C22}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6E39C21A-6013-4FFB-B8A5-CCB149DA7C22}.Release|Win32.ActiveCfg = Release|Win32
+		{BA2C00A8-5B59-4244-9AB3-3BFA4DED9ED2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BA2C00A8-5B59-4244-9AB3-3BFA4DED9ED2}.Debug|Win32.Build.0 = Debug|Win32
+		{BA2C00A8-5B59-4244-9AB3-3BFA4DED9ED2}.Release|Win32.ActiveCfg = Release|Win32
+		{BA2C00A8-5B59-4244-9AB3-3BFA4DED9ED2}.Release|Win32.Build.0 = Release|Win32
+		{C64BF8D6-8365-418C-8D53-E43820A36266}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C64BF8D6-8365-418C-8D53-E43820A36266}.Debug|Win32.Build.0 = Debug|Win32
+		{C64BF8D6-8365-418C-8D53-E43820A36266}.Release|Win32.ActiveCfg = Release|Win32
+		{C64BF8D6-8365-418C-8D53-E43820A36266}.Release|Win32.Build.0 = Release|Win32
+		{8EED466E-E372-492B-85D3-800DB4EFDF65}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8EED466E-E372-492B-85D3-800DB4EFDF65}.Debug|Win32.Build.0 = Debug|Win32
+		{8EED466E-E372-492B-85D3-800DB4EFDF65}.Release|Win32.ActiveCfg = Release|Win32
+		{8EED466E-E372-492B-85D3-800DB4EFDF65}.Release|Win32.Build.0 = Release|Win32
+		{392E18BB-F676-47DA-8E54-D2F076CE54FE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{392E18BB-F676-47DA-8E54-D2F076CE54FE}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,34 @@
+import "oaidl.idl";  // Defines standard interfaces like IUnknown
+import "ocidl.idl";
+
+// The ICar interface
+[uuid(87AC63AE-D8E1-47ba-B752-C422BDED5C45), object]			// Interface ID (IID).
+interface ICar : IUnknown
+{
+	HRESULT SpeedUp([in] long delta);
+	HRESULT CurrentSpeed([out, retval] long* currSp);
+};
+
+// The IRadio interface
+[uuid(06CABBDC-9A08-48e1-B68A-1D192BE4CDE4), object]			// Interface ID (IID).
+interface IRadio : IUnknown
+{
+	HRESULT CrankTunes();
+};
+
+// The Raw Car Library.
+[uuid(40B19B3C-9521-47c6-A228-6B9A3BB2F42E), // Library ID (LIBID)
+version(1.0),
+custom(AC2B005B-7DAB-4a55-B831-1CF916A59AE2, "KPU1.RawComCarLib")]
+library RawComCarLib
+{
+	importlib("stdole32.tlb");
+
+	// Our COM class.
+	[uuid(9C99478F-21E8-4814-B67B-57DF90846EBD)]				// Class ID (CLSID)
+	coclass ComCar
+	{
+		[default] interface ICar;
+		interface IRadio;
+	};
+};

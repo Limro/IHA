@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B13DE568-AB0C-4921-A211-78AE0985B68F}"
+	ProjectSection(SolutionItems) = preProject
+		Read Me First.txt = Read Me First.txt
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RawComCar", "RawComCar\RawComCar.vcxproj", "{DDC2EBDA-EEE0-4C7C-AC67-CBEC89F0C63E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImpTest", "ImpTest\ImpTest.vcxproj", "{A9CDCB14-A656-46E9-B685-F15E02656C4F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DDC2EBDA-EEE0-4C7C-AC67-CBEC89F0C63E} = {DDC2EBDA-EEE0-4C7C-AC67-CBEC89F0C63E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppRawComClient", "CppRawComClient\CppRawComClient.vcxproj", "{4052BFB6-7DB6-498E-9836-253A6BF82AD7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DDC2EBDA-EEE0-4C7C-AC67-CBEC89F0C63E} = {DDC2EBDA-EEE0-4C7C-AC67-CBEC89F0C63E}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDC2EBDA-EEE0-4C7C-AC67-CBEC89F0C63E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DDC2EBDA-EEE0-4C7C-AC67-CBEC89F0C63E}.Debug|Win32.Build.0 = Debug|Win32
+		{DDC2EBDA-EEE0-4C7C-AC67-CBEC89F0C63E}.Release|Win32.ActiveCfg = Release|Win32
+		{DDC2EBDA-EEE0-4C7C-AC67-CBEC89F0C63E}.Release|Win32.Build.0 = Release|Win32
+		{A9CDCB14-A656-46E9-B685-F15E02656C4F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A9CDCB14-A656-46E9-B685-F15E02656C4F}.Debug|Win32.Build.0 = Debug|Win32
+		{A9CDCB14-A656-46E9-B685-F15E02656C4F}.Release|Win32.ActiveCfg = Release|Win32
+		{A9CDCB14-A656-46E9-B685-F15E02656C4F}.Release|Win32.Build.0 = Release|Win32
+		{4052BFB6-7DB6-498E-9836-253A6BF82AD7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4052BFB6-7DB6-498E-9836-253A6BF82AD7}.Debug|Win32.Build.0 = Debug|Win32
+		{4052BFB6-7DB6-498E-9836-253A6BF82AD7}.Release|Win32.ActiveCfg = Release|Win32
+		{4052BFB6-7DB6-498E-9836-253A6BF82AD7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,26 @@
+HKCR
+{
+	ATLBetterHello.BetterHello.1 = s 'BetterHello Class'
+	{
+		CLSID = s '{8BAC91C1-E27C-4A28-947F-102109DD1524}'
+	}
+	ATLBetterHello.BetterHello = s 'BetterHello Class'
+	{
+		CLSID = s '{8BAC91C1-E27C-4A28-947F-102109DD1524}'
+		CurVer = s 'ATLBetterHello.BetterHello.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {8BAC91C1-E27C-4A28-947F-102109DD1524} = s 'BetterHello Class'
+		{
+			ProgID = s 'ATLBetterHello.BetterHello.1'
+			VersionIndependentProgID = s 'ATLBetterHello.BetterHello'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{56F26BF4-3BE8-436C-BA3C-A06BF5538D4D}'
+		}
+	}
+}

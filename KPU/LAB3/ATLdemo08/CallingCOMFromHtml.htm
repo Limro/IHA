@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<body>
+
+    <h2>
+        This page calls the ATLBetterHello COM server</h2>
+    <p>
+        You may have to adjust the settings in the Internet Explorer to allow this --&gt; 
+        allow running unsigned ActiveX controls in the Local domain.</p>
+    <p>
+        &nbsp;</p>
+        <script type="text/vbscript" language="vbscript">		
+		Dim o 
+		Set o = CreateObject("ATLBetterHello.BetterHello")
+		o.Hello("Hello sendt from html!")
+		MsgBox "I have just called an Active X object - !"
+
+		</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+// ATLBetterHello.idl : IDL source for ATLBetterHello
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ATLBetterHello.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(604DF214-04D1-4EE3-8B15-01C72AA99B89),
+	dual,
+	nonextensible,
+	helpstring("IBetterHello Interface"),
+	pointer_default(unique)
+]
+interface IBetterHello : IDispatch{
+	[id(1), helpstring("method Hello")] HRESULT Hello([in] BSTR arg);
+};
+[
+	uuid(56F26BF4-3BE8-436C-BA3C-A06BF5538D4D),
+	version(1.0),
+	helpstring("ATLBetterHello 1.0 Type Library")
+]
+library ATLBetterHelloLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(8BAC91C1-E27C-4A28-947F-102109DD1524),
+		helpstring("BetterHello Class")
+	]
+	coclass BetterHello
+	{
+		[default] interface IBetterHello;
+	};
+};

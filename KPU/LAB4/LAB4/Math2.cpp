@@ -8,10 +8,7 @@
 
 using namespace std;
 
-
-// CMath2
-
-
+DOUBLE _offset;
 
 STDMETHODIMP CMath2::Add(DOUBLE firstNumber, DOUBLE secondNumber, DOUBLE* retvalue)
 {
@@ -30,8 +27,6 @@ STDMETHODIMP CMath2::Sub(DOUBLE first, DOUBLE second, DOUBLE* retValue)
 
 	return S_OK;
 }
-
-DOUBLE _offset;
 
 STDMETHODIMP CMath2::get_Offset(DOUBLE* pVal)
 {

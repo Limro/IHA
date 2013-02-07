@@ -21,6 +21,17 @@ interface IMath2 : IDispatch{
 	[propput, id(3)] HRESULT Offset([in] DOUBLE newVal);
 };
 [
+	object,
+	uuid(6123FAAC-F583-40E0-BCBE-63A869C45D29),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IAdvMath : IDispatch{
+	[id(1)] HRESULT Multiply([in] DOUBLE first, [in] DOUBLE second, [out,retval] DOUBLE* retValue);
+	[id(2)] HRESULT Diversion([in] DOUBLE first, [in] DOUBLE second, [out,retval] DOUBLE* retValue);
+};
+[
 	uuid(E1E00474-CC46-4DAE-BC5B-A27C5FE9F84E),
 	version(1.0),
 ]
@@ -33,6 +44,13 @@ library LAB4Lib
 	coclass Math2
 	{
 		[default] interface IMath2;
+	};
+	[
+		uuid(81379DF2-E797-420A-A79E-C971EC65717A)		
+	]
+	coclass AdvMath
+	{
+		[default] interface IAdvMath;
 	};
 };
 

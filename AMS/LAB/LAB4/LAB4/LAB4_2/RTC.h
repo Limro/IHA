@@ -33,4 +33,3 @@ char Seconds10();
 char Seconds1();
 unsigned char Month();
 unsigned char Day();
-//----------------------------------------------------------------------

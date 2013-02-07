@@ -1,10 +1,14 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+#define LEDS PORTC
+#define LEDReg DDRC
+#define SWITCHReg DDRD
+
 ISR(SPI_STC_vect) 
 {
 	cli();
-	PORTC = SPDR;
+	LEDS = SPDR;
 	
 	sei();
 	SPDR = PIND;
@@ -27,8 +31,8 @@ void InitSPI()
 
 void InitLEDs()
 {
-	DDRC = 0xFF;
-	PORTC = 0x0F;
+	LEDReg = 0xFF;
+	LEDS = 0x0F;
 }
 
 int main(void)
@@ -36,7 +40,7 @@ int main(void)
 	
 	InitSPI();
 	InitLEDs();
-	DDRD=0;	
+	SWITCHReg = 0;	
 	
 	SREG = 128;
 	sei();

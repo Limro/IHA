@@ -1,0 +1,81 @@
+\documentclass[Notes]{subfiles}
+\begin{document}
+\section{I2C}
+
+Generelt:
+	\begin{itemize}
+	\item "Two-wire interface - én for clock - én for data
+	\item Forskellige versioner fra 100 kHz til 5 MHz
+	\item Short-range
+	\item Bruger ACK /NACK protokol
+	\item 
+	\end{itemize}
+Opbygningen:
+	\begin{itemize}
+	\item Hver slave har et ID
+	\item Hver forbundet med en clock og en data
+	\item Man bruger pull-ups
+	\item Signalet bliver forsinket ved længere afstand
+	\end{itemize}
+Software:
+
+	\begin{itemize}
+	\item Pull-low for datapin og så datapin betyder "nu sker der noget"
+	\item Herefter sendes addressen til modtageren (typisk 7-bit og det sidste er RW)
+	\item Når der er sendt 8 bit ventes på ACK
+	\item Stop signaleres ved at sætte clock og data høj
+	\end{itemize}
+ACK:
+
+	\begin{itemize}
+	\item Sender ACK for hver byte (8 bit)
+	\item Hvis en slave ser en addresse der ikke er dens egen bliver den ved med at lytte.
+	\item Hvis det er dens adresse, sender den et ACK retur. Herefter sendes master data / lytter på data
+	\end{itemize}
+Registers:
+
+	\begin{itemize}
+	\item TWBR
+	\item TWCR
+	
+		\begin{itemize}
+		\item TWINT - interrupt pin. Sættes til 1 når en bus operation ends
+		\item TWEA - Sæt til 1 hvis der skal genereres ACK ved næste modtagesle
+		\item TWSTA - 1 for at starte
+		\item TWSTO - 1 generer stop
+		\item TWWC sæt til 1 for
+		\item TWEN - SKAL VÆRE 1
+		\end{itemize}
+	
+	
+	\item TWSR
+	
+		\begin{itemize}
+		\item Bit 7-3: Status på I2C bus
+		\item Bit 1-0: Clock Prescaler
+		\item 1, 4, 16, 64 (00, 01, 10, 11)
+		\end{itemize}
+	
+	
+	\item TWDR
+	\item TWAR
+	
+		\begin{itemize}
+		\item Kan automatisk registrere adressen på slaves
+		\end{itemize}
+	
+	
+	\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document} 

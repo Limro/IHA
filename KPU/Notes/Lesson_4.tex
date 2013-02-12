@@ -1,0 +1,40 @@
+\documentclass[Notes]{subfiles}
+\begin{document}
+
+\section{Memory leak}
+
+\subsection{GC algoritme}
+
+	\begin{itemize}
+	\item Har et tom blok, hvor en pointer viser, hvor der er plads.
+Her ligges nye objekter.
+	\item Der kan ikke laves en hurtigere \textit{new} i C\#
+	\end{itemize}
+
+\subsection{Finalization}
+
+	\begin{itemize}
+	\item Det hedder ikke en \textit{destructor} længere
+	\item \textit{Finalize} laver hvad C++'s \textit{destructor} laver - blot kaldt fra GC
+	\item GC holder kun styr på Managed Handles
+	\item Er der noget Unmanaged, skal Finalizes kaldes
+	\end{itemize}
+	
+\begin{lstlisting}[style=code-c++]
+class Foo 
+{ 
+	~Foo() 
+	{ 
+		Console.WriteLine("In destructor"); 
+	} 
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+	
+\end{document} 

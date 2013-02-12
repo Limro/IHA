@@ -1,0 +1,19 @@
+﻿<Window x:Class="LeakyApp.NameWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NameWindow" Height="300" Width="300"
+        ShowInTaskbar="False"
+        >
+    <Grid>
+        <Label Content="_User name:" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" 
+               Margin="20,33,0,0" 
+               Name="label1" 
+               />
+        <TextBox Height="23" MinWidth="120"
+                 HorizontalAlignment="Left" VerticalAlignment="Top" 
+                 Margin="95,35,0,0" 
+                 Name="tbxName"  
+                 />
+    </Grid>
+</Window>

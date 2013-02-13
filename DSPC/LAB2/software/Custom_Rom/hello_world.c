@@ -16,9 +16,6 @@ void displayMatrix(VectorArray input);
 void multiMatrixSoft(VectorArray A,VectorArray B, VectorArray P);
 void multiMatrixHard(VectorArray A,VectorArray B, VectorArray P);
 
-//void GetArray(VectorArray array[]);
-unsigned char bstConverter(int input);
-
 int main()
 {
 	//VectorArray A[4], B[4];
@@ -79,7 +76,8 @@ int main()
 	printf("\n\n      X\n");
 	displayMatrix(B);
 	printf("\n\n      =\n");
-	multiMatrixSoft(B, B, C);
+	multiMatrixSoft(A, B, C);
+	displayMatrix(C);
 
 	return 0;
 }
@@ -93,22 +91,13 @@ void displayMatrix(VectorArray array)
 
 		for(j = 0 ; j < 4 ; j++)
 		{
-			signed int output = bstConverter(array[i].comp[j]);
+			signed int output = array[i].comp[j];
 			if(output / 10 < 1)
 				printf(" ");
-			printf("%d", output);
+			printf("%i", output);
 			printf("%c", '|');
 		}
 	}
-}
-
-unsigned char bstConverter(int input)
-{
-	unsigned char y;
-	sprintf(y, "%c", input);
-	y = (input / 10) << 4;
-	y = y | (input % 10);
-	return y;
 }
 
 void multiMatrixSoft(VectorArray A,VectorArray B, VectorArray P)
@@ -127,8 +116,6 @@ void multiMatrixSoft(VectorArray A,VectorArray B, VectorArray P)
 			}
 		}
 	}
-
-	displayMatrix(P);
 }
 
 

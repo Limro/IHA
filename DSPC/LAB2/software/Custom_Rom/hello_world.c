@@ -33,6 +33,37 @@ int main()
 			{4, 4, 4, 4} };
 
 	VectorArray C, D;
+	char buffer1[80];
+	char buffer2[80];
+	char buffer3[80];
+	alt_u32 start, stop;
+
+	if (alt_timestamp_start() < 0)
+	{
+		printf ("No timestamp device available\n");
+	}
+
+	printf("Type stuff!\n");
+
+	scanf("%s%s%s", buffer1, buffer2, buffer3);
+
+	if (!strcmp(buffer1, "mult") && !strcmp(buffer2, "soft"))
+	{
+		//Multiply two VectorArrays
+		displayMatrix(A);
+		printf("\n\n      X\n");
+		displayMatrix(B);
+		printf("\n\n      =\n");
+
+		alt_timestamp_start();
+
+		start = alt_timestamp();
+		multiMatrixSoft(A, B, C);
+		stop = alt_timestamp;
+
+		displayMatrix(C);
+		printf("\n\nUsed time: %u", stop - start);
+	}
 /*
 	int i, j;
 	unsigned char number;
@@ -70,7 +101,7 @@ int main()
 	printf("\n\n");
 	displayMatrix(D);
 */
-
+	/*
 	//Multiply two VectorArrays
 	displayMatrix(A);
 	printf("\n\n      X\n");
@@ -78,6 +109,7 @@ int main()
 	printf("\n\n      =\n");
 	multiMatrixSoft(A, B, C);
 	displayMatrix(C);
+	*/
 
 	return 0;
 }

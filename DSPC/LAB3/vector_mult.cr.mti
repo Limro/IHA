@@ -7,16 +7,6 @@ Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Compiling entity vector_mult
 -- Compiling architecture actions of vector_mult
 
-} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB3/vector_mult_tb.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB3/vector_mult_tb.vhd
-Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package vector_test
--- Compiling entity vector_mult_tb
--- Compiling architecture bench of vector_mult_tb
-
 } {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB3/vector_package.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB3/vector_package.vhd
 Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Loading package STANDARD

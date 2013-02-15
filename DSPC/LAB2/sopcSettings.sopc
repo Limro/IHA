@@ -33,7 +33,7 @@
    {
       datum _sortIndex
       {
-         value = "0";
+         value = "1";
          type = "int";
       }
    }
@@ -41,16 +41,8 @@
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "12";
          type = "int";
-      }
-   }
-   element sysid.control_slave
-   {
-      datum baseAddress
-      {
-         value = "1052800";
-         type = "String";
       }
    }
    element lcd_0.control_slave
@@ -61,17 +53,33 @@
          type = "String";
       }
    }
+   element sysid.control_slave
+   {
+      datum baseAddress
+      {
+         value = "1052800";
+         type = "String";
+      }
+   }
    element cpu_0
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "11";
          type = "int";
       }
       datum megawizard_uipreferences
       {
          value = "{}";
          type = "String";
+      }
+   }
+   element cpu_0_vector_mult_inst
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
       }
    }
    element cpu_0.jtag_debug_module
@@ -86,7 +94,7 @@
    {
       datum _sortIndex
       {
-         value = "3";
+         value = "4";
          type = "int";
       }
    }
@@ -94,7 +102,7 @@
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "10";
          type = "int";
       }
       datum megawizard_uipreferences
@@ -107,7 +115,7 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "7";
          type = "int";
       }
    }
@@ -115,7 +123,7 @@
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "5";
          type = "int";
       }
    }
@@ -123,32 +131,8 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "6";
          type = "int";
-      }
-   }
-   element pio_output_1.s1
-   {
-      datum baseAddress
-      {
-         value = "1052768";
-         type = "String";
-      }
-   }
-   element pio_input_0.s1
-   {
-      datum baseAddress
-      {
-         value = "1052752";
-         type = "String";
-      }
-   }
-   element timer_timestamp.s1
-   {
-      datum baseAddress
-      {
-         value = "1052704";
-         type = "String";
       }
    }
    element timer_system.s1
@@ -167,11 +151,35 @@
          type = "String";
       }
    }
+   element pio_output_1.s1
+   {
+      datum baseAddress
+      {
+         value = "1052768";
+         type = "String";
+      }
+   }
+   element timer_timestamp.s1
+   {
+      datum baseAddress
+      {
+         value = "1052704";
+         type = "String";
+      }
+   }
+   element pio_input_0.s1
+   {
+      datum baseAddress
+      {
+         value = "1052752";
+         type = "String";
+      }
+   }
    element sram_0
    {
       datum _sortIndex
       {
-         value = "2";
+         value = "3";
          type = "int";
       }
    }
@@ -179,7 +187,7 @@
    {
       datum _sortIndex
       {
-         value = "1";
+         value = "2";
          type = "int";
       }
    }
@@ -187,7 +195,7 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "9";
          type = "int";
       }
    }
@@ -195,7 +203,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "8";
          type = "int";
       }
    }
@@ -213,8 +221,8 @@
  <parameter name="maxAdditionalLatency" value="0" />
  <parameter name="projectName" value="SOPC.qpf" />
  <parameter name="sopcBorderPoints" value="true" />
- <parameter name="systemHash" value="12491613822" />
- <parameter name="timeStamp" value="1360325186443" />
+ <parameter name="systemHash" value="12121370959" />
+ <parameter name="timeStamp" value="1360752522524" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <module kind="clock_source" version="12.1" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
@@ -432,7 +440,7 @@
   <parameter name="dcache_bursts" value="false" />
   <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sram_0.avalon_sram_slave' start='0x80000' end='0x100000' /><slave name='cpu_0.jtag_debug_module' start='0x100800' end='0x101000' /><slave name='timer_system.s1' start='0x101000' end='0x101020' /><slave name='timer_timestamp.s1' start='0x101020' end='0x101040' /><slave name='lcd_0.control_slave' start='0x101040' end='0x101050' /><slave name='pio_input_0.s1' start='0x101050' end='0x101060' /><slave name='pio_output_1.s1' start='0x101060' end='0x101070' /><slave name='pio_output_0.s1' start='0x101070' end='0x101080' /><slave name='sysid.control_slave' start='0x101080' end='0x101088' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x101088' end='0x101090' /><slave name='clocks_0.avalon_clocks_slave' start='0x101090' end='0x101092' /></address-map>]]></parameter>
   <parameter name="dataAddrWidth" value="21" />
-  <parameter name="customInstSlavesSystemInfo" value="&lt;info/&gt;" />
+  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="vector_mult_inst" baseAddress="0" addressSpan="1" clockCycleType="COMBINATORIAL" /></info>]]></parameter>
   <parameter name="cpuReset" value="false" />
   <parameter name="cpuID" value="0" />
   <parameter name="clockFrequency" value="50000000" />
@@ -456,6 +464,11 @@
  <module kind="altera_avalon_sysid" version="12.1" enabled="1" name="sysid">
   <parameter name="id" value="0" />
  </module>
+ <module
+   kind="vector_mult"
+   version="1.0"
+   enabled="1"
+   name="cpu_0_vector_mult_inst" />
  <connection
    kind="avalon"
    version="12.1"
@@ -623,5 +636,14 @@
    end="sysid.control_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00101080" />
+ </connection>
+ <connection
+   kind="nios_custom_instruction"
+   version="12.1"
+   start="cpu_0.custom_instruction_master"
+   end="cpu_0_vector_mult_inst.nios_custom_instruction_slave_0">
+  <parameter name="CIName" value="vector_mult_inst" />
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0" />
  </connection>
 </system>

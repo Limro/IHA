@@ -16,9 +16,13 @@ set_global_assignment -name SOURCE_FILE [file join $::quartus(qip_path) "cpu_0.o
 set_global_assignment -name TCL_FILE [file join $::quartus(ip_rootpath) "University_Program/altera_up_avalon_clocks/altera_up_avalon_clocks_hw.tcl"]
 set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "clocks_0.v"]
 # sysid
+# cpu_0_vector_mult_inst
+set_global_assignment -name TCL_FILE [file join $::quartus(qip_path) "../LAB3/vector_mult_hw.tcl"]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "../LAB3/vector_mult.vhd"]
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "cpu_0_vector_mult_inst.v"]
 # null
 set_global_assignment -name SDC_FILE [file join $::quartus(ip_rootpath) "altera/sopc_builder_ip/altera_avalon_clock_adapter/altera_avalon_clock_adapter.sdc"]
-set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID "00000000000000E00000013CB9B34E41"
+set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID "00000000000000E00000013CD32C1972"
 set_global_assignment -entity "CPU_System" -name IP_TOOL_NAME "sopc"
 set_global_assignment -entity "CPU_System" -name IP_TOOL_VERSION "12.1"
 set_global_assignment -entity "CPU_System" -name IP_TOOL_ENV "sopc"

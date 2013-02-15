@@ -66,8 +66,9 @@ void i2c_stop()
 // The (positive) temperatures is send to the terminal
 // Format: "T1 = xx,x C  T2 = xx,x C"
 // Temp1 and Temp2 = 1/2 of centigrades
-void PrintTemperatures(int temp1, int temp2)
+void PrintTemperatures(/*int temp1, */int temp2)
 {
+	/*
   SendString("First sensor is: ");
   SendInteger(temp1>>1);
   if(temp1 % 2 != 0)
@@ -77,7 +78,7 @@ void PrintTemperatures(int temp1, int temp2)
   }
   SendChar('\n');
   SendChar('\r');
-  
+  */
     SendString("Second sensor is: ");
     SendInteger(temp2 >> 1);
     if(temp2 % 2 != 0)
@@ -153,7 +154,7 @@ int main()
 	  SendChar('\n');
 	  SendChar('\r');
     // Read and display the temperature of sensor #0 and #7
-    PrintTemperatures(LM75_temperature(0), LM75_temperature(7));
+    PrintTemperatures(LM75_temperature(7));
     // Avoid self heating
     _delay_ms(500);
 	counter++;

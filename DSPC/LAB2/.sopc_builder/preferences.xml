@@ -18,5 +18,5 @@
  </clocktable>
  <window width="1366" height="728" x="-8" y="-8" />
  <library
-   expandedCategories="Project,Library/Verification,Library/Peripherals/Debug and Performance,Library,Library/Peripherals,Library/Verification/Debug &amp; Performance" />
+   expandedCategories="Library/Verification,Library/Peripherals/Debug and Performance,Library/Verification/Debug &amp; Performance,Project,Library,Library/Peripherals" />
 </preferences>

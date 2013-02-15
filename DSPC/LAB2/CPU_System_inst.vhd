@@ -1,6 +1,8 @@
   --Example instantiation for system 'CPU_System'
   CPU_System_inst : CPU_System
     port map(
+      E_ci_multi_clock_from_the_cpu_0 => E_ci_multi_clock_from_the_cpu_0,
+      E_ci_multi_reset_from_the_cpu_0 => E_ci_multi_reset_from_the_cpu_0,
       LCD_E_from_the_lcd_0 => LCD_E_from_the_lcd_0,
       LCD_RS_from_the_lcd_0 => LCD_RS_from_the_lcd_0,
       LCD_RW_from_the_lcd_0 => LCD_RW_from_the_lcd_0,

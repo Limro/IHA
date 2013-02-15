@@ -56,7 +56,7 @@ entity cpu_0_test_bench is
                  signal W_rf_wr_data : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
                  signal W_status_reg : IN STD_LOGIC;
                  signal W_valid : IN STD_LOGIC;
-                 signal W_vinst : IN STD_LOGIC_VECTOR (55 DOWNTO 0);
+                 signal W_vinst : IN STD_LOGIC_VECTOR (431 DOWNTO 0);
                  signal W_wr_data : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
                  signal av_ld_data_aligned_unfiltered : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
                  signal clk : IN STD_LOGIC;
@@ -107,6 +107,7 @@ architecture europa of cpu_0_test_bench is
                 signal D_op_cmpltui :  STD_LOGIC;
                 signal D_op_cmpne :  STD_LOGIC;
                 signal D_op_cmpnei :  STD_LOGIC;
+                signal D_op_cpu_0_vector_mult_inst_nios_custom_instruction_slave_0 :  STD_LOGIC;
                 signal D_op_crst :  STD_LOGIC;
                 signal D_op_custom :  STD_LOGIC;
                 signal D_op_div :  STD_LOGIC;
@@ -372,6 +373,7 @@ begin
   D_op_rsvx56 <= D_op_opx AND to_std_logic((((std_logic_vector'("00000000000000000000000000") & (D_iw_opx)) = std_logic_vector'("00000000000000000000000000111000"))));
   D_op_rsvx60 <= D_op_opx AND to_std_logic((((std_logic_vector'("00000000000000000000000000") & (D_iw_opx)) = std_logic_vector'("00000000000000000000000000111100"))));
   D_op_rsvx63 <= D_op_opx AND to_std_logic((((std_logic_vector'("00000000000000000000000000") & (D_iw_opx)) = std_logic_vector'("00000000000000000000000000111111"))));
+  D_op_cpu_0_vector_mult_inst_nios_custom_instruction_slave_0 <= D_op_custom AND std_logic'('1');
   D_op_opx <= to_std_logic(((std_logic_vector'("00000000000000000000000000") & (D_iw_op)) = std_logic_vector'("00000000000000000000000000111010")));
   D_op_custom <= to_std_logic(((std_logic_vector'("00000000000000000000000000") & (D_iw_op)) = std_logic_vector'("00000000000000000000000000110010")));
   process (clk, reset_n)

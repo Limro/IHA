@@ -1,7 +1,7 @@
 PACKAGE install2 
 {
    # This file informs the Nios II IDE of non-legacy component paths.
-   # Generated 2013.02.08.13:06:41
+   # Generated 2013.02.13.11:49:08
    COMPONENT Altera_UP_Flash_Memory_IP_Core_Avalon_Interface 
    {
       VERSION 1.0 
@@ -4011,6 +4011,20 @@ PACKAGE install2
       VERSION 12.1 
       {
          local = "C:/altera/12.1/ip/altera/alt_xcvr_reconfig/alt_xcvr_reconfig_basic";
+      }
+   }
+   COMPONENT vector_mult 
+   {
+      VERSION 1.0 
+      {
+         local = "C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB3";
+      }
+   }
+   COMPONENT vector_mult 
+   {
+      VERSION 1.0 
+      {
+         local = "C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB3";
       }
    }
 }

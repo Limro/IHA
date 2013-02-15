@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "HHBoot", "HHBoot\HHBoot.cproj", "{7C1B49CC-D56D-4639-9372-A6234DB74B36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0B20BFA4-E66B-4F50-B399-8602B72687BB}"
+	ProjectSection(SolutionItems) = preProject
+		HHBoot\SimpleApp.c = HHBoot\SimpleApp.c
+	EndProjectSection
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Music", "Music\Music.cproj", "{F89C4341-73D8-4883-96AA-CE3047584DD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C1B49CC-D56D-4639-9372-A6234DB74B36}.Debug|AVR.ActiveCfg = Debug|AVR
+		{7C1B49CC-D56D-4639-9372-A6234DB74B36}.Debug|AVR.Build.0 = Debug|AVR
+		{7C1B49CC-D56D-4639-9372-A6234DB74B36}.Release|AVR.ActiveCfg = Release|AVR
+		{7C1B49CC-D56D-4639-9372-A6234DB74B36}.Release|AVR.Build.0 = Release|AVR
+		{F89C4341-73D8-4883-96AA-CE3047584DD1}.Debug|AVR.ActiveCfg = Debug|AVR
+		{F89C4341-73D8-4883-96AA-CE3047584DD1}.Debug|AVR.Build.0 = Debug|AVR
+		{F89C4341-73D8-4883-96AA-CE3047584DD1}.Release|AVR.ActiveCfg = Release|AVR
+		{F89C4341-73D8-4883-96AA-CE3047584DD1}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1267,7 +1267,6 @@ entity cpu_0_jtag_debug_module_arbitrator is
                  signal cpu_0_jtag_debug_module_chipselect : OUT STD_LOGIC;
                  signal cpu_0_jtag_debug_module_debugaccess : OUT STD_LOGIC;
                  signal cpu_0_jtag_debug_module_readdata_from_sa : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-                 signal cpu_0_jtag_debug_module_reset_n : OUT STD_LOGIC;
                  signal cpu_0_jtag_debug_module_resetrequest_from_sa : OUT STD_LOGIC;
                  signal cpu_0_jtag_debug_module_write : OUT STD_LOGIC;
                  signal cpu_0_jtag_debug_module_writedata : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -1481,8 +1480,6 @@ begin
   end process;
 
   cpu_0_jtag_debug_module_begintransfer <= cpu_0_jtag_debug_module_begins_xfer;
-  --cpu_0_jtag_debug_module_reset_n assignment, which is an e_assign
-  cpu_0_jtag_debug_module_reset_n <= reset_n;
   --assign cpu_0_jtag_debug_module_resetrequest_from_sa = cpu_0_jtag_debug_module_resetrequest so that symbol knows where to group signals which may go to master only, which is an e_assign
   cpu_0_jtag_debug_module_resetrequest_from_sa <= cpu_0_jtag_debug_module_resetrequest;
   cpu_0_jtag_debug_module_chipselect <= internal_cpu_0_data_master_granted_cpu_0_jtag_debug_module OR internal_cpu_0_instruction_master_granted_cpu_0_jtag_debug_module;
@@ -1600,6 +1597,53 @@ begin
     end process;
 
 --synthesis translate_on
+
+end europa;
+
+
+
+-- turn off superfluous VHDL processor warnings 
+-- altera message_level Level1 
+-- altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+library altera;
+use altera.altera_europa_support_lib.all;
+
+library altera_mf;
+use altera_mf.altera_mf_components.all;
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity cpu_0_custom_instruction_master_arbitrator is 
+        port (
+              -- inputs:
+                 signal clk : IN STD_LOGIC;
+                 signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+                 signal reset_n : IN STD_LOGIC;
+
+              -- outputs:
+                 signal cpu_0_custom_instruction_master_reset_n : OUT STD_LOGIC;
+                 signal cpu_0_custom_instruction_master_result : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+                 signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select : OUT STD_LOGIC
+              );
+end entity cpu_0_custom_instruction_master_arbitrator;
+
+
+architecture europa of cpu_0_custom_instruction_master_arbitrator is
+                signal internal_cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select :  STD_LOGIC;
+
+begin
+
+  internal_cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select <= std_logic'('1');
+  --cpu_0_custom_instruction_master_result mux, which is an e_mux
+  cpu_0_custom_instruction_master_result <= A_REP(internal_cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select, 32) AND cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa;
+  --cpu_0_custom_instruction_master_reset_n local reset_n, which is an e_assign
+  cpu_0_custom_instruction_master_reset_n <= reset_n;
+  --vhdl renameroo for output signals
+  cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select <= internal_cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select;
 
 end europa;
 
@@ -2092,6 +2136,52 @@ begin
     end process;
 
 --synthesis translate_on
+
+end europa;
+
+
+
+-- turn off superfluous VHDL processor warnings 
+-- altera message_level Level1 
+-- altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+library altera;
+use altera.altera_europa_support_lib.all;
+
+library altera_mf;
+use altera_mf.altera_mf_components.all;
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+
+entity cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_arbitrator is 
+        port (
+              -- inputs:
+                 signal clk : IN STD_LOGIC;
+                 signal cpu_0_custom_instruction_master_dataa : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+                 signal cpu_0_custom_instruction_master_datab : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+                 signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+                 signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select : IN STD_LOGIC;
+                 signal reset_n : IN STD_LOGIC;
+
+              -- outputs:
+                 signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_dataa : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+                 signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_datab : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+                 signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+              );
+end entity cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_arbitrator;
+
+
+architecture europa of cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_arbitrator is
+
+begin
+
+  cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_dataa <= cpu_0_custom_instruction_master_dataa;
+  cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_datab <= cpu_0_custom_instruction_master_datab;
+  --assign cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa = cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result so that symbol knows where to group signals which may go to master only, which is an e_assign
+  cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa <= cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result;
 
 end europa;
 
@@ -5014,6 +5104,10 @@ entity CPU_System is
                  signal clocks_0_sys_clk_out : OUT STD_LOGIC;
                  signal reset_n : IN STD_LOGIC;
 
+              -- the_cpu_0
+                 signal E_ci_multi_clock_from_the_cpu_0 : OUT STD_LOGIC;
+                 signal E_ci_multi_reset_from_the_cpu_0 : OUT STD_LOGIC;
+
               -- the_lcd_0
                  signal LCD_E_from_the_lcd_0 : OUT STD_LOGIC;
                  signal LCD_RS_from_the_lcd_0 : OUT STD_LOGIC;
@@ -5284,13 +5378,26 @@ component cpu_0_jtag_debug_module_arbitrator is
                     signal cpu_0_jtag_debug_module_chipselect : OUT STD_LOGIC;
                     signal cpu_0_jtag_debug_module_debugaccess : OUT STD_LOGIC;
                     signal cpu_0_jtag_debug_module_readdata_from_sa : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-                    signal cpu_0_jtag_debug_module_reset_n : OUT STD_LOGIC;
                     signal cpu_0_jtag_debug_module_resetrequest_from_sa : OUT STD_LOGIC;
                     signal cpu_0_jtag_debug_module_write : OUT STD_LOGIC;
                     signal cpu_0_jtag_debug_module_writedata : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
                     signal d1_cpu_0_jtag_debug_module_end_xfer : OUT STD_LOGIC
                  );
 end component cpu_0_jtag_debug_module_arbitrator;
+
+component cpu_0_custom_instruction_master_arbitrator is 
+           port (
+                 -- inputs:
+                    signal clk : IN STD_LOGIC;
+                    signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+                    signal reset_n : IN STD_LOGIC;
+
+                 -- outputs:
+                    signal cpu_0_custom_instruction_master_reset_n : OUT STD_LOGIC;
+                    signal cpu_0_custom_instruction_master_result : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+                    signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select : OUT STD_LOGIC
+                 );
+end component cpu_0_custom_instruction_master_arbitrator;
 
 component cpu_0_data_master_arbitrator is 
            port (
@@ -5423,6 +5530,7 @@ end component cpu_0_instruction_master_arbitrator;
 component cpu_0 is 
            port (
                  -- inputs:
+                    signal E_ci_result : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
                     signal clk : IN STD_LOGIC;
                     signal d_irq : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
                     signal d_readdata : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -5439,6 +5547,20 @@ component cpu_0 is
                     signal reset_n : IN STD_LOGIC;
 
                  -- outputs:
+                    signal D_ci_a : OUT STD_LOGIC_VECTOR (4 DOWNTO 0);
+                    signal D_ci_b : OUT STD_LOGIC_VECTOR (4 DOWNTO 0);
+                    signal D_ci_c : OUT STD_LOGIC_VECTOR (4 DOWNTO 0);
+                    signal D_ci_n : OUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+                    signal D_ci_readra : OUT STD_LOGIC;
+                    signal D_ci_readrb : OUT STD_LOGIC;
+                    signal D_ci_writerc : OUT STD_LOGIC;
+                    signal E_ci_dataa : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+                    signal E_ci_datab : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+                    signal E_ci_multi_clock : OUT STD_LOGIC;
+                    signal E_ci_multi_reset : OUT STD_LOGIC;
+                    signal W_ci_estatus : OUT STD_LOGIC;
+                    signal W_ci_ipending : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+                    signal W_ci_status : OUT STD_LOGIC;
                     signal d_address : OUT STD_LOGIC_VECTOR (20 DOWNTO 0);
                     signal d_byteenable : OUT STD_LOGIC_VECTOR (3 DOWNTO 0);
                     signal d_read : OUT STD_LOGIC;
@@ -5451,6 +5573,34 @@ component cpu_0 is
                     signal jtag_debug_module_resetrequest : OUT STD_LOGIC
                  );
 end component cpu_0;
+
+component cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_arbitrator is 
+           port (
+                 -- inputs:
+                    signal clk : IN STD_LOGIC;
+                    signal cpu_0_custom_instruction_master_dataa : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+                    signal cpu_0_custom_instruction_master_datab : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+                    signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+                    signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select : IN STD_LOGIC;
+                    signal reset_n : IN STD_LOGIC;
+
+                 -- outputs:
+                    signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_dataa : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+                    signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_datab : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+                    signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+                 );
+end component cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_arbitrator;
+
+component cpu_0_vector_mult_inst is 
+           port (
+                 -- inputs:
+                    signal dataa : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+                    signal datab : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+
+                 -- outputs:
+                    signal result : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+                 );
+end component cpu_0_vector_mult_inst;
 
 component jtag_uart_0_avalon_jtag_slave_arbitrator is 
            port (
@@ -5953,6 +6103,20 @@ end component CPU_System_reset_clk_0_domain_synch_module;
                 signal clocks_0_avalon_clocks_slave_readdata :  STD_LOGIC_VECTOR (7 DOWNTO 0);
                 signal clocks_0_avalon_clocks_slave_readdata_from_sa :  STD_LOGIC_VECTOR (7 DOWNTO 0);
                 signal clocks_0_sys_clk_out_reset_n :  STD_LOGIC;
+                signal cpu_0_custom_instruction_master_a :  STD_LOGIC_VECTOR (4 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_b :  STD_LOGIC_VECTOR (4 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_c :  STD_LOGIC_VECTOR (4 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_dataa :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_datab :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_estatus :  STD_LOGIC;
+                signal cpu_0_custom_instruction_master_ipending :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_n :  STD_LOGIC_VECTOR (7 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_readra :  STD_LOGIC;
+                signal cpu_0_custom_instruction_master_readrb :  STD_LOGIC;
+                signal cpu_0_custom_instruction_master_reset_n :  STD_LOGIC;
+                signal cpu_0_custom_instruction_master_result :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_status :  STD_LOGIC;
+                signal cpu_0_custom_instruction_master_writerc :  STD_LOGIC;
                 signal cpu_0_data_master_address :  STD_LOGIC_VECTOR (20 DOWNTO 0);
                 signal cpu_0_data_master_address_to_slave :  STD_LOGIC_VECTOR (20 DOWNTO 0);
                 signal cpu_0_data_master_byteenable :  STD_LOGIC_VECTOR (3 DOWNTO 0);
@@ -6036,11 +6200,15 @@ end component CPU_System_reset_clk_0_domain_synch_module;
                 signal cpu_0_jtag_debug_module_debugaccess :  STD_LOGIC;
                 signal cpu_0_jtag_debug_module_readdata :  STD_LOGIC_VECTOR (31 DOWNTO 0);
                 signal cpu_0_jtag_debug_module_readdata_from_sa :  STD_LOGIC_VECTOR (31 DOWNTO 0);
-                signal cpu_0_jtag_debug_module_reset_n :  STD_LOGIC;
                 signal cpu_0_jtag_debug_module_resetrequest :  STD_LOGIC;
                 signal cpu_0_jtag_debug_module_resetrequest_from_sa :  STD_LOGIC;
                 signal cpu_0_jtag_debug_module_write :  STD_LOGIC;
                 signal cpu_0_jtag_debug_module_writedata :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+                signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_dataa :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+                signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_datab :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+                signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+                signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+                signal cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select :  STD_LOGIC;
                 signal d1_CPU_System_clock_0_in_end_xfer :  STD_LOGIC;
                 signal d1_CPU_System_clock_1_in_end_xfer :  STD_LOGIC;
                 signal d1_clocks_0_avalon_clocks_slave_end_xfer :  STD_LOGIC;
@@ -6054,6 +6222,8 @@ end component CPU_System_reset_clk_0_domain_synch_module;
                 signal d1_sysid_control_slave_end_xfer :  STD_LOGIC;
                 signal d1_timer_system_s1_end_xfer :  STD_LOGIC;
                 signal d1_timer_timestamp_s1_end_xfer :  STD_LOGIC;
+                signal internal_E_ci_multi_clock_from_the_cpu_0 :  STD_LOGIC;
+                signal internal_E_ci_multi_reset_from_the_cpu_0 :  STD_LOGIC;
                 signal internal_LCD_E_from_the_lcd_0 :  STD_LOGIC;
                 signal internal_LCD_RS_from_the_lcd_0 :  STD_LOGIC;
                 signal internal_LCD_RW_from_the_lcd_0 :  STD_LOGIC;
@@ -6362,7 +6532,6 @@ begin
       cpu_0_jtag_debug_module_chipselect => cpu_0_jtag_debug_module_chipselect,
       cpu_0_jtag_debug_module_debugaccess => cpu_0_jtag_debug_module_debugaccess,
       cpu_0_jtag_debug_module_readdata_from_sa => cpu_0_jtag_debug_module_readdata_from_sa,
-      cpu_0_jtag_debug_module_reset_n => cpu_0_jtag_debug_module_reset_n,
       cpu_0_jtag_debug_module_resetrequest_from_sa => cpu_0_jtag_debug_module_resetrequest_from_sa,
       cpu_0_jtag_debug_module_write => cpu_0_jtag_debug_module_write,
       cpu_0_jtag_debug_module_writedata => cpu_0_jtag_debug_module_writedata,
@@ -6379,6 +6548,18 @@ begin
       cpu_0_instruction_master_read => cpu_0_instruction_master_read,
       cpu_0_jtag_debug_module_readdata => cpu_0_jtag_debug_module_readdata,
       cpu_0_jtag_debug_module_resetrequest => cpu_0_jtag_debug_module_resetrequest,
+      reset_n => clocks_0_sys_clk_out_reset_n
+    );
+
+
+  --the_cpu_0_custom_instruction_master, which is an e_instance
+  the_cpu_0_custom_instruction_master : cpu_0_custom_instruction_master_arbitrator
+    port map(
+      cpu_0_custom_instruction_master_reset_n => cpu_0_custom_instruction_master_reset_n,
+      cpu_0_custom_instruction_master_result => cpu_0_custom_instruction_master_result,
+      cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select => cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select,
+      clk => internal_clocks_0_sys_clk_out,
+      cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa => cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa,
       reset_n => clocks_0_sys_clk_out_reset_n
     );
 
@@ -6510,6 +6691,20 @@ begin
   --the_cpu_0, which is an e_ptf_instance
   the_cpu_0 : cpu_0
     port map(
+      D_ci_a => cpu_0_custom_instruction_master_a,
+      D_ci_b => cpu_0_custom_instruction_master_b,
+      D_ci_c => cpu_0_custom_instruction_master_c,
+      D_ci_n => cpu_0_custom_instruction_master_n,
+      D_ci_readra => cpu_0_custom_instruction_master_readra,
+      D_ci_readrb => cpu_0_custom_instruction_master_readrb,
+      D_ci_writerc => cpu_0_custom_instruction_master_writerc,
+      E_ci_dataa => cpu_0_custom_instruction_master_dataa,
+      E_ci_datab => cpu_0_custom_instruction_master_datab,
+      E_ci_multi_clock => internal_E_ci_multi_clock_from_the_cpu_0,
+      E_ci_multi_reset => internal_E_ci_multi_reset_from_the_cpu_0,
+      W_ci_estatus => cpu_0_custom_instruction_master_estatus,
+      W_ci_ipending => cpu_0_custom_instruction_master_ipending,
+      W_ci_status => cpu_0_custom_instruction_master_status,
       d_address => cpu_0_data_master_address,
       d_byteenable => cpu_0_data_master_byteenable,
       d_read => cpu_0_data_master_read,
@@ -6520,6 +6715,7 @@ begin
       jtag_debug_module_debugaccess_to_roms => cpu_0_data_master_debugaccess,
       jtag_debug_module_readdata => cpu_0_jtag_debug_module_readdata,
       jtag_debug_module_resetrequest => cpu_0_jtag_debug_module_resetrequest,
+      E_ci_result => cpu_0_custom_instruction_master_result,
       clk => internal_clocks_0_sys_clk_out,
       d_irq => cpu_0_data_master_irq,
       d_readdata => cpu_0_data_master_readdata,
@@ -6533,7 +6729,31 @@ begin
       jtag_debug_module_select => cpu_0_jtag_debug_module_chipselect,
       jtag_debug_module_write => cpu_0_jtag_debug_module_write,
       jtag_debug_module_writedata => cpu_0_jtag_debug_module_writedata,
-      reset_n => cpu_0_jtag_debug_module_reset_n
+      reset_n => cpu_0_custom_instruction_master_reset_n
+    );
+
+
+  --the_cpu_0_vector_mult_inst_nios_custom_instruction_slave_0, which is an e_instance
+  the_cpu_0_vector_mult_inst_nios_custom_instruction_slave_0 : cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_arbitrator
+    port map(
+      cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_dataa => cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_dataa,
+      cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_datab => cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_datab,
+      cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa => cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result_from_sa,
+      clk => internal_clocks_0_sys_clk_out,
+      cpu_0_custom_instruction_master_dataa => cpu_0_custom_instruction_master_dataa,
+      cpu_0_custom_instruction_master_datab => cpu_0_custom_instruction_master_datab,
+      cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result => cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result,
+      cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select => cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_select,
+      reset_n => clocks_0_sys_clk_out_reset_n
+    );
+
+
+  --the_cpu_0_vector_mult_inst, which is an e_ptf_instance
+  the_cpu_0_vector_mult_inst : cpu_0_vector_mult_inst
+    port map(
+      result => cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_result,
+      dataa => cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_dataa,
+      datab => cpu_0_vector_mult_inst_nios_custom_instruction_slave_0_datab
     );
 
 
@@ -6950,6 +7170,10 @@ begin
   --sysid_control_slave_clock of type clock does not connect to anything so wire it to default (0)
   sysid_control_slave_clock <= std_logic'('0');
   --vhdl renameroo for output signals
+  E_ci_multi_clock_from_the_cpu_0 <= internal_E_ci_multi_clock_from_the_cpu_0;
+  --vhdl renameroo for output signals
+  E_ci_multi_reset_from_the_cpu_0 <= internal_E_ci_multi_reset_from_the_cpu_0;
+  --vhdl renameroo for output signals
   LCD_E_from_the_lcd_0 <= internal_LCD_E_from_the_lcd_0;
   --vhdl renameroo for output signals
   LCD_RS_from_the_lcd_0 <= internal_LCD_RS_from_the_lcd_0;
@@ -7008,6 +7232,10 @@ component CPU_System is
                     signal clocks_0_sys_clk_out : OUT STD_LOGIC;
                     signal reset_n : IN STD_LOGIC;
 
+                 -- the_cpu_0
+                    signal E_ci_multi_clock_from_the_cpu_0 : OUT STD_LOGIC;
+                    signal E_ci_multi_reset_from_the_cpu_0 : OUT STD_LOGIC;
+
                  -- the_lcd_0
                     signal LCD_E_from_the_lcd_0 : OUT STD_LOGIC;
                     signal LCD_RS_from_the_lcd_0 : OUT STD_LOGIC;
@@ -7039,6 +7267,8 @@ end component CPU_System;
                 signal CPU_System_clock_0_out_nativeaddress :  STD_LOGIC;
                 signal CPU_System_clock_1_in_endofpacket_from_sa :  STD_LOGIC;
                 signal CPU_System_clock_1_out_endofpacket :  STD_LOGIC;
+                signal E_ci_multi_clock_from_the_cpu_0 :  STD_LOGIC;
+                signal E_ci_multi_reset_from_the_cpu_0 :  STD_LOGIC;
                 signal LCD_E_from_the_lcd_0 :  STD_LOGIC;
                 signal LCD_RS_from_the_lcd_0 :  STD_LOGIC;
                 signal LCD_RW_from_the_lcd_0 :  STD_LOGIC;
@@ -7053,6 +7283,16 @@ end component CPU_System;
                 signal clk :  STD_LOGIC;
                 signal clk_0 :  STD_LOGIC;
                 signal clocks_0_sys_clk_out :  STD_LOGIC;
+                signal cpu_0_custom_instruction_master_a :  STD_LOGIC_VECTOR (4 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_b :  STD_LOGIC_VECTOR (4 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_c :  STD_LOGIC_VECTOR (4 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_estatus :  STD_LOGIC;
+                signal cpu_0_custom_instruction_master_ipending :  STD_LOGIC_VECTOR (31 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_n :  STD_LOGIC_VECTOR (7 DOWNTO 0);
+                signal cpu_0_custom_instruction_master_readra :  STD_LOGIC;
+                signal cpu_0_custom_instruction_master_readrb :  STD_LOGIC;
+                signal cpu_0_custom_instruction_master_status :  STD_LOGIC;
+                signal cpu_0_custom_instruction_master_writerc :  STD_LOGIC;
                 signal in_port_to_the_pio_input_0 :  STD_LOGIC_VECTOR (7 DOWNTO 0);
                 signal jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa :  STD_LOGIC;
                 signal jtag_uart_0_avalon_jtag_slave_readyfordata_from_sa :  STD_LOGIC;
@@ -7072,6 +7312,8 @@ begin
   --Set us up the Dut
   DUT : CPU_System
     port map(
+      E_ci_multi_clock_from_the_cpu_0 => E_ci_multi_clock_from_the_cpu_0,
+      E_ci_multi_reset_from_the_cpu_0 => E_ci_multi_reset_from_the_cpu_0,
       LCD_E_from_the_lcd_0 => LCD_E_from_the_lcd_0,
       LCD_RS_from_the_lcd_0 => LCD_RS_from_the_lcd_0,
       LCD_RW_from_the_lcd_0 => LCD_RW_from_the_lcd_0,

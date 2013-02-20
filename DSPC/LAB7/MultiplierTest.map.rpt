@@ -1,0 +1,605 @@
+Analysis & Synthesis report for MultiplierTest
+Wed Feb 20 11:58:27 2013
+Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Source assignments for lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated
+ 12. Parameter Settings for User Entity Instance: Top-level Entity: |MultiplierTest
+ 13. Parameter Settings for User Entity Instance: lpm_mult:\GenPipelinedMult:mult1
+ 14. lpm_mult Parameter Settings by Entity Instance
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                   ;
++------------------------------------+-------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Wed Feb 20 11:58:27 2013     ;
+; Quartus II 64-Bit Version          ; 12.1 Build 177 11/07/2012 SJ Full Version ;
+; Revision Name                      ; MultiplierTest                            ;
+; Top-level Entity Name              ; MultiplierTest                            ;
+; Family                             ; Cyclone II                                ;
+; Total logic elements               ; 204                                       ;
+;     Total combinational functions  ; 107                                       ;
+;     Dedicated logic registers      ; 196                                       ;
+; Total registers                    ; 196                                       ;
+; Total pins                         ; 34                                        ;
+; Total virtual pins                 ; 0                                         ;
+; Total memory bits                  ; 0                                         ;
+; Embedded Multiplier 9-bit elements ; 0                                         ;
+; Total PLLs                         ; 0                                         ;
++------------------------------------+-------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; MultiplierTest     ; MultiplierTest     ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; DSP Block Balancing                                                        ; Logic Elements     ; Auto               ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     1 processor            ; 100.0%      ;
+;     2-4 processors         ;   0.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                        ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                    ; Library ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------+---------+
+; MyMult.vhd                       ; yes             ; User VHDL File               ; C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB7/MyMult.vhd         ;         ;
+; MultiplierTest.vhd               ; yes             ; User VHDL File               ; C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB7/MultiplierTest.vhd ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/lpm_mult.tdf     ;         ;
+; aglobal121.inc                   ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/aglobal121.inc   ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/lpm_add_sub.inc  ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/multcore.inc     ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/bypassff.inc     ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/altshift.inc     ;         ;
+; db/mult_gkt.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB7/db/mult_gkt.tdf    ;         ;
++----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 204   ;
+;                                             ;       ;
+; Total combinational functions               ; 107   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 34    ;
+;     -- 3 input functions                    ; 46    ;
+;     -- <=2 input functions                  ; 27    ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 62    ;
+;     -- arithmetic mode                      ; 45    ;
+;                                             ;       ;
+; Total registers                             ; 196   ;
+;     -- Dedicated logic registers            ; 196   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 34    ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out                             ; 196   ;
+; Total fan-out                               ; 766   ;
+; Average fan-out                             ; 2.27  ;
++---------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                         ;
++---------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node            ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                      ; Library Name ;
++---------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------+--------------+
+; |MultiplierTest                       ; 107 (0)           ; 196 (32)     ; 0           ; 0            ; 0       ; 0         ; 34   ; 0            ; |MultiplierTest                                                          ;              ;
+;    |lpm_mult:\GenPipelinedMult:mult1| ; 107 (0)           ; 164 (0)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MultiplierTest|lpm_mult:\GenPipelinedMult:mult1                         ;              ;
+;       |mult_gkt:auto_generated|       ; 107 (107)         ; 164 (164)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MultiplierTest|lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated ;              ;
++---------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                                              ;
++------------------------------------------------------------------+------------------------------------------------------------------------------+
+; Register name                                                    ; Reason for Removal                                                           ;
++------------------------------------------------------------------+------------------------------------------------------------------------------+
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe57  ; Stuck at GND due to stuck port data_in                                       ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe59  ; Stuck at GND due to stuck port data_in                                       ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe175 ; Stuck at GND due to stuck port data_in                                       ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe176 ; Stuck at GND due to stuck port data_in                                       ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe181 ; Lost fanout                                                                  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe183 ; Lost fanout                                                                  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe187 ; Lost fanout                                                                  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe186 ; Lost fanout                                                                  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe61  ; Lost fanout                                                                  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe188 ; Lost fanout                                                                  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe192 ; Lost fanout                                                                  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe191 ; Lost fanout                                                                  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe62  ; Lost fanout                                                                  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe182 ; Lost fanout                                                                  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe60  ; Lost fanout                                                                  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe58  ; Merged with lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe55  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe55  ; Merged with lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe49  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe49  ; Merged with lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe39  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe39  ; Merged with lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe36  ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe178 ; Merged with lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe171 ;
+; Total Number of Removed Registers = 20                           ;                                                                              ;
++------------------------------------------------------------------+------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                      ;
++------------------------------------------------------------------+---------------------------+-------------------------------------------------------------------+
+; Register name                                                    ; Reason for Removal        ; Registers Removed due to This Register                            ;
++------------------------------------------------------------------+---------------------------+-------------------------------------------------------------------+
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe59  ; Stuck at GND              ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe175, ;
+;                                                                  ; due to stuck port data_in ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe182, ;
+;                                                                  ;                           ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe60   ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe187 ; Lost Fanouts              ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe186, ;
+;                                                                  ;                           ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe61   ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe192 ; Lost Fanouts              ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe191, ;
+;                                                                  ;                           ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe62   ;
+; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe57  ; Stuck at GND              ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe176  ;
+;                                                                  ; due to stuck port data_in ;                                                                   ;
++------------------------------------------------------------------+---------------------------+-------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 196   ;
+; Number of registers using Synchronous Clear  ; 3     ;
+; Number of registers using Synchronous Load   ; 2     ;
+; Number of registers using Asynchronous Clear ; 16    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 16    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------------------------------------+
+; Source assignments for lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated ;
++----------------+-------+------+-------------------------------------------------+
+; Assignment     ; Value ; From ; To                                              ;
++----------------+-------+------+-------------------------------------------------+
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe10                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe100                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe101                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe102                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe103                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe104                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe105                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe106                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe107                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe108                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe109                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe11                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe110                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe111                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe112                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe113                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe114                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe115                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe116                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe117                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe118                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe119                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe12                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe120                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe121                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe122                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe123                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe124                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe125                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe126                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe127                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe128                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe129                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe13                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe130                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe131                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe132                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe133                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe134                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe135                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe136                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe137                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe138                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe139                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe14                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe140                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe141                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe142                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe143                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe144                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe145                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe146                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe147                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe148                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe149                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe15                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe150                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe151                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe152                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe153                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe154                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe155                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe156                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe157                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe158                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe159                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe16                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe160                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe161                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe162                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe163                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe164                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe165                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe166                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe167                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe168                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe169                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe17                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe170                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe171                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe172                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe173                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe174                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe175                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe176                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe177                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe178                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe179                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe18                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe180                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe181                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe182                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe183                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe184                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe185                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe186                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe187                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe188                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe189                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe19                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe190                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe191                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe192                                         ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe20                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe21                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe22                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe23                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe24                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe25                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe26                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe27                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe28                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe29                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe3                                           ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe30                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe31                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe32                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe33                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe34                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe35                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe36                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe37                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe38                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe39                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe4                                           ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe40                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe41                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe42                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe43                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe44                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe45                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe46                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe47                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe48                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe49                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe5                                           ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe50                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe51                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe52                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe53                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe54                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe55                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe56                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe57                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe58                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe59                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe6                                           ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe60                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe61                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe62                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe63                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe64                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe65                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe66                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe67                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe68                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe69                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe7                                           ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe70                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe71                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe72                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe73                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe74                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe75                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe76                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe77                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe78                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe79                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe8                                           ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe80                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe81                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe82                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe83                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe84                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe85                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe86                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe87                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe88                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe89                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe9                                           ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe90                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe91                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe92                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe93                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe94                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe95                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe96                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe97                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe98                                          ;
+; POWER_UP_LEVEL ; LOW   ; -    ; dffe99                                          ;
++----------------+-------+------+-------------------------------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |MultiplierTest ;
++----------------+-------+-------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                  ;
++----------------+-------+-------------------------------------------------------+
+; inWidth        ; 8     ; Signed Integer                                        ;
++----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: lpm_mult:\GenPipelinedMult:mult1     ;
++------------------------------------------------+------------+---------------------+
+; Parameter Name                                 ; Value      ; Type                ;
++------------------------------------------------+------------+---------------------+
+; AUTO_CARRY_CHAINS                              ; ON         ; AUTO_CARRY          ;
+; IGNORE_CARRY_BUFFERS                           ; OFF        ; IGNORE_CARRY        ;
+; AUTO_CASCADE_CHAINS                            ; ON         ; AUTO_CASCADE        ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF        ; IGNORE_CASCADE      ;
+; LPM_WIDTHA                                     ; 8          ; Signed Integer      ;
+; LPM_WIDTHB                                     ; 8          ; Signed Integer      ;
+; LPM_WIDTHP                                     ; 16         ; Signed Integer      ;
+; LPM_WIDTHR                                     ; 0          ; Untyped             ;
+; LPM_WIDTHS                                     ; 1          ; Untyped             ;
+; LPM_REPRESENTATION                             ; UNSIGNED   ; Untyped             ;
+; LPM_PIPELINE                                   ; 5          ; Signed Integer      ;
+; LATENCY                                        ; 0          ; Untyped             ;
+; INPUT_A_IS_CONSTANT                            ; NO         ; Untyped             ;
+; INPUT_B_IS_CONSTANT                            ; NO         ; Untyped             ;
+; USE_EAB                                        ; OFF        ; Untyped             ;
+; MAXIMIZE_SPEED                                 ; 5          ; Untyped             ;
+; DEVICE_FAMILY                                  ; Cyclone II ; Untyped             ;
+; CARRY_CHAIN                                    ; MANUAL     ; Untyped             ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT        ; TECH_MAPPER_APEX20K ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; NO         ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0          ; Untyped             ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0          ; Untyped             ;
+; CBXI_PARAMETER                                 ; mult_gkt   ; Untyped             ;
+; INPUT_A_FIXED_VALUE                            ; Bx         ; Untyped             ;
+; INPUT_B_FIXED_VALUE                            ; Bx         ; Untyped             ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF        ; Untyped             ;
++------------------------------------------------+------------+---------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                           ;
++---------------------------------------+----------------------------------+
+; Name                                  ; Value                            ;
++---------------------------------------+----------------------------------+
+; Number of entity instances            ; 1                                ;
+; Entity Instance                       ; lpm_mult:\GenPipelinedMult:mult1 ;
+;     -- LPM_WIDTHA                     ; 8                                ;
+;     -- LPM_WIDTHB                     ; 8                                ;
+;     -- LPM_WIDTHP                     ; 16                               ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                         ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                               ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                               ;
+;     -- USE_EAB                        ; OFF                              ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; NO                               ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                               ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                               ;
++---------------------------------------+----------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 12.1 Build 177 11/07/2012 SJ Full Version
+    Info: Processing started: Wed Feb 20 11:58:23 2013
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MultiplierTest -c MultiplierTest
+Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
+Info (12021): Found 2 design units, including 1 entities, in source file mymult.vhd
+    Info (12022): Found design unit 1: MyMult-behaviour
+    Info (12023): Found entity 1: MyMult
+Info (12021): Found 2 design units, including 1 entities, in source file multipliertest.vhd
+    Info (12022): Found design unit 1: MultiplierTest-behaviour
+    Info (12023): Found entity 1: MultiplierTest
+Info (12127): Elaborating entity "MultiplierTest" for the top level hierarchy
+Info (12128): Elaborating entity "lpm_mult" for hierarchy "lpm_mult:\GenPipelinedMult:mult1"
+Info (12130): Elaborated megafunction instantiation "lpm_mult:\GenPipelinedMult:mult1"
+Info (12133): Instantiated megafunction "lpm_mult:\GenPipelinedMult:mult1" with the following parameter:
+    Info (12134): Parameter "lpm_hint" = "DEDICATED_MULTIPLIER_CIRCUITRY=NO,MAXIMIZE_SPEED=5"
+    Info (12134): Parameter "lpm_representation" = "UNSIGNED"
+    Info (12134): Parameter "lpm_type" = "LPM_MULT"
+    Info (12134): Parameter "lpm_widtha" = "8"
+    Info (12134): Parameter "lpm_widthb" = "8"
+    Info (12134): Parameter "lpm_widthp" = "16"
+    Info (12134): Parameter "lpm_pipeline" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_gkt.tdf
+    Info (12023): Found entity 1: mult_gkt
+Info (12128): Elaborating entity "mult_gkt" for hierarchy "lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated"
+Info (13014): Ignored 160 buffer(s)
+    Info (13016): Ignored 8 CARRY_SUM buffer(s)
+    Info (13019): Ignored 152 SOFT buffer(s)
+Info (17049): 11 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 240 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 18 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 206 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 510 megabytes
+    Info: Processing ended: Wed Feb 20 11:58:27 2013
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
+
+

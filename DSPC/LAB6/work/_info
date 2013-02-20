@@ -1,0 +1,184 @@
+m255
+K3
+13
+cModel Technology
+dC:\Users\BecksLaptop\Documents\IHA\DSPC\LAB5
+Ebcd2sevenseg
+Z0 w1360931760
+Z1 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z4 dC:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6
+Z5 8C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\bcd2sevenseg.vhd
+Z6 FC:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\bcd2sevenseg.vhd
+l0
+L25
+V`_EWea_7ab17dm^mi9I6h2
+Z7 OV;C;10.1b;51
+32
+Z8 !s108 1360935918.637000
+Z9 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\bcd2sevenseg.vhd|
+Z10 !s107 C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\bcd2sevenseg.vhd|
+Z11 o-work work -2002 -explicit -O0
+Z12 tExplicit 1
+!s100 FO::ej<i<[N@2Ym8A8X6I2
+!i10b 1
+Abehavioural
+R1
+R2
+R3
+Z13 DEx4 work 12 bcd2sevenseg 0 22 `_EWea_7ab17dm^mi9I6h2
+l35
+L33
+Vli6adFm><db<PEX=9B2>`3
+R7
+32
+R8
+R9
+R10
+R11
+R12
+!s100 NY>zONY_D6m>z2J5z?jFX3
+!i10b 1
+Emm_bus_seven_seg_four_digit
+Z14 w1360935912
+R1
+R2
+R3
+R4
+Z15 8C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\mm_bus_seven_seg_four_digit.vhd
+Z16 FC:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\mm_bus_seven_seg_four_digit.vhd
+l0
+L5
+VkT[Wgff8ON[ibm4o7S0NF3
+R7
+32
+Z17 !s108 1360935918.728000
+Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\mm_bus_seven_seg_four_digit.vhd|
+Z19 !s107 C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\mm_bus_seven_seg_four_digit.vhd|
+R11
+R12
+!s100 ZhEdIel=:8mhm<5A<4dRW0
+!i10b 1
+Abehaviour
+R13
+R1
+R2
+R3
+Z20 DEx4 work 27 mm_bus_seven_seg_four_digit 0 22 kT[Wgff8ON[ibm4o7S0NF3
+l30
+L25
+VBY]o^S^XJoD_F7VNUAcnB0
+R7
+32
+R17
+R18
+R19
+R11
+R12
+!s100 iYY>YE`=jB53D0Wk<=<l[3
+!i10b 1
+Emm_bus_seven_seg_four_digit_tb
+Z21 w1360934902
+R1
+Z22 DPx4 work 10 sim_avalon 0 22 P1;KZK8VJlkRQ>^Qn8d@_0
+R2
+R3
+R4
+Z23 8C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\mm_bus_seven_seg_four_digit_tb.vhd
+Z24 FC:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\mm_bus_seven_seg_four_digit_tb.vhd
+l0
+L28
+VQk_Hd?6l2D`=8EK7:O2jG3
+R7
+32
+Z25 !s108 1360935918.824000
+Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\mm_bus_seven_seg_four_digit_tb.vhd|
+Z27 !s107 C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\mm_bus_seven_seg_four_digit_tb.vhd|
+R11
+R12
+!s100 c^?8W8H0;i6c[7b5U;lWK0
+!i10b 1
+Atb
+R1
+R22
+R2
+R3
+Z28 DEx4 work 30 mm_bus_seven_seg_four_digit_tb 0 22 Qk_Hd?6l2D`=8EK7:O2jG3
+l76
+L34
+VdQFPF_9oeZoKMHcDY0^Pm1
+!s100 =bbi2=7X03aNST:WmdCJB1
+R7
+32
+R25
+R26
+R27
+R11
+R12
+!i10b 1
+Cmm_bus_seven_seg_four_digit_tb_tb_cfg
+atb
+emm_bus_seven_seg_four_digit_tb
+R20
+DAx4 work 30 mm_bus_seven_seg_four_digit_tb 2 tb 22 dQFPF_9oeZoKMHcDY0^Pm1
+R1
+R22
+R2
+R3
+R28
+R21
+R4
+R23
+R24
+l0
+L125
+VD90CzkZ<Ifaa=S^:@efz]1
+R7
+32
+R25
+R26
+R27
+R11
+R12
+!s100 D?bPk6Vi[4F[QhWcRH:Ul2
+!i10b 0
+Psim_avalon
+R1
+R2
+R3
+Z29 w1360931765
+R4
+Z30 8C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\sim_avalon.vhd
+Z31 FC:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\sim_avalon.vhd
+l0
+L5
+VP1;KZK8VJlkRQ>^Qn8d@_0
+!s100 G_NfWDDPllgIIcEEldTXz1
+R7
+32
+b1
+!i10b 1
+Z32 !s108 1360935918.925000
+Z33 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\sim_avalon.vhd|
+Z34 !s107 C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\sim_avalon.vhd|
+R11
+R12
+Bbody
+R22
+R1
+R2
+R3
+l0
+L28
+Z35 VU>XM`1:?Y:0k2biz?dBOZ2
+Z36 !s100 8V`m;?No[a;k:j4Q^^<K>3
+R7
+32
+!i10b 1
+R32
+R33
+R34
+R11
+R12
+nbody

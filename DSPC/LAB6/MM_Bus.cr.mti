@@ -1,0 +1,34 @@
+C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB6/mm_bus_seven_seg_four_digit_tb.vhd {1 {vcom -work work -2002 -explicit {C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\mm_bus_seven_seg_four_digit_tb.vhd}
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package sim_avalon
+-- Compiling entity mm_bus_seven_seg_four_digit_tb
+-- Compiling architecture tb of mm_bus_seven_seg_four_digit_tb
+-- Compiling configuration mm_bus_seven_seg_four_digit_tb_tb_cfg
+-- Loading entity mm_bus_seven_seg_four_digit_tb
+-- Loading architecture tb of mm_bus_seven_seg_four_digit_tb
+-- Loading entity mm_bus_seven_seg_four_digit
+
+} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB6/sim_avalon.vhd {1 {vcom -work work -2002 -explicit {C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\sim_avalon.vhd}
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package sim_avalon
+-- Compiling package body sim_avalon
+-- Loading package sim_avalon
+
+} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB6/bcd2sevenseg.vhd {1 {vcom -work work -2002 -explicit {C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB6\bcd2sevenseg.vhd}
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity bcd2sevenseg
+-- Compiling architecture behavioural of bcd2sevenseg
+
+} {} {}}

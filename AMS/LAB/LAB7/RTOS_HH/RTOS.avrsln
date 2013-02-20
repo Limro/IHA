@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# AvrStudio Solution File, Format Version 11.00
+Project("{D1100916-62DA-4D80-A9B4-55A1E7CCEEB3}") = "RTOS", "RTOS.avrgccproj", "{B1863E8D-9153-49A1-ABF4-3FB7DC86997E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1863E8D-9153-49A1-ABF4-3FB7DC86997E}.Debug|AVR.ActiveCfg = Debug|AVR
+		{B1863E8D-9153-49A1-ABF4-3FB7DC86997E}.Debug|AVR.Build.0 = Debug|AVR
+		{B1863E8D-9153-49A1-ABF4-3FB7DC86997E}.Release|AVR.ActiveCfg = Release|AVR
+		{B1863E8D-9153-49A1-ABF4-3FB7DC86997E}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

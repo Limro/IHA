@@ -1,0 +1,94 @@
+\documentclass[Notes]{subfiles}
+\begin{document}
+
+\section{MEF - Extentebility Framework}
+
+	\begin{itemize}
+	\item Ligger i standard frameworket
+	\item Skulle være universelt anvendeligt
+	\item Skal kunne udvide ved blot at uploade ny dll-fil
+	\item \textit{Unity} gør konfigurerbar - ikke udvidelse
+	\item \textit{PRISM} er rettet mod brugergrænseflader
+	\item \textit{System.Addin} vil også lave plugins, men sikkerheden er lidt for god. Det er også meget kompliceret at bruge.
+	\item Kan stille interfaces til rådighed
+	\item Der er ikke en centraliseret konfiguration for MEF
+	\item 
+	\end{itemize}
+En \textit{Hello World}-opbygning:
+\begin{lstlisting}[style=code-C++]
+using System.ComponentModel.Composition; 
+… 
+public class Program 
+{ 
+	public static void Main(string[] args) 
+	{ 
+		Program p = new Program(); 
+		p.Run(); 
+	} 
+	
+	public void Run() 
+	{ 
+		Compose(); 
+	} 
+	
+	private void Compose() 
+	{ 
+		var container = new CompositionContainer();
+		container.ComposeParts(this); 
+	} 
+}
+\end{lstlisting}
+
+
+	\begin{itemize}
+	\item Contract
+		\begin{itemize}
+		\item Normalt et interface (ofte)
+		\item Normalt også en datatype (men kan være en string)
+		\item Skriv \textit{[Export]} over klassen der skal eksporteres
+		\item Skriv \textit{[Export(typeof(\dots))]} for at specificere en klasse fra et interface
+		\item Skriv \textit{[Export("funktionsNavn")]} for at specificere en properties 
+		\item Der kan bruges \textit{Shared} og \textit{Non-Shared}
+		\end{itemize}
+
+	\item Import
+
+		\begin{itemize}
+		\item \textit{[Import]} for klasse
+		\item \textit{[ImportingConstructor]} for en hel klasse
+		\item Hvis der skal importeres flere af samme type, skriv \textit{[ImportMany(AllowRecomposition=true)]}
+		\item Kan gøres \textit{Lazy}, hvilket vil sige, at den først initieret, når den skal bruges.
+		\end{itemize}
+	
+	\item Catalog
+	
+		\begin{itemize}
+		\item Opslag over kendte kontrakter, dog ikke initieret endnu
+		
+			\begin{itemize}
+			\item TypeCatalog: Tilføj selv typer
+			\item AssemblyCatalog: Finder assemblies med bestemet type
+			\item DirectoryCatalog: Finder et bestemt katalog og dennes indhold
+			\item AggregatinCatalog: En samling af de tre overstående
+			\end{itemize}
+		
+		\end{itemize}
+		
+	\item Composition Container
+	
+		\begin{itemize}
+		\item Denne laver arbejdet
+		\item Skal have et catalog og initierer funktioner og klasser.
+		\end{itemize}	
+	
+	\end{itemize}
+
+
+
+
+
+
+
+
+	
+\end{document} 

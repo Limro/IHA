@@ -1,0 +1,1281 @@
+TimeQuest Timing Analyzer report for MultiplierTest
+Wed Feb 20 11:58:43 2013
+Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. SDC File List
+  5. Clocks
+  6. Slow Model Fmax Summary
+  7. Slow Model Setup Summary
+  8. Slow Model Hold Summary
+  9. Slow Model Recovery Summary
+ 10. Slow Model Removal Summary
+ 11. Slow Model Minimum Pulse Width Summary
+ 12. Slow Model Setup: 'clk'
+ 13. Slow Model Hold: 'clk'
+ 14. Slow Model Minimum Pulse Width: 'clk'
+ 15. Setup Times
+ 16. Hold Times
+ 17. Clock to Output Times
+ 18. Minimum Clock to Output Times
+ 19. Fast Model Setup Summary
+ 20. Fast Model Hold Summary
+ 21. Fast Model Recovery Summary
+ 22. Fast Model Removal Summary
+ 23. Fast Model Minimum Pulse Width Summary
+ 24. Fast Model Setup: 'clk'
+ 25. Fast Model Hold: 'clk'
+ 26. Fast Model Minimum Pulse Width: 'clk'
+ 27. Setup Times
+ 28. Hold Times
+ 29. Clock to Output Times
+ 30. Minimum Clock to Output Times
+ 31. Multicorner Timing Analysis Summary
+ 32. Setup Times
+ 33. Hold Times
+ 34. Clock to Output Times
+ 35. Minimum Clock to Output Times
+ 36. Setup Transfers
+ 37. Hold Transfers
+ 38. Report TCCS
+ 39. Report RSKM
+ 40. Unconstrained Paths
+ 41. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                      ;
++--------------------+---------------------------------------------------+
+; Quartus II Version ; Version 12.1 Build 177 11/07/2012 SJ Full Version ;
+; Revision Name      ; MultiplierTest                                    ;
+; Device Family      ; Cyclone II                                        ;
+; Device Name        ; EP2C35F672C6                                      ;
+; Timing Models      ; Final                                             ;
+; Delay Model        ; Combined                                          ;
+; Rise/Fall Delays   ; Unavailable                                       ;
++--------------------+---------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     1 processor            ; 100.0%      ;
+;     2 processors           ; < 0.1%      ;
+;     3-4 processors         ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------+
+; SDC File List                                          ;
++--------------------+--------+--------------------------+
+; SDC File Path      ; Status ; Read at                  ;
++--------------------+--------+--------------------------+
+; MultiplierTest.sdc ; OK     ; Wed Feb 20 11:58:43 2013 ;
++--------------------+--------+--------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                         ;
++------------+------+--------+-----------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; Clock Name ; Type ; Period ; Frequency ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
++------------+------+--------+-----------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; clk        ; Base ; 5.000  ; 200.0 MHz ; 0.000 ; 2.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk } ;
++------------+------+--------+-----------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+
+
++--------------------------------------------------+
+; Slow Model Fmax Summary                          ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 294.55 MHz ; 294.55 MHz      ; clk        ;      ;
++------------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++-------------------------------+
+; Slow Model Setup Summary      ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 1.605 ; 0.000         ;
++-------+-------+---------------+
+
+
++-------------------------------+
+; Slow Model Hold Summary       ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 0.513 ; 0.000         ;
++-------+-------+---------------+
+
+
+-------------------------------
+; Slow Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Slow Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Slow Model Minimum Pulse Width Summary ;
++-------+-------+------------------------+
+; Clock ; Slack ; End Point TNS          ;
++-------+-------+------------------------+
+; clk   ; 1.500 ; 0.000                  ;
++-------+-------+------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'clk'                                                                                                                                                                                           ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                        ; To Node                                                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 1.605 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.429      ;
+; 1.607 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe43  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.427      ;
+; 1.615 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.419      ;
+; 1.617 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.417      ;
+; 1.618 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.416      ;
+; 1.621 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.413      ;
+; 1.623 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.411      ;
+; 1.678 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.356      ;
+; 1.680 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe43  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.354      ;
+; 1.688 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.346      ;
+; 1.690 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.344      ;
+; 1.691 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.343      ;
+; 1.694 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.340      ;
+; 1.696 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.338      ;
+; 1.781 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe8   ; clk          ; clk         ; 5.000        ; -0.003     ; 3.252      ;
+; 1.796 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.238      ;
+; 1.798 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe43  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.236      ;
+; 1.806 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.228      ;
+; 1.808 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.226      ;
+; 1.809 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.225      ;
+; 1.812 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.222      ;
+; 1.814 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.220      ;
+; 1.841 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; 0.002      ; 3.197      ;
+; 1.865 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ; clk          ; clk         ; 5.000        ; 0.001      ; 3.172      ;
+; 1.886 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.148      ;
+; 1.888 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe43  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.146      ;
+; 1.891 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; -0.002     ; 3.143      ;
+; 1.896 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.138      ;
+; 1.898 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.136      ;
+; 1.899 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.135      ;
+; 1.902 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.132      ;
+; 1.904 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; clk          ; clk         ; 5.000        ; -0.002     ; 3.130      ;
+; 1.912 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; 0.002      ; 3.126      ;
+; 1.948 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ; clk          ; clk         ; 5.000        ; 0.001      ; 3.089      ;
+; 1.962 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; -0.002     ; 3.072      ;
+; 1.983 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; 0.002      ; 3.055      ;
+; 2.012 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe8   ; clk          ; clk         ; 5.000        ; -0.003     ; 3.021      ;
+; 2.013 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe83  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; 0.002      ; 3.025      ;
+; 2.016 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe51  ; clk          ; clk         ; 5.000        ; -0.003     ; 3.017      ;
+; 2.019 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; 0.001      ; 3.018      ;
+; 2.033 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; -0.002     ; 3.001      ;
+; 2.040 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe18  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.997      ;
+; 2.043 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe22  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.994      ;
+; 2.045 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe16  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.992      ;
+; 2.048 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.989      ;
+; 2.054 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.984      ;
+; 2.074 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe8   ; clk          ; clk         ; 5.000        ; -0.003     ; 2.959      ;
+; 2.084 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe83  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.954      ;
+; 2.090 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; 0.001      ; 2.947      ;
+; 2.094 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe68  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.944      ;
+; 2.099 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe19  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.938      ;
+; 2.099 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe51  ; clk          ; clk         ; 5.000        ; -0.003     ; 2.934      ;
+; 2.101 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe12  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.936      ;
+; 2.101 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe42  ; clk          ; clk         ; 5.000        ; 0.003      ; 2.938      ;
+; 2.102 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe10  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.935      ;
+; 2.102 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe17  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.935      ;
+; 2.104 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; clk          ; clk         ; 5.000        ; -0.002     ; 2.930      ;
+; 2.109 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe50  ; clk          ; clk         ; 5.000        ; 0.000      ; 2.927      ;
+; 2.123 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe18  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.914      ;
+; 2.125 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe141 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.913      ;
+; 2.126 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe22  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.911      ;
+; 2.128 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe16  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.909      ;
+; 2.149 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe77  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; -0.003     ; 2.884      ;
+; 2.155 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe83  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.883      ;
+; 2.161 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; 0.001      ; 2.876      ;
+; 2.165 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe68  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.873      ;
+; 2.175 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe141 ; clk          ; clk         ; 5.000        ; -0.002     ; 2.859      ;
+; 2.192 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe50  ; clk          ; clk         ; 5.000        ; 0.000      ; 2.844      ;
+; 2.196 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe133 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.842      ;
+; 2.199 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe51  ; clk          ; clk         ; 5.000        ; -0.003     ; 2.834      ;
+; 2.220 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe77  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; -0.003     ; 2.813      ;
+; 2.223 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe18  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.814      ;
+; 2.226 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe22  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.811      ;
+; 2.226 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe83  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.812      ;
+; 2.228 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe16  ; clk          ; clk         ; 5.000        ; 0.001      ; 2.809      ;
+; 2.232 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe40  ; clk          ; clk         ; 5.000        ; 0.000      ; 2.804      ;
+; 2.232 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; clk          ; clk         ; 5.000        ; 0.001      ; 2.805      ;
+; 2.236 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe27  ; clk          ; clk         ; 5.000        ; 0.000      ; 2.800      ;
+; 2.236 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe68  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.802      ;
+; 2.238 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe32  ; clk          ; clk         ; 5.000        ; 0.000      ; 2.798      ;
+; 2.239 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe44  ; clk          ; clk         ; 5.000        ; 0.000      ; 2.797      ;
+; 2.244 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe127 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; -0.003     ; 2.789      ;
+; 2.244 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe84  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; -0.003     ; 2.789      ;
+; 2.246 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe76  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.792      ;
+; 2.246 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe133 ; clk          ; clk         ; 5.000        ; -0.002     ; 2.788      ;
+; 2.267 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe125 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.771      ;
+; 2.291 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe77  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; -0.003     ; 2.742      ;
+; 2.292 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe50  ; clk          ; clk         ; 5.000        ; 0.000      ; 2.744      ;
+; 2.297 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe83  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe141 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.741      ;
+; 2.303 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe141 ; clk          ; clk         ; 5.000        ; 0.001      ; 2.734      ;
+; 2.307 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe68  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.731      ;
+; 2.311 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe88  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; -0.003     ; 2.722      ;
+; 2.315 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe85  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe174 ; clk          ; clk         ; 5.000        ; 0.001      ; 2.722      ;
+; 2.315 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe127 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; -0.003     ; 2.718      ;
+; 2.315 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe84  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; -0.003     ; 2.718      ;
+; 2.315 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe40  ; clk          ; clk         ; 5.000        ; 0.000      ; 2.721      ;
+; 2.317 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe76  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; 0.002      ; 2.721      ;
+; 2.317 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe125 ; clk          ; clk         ; 5.000        ; -0.002     ; 2.717      ;
+; 2.319 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe27  ; clk          ; clk         ; 5.000        ; 0.000      ; 2.717      ;
+; 2.321 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe32  ; clk          ; clk         ; 5.000        ; 0.000      ; 2.715      ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'clk'                                                                                                                                                                                            ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                        ; To Node                                                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.513 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe67  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe68  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.779      ;
+; 0.513 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe45  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe144 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.779      ;
+; 0.515 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe14  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe93  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.781      ;
+; 0.515 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe21  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe108 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.781      ;
+; 0.515 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe155 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.781      ;
+; 0.515 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe51  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe163 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.781      ;
+; 0.516 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe65  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.782      ;
+; 0.516 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe10  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe82  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.782      ;
+; 0.516 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe95  ; outAB[5]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.782      ;
+; 0.517 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe20  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe104 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.783      ;
+; 0.517 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe19  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe107 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.783      ;
+; 0.518 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe23  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe112 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.784      ;
+; 0.518 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe27  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe124 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.784      ;
+; 0.518 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe41  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe136 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.784      ;
+; 0.519 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe47  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe152 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.785      ;
+; 0.520 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe28  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe120 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.786      ;
+; 0.522 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe8   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe75  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.788      ;
+; 0.522 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe33  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe128 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.788      ;
+; 0.522 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe56  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe168 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.788      ;
+; 0.522 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe134 ; outAB[10]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.788      ;
+; 0.523 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe70  ; outAB[1]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.789      ;
+; 0.523 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe110 ; outAB[7]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.789      ;
+; 0.523 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe142 ; outAB[11]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.789      ;
+; 0.523 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe166 ; outAB[14]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.789      ;
+; 0.523 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe173 ; outAB[15]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.789      ;
+; 0.524 ; inA_reg[0]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe20  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.790      ;
+; 0.524 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe74  ; outAB[2]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.790      ;
+; 0.524 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe126 ; outAB[9]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.790      ;
+; 0.525 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe158 ; outAB[13]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.791      ;
+; 0.530 ; inA_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.796      ;
+; 0.532 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe4   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe67  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.798      ;
+; 0.532 ; inA_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.798      ;
+; 0.533 ; inA_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.799      ;
+; 0.534 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe7   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe79  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.800      ;
+; 0.536 ; inA_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe54  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.802      ;
+; 0.543 ; inA_reg[6]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.809      ;
+; 0.543 ; inA_reg[6]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.809      ;
+; 0.548 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe36  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe140 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.814      ;
+; 0.548 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe36  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe148 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.814      ;
+; 0.548 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe36  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe171 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.814      ;
+; 0.549 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe36  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe132 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.815      ;
+; 0.581 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe13  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.847      ;
+; 0.619 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe16  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe97  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.885      ;
+; 0.622 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe18  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe105 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.888      ;
+; 0.623 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe5   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe71  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.889      ;
+; 0.623 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe9   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe85  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.889      ;
+; 0.623 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe15  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe100 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.889      ;
+; 0.624 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe71  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.890      ;
+; 0.625 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe89  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.891      ;
+; 0.630 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe75  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe76  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.896      ;
+; 0.656 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe161 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.922      ;
+; 0.658 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe52  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe160 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.924      ;
+; 0.659 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe17  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe98  ; clk          ; clk         ; 0.000        ; 0.001      ; 0.926      ;
+; 0.660 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe13  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe92  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.926      ;
+; 0.660 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe54  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe169 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.926      ;
+; 0.660 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe81  ; outAB[3]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.926      ;
+; 0.661 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe139 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.927      ;
+; 0.662 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe43  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe147 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.928      ;
+; 0.662 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe64  ; outAB[0]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.928      ;
+; 0.662 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe102 ; outAB[6]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.928      ;
+; 0.663 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe87  ; outAB[4]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.929      ;
+; 0.663 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe118 ; outAB[8]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.929      ;
+; 0.663 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe150 ; outAB[12]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.929      ;
+; 0.664 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe37  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe148 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.930      ;
+; 0.669 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe37  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe140 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.935      ;
+; 0.671 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe37  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe132 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.937      ;
+; 0.694 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe117 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe118 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.960      ;
+; 0.696 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe131 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.962      ;
+; 0.697 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe115 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.963      ;
+; 0.697 ; inA_reg[6]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe29  ; clk          ; clk         ; 0.000        ; -0.001     ; 0.962      ;
+; 0.698 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe6   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe78  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.964      ;
+; 0.701 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe12  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe90  ; clk          ; clk         ; 0.000        ; 0.001      ; 0.968      ;
+; 0.702 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe166 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.968      ;
+; 0.704 ; inB_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe41  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.970      ;
+; 0.705 ; inB_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe28  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.971      ;
+; 0.707 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe141 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe142 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.973      ;
+; 0.708 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe150 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.974      ;
+; 0.708 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe158 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.974      ;
+; 0.709 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe123 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.975      ;
+; 0.709 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe125 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe126 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.975      ;
+; 0.732 ; inA_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe24  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.998      ;
+; 0.776 ; inB_reg[6]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe20  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.042      ;
+; 0.782 ; inB_reg[6]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe54  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.048      ;
+; 0.792 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe90  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe88  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.058      ;
+; 0.792 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe40  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe137 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.058      ;
+; 0.795 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe173 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.061      ;
+; 0.796 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe34  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe129 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.062      ;
+; 0.797 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe131 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe130 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.063      ;
+; 0.797 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe44  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe145 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.063      ;
+; 0.798 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe115 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe114 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.064      ;
+; 0.801 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe123 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe122 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.067      ;
+; 0.806 ; inA_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.072      ;
+; 0.813 ; inB_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe56  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.079      ;
+; 0.825 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe116 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe114 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.091      ;
+; 0.830 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe32  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe129 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.096      ;
+; 0.830 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe46  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe145 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.096      ;
+; 0.836 ; inA_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe50  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.102      ;
+; 0.838 ; inA_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe34  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.104      ;
+; 0.839 ; inB_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe33  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.105      ;
+; 0.839 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe133 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe134 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.105      ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'clk'                                                                                                            ;
++-------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------------+
+; Slack ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                                                           ;
++-------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------------+
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[0]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[0]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[1]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[1]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[2]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[2]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[3]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[3]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[4]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[4]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[5]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[5]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[6]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[6]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[7]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[7]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[0]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[0]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[1]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[1]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[2]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[2]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[3]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[3]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[4]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[4]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[5]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[5]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[6]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[6]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[7]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[7]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe10  ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe10  ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe100 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe100 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe101 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe101 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe102 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe102 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe103 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe103 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe104 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe104 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe105 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe105 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe107 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe107 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe108 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe108 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe109 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe109 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe110 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe110 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe111 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe111 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe112 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe112 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe113 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe113 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe114 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe114 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe115 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe115 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe116 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe116 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe117 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe117 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe118 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe118 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe119 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe119 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe12  ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe12  ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe120 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe120 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe121 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe121 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe122 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe122 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe123 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe123 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe124 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe124 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe125 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe125 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe126 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe126 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe127 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe127 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe128 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe128 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe129 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe129 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe13  ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe13  ;
++-------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Setup Times                                                             ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; inA[*]    ; clk        ; 3.657  ; 3.657  ; Rise       ; clk             ;
+;  inA[0]   ; clk        ; 3.523  ; 3.523  ; Rise       ; clk             ;
+;  inA[1]   ; clk        ; 3.508  ; 3.508  ; Rise       ; clk             ;
+;  inA[2]   ; clk        ; 3.340  ; 3.340  ; Rise       ; clk             ;
+;  inA[3]   ; clk        ; 3.349  ; 3.349  ; Rise       ; clk             ;
+;  inA[4]   ; clk        ; 3.657  ; 3.657  ; Rise       ; clk             ;
+;  inA[5]   ; clk        ; 3.408  ; 3.408  ; Rise       ; clk             ;
+;  inA[6]   ; clk        ; 3.186  ; 3.186  ; Rise       ; clk             ;
+;  inA[7]   ; clk        ; 3.430  ; 3.430  ; Rise       ; clk             ;
+; inB[*]    ; clk        ; 3.955  ; 3.955  ; Rise       ; clk             ;
+;  inB[0]   ; clk        ; -0.064 ; -0.064 ; Rise       ; clk             ;
+;  inB[1]   ; clk        ; 0.052  ; 0.052  ; Rise       ; clk             ;
+;  inB[2]   ; clk        ; 3.547  ; 3.547  ; Rise       ; clk             ;
+;  inB[3]   ; clk        ; 3.289  ; 3.289  ; Rise       ; clk             ;
+;  inB[4]   ; clk        ; 3.137  ; 3.137  ; Rise       ; clk             ;
+;  inB[5]   ; clk        ; 3.955  ; 3.955  ; Rise       ; clk             ;
+;  inB[6]   ; clk        ; 3.327  ; 3.327  ; Rise       ; clk             ;
+;  inB[7]   ; clk        ; 3.223  ; 3.223  ; Rise       ; clk             ;
+; reset     ; clk        ; 1.922  ; 1.922  ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; inA[*]    ; clk        ; -2.956 ; -2.956 ; Rise       ; clk             ;
+;  inA[0]   ; clk        ; -3.293 ; -3.293 ; Rise       ; clk             ;
+;  inA[1]   ; clk        ; -3.278 ; -3.278 ; Rise       ; clk             ;
+;  inA[2]   ; clk        ; -3.110 ; -3.110 ; Rise       ; clk             ;
+;  inA[3]   ; clk        ; -3.119 ; -3.119 ; Rise       ; clk             ;
+;  inA[4]   ; clk        ; -3.427 ; -3.427 ; Rise       ; clk             ;
+;  inA[5]   ; clk        ; -3.178 ; -3.178 ; Rise       ; clk             ;
+;  inA[6]   ; clk        ; -2.956 ; -2.956 ; Rise       ; clk             ;
+;  inA[7]   ; clk        ; -3.200 ; -3.200 ; Rise       ; clk             ;
+; inB[*]    ; clk        ; 0.294  ; 0.294  ; Rise       ; clk             ;
+;  inB[0]   ; clk        ; 0.294  ; 0.294  ; Rise       ; clk             ;
+;  inB[1]   ; clk        ; 0.178  ; 0.178  ; Rise       ; clk             ;
+;  inB[2]   ; clk        ; -3.317 ; -3.317 ; Rise       ; clk             ;
+;  inB[3]   ; clk        ; -3.059 ; -3.059 ; Rise       ; clk             ;
+;  inB[4]   ; clk        ; -2.907 ; -2.907 ; Rise       ; clk             ;
+;  inB[5]   ; clk        ; -3.725 ; -3.725 ; Rise       ; clk             ;
+;  inB[6]   ; clk        ; -3.097 ; -3.097 ; Rise       ; clk             ;
+;  inB[7]   ; clk        ; -2.993 ; -2.993 ; Rise       ; clk             ;
+; reset     ; clk        ; -1.122 ; -1.122 ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++------------------------------------------------------------------------+
+; Clock to Output Times                                                  ;
++------------+------------+-------+-------+------------+-----------------+
+; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------+------------+-------+-------+------------+-----------------+
+; outAB[*]   ; clk        ; 6.925 ; 6.925 ; Rise       ; clk             ;
+;  outAB[0]  ; clk        ; 6.648 ; 6.648 ; Rise       ; clk             ;
+;  outAB[1]  ; clk        ; 6.419 ; 6.419 ; Rise       ; clk             ;
+;  outAB[2]  ; clk        ; 6.634 ; 6.634 ; Rise       ; clk             ;
+;  outAB[3]  ; clk        ; 6.642 ; 6.642 ; Rise       ; clk             ;
+;  outAB[4]  ; clk        ; 6.630 ; 6.630 ; Rise       ; clk             ;
+;  outAB[5]  ; clk        ; 6.646 ; 6.646 ; Rise       ; clk             ;
+;  outAB[6]  ; clk        ; 6.435 ; 6.435 ; Rise       ; clk             ;
+;  outAB[7]  ; clk        ; 6.435 ; 6.435 ; Rise       ; clk             ;
+;  outAB[8]  ; clk        ; 6.431 ; 6.431 ; Rise       ; clk             ;
+;  outAB[9]  ; clk        ; 6.910 ; 6.910 ; Rise       ; clk             ;
+;  outAB[10] ; clk        ; 6.703 ; 6.703 ; Rise       ; clk             ;
+;  outAB[11] ; clk        ; 6.511 ; 6.511 ; Rise       ; clk             ;
+;  outAB[12] ; clk        ; 6.886 ; 6.886 ; Rise       ; clk             ;
+;  outAB[13] ; clk        ; 6.709 ; 6.709 ; Rise       ; clk             ;
+;  outAB[14] ; clk        ; 6.925 ; 6.925 ; Rise       ; clk             ;
+;  outAB[15] ; clk        ; 6.485 ; 6.485 ; Rise       ; clk             ;
++------------+------------+-------+-------+------------+-----------------+
+
+
++------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                          ;
++------------+------------+-------+-------+------------+-----------------+
+; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------+------------+-------+-------+------------+-----------------+
+; outAB[*]   ; clk        ; 6.419 ; 6.419 ; Rise       ; clk             ;
+;  outAB[0]  ; clk        ; 6.648 ; 6.648 ; Rise       ; clk             ;
+;  outAB[1]  ; clk        ; 6.419 ; 6.419 ; Rise       ; clk             ;
+;  outAB[2]  ; clk        ; 6.634 ; 6.634 ; Rise       ; clk             ;
+;  outAB[3]  ; clk        ; 6.642 ; 6.642 ; Rise       ; clk             ;
+;  outAB[4]  ; clk        ; 6.630 ; 6.630 ; Rise       ; clk             ;
+;  outAB[5]  ; clk        ; 6.646 ; 6.646 ; Rise       ; clk             ;
+;  outAB[6]  ; clk        ; 6.435 ; 6.435 ; Rise       ; clk             ;
+;  outAB[7]  ; clk        ; 6.435 ; 6.435 ; Rise       ; clk             ;
+;  outAB[8]  ; clk        ; 6.431 ; 6.431 ; Rise       ; clk             ;
+;  outAB[9]  ; clk        ; 6.910 ; 6.910 ; Rise       ; clk             ;
+;  outAB[10] ; clk        ; 6.703 ; 6.703 ; Rise       ; clk             ;
+;  outAB[11] ; clk        ; 6.511 ; 6.511 ; Rise       ; clk             ;
+;  outAB[12] ; clk        ; 6.886 ; 6.886 ; Rise       ; clk             ;
+;  outAB[13] ; clk        ; 6.709 ; 6.709 ; Rise       ; clk             ;
+;  outAB[14] ; clk        ; 6.925 ; 6.925 ; Rise       ; clk             ;
+;  outAB[15] ; clk        ; 6.485 ; 6.485 ; Rise       ; clk             ;
++------------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------+
+; Fast Model Setup Summary      ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 3.476 ; 0.000         ;
++-------+-------+---------------+
+
+
++-------------------------------+
+; Fast Model Hold Summary       ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 0.236 ; 0.000         ;
++-------+-------+---------------+
+
+
+-------------------------------
+; Fast Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Fast Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Fast Model Minimum Pulse Width Summary ;
++-------+-------+------------------------+
+; Clock ; Slack ; End Point TNS          ;
++-------+-------+------------------------+
+; clk   ; 1.500 ; 0.000                  ;
++-------+-------+------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'clk'                                                                                                                                                                                           ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                        ; To Node                                                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 3.476 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.554      ;
+; 3.476 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.554      ;
+; 3.479 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.551      ;
+; 3.479 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.551      ;
+; 3.483 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.547      ;
+; 3.484 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe43  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.546      ;
+; 3.485 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.545      ;
+; 3.509 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.521      ;
+; 3.509 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.521      ;
+; 3.512 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.518      ;
+; 3.512 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.518      ;
+; 3.516 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.514      ;
+; 3.517 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe43  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.513      ;
+; 3.518 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.512      ;
+; 3.542 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.492      ;
+; 3.552 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe8   ; clk          ; clk         ; 5.000        ; -0.002     ; 1.478      ;
+; 3.563 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; -0.002     ; 1.467      ;
+; 3.577 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.457      ;
+; 3.577 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.453      ;
+; 3.577 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.453      ;
+; 3.580 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.450      ;
+; 3.580 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.450      ;
+; 3.584 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.446      ;
+; 3.585 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe43  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.445      ;
+; 3.586 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.444      ;
+; 3.597 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.436      ;
+; 3.598 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; -0.002     ; 1.432      ;
+; 3.601 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.429      ;
+; 3.601 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.429      ;
+; 3.604 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.426      ;
+; 3.604 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.426      ;
+; 3.608 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.422      ;
+; 3.609 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe43  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.421      ;
+; 3.610 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; clk          ; clk         ; 5.000        ; -0.002     ; 1.420      ;
+; 3.612 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.422      ;
+; 3.625 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe83  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.409      ;
+; 3.631 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe50  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.402      ;
+; 3.633 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; -0.002     ; 1.397      ;
+; 3.635 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe42  ; clk          ; clk         ; 5.000        ; 0.003      ; 1.400      ;
+; 3.635 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.398      ;
+; 3.641 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.392      ;
+; 3.647 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.387      ;
+; 3.649 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe8   ; clk          ; clk         ; 5.000        ; -0.002     ; 1.381      ;
+; 3.650 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe68  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.383      ;
+; 3.660 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe83  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.374      ;
+; 3.668 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; clk          ; clk         ; 5.000        ; -0.002     ; 1.362      ;
+; 3.669 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe50  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.364      ;
+; 3.676 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.357      ;
+; 3.679 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe8   ; clk          ; clk         ; 5.000        ; -0.002     ; 1.351      ;
+; 3.679 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.354      ;
+; 3.680 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe51  ; clk          ; clk         ; 5.000        ; -0.003     ; 1.349      ;
+; 3.682 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe141 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.352      ;
+; 3.682 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe77  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; -0.003     ; 1.347      ;
+; 3.683 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe18  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.350      ;
+; 3.685 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe68  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.348      ;
+; 3.687 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe22  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.346      ;
+; 3.688 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe16  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.345      ;
+; 3.695 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe83  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.339      ;
+; 3.699 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe12  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.334      ;
+; 3.700 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe17  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.333      ;
+; 3.701 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe19  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.332      ;
+; 3.702 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe10  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.331      ;
+; 3.703 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe141 ; clk          ; clk         ; 5.000        ; -0.002     ; 1.327      ;
+; 3.711 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.322      ;
+; 3.713 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe50  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.320      ;
+; 3.717 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe133 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.317      ;
+; 3.717 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe77  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; -0.003     ; 1.312      ;
+; 3.718 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe51  ; clk          ; clk         ; 5.000        ; -0.003     ; 1.311      ;
+; 3.720 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe68  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.313      ;
+; 3.721 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe18  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.312      ;
+; 3.725 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe84  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; -0.003     ; 1.304      ;
+; 3.725 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe76  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.308      ;
+; 3.725 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe22  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.308      ;
+; 3.726 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe16  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.307      ;
+; 3.730 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe83  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.304      ;
+; 3.732 ; inB_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe42  ; clk          ; clk         ; 5.000        ; 0.003      ; 1.303      ;
+; 3.738 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe133 ; clk          ; clk         ; 5.000        ; -0.002     ; 1.292      ;
+; 3.746 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.287      ;
+; 3.752 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe125 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.282      ;
+; 3.752 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe77  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; clk          ; clk         ; 5.000        ; -0.003     ; 1.277      ;
+; 3.755 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe127 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; -0.003     ; 1.274      ;
+; 3.755 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe68  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.278      ;
+; 3.757 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe88  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe172 ; clk          ; clk         ; 5.000        ; -0.003     ; 1.272      ;
+; 3.760 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe84  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; -0.003     ; 1.269      ;
+; 3.760 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe76  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.273      ;
+; 3.762 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe85  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe174 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.271      ;
+; 3.762 ; inB_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe42  ; clk          ; clk         ; 5.000        ; 0.003      ; 1.273      ;
+; 3.762 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe51  ; clk          ; clk         ; 5.000        ; -0.003     ; 1.267      ;
+; 3.763 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe40  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.270      ;
+; 3.765 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe83  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe141 ; clk          ; clk         ; 5.000        ; 0.002      ; 1.269      ;
+; 3.765 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe18  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.268      ;
+; 3.766 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe27  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.267      ;
+; 3.767 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe32  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.266      ;
+; 3.768 ; inB_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe44  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.265      ;
+; 3.769 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe22  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.264      ;
+; 3.770 ; inB_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe16  ; clk          ; clk         ; 5.000        ; 0.001      ; 1.263      ;
+; 3.773 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe125 ; clk          ; clk         ; 5.000        ; -0.002     ; 1.257      ;
+; 3.781 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe141 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.252      ;
+; 3.783 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe92  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe177 ; clk          ; clk         ; 5.000        ; -0.002     ; 1.247      ;
+; 3.785 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe89  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe174 ; clk          ; clk         ; 5.000        ; 0.001      ; 1.248      ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'clk'                                                                                                                                                                                            ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                        ; To Node                                                          ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.236 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe67  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe68  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.388      ;
+; 0.236 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe45  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe144 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.388      ;
+; 0.236 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe155 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.388      ;
+; 0.237 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe14  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe93  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.389      ;
+; 0.237 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe21  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe108 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.389      ;
+; 0.237 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe51  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe163 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.389      ;
+; 0.237 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe95  ; outAB[5]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.389      ;
+; 0.238 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe65  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe66  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.390      ;
+; 0.238 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe10  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe82  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.390      ;
+; 0.238 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe19  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe107 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.390      ;
+; 0.238 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe27  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe124 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.390      ;
+; 0.238 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe41  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe136 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.390      ;
+; 0.239 ; inA_reg[0]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe20  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.391      ;
+; 0.239 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe20  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe104 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.391      ;
+; 0.239 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe23  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe112 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.391      ;
+; 0.239 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe47  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe152 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.391      ;
+; 0.240 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe28  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe120 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.392      ;
+; 0.241 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe70  ; outAB[1]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.393      ;
+; 0.241 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe134 ; outAB[10]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.393      ;
+; 0.241 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe166 ; outAB[14]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.393      ;
+; 0.242 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe33  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe128 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.394      ;
+; 0.242 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe110 ; outAB[7]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.394      ;
+; 0.242 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe142 ; outAB[11]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.394      ;
+; 0.242 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe173 ; outAB[15]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.394      ;
+; 0.243 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe8   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe75  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.395      ;
+; 0.243 ; inA_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.395      ;
+; 0.243 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe56  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe168 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.395      ;
+; 0.243 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe74  ; outAB[2]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.395      ;
+; 0.243 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe126 ; outAB[9]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.395      ;
+; 0.243 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe158 ; outAB[13]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.395      ;
+; 0.245 ; inA_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.397      ;
+; 0.247 ; inA_reg[1]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.399      ;
+; 0.247 ; inA_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe54  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.399      ;
+; 0.248 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe4   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe67  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.400      ;
+; 0.249 ; inA_reg[6]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.401      ;
+; 0.250 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe7   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe79  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.402      ;
+; 0.250 ; inA_reg[6]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe48  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.402      ;
+; 0.254 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe36  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe140 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.406      ;
+; 0.254 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe36  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe148 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.406      ;
+; 0.255 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe36  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe132 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.407      ;
+; 0.255 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe36  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe171 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.407      ;
+; 0.275 ; inB_reg[4]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe13  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.427      ;
+; 0.300 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe37  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe140 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.452      ;
+; 0.303 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe37  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe132 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.455      ;
+; 0.309 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe17  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe98  ; clk          ; clk         ; 0.000        ; 0.001      ; 0.462      ;
+; 0.313 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe16  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe97  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.465      ;
+; 0.314 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe9   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe85  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.466      ;
+; 0.314 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe18  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe105 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.466      ;
+; 0.314 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe117 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe118 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.466      ;
+; 0.315 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe5   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe71  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.467      ;
+; 0.315 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe71  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe72  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.467      ;
+; 0.315 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe15  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe100 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.467      ;
+; 0.316 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe25  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe115 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.468      ;
+; 0.317 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe89  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.469      ;
+; 0.318 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe6   ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe78  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.470      ;
+; 0.318 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe35  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe131 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.470      ;
+; 0.319 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe75  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe76  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.471      ;
+; 0.320 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe12  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe90  ; clk          ; clk         ; 0.000        ; 0.001      ; 0.473      ;
+; 0.322 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe165 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe166 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.474      ;
+; 0.323 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe53  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe161 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.475      ;
+; 0.324 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe13  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe92  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.476      ;
+; 0.324 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe141 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe142 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.476      ;
+; 0.324 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe149 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe150 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.476      ;
+; 0.325 ; inA_reg[6]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe29  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.477      ;
+; 0.325 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe123 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.477      ;
+; 0.325 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe52  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe160 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.477      ;
+; 0.325 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe54  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe169 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.477      ;
+; 0.325 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe81  ; outAB[3]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.477      ;
+; 0.325 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe125 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe126 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.477      ;
+; 0.325 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe157 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe158 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.477      ;
+; 0.325 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe37  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe148 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.477      ;
+; 0.326 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe139 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.478      ;
+; 0.327 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe43  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe147 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.479      ;
+; 0.327 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe64  ; outAB[0]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.479      ;
+; 0.327 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe87  ; outAB[4]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.479      ;
+; 0.327 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe102 ; outAB[6]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.479      ;
+; 0.327 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe150 ; outAB[12]~reg0                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.479      ;
+; 0.329 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe118 ; outAB[8]~reg0                                                    ; clk          ; clk         ; 0.000        ; 0.000      ; 0.481      ;
+; 0.335 ; inA_reg[5]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe24  ; clk          ; clk         ; 0.000        ; 0.001      ; 0.488      ;
+; 0.344 ; inB_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe28  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.496      ;
+; 0.344 ; inB_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe41  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.496      ;
+; 0.356 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe90  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe88  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.508      ;
+; 0.357 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe34  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe129 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.509      ;
+; 0.357 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe40  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe137 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.509      ;
+; 0.358 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe44  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe145 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.510      ;
+; 0.360 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe131 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe130 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.512      ;
+; 0.361 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe115 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe114 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.513      ;
+; 0.361 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe123 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe122 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.513      ;
+; 0.365 ; inA_reg[3]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe38  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.517      ;
+; 0.367 ; inB_reg[6]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe20  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.519      ;
+; 0.367 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe116 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe114 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.519      ;
+; 0.369 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe32  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe129 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe46  ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe145 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.521      ;
+; 0.370 ; inB_reg[6]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe54  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.522      ;
+; 0.373 ; inA_reg[2]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe30  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.525      ;
+; 0.382 ; inA_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe34  ; clk          ; clk         ; 0.000        ; 0.001      ; 0.535      ;
+; 0.384 ; inA_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe50  ; clk          ; clk         ; 0.000        ; 0.001      ; 0.537      ;
+; 0.385 ; inB_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe33  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.537      ;
+; 0.385 ; inB_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe56  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.537      ;
+; 0.388 ; inB_reg[7]                                                       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe45  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.540      ;
++-------+------------------------------------------------------------------+------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'clk'                                                                                                            ;
++-------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------------+
+; Slack ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                                                           ;
++-------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------------+
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[0]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[0]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[1]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[1]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[2]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[2]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[3]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[3]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[4]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[4]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[5]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[5]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[6]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[6]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inA_reg[7]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inA_reg[7]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[0]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[0]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[1]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[1]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[2]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[2]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[3]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[3]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[4]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[4]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[5]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[5]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[6]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[6]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; inB_reg[7]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; inB_reg[7]                                                       ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe10  ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe10  ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe100 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe100 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe101 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe101 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe102 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe102 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe103 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe103 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe104 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe104 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe105 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe105 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe106 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe107 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe107 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe108 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe108 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe109 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe109 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe11  ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe110 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe110 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe111 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe111 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe112 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe112 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe113 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe113 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe114 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe114 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe115 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe115 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe116 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe116 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe117 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe117 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe118 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe118 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe119 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe119 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe12  ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe12  ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe120 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe120 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe121 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe121 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe122 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe122 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe123 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe123 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe124 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe124 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe125 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe125 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe126 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe126 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe127 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe127 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe128 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe128 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe129 ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe129 ;
+; 1.500 ; 2.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe13  ;
+; 1.500 ; 2.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; lpm_mult:\GenPipelinedMult:mult1|mult_gkt:auto_generated|dffe13  ;
++-------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Setup Times                                                             ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; inA[*]    ; clk        ; 1.943  ; 1.943  ; Rise       ; clk             ;
+;  inA[0]   ; clk        ; 1.896  ; 1.896  ; Rise       ; clk             ;
+;  inA[1]   ; clk        ; 1.896  ; 1.896  ; Rise       ; clk             ;
+;  inA[2]   ; clk        ; 1.827  ; 1.827  ; Rise       ; clk             ;
+;  inA[3]   ; clk        ; 1.832  ; 1.832  ; Rise       ; clk             ;
+;  inA[4]   ; clk        ; 1.943  ; 1.943  ; Rise       ; clk             ;
+;  inA[5]   ; clk        ; 1.824  ; 1.824  ; Rise       ; clk             ;
+;  inA[6]   ; clk        ; 1.735  ; 1.735  ; Rise       ; clk             ;
+;  inA[7]   ; clk        ; 1.847  ; 1.847  ; Rise       ; clk             ;
+; inB[*]    ; clk        ; 2.109  ; 2.109  ; Rise       ; clk             ;
+;  inB[0]   ; clk        ; -0.324 ; -0.324 ; Rise       ; clk             ;
+;  inB[1]   ; clk        ; -0.267 ; -0.267 ; Rise       ; clk             ;
+;  inB[2]   ; clk        ; 1.908  ; 1.908  ; Rise       ; clk             ;
+;  inB[3]   ; clk        ; 1.785  ; 1.785  ; Rise       ; clk             ;
+;  inB[4]   ; clk        ; 1.687  ; 1.687  ; Rise       ; clk             ;
+;  inB[5]   ; clk        ; 2.109  ; 2.109  ; Rise       ; clk             ;
+;  inB[6]   ; clk        ; 1.815  ; 1.815  ; Rise       ; clk             ;
+;  inB[7]   ; clk        ; 1.753  ; 1.753  ; Rise       ; clk             ;
+; reset     ; clk        ; 0.780  ; 0.780  ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; inA[*]    ; clk        ; -1.615 ; -1.615 ; Rise       ; clk             ;
+;  inA[0]   ; clk        ; -1.776 ; -1.776 ; Rise       ; clk             ;
+;  inA[1]   ; clk        ; -1.776 ; -1.776 ; Rise       ; clk             ;
+;  inA[2]   ; clk        ; -1.707 ; -1.707 ; Rise       ; clk             ;
+;  inA[3]   ; clk        ; -1.712 ; -1.712 ; Rise       ; clk             ;
+;  inA[4]   ; clk        ; -1.823 ; -1.823 ; Rise       ; clk             ;
+;  inA[5]   ; clk        ; -1.704 ; -1.704 ; Rise       ; clk             ;
+;  inA[6]   ; clk        ; -1.615 ; -1.615 ; Rise       ; clk             ;
+;  inA[7]   ; clk        ; -1.727 ; -1.727 ; Rise       ; clk             ;
+; inB[*]    ; clk        ; 0.444  ; 0.444  ; Rise       ; clk             ;
+;  inB[0]   ; clk        ; 0.444  ; 0.444  ; Rise       ; clk             ;
+;  inB[1]   ; clk        ; 0.387  ; 0.387  ; Rise       ; clk             ;
+;  inB[2]   ; clk        ; -1.788 ; -1.788 ; Rise       ; clk             ;
+;  inB[3]   ; clk        ; -1.665 ; -1.665 ; Rise       ; clk             ;
+;  inB[4]   ; clk        ; -1.567 ; -1.567 ; Rise       ; clk             ;
+;  inB[5]   ; clk        ; -1.989 ; -1.989 ; Rise       ; clk             ;
+;  inB[6]   ; clk        ; -1.695 ; -1.695 ; Rise       ; clk             ;
+;  inB[7]   ; clk        ; -1.633 ; -1.633 ; Rise       ; clk             ;
+; reset     ; clk        ; -0.380 ; -0.380 ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++------------------------------------------------------------------------+
+; Clock to Output Times                                                  ;
++------------+------------+-------+-------+------------+-----------------+
+; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------+------------+-------+-------+------------+-----------------+
+; outAB[*]   ; clk        ; 3.921 ; 3.921 ; Rise       ; clk             ;
+;  outAB[0]  ; clk        ; 3.781 ; 3.781 ; Rise       ; clk             ;
+;  outAB[1]  ; clk        ; 3.674 ; 3.674 ; Rise       ; clk             ;
+;  outAB[2]  ; clk        ; 3.768 ; 3.768 ; Rise       ; clk             ;
+;  outAB[3]  ; clk        ; 3.773 ; 3.773 ; Rise       ; clk             ;
+;  outAB[4]  ; clk        ; 3.767 ; 3.767 ; Rise       ; clk             ;
+;  outAB[5]  ; clk        ; 3.778 ; 3.778 ; Rise       ; clk             ;
+;  outAB[6]  ; clk        ; 3.692 ; 3.692 ; Rise       ; clk             ;
+;  outAB[7]  ; clk        ; 3.692 ; 3.692 ; Rise       ; clk             ;
+;  outAB[8]  ; clk        ; 3.679 ; 3.679 ; Rise       ; clk             ;
+;  outAB[9]  ; clk        ; 3.907 ; 3.907 ; Rise       ; clk             ;
+;  outAB[10] ; clk        ; 3.824 ; 3.824 ; Rise       ; clk             ;
+;  outAB[11] ; clk        ; 3.724 ; 3.724 ; Rise       ; clk             ;
+;  outAB[12] ; clk        ; 3.899 ; 3.899 ; Rise       ; clk             ;
+;  outAB[13] ; clk        ; 3.828 ; 3.828 ; Rise       ; clk             ;
+;  outAB[14] ; clk        ; 3.921 ; 3.921 ; Rise       ; clk             ;
+;  outAB[15] ; clk        ; 3.707 ; 3.707 ; Rise       ; clk             ;
++------------+------------+-------+-------+------------+-----------------+
+
+
++------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                          ;
++------------+------------+-------+-------+------------+-----------------+
+; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------+------------+-------+-------+------------+-----------------+
+; outAB[*]   ; clk        ; 3.674 ; 3.674 ; Rise       ; clk             ;
+;  outAB[0]  ; clk        ; 3.781 ; 3.781 ; Rise       ; clk             ;
+;  outAB[1]  ; clk        ; 3.674 ; 3.674 ; Rise       ; clk             ;
+;  outAB[2]  ; clk        ; 3.768 ; 3.768 ; Rise       ; clk             ;
+;  outAB[3]  ; clk        ; 3.773 ; 3.773 ; Rise       ; clk             ;
+;  outAB[4]  ; clk        ; 3.767 ; 3.767 ; Rise       ; clk             ;
+;  outAB[5]  ; clk        ; 3.778 ; 3.778 ; Rise       ; clk             ;
+;  outAB[6]  ; clk        ; 3.692 ; 3.692 ; Rise       ; clk             ;
+;  outAB[7]  ; clk        ; 3.692 ; 3.692 ; Rise       ; clk             ;
+;  outAB[8]  ; clk        ; 3.679 ; 3.679 ; Rise       ; clk             ;
+;  outAB[9]  ; clk        ; 3.907 ; 3.907 ; Rise       ; clk             ;
+;  outAB[10] ; clk        ; 3.824 ; 3.824 ; Rise       ; clk             ;
+;  outAB[11] ; clk        ; 3.724 ; 3.724 ; Rise       ; clk             ;
+;  outAB[12] ; clk        ; 3.899 ; 3.899 ; Rise       ; clk             ;
+;  outAB[13] ; clk        ; 3.828 ; 3.828 ; Rise       ; clk             ;
+;  outAB[14] ; clk        ; 3.921 ; 3.921 ; Rise       ; clk             ;
+;  outAB[15] ; clk        ; 3.707 ; 3.707 ; Rise       ; clk             ;
++------------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                         ;
++------------------+-------+-------+----------+---------+---------------------+
+; Clock            ; Setup ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+-------+-------+----------+---------+---------------------+
+; Worst-case Slack ; 1.605 ; 0.236 ; N/A      ; N/A     ; 1.500               ;
+;  clk             ; 1.605 ; 0.236 ; N/A      ; N/A     ; 1.500               ;
+; Design-wide TNS  ; 0.0   ; 0.0   ; 0.0      ; 0.0     ; 0.0                 ;
+;  clk             ; 0.000 ; 0.000 ; N/A      ; N/A     ; 0.000               ;
++------------------+-------+-------+----------+---------+---------------------+
+
+
++-------------------------------------------------------------------------+
+; Setup Times                                                             ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; inA[*]    ; clk        ; 3.657  ; 3.657  ; Rise       ; clk             ;
+;  inA[0]   ; clk        ; 3.523  ; 3.523  ; Rise       ; clk             ;
+;  inA[1]   ; clk        ; 3.508  ; 3.508  ; Rise       ; clk             ;
+;  inA[2]   ; clk        ; 3.340  ; 3.340  ; Rise       ; clk             ;
+;  inA[3]   ; clk        ; 3.349  ; 3.349  ; Rise       ; clk             ;
+;  inA[4]   ; clk        ; 3.657  ; 3.657  ; Rise       ; clk             ;
+;  inA[5]   ; clk        ; 3.408  ; 3.408  ; Rise       ; clk             ;
+;  inA[6]   ; clk        ; 3.186  ; 3.186  ; Rise       ; clk             ;
+;  inA[7]   ; clk        ; 3.430  ; 3.430  ; Rise       ; clk             ;
+; inB[*]    ; clk        ; 3.955  ; 3.955  ; Rise       ; clk             ;
+;  inB[0]   ; clk        ; -0.064 ; -0.064 ; Rise       ; clk             ;
+;  inB[1]   ; clk        ; 0.052  ; 0.052  ; Rise       ; clk             ;
+;  inB[2]   ; clk        ; 3.547  ; 3.547  ; Rise       ; clk             ;
+;  inB[3]   ; clk        ; 3.289  ; 3.289  ; Rise       ; clk             ;
+;  inB[4]   ; clk        ; 3.137  ; 3.137  ; Rise       ; clk             ;
+;  inB[5]   ; clk        ; 3.955  ; 3.955  ; Rise       ; clk             ;
+;  inB[6]   ; clk        ; 3.327  ; 3.327  ; Rise       ; clk             ;
+;  inB[7]   ; clk        ; 3.223  ; 3.223  ; Rise       ; clk             ;
+; reset     ; clk        ; 1.922  ; 1.922  ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; inA[*]    ; clk        ; -1.615 ; -1.615 ; Rise       ; clk             ;
+;  inA[0]   ; clk        ; -1.776 ; -1.776 ; Rise       ; clk             ;
+;  inA[1]   ; clk        ; -1.776 ; -1.776 ; Rise       ; clk             ;
+;  inA[2]   ; clk        ; -1.707 ; -1.707 ; Rise       ; clk             ;
+;  inA[3]   ; clk        ; -1.712 ; -1.712 ; Rise       ; clk             ;
+;  inA[4]   ; clk        ; -1.823 ; -1.823 ; Rise       ; clk             ;
+;  inA[5]   ; clk        ; -1.704 ; -1.704 ; Rise       ; clk             ;
+;  inA[6]   ; clk        ; -1.615 ; -1.615 ; Rise       ; clk             ;
+;  inA[7]   ; clk        ; -1.727 ; -1.727 ; Rise       ; clk             ;
+; inB[*]    ; clk        ; 0.444  ; 0.444  ; Rise       ; clk             ;
+;  inB[0]   ; clk        ; 0.444  ; 0.444  ; Rise       ; clk             ;
+;  inB[1]   ; clk        ; 0.387  ; 0.387  ; Rise       ; clk             ;
+;  inB[2]   ; clk        ; -1.788 ; -1.788 ; Rise       ; clk             ;
+;  inB[3]   ; clk        ; -1.665 ; -1.665 ; Rise       ; clk             ;
+;  inB[4]   ; clk        ; -1.567 ; -1.567 ; Rise       ; clk             ;
+;  inB[5]   ; clk        ; -1.989 ; -1.989 ; Rise       ; clk             ;
+;  inB[6]   ; clk        ; -1.695 ; -1.695 ; Rise       ; clk             ;
+;  inB[7]   ; clk        ; -1.633 ; -1.633 ; Rise       ; clk             ;
+; reset     ; clk        ; -0.380 ; -0.380 ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++------------------------------------------------------------------------+
+; Clock to Output Times                                                  ;
++------------+------------+-------+-------+------------+-----------------+
+; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------+------------+-------+-------+------------+-----------------+
+; outAB[*]   ; clk        ; 6.925 ; 6.925 ; Rise       ; clk             ;
+;  outAB[0]  ; clk        ; 6.648 ; 6.648 ; Rise       ; clk             ;
+;  outAB[1]  ; clk        ; 6.419 ; 6.419 ; Rise       ; clk             ;
+;  outAB[2]  ; clk        ; 6.634 ; 6.634 ; Rise       ; clk             ;
+;  outAB[3]  ; clk        ; 6.642 ; 6.642 ; Rise       ; clk             ;
+;  outAB[4]  ; clk        ; 6.630 ; 6.630 ; Rise       ; clk             ;
+;  outAB[5]  ; clk        ; 6.646 ; 6.646 ; Rise       ; clk             ;
+;  outAB[6]  ; clk        ; 6.435 ; 6.435 ; Rise       ; clk             ;
+;  outAB[7]  ; clk        ; 6.435 ; 6.435 ; Rise       ; clk             ;
+;  outAB[8]  ; clk        ; 6.431 ; 6.431 ; Rise       ; clk             ;
+;  outAB[9]  ; clk        ; 6.910 ; 6.910 ; Rise       ; clk             ;
+;  outAB[10] ; clk        ; 6.703 ; 6.703 ; Rise       ; clk             ;
+;  outAB[11] ; clk        ; 6.511 ; 6.511 ; Rise       ; clk             ;
+;  outAB[12] ; clk        ; 6.886 ; 6.886 ; Rise       ; clk             ;
+;  outAB[13] ; clk        ; 6.709 ; 6.709 ; Rise       ; clk             ;
+;  outAB[14] ; clk        ; 6.925 ; 6.925 ; Rise       ; clk             ;
+;  outAB[15] ; clk        ; 6.485 ; 6.485 ; Rise       ; clk             ;
++------------+------------+-------+-------+------------+-----------------+
+
+
++------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                          ;
++------------+------------+-------+-------+------------+-----------------+
+; Data Port  ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++------------+------------+-------+-------+------------+-----------------+
+; outAB[*]   ; clk        ; 3.674 ; 3.674 ; Rise       ; clk             ;
+;  outAB[0]  ; clk        ; 3.781 ; 3.781 ; Rise       ; clk             ;
+;  outAB[1]  ; clk        ; 3.674 ; 3.674 ; Rise       ; clk             ;
+;  outAB[2]  ; clk        ; 3.768 ; 3.768 ; Rise       ; clk             ;
+;  outAB[3]  ; clk        ; 3.773 ; 3.773 ; Rise       ; clk             ;
+;  outAB[4]  ; clk        ; 3.767 ; 3.767 ; Rise       ; clk             ;
+;  outAB[5]  ; clk        ; 3.778 ; 3.778 ; Rise       ; clk             ;
+;  outAB[6]  ; clk        ; 3.692 ; 3.692 ; Rise       ; clk             ;
+;  outAB[7]  ; clk        ; 3.692 ; 3.692 ; Rise       ; clk             ;
+;  outAB[8]  ; clk        ; 3.679 ; 3.679 ; Rise       ; clk             ;
+;  outAB[9]  ; clk        ; 3.907 ; 3.907 ; Rise       ; clk             ;
+;  outAB[10] ; clk        ; 3.824 ; 3.824 ; Rise       ; clk             ;
+;  outAB[11] ; clk        ; 3.724 ; 3.724 ; Rise       ; clk             ;
+;  outAB[12] ; clk        ; 3.899 ; 3.899 ; Rise       ; clk             ;
+;  outAB[13] ; clk        ; 3.828 ; 3.828 ; Rise       ; clk             ;
+;  outAB[14] ; clk        ; 3.921 ; 3.921 ; Rise       ; clk             ;
+;  outAB[15] ; clk        ; 3.707 ; 3.707 ; Rise       ; clk             ;
++------------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 1087     ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 1087     ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 17    ; 17   ;
+; Unconstrained Input Port Paths  ; 48    ; 48   ;
+; Unconstrained Output Ports      ; 16    ; 16   ;
+; Unconstrained Output Port Paths ; 16    ; 16   ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 12.1 Build 177 11/07/2012 SJ Full Version
+    Info: Processing started: Wed Feb 20 11:58:41 2013
+Info: Command: quartus_sta MultiplierTest -c MultiplierTest
+Info: qsta_default_script.tcl version: #1
+Info (11104): Parallel Compilation has detected 4 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 2 of the 2 physical processors detected instead.
+Info (21077): Low junction temperature is 0 degrees C
+Info (21077): High junction temperature is 85 degrees C
+Info (332104): Reading SDC File: 'MultiplierTest.sdc'
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow Model
+Info (332146): Worst-case setup slack is 1.605
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     1.605         0.000 clk 
+Info (332146): Worst-case hold slack is 0.513
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.513         0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 1.500
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     1.500         0.000 clk 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast Model
+Info (332146): Worst-case setup slack is 3.476
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     3.476         0.000 clk 
+Info (332146): Worst-case hold slack is 0.236
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     0.236         0.000 clk 
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332146): Worst-case minimum pulse width slack is 1.500
+    Info (332119):     Slack End Point TNS Clock 
+    Info (332119): ========= ============= =====================
+    Info (332119):     1.500         0.000 clk 
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 417 megabytes
+    Info: Processing ended: Wed Feb 20 11:58:43 2013
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:01
+
+

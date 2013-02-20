@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Feb 20 11:58:27 2013
+Quartus II 64-Bit Version : 12.1 Build 177 11/07/2012 SJ Full Version
+Revision Name : MultiplierTest
+Top-level Entity Name : MultiplierTest
+Family : Cyclone II
+Total logic elements : 204
+    Total combinational functions : 107
+    Dedicated logic registers : 196
+Total registers : 196
+Total pins : 34
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

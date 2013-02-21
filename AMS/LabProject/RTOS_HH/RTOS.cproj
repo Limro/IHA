@@ -139,6 +139,12 @@
     <Compile Include="Drivers\LM75.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Drivers\uart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Drivers\uart.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="FreeRTOSConfig.h">
       <SubType>compile</SubType>
     </Compile>

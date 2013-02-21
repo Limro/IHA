@@ -1,6 +1,4 @@
 /*----------------------------------------------------------------------
-  File name: "lcd162.h"
-
   Driver for the PowerTip PC1602-F alphanumeric display.
   Display controller = HD44780U (LCD-II).
 
@@ -15,12 +13,10 @@
   DB5 (pin 12) ---   bit 5
   DB6 (pin 13) ---   bit 6
   DB7 (pin 14) ---   bit 7
-
-  Henning Hargaard, January 9, 2012
 -----------------------------------------------------------------------*/
 
 // Defining the used PORT:
-// (here PORTC is used) :
+// (here PORTD is used) :
 #define DDR_lcd	 DDRD
 #define PIN_lcd	 PIND
 #define PORT_lcd PORTD 

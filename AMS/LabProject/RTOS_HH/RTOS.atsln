@@ -1,7 +1,6 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Atmel Studio Solution File, Format Version 11.00
-Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "TheXProject", "TheXProject\TheXProject.cproj", "{4321E699-FA50-43B5-B6CE-079FE6882170}"
+Project("{D1100916-62DA-4D80-A9B4-55A1E7CCEEB3}") = "RTOS", "RTOS.cproj", "{B1863E8D-9153-49A1-ABF4-3FB7DC86997E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +8,10 @@ Global
 		Release|AVR = Release|AVR
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4321E699-FA50-43B5-B6CE-079FE6882170}.Debug|AVR.ActiveCfg = Debug|AVR
-		{4321E699-FA50-43B5-B6CE-079FE6882170}.Debug|AVR.Build.0 = Debug|AVR
-		{4321E699-FA50-43B5-B6CE-079FE6882170}.Release|AVR.ActiveCfg = Release|AVR
-		{4321E699-FA50-43B5-B6CE-079FE6882170}.Release|AVR.Build.0 = Release|AVR
+		{B1863E8D-9153-49A1-ABF4-3FB7DC86997E}.Debug|AVR.ActiveCfg = Debug|AVR
+		{B1863E8D-9153-49A1-ABF4-3FB7DC86997E}.Debug|AVR.Build.0 = Debug|AVR
+		{B1863E8D-9153-49A1-ABF4-3FB7DC86997E}.Release|AVR.ActiveCfg = Release|AVR
+		{B1863E8D-9153-49A1-ABF4-3FB7DC86997E}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

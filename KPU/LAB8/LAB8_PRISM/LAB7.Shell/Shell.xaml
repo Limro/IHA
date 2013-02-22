@@ -1,0 +1,63 @@
+﻿<Window x:Class="LAB7.Shell.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:regions="clr-namespace:Microsoft.Practices.Prism.Regions;assembly=Microsoft.Practices.Prism"
+        Title="Shell" 
+        Height="300" 
+        Width="300"
+        Background="Lavender">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Label
+            FontSize="20"
+            Content="LAB8 for KPU1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <ItemsControl
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.RowSpan="2"
+                VerticalContentAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                regions:RegionManager.RegionName="MenuRegion"/>
+
+            <ItemsControl
+                Grid.Row="0"
+                Grid.Column="2"
+                Grid.RowSpan="2"
+                VerticalContentAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                regions:RegionManager.RegionName="LogRegion"/>
+
+            <ItemsControl
+                Grid.Row="0"
+                Grid.Column="1"
+                VerticalContentAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                regions:RegionManager.RegionName="MainRegion"/>
+
+            <ItemsControl
+                Grid.Row="1"
+                Grid.Column="1"
+                VerticalContentAlignment="Stretch"
+                HorizontalContentAlignment="Stretch"
+                regions:RegionManager.RegionName="StatusRegion"/>
+        </Grid>
+    </Grid>
+</Window>

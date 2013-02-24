@@ -1,0 +1,38 @@
+﻿<UserControl 
+    x:Class="LAB8.LogModule.Log.LogView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    mc:Ignorable="d" 
+    MinHeight="100"
+    MinWidth="100"
+    d:DesignHeight="500" 
+    d:DesignWidth="300"
+    HorizontalAlignment="Stretch"
+    VerticalAlignment="Stretch">
+    
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="50" Height="60"/>
+            <RowDefinition Height="400"/>
+        </Grid.RowDefinitions>
+        
+        <Label
+            Grid.Row="0"
+            Content="Log" 
+            FontSize="23"
+            FontWeight="SemiBold"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"/>
+        
+        <ListBox
+            Grid.Row="1"
+            Background="Black"
+            Foreground="Lavender"
+            ScrollViewer.CanContentScroll="True"
+            ScrollViewer.VerticalScrollBarVisibility="Auto"
+            ItemsSource="{Binding Path=Output, UpdateSourceTrigger=PropertyChanged}"
+            MaxHeight="400"/>
+    </Grid>
+</UserControl>

@@ -17,12 +17,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.Practices.Prism.Modularity;
 using System.Collections.ObjectModel;
-using System.Globalization;
 
-namespace ModularityWithUnity.Desktop
+namespace LAB8.Shell
 {
     /// <summary>
     /// A basic aggregation of IModuleCatalogs for quickstart purposes.
@@ -64,7 +62,6 @@ namespace ModularityWithUnity.Desktop
 
             this.catalogs.Add(catalog);
         }
-
 
         /// <summary>
         /// Gets all the <see cref="ModuleInfo"/> classes that are in the <see cref="ModuleCatalog"/>.

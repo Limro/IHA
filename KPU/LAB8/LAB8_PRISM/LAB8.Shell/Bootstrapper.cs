@@ -4,9 +4,8 @@ using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Prism.UnityExtensions;
 using Microsoft.Practices.ServiceLocation;
-using ModularityWithUnity.Desktop;
 
-namespace LAB7.Shell
+namespace LAB8.Shell
 {
     public class Bootstrapper : UnityBootstrapper
     {
@@ -37,7 +36,7 @@ namespace LAB7.Shell
 
         protected override void ConfigureModuleCatalog()
         {
-            DirectoryModuleCatalog directoryCatalog = new DirectoryModuleCatalog
+            var directoryCatalog = new DirectoryModuleCatalog
             {
                 ModulePath = @".\Modules"
             };

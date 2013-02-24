@@ -1,9 +1,10 @@
 ﻿using LAB8.Infrastructure;
+using LAB8.LogModule.Log;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Unity;
 
-namespace LogModule
+namespace LAB8.LogModule
 {
     public class LogModule : IModule 
     {
@@ -19,7 +20,8 @@ namespace LogModule
 
         private void RegisterServicesAndViews()
         {
-            _container.RegisterType<LogModule>();
+            _container.RegisterType<LogView>();
+            _container.RegisterType<LogViewModel>();
         }
 
         public void Initialize()

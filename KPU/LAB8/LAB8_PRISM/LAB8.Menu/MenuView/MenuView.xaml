@@ -1,0 +1,68 @@
+﻿<UserControl 
+    x:Class="LAB8.Menu.MenuView.MenuView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:cmd="clr-namespace:Microsoft.Practices.Prism.Commands;assembly=Microsoft.Practices.Prism"
+    mc:Ignorable="d" 
+    d:DesignHeight="400" 
+    d:DesignWidth="250"
+    Background="LightGray">
+    
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="110" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Background" Value="RoyalBlue" />
+            <Setter Property="Foreground" Value="Lavender" />
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <Label
+            Grid.Row="0"
+            Content="Menu"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Bottom"
+            FontSize="25"
+            FontWeight="SemiBold"
+            Foreground="Black"/>
+
+        <Button
+            Grid.Row="1"
+            Content="Show Log" 
+            cmd:Click.Command="{Binding ShowLogClick}"/>
+
+        <Button
+            Grid.Row="2"
+            Content="Module A"
+            cmd:Click.Command="{Binding ShowModuleA}" />
+
+        <Button
+            Grid.Row="3"
+            Content="Module B"
+            cmd:Click.Command="{Binding ShowModuleB}" />
+
+        <Button
+            Grid.Row="4"
+            Content="Module C" 
+            cmd:Click.Command="{Binding ShowModuleC}"/>
+
+        <Button
+            Grid.Row="5"
+            Content="Module D"
+            cmd:Click.Command="{Binding ShowModuleD}" />
+    </Grid>
+</UserControl>

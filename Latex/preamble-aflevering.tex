@@ -1,0 +1,71 @@
+%%
+%% Basal preamble til afleveringer og andre korte dokumenter.
+%%
+%%
+%% Denne preamble er skrevet i forbindelse med foredraget »LaTeX for
+%% beyndere«, der siden 2007 er afholdt mindst en gang om året af
+%% foreningerne DK-TUG (tug.dk) og Mat/Fys StudenterRåd (mfsr.au.dk).
+%%
+%% Du kan næppe bruge preamblen til alle dine afleveringer uden at
+%% fjerne nogle procenttegn længere nede, så husk at læse alle
+%% kommentarerne (du er jo godt i gang). Preamblen her er sammen med
+%% de to cheatsheets og foredragets slidesæt et rigtigt godt sted at
+%% starte, men stjæl gerne kodestumper fra dine studiekammerater, din
+%% instruktor, Google, ...
+%%
+%% Jeg giver gerne hjælp til brug af denne preamble, men den er så
+%% simpel, at de felste problemer skyldes din LaTeX-installation.
+%%
+%%
+%% Held og lykke på din færden i LaTeXs verden
+%% Med venlig hilsen
+%%
+%% Steffen Videbæk Petersen
+%% latex@spet.dk
+%% 25. februar 2013
+%%
+
+% Dokumentklassen sættes til memoir med lige store højre- og
+% venstre-marginer (oneside) og uden kapitelforsider (article).
+\documentclass[a4paper,oneside,article]{memoir}
+ 
+% Danske udtryk (fx figur og tabel) samt dansk orddeling og fonte med
+% danske tegn. Hvis LaTeX brokker sig over æ, ø og å skal du udskifte
+% "utf8" med "latin1" på Windows eller "applemac" på Mac. Hvis du
+% bruger TeXstudio bør utf8 virke.
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+ 
+% Matematisk udtryk, fede symboler, theoremer og fancy ting (fx
+% kædebrøker). De daleifs bog for talrige eksempler på, hvordan det
+% bruges: http://math.au.dk/videnudveksling/latex/bog/
+%\usepackage{amsmath,amssymb}
+%\usepackage{bm}
+%\usepackage{amsthm}
+%\usepackage{mathtools}
+ 
+% Kodelisting. Husk at læse manualen hvis du vil lave fancy ting.
+% \usepackage{listings}
+ 
+% Fancy ting med enheder og datatabeller.
+%\usepackage{siunitx}
+ 
+% Indsættelse af billeder med \includegraphics. Husk at LaTeX ikke kan
+% lide alle filtyper. PDF er det bedste efterfulgt af PNG og JPG.
+% \usepackage{graphicx}
+ 
+% Reaktionsskemaer med makroen \ce.
+%\usepackage[version=3]{mhchem}
+ 
+\begin{document}
+\author{Dit navn, årstkortnummer}
+\title{Aflevering}
+%\date{Evt. anden dato}
+\maketitle
+
+\chapter{Opgavenummer}
+
+
+
+\end{document}

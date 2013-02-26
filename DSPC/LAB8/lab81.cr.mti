@@ -133,7 +133,7 @@ Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Compiling entity fir_filter_0002_rtl
 -- Compiling architecture normal of fir_filter_0002_rtl
 
-} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB8/fir_filter.vhd {1 {vcom -work work -2002 -explicit {C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB8\fir_filter.vhd}
+} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB8/fir_filter.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB8/fir_filter.vhd
 Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO

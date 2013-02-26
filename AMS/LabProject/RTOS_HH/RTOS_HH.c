@@ -103,26 +103,16 @@ int main(void)
 void SendSMSMessage(char* toNumber, char* message)
 {
 	//Activate text mode: AT+CMGF=1
-	SendString("AT");
-	SendChar('+');
-	SendString("CMGS");
-	SendChar('=');
-	SendChar('1');
+	SendString("AT+CMGS=1");
 	
-	
-	//Send message: "hej" to 60 17 12 59
-	SendString("AT");
-	SendChar('+');
-	SendString("CMGS");
-	SendChar('=');
+	//Send to number
+	SendString("AT+CMGS=");
 	SendString(toNumber);
-	SendChar(' ');
-	SendChar('>');
-	SendChar(' ');
+	SendChar(26);
 	
+	//Send message
 	SendString(message);
-	SendChar('r');
-	
+	SendChar('\r');	
 }
 
 

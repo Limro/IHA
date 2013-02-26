@@ -1,0 +1,27 @@
+\documentclass[Notes]{subfiles}
+\begin{document}
+
+\section{PInvoke}
+
+	\begin{itemize}
+	\item Data er ikke ens. Derfor vil man gerne lave dem om, så de kan bruges sammen. Det kunne være \textit{char*} til \textit{string}
+	
+	\item Ejere er ikke de samme. Et et program ejer unmanaged data og GC ejer managed. GC har ikke mulighed for, at fjerne dette
+	\end{itemize}
+Løsningen:
+
+	\begin{itemize}
+	\item PInvode - giver adgang til static entries for unmanaged DLL'er
+		\begin{itemize}
+		\item Minder om \textit{Loadlibrary() + GetProcAdress()}
+		\end{itemize}
+	
+	
+	\end{itemize}
+
+
+
+
+
+	
+\end{document} 

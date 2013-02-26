@@ -166,21 +166,21 @@ begin
   end process latch_st_bus;
 
   --IMPLEMENT THIS PROCESS AS REAL SYNTIZABLE CODE (Like above)
-  ST2IIS : process
-    variable bitcount          : integer range 0 to 23;
-    variable st_sink_data_temp : std_logic_vector(23 downto 0) := (others => '0');
-  begin
-    wait until daclrck = '0';
-    wait for bitperiod;
-    if ast_sink_valid = '1' then
-      st_sink_data_temp := ast_sink_data;
-    end if;
-    for bitcount in 23 downto 0 loop    --shift register
-      dacdat <= st_sink_data_temp(bitcount);
-      wait for bitperiod;
-    end loop;
-    dacdat <= '0';
-  end process ST2IIS;
+  -- ST2IIS : process
+    -- variable bitcount          : integer range 0 to 23;
+    -- variable st_sink_data_temp : std_logic_vector(23 downto 0) := (others => '0');
+  -- begin
+    -- wait until daclrck = '0';
+    -- wait for bitperiod;
+    -- if ast_sink_valid = '1' then
+      -- st_sink_data_temp := ast_sink_data;
+    -- end if;
+    -- for bitcount in 23 downto 0 loop    --shift register
+      -- dacdat <= st_sink_data_temp(bitcount);
+      -- wait for bitperiod;
+    -- end loop;
+    -- dacdat <= '0';
+  -- end process ST2IIS;
   
     ST2IIS_proc : process(clk, reset_n)
     variable bit_count : integer range 0 to 23;
@@ -191,7 +191,7 @@ begin
 	elsif clk'event and clk = '1' then  -- rising clock edge
 		case realState is
 		
-			when start =>			--Check for valid, reset counter, load data, set state = writeTo
+			when start =>			
 				if daclrck = '0' then
 					gotData := '0';
 					realState <= bitclk_high;
@@ -218,12 +218,12 @@ begin
 				end if;
 			
 			when bitclk_high => -- half a bit clock
-				if bitclk = '0' then
+				if bitclk = '1' then
 					realState <= bitclk_low;
 				end if;
 				
 			when bitclk_low => --another half a bit clock
-				if bitclk = '1' then
+				if bitclk = '0' then
 					if gotData = '1' then
 						realState <= writeTo;
 					else 

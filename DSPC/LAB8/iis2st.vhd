@@ -114,6 +114,7 @@ begin
     variable data      : std_logic_vector(23 downto 0) := (others => '0');
   begin  -- process IIS2ST_proc
     if reset_n = '0' then               -- asynchronous reset (active low)
+	  state <= idle;
     elsif clk'event and clk = '1' then  -- rising clock edge
       case state is
         when idle=>
@@ -186,14 +187,17 @@ begin
     variable bit_count : integer range 0 to 23;
     variable data : std_logic_vector(23 downto 0) := (others => '0');
 	variable gotData : std_logic := '0';
+	variable lastCycle : std_logic := '0';
   begin
 	if reset_n = '0' then               -- asynchronous reset (active low)
+	   realState <= start;
 	elsif clk'event and clk = '1' then  -- rising clock edge
 		case realState is
 		
 			when start =>			
 				if daclrck = '0' then
 					gotData := '0';
+					lastCycle := '0';
 					realState <= bitclk_high;
 				end if;
 				
@@ -206,14 +210,14 @@ begin
 				end if;
 			
 			when writeTo => 		--Check bit-clock, write 1 bit, check if that was the last bit (and reset / or increment)
-				if bitclk = '0' and clk = '1' then
-					dacdat <= data(23-bit_count);
+				if bitclk = '0' then
+				   dacdat <= data(23-bit_count);
 				end if;
 				if bit_count = 23 then
 					bit_count := 0;
 					realState <= allWritten;
 				else
-					bit_count := bit_count + 1;
+ 					bit_count := bit_count + 1;
 					realState <= bitclk_high;
 				end if;
 			
@@ -226,14 +230,18 @@ begin
 				if bitclk = '0' then
 					if gotData = '1' then
 						realState <= writeTo;
+					elsif lastCycle = '1' then
+						realState <= start;
 					else 
 						realState <= fetchData;
 					end if;
 				end if;
 			
 			when allWritten =>
+				lastCycle := '1';
 				dacdat <= '0';
-				realState <= start;
+				gotData := '0';
+				realState <= bitclk_high;
 
 		end case;
 	end if;

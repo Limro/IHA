@@ -1,9 +1,123 @@
 \documentclass[Eksamen]{subfiles}
 \begin{document}
 
-\section{Redegør for begrebet dependency injection og brugen af IoC-containere, samt interface baseret programmering.}
+\chapter{Redegør for begrebet dependency injection og brugen af IoC-containere, samt interface baseret programmering.}
 
-\emph{Dependency Injection} dækker over metoder der anvendes til, at indsætte afhængigheder til andre klasser og funktioner.
+\section{Injection teknikker}
+\emph{Dependency Injection} dækker over teknikker der anvendes til, at indsætte afhængigheder til andre klasser og funktioner.
+\\
+Mest enkelte teknikker:
+
+
+\begin{lstlisting}[caption=Constructor Injection, style=Code-C++]
+public class Foo
+{
+	private Bar _bar;
+	Foo(Bar bar) //Constructor Injection
+	{
+		_bar = bar;
+	}
+	
+	public Bar BarClass //Property Injection
+	{
+		set { _bar = value; }
+		get { return _bar; }
+	}
+}
+\end{lstlisting}
+Fordelen ved \textit{Construction Injection} er, at dette sættes så snart klassen oprettes og der funktioner i klassen ikke kan kaldes og bruge en reference = \textit{null}.
+\\
+\textit{Property Injection} er også en god idé, hvis man på runtime har brug for at udskifte sin afhængighed, men skal sættes som det første, da referencen ellers er \textit{null}.
+
+
+
+\section{Interfaces}
+Når man laver afhængigheder til andre klasser, binder man som regel til selve klassen.
+Problemet med dette er, at det bliver svært at teste, da man skal bruge den konkrete afhængighed i testen, hvilket ikke er ønsket i \textit{unit tests}.
+
+For at komme dette til livs laver man et interface for klassen - også selvom der kun skal være én der arver derfra.
+
+\begin{lstlisting}[caption=Interfaces til injection, style=Code-C++]
+public interface IBar
+{}
+
+public class Bar : IBar
+{}
+
+public class Foo
+{
+	private IBar _bar; //IBar
+	Foo(IBar bar) //IBar
+	{
+		_bar = bar;
+	}
+	
+	public IBar BarClass //IBar 
+	{
+		set { _bar = value; }
+		get { return _bar; }
+	}
+}
+\end{lstlisting}
+På denne måde kan der testes med et framework, hvor \textit{IBar} kan stubbes/mockes af som det behager.
+Ligeledes kan man bruge \textit{public IBar BarCLass} til alle typer klasser, der arver fra \textit{IBar}.
+
+
+
+
+
+\section{IoC-Container}
+Inversion of Control, IoC-Containere, er det, der holder styr på klassernes afhængigheder.
+Det vil sige, at den ved klassen \textit{Foo} skal have en klasse af type \textit{IBar}. 
+
+
+Der findes flere IoC-Container som alle i bund og grund kan det samme, men hvis implementering varierer en smule.
+Følgende findes bl.a. på listen:
+
+	\begin{itemize}
+	\item Unity
+	\item MEF (Microsoft Extention Framework - indbygget)
+	\item StructureMap
+	\item Ninject
+	\end{itemize}
+
+\begin{lstlisting}[caption=IoC-Container registrering, style=Code-C++]
+public class RegistrationModule
+{
+	private IUnityContainer _container;
+	public RegistrationModule(IUnityContainer container)
+	{
+		_container = container;
+	}
+	
+	public void Initialize() //Implementering fra IUnityContainer
+	{
+		_container.RegisterType<IBar, Bar>();
+		_container.RegisterType<Foo>();
+	}
+}
+
+public class Test
+{
+	private IUnityContainer _container;
+	private Foo _foo;
+	//...
+	public void TestFunction()
+	{
+		var foo = _container.Resolve<Foo>();
+		foo.Write();
+	}
+}
+\end{lstlisting}
+
+Det foregår ved, at man registrerer de enkelte implementering, enten igennem et interface eller den konkrete klasse (interface er at foretrække - igen, test) og så snart containeren har implementeringerne, kalder den automatisk hvad den skal bruge.
+På denne måde skal der ikke længere skrives \textit{new ClassName()} i koden.
+
+
+
+
+
+
 
 
 \end{document}

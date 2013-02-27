@@ -9,6 +9,7 @@
 %\usepackage{fancyhdr}					% Header-style
 %\pagestyle{fancy}
 
+% Allow a single subfile to be built as its own (without master document)
 \usepackage{subfiles} 
 
 %----------------------------------------------------------
@@ -18,11 +19,13 @@
 %\addtolength\cellspacetoplimit{10pt}
 %\addtolength\cellspacebottomlimit{10pt}
 
+
+
 %----------------------------------------------------------
 % Følgende er til koder.
 % Indsættes mellem \begin{lstlisting} og \end{lstlisting}
+% Se eksempel under pakken
 %----------------------------------------------------------
-
 \usepackage{listings}
 \usepackage{color}
 \usepackage{textcomp}
@@ -39,18 +42,63 @@
 	numberstyle		= \footnotesize,
 	numbers			= left, % Tal? Udkommenter hvis ikke
 	stepnumber		= 1,
-	numbersep		= 10pt,
+	numbersep		= 6pt,
 	tabsize			= 2,
 	breaklines		= true,
 	prebreak 		= \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
 	breakatwhitespace= false,
-	aboveskip		= {1.5\baselineskip},
+%	aboveskip		= {1.5\baselineskip},
   	columns			= fixed,
   	upquote			= true,
   	extendedchars	= true,
- 	backgroundcolor =\color{lbcolor}
+ 	backgroundcolor = \color{lbcolor},
+%	lineskip		= 1.5pt,
+%	xleftmargin		= 17pt,
+%	framexleftmargin= 17pt,
+	framexrightmargin	= 0pt, %6pt
+%	framexbottommargin	= 4pt,
+}
+
+%Custom length for caption over lstlisting
+%The caption must be 6 pt shorter
+\usepackage{calc}
+\newlength{\mywidth}
+\setlength{\mywidth}{\textwidth-6pt}
+
+
+% Customized style for the caption
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}%
+{\colorbox[cmyk]{0.43, 0.35, 0.35,0.35}{\parbox{\mywidth}{\hspace{5pt}#1#2#3}}}
+\captionsetup[lstlisting]
+{
+	format			= listing,
+	labelfont		= white,
+	textfont		= white, 
+	singlelinecheck	= false, 
+	width			= \mywidth,
+	margin			= 0pt, 
+	font			= {bf,footnotesize}
 }
 
 \lstdefinestyle{Code-C} {language=C, style=Code}
 \lstdefinestyle{Code-C++} {language=[Visual]C++, style=Code}
 \lstdefinestyle{Code-VHDL} {language=VHDL, style=Code}
+
+%Use these style as followed
+%\begin{lstlisting}[caption=title, style=Code-C++]
+%var code = new stuff();
+%\end{lstlisting}
+
+
+
+
+%Grader tegn
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+
+
+\makepagestyle{plain}
+\makeevenfoot{plain}{}{\thepage}{}
+\makeoddfoot{plain}{}{\thepage}{}

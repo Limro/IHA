@@ -132,36 +132,41 @@ static void sendData( unsigned char data )
 // at the upper line, leftmost character (cursor invisible)
 void LCDInit()
 {
-	portTickType xLastWakeTime;
-	xLastWakeTime = xTaskGetTickCount();
+	//portTickType xLastWakeTime;
+	//xLastWakeTime = xTaskGetTickCount();
 	
 	// Initializing the used port
 	DDR_lcd = 0xFF;  // bits 0-7 output
-	PORT_lcd = 0x00; // bits 0-7 low 
-	 
+	PORT_lcd = 0x00; // bits 0-7 low
+	
 	// Wait 50 ms (min.15 ms demanded according to the data sheet)
-	vTaskDelayUntil(&xLastWakeTime, 50);
+	//vTaskDelayUntil(&xLastWakeTime, 50);
+	_delay_ms(50);
+	
 	// Function set (still 8 bit interface)
 	PORT_lcd = 0b00110000;
 	E_High();
 	E_Low();
 
 	// Wait 10 ms (min.4,1 ms demanded according to the data sheet)
-	vTaskDelayUntil(&xLastWakeTime, 100);
+	//vTaskDelayUntil(&xLastWakeTime, 100);
+	_delay_ms(100);
 	// Function set (still 8 bit interface)
 	PORT_lcd = 0b00110000;
 	E_High();
 	E_Low();
 
 	// Wait 10 ms (min.100 us demanded according to the data sheet)
-	vTaskDelayUntil(&xLastWakeTime, 10);
+	//vTaskDelayUntil(&xLastWakeTime, 10);
+	_delay_ms(10);
 	// Function set (still 8 bit interface)
 	PORT_lcd = 0b00110000;
 	E_High();
 	E_Low();
 
 	// Wait 10 ms (min.100 us demanded according to the data sheet)
-	vTaskDelayUntil(&xLastWakeTime, 10);
+	//vTaskDelayUntil(&xLastWakeTime, 10);
+	_delay_ms(10);
 	// Function set (now selecting 4 bit interface !)
 	// - and polling the busy flag will now be possible
 	PORT_lcd = 0b00100000;
@@ -172,7 +177,7 @@ void LCDInit()
 	sendInstruction( 0b00101000 );
 	// Display, cursor and blinking OFF
 	sendInstruction( 0b00001000 );
-	// Clear display and set DDRAM adr = 0	
+	// Clear display and set DDRAM adr = 0
 	sendInstruction( 0b00000001 );
 	// By display writes : Increment cursor / no shift
 	sendInstruction( 0b00000110 );

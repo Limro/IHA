@@ -116,6 +116,7 @@
             <Value>..</Value>
           </ListValues>
         </avrgcc.compiler.directories.IncludePaths>
+        <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
         <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
         <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
         <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
@@ -136,7 +137,16 @@
     <Compile Include="Drivers\lcd162.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Drivers\led.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Drivers\led.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Drivers\LM75.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Drivers\LM75.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Drivers\uart.c">

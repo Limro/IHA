@@ -19,7 +19,7 @@
 // (here PORTD is used) :
 #define DDR_lcd	 DDRA
 #define PIN_lcd	 PINA
-#define PORT_lcd PORTA 
+#define PORT_lcd PORTA
 
 //  Public:
 void LCDInit();

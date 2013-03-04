@@ -1,0 +1,128 @@
+Restore Archived Project report for firstSopc
+Fri Mar 01 13:35:41 2013
+Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Restore Archived Project Summary
+  3. Restore Archived Project Messages
+  4. Files Restored
+  5. Files Not Restored
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Restore Archived Project Summary                                        ;
++---------------------------------+---------------------------------------+
+; Restore Archived Project Status ; Successful - Fri Mar 01 13:35:41 2013 ;
+; Revision Name                   ; firstSopc                             ;
+; Top-level Entity Name           ; firstSopc                             ;
+; Family                          ; Cyclone II                            ;
++---------------------------------+---------------------------------------+
+
+
++-----------------------------------+
+; Restore Archived Project Messages ;
++-----------------------------------+
+Info: Successfully restored 'C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB10/SopcCustomComponents.qar' into the 'C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB10/SopcCustomComponents_restored/' directory
+Info: Generated report 'firstSopc.restore.rpt'
+Info (23030): Evaluation of Tcl script c:/altera/12.1/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus II 64-Bit Shell was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 290 megabytes
+    Info: Processing ended: Fri Mar 01 13:35:41 2013
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:01
+
+
++---------------------------------------------------------------------------------------------------+
+; Files Restored                                                                                    ;
++---------------------------------------------------------------------------------------------------+
+; File Name                                                                                         ;
++---------------------------------------------------------------------------------------------------+
+; SOPC_System.qip                                                                                   ;
+; SOPC_System.sopc                                                                                  ;
+; SOPC_System.vhd                                                                                   ;
+; SOPC_System_clock_0.vhd                                                                           ;
+; SOPC_System_clock_1.vhd                                                                           ;
+; SOPC_System_clock_2.vhd                                                                           ;
+; SOPC_System_clock_3.vhd                                                                           ;
+; SOPC_System_clock_4.vhd                                                                           ;
+; SOPC_System_clock_5.vhd                                                                           ;
+; SOPC_System_clock_6.vhd                                                                           ;
+; SOPC_System_clock_7.vhd                                                                           ;
+; SOPC_System_clock_8.vhd                                                                           ;
+; SOPC_System_clock_9.vhd                                                                           ;
+; clocks_0.v                                                                                        ;
+; cpu_0.sdc                                                                                         ;
+; cpu_0.vhd                                                                                         ;
+; cpu_0_jtag_debug_module_sysclk.vhd                                                                ;
+; cpu_0_jtag_debug_module_tck.vhd                                                                   ;
+; cpu_0_jtag_debug_module_wrapper.vhd                                                               ;
+; cpu_0_oci_test_bench.vhd                                                                          ;
+; cpu_0_ociram_default_contents.mif                                                                 ;
+; cpu_0_rf_ram_a.mif                                                                                ;
+; cpu_0_rf_ram_b.mif                                                                                ;
+; cpu_0_test_bench.vhd                                                                              ;
+; cpu_0_vector_mult_inst.vhd                                                                        ;
+; firstSopc.bdf                                                                                     ;
+; firstSopc.qpf                                                                                     ;
+; firstSopc.qsf                                                                                     ;
+; firstSopc_assignment_defaults.qdf                                                                 ;
+; incremental_db/compiled_partitions/firstSopc.db_info                                              ;
+; jtag_uart_0.vhd                                                                                   ;
+; lcd_0.vhd                                                                                         ;
+; mm_bus_counter.vhd                                                                                ;
+; mm_bus_counter_0.vhd                                                                              ;
+; mm_bus_counter_hw.tcl                                                                             ;
+; multiplierAdd_hw.tcl                                                                              ;
+; multiply_hw.tcl                                                                                   ;
+; pio_input_0.vhd                                                                                   ;
+; pio_output_0.vhd                                                                                  ;
+; pio_output_1.vhd                                                                                  ;
+; sram_0.vhd                                                                                        ;
+; sysid.vhd                                                                                         ;
+; timer_system.vhd                                                                                  ;
+; timer_timestamp.vhd                                                                               ;
+; vector_mult.vhd                                                                                   ;
+; vector_mult_hw.tcl                                                                                ;
+; altera/12.1/ip/University_Program/Memory/altera_up_avalon_sram/altera_up_avalon_sram_hw.tcl       ;
+; altera/12.1/ip/University_Program/Memory/altera_up_avalon_sram/up_ip_generator.tcl                ;
+; altera/12.1/ip/University_Program_11/altera_up_avalon_clocks/altera_up_avalon_clocks_hw.tcl       ;
+; altera/12.1/ip/University_Program_11/altera_up_avalon_clocks/up_ip_generator.tcl                  ;
+; altera/12.1/ip/altera/sopc_builder_ip/altera_avalon_clock_adapter/altera_avalon_clock_adapter.sdc ;
++---------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------+
+; Files Not Restored                                                                                ;
++---------------------------------------------------------------------------------------------------+
+; File Name                                                                                         ;
++---------------------------------------------------------------------------------------------------+
+; altera/12.1/ip/University_Program/Memory/altera_up_avalon_sram/altera_up_avalon_sram_hw.tcl       ;
+; altera/12.1/ip/University_Program_11/altera_up_avalon_clocks/altera_up_avalon_clocks_hw.tcl       ;
+; altera/12.1/ip/altera/sopc_builder_ip/altera_avalon_clock_adapter/altera_avalon_clock_adapter.sdc ;
++---------------------------------------------------------------------------------------------------+
+
+

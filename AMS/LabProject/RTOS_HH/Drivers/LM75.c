@@ -10,11 +10,7 @@
 *	 A1 = Top									*
 *	 A0 = Top									*
 *************************************************/
-#include <avr/io.h>
-#define F_CPU 3686400
-#include <avr/delay.h>
-
-#define PRESCALER 0b00000011 
+#include "LM75.h"
 
 void i2c_init()
 {

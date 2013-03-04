@@ -1,4 +1,5 @@
 ﻿using LAB8.Infrastructure;
+using LAB8.Infrastructure.Interfaces;
 using LAB8.LogModule.Log;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;

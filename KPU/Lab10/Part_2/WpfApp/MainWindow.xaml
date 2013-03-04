@@ -1,0 +1,14 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"
+        Background="Lavender">
+    <Grid>
+        <Label 
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="30"
+            FontWeight="SemiBold"
+            Content="{Binding Path=TextOutput}"/>
+    </Grid>
+</Window>

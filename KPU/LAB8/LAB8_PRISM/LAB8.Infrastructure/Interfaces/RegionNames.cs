@@ -1,4 +1,4 @@
-﻿namespace LAB8.Infrastructure
+﻿namespace LAB8.Infrastructure.Interfaces
 {
     public class RegionNames
     {

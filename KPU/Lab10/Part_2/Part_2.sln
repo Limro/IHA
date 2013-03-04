@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part_2", "Part_2\Part_2.csproj", "{4FD43F07-0AAC-4A03-97FB-6D583D6DA015}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{E36E22B2-3A21-40F1-AEBC-64D0E3274A01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4FD43F07-0AAC-4A03-97FB-6D583D6DA015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FD43F07-0AAC-4A03-97FB-6D583D6DA015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FD43F07-0AAC-4A03-97FB-6D583D6DA015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FD43F07-0AAC-4A03-97FB-6D583D6DA015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E36E22B2-3A21-40F1-AEBC-64D0E3274A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E36E22B2-3A21-40F1-AEBC-64D0E3274A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E36E22B2-3A21-40F1-AEBC-64D0E3274A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E36E22B2-3A21-40F1-AEBC-64D0E3274A01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,91 @@
+\documentclass[Notes]{subfiles}
+\begin{document}
+
+\chapter{DLR - Dynamic Language Runtime}
+
+	\begin{itemize}
+	\item En motor, hvor man kan bygge dynamiske sprog og statiske sprog
+	\item Disse kører på .NET platformen
+	\item 
+	\end{itemize}
+Terminology:
+
+	\begin{itemize}
+	\item Binding - Når man kalder \textit{Foo()} skal compileren vide hvad man kalder
+		\begin{itemize}
+		\item Static binding - binder på compile-time
+		\item Dynamic binding - binder på run-time
+		\end{itemize}
+	
+	\item Call site caching
+		\begin{itemize}
+		\item Man gider ikke lede alle objekter igennem, når man skal finde en funktion. Anden gang husker den placeringen af metoderne
+		\end{itemize}
+
+	
+	\end{itemize}
+
+Herunder loades iGetDynamicObject først når programmet kører:
+\begin{lstlisting}[style=code-C++, caption=Dynmaic eksemple]
+dynamic d = GetDynamicObject(...);
+string result = d[d.length - 1];
+\end{lstlisting}
+
+Performance:
+	\begin{itemize}
+	\item Dynamic er sløv i forhold til static
+	\item Den giver ikke fejl, før på runtime
+	\end{itemize}
+Fordele:
+
+	\begin{itemize}
+	\item Den er god til inteagering med COM
+	\item Dette er bl.a. Office-pakken
+	\end{itemize}
+
+
+
+
+
+
+\chapter{Cross Platform}
+
+Man skriver normalt i C/C++ og oversætter det derefter det til andre platforme.
+\\
+\\
+Populære cross-platform programmer:
+	\begin{itemize}
+	\item Skype
+	\item wxWidgets
+	\end{itemize}
+Populære cross-platform teknologier:
+
+	\begin{itemize}
+	\item Flash (Kører ikke på iOS)
+	\item Java (Kører ikke på iOS)
+	\item SilverLight (Kører ikke på iOS)
+	\item HTML5
+	\end{itemize}
+Populære cross-platform SDKs:
+
+	\begin{itemize}
+	\item Mono / MonoTouch / Mono for Android
+	\item PhoneGap / Apache Cordova
+	\item JUCE
+	\item Appcelerator Titanium
+	\end{itemize}
+	
+\section{Portable klasse libraries}
+Normalt binder man til konkrete biblioteker, hvilket gør, at det ikke kan porteres.
+For at løse dette laver man Portable Class Libraries, som så binder til noget konkret - afhængigt af, hvilken platform det skal bruges på.
+
+
+
+
+
+
+
+
+
+	
+\end{document} 

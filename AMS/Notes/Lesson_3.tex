@@ -1,77 +1,89 @@
 \documentclass[Notes]{subfiles}
 \begin{document}
-\section{I2C}
+\section{USB}
 
-Generelt:
+Universal Serial Bus.
+
 	\begin{itemize}
-	\item "Two-wire interface - én for clock - én for data
-	\item Forskellige versioner fra 100 kHz til 5 MHz
-	\item Short-range
-	\item Bruger ACK /NACK protokol
+	\item Plug \& play
+	\item Den er Isochronous (sender med en bestemt rate)
+	\item Asynchronous (Kan sende og modtage)
+	\item Efter USB 2.0 kom OTG (On The Go)
+	\item Max 5 meter uden ekstra power
+	\item Bruger NRZI coding (hvis et signal skifter det 0, hvis ikke - 1)
+	\item Micro B og Mini B er standard sammen med Standard A
+	\item Alle enheder har VID/PID, som skal købes (når man ikke udvikler og tester)
+	\item Går i dvale efter 3.0 ms uden aktivitet og yderligere 7.0 ms for at lukke ned.
+	\item Der sendes kun 500 micro-A ved dvale
+	\end{itemize}
+Overførelse - handshake:
+	\begin{enumerate}
+	\item Sync
+	\item PID
+	\item ADDR
+	\item ENDP
+	\item CSC8
+	\item EOP
+	\end{enumerate}
+Overførelse - data:
+
+	\begin{enumerate}
+	\item Sync
+	\item PID
+	\item DATA
+	\item CSC16
+	\item EOP
+	\end{enumerate}
+Generelt:
+
+	\begin{itemize}
+	\item LSB sendes først, MSB sidst
+	\item Alle pakker starter med en \textit{sync} (8 cykler for normal og 16 for high speed)
+	\item Der skal kendes en adresse at sende til
+	\item Der skal være et Endpoint
 	\item 
 	\end{itemize}
-Opbygningen:
-	\begin{itemize}
-	\item Hver slave har et ID
-	\item Hver forbundet med en clock og en data
-	\item Man bruger pull-ups
-	\item Signalet bliver forsinket ved længere afstand
-	\end{itemize}
-Software:
+USB ENdpoints:
 
 	\begin{itemize}
-	\item Pull-low for datapin og så datapin betyder "nu sker der noget"
-	\item Herefter sendes addressen til modtageren (typisk 7-bit og det sidste er RW)
-	\item Når der er sendt 8 bit ventes på ACK
-	\item Stop signaleres ved at sætte clock og data høj
+	\item Skal have Endpoint0, brug til transport control
+	\item Kan have op til 31 endpoints per enhed
+	\item Unidirectional - enten hente, eller modtage
 	\end{itemize}
-ACK:
+Overførelses typer:	
+
 
 	\begin{itemize}
-	\item Sender ACK for hver byte (8 bit)
-	\item Hvis en slave ser en addresse der ikke er dens egen bliver den ved med at lytte.
-	\item Hvis det er dens adresse, sender den et ACK retur. Herefter sendes master data / lytter på data
-	\end{itemize}
-Registers:
-
-	\begin{itemize}
-	\item TWBR
-	\item TWCR
+	\item IsoChroun
 	
 		\begin{itemize}
-		\item TWINT - interrupt pin. Sættes til 1 når en bus operation ends
-		\item TWEA - Sæt til 1 hvis der skal genereres ACK ved næste modtagesle
-		\item TWSTA - 1 for at starte
-		\item TWSTO - 1 generer stop
-		\item TWWC sæt til 1 for
-		\item TWEN - SKAL VÆRE 1
+		\item Sender meget data med fast hastighed
+		\item Du kan dog miste data
 		\end{itemize}
 	
-	
-	\item TWSR
-	
+	\item Interrupt 
 		\begin{itemize}
-		\item Bit 7-3: Status på I2C bus
-		\item Bit 1-0: Clock Prescaler
-		\item 1, 4, 16, 64 (00, 01, 10, 11)
+		\item Keyboards
+		\item De skal poll'es
 		\end{itemize}
 	
-	
-	\item TWDR
-	\item TWAR
+	(keyboards)
+	\item Bulk
+		\begin{itemize}
+		\item For at sende filer
+		\item Sender hurtigst muligt, men korrekt
+		\end{itemize}
+		
+	\item COntrol
 	
 		\begin{itemize}
-		\item Kan automatisk registrere adressen på slaves
+		\item Error-free garanteret
 		\end{itemize}
 	
 	
 	\end{itemize}
-
-
-
-
-
-
+	
+	
 
 
 

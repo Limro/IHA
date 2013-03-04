@@ -34,6 +34,17 @@ Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Compiling entity fir_filter_0002
 -- Compiling architecture syn of fir_filter_0002
 
+} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB8/iis2st.vhd {1 {vcom -work work -2002 -explicit {C:\Users\BecksLaptop\Documents\IHA\DSPC\LAB8\iis2st.vhd}
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity iis2st
+-- Compiling architecture functional of iis2st
+-- Compiling architecture rtl of iis2st
+-- Loading entity iis2st
+
 } {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB8/fir_filter/auk_dspip_avalon_streaming_source_hpfir.vhd {2 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB8/fir_filter/auk_dspip_avalon_streaming_source_hpfir.vhd
 Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Loading package STANDARD

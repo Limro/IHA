@@ -1,4 +1,5 @@
 ﻿using LAB8.Infrastructure;
+using LAB8.Menu.MenuView;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Unity;
@@ -19,14 +20,14 @@ namespace ModuleA
 
         private void RegisterServicesAndViews()
         {
-            _container.RegisterType<MenuView.MenuView>();
+            //_container.RegisterType<MenuView.MenuView>();
         }
 
         public void Initialize()
         {
-            var view = _container.Resolve<MenuView.MenuView>();
-            var region = _manager.Regions[RegionNames.MainRegion];
-            region.Add(view);
+            //var view = _container.Resolve<MenuView.MenuView>();
+            //var region = _manager.Regions[RegionNames.MainRegion];
+            //region.Add(view);
         }
     }
 }

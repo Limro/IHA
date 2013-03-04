@@ -1,0 +1,33 @@
+# clk_0
+# sram_0
+set_global_assignment -name TCL_FILE [file join $::quartus(ip_rootpath) "University_Program/Memory/altera_up_avalon_sram/altera_up_avalon_sram_hw.tcl"]
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "sram_0.v"]
+# jtag_uart_0
+# timer_system
+# sysid
+# clocks_0
+set_global_assignment -name TCL_FILE [file join $::quartus(ip_rootpath) "University_Program/altera_up_avalon_clocks/altera_up_avalon_clocks_hw.tcl"]
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "clocks_0.v"]
+# pio_output_0
+# pio_output_1
+# pio_input_0
+# lcd_0
+# timer_timestamp
+# cpu_0
+set_global_assignment -name SDC_FILE [file join $::quartus(qip_path) "cpu_0.sdc"]
+set_global_assignment -name SOURCE_FILE [file join $::quartus(qip_path) "cpu_0.ocp"]
+# cpu_0_vector_mult_inst
+set_global_assignment -name TCL_FILE [file join $::quartus(qip_path) "vector_mult_hw.tcl"]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "vector_mult.vhd"]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "cpu_0_vector_mult_inst.vhd"]
+# mm_bus_seven_seg_four_digit_1
+set_global_assignment -name TCL_FILE [file join $::quartus(qip_path) "mm_bus_seven_seg_four_digit_hw.tcl"]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "mm_bus_seven_seg_four_digit.vhd"]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "bcd2sevenseg.vhd"]
+set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) "mm_bus_seven_seg_four_digit_1.vhd"]
+# null
+set_global_assignment -name SDC_FILE [file join $::quartus(ip_rootpath) "altera/sopc_builder_ip/altera_avalon_clock_adapter/altera_avalon_clock_adapter.sdc"]
+set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID "00000000000000E00000013D262D1DF8"
+set_global_assignment -entity "SOPC_System" -name IP_TOOL_NAME "sopc"
+set_global_assignment -entity "SOPC_System" -name IP_TOOL_VERSION "12.1"
+set_global_assignment -entity "SOPC_System" -name IP_TOOL_ENV "sopc"

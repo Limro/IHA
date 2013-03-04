@@ -1,4 +1,4 @@
-﻿using LAB8.Infrastructure;
+﻿using LAB8.Infrastructure.Interfaces;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Unity;

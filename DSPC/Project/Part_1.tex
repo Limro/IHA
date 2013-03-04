@@ -15,11 +15,21 @@ Systemet opbygges således, at et tastatur med PS/2-udgang forbindes til DE2-boar
 Tilsluttet til DE2-boardet er også et par højtalere forbundet via mini-jack stik.
 \\
 \\
-Der laves en microprocessor til at håndtere inputtet fra keyboardet, og bestemme hvilken tone der skal afspilles.
-Denne sendes så til 
+Intentionen med opstillingen er, at der ved et tastetryk på tasteturet bliver genereret en tone, en sinuskurve, som adskiller sig for hver knap.
+\\
+\\
+Der oprettes en microprocessor, som fungerer som driver for tasteturet. 
+Gennem denne kan der sendes tastetryk direkte igennem \textit{C}-koden til \textit{VHDL}-koden, der indeholder en sinusgenerator (skrivning igennem \textit{MM-bussen}).
+Derudover kan der også sendes kommandoer fra en konsol til sinusgeneratoren.
+\\
+Fra sinusgeneratoren sendes lyden ud til højtalerne via \textit{ST-bussen}, bit for bit.
+\\
+\\
+Frekvensen der afspilles vises på 7-segments displayet og på det store display vises en fyldig tekst vedr. frekvensen.
 
 
-\section{Brugbare ting}
+
+%\section{Brugbare ting}
 %C:\altera\12.1\ip\University_Program\Input_Output\
 %altera_up_avalon_ps2\doc
 

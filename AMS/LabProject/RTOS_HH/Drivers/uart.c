@@ -14,6 +14,7 @@
 
 // Constants
 #define XTAL 3686400  
+#define F_CPU 3686400
 
 /*************************************************************************
 USART initialization.

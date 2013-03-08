@@ -1,0 +1,86 @@
+Altera SOPC Builder Version 12.10 Build 177
+Copyright (c) 1999-2009 Altera Corporation.  All rights reserved.
+
+
+No .sopc_builder configuration file(!)
+# 2013.03.07 14:35:47 (*) mk_custom_sdk starting
+# 2013.03.07 14:35:47 (*) Reading project C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB10_2/SopcCustomComponents_restored/SOPC_System.ptf.
+
+# 2013.03.07 14:35:47 (*) Finding all CPUs
+# 2013.03.07 14:35:47 (*) Finding all available components
+# 2013.03.07 14:35:47 (*) Reading C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB10_2/SopcCustomComponents_restored/.sopc_builder/install.ptf
+
+# 2013.03.07 14:35:47 (*) Found 63 components
+
+# 2013.03.07 14:35:48 (*) Finding all peripherals
+
+# 2013.03.07 14:35:48 (*) Finding software components
+
+# 2013.03.07 14:35:48 (*) (Legacy SDK Generation Skipped)
+# 2013.03.07 14:35:48 (*) (All TCL Script Generation Skipped)
+# 2013.03.07 14:35:48 (*) (No Libraries Built)
+# 2013.03.07 14:35:48 (*) (Contents Generation Skipped)
+# 2013.03.07 14:35:48 (*) mk_custom_sdk finishing
+
+# 2013.03.07 14:35:48 (*) Starting generation for system: SOPC_System.
+
+.
+.
+.
+.
+..
+..
+.
+
+# 2013.03.07 14:35:49 (*) Running Generator Program for jtag_uart_0
+
+# 2013.03.07 14:35:50 (*) Running Generator Program for timer_system
+
+# 2013.03.07 14:35:51 (*) Running Generator Program for sysid
+
+# 2013.03.07 14:35:52 (*) Running Generator Program for pio_output_0
+
+# 2013.03.07 14:35:52 (*) Running Generator Program for pio_output_1
+
+# 2013.03.07 14:35:53 (*) Running Generator Program for pio_input_0
+
+# 2013.03.07 14:35:54 (*) Running Generator Program for lcd_0
+
+# 2013.03.07 14:35:54 (*) Running Generator Program for timer_timestamp
+
+# 2013.03.07 14:35:55 (*) Running Generator Program for cpu_0
+
+# 2013.03.07 14:35:56 (*) Starting Nios II generation
+# 2013.03.07 14:35:56 (*)   Checking for plaintext license.
+# 2013.03.07 14:35:57 (*)   Plaintext license not found.
+# 2013.03.07 14:35:57 (*)   No license required to generate encrypted Nios II/e.
+# 2013.03.07 14:35:57 (*)   Getting CPU configuration settings
+# 2013.03.07 14:35:57 (*)   Elaborating CPU configuration settings
+# 2013.03.07 14:35:57 (*)   Creating all objects for CPU
+# 2013.03.07 14:35:59 (*)   Generating HDL from CPU objects
+# 2013.03.07 14:35:59 (*)   Creating plain-text HDL
+
+# 2013.03.07 14:36:05 (*) Done Nios II generation
+
+# 2013.03.07 14:36:05 (*) Making arbitration and system (top) modules.
+
+# 2013.03.07 14:36:12 (*) Generating Quartus symbol for top level: SOPC_System
+
+# 2013.03.07 14:36:12 (*) Generating Symbol C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB10_2/SopcCustomComponents_restored/SOPC_System.bsf
+
+# 2013.03.07 14:36:12 (*) Creating command-line system-generation script: C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB10_2/SopcCustomComponents_restored/SOPC_System_generation_script
+
+# 2013.03.07 14:36:12 (*) Running setup for HDL simulator: modelsim
+
+
+# 2013.03.07 14:36:12 (*) Completed generation for system: SOPC_System.
+# 2013.03.07 14:36:12 (*) THE FOLLOWING SYSTEM ITEMS HAVE BEEN GENERATED:
+  SOPC Builder database : C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB10_2/SopcCustomComponents_restored/SOPC_System.ptf 
+  System HDL Model : C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB10_2/SopcCustomComponents_restored/SOPC_System.vhd 
+  System Generation Script : C:/Users/BecksLaptop/Documents/IHA/DSPC/LAB10_2/SopcCustomComponents_restored/SOPC_System_generation_script 
+
+
+# 2013.03.07 14:36:12 (*) SUCCESS: SYSTEM GENERATION COMPLETED.
+
+
+Press 'Exit' to exit.

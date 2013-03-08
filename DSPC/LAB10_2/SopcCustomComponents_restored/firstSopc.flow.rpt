@@ -1,0 +1,171 @@
+Flow report for firstSopc
+Thu Mar 07 14:49:42 2013
+Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------+
+; Flow Summary                                                                   ;
++------------------------------------+-------------------------------------------+
+; Flow Status                        ; Successful - Thu Mar 07 14:49:36 2013     ;
+; Quartus II 64-Bit Version          ; 12.1 Build 177 11/07/2012 SJ Full Version ;
+; Revision Name                      ; firstSopc                                 ;
+; Top-level Entity Name              ; FIRFilter_hw_0                            ;
+; Family                             ; Cyclone II                                ;
+; Device                             ; EP2C35F672C6                              ;
+; Timing Models                      ; Final                                     ;
+; Total logic elements               ; 4,793 / 33,216 ( 14 % )                   ;
+;     Total combinational functions  ; 2,056 / 33,216 ( 6 % )                    ;
+;     Dedicated logic registers      ; 4,782 / 33,216 ( 14 % )                   ;
+; Total registers                    ; 4782                                      ;
+; Total pins                         ; 58 / 475 ( 12 % )                         ;
+; Total virtual pins                 ; 0                                         ;
+; Total memory bits                  ; 0 / 483,840 ( 0 % )                       ;
+; Embedded Multiplier 9-bit elements ; 0 / 70 ( 0 % )                            ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                             ;
++------------------------------------+-------------------------------------------+
+
+
++-----------------------------------------+
+; Flow Settings                           ;
++-------------------+---------------------+
+; Option            ; Setting             ;
++-------------------+---------------------+
+; Start date & time ; 03/07/2013 14:48:47 ;
+; Main task         ; Compilation         ;
+; Revision Name     ; firstSopc           ;
++-------------------+---------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                       ;
++-------------------------------------+--------------------------------------------------------------------+---------------+----------------+------------+
+; Assignment Name                     ; Value                                                              ; Default Value ; Entity Name    ; Section Id ;
++-------------------------------------+--------------------------------------------------------------------+---------------+----------------+------------+
+; COMPILER_SIGNATURE_ID               ; 246473185242691.136266412704740                                    ; --            ; --             ; --         ;
+; IP_TOOL_ENV                         ; mwpim                                                              ; --            ; Fir            ; --         ;
+; IP_TOOL_ENV                         ; mwpim                                                              ; --            ; Fir            ; --         ;
+; IP_TOOL_ENV                         ; mwpim                                                              ; --            ; Fir_0002       ; --         ;
+; IP_TOOL_ENV                         ; sopc                                                               ; --            ; SOPC_System    ; --         ;
+; IP_TOOL_NAME                        ; ALTPLL                                                             ; --            ; --             ; --         ;
+; IP_TOOL_NAME                        ; ALTPLL                                                             ; --            ; --             ; --         ;
+; IP_TOOL_NAME                        ; altera_fir_compiler_ii                                             ; --            ; Fir            ; --         ;
+; IP_TOOL_NAME                        ; altera_fir_compiler_ii                                             ; --            ; Fir            ; --         ;
+; IP_TOOL_NAME                        ; altera_fir_compiler_ii                                             ; --            ; Fir_0002       ; --         ;
+; IP_TOOL_NAME                        ; sopc                                                               ; --            ; SOPC_System    ; --         ;
+; IP_TOOL_VERSION                     ; 12.1                                                               ; --            ; --             ; --         ;
+; IP_TOOL_VERSION                     ; 12.1                                                               ; --            ; --             ; --         ;
+; IP_TOOL_VERSION                     ; 12.1                                                               ; --            ; Fir            ; --         ;
+; IP_TOOL_VERSION                     ; 12.1                                                               ; --            ; Fir            ; --         ;
+; IP_TOOL_VERSION                     ; 12.1                                                               ; --            ; Fir_0002       ; --         ;
+; IP_TOOL_VERSION                     ; 12.1                                                               ; --            ; SOPC_System    ; --         ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                                 ; --            ; --             ; --         ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                                  ; --            ; --             ; --         ;
+; MISC_FILE                           ; LAB10_2.bsf                                                        ; --            ; --             ; --         ;
+; MISC_FILE                           ; LAB10_2.cmp                                                        ; --            ; --             ; --         ;
+; MISC_FILE                           ; LAB10_2.ppf                                                        ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir.cmp                                                            ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/altera_avalon_sc_fifo.v                                    ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/auk_dspip_math_pkg_hpfir.vhd                               ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/auk_dspip_lib_pkg_hpfir.vhd                                ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/auk_dspip_avalon_streaming_controller_hpfir.vhd            ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/auk_dspip_avalon_streaming_sink_hpfir.vhd                  ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/auk_dspip_avalon_streaming_source_hpfir.vhd                ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/auk_dspip_roundsat_hpfir.vhd                               ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/dspba_library_package.vhd                                  ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/dspba_library.vhd                                          ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/Fir_rtl.vhd                                                ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/Fir_ast.vhd                                                ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/Fir.vhd                                                    ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/Fir_nativelink.tcl                                         ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/Fir_msim.tcl                                               ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/Fir_tb.vhd                                                 ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/Fir_mlab.m                                                 ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/Fir_model.m                                                ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/Fir_coef_int.txt                                           ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/Fir_input.txt                                              ; --            ; --             ; --         ;
+; MISC_FILE                           ; Fir_sim/Fir_param.txt                                              ; --            ; --             ; --         ;
+; MISC_FILE                           ; PLL_try.bsf                                                        ; --            ; --             ; --         ;
+; MISC_FILE                           ; PLL_try.cmp                                                        ; --            ; --             ; --         ;
+; MISC_FILE                           ; PLL_try.ppf                                                        ; --            ; --             ; --         ;
+; PARTITION_COLOR                     ; 16764057                                                           ; --            ; FIRFilter_hw_0 ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING                                              ; --            ; FIRFilter_hw_0 ; Top        ;
+; PARTITION_NETLIST_TYPE              ; SOURCE                                                             ; --            ; FIRFilter_hw_0 ; Top        ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                                ; --            ; --             ; --         ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                              ; --            ; --             ; --         ;
+; SEARCH_PATH                         ; altera/12.1/ip/University_Program/Memory/altera_up_avalon_sram/    ; --            ; --             ; --         ;
+; SEARCH_PATH                         ; altera/12.1/ip/University_Program_11/altera_up_avalon_clocks/      ; --            ; --             ; --         ;
+; SEARCH_PATH                         ; altera/12.1/ip/altera/sopc_builder_ip/altera_avalon_clock_adapter/ ; --            ; --             ; --         ;
+; SOPC_BUILDER_SIGNATURE_ID           ; 00000000000000E00000013D45104A77                                   ; --            ; --             ; --         ;
+; SPD_FILE                            ; Fir.spd                                                            ; --            ; --             ; --         ;
+; SYNTHESIS_ONLY_QIP                  ; On                                                                 ; --            ; --             ; --         ;
+; TOP_LEVEL_ENTITY                    ; FIRFilter_hw_0                                                     ; firstSopc     ; --             ; --         ;
++-------------------------------------+--------------------------------------------------------------------+---------------+----------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:10     ; 1.0                     ; 532 MB              ; 00:00:10                           ;
+; Fitter                    ; 00:00:31     ; 1.4                     ; 712 MB              ; 00:00:35                           ;
+; Assembler                 ; 00:00:03     ; 1.0                     ; 454 MB              ; 00:00:03                           ;
+; TimeQuest Timing Analyzer ; 00:00:05     ; 1.0                     ; 489 MB              ; 00:00:04                           ;
+; Total                     ; 00:00:49     ; --                      ; --                  ; 00:00:52                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++----------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                        ;
++---------------------------+------------------+-----------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
++---------------------------+------------------+-----------+------------+----------------+
+; Analysis & Synthesis      ; Becks_Laptop     ; Windows 7 ; 6.1        ; x86_64         ;
+; Fitter                    ; Becks_Laptop     ; Windows 7 ; 6.1        ; x86_64         ;
+; Assembler                 ; Becks_Laptop     ; Windows 7 ; 6.1        ; x86_64         ;
+; TimeQuest Timing Analyzer ; Becks_Laptop     ; Windows 7 ; 6.1        ; x86_64         ;
++---------------------------+------------------+-----------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off firstSopc -c firstSopc
+quartus_fit --read_settings_files=off --write_settings_files=off firstSopc -c firstSopc
+quartus_asm --read_settings_files=off --write_settings_files=off firstSopc -c firstSopc
+quartus_sta firstSopc -c firstSopc
+
+
+

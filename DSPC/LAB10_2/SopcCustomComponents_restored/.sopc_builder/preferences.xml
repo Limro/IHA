@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="Default">
+  <columns>
+   <opcodeName visible="0" />
+   <connections preferredWidth="63" />
+   <irq preferredWidth="34" />
+   <export visible="0" />
+   <inputclock preferredWidth="111" />
+   <baseaddress preferredWidth="110" />
+   <endaddress preferredWidth="108" />
+  </columns>
+ </systemtable>
+ <clocktable>
+  <columns>
+   <clockname preferredWidth="303" />
+   <clocksource preferredWidth="301" />
+   <frequency preferredWidth="284" />
+  </columns>
+ </clocktable>
+ <window width="1382" height="744" x="-8" y="-8" />
+ <library expandedCategories="Project/IHA,Project,Library" />
+</preferences>

@@ -61,6 +61,7 @@ packages/
 *_p.c
 *.ncb
 *.suo
+*.atsuo
 *.tlb
 *.tlh
 *.bak

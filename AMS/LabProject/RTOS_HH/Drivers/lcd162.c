@@ -20,9 +20,9 @@
 
 // Enabling us to use macro _NOP() to insert the NOP instruction
 #include <avr/cpufunc.h>
+#include "../Source/include/FreeRTOS.h"
 #include "lcd162.h"
-#include "FreeRTOS.h"
-#include "task.h"
+#include "../Source/include/task.h"
 
 // library function itoa() is needed
 #include <stdlib.h>

@@ -2,9 +2,7 @@
 \begin{document}
 
 
-\chapter*{Indledning}
-
-\section{Problemstilling}
+\chapter{Problemstilling}
 
 
 Med dette projekt ønskes at opnå et system, hvor en bruger med et tastatur kan genere toner fra tastetryk.
@@ -18,15 +16,24 @@ Tilsluttet til DE2-boardet er også et par højtalere forbundet via mini-jack stik
 Intentionen med opstillingen er, at der ved et tastetryk på tasteturet bliver genereret en tone, en sinuskurve, som adskiller sig for hver knap.
 \\
 \\
-Der oprettes en microprocessor, som fungerer som driver for tasteturet. 
-Gennem denne kan der sendes tastetryk direkte igennem \textit{C}-koden til \textit{VHDL}-koden, der indeholder en sinusgenerator (skrivning igennem \textit{MM-bussen}).
+Der oprettes en microprocessor, som bl.a. har forbindelse til driveren for tasteturet. 
+Driveren til tasteturet er tredjeparts software.
+\\
+Gennem microprocessoren sendes tastetryk vha. \textit{C}-kode til \textit{VHDL}-koden, der indeholder en sinusgenerator.
 Derudover kan der også sendes kommandoer fra en konsol til sinusgeneratoren.
 \\
 Fra sinusgeneratoren sendes lyden ud til højtalerne via \textit{ST-bussen}, bit for bit.
 \\
 \\
 Frekvensen der afspilles vises på 7-segments displayet og på det store display vises en fyldig tekst vedr. frekvensen.
-
+\\
+\\
+Herunder ses opstillingen:
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.4]{Opstilling.png}
+\caption{Opstilling}
+\end{figure}
 
 
 %\section{Brugbare ting}

@@ -1,0 +1,5 @@
+FILE DELETED
+
+Microsoft Forefront Protection for Exchange Server removed a file since it was found to match a filter.
+File name: "Flettet sammen.rar->Flettet sammen\RTOS_HH\debug_InProgress.tmp"
+Filter name: "FILE FILTER= Blocked filetypes: *.tmp"

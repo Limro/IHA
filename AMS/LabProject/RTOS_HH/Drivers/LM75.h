@@ -1,5 +1,4 @@
 #include <avr/io.h>
-#define F_CPU 3686400
 #include <util/delay.h>
 
 #define PRESCALER 0b00000011 

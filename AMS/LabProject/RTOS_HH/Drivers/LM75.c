@@ -77,7 +77,6 @@ void PrintTemperatures(int temp2)
 // Reads the temperature register from specified sensor
 int LM75_temperature(unsigned char SensorAddress)
 {
-	int retValue;
 	i2c_start();
 	
 	unsigned char address = ((0b01001000 | SensorAddress) << 1) | 0x01;

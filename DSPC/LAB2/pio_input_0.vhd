@@ -27,16 +27,16 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
 entity pio_input_0 is 
-        port (
-              -- inputs:
-                 signal address : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
-                 signal clk : IN STD_LOGIC;
-                 signal in_port : IN STD_LOGIC_VECTOR (7 DOWNTO 0);
-                 signal reset_n : IN STD_LOGIC;
+	port (
+		-- inputs:
+		 signal address : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
+		 signal clk : IN STD_LOGIC;
+		 signal in_port : IN STD_LOGIC_VECTOR (7 DOWNTO 0);
+		 signal reset_n : IN STD_LOGIC;
 
-              -- outputs:
-                 signal readdata : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
-              );
+		-- outputs:
+		 signal readdata : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+		  );
 end entity pio_input_0;
 
 

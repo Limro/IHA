@@ -1,7 +1,28 @@
 \documentclass[Aflevering]{subfiles}
 \begin{document}
 
-\chapter{Tekniske overvejelser}
+\section{Tekniske overvejelser}
 
+\subsection{RS232-kabel}
+
+\subsection{Drivers}
+
+\subsubsection{LM75}
+
+\subsubsection{LCD162}
+
+
+\subsection{Free RTOS}
+
+\subsubsection{Implementering}
+
+\subsubsection{Overvejelser}
+Free RTOS's tasks har gjort opbygningen af projektet nemmere, men dog ikke uden udfordringer.
+Trådene har nogle uhensigtsmæssigheder som gør, at der eksempelvis kun kan skrives et begrænset antal beskeder igennem UART'en, før den pågældende task holder op med at fungere.
+
+Foruden et maksimalt antal af beskeder der kan sendes, er der tilsyneladende også et maksimalt antal tråde, som kan køre på samme tid og bruge de samme queues, hvilket også har begrænset den praktiske udførelse af projektet.
+
+
+\subsection{Ideel opbygning}
 
 \end{document} 

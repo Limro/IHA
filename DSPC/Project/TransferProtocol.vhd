@@ -28,7 +28,6 @@ entity TransferProtocol is
 end entity TransferProtocol;
 
 architecture protocol of TransferProtocol is
-	--type unsigned is array ( natural)
 	signal index : integer range 0 to 256 := 0;
 	
 begin	
@@ -52,12 +51,12 @@ begin
 				if index = to_integer(signed(avs_s1_address)) then 	-- all data written
 					index <= 0; 						-- index reset
 				else
-					ram_Data <= avs_s1_writedata;-- write data to ram
+					ram_Data <= avs_s1_writedata; 		-- write data to ram
 					index <= index +1;					-- increment index
 				end if;
 				
 				--What to play
-				if index = 0  then						-- Tone written in ram
+				if index = 0  then						-- tone written in ram
 					ram_InUse <= not ram_InUse;			-- switch which ram block to use
 				end if;				
 				

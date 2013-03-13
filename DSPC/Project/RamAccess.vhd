@@ -4,16 +4,16 @@ use ieee.std_logic_1164.all;
 entity ramAccess is
 	generic(
 		dataSize 	: natural := 32; -- bits der overføres
-		ramSize	: natural := 2048 -- ram-modul i bytes
+		ramSize		: natural := 2048 -- ram-modul i bytes
 		);
 		
 	port(
 		-- Inputs
 		clk			: in std_logic; -- The clock
-		chipSelect	: in std_logic; -- Chip selected or not
+		CS			: in std_logic; -- Chip selected or not
 		writeAddr	: in integer range 0 to ramSize-1; -- Address to write to
-		readAddr	: in integer range 0 to ramSize-1; -- Address to fread from
-		data	: in std_logic_vector(dataSize-1 downto 0); -- Data to write into ram
+		readAddr	: in integer range 0 to ramSize-1; -- Address to read from
+		writedata	: in std_logic_vector(dataSize-1 downto 0); -- Data to write into ram
 		
 		-- Outputs
 		readData	: out std_logic_vector(dataSize-1 downto 0)	-- Data to read from ram
@@ -28,8 +28,8 @@ begin
 	process (clk)
 	begin
 		if (clk'event and clk = '1') then
-			if chipSelect = '1' then
-				ram_block(writeAddr) <= data;
+			if CS = '1' then
+				ram_block(writeAddr) <= writedata;
 			end if;
 			
 			readData <= ram_block(readAddr);

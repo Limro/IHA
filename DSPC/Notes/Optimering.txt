@@ -1,0 +1,43 @@
+Optimering:
+
+Speed:
+	- Throughput (nye bits/sec)
+		Pipelining øjer throughput, men også area
+	- Latency (tid fra input til output)
+		Vigtigt for 2-way streaming.
+		Reducer logiken
+	- Timing (højeste frekvens systemet kan køre med)
+		
+	Flatten Struture:
+		- Man må ikke øje area eller latency
+			Lav case i stedet for if/else
+
+	Register Balance
+		- 
+		
+	Path Re-Ordering
+	- Forøj ikke latency eller area
+		Løses med færre gates
+		
+		
+Verilog - nyt sprog og meget nemt
+
+Area reducering:
+	- Reducer LE'er:
+		Roll-up pipeline
+			Cycler genbruger ...
+		Control Based Logic Sharing
+			Brug samme hardware
+		Resource sharing
+			Genbrug nogle blocke til, at gøre, hvad ellers gøres dobbelt
+		Reset strategi
+			Asynkron har ikke noget med rising edge at gøre
+				Laver en lang RTL-viwer
+				MÅ IKKE BRUGES TIL RESET AF RAM!!
+			Synkron har
+				Laver en enkelt RTL-viewer
+		Brug memory block
+			Undgå store arrays
+		Brug den rigtige kodestil
+		
+	- Brug synkron design

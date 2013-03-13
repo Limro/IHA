@@ -1,0 +1,27 @@
+SIkkerhed:
+
+Kigger på brugeren - sikekrheden skal være ens her
+Man kan også få visse permissions
+
+Permissions - en tilladelse til, at udføre en operation (netværk, filer osv.=
+	Der findes ca. 25 forskellige permissions
+	De samles i sæt, kendt som Named Permissions
+
+Security Evidence - flere typer af pålidelighed
+	Origin-based
+	Content-based
+
+Valg af SE
+	- OB er nem
+	- CB er ikke
+	
+Code Group - kombination af evidence, og permission sets
+
+Policy level
+	4 typer: enterprice (for et netværk), machine, user, application
+
+Stack Walk - har alt kode tilladelse?
+
+Security Exceptions
+
+Rolebased security - du skal være logget ind som ...

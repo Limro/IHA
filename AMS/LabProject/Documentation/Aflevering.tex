@@ -2,7 +2,18 @@
 \usepackage[ansinew]{inputenc} 			% Windows
 %\usepackage[latin1]{inputenc} 			% Linux og Mac
 
+\usepackage{amsmath}
+\newcommand{\IIC}{I\ensuremath{^2}C}
+
 \input{../../../Global_preamble}				% Alle indstillinger for dokumentet
+
+%Standard sti at søge efter billeder
+\graphicspath{{Figurer/}}
+
+%Speciel skrift for enkelt linje kode
+\newenvironment{code}{\fontfamily{ppl}\selectfont}{}
+
+
 
 \linespread{spacing}
 \linespread{1.5}

@@ -19,8 +19,7 @@ entity PlaySound is
 		addr					: out integer range 0 to ramSize-1;
 		data					: in std_logic_vector(dataSize downto 0);
 		ram_CS					: out std_logic_vector(1 downto 0);
-		
-		
+			
 		-- ST Bus --
 		ast_clk 				: in  std_logic;   -- 12MHz
 		ast_sink_data    		: in  std_logic_vector(23 downto 0);
@@ -37,7 +36,9 @@ end PlaySound;
 architecture behavioural of PlaySound is
 	signal tmp : std_logic_vector(1 downto 0);
 	signal read_count : signed;
+	
 begin
+	--Convertering til MM-domain 1
 	step1: process(ast_clk)
 	begin
 		if rising_edge(ast_clk) = '1' then
@@ -45,23 +46,34 @@ begin
 		end if;
 	end process step1;
 	
-		step1: process(ast_clk)
+	--Convertering til MM-domain 1
+	step1: process(ast_clk)
 	begin
 		if rising_edge(ast_clk) = '1' then
 			tmp(1) <= tmp(0);
 		end if;
 	end process step1;
 	
+	--Ram chip select
 	if tmp(1) = '0' then
-		ram_CS = "01";
+		ram_CS <= "01";
 	else
-		ram_CS = "10";
+		ram_CS <= "10";
 	end if;
 	
-	ramRead: process(clk)
+	--Ram data reading
+	ramRead: process(clk)		-- !! Must read in ST-clock doamin
 	begin
 		if rising_edge(clk) then
-			
+			if ast_source_ready = '1' then
+				if read_count = ram_to_read then 	-- Done
+					read_count := 0;				-- Reset
+				else 
+					addr <= X"0" + read_count;		-- Write addr to ram
+					ast_source_valid <= '1';
+					ast_source_data <= data;		-- Read data from ram - need a clock cycle?
+				end if;
+			end if;
 		end if;
 	end process ramRead;
 	

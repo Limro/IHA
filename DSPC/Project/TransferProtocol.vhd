@@ -61,6 +61,7 @@ begin
 				if index = to_integer(signed(address)) then -- all data written
 					index <= 0; 						-- index reset
 				else
+					ram_Addr <= index;					-- write addr to ram
 					ram_Data <= writedata; 				-- write data to ram
 					index <= index +1;					-- increment index
 				end if;

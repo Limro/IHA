@@ -83,7 +83,7 @@ begin
 			clk 			=> ast_clk,
 			data 			=> PS_Data,
 			ram_CS			=> tmp,
-			... --More is missing
+			... --More is missingi
 			);
 	
 	

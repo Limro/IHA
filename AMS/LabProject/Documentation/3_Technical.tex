@@ -19,6 +19,7 @@ For at løse dette, designede vi et 9-pins kabel, hvor pin 2 og 3 var byttet, sål
 \end{figure}
 
 
+
 \subsection{Drivers}
 Til projektet er der blevet brugt nogle drivere fra opgaverne fra AMS-forløbet, samt udleveret drivere til UART'en og LED'erne.
 Herunder er en liste over de drivere, som vi selv har arbejdet på.
@@ -29,9 +30,9 @@ Herunder er en liste over de drivere, som vi selv har arbejdet på.
 Driveren til temperatursensoren, LM75, er baseret på en opgave fra AMS-forløbet.
 Den kommunikerer med STK-500 vha. \IIC -bussen og kan i princippet måle fra $-155$\degree C til $+155$\degree C, hvilket vi dog ikke har test eller finder relevant for denne opstilling.
 
-Fra tasken \begin{code}void LM75SensorTask(void *pvParameters)\end{code} kaldes LM75-driverens funktion til, at modtage ny temperatur fra LM75-printet, vist i Listing \ref{LM75}.
+Fra tasken {\code{void LM75SensorTask(void *pvParameters)}} kaldes LM75-driverens funktion til, at modtage ny temperatur fra LM75-printet, vist i Listing \ref{LM75}.
 
-\pagebreak
+
 \begin{lstlisting}[caption=LM75's metode til at spørge på ny data, style=Code-C, label=LM75]
 int LM75_temperature(unsigned char SensorAddress)
 {
@@ -49,7 +50,7 @@ int LM75_temperature(unsigned char SensorAddress)
 \end{lstlisting}
 
 Ved at give en adressen på slaven i \IIC -bussen som parameter, startes \IIC 'en og der sendes en forespørgsel på denne slave, hvorefter denne sender sin data retur.
-Eftersom temperaturen er 9 bit lang, shiftes de to læsninger, således MSB og LSB står korrekt og returneres i en \begin{code}int\end{code}.
+Eftersom temperaturen er 9 bit lang, shiftes de to læsninger, således MSB og LSB står korrekt og returneres i en {\code{int}}.
 
 
 
@@ -57,10 +58,10 @@ Eftersom temperaturen er 9 bit lang, shiftes de to læsninger, således MSB og LSB
 
 \subsubsection{LCD162}
 
-Driveren til DragonKit, der indeholder et LCD162 display, er baseret på en opgave fra AMS-forløbet.
+Driveren til Demo Board, der indeholder et LCD162 display, er baseret på en opgave fra AMS-forløbet.
 Denne kan udskrive tekst på displayet, hvilket benyttes til at vise den aktuelle temperatur.
 
-Der udskrives hovedsagligt \begin{code}strings\end{code} og \begin{code}ints\end{code} på displayet. På Listing \ref{LCDString} og Listing \ref{LCDInt} ses hvordan disse funktioner er skrevet.
+Der udskrives hovedsagligt {\code{strings}} og {\code{ints}} på displayet. På Listing \ref{LCDString} og Listing \ref{LCDInt} ses hvordan disse funktioner er skrevet.
 
 
 \begin{lstlisting}[style=code-C++, caption=LCD162 metode til visning af en string, label=LCDString]
@@ -75,7 +76,7 @@ void LCDDispString(char* str)
 }
 \end{lstlisting}
 
-Listing \ref{LCDString} virker således, at den modtager en \begin{code}char*\end{code}, hvor den steppes igennem \begin{code}char\end{code} for \begin{code}char\end{code} og udskrives indtil hele strengen er udskrevet, eller har skrevet flere tegn end der kan være på displayet.
+Listing \ref{LCDString} virker således, at den modtager en {\code{char*}}, hvor den steppes igennem {\code{char}} for {\code{char}} og udskrives indtil hele strengen er udskrevet, eller har skrevet flere tegn end der kan være på displayet.
 
 
 \begin{lstlisting}[style=code-C++, caption=LCD162 metode til visning af en integers, label=LCDInt]
@@ -87,14 +88,93 @@ void LCDDispInteger(int i)
 }
 \end{lstlisting}
 
-Listing \ref{LCDInt} virker således, at den tager imod den ønskede \begin{code}int\end{code}, som overføres til et array med plads til 3 \begin{code}chars\end{code}\footnote{Her burde være 6 pladser, så der er plads til -32768 og op til +32767}, hvorefter \begin{code}itoa\end{code}-funktionen skriver dataen in i arrayet i decimal format.
-Til sidst udskrives det vha. \begin{code}LCDDispString\end{code}, vist i Listing \ref{LCDString}.
+Listing \ref{LCDInt} virker således, at den tager imod den ønskede {\code{int}}, som overføres til et array med plads til 3 {\code{chars}}\footnote{Her burde være 6 pladser, så der er plads til -32768 og op til +32767}, hvorefter {\code{itoa}}-funktionen skriver dataen in i arrayet i decimal format.
+Til sidst udskrives det vha. {\code{LCDDispString}}, vist i Listing \ref{LCDString}.
 
 
 \subsection{Free RTOS}
+Vha. Free RTOS, Real Time Operating System, er systemet blevet bygget med flere tasks der kan køre sideløbende\footnote{De kører vha. en scheduler, som afsætter lidt tid til hver og det forekommer derfor sideløbende}, sender beskeder til beskedkøer der håndteres vha. mutexes.
+\\
+\\
+Systemet gør brug af to tasks, {\code{LM75SensorTask}} og {\code{Lcd162Task}}.
+
+
+\subsubsection{Lcd162Task}
+Denne task bruger en LM75 driver, som er udarbejdet i en lab øvelse.
+Vi har skrevet LM75\_temperature, mens i2c\_start, i2c\_write og i2c\_stop var skrevet på forhånd.
+
+Denne task er tilknyttet en global queue, som vil indeholde de læste værdier fra LM75. 
+Således er det muligt, at videregive data til andre tasks i systemet, samtidigt med at vi sørger for, at have en form for signalering. 
+Den oprettede kø har nemlig indbygget, at receive funktionen kan sætte tasken i dvale, mens den venter på, at en værdi bliver lagt i køen.
 
 
 
-\subsection{Ideel opbygning}
+\subsubsection{Lcd162Task}
+Denne task henter temperatur værdier fra LM75 via en queue. 
+Hvis denne queue er tom, går tasken i dvale og venter på en værdi skal ankomme. 
+Den hentede værdi udskrives på LCD-displayet via funktionen {\code{LCDDispInteger}}, der er vist i Listing \ref{LCDInt}.
+
+Som funktionen er lige nu, er der en simpel {\code{if}}-sætning, som holder øje med, om temperaturen overstiger en bestemt værdi, som sætter buzzeren og GSM-modemet i gang. 
+Efter at have været sat i gang én gang, sættes et flag, således at der buzzes i intervaller af to sekunder ad gangen og GSM modem ikke sender beskeder konstant.
+Det var dog ikke den originale tanke, at disse to funktioner skulle kaldes her. Se afsnit \ref{sec:ideeal} for bedre beskrivelse.
+
+\subsubsection{Buzzer}
+Buzzeren, der sidder på Demo Board'et, kan afspille toner som advarsel.
+Tilafspilningen kan der angives en bestemt frekvens, der er bestemt ved følgende formel:
+
+\begin{align*}
+frekvens &= \frac{3686400 Hz}{2 \cdot \text{32 prescale} \cdot (1 + OCRn)} \\
+OCRn &= \frac{57600}{frekvens} - 1
+\end{align*} 
+
+
+
+\subsubsection{GSM-modemmet}
+Via UARTen på STK-500 kommunikerer vi med et GSM modul, MC35i, således vi kan sende beskeder, når der bliver målt en for høj temperaturværdi på LM75. 
+Når vi kommunikerer med modemmet, skriver vi strenge til den via vores UART driver. 
+Modemmet som standard, laver et echo til os, hvilket vil sige, at det vi skriver til den, skriver den tilbage til os, samt et respons.
+Så når vi sendte den en kommando og ventede på et respons vi kunne arbejde videre på, skulle vi være opmærksomme på, at det vi først får tilbage, er vores egen kommando. 
+Men denne echo kunne konfigureres væk, ved at skrive en simple kommando til den\footnote{{\code{ATE0\bs r}} - Alle strenge der blev skrevet til modemmet, skulle afsluttes med "\bs r", som er carriage return, for at eksekvere kommandoen.}.
+
+Når en kommando blev udført korrekt på modemmet, ville der i de fleste tilfælde blive sendt et {\code{OK}} tilbage. 
+I koden blev det derfor implementeret således, at hver gang en kommando blev sendt til modemmet, ville programmet vente på dette {\code{OK}}, før den næste kommando ville blive sendt. 
+Dette var tanken, men det var ikke det som blev udført i praksis. 
+I den endelig version af vores program, blev denne "wait for OK" erstattet med et delay, da vi aldrig fik {\code{OK}} tilbage når modemmet var tilsluttet STK-500. 
+
+Hvis vi testede præcis den samme kode, når modemmet var tilsluttet computeren via RS-232, fik vi altid det forventede respons tilbage. 
+Men når vi kørte koden på STK-500, fik vi aldrig {\code{OK}} tilbage. 
+Vi fik respons fra den, men det kom an på om {\code{echo}} var sluttet til eller fra. 
+Hvis {\code{echo}} var sluttet til og vi sendte AT af sted, for at teste om der var forbindelse, ville vi forvente at få {\code{AT\bs n OK}} tilbage.
+Hvis {\code{echo}} var taget fra og vi igen sendte {\code{AT}} af sted, ville vi forvente kun at få {\code{OK}} tilbage. 
+Men vi fik kun {\code{\bs r\bs n}} tilbage.
+Vi mistænkte vores hjemmelavet 9-PIN kabel til at være problemet, men vi fik stadig echo tilbage og kunne læse dette. 
+
+Grundet manglede tid, blev systemet til sidst implementeret med delays, selvom det ikke er optimalt. 
+Dog viste det sig funktionelt i vores tilfælde. 
+Hvis systemet skulle udvides, var dette punkt et punkt af høj prioritet.
+
+\subsection{Ideel opbygning} \label{sec:ideeal}
+
+Systemet var fra starten tænkt til, at køre flere tasks, således vi fik delt ansvaret ud så meget som muligt. 
+Dvs. alle tilsluttede komponenter(LCD162, LM75, buzzer og modemmet) alle ville få deres egne tasks. 
+Idet buzzeren og modemmet sjældent ville blive brugt, var det ideelt at holde dem i dvale, mens en anden task skulle sætte dem i gang, når de skulle bruges. 
+Derfor blev {\code{checkTempTask}} et slags mellemled imellem temperatur-delen og alarmerings-delen af systemet. 
+Figur \ref{fig:original-design} viser og beskriver meget godt det tænkte design af systemet.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.5]{Original_design}
+\caption{Ideel opbygning af systemet}
+\label{fig:original-design}
+\end{figure}
+
+
+Desværre blev systemet i sidste ende ikke som først planlagt.
+Vi stødte tit ind i hukommelses problemer, idet systemet havde 5 tasks kørende, samt besked køer. Under {\code{FreeRTOSConfig.h}} blev der ændret på {\code{TOTAL\_HEAP\_SIZE}} og {\code{MINIMAL\_STACK\_SIZE}} for at kunne få programmet til at compile, men det ændrede stadig ikke på, at det ikke ville køre når overført til MEGA32. 
+
+For at kunne få noget til at virke, blev systemet modificeret, så i stedet for fem tasks, endte det med 2 tasks - nemlig {\code{LM75SensorTask}} og {\code{Lcd162Task}}.
+
+Kigger man på figur \ref{fig:original-design} igen kan man se, at det endelige design består af den venstre del af figuren; 
+de 2 tasks, xQueue1 og LCD displayet og {\code{BuzzerTask}} og {\code{GSMTask}} blev lavet om til void funktioner.
 
 \end{document} 

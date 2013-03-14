@@ -7,11 +7,11 @@ Systemet er opbygget på STK-500 boarded, hvorpå der er tilkoblet forskellige ele
 
 	\begin{itemize}
 	\item Et LM75 print
-	\item Et Dragonkit med et LCD162 påbygget.
+	\item Et Demo Board med et LCD162 påbygget.
 	\item Et MC35i GSM modem
 	\end{itemize}
 
-På STK-500 boardet er der lagt software på, hvor styresystemet er FreeRTOS, version 7.1.0, samt drivers til Dragonkit'et, LED'er, UART'en og LM75 printet. 
+På STK-500 boardet er der lagt software på, hvor styresystemet er FreeRTOS, version 7.1.0, samt drivers til Demo Board'et, LED'er, UART'en og LM75 printet. 
 
 
 
@@ -19,9 +19,11 @@ På STK-500 boardet er der lagt software på, hvor styresystemet er FreeRTOS, vers
 \subsection{Hardware opbygning}
 Kabler er forbundet som følger:
 \\
-\begin{tabular}{|c|c|c|c|c|}
+\begin{table}[ht]
+\centering
+\begin{tabular}{c c c c c}
 \hline 
-STK500 & LM75 & Dragon kit & MC35i & STK500 \\ 
+STK500 & LM75 & Demo Board & MC35i & STK500 \\ 
 \hline 
 PORTA & • & 10 pins, Display & • & •\\ 
 %\hline 
@@ -40,6 +42,8 @@ PC8 og PC 9 & GND og VCC & • & • & •\\
 RS232 Spare & • & • & RS232 input & •\\ 
 \hline 
 \end{tabular} 
+\caption{Hardware forbindelser}
+\end{table}
 \\
 \\
 Forbindelsen mellem STK-500's RS232 Spare og MC35i er med et 9-pinskabel, hvor pin 3 og 5 (RX og TX) er byttet rundt, således at microcontrolleren sender igennem TX og MC35i modtager i sin RX.
@@ -49,7 +53,7 @@ Forbindelsen mellem STK-500's RS232 Spare og MC35i er med et 9-pinskabel, hvor p
 
 \subsection{Software design}
 
-Softwaren er, som nævnt tidligere i afsnittet, skrevet oven på Free RTOS i \textit{C}.
+Softwaren er, som nævnt tidligere i afsnittet, skrevet oven på Free RTOS i {\code{C}}.
 Free RTOS giver mulighed for, at skrive i forskellige tråde, samt kommunikation med message queues. 
 \\
 Der er lavet en tråd til, at opsamle temperaturværdierne fra LM75-printet, og sender dette til en queue. Det valideres også om temperaturen har overskrevet en givet værdi, som derefter starter en buzzer i 2 sekunder. 
@@ -58,12 +62,14 @@ Der er lavet en tråd til, at opsamle temperaturværdierne fra LM75-printet, og se
 En anden tråd kigger hele tiden på førnævnte queue, og udskriver disse værdier til displayet og sender en besked til GSM-modemet for, at sende en SMS til brugeren.
 \\
 \\
-Trådene og deres interaktion ses herunder:
-\\
+Trådene og deres interaktion ses på figur \ref{fig:two-tasks}
 
-
-
-
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=1]{Two_tasks}
+\caption{Systemets tasks}
+\label{fig:two-tasks}
+\end{figure}
 
 
 

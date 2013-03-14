@@ -1,10 +1,53 @@
 \documentclass[Aflevering]{subfiles}
 \begin{document}
 
-\chapter{Testresultater}
+\section{Testresultater}
+
+Da systemet blev udviklet, var det vigtigt at teste koden og komponenter, som tingene blev kodet og udviklet.
+Til at starte med, blev de enkelte dele af systemet testet hver for sig, så man var sikker på, den enkelte del virkede, før den blev koblet sammen med noget andet. 
+F.eks. blev det værdier fra LM75 testet via seriel forbindelse gennem RS232 til en computer. 
+Med programmet Tera Term, kan man se, om der kommer nogle værdier ud, og om de passer nogenlunde overens med realiteten. 
+De andre dele af systemet(GSM, Lcd162 og buzzer), blev også testet individuelt inden nogle tasks blev sat sammen.
+\\
+\\
+Når alle tasks virkede individuelt, var det næste skridt at koble nogle sammen. 
+For at kunne holde øje med, hvor i koden man befandt sig når der opstod fejl, blev der gjort brug af LED driveren. 
+Denne LED driver indeholder en simpelt toggle funktion, som får en bestemt LED til at skifte tilstand når den kaldes. 
+Et eksempel ses i listing \ref{lst:modem}
 
 
-
+\begin{lstlisting}[style=code-C, caption=ModemOutput med LED-test, label=lst:modem]
+void ModemOutput(void *pvParameters)
+{
+	char buffer = 0;
+	char flag = 1;
+	
+	while(1)
+	{
+		while(!CharReady())
+		{
+			vTaskDelay(100);
+			toggleLED(1);
+		}
+		LCDGotoXY(0,1);
+	
+		while(flag)
+		{
+			toggleLED(2);
+			buffer = ReadChar();
+			if(buffer == '\r')
+			{
+				flag = 0;
+			}
+			LCDDispChar(buffer);
+		}
+		
+		flag = 1;	
+		toggleLED(3);
+		vTaskDelay(50);
+	}	
+}
+\end{lstlisting}
 
 
 \end{document} 

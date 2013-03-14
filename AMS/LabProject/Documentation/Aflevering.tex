@@ -4,6 +4,7 @@
 
 \usepackage{amsmath}
 \newcommand{\IIC}{I\ensuremath{^2}C}
+\newcommand{\bs}{\textbackslash}
 
 \input{../../../Global_preamble}				% Alle indstillinger for dokumentet
 
@@ -11,20 +12,36 @@
 \graphicspath{{Figurer/}}
 
 %Speciel skrift for enkelt linje kode
-\newenvironment{code}{\fontfamily{ppl}\selectfont}{}
+%Udskriver med fonten 'Courier'
+%Mere info her: http://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
+\newcommand*{\code}{\fontfamily{pcr}\selectfont}
 
 
 
 \linespread{spacing}
 \linespread{1.5}
 
-\title{DSPC projekt}
-\author{Rasmus Bækgaard, 10893 og Anders Kielsholm, 10796}
+\title{AMS projekt}
+\author{Rasmus Bækgaard, 10893 og Kristoffer Sterndorff-Jessen, 09607}
 \date{}
 \begin{document}
 
 \maketitle
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.8]{FrontPage}
+\caption{Systemet...}
+\end{figure}
+
+
+\newpage
+
 \tableofcontents
+
+\newpage
+
+
 \subfile{1_Subject}
 \subfile{2_SystemDescription}
 \subfile{3_Technical}

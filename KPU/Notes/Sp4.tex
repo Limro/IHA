@@ -4,4 +4,52 @@
 \chapter{Redegør for .Nets komponentmodel og Lifecycle Management. Samt forklar hvorledes man kan udvikle og anvende komponenter i C\#.}
 
 
+	\begin{itemize}
+	\item Ekstra kan være .assembly sikkerhed (fra sidste tirsdag)
+	\item GC
+	\item Finalize-kø !! VIGTIG
+	\item IDispose-Pattern
+	\item Psedo memory leaks
+		\begin{itemize}
+		\item Event handlers, der ikke blive lukket ned
+		\item Normal kilde til fejl
+		\item Undgå med weak reference
+			\begin{itemize}
+			\item Reference der er så blød, der forhindrer GC i at samle den op
+			\end{itemize}
+		
+		
+		\end{itemize}
+	\item En komponent hedder "assembly" - .dll og .exe.
+	
+		\begin{itemize}
+		\item Dll har 2 typer - GAC og lokalt/privat
+		\item I COM-verden skal man fortælle hvor ting ligger - det afhjælper disse to
+		\item Strong Name (for at ligge i GAC) skal signeres
+		
+			\begin{itemize}
+			\item Alle bytes omregnes via en algoritme til HASH-værdi, der krypteres via en privat nøgle, der udgør digital signeratur, der læses tilbage i assembly
+			\item Dette kan så bruges af programmer til at tilbageberegne gyldigheden.
+			\item Strong name består af 4 dele:
+			
+				\begin{itemize}
+				\item Public key
+				\item Versionsnummer
+				\item Friendly name
+				\item Culture info
+				\end{itemize}
+			
+			
+			\end{itemize}
+		
+		
+		\end{itemize}
+	
+	
+	
+	\end{itemize}
+
+
+
+
 \end{document}

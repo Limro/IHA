@@ -1,0 +1,79 @@
+\documentclass[Notes]{subfiles}
+\begin{document}
+
+\chapter{Services}
+
+\section{AJAX}
+Asynchron javascript of xml, AJAX
+\\
+\\
+
+	\begin{itemize}
+	\item Web app til at sende data med
+	\item Sender en forspørgelse til en server, der så gør noget. Javascript manipulerer lokalt, mens nye data hentes
+	\item I stedet for HTML bruges xml på lokale maskiner.
+	\item Kom oprindeligt fra Outlook-teamet.
+	\item For en web-client bruges HTML sammen med javascript, der kan opdatere grænsefladen.
+	\end{itemize}
+	
+\section{JSON}
+
+	\begin{itemize}
+	\item Nemt at læse og skrive
+	\item Indbygget i .NET - skal dog opdateres
+	\end{itemize}
+
+\subsubsection{Web client siden}
+
+	\begin{itemize}
+	\item Man laver 'Get' og 'Post' for at hente og sende
+	\item Det kan sendes asynkront
+	\item Man har et objekt der holder styr på tilstanden
+	\end{itemize}
+	
+\subsubsection{Server siden}
+
+
+	\begin{itemize}
+	\item WCF REST
+	
+		\begin{itemize}
+		\item REpresentational State Transfer
+		\item Man har ikke set state på server - de sendes frem og tilbage. Altså en state-less server.
+		\item Man bruger HTTP-protokollen. Her angives, hvad der skal laves
+		\item Man har en mapning til operationerne - og kun disse:
+		
+			\begin{itemize}
+			\item Post - ny resource
+			\item Get - Hent
+			\item Put - Skriv nyt stadie / opdater
+			\item Delete - Slet/fjern
+			\end{itemize}
+		
+		\item jason.org
+		
+		\end{itemize}
+		
+	\item SignalR, fra Microsoft
+	
+		\begin{itemize}
+		\item Problem med http er "get - så respons"
+		\item Andre gange vil man gerne blot "post stuff"
+		\item Long running get - man laver et get, som serveren venter LANG tid med at sende retur. (halvskidt idé)
+		\item SignalR er et framework, der poster notifikationer til clienter
+		\end{itemize}
+	
+	\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+	
+\end{document} 

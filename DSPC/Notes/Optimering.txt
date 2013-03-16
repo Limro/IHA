@@ -1,9 +1,22 @@
+Metastabilitet (mister data - hverken høj eller lav)
+Data coherency (valide data)
+
+Dualport memory
+Push synkronizer - siger jeg er klar (igennem dobbelt buffer) og 
+	data læst (igennem dobbelt buffer)
+
+Gated clock er NOGO! Den siger "enable"
+
+PLL'er til clocks afhængige af hinanden
+
+
 Optimering:
 
 Speed:
 	- Throughput (nye bits/sec)
-		Pipelining øjer throughput, men også area
+		Pipelining øger throughput, men også area
 	- Latency (tid fra input til output)
+		(don't)Pipelining med færre registre - gør fmax større og latency større
 		Vigtigt for 2-way streaming.
 		Reducer logiken
 	- Timing (højeste frekvens systemet kan køre med)
@@ -13,7 +26,7 @@ Speed:
 			Lav case i stedet for if/else
 
 	Register Balance
-		- 
+		- combinatorisk skal være lige lange i tid (Se RTL-viewer)
 		
 	Path Re-Ordering
 	- Forøj ikke latency eller area

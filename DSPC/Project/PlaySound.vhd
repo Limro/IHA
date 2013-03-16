@@ -8,16 +8,16 @@ entity PlaySound is
 		ramSize		: natural := 2048 -- ram-modul i bytes
 		);
 		
-	port map(
+	port (
 		clk 					: in std_logic; -- domain clock
 		
 		-- Transfer Protokol interface
 		ram_to_play				: in std_logic; 
-		ram_to_read				: in signed;
+		ramSamples_to_read		: in std_logic_vector(7 downto 0);
 		
 		-- Ram interface
 		addr					: out integer range 0 to ramSize-1;
-		data					: in std_logic_vector(dataSize downto 0);
+		data					: in std_logic_vector(dataSize-1 downto 0);
 		ram_CS					: out std_logic_vector(1 downto 0);
 			
 		-- ST Bus --
@@ -29,52 +29,55 @@ entity PlaySound is
 		ast_source_data  		: out std_logic_vector(23 downto 0) := (others => '0');
 		ast_source_ready 		: in  std_logic;
 		ast_source_valid 		: out std_logic                     := '0';
-		ast_source_error 		: out std_logic_vector(1 downto 0)  := (others => '0');
+		ast_source_error 		: out std_logic_vector(1 downto 0)  := (others => '0')
 		);
 end PlaySound;
 
 architecture behavioural of PlaySound is
-	signal tmp : std_logic_vector(1 downto 0);
-	signal read_count : signed;
+	signal cs1, cs2		: std_logic;		-- double register
+	signal data1 		: std_logic_vector ( dataSize-1 downto 0);
+	signal read_count 	: signed;
 	
 begin
-	--Convertering til MM-domain 1
+	--Convertering til MM-domain
 	step1: process(ast_clk)
 	begin
 		if rising_edge(ast_clk) = '1' then
-			tmp(0) <= ram_tp_play;
+			cs1 <= ram_to_play;
+			cs2 <= cs1;
 		end if;
 	end process step1;
-	
-	--Convertering til MM-domain 1
-	step1: process(ast_clk)
-	begin
-		if rising_edge(ast_clk) = '1' then
-			tmp(1) <= tmp(0);
-		end if;
-	end process step1;
-	
+
 	--Ram chip select
-	if tmp(1) = '0' then
-		ram_CS <= "01";
-	else
-		ram_CS <= "10";
-	end if;
+	chipSelect: process(ast_clk)
+	begin
+		if rising_edge(ast_clk) = '1' then
+			if cs2 = '0' then
+				ram_CS <= "01";
+			else
+				ram_CS <= "10";
+			end if;
+		end if;
+	end process chipSelect;
 	
 	--Ram data reading
-	ramRead: process(clk)		-- !! Must read in ST-clock doamin
+	ramRead: process(ast_clk)
 	begin
+		ram_CS <= "00"; 						-- default nothing selected
 		if rising_edge(clk) then
 			if ast_source_ready = '1' then
-				if read_count = ram_to_read then 	-- Done
-					read_count := 0;				-- Reset
+				if signed(ramSamples_to_read) = read_count then
+					read_count := "0";
 				else 
-					addr <= X"0" + read_count;		-- Write addr to ram
+					addr <= X"0" + read_count;	-- Write addr to ram
 					ast_source_valid <= '1';
-					ast_source_data <= data;		-- Read data from ram - need a clock cycle?
+					data1 <= data;				-- Read data from ram
+					ast_source_data <= data1;
 				end if;
 			end if;
 		end if;
 	end process ramRead;
+	
+	--Play data reading
 	
 end behavioural;

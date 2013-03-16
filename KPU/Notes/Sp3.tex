@@ -4,4 +4,42 @@
 \chapter{Redegør for COM’s arkitektur og terminologi samt forklar hvorledes men kan udvikle COM komponenter med brug af ATL.}
 
 
+	\begin{itemize}
+	\item Forklar arkitekturen og terminologien
+	\item Kommunikation på højt niveau
+	\item C++ er inkapslet, men ikke binær
+	\item Det er lidt ala. klippeboard funktionalitet, så forskellige programmer kunne snakke sammen.
+	\item Binær indkapsling, så implementeringen er skjult, men kontrakter synlige i binær kode, så alle kan bruge dem
+	\item Kan bruges på tværs af programmeringssprog, Tilpas simpelt til dem
+	\item Brug virtuel metodetabel, som mapper via abstrakte kald
+	\item C kan se det som et array a metodepointere
+	\item Kan fysisk være .exe, men er normalt .dll
+	
+		\begin{itemize}
+		\item Har kun 4 simple metoder - class factory, registrer og fjern registrering, can-unload-now.
+		\item Returnere en pointer fra et interface til konkret implementering
+		\item Der kan være mange forskellige klasser, men det er kun interfacet man kan se
+		\item Man kan lave egne custom interface
+		\item Der findes mange, vi har kun set de 2 af dem. IUNKNOWN!!
+		
+			\begin{itemize}
+			\item Queue interface - kalder AddRef
+			\item AddRef - tæller en intern counter for, hvor mange der peger på dig.
+			\item Release - kaldes, når intern counter for referencer er 0.
+			\item Se 03b-Com-introduktion, slide 5 og 6
+			\end{itemize}
+		
+		
+		\end{itemize}
+	
+	\item ATL - værktøj til at lave bøvl
+		\begin{itemize}
+		\item Der er en wizard (nogle få) - Templates og Libraries
+		\end{itemize}
+	
+	
+	
+	\end{itemize}
+
+
 \end{document}

@@ -4,4 +4,21 @@
 \chapter{Redegør for ideerne bag komponentbaseret programudvikling og redegør for udvikling og brug af DLL-filer i C++ samt forklar hvorledes men kan udvikle og anvende plugins i C++.}
 
 
+
+	\begin{itemize}
+	\item Husk principper
+	\item Dynamic Linking
+	
+		\begin{itemize}
+		\item Bare have .h til compiler og .lib-fil til linker (simpelt)
+		\item Angiv navn og resten med LoadLibrary og GetProcAddress() (advanceret)
+		\end{itemize}
+	
+	
+	\item Udskiftligt uden byg
+	\item Plugins (igen LoadLibrary() og "sent binding") - lav til factory message der returnerer en instance (Smart). Send måske en callback med ned, så man har et håndtag i .exefilen (meget advanceret)
+	\end{itemize}
+
+
+
 \end{document}

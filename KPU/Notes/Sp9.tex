@@ -3,4 +3,33 @@
 
 \chapter{Redegør for hvorledes man designer og implementerer Windows RT komponenter.}
 
+
+	\begin{itemize}
+	\item Central - 3 dele
+	\item Windows Store - PCL (her skal snakkes). 
+	
+		\begin{itemize}
+		\item Vælg hvilke platforme du vil køre
+		\item Kan kun C\# og VB (managed sprog)
+		\item Skal bygger x86, x64 og ARM
+		\end{itemize}
+	
+	
+	\item Windwos RT
+	
+		\begin{itemize}
+		\item Disse kan bruges i Javascript og andre ikke-.Net sprog
+		\item Dine biblioteker er meget begrænset
+		\item Oprettes på runtime
+		\item Typesystemet er skruet sådan sammen, at det kan projekteres til andre sprog
+		\item Meget mere begrænset end de to andre - minus javascript
+		\item Benytter COM internt, men Queueinterface er moderniseret.
+		\item Indeholder Metadata
+		\end{itemize}
+	
+	
+	\item Store Class Library, (sdll) DLL og kører kun på WRTMeget simpel
+	\end{itemize}
+
+
 \end{document}

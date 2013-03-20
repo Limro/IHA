@@ -21,7 +21,7 @@ For at løse dette, designede vi et 9-pins kabel, hvor pin 2 og 3 var byttet, sål
 
 
 \subsection{Drivers}
-Til projektet er der blevet brugt nogle drivere fra opgaverne fra AMS-forløbet, samt udleveret drivere til UART'en og LED'erne.
+Til projektet er der blevet brugt nogle drivere fra opgaverne fra AMS-forløbet, samt udleverede drivere til UART'en og LED'erne.
 Herunder er en liste over de drivere, som vi selv har arbejdet på.
 
 
@@ -89,7 +89,7 @@ void LCDDispInteger(int i)
 }
 \end{lstlisting}
 
-Listing \ref{LCDInt} virker således, at den tager imod den ønskede \code{int}, som overføres til et array med plads til 3 \code{chars}\footnote{Her burde være 6 pladser, så der er plads til -32768 og op til +32767}, hvorefter \code{itoa}-funktionen skriver dataen in i arrayet i decimal format.
+Listing \ref{LCDInt} virker således, at den tager imod den ønskede \code{int}, som overføres til et array med plads til 3 \code{chars}\footnote{Her burde være 6 pladser, så der er plads til -32768 og op til +32767}, hvorefter \code{itoa}-funktionen skriver dataen ind i arrayet i decimal format.
 Til sidst udskrives det vha. \code{LCDDispString}, vist i Listing \ref{LCDString}.
 
 

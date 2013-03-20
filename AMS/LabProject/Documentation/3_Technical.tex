@@ -110,6 +110,7 @@ Som funktionen er lige nu, er der en simpel \code{if}-sætning, som holder øje me
 Efter at have været sat i gang én gang, sættes et flag, således at der buzzes i intervaller af to sekunder ad gangen og GSM modem ikke sender beskeder konstant.
 Det var dog ikke den originale tanke, at disse to funktioner skulle kaldes her. Se afsnit \ref{sec:ideeal} for bedre beskrivelse.
 
+\pagebreak
 \subsubsection{Buzzer}
 Buzzeren, der sidder på Demo Board'et, kan afspille toner som advarsel.
 Til afspilningen kan der angives en bestemt frekvens, der er bestemt ved følgende formel:
@@ -168,5 +169,6 @@ For at kunne få noget til at virke, blev systemet modificeret, så i stedet for f
 
 Kigger man på figur \ref{fig:original-design} igen kan man se, at det endelige design består af den venstre del af figuren; 
 de 2 tasks, xQueue1 og LCD displayet og \code{BuzzerTask} og \code{GSMTask} blev lavet om til void funktioner.
+
 
 \end{document} 

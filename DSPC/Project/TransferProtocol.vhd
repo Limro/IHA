@@ -4,7 +4,8 @@ use ieee.numeric_std.all;
 
 entity TransferProtocol is
 	generic(
-		dataSize 		: natural := 32 -- bits der overføres
+		dataSize 	: natural := 32; -- bits der overføres
+		ramSize		: natural := 2048 -- ram-modul i bytes
 		);
 		
 	port(
@@ -19,13 +20,13 @@ entity TransferProtocol is
 		readdata        	: out std_logic_vector(dataSize-1 downto 0);  	-- Avalon rd data, previous 15 downto 0
 		
 		-- Ram interface
-		ram_Addr			: out std_logic_vector(dataSize-1 downto 0); -- Ret her til signed
+		ram_Addr			: out integer range 0 to ramSize-1; 			
 		ram_Data			: out std_logic_vector(dataSize-1 downto 0);
 		ram_cs_module0		: out std_logic;
 		ram_cs_module1		: out std_logic;
 		
 		-- PlaySound interface
-		ram_to_play			: out std_logic; 
+		ram_to_play			: buffer std_logic; 
 		ramSamples_to_read	: out std_logic_vector(7 downto 0)
 		);
 end entity TransferProtocol;
@@ -41,6 +42,7 @@ begin
 			ram_cs_module0 <= '0';
 			ram_cs_module1 <= '0';
 			ramSamples_to_read <= "00000000";
+			
 		elsif rising_edge(clk) then
 			ram_cs_module0 <= '0';
 			ram_cs_module1 <= '0';
@@ -49,18 +51,18 @@ begin
 				
 					-- Write on ram module 0
 					if address = "00000000" then			
-						ramSamples_to_read <= writedata;
+						ramSamples_to_read <= writedata(7 downto 0);
 						index <= 0;
 						ram_to_play <= '1';
 						
 					-- Write on ram module 1
 					elsif address = "00000001" then			
-						ramSamples_to_read <= writedata;
+						ramSamples_to_read <= writedata(7 downto 0);
 						index <= 0;
 						ram_to_play <= '0';
 						
 					--What to write on ram module
-					elsif address = "00000002" then			
+					elsif address = "00000010" then	 	-- binary, address = 2
 						ram_Addr <= index;				-- write addr to ram
 						ram_Data <= writedata; 			-- write data to ram
 						index <= index + 1;				-- increment index				    

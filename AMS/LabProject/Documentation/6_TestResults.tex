@@ -3,17 +3,29 @@
 
 \section{Testresultater}
 
-Da systemet blev udviklet, var det vigtigt at teste koden og komponenter, som tingene blev kodet og udviklet.
-Til at starte med, blev de enkelte dele af systemet testet hver for sig, så man var sikker på, den enkelte del virkede, før den blev koblet sammen med noget andet. 
-F.eks. blev det værdier fra LM75 testet via seriel forbindelse gennem RS232 til en computer. 
-Med programmet Tera Term, kan man se, om der kommer nogle værdier ud, og om de passer nogenlunde overens med realiteten. 
-De andre dele af systemet(GSM, Lcd162 og buzzer), blev også testet individuelt inden nogle tasks blev sat sammen.
+Da systemet blev udviklet, var det vigtigt at teste koden og komponenter, som tingene blev kodet og udviklet. 
+Til at starte med blev de enkelte dele af systemet testet hver for sig, så man var sikker på, den enkelte del virkede, før den blev koblet sammen med andre dele. 
+F.eks. blev værdierne fra LM75 testet via seriel forbindelse gennem RS232 til en computer. 
+Med programmet \textit{Tera Term}, kan man se, om der kommer nogle værdier ud, og om de passer nogenlunde overens med realiteten. 
+De andre dele af systemet(GSM, LCD162 og Buzzer), blev også testet individuelt inden nogle tasks blev sat sammen.
 \\
 \\
-Når alle tasks virkede individuelt, var det næste skridt at koble nogle sammen. 
-For at kunne holde øje med, hvor i koden man befandt sig når der opstod fejl, blev der gjort brug af LED driveren. 
-Denne LED driver indeholder en simpelt toggle funktion, som får en bestemt LED til at skifte tilstand når den kaldes. 
-Et eksempel ses i listing \ref{lst:modem}
+Når alle tasks virkede individuelt, var det næste skridt at teste nogle samlet. 
+For at kunne holde øje med, hvor i koden man befandt sig, når der opstod fejl, var det brugbart at bruge LED-driveren. 
+Denne indeholder en simpelt toggle funktion, som får en bestemt LED til at skifte når denne kaldes. En test kan ses for funktionen \code{ModemOutput} på Listing \ref{lst:modem}.
+Hvis programmet skulle gå i stå et sted, i f.eks. en deadlock, er det også muligt at se, hvor i programmet man er kommet til via LEDs.
+\\
+\\
+Alle individuelle tests, samt enkelte sammensatte tests virkede efter hensigten. 
+Problemet kom først, da alt blev sat sammen. 
+Det var dog ikke rigtigt muligt at teste her, pga. hukommelses plads. 
+Selvom nogle ændringer blev lavet i \code{FreeRTOSconfig.h} filen, så det kunne compile, ville programmet slet ikke starte på Mega32-processoren.
+\\
+\\
+For at sikre, at den indbyggede timing i FreeRTOS ikke blev ændret af tilføjet kode\footnote{FreeRTOS bruger Timer1 til at schedulere med.}, blev der oprettet en simpel task. 
+Den task havde kun én funktion, nemlig at toggle LED 0 hvert 100 millisekund. 
+Herved var det hurtigt at opdage, hvis programmet fra start ikke kørte, hvis programmet pludseligt ændrede timing eller programmet gik i stå. 
+Denne task blev slettet, da hukommelsespladsen løb op.
 
 
 \begin{lstlisting}[style=code-C, caption=ModemOutput med LED-test, label=lst:modem]

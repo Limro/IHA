@@ -1,0 +1,37 @@
+\begin{thebibliography}{1}
+  \providebibliographyfont{name}{}%
+  \providebibliographyfont{lastname}{}%
+  \providebibliographyfont{title}{\emph}%
+  \providebibliographyfont{jtitle}{\btxtitlefont}%
+  \providebibliographyfont{etal}{\emph}%
+  \providebibliographyfont{journal}{}%
+  \providebibliographyfont{volume}{}%
+  \providebibliographyfont{ISBN}{\MakeUppercase}%
+  \providebibliographyfont{ISSN}{\MakeUppercase}%
+  \providebibliographyfont{url}{\url}%
+  \providebibliographyfont{numeral}{}%
+  \expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
+
+\expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
+\bibitem {manual3}
+\btxnamefont {\btxlastnamefont {Engine}, Siemens\btxfnamespacelong
+  Cellular}\btxauthorcolon\ \btxtitlefont {TC35i Terminal}.
+\newblock Siemens, \btxeditionnumlong {01.05}{},
+  \btxprintmonthyear{.}{7}{2003}{long}.
+\newblock DocId: TC35i T HD v01.05.
+
+\bibitem {manual2}
+\btxnamefont {\btxlastnamefont {Engine}, Siemens\btxfnamespacelong
+  Cellular}\btxauthorcolon\ \btxtitlefont {TC35i Terminal}.
+\newblock Siemens, \btxeditionnumlong {02.07}{},
+  \btxprintmonthyear{.}{1}{2004}{long}.
+\newblock DocId: TC35i_ATC_V02.07.
+
+\bibitem {manual1}
+\btxnamefont {\btxlastnamefont {kel}}\btxauthorcolon\ \btxtitlefont {AT Command
+  Set (GSM 07.07, GSM 07.05, Siemens specific commands) for the SIEMENS Mobile
+  Phones S35i,C35i, M35i}.
+\newblock Siemens, \btxeditionnumlong {1.0}{},
+  \btxprintmonthyear{.}{3}{2000}{long}.
+
+\end{thebibliography}

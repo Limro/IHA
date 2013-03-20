@@ -2,6 +2,9 @@
 \usepackage[ansinew]{inputenc} 			% Windows
 %\usepackage[latin1]{inputenc} 			% Linux og Mac
 
+%Skrifttype til dansk
+\usepackage{lmodern}
+
 \usepackage{amsmath}
 \newcommand{\IIC}{I\ensuremath{^2}C}
 \newcommand{\bs}{\textbackslash}
@@ -11,12 +14,26 @@
 %Standard sti at søge efter billeder
 \graphicspath{{Figurer/}}
 
+%URL kommandoer og sidetal farve
+%Kaldes med \url{www...}
+%\usepackage{color} %Skal også bruges
+\usepackage{hyperref}
+\hypersetup{ 
+	colorlinks	= true, 	% false: boxed links; true: colored links
+    urlcolor	= blue,		% color of external links
+    linkcolor	= black, 	% color of page numbers
+}
+
 %Speciel skrift for enkelt linje kode
 %Udskriver med fonten 'Courier'
 %Mere info her: http://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
-\newcommand*{\code}{\fontfamily{pcr}\selectfont}
+\newcommand{\code}[1]{{\fontfamily{pcr}\selectfont #1}}
 
+%MicroType - skal forbedre læseoplevelsen iform af orddeling
+%\usepackage{microtype}
 
+%Citering
+\usepackage{cite}
 
 \linespread{spacing}
 \linespread{1.5}
@@ -45,10 +62,11 @@
 \subfile{1_Subject}
 \subfile{2_SystemDescription}
 \subfile{3_Technical}
-\subfile{4_Knowledge}
-\subfile{5_Appendix}
 \subfile{6_TestResults}
 \subfile{7_Conclusion}
+\newpage
+\subfile{5_Appendix}
+
 
 
 \end{document}

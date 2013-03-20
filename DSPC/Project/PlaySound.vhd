@@ -42,7 +42,7 @@ begin
 	--Convertering til MM-domain
 	step1: process(ast_clk)
 	begin
-		if rising_edge(ast_clk) = '1' then
+		if rising_edge(ast_clk) then
 			cs1 <= ram_to_play;
 			cs2 <= cs1;
 		end if;
@@ -51,7 +51,7 @@ begin
 	--Ram chip select
 	chipSelect: process(ast_clk)
 	begin
-		if rising_edge(ast_clk) = '1' then
+		if rising_edge(ast_clk) then
 			if cs2 = '0' then
 				ram_CS <= "01";
 			else
@@ -67,9 +67,9 @@ begin
 		if rising_edge(clk) then
 			if ast_source_ready = '1' then
 				if signed(ramSamples_to_read) = read_count then
-					read_count := "0";
+					read_count <= "0";
 				else 
-					addr <= X"0" + read_count;	-- Write addr to ram
+					addr <= to_integer(read_count);	-- Write addr to ram
 					ast_source_valid <= '1';
 					data1 <= data;				-- Read data from ram
 					ast_source_data <= data1;

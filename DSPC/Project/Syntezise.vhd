@@ -17,8 +17,8 @@ entity Syntezise is
     avs_s1_read            	: in  std_logic;                     -- Avalon rd
     avs_s1_chipselect      	: in  std_logic;                     -- Avalon cs
     avs_s1_address         	: in  std_logic_vector(7 downto 0);  -- Avalon address
-    avs_s1_writedata       	: in  std_logic_vector(15 downto 0); -- Avalon wr data
-    avs_s1_readdata			: out std_logic_vector(15 downto 0); -- Avalon rd data
+    avs_s1_writedata       	: in  std_logic_vector(dataSize-1 downto 0); -- Avalon wr data
+    avs_s1_readdata			: out std_logic_vector(dataSize-1 downto 0); -- Avalon rd data
 	
 	-- ST Bus --
     ast_clk 				: in  std_logic;   -- 12MHz
@@ -34,10 +34,11 @@ entity Syntezise is
 end Syntezise;
 
 architecture mixStyle of Syntezise is
-	signal TP_Addr, TP_Data, PS_Addr, PS_Data, r0, r1 	: integer range 0 to ramSize-1;
-	signal TP_cs0, TP_cs1, PS_cs0, PS_cs1, TP_ps		: std_logic;
-	signal tmp 											: std_logic_vector(1 downto 0); --Ram selection for PlaySound
-	signal TP_samplesToRead 							: std_logic_vector(7 downto 0); --Ram samples to read
+	signal TP_Addr,  PS_Addr						: integer range 0 to ramSize-1;
+	signal TP_cs0, TP_cs1, PS_cs0, PS_cs1, TP_ps	: std_logic;
+	signal tmp 										: std_logic_vector(1 downto 0); --Ram selection for PlaySound
+	signal TP_samplesToRead 						: std_logic_vector(7 downto 0); --Ram samples to read
+	signal TP_Data, PS_Data, r0, r1 				: std_logic_vector(dataSize-1 downto 0);
 
 begin
 	TP: entity work.TransferProtocol 
@@ -53,7 +54,7 @@ begin
 			readdata       	=> avs_s1_readdata,
 
 			-- Ram interface
-			ram_Addr		=> std_logic_vector(to_signed(TP_Addr, 32)),
+			ram_Addr		=> TP_Addr,
 			ram_Data		=> TP_Data,
 			ram_cs_module0	=> TP_cs0,
 			ram_cs_module1	=> TP_cs1,
@@ -61,12 +62,12 @@ begin
 			-- PlaySound interface
 			ram_to_play 	=>	TP_ps,
 			ramSamples_to_read => TP_samplesToRead
-			);
+		);
 
 	
-	PS_Data <= r0 when tmp = "01" else
-			   r1 when tmp = "10" else
-			   (others => '0');
+	PS_Data <= 	r0 when tmp = "01" else
+				r1 when tmp = "10" else
+				(others => '0');
 	
 	Ram0: entity work.ramAccess
 	port map( 	

@@ -17,8 +17,8 @@ På STK-500 boardet er der lagt software på, hvor styresystemet er FreeRTOS, vers
 
 
 \subsection{Hardware opbygning}
-Kabler er forbundet som følger:
-\\
+Kabler er forbundet som vist på tabel \ref{tbl:oversigt}.
+
 \begin{table}[ht]
 \centering
 \begin{tabular}{c c c c c}
@@ -43,18 +43,19 @@ RS232 Spare & • & • & RS232 input & •\\
 \hline 
 \end{tabular} 
 \caption{Hardware forbindelser}
+\label{tbl:oversigt}
 \end{table}
-\\
-\\
-Forbindelsen mellem STK-500's RS232 Spare og MC35i er med et 9-pinskabel, hvor pin 3 og 5 (RX og TX) er byttet rundt, således at microcontrolleren sender igennem TX og MC35i modtager i sin RX.
+
+Forbindelsen mellem STK-500's RS232 Spare og MC35i er med et 9-pinskabel, hvor pin 2 og 3 (RX og TX) er byttet rundt, således at microcontrolleren sender igennem TX og MC35i modtager i sin RX.
 
 
 
+\pagebreak
 
 \subsection{Software design}
 
-Softwaren er, som nævnt tidligere i afsnittet, skrevet oven på Free RTOS i {\code{C}}.
-Free RTOS giver mulighed for, at skrive i forskellige tråde, samt kommunikation med message queues. 
+Softwaren er, som nævnt tidligere i afsnittet, skrevet oven på FreeRTOS i \textit{C}.
+FreeRTOS giver mulighed for, at skrive i forskellige tråde, samt kommunikation med message queues. 
 \\
 Der er lavet en tråd til, at opsamle temperaturværdierne fra LM75-printet, og sender dette til en queue. Det valideres også om temperaturen har overskrevet en givet værdi, som derefter starter en buzzer i 2 sekunder. 
 \\
@@ -62,7 +63,7 @@ Der er lavet en tråd til, at opsamle temperaturværdierne fra LM75-printet, og se
 En anden tråd kigger hele tiden på førnævnte queue, og udskriver disse værdier til displayet og sender en besked til GSM-modemet for, at sende en SMS til brugeren.
 \\
 \\
-Trådene og deres interaktion ses på figur \ref{fig:two-tasks}
+Trådene og deres interaktion ses på figur \ref{fig:two-tasks}.
 
 \begin{figure}[hbtp]
 \centering

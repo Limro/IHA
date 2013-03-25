@@ -36,7 +36,7 @@ end PlaySound;
 architecture behavioural of PlaySound is
 	signal cs1, cs2		: std_logic;		-- double register
 	signal data1 		: std_logic_vector ( dataSize-1 downto 0);
-	signal read_count 	: signed;
+	signal read_count 	: signed (ramSize-1 downto 0);
 	
 begin
 	--Convertering til MM-domain
@@ -63,16 +63,16 @@ begin
 	--Ram data reading
 	ramRead: process(ast_clk)
 	begin
-		ram_CS <= "00"; 						-- default nothing selected
+		--ram_CS <= "00"; 						-- default nothing selected
 		if rising_edge(clk) then
 			if ast_source_ready = '1' then
 				if signed(ramSamples_to_read) = read_count then
-					read_count <= "0";
+					read_count <= (others => '0');
 				else 
 					addr <= to_integer(read_count);	-- Write addr to ram
 					ast_source_valid <= '1';
 					data1 <= data;				-- Read data from ram
-					ast_source_data <= data1;
+					ast_source_data <= data1(23 downto 0);
 				end if;
 			end if;
 		end if;

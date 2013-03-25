@@ -54,8 +54,10 @@ begin
 		if rising_edge(ast_clk) then
 			if cs2 = '0' then
 				ram_CS <= "01";
-			else
+			elsif cs2 = '1' then
 				ram_CS <= "10";
+			else
+				ram_CS <= "00"; 		-- default nothing selected
 			end if;
 		end if;
 	end process chipSelect;
@@ -63,7 +65,6 @@ begin
 	--Ram data reading
 	ramRead: process(ast_clk)
 	begin
-		--ram_CS <= "00"; 						-- default nothing selected
 		if rising_edge(clk) then
 			if ast_source_ready = '1' then
 				if signed(ramSamples_to_read) = read_count then

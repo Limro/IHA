@@ -27,7 +27,7 @@ begin
 
 	process (clk)
 	begin
-		if (clk'event and clk = '1') then
+		if rising_edge(clk) then
 			if CS = '1' then
 				ram_block(writeAddr) <= writedata;
 			end if;

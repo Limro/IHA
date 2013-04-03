@@ -37,7 +37,7 @@ architecture protocol of TransferProtocol is
 begin	
 	getData: process(clk, reset) 
 	begin	
-	    if reset = '0' then
+	    if reset = '1' then
 			ram_to_play <= '0';
 			ram_cs_module0 <= '0';
 			ram_cs_module1 <= '0';

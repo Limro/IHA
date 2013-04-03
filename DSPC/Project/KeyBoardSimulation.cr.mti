@@ -1,0 +1,55 @@
+C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity TransferProtocol
+-- Compiling architecture protocol of TransferProtocol
+
+} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ramAccess_tb
+-- Compiling architecture bench of ramAccess_tb
+-- Compiling configuration transferProtocol_tb_cfg
+-- Loading entity ramAccess_tb
+-- Loading architecture bench of ramAccess_tb
+-- Loading entity ramAccess
+
+} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd {0 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity PlaySound_tb
+-- Compiling architecture bench of PlaySound_tb
+** Error: C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd(105): Illegal type conversion from std.STANDARD.NATURAL to ieee.NUMERIC_STD.SIGNED (numeric to array).
+** Error: C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd(155): VHDL Compiler exiting
+
+} {9.0 11.0} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity transferProtocol_tb
+-- Compiling architecture bench of transferProtocol_tb
+-- Compiling configuration transferProtocol_tb_cfg
+-- Loading entity transferProtocol_tb
+-- Loading architecture bench of transferProtocol_tb
+-- Loading entity TransferProtocol
+
+} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ramAccess
+-- Compiling architecture rtl of ramAccess
+
+} {} {}}

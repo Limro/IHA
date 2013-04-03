@@ -10,6 +10,7 @@ entity PlaySound is
 		
 	port (
 		clk 					: in std_logic; -- domain clock
+		reset					: in std_logic;
 		
 		-- Transfer Protokol interface
 		ram_to_play				: in std_logic; 
@@ -18,7 +19,7 @@ entity PlaySound is
 		-- Ram interface
 		addr					: out integer range 0 to ramSize-1;
 		data					: in std_logic_vector(dataSize-1 downto 0);
-		ram_CS					: out std_logic_vector(1 downto 0);
+		ram_CS					: out std_logic_vector(1 downto 0) := "00";
 			
 		-- ST Bus --
 		ast_clk 				: in  std_logic;   -- 12MHz
@@ -34,51 +35,63 @@ entity PlaySound is
 end PlaySound;
 
 architecture behavioural of PlaySound is
-	signal cs1, cs2		: std_logic;		-- double register
-	signal data1 		: std_logic_vector ( dataSize-1 downto 0);
-	signal read_count 	: signed (ramSize-1 downto 0);
 	
-begin
+	signal read_count : signed (10 downto 0);
+begin	
 	--Convertering til MM-domain
-	step1: process(ast_clk)
-	begin
-		if rising_edge(ast_clk) then
-			cs1 <= ram_to_play;
-			cs2 <= cs1;
-		end if;
-	end process step1;
+	-- step1: process(ast_clk)
+	-- begin
+		-- if rising_edge(ast_clk) then
+			-- cs1 <= ram_to_play;
+			-- cs2 <= cs1;
+		-- end if;
+	-- end process step1;
 
 	--Ram chip select
-	chipSelect: process(ast_clk)
+	chipSelect: process(clk)
+		variable cs1, cs2		: std_logic;		-- double register
 	begin
-		if rising_edge(ast_clk) then
+		
+		if rising_edge(clk) then
+			cs1 := ram_to_play;
+			cs2 := cs1;
+			
 			if cs2 = '0' then
 				ram_CS <= "01";
 			elsif cs2 = '1' then
 				ram_CS <= "10";
 			else
-				ram_CS <= "00"; 		-- default nothing selected
+				ram_CS <= "11"; 		-- default nothing selected
 			end if;
 		end if;
 	end process chipSelect;
 	
 	--Ram data reading
-	ramRead: process(ast_clk)
+	ramRead: process(ast_clk, reset)
+		--variable read_count : signed (ramSize-1 downto 0);
+		variable data1 		: std_logic_vector ( dataSize-1 downto 0);
 	begin
-		if rising_edge(clk) then
+		if reset = '1' then
+			read_count <= (others => '0');
+		
+		elsif rising_edge(ast_clk) then
+		
 			if ast_source_ready = '1' then
-				if signed(ramSamples_to_read) = read_count then
+				read_count <= read_count + 1;
+				
+				addr <= to_integer(read_count);	-- Write addr to ram
+				data1 := data;				-- Read data from ram
+				ast_source_data <= data1(23 downto 0);
+				ast_source_valid <= '1';
+
+				
+				if read_count >= signed(ramSamples_to_read) then
 					read_count <= (others => '0');
-				else 
-					addr <= to_integer(read_count);	-- Write addr to ram
-					ast_source_valid <= '1';
-					data1 <= data;				-- Read data from ram
-					ast_source_data <= data1(23 downto 0);
 				end if;
+			else
+				ast_source_valid <= '0';
 			end if;
 		end if;
 	end process ramRead;
-	
-	--Play data reading
 	
 end behavioural;

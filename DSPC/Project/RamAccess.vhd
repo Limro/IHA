@@ -33,6 +33,7 @@ begin
 			for i in 0 to ramSize-1 loop
 				ram_block(i) <= (others => '0');
 			end loop;
+			readData <= (others => '0');
 			
 		elsif rising_edge(clk) then
 			if CS = '1' then

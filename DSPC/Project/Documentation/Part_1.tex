@@ -1,55 +1,40 @@
 \documentclass[Aflevering]{subfiles}
 \begin{document}
 
-\chapter{Problemstilling}
+\section{Problemstilling}
 
 
-Med dette projekt ønskes at opnå et system, hvor en bruger med et tastatur kan genere toner fra tastetryk.
-Tastaturet vil være forbundet til DE2-boardet, som behandler inputtet fra tastaturet og generer tonerne på baggrund af disse.
+Med dette projekt ønskes at opnå et system, hvor en bruger med et tastatur kan generere toner fra et tastetryk.
+Tastaturet vil være forbundet til DE2-boardet, som behandler inputtet fra tastaturet og genererer tonerne på baggrund af disse.
 \\
 \\
 Systemet opbygges således, at et tastatur med PS/2-udgang forbindes til DE2-boardet, hvorpå der sidder en FPGA af typen \textit{Cyclone II}.
 Tilsluttet til DE2-boardet er også et par højtalere forbundet via mini-jack stik.
 \\
 \\
-Intentionen med opstillingen er, at der ved et tastetryk på tasteturet bliver genereret en tone, en sinuskurve, som adskiller sig for hver knap.
+Intentionen med opstillingen er, at der ved et tastetryk på tasteturet bliver genereret en tone, en sinuskurve, som er forskellig for hver knap.
 \\
 \\
 Der oprettes en microprocessor, som bl.a. har forbindelse til driveren for tasteturet. 
 Driveren til tasteturet er tredjeparts software.
 \\
-Gennem microprocessoren sendes tastetryk vha. \textit{C}-kode til \textit{VHDL}-koden, der indeholder en sinusgenerator.
-Derudover kan der også sendes kommandoer fra en konsol til sinusgeneratoren.
+Microprocessoren sender vha. en sinusgenerator værdierne for en tone fra C-kode til VHDL-koden.
+Værdierne gemmes i DE2-boardets ram-moduler, hvorfra den kan afspilles.
+Derudover kan der også trykkes på 3 af DE2-boardets knapper, der tilsammen vil udgøre en tone..
 \\
-Fra sinusgeneratoren sendes lyden ud til højtalerne via \textit{ST-bussen}, bit for bit.
-\\
-\\
-Frekvensen der afspilles vises på 7-segments displayet og på det store display vises en fyldig tekst vedr. frekvensen.
+Fra ram-modulerne sendes lyden ud til højtalerne via \textit{ST-bussen}, bit for bit.
 \\
 \\
-Herunder ses opstillingen:
+Frekvensen der afspilles vises på 7-segments-displayet og på det store display vises en fyldig tekst vedr. frekvensen.
+\\
+\\
+På figur \ref{fig:opstilling} ses opstillingen:
 \begin{figure}[hbtp]
 \centering
 \includegraphics[scale=0.4]{Opstilling.png}
 \caption{Opstilling}
+\label{fig:opstilling}
 \end{figure}
-
-
-Gruppens medlemmer:
-
-	\begin{itemize}
-	\item Rasmus Bækgaard, 10893
-	\item Anders Kielsholm, 10796
-	\end{itemize}
-
-%\section{Brugbare ting}
-%C:\altera\12.1\ip\University_Program\Input_Output\
-%altera_up_avalon_ps2\doc
-
-%C:\altera\12.1\University_Program\
-%NiosII_Computer_Systems\DE2\DE2_Media_Computer\doc
-
-
 
 
 \end{document} 

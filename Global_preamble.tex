@@ -33,6 +33,7 @@
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
 \lstdefinestyle{Code}
 {
+	title 			= Kodeudsnit,
 	keywordstyle	= \bfseries\ttfamily\color[rgb]{0,0,1},
 	identifierstyle	= \ttfamily,
 	commentstyle	= \color[rgb]{0.133,0.545,0.133},
@@ -58,6 +59,7 @@
 	framexrightmargin	= 0pt, %6pt
 %	framexbottommargin	= 4pt,
 }
+\renewcommand{\lstlistingname}{Kodeudsnit}
 
 %Custom length for caption over lstlisting
 %The caption must be 6 pt shorter
@@ -97,6 +99,9 @@
 %Grader tegn
 \newcommand{\degree}{\ensuremath{^\circ}}
 
+%Backslash tegnet
+\newcommand{\bs}{\textbackslash}
+
 
 
 %\makepagestyle{plain}
@@ -128,3 +133,7 @@
 %Brug \cite{...} til angivelse
 \usepackage{cite}
 
+%FixMe pakken viser små kommentarer, hvor der skal rettes
+%Brug med følgende: \fxnote{det her skal uddybes!}
+%Se liste over alle sixMe's: \listoffixmes
+\usepackage[footnote,draft,danish,silent,nomargin]{fixme}

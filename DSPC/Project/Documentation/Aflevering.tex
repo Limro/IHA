@@ -1,16 +1,56 @@
-\documentclass[12pt,a4paper]{memoir}
+\documentclass[12pt,a4paper]{article}
 \usepackage[ansinew]{inputenc} 			% Windows
 %\usepackage[latin1]{inputenc} 			% Linux og Mac
 
-\input{../../../Global_preamble}				% Alle indstillinger for dokumentet
+% Alle indstillinger for dokumenter
+\input{../../../Global_preamble}				
 
+%MicroType - skal forbedre læseoplevelsen iform af orddeling
+%\usepackage{microtype}
+
+% Specifikee instillinger for dokumentet
+\input{DSPC-settings}
+
+
+%Overskrift, forfatter og dato
 \title{DSPC projekt}
 \author{Rasmus Bækgaard, 10893 og Anders Kielsholm, 10796}
-\date{}
+\date{09-04-2013}
+
+
 \begin{document}
 \maketitle
+
+%Indsæt billede?
+
+\newpage
 \tableofcontents
+
+
+
+
+\newpage
 \subfile{Part_1}
+
+\newpage
+\subfile{Part_2}
+
+\newpage
+\subfile{Part_3}
+
+\newpage
+\appendix
+
+\nocite{*}
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+
+\section{Appendix: Waves}
+
+
+\newpage
+
 
 
 \end{document}

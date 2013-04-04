@@ -23,10 +23,6 @@ entity PlaySound is
 			
 		-- ST Bus --
 		ast_clk 				: in  std_logic;   -- 12MHz
-		ast_sink_data    		: in  std_logic_vector(23 downto 0);
-		ast_sink_ready   		: out std_logic                     := '0';  -- Value at startup
-		ast_sink_valid   		: in  std_logic;
-		ast_sink_error   		: in  std_logic_vector(1 downto 0);
 		ast_source_data  		: out std_logic_vector(23 downto 0) := (others => '0');
 		ast_source_ready 		: in  std_logic;
 		ast_source_valid 		: out std_logic                     := '0';
@@ -63,10 +59,18 @@ begin
 	begin
 		if reset_n = '0' then
 			read_count <= (others => '0');
+			addr <= 0;
+			ram_CS <= (others => '1');
+			ast_source_data <= (others => '0');
+			ast_source_valid <= '0';
+			ast_source_error <= (others => '0');
+			data1 <= (others => '0');
+			cs1 <= 'X';
+			cs2 <= 'X';
 			
 		elsif rising_edge(ast_clk) then
 		
-			if ast_source_ready = '1' and (ram_to_play = '1' or ram_to_play = '0') then
+			if ast_source_ready = '1' then --and (ram_to_play = '1' or ram_to_play = '0') then
 				read_count <= read_count + 1;
 				
 				addr <= to_integer(read_count);	-- Write addr to ram

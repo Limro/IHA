@@ -36,12 +36,17 @@ architecture protocol of TransferProtocol is
 	
 begin	
 	getData: process(clk, reset_n) 
+		variable ramSamples_to_write : std_logic_vector(7 downto 0) := (others => '0');
 	begin	
 	    if reset_n = '0' then
-			ram_to_play <= '0';
 			ram_cs_module0 <= '0';
 			ram_cs_module1 <= '0';
 			ramSamples_to_read <= "00000000";
+			ram_to_play <= '1';
+			ramSamples_to_write := (others => '0');
+			readdata <= (others => '0');
+			ram_Addr <= 0;
+			ram_Data <= (others => '0');
 			
 		elsif rising_edge(clk) then
 			ram_cs_module0 <= '0';
@@ -51,18 +56,11 @@ begin
 				
 					-- Write on ram module 0
 					if address = "00000000" then			
-						ramSamples_to_read <= writedata(7 downto 0);
+						ramSamples_to_write := writedata(7 downto 0);
 						index <= 0;
-						ram_to_play <= '1';
-						
-					-- Write on ram module 1
-					elsif address = "00000001" then			
-						ramSamples_to_read <= writedata(7 downto 0);
-						index <= 0;
-						ram_to_play <= '0';
 						
 					--What to write on ram module
-					elsif address = "00000010" then	 	-- binary, address = 2
+					elsif address = "00000001" then	 	-- binary, address = 2
 						ram_Addr <= index;				-- write addr to ram
 						ram_Data <= writedata; 			-- write data to ram
 						index <= index + 1;				-- increment index				    
@@ -73,6 +71,11 @@ begin
 						else							-- Second ram module in use
 							ram_cs_module0 <= '1';
 						end if;
+					end if;
+					
+					if index = to_integer(signed(ramSamples_to_write)) then
+						ramSamples_to_read <= ramSamples_to_write;
+						ram_to_play <= not ram_to_play;						
 					end if;
 					
 				end if;

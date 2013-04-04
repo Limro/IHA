@@ -21,10 +21,6 @@ entity Syntezise is
 	
 	-- ST Bus --
     ast_clk 				: in  std_logic;   -- 12MHz
-    ast_sink_data    		: in  std_logic_vector(23 downto 0);
-    ast_sink_ready   		: out std_logic                     := '0';  -- Value at startup
-    ast_sink_valid   		: in  std_logic;
-    ast_sink_error   		: in  std_logic_vector(1 downto 0);
     ast_source_data  		: out std_logic_vector(23 downto 0) := (others => '0');
     ast_source_ready 		: in  std_logic;
     ast_source_valid 		: out std_logic                     := '0';
@@ -98,10 +94,6 @@ begin
 			data 				=> PS_Data,
 			ram_CS				=> tmp,
 			ast_clk 			=> ast_clk,
-			ast_sink_data    	=> ast_sink_data,
-			ast_sink_ready   	=> ast_sink_ready,
-			ast_sink_valid   	=> ast_sink_valid,
-			ast_sink_error   	=> ast_sink_error,
 			ast_source_data  	=> ast_source_data,
 			ast_source_ready 	=> ast_source_ready,
 			ast_source_valid 	=> ast_source_valid,

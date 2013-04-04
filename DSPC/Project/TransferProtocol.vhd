@@ -11,7 +11,7 @@ entity TransferProtocol is
 	port(
 		-- Avalon Interface
 		clk     			: in  std_logic;                     			-- Avalon Clk
-		reset				: in  std_logic;                     			-- Avalon Reset
+		reset_n				: in  std_logic;                     			-- Avalon Reset
 		WE           		: in  std_logic;                     			-- Avalon wr
 		RE            		: in  std_logic;                     			-- Avalon rd
 		CS      			: in  std_logic;                     			-- Avalon cs
@@ -35,9 +35,9 @@ architecture protocol of TransferProtocol is
 	signal index : integer range 0 to 256 := 0;
 	
 begin	
-	getData: process(clk, reset) 
+	getData: process(clk, reset_n) 
 	begin	
-	    if reset = '1' then
+	    if reset_n = '0' then
 			ram_to_play <= '0';
 			ram_cs_module0 <= '0';
 			ram_cs_module1 <= '0';
@@ -74,7 +74,7 @@ begin
 							ram_cs_module0 <= '1';
 						end if;
 					end if;
-												
+					
 				end if;
 			end if;
 		end if;

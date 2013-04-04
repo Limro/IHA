@@ -5,7 +5,6 @@ use ieee.numeric_std.all;
 	
 entity Syntezise is
 	generic(
-		dataSize 	: natural := 32; 	-- bits der overfï¿½res
 		ramSize		: natural := 2048 	-- ram-modul i bytes
 		);
 
@@ -17,8 +16,8 @@ entity Syntezise is
     avs_s1_read            	: in  std_logic;                     -- Avalon rd
     avs_s1_chipselect      	: in  std_logic;                     -- Avalon cs
     avs_s1_address         	: in  std_logic_vector(7 downto 0);  -- Avalon address
-    avs_s1_writedata       	: in  std_logic_vector(dataSize-1 downto 0); -- Avalon wr data
-    avs_s1_readdata			: out std_logic_vector(dataSize-1 downto 0); -- Avalon rd data
+    avs_s1_writedata       	: in  std_logic_vector(31 downto 0); -- Avalon wr data
+    avs_s1_readdata			: out std_logic_vector(31 downto 0); -- Avalon rd data
 	
 	-- ST Bus --
     ast_clk 				: in  std_logic;   -- 12MHz
@@ -38,14 +37,14 @@ architecture mixStyle of Syntezise is
 	signal TP_cs0, TP_cs1, PS_cs0, PS_cs1, TP_ps	: std_logic;
 	signal tmp 										: std_logic_vector(1 downto 0); --Ram selection for PlaySound
 	signal TP_samplesToRead 						: std_logic_vector(7 downto 0); --Ram samples to read
-	signal TP_Data, PS_Data, r0, r1 				: std_logic_vector(dataSize-1 downto 0);
+	signal TP_Data, PS_Data, r0, r1 				: std_logic_vector(31 downto 0);
 
 begin
 	TP: entity work.TransferProtocol 
 	port map(
 			--Avalon Slave interface
 			clk				=> csi_clockreset_clk,
-			reset 			=> csi_clockreset_reset_n,
+			reset_n			=> csi_clockreset_reset_n,
 			WE           	=> avs_s1_write,
 			RE            	=> avs_s1_read,
 			CS      		=> avs_s1_chipselect,
@@ -72,7 +71,7 @@ begin
 	Ram0: entity work.ramAccess
 	port map( 	
 			clk 			=> csi_clockreset_clk,
-			reset 			=> csi_clockreset_reset_n,
+			reset_N			=> csi_clockreset_reset_n,
 			CS 				=> TP_cs0,
 			writeAddr 		=> TP_Addr,
 			writedata		=> TP_Data,
@@ -82,7 +81,7 @@ begin
 	Ram1: entity work.ramAccess
 	port map( 	
 			clk 			=> csi_clockreset_clk,
-			reset 			=> csi_clockreset_reset_n,
+			reset_n			=> csi_clockreset_reset_n,
 			CS		 		=> TP_cs1,
 			writeAddr 		=> TP_Addr,
 			writedata		=> TP_Data,
@@ -92,7 +91,7 @@ begin
 	PS: entity work.PlaySound 
 	port map(
 			clk 				=> csi_clockreset_clk,
-			reset 				=> csi_clockreset_reset_n,
+			reset_n				=> csi_clockreset_reset_n,
 			ram_to_play			=> TP_ps,
 			ramSamples_to_read 	=> TP_samplesToRead,
 			addr				=> PS_Addr,

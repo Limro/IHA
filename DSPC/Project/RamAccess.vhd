@@ -11,7 +11,7 @@ entity ramAccess is
 	port(
 		-- Inputs
 		clk			: in std_logic; -- The clock
-		reset		: in std_logic;
+		reset_n		: in std_logic;
 		CS			: in std_logic; -- Chip selected or not
 		writeAddr	: in integer range 0 to ramSize-1; -- Address to write to
 		readAddr	: in integer range 0 to ramSize-1; -- Address to read from
@@ -27,9 +27,9 @@ architecture rtl of ramAccess is
 	signal ram_block : MEM; --Ram Module
 begin
 
-	process (clk, reset)
+	process (clk, reset_n)
 	begin
-		if reset = '1' then
+		if reset_n = '0' then
 			for i in 0 to ramSize-1 loop
 				ram_block(i) <= (others => '0');
 			end loop;

@@ -4,7 +4,7 @@ K3
 cModel Technology
 dC:\Users\BecksLaptop\Documents\IHA\DSPC\LAB8
 Eplaysound
-Z0 w1365064406
+Z0 w1365076335
 Z1 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
 Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
 Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
@@ -13,24 +13,24 @@ Z5 8C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound.vhd
 Z6 FC:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound.vhd
 l0
 L5
-VIci5FWZl<doKd68mJ]ON[0
+VHGVnIKbN46:HNB0GKjHIY2
 Z7 OV;C;10.1b;51
 32
-Z8 !s108 1365064572.684000
+Z8 !s108 1365076736.183000
 Z9 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound.vhd|
 Z10 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound.vhd|
 Z11 o-work work -2002 -explicit -O0
 Z12 tExplicit 1
-!s100 J078a[1TN;G4mH:IbhiC10
+!s100 gG4zM@;mO[Z?`VARCUj4T3
 !i10b 1
 Abehavioural
 R1
 R2
 R3
-Z13 DEx4 work 9 playsound 0 22 Ici5FWZl<doKd68mJ]ON[0
-l41
+Z13 DEx4 work 9 playsound 0 22 HGVnIKbN46:HNB0GKjHIY2
+l42
 L37
-V4oKFCV[CaBQzPMncgR0i63
+VC[82objE]b[;jQcaWClB?0
 R7
 32
 R8
@@ -38,7 +38,7 @@ R9
 R10
 R11
 R12
-!s100 ?f2WGBa=mX=b0Egg][7d[2
+!s100 82[ZQoNQ95JXGB_cVgN1H3
 !i10b 1
 Eplaysound_tb
 Z14 w1365003147
@@ -53,7 +53,7 @@ L5
 VohdXEmkHaHISo=YE`8S=V3
 R7
 32
-Z17 !s108 1365064573.167000
+Z17 !s108 1365076736.634000
 Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd|
 Z19 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd|
 R11
@@ -80,7 +80,6 @@ R12
 Cplaysound_tb_cfg
 Z21 abench
 ePlaySound_tb
-R13
 DAx4 work 12 playsound_tb 5 bench 22 P[295[`G]NJhgHoQ02SaG2
 R1
 R2
@@ -103,7 +102,7 @@ R12
 !s100 leL>_`PHX9WG`e_:]Kdd70
 !i10b 0
 Eplaysoundandram_tb
-Z22 w1365064538
+Z22 w1365076500
 R1
 R2
 R3
@@ -117,7 +116,7 @@ V]Rm=@GeobJ0?4YC<R764l2
 R7
 32
 !i10b 1
-Z25 !s108 1365064573.263000
+Z25 !s108 1365076736.730000
 Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_ram_tb.vhd|
 Z27 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_ram_tb.vhd|
 R11
@@ -129,8 +128,8 @@ R3
 Z28 DEx4 work 18 playsoundandram_tb 0 22 ]Rm=@GeobJ0?4YC<R764l2
 l97
 L8
-Vn6DWUMIjTCfNh;Q_@BF0E2
-!s100 5fkQ8YbYV;kL=i=E35X[Z1
+Z29 V9@[`a4ZhOJCcP>3YG^b;N0
+Z30 !s100 A[lTBVAOW7a7ekT^:Vh`Q2
 R7
 32
 !i10b 1
@@ -142,9 +141,9 @@ R12
 Cplaysoundandram_tb_cfg
 R21
 ePlaySoundAndRam_tb
-Z29 DEx4 work 9 ramaccess 0 22 3J492`;HI^XGmhoQVTS=H0
+Z31 DEx4 work 9 ramaccess 0 22 >E>:Pl:zNLo9C7JRj=]Li3
 R13
-DAx4 work 18 playsoundandram_tb 5 bench 22 n6DWUMIjTCfNh;Q_@BF0E2
+DAx4 work 18 playsoundandram_tb 5 bench 22 9@[`a4ZhOJCcP>3YG^b;N0
 R1
 R2
 R3
@@ -154,9 +153,9 @@ R4
 R23
 R24
 l0
-L332
+L328
 VB2QH>2SPDim4_`T<`H7::2
-!s100 6lImIIUJ_OaMk@g`V=R9e1
+!s100 fJkSGN2@gSn6mfZ_IM8Tb3
 R7
 32
 !i10b 0
@@ -166,58 +165,58 @@ R27
 R11
 R12
 Eramaccess
-Z30 w1365001369
+Z32 w1365076420
 R1
 R2
 R3
 R4
-Z31 8C:\Users\BecksLaptop\Documents\IHA\DSPC\Project\RamAccess.vhd
-Z32 FC:\Users\BecksLaptop\Documents\IHA\DSPC\Project\RamAccess.vhd
+Z33 8C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess.vhd
+Z34 FC:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess.vhd
 l0
 L5
-V3J492`;HI^XGmhoQVTS=H0
+V>E>:Pl:zNLo9C7JRj=]Li3
 R7
 32
-Z33 !s108 1365064572.784000
-Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:\Users\BecksLaptop\Documents\IHA\DSPC\Project\RamAccess.vhd|
-Z35 !s107 C:\Users\BecksLaptop\Documents\IHA\DSPC\Project\RamAccess.vhd|
+Z35 !s108 1365076736.276000
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess.vhd|
+Z37 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess.vhd|
 R11
 R12
-!s100 LVE_6PD@]M0a]7?_cdc>00
+!s100 @Bhj^7[1SFlF@^F6[6jZe1
 !i10b 1
 Artl
 R1
 R2
 R3
-R29
+R31
 l28
 L25
-V]DbNEPVJL>653RA?Z:c6V1
+V7N=6nkaK`OE32zZ6Z^ogB2
 R7
 32
-R33
-R34
 R35
+R36
+R37
 R11
 R12
-!s100 GRNj5DzcOYUUjnFm44FOo1
+!s100 cn^H8B?3ck;:MjZeelJ6j3
 !i10b 1
 Eramaccess_tb
-Z36 w1364897990
+Z38 w1364897990
 R1
 R2
 R3
 R4
-Z37 8C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd
-Z38 FC:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd
+Z39 8C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd
+Z40 FC:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd
 l0
 L5
 Vk2iEFn0NmCPI`jPWSZikH2
 R7
 32
-Z39 !s108 1365064573.064000
-Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd|
-Z41 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd|
+Z41 !s108 1365076736.540000
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd|
+Z43 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd|
 R11
 R12
 !s100 Ke0_3[d>8C?GWmW`idSB:1
@@ -226,15 +225,15 @@ Abench
 R1
 R2
 R3
-Z42 DEx4 work 12 ramaccess_tb 0 22 k2iEFn0NmCPI`jPWSZikH2
+Z44 DEx4 work 12 ramaccess_tb 0 22 k2iEFn0NmCPI`jPWSZikH2
 l42
 L8
 V5d3j<EUK1N08B6l>6XFOU3
 R7
 32
-R39
-R40
 R41
+R42
+R43
 R11
 R12
 !s100 gUYg^4Td`Ydl@;K?P1Y302
@@ -260,58 +259,58 @@ R12
 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/Syntezise.vhd|
 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/Syntezise.vhd|
 Etransferprotocol
-Z43 w1364307278
+Z45 w1365076393
 R1
 R2
 R3
 R4
-Z44 8C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd
-Z45 FC:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd
+Z46 8C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd
+Z47 FC:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd
 l0
 L5
-VPRX]4n<b<Q4fC^9TDgYm=2
+VMaQ>8C0483L6PDazX>T:k3
 R7
 32
-Z46 !s108 1365064572.878000
-Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd|
-Z48 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd|
+Z48 !s108 1365076736.366000
+Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd|
+Z50 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd|
 R11
 R12
-!s100 ST_VHdlA1`Dm>CUbkSN]^0
+!s100 blRSHEj51cIBAz2;TW^z<2
 !i10b 1
 Aprotocol
 R1
 R2
 R3
-DEx4 work 16 transferprotocol 0 22 PRX]4n<b<Q4fC^9TDgYm=2
+DEx4 work 16 transferprotocol 0 22 MaQ>8C0483L6PDazX>T:k3
 l37
 L34
-V60V1XEz75nITe[lE8N^]V1
+V=JRmcM1Q>27>GQk9H7:f^1
 R7
 32
-R46
-R47
 R48
+R49
+R50
 R11
 R12
-!s100 YFOH>C<;REDPS1>PA3bAe1
+!s100 lTU>24l1mH5iR4oPAT2XC0
 !i10b 1
 Etransferprotocol_tb
-Z49 w1364311679
+Z51 w1364311679
 R1
 R2
 R3
 R4
-Z50 8C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd
-Z51 FC:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd
+Z52 8C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd
+Z53 FC:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd
 l0
 L5
 V?:Y[aSPX@VnNIm1?O6nMc1
 R7
 32
-Z52 !s108 1365064572.965000
-Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd|
-Z54 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd|
+Z54 !s108 1365076736.448000
+Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd|
+Z56 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd|
 R11
 R12
 !s100 =I_ZkYOTnn21f`_lJ`8Z20
@@ -326,9 +325,9 @@ L8
 VOIYDnn6^DcVDX9b3E=KWX1
 R7
 32
-R52
-R53
 R54
+R55
+R56
 R11
 R12
 !s100 a[N[QK;9gQ:jnR>HGa=GG3
@@ -336,24 +335,24 @@ R12
 Ctransferprotocol_tb_cfg
 R21
 eramAccess_tb
-R29
+R31
 DAx4 work 12 ramaccess_tb 5 bench 22 5d3j<EUK1N08B6l>6XFOU3
 R1
 R2
 R3
-R42
-R36
-R4
-R37
+R44
 R38
+R4
+R39
+R40
 l0
 L99
 V@hJ:;QF@A4WHLz0XL@j_10
 R7
 32
-R39
-R40
 R41
+R42
+R43
 R11
 R12
 !s100 HBVjnKBSjR2=9hHlC`9Y@1

@@ -10,7 +10,7 @@ entity PlaySound is
 		
 	port (
 		clk 					: in std_logic; -- domain clock
-		reset					: in std_logic;
+		reset_n					: in std_logic;
 		
 		-- Transfer Protokol interface
 		ram_to_play				: in std_logic; 
@@ -37,16 +37,16 @@ end PlaySound;
 architecture behavioural of PlaySound is
 	
 	signal read_count 	: signed (10 downto 0);
-	signal data1		: std_logic_vector ( dataSize-1 downto 0);
+	signal data1		: std_logic_vector ( dataSize-1 downto 0) := (others => '0');
+	signal cs1, cs2		: std_logic;		-- double register
 begin	
 	--Ram chip select
 	chipSelect: process(clk)
-		variable cs1, cs2		: std_logic;		-- double register
-	begin
 		
+	begin
 		if rising_edge(clk) then
-			cs1 := ram_to_play;
-			cs2 := cs1;
+			cs1 <= ram_to_play;
+			cs2 <= cs1;
 			
 			if cs2 = '0' then
 				ram_CS <= "01";
@@ -59,9 +59,9 @@ begin
 	end process chipSelect;
 	
 	--Ram data reading
-	ramRead: process(ast_clk, reset)
+	ramRead: process(ast_clk, reset_n)
 	begin
-		if reset = '1' then
+		if reset_n = '0' then
 			read_count <= (others => '0');
 			
 		elsif rising_edge(ast_clk) then
@@ -73,7 +73,6 @@ begin
 				data1 <= data;				-- Read data from ram
 				ast_source_data <= data1(23 downto 0);
 				ast_source_valid <= '1';
-
 				
 				if read_count >= signed(ramSamples_to_read)-1 then
 					read_count <= (others => '0');

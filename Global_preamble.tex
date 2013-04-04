@@ -1,8 +1,11 @@
 \usepackage[T1]{fontenc} 
 \usepackage[english, danish]{babel}				% Dansk ordbog
 \usepackage{amsmath, amsfonts, amssymb} % Matematiske pakker
-\usepackage{graphicx} 					% Grafiksk pakke
-\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry} % Sidejustering
+
+%Grafiksk pakke
+\usepackage{graphicx} 
+%Sidejustering (margin)
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry} 
 
 \usepackage{enumerate}					% Forskellige indryk
 
@@ -12,12 +15,9 @@
 % Allow a single subfile to be built as its own (without master document)
 \usepackage{subfiles} 
 
-%----------------------------------------------------------
-% Følgende er til tabeller
-%----------------------------------------------------------
-%\usepackage{booktabs, cellspace} 		
-%\addtolength\cellspacetoplimit{10pt}
-%\addtolength\cellspacebottomlimit{10pt}
+
+%Skrifttype til dansk, så det ser pænere ud
+\usepackage{lmodern}
 
 
 
@@ -104,3 +104,27 @@
 %\makeoddfoot{plain}{}{\thepage}{}
 
 %\chapterstyle{article}
+
+
+%URL kommandoer og sidetal farve
+%Kaldes med \url{www...}
+%\usepackage{color} %Skal også bruges
+\usepackage{hyperref}
+\hypersetup{ 
+	colorlinks	= true, 	% false: boxed links; true: colored links
+    urlcolor	= blue,		% color of external links
+    linkcolor	= black, 	% color of page numbers
+}
+
+
+
+%Speciel skrift for enkelt linje kode
+%Udskriver med fonten 'Courier'
+%Mere info her: http://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
+\newcommand{\code}[1]{{\fontfamily{pcr}\selectfont #1}}
+
+
+%Citerings pakke.
+%Brug \cite{...} til angivelse
+\usepackage{cite}
+

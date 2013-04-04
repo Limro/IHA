@@ -15,7 +15,7 @@ architecture bench of PlaySoundAndRam_tb is
 			
 		port (
 			clk 					: in std_logic; -- domain clock
-			reset					: in std_logic;
+			reset_n					: in std_logic;
 			
 			-- Transfer Protokol interface
 			ram_to_play				: in std_logic; 
@@ -48,7 +48,7 @@ architecture bench of PlaySoundAndRam_tb is
 		port(
 			-- Inputs
 			clk			: in std_logic; -- The clock
-			reset 		: in std_logic;
+			reset_n		: in std_logic;
 			CS			: in std_logic; -- Chip selected or not
 			writeAddr	: in integer range 0 to ramSize-1; -- Address to write to
 			readAddr	: in integer range 0 to ramSize-1; -- Address to read from
@@ -63,7 +63,7 @@ architecture bench of PlaySoundAndRam_tb is
 	constant ramSize 	: natural 								:= 2048;
 	
 	signal clk			: std_logic								:= '0'; -- The clock
-	signal reset		: std_logic;
+	signal reset_n		: std_logic;
 	signal CS0, CS1		: std_logic								:= '0'; -- Chip selected or not
 	signal writeAddr	: integer range 0 to ramSize-1			:= 0; -- Address to write to
 	signal readAddr		: integer range 0 to ramSize-1			:= 0; -- Address to read from
@@ -101,7 +101,7 @@ begin
 			ramSize 			=> ramSize )
 		port map (
 			clk 				=> clk,
-			reset 				=> reset,
+			reset_n				=> reset_n,
 			ram_to_play 		=> ram_to_play,
 			ramSamples_to_read 	=> ramSamples_to_read,
 			addr 				=> addr,
@@ -123,7 +123,7 @@ begin
 			ramSize 	=> ramSize )
 		port map (
 			clk 		=> clk,
-			reset 		=> reset,
+			reset_n		=> reset_n,
 			CS 			=> CS0,
 			writeAddr 	=> writeAddr,
 			readAddr 	=> addr,
@@ -136,7 +136,7 @@ begin
 			ramSize 	=> ramSize )
 		port map (
 			clk 		=> clk,
-			reset 		=> reset,
+			reset_n		=> reset_n,
 			CS			=> CS1,
 			writeAddr 	=> writeAddr,
 			readAddr 	=> addr,
@@ -146,7 +146,7 @@ begin
 	clk <= not clk after bitperiod/2;
 	ast_clk <= not ast_clk after ast_bitperiod/2;
 	
-	reset <= '1', '0' after 50 ns;
+	reset_n <= '0', '1' after 50 ns;
 	
 	data <= data1 when ram_CS = "01" else
 			data2 when ram_CS = "10" else
@@ -155,7 +155,7 @@ begin
 	stimulus : process
 	begin
 		
-		wait until reset = '0';
+		wait until reset_n = '0';
 		
 		wait for bitperiod;
 		ast_source_ready <= '0';				--Not ready to read
@@ -184,7 +184,7 @@ begin
 		CS0 <= '0';
 		CS1 <= '1';
 		writeAddr <= 0;
-		writeData <= "00000000000000000000000000000011";
+		writeData <= "00000000000000000000000000001011";
 		
 		wait for bitperiod;
 		writeAddr <= 1;
@@ -199,12 +199,8 @@ begin
 		writeData <= "00000000000000000000000000001110";
 		
 		wait for bitperiod;
-		writeAddr <= 1;
-		writeData <= "00000000000000000000000000001111";
-		
-		wait for bitperiod;
-		--CS0 <= '1';
-		--CS1 <= '0';
+		CS0 <= '0';
+		CS1 <= '0';
 		ram_to_play <= '1';	
 		
 		

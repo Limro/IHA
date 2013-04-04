@@ -72,6 +72,7 @@ begin
 	Ram0: entity work.ramAccess
 	port map( 	
 			clk 			=> csi_clockreset_clk,
+			reset 			=> csi_clockreset_reset_n,
 			CS 				=> TP_cs0,
 			writeAddr 		=> TP_Addr,
 			writedata		=> TP_Data,
@@ -81,6 +82,7 @@ begin
 	Ram1: entity work.ramAccess
 	port map( 	
 			clk 			=> csi_clockreset_clk,
+			reset 			=> csi_clockreset_reset_n,
 			CS		 		=> TP_cs1,
 			writeAddr 		=> TP_Addr,
 			writedata		=> TP_Data,
@@ -89,7 +91,8 @@ begin
 	
 	PS: entity work.PlaySound 
 	port map(
-			clk 				=> ast_clk,
+			clk 				=> csi_clockreset_clk,
+			reset 				=> csi_clockreset_reset_n,
 			ram_to_play			=> TP_ps,
 			ramSamples_to_read 	=> TP_samplesToRead,
 			addr				=> PS_Addr,

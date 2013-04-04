@@ -1,11 +1,25 @@
-C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd
+C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_ram_tb.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_ram_tb.vhd
 Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
--- Compiling entity TransferProtocol
--- Compiling architecture protocol of TransferProtocol
+-- Compiling entity PlaySoundAndRam_tb
+-- Compiling architecture bench of PlaySoundAndRam_tb
+-- Compiling configuration PlaysoundAndRam_tb_cfg
+-- Loading entity PlaySoundAndRam_tb
+-- Loading architecture bench of PlaySoundAndRam_tb
+-- Loading entity PlaySound
+-- Loading entity ramAccess
+
+} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity PlaySound
+-- Compiling architecture behavioural of PlaySound
 
 } {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess_tb.vhd
 Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
@@ -20,18 +34,16 @@ Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Loading architecture bench of ramAccess_tb
 -- Loading entity ramAccess
 
-} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd {0 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd
+} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol.vhd
 Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
--- Compiling entity PlaySound_tb
--- Compiling architecture bench of PlaySound_tb
-** Error: C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd(105): Illegal type conversion from std.STANDARD.NATURAL to ieee.NUMERIC_STD.SIGNED (numeric to array).
-** Error: C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd(155): VHDL Compiler exiting
+-- Compiling entity TransferProtocol
+-- Compiling architecture protocol of TransferProtocol
 
-} {9.0 11.0} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd
+} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/TransferProtocol_tb.vhd
 Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -44,12 +56,17 @@ Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Loading architecture bench of transferProtocol_tb
 -- Loading entity TransferProtocol
 
-} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/RamAccess.vhd
+} {} {}} C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd {1 {vcom -work work -2002 -explicit C:/Users/BecksLaptop/Documents/IHA/DSPC/Project/PlaySound_tb.vhd
 Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity ramAccess
--- Compiling architecture rtl of ramAccess
+-- Loading package NUMERIC_STD
+-- Compiling entity PlaySound_tb
+-- Compiling architecture bench of PlaySound_tb
+-- Compiling configuration PlaySound_tb_cfg
+-- Loading entity PlaySound_tb
+-- Loading architecture bench of PlaySound_tb
+-- Loading entity PlaySound
 
 } {} {}}

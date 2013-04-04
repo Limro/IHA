@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use IEEE.Numeric_Std.all;
 
 entity ramAccess is
 	generic(
@@ -10,6 +11,7 @@ entity ramAccess is
 	port(
 		-- Inputs
 		clk			: in std_logic; -- The clock
+		reset		: in std_logic;
 		CS			: in std_logic; -- Chip selected or not
 		writeAddr	: in integer range 0 to ramSize-1; -- Address to write to
 		readAddr	: in integer range 0 to ramSize-1; -- Address to read from
@@ -25,9 +27,14 @@ architecture rtl of ramAccess is
 	signal ram_block : MEM; --Ram Module
 begin
 
-	process (clk)
+	process (clk, reset)
 	begin
-		if rising_edge(clk) then
+		if reset = '1' then
+			for i in 0 to ramSize-1 loop
+				ram_block(i) <= (others => '0');
+			end loop;
+			
+		elsif rising_edge(clk) then
 			if CS = '1' then
 				ram_block(writeAddr) <= writedata;
 			end if;

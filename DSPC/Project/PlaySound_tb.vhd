@@ -95,62 +95,44 @@ begin
 	clk <= not clk after bitperiod/2;
 	ast_clk <= not ast_clk after ast_bitperiod/2;
 	
-	reset <= '1', '0' after 125 ns;
+	reset <= '1', '0' after 50 ns;
 	
-	newAddr : process(addr)
-		variable counter : natural := 0;
-	begin
-		counter := counter + 1;
-		
-		data <= std_logic_vector(signed(counter));
-	end process;
+	-- newAddr : process(addr)
+		-- variable counter : integer(8 downto 0);
+	-- begin
+		-- counter := counter + 1;
+		-- data <= std_logic_vector(to_unsigned(counter, dataSize));
+	-- end process;
 		
 	stimulus : process
 	begin
-		wait until reset = '0';
-		
-		ram_to_play <= '0';			
-		--Select ram module0
+		ram_to_play <= '0';	
 		ramSamples_to_read <= (others => '0'); 	--Reset data counter
 		data <= (others => '0');				--Reset data
 		ast_source_ready <= '0';				--Not ready to read
 		
-		
-		wait for bitperiod;
-		
-		
+		wait until reset = '0';		
 		ramSamples_to_read <= "00000010";		--Set data to read = 2
-		data <= "00000000000000000000000000000001"; --Data = 1
+		
+		wait until falling_edge(ast_clk);
 		ast_source_ready <= '1';				--Ready to play
 		
-		--wait for bitperiod;
+		wait for bitperiod;
+		data <= "00000000000000000000000000000001";
 		
-		--assert (ast_source_data = "000000000000000000000001")
-		--report "ast_source_data not set correct" severity error;
-		
-		wait until ast_clk = '1';
-	
-		--ast_source_ready <= '0';
-		
-		wait for ast_bitperiod /2;
-		
-		data <= "00000000000000000000000000000111"; --Data = 7
+		wait until falling_edge(ast_clk);
 		ast_source_ready <= '0';
 		
 		wait for ast_bitperiod * 3;
-		
 		ast_source_ready <= '1';
 		
+		wait until rising_edge(ast_clk);
+		data <= "00000000000000000000000000000011";
+		
 		wait until falling_edge(ast_clk);
-		
 		ast_source_ready <= '0';
-		
-		--assert (ast_source_data = "000000000000000000000111")
-		--report "ast_source_data not set correct" severity error;
-		
+				
 		wait;
-		
-		
 	end process;
 end;
 

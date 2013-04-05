@@ -1,0 +1,36 @@
+\documentclass[Aflevering]{subfiles}
+\begin{document}
+
+\subsection{test}
+For at sikre, at VHDL-koden virkede som ønsket, er koden testet med programmet ModelSim 10.1b, hvor hvert komponent er testet individuelt samt en integreringstest for 2 af komponenterne.
+
+Koden er testet således, at alle linjer er blevet afprøvet, så der ikke er en en linje der vil sende underlig data ud.
+Ligeledes er der testet flere scenarier, hvor forskellige værdier sendes til og fra de forskellige komponenter.
+
+Grundet den mængde af data der sendes til ram-modulerne for hver frekvens der ønskes afspillet, at der ikke testet nær det antal der sendes over, men blot 
+
+Første test er af komponentet \textit{TransportProtocol}, der står for overførelsen af data fra microcontrolleren til ram-modulerne.
+Herunder ses et wave-udsnit af \textit{TransportProtocol}'s testbench:
+
+\testbench{tb-wave-TP, Waveforms for \textit{TransportProtocol}, fig:TP}.
+\\
+\\
+På figur\fxnote{Få fat i referencen} foretages der først et reset af komponentet (0-50 ns), hvorefter der skrives hvor mange samples der kommer (60-70 ns), værdierne skrives med 10 ns mellemrum (70-100 ns).
+Ved 95 ns bliver den sidste værdi overført og det angives hvor mange samples der er overført.
+Alt dette skrives til \textit{ram\_cs\_module0}.
+
+
+Efter 160 ns aktiveres \textit{CS} igen og der skrives én ny værdi til ram-modulet. 
+Denne skrives til \textit{ram\_cs\_module1}, hvor \textit{ram\_cs\_module0} er deaktiveret.
+
+
+
+Der testes ligeledes også når der ikke sendes værdier over -- altså hvor der ikke skal afspilles noget.
+
+
+
+
+
+
+
+\end{document}

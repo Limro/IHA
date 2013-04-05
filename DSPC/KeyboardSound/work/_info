@@ -4,7 +4,7 @@ K3
 cModel Technology
 dC:\altera\12.1\modelsim_ase
 Eplaysound
-Z0 w1365171122
+Z0 w1365173399
 Z1 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
 Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
 Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
@@ -16,7 +16,7 @@ L5
 VgbB?L]ESg=d8=hK2^fRT?1
 Z7 OV;C;10.1b;51
 32
-Z8 !s108 1365171239.247000
+Z8 !s108 1365174093.269000
 Z9 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound.vhd|
 Z10 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound.vhd|
 Z11 o-work work -2002 -explicit -O0
@@ -41,7 +41,7 @@ R12
 !s100 8DJk_YHZ5zeM_:cJ:gEe92
 !i10b 1
 Eplaysound_tb
-Z14 w1365158721
+Z14 w1365173399
 R1
 R2
 R3
@@ -53,7 +53,7 @@ L5
 VohdXEmkHaHISo=YE`8S=V3
 R7
 32
-Z17 !s108 1365171239.453000
+Z17 !s108 1365174093.482000
 Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound_tb.vhd|
 Z19 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound_tb.vhd|
 R11
@@ -103,21 +103,21 @@ R12
 !s100 D]X^jJ<SWhc7fo?]Oj_?O3
 !i10b 0
 Eplaysoundandram_tb
-Z22 w1365168931
+R14
 R1
 R2
 R3
 R4
-Z23 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound_ram_tb.vhd
-Z24 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound_ram_tb.vhd
+Z22 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound_ram_tb.vhd
+Z23 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound_ram_tb.vhd
 l0
 L5
 V]Rm=@GeobJ0?4YC<R764l2
 R7
 32
-Z25 !s108 1365171239.340000
-Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound_ram_tb.vhd|
-Z27 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound_ram_tb.vhd|
+Z24 !s108 1365174093.373000
+Z25 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound_ram_tb.vhd|
+Z26 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/PlaySound_ram_tb.vhd|
 R11
 R12
 !s100 [lNITLXI_2Z5KJCPNzA]P2
@@ -126,15 +126,15 @@ Abench
 R1
 R2
 R3
-Z28 DEx4 work 18 playsoundandram_tb 0 22 ]Rm=@GeobJ0?4YC<R764l2
+Z27 DEx4 work 18 playsoundandram_tb 0 22 ]Rm=@GeobJ0?4YC<R764l2
 l87
 L8
 VTR9_kKK<1JLY[;TG`a<ol3
 R7
 32
+R24
 R25
 R26
-R27
 R11
 R12
 !s100 =D1IEg^I6GkoCnVXW<J]40
@@ -142,45 +142,45 @@ R12
 Cplaysoundandram_tb_cfg
 R21
 ePlaySoundAndRam_tb
-Z29 DEx4 work 9 ramaccess 0 22 ITI1Q5Gze<SE9XWGTNlC_3
+Z28 DEx4 work 9 ramaccess 0 22 ITI1Q5Gze<SE9XWGTNlC_3
 R13
 DAx4 work 18 playsoundandram_tb 5 bench 22 TR9_kKK<1JLY[;TG`a<ol3
 R1
 R2
 R3
-R28
-R22
+R27
+R14
 R4
+R22
 R23
-R24
 l0
 L319
 VB2QH>2SPDim4_`T<`H7::2
 R7
 32
+R24
 R25
 R26
-R27
 R11
 R12
 !s100 J=]k`T08MK@aD@foGVcG]3
 !i10b 0
 Eramaccess
-Z30 w1365146039
+R14
 R1
 R2
 R3
 R4
-Z31 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess.vhd
-Z32 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess.vhd
+Z29 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess.vhd
+Z30 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess.vhd
 l0
 L5
 VITI1Q5Gze<SE9XWGTNlC_3
 R7
 32
-Z33 !s108 1365171239.559000
-Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess.vhd|
-Z35 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess.vhd|
+Z31 !s108 1365174093.585000
+Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess.vhd|
+Z33 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess.vhd|
 R11
 R12
 !s100 FF0?ko85o2>0A>k5idDZG2
@@ -189,35 +189,35 @@ Artl
 R1
 R2
 R3
-R29
+R28
 l28
 L25
 VbEZWdVM3iT?O1JNU<NmgA1
 R7
 32
+R31
+R32
 R33
-R34
-R35
 R11
 R12
 !s100 Lb08SH`[JSagR^IAfL@T[2
 !i10b 1
 Eramaccess_tb
-Z36 w1365170014
+R14
 R1
 R2
 R3
 R4
-Z37 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess_tb.vhd
-Z38 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess_tb.vhd
+Z34 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess_tb.vhd
+Z35 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess_tb.vhd
 l0
 L5
 Vk2iEFn0NmCPI`jPWSZikH2
 R7
 32
-Z39 !s108 1365171239.655000
-Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess_tb.vhd|
-Z41 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess_tb.vhd|
+Z36 !s108 1365174093.682000
+Z37 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess_tb.vhd|
+Z38 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/RamAccess_tb.vhd|
 R11
 R12
 !s100 Ke0_3[d>8C?GWmW`idSB:1
@@ -226,15 +226,15 @@ Abench
 R1
 R2
 R3
-Z42 DEx4 work 12 ramaccess_tb 0 22 k2iEFn0NmCPI`jPWSZikH2
+Z39 DEx4 work 12 ramaccess_tb 0 22 k2iEFn0NmCPI`jPWSZikH2
 l44
 L8
 VS5BHZ:CY8EFk_kG1Ll^UJ2
 R7
 32
-R39
-R40
-R41
+R36
+R37
+R38
 R11
 R12
 !s100 6d^4gQQg3N=V5O<=:^eFP0
@@ -242,52 +242,52 @@ R12
 Cramaccess_tb_cfg
 R21
 eramAccess_tb
-R29
+R28
 DAx4 work 12 ramaccess_tb 5 bench 22 S5BHZ:CY8EFk_kG1Ll^UJ2
 R1
 R2
 R3
-R42
-R36
+R39
+R14
 R4
-R37
-R38
+R34
+R35
 l0
 L105
 VPoKh2[o_Dz91JE@XYA<PB1
 R7
 32
-R39
-R40
-R41
+R36
+R37
+R38
 R11
 R12
 !s100 0YJE^jNBFoiRXVYKHIK^G0
 !i10b 0
 Esyntezise
-Z43 w1365147408
+R14
 R1
 R2
 R3
 R4
-Z44 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/Syntezise.vhd
-Z45 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/Syntezise.vhd
+Z40 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/Syntezise.vhd
+Z41 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/Syntezise.vhd
 l0
 L5
 VS5]OZNUSB9P4j7ThLEhEj2
 R7
 32
-Z46 !s108 1365171239.754000
-Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/Syntezise.vhd|
-Z48 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/Syntezise.vhd|
+Z42 !s108 1365174093.785000
+Z43 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/Syntezise.vhd|
+Z44 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/Syntezise.vhd|
 R11
 R12
 !s100 ?18W9?TY@f@_K_<cXV_<Y1
 !i10b 1
 Amixstyle
 R13
-R29
-Z49 DEx4 work 16 transferprotocol 0 22 maC`X;3;CA^j_67UEI@ei3
+R28
+Z45 DEx4 work 16 transferprotocol 0 22 maC`X;3;CA^j_67UEI@ei3
 R1
 R2
 R3
@@ -297,29 +297,29 @@ L30
 Vm@RSED=WXnd5MGKAA;>dS1
 R7
 32
-R46
-R47
-R48
+R42
+R43
+R44
 R11
 R12
 !s100 JoT22C4`>;5:HY0S8iIXh2
 !i10b 1
 Etransferprotocol
-Z50 w1365171186
+R14
 R1
 R2
 R3
 R4
-Z51 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol.vhd
-Z52 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol.vhd
+Z46 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol.vhd
+Z47 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol.vhd
 l0
 L5
 VmaC`X;3;CA^j_67UEI@ei3
 R7
 32
-Z53 !s108 1365171239.851000
-Z54 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol.vhd|
-Z55 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol.vhd|
+Z48 !s108 1365174093.892000
+Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol.vhd|
+Z50 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol.vhd|
 R11
 R12
 !s100 Fi9X_HLR]ZWohAd=N>6^E2
@@ -328,27 +328,27 @@ Aprotocol
 R1
 R2
 R3
-R49
+R45
 l37
 L34
 VJEYW>OaJ5o4o@:`iR:oOR3
 !s100 PlTW:o[D34Y>fh<D]4V1d2
 R7
 32
-R53
-R54
-R55
+R48
+R49
+R50
 R11
 R12
 !i10b 1
 Etransferprotocol_tb
-Z56 w1365171237
+R14
 R1
 R2
 R3
 R4
-Z57 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol_tb.vhd
-Z58 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol_tb.vhd
+Z51 8C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol_tb.vhd
+Z52 FC:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol_tb.vhd
 l0
 L5
 V?:Y[aSPX@VnNIm1?O6nMc1
@@ -356,41 +356,41 @@ V?:Y[aSPX@VnNIm1?O6nMc1
 R7
 32
 !i10b 1
-Z59 !s108 1365171239.940000
-Z60 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol_tb.vhd|
-Z61 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol_tb.vhd|
+Z53 !s108 1365174093.986000
+Z54 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol_tb.vhd|
+Z55 !s107 C:/Users/BecksLaptop/Documents/IHA/DSPC/KeyboardSound/TransferProtocol_tb.vhd|
 R11
 R12
 Abench
 R1
 R2
 R3
-Z62 DEx4 work 19 transferprotocol_tb 0 22 ?:Y[aSPX@VnNIm1?O6nMc1
+Z56 DEx4 work 19 transferprotocol_tb 0 22 ?:Y[aSPX@VnNIm1?O6nMc1
 l63
 L8
-VL7AX:9?6am>lNo@=R^lIY3
-!s100 6Y7AGO7KP0:CeAaXY[b7z3
+Z57 VL7AX:9?6am>lNo@=R^lIY3
+Z58 !s100 6Y7AGO7KP0:CeAaXY[b7z3
 R7
 32
 !i10b 1
-R59
-R60
-R61
+R53
+R54
+R55
 R11
 R12
 Ctransferprotocol_tb_cfg
 R21
 etransferProtocol_tb
-R49
+R45
 DAx4 work 19 transferprotocol_tb 5 bench 22 L7AX:9?6am>lNo@=R^lIY3
 R1
 R2
 R3
-R62
 R56
+R14
 R4
-R57
-R58
+R51
+R52
 l0
 L171
 VelG_QTK;WWbcGf@G;kH^c1
@@ -398,8 +398,8 @@ VelG_QTK;WWbcGf@G;kH^c1
 R7
 32
 !i10b 0
-R59
-R60
-R61
+R53
+R54
+R55
 R11
 R12

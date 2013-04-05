@@ -90,9 +90,9 @@ begin
 			wait until reset_n = '1';
 			wait for bitperiod;
 			
-			address <= X"00"; 			-- Write on RAM 0
 			CS <= '1'; 					-- CS active
 			WE <= '1'; 					-- WE active
+			address <= X"00"; 			-- Write on RAM 0
 			writedata <= X"00000003" ; 	-- Write 3 samples
 			
 			wait for bitperiod;
@@ -114,6 +114,7 @@ begin
 			writedata <= X"00000011"; 	-- Write 17 to the ram
 			
 			wait for bitperiod;
+			
 			assert((ram_cs_module0 = '1') and ram_cs_module1 = '0')
 			report "ram_cs_module0 not set" severity error;	
 			
@@ -167,7 +168,7 @@ begin
 			wait;
 		end process;
 end; -- Architecture
-				
+
 configuration transferProtocol_tb_cfg of transferProtocol_tb is
 	for bench
 	end for;

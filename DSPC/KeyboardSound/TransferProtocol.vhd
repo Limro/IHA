@@ -62,6 +62,11 @@ begin
 						ramSamples_to_write := writedata(7 downto 0);
 						index <= 0;
 						
+						if ramSamples_to_write = X"00" then
+							ramSamples_to_read <= ramSamples_to_write;
+							ram_to_play <= not ram_to_play;	
+						end if;
+						
 					--What to write on ram module
 					elsif address = "00000001" then	 	-- binary, address = 2
 						ram_Addr <= index;				-- write addr to ram

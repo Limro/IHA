@@ -93,7 +93,7 @@ begin
 			address <= X"00"; 			-- Write on RAM 0
 			CS <= '1'; 					-- CS active
 			WE <= '1'; 					-- WE active
-			writedata <= X"00000003" ; 	-- Write twice to the ram
+			writedata <= X"00000003" ; 	-- Write 3 samples
 			
 			wait for bitperiod;
 			
@@ -118,7 +118,7 @@ begin
 			report "ram_cs_module0 not set" severity error;	
 			
 			assert(ramSamples_to_read = X"03")
-			report "ramSamples_to_read set wrong" severity error;
+			report "ramSamples_to_read (1) set wrong" severity error;
 			
 			CS <= '0';
 			WE <= '0';
@@ -131,7 +131,7 @@ begin
 			wait for bitperiod;
 			
 			address <= X"00"; 			-- Write on RAM 1
-			writedata <= X"00000001"; 	-- Write 7 to the ram
+			writedata <= X"00000001"; 	-- Write 1 sample
 			
 			wait for bitperiod;
 			
@@ -141,12 +141,28 @@ begin
 			wait for bitperiod;
 			
 			assert(ramSamples_to_read = X"01")
-			report "ramSamples_to_read set wrong" severity error;
+			report "ramSamples_to_read (2) set wrong" severity error;
 			
 			CS <= '0';
 			WE <= '0';
 			
+			wait for bitperiod*6;
+			
+			CS <= '1';
+			WE <= '1';
+			
 			wait for bitperiod;
+			
+			address <= X"00"; 			-- Write on RAM 1
+			writedata <= X"00000000"; 	-- Write 1 sample
+			
+			wait for bitperiod;
+			
+			assert(ramSamples_to_read = X"00")
+			report "ramSamples_to_read (3) set wrong" severity error;
+			
+			CS <= '0';
+			WE <= '0';
 		
 			wait;
 		end process;

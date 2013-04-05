@@ -15,7 +15,7 @@ architecture bench of PlaySound_tb is
 			
 		port (
 			clk 					: in std_logic; -- domain clock
-			reset					: in std_logic;
+			reset_n					: in std_logic;
 			
 			-- Transfer Protokol interface
 			ram_to_play				: in std_logic; 
@@ -28,10 +28,6 @@ architecture bench of PlaySound_tb is
 				
 			-- ST Bus --
 			ast_clk 				: in  std_logic;   -- 12MHz
-			ast_sink_data    		: in  std_logic_vector(23 downto 0);
-			ast_sink_ready   		: out std_logic;  -- Value at startup
-			ast_sink_valid   		: in  std_logic;
-			ast_sink_error   		: in  std_logic_vector(1 downto 0);
 			ast_source_data  		: out std_logic_vector(23 downto 0);
 			ast_source_ready 		: in  std_logic;
 			ast_source_valid 		: out std_logic;
@@ -43,7 +39,7 @@ architecture bench of PlaySound_tb is
 	constant ramSize 			: natural 						:= 2048;
 	
 	signal clk					: std_logic								:= '0'; -- The clock
-	signal reset				: std_logic;
+	signal reset_n				: std_logic;
 	
 	-- Transfer Protokol interface
 	signal ram_to_play			: std_logic; 
@@ -56,10 +52,6 @@ architecture bench of PlaySound_tb is
 		
 	-- ST Bus --
 	signal ast_clk 				: std_logic := '0';   -- 12MHz
-	signal ast_sink_data    	: std_logic_vector(23 downto 0);
-	signal ast_sink_ready   	: std_logic                     := '0';  -- Value at startup
-	signal ast_sink_valid   	: std_logic;
-	signal ast_sink_error   	: std_logic_vector(1 downto 0);
 	signal ast_source_data  	: std_logic_vector(23 downto 0) ;--:= (others => '0');
 	signal ast_source_ready 	: std_logic;
 	signal ast_source_valid 	: std_logic                     := '0';
@@ -76,17 +68,13 @@ begin
 			ramSize 			=> ramSize )
 		port map (
 			clk 				=> clk,
-			reset 				=> reset,
+			reset_n 			=> reset_n,
 			ram_to_play 		=> ram_to_play,
 			ramSamples_to_read 	=> ramSamples_to_read,
 			addr 				=> addr,
 			data 				=> data,
 			ram_CS 				=> ram_CS,
 			ast_clk 			=> ast_clk,
-			ast_sink_data 		=> ast_sink_data,
-			ast_sink_ready 		=> ast_sink_ready,
-			ast_sink_valid 		=> ast_sink_valid,
-			ast_sink_error 		=> ast_sink_error,
 			ast_source_data 	=> ast_source_data,
 			ast_source_ready 	=> ast_source_ready,
 			ast_source_valid 	=> ast_source_valid,
@@ -95,14 +83,7 @@ begin
 	clk <= not clk after bitperiod/2;
 	ast_clk <= not ast_clk after ast_bitperiod/2;
 	
-	reset <= '1', '0' after 50 ns;
-	
-	-- newAddr : process(addr)
-		-- variable counter : integer(8 downto 0);
-	-- begin
-		-- counter := counter + 1;
-		-- data <= std_logic_vector(to_unsigned(counter, dataSize));
-	-- end process;
+	reset_n <= '0', '1' after 50 ns;
 		
 	stimulus : process
 	begin
@@ -111,7 +92,7 @@ begin
 		data <= (others => '0');				--Reset data
 		ast_source_ready <= '0';				--Not ready to read
 		
-		wait until reset = '0';		
+		wait until reset_n = '0';		
 		ramSamples_to_read <= "00000010";		--Set data to read = 2
 		
 		wait until falling_edge(ast_clk);

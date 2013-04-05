@@ -10,9 +10,8 @@ architecture bench of PlaySoundAndRam_tb is
 	component PlaySound
 		generic(
 			dataSize 	: natural := 32; -- bits der overføres
-			ramSize		: natural := 2048 -- ram-modul i bytes
-			);
-			
+			ramSize		: natural := 256 -- ram-modul i bytes
+			);			
 		port (
 			clk 					: in std_logic; -- domain clock
 			reset_n					: in std_logic;
@@ -28,10 +27,6 @@ architecture bench of PlaySoundAndRam_tb is
 				
 			-- ST Bus --
 			ast_clk 				: in  std_logic;   -- 12MHz
-			ast_sink_data    		: in  std_logic_vector(23 downto 0);
-			ast_sink_ready   		: out std_logic;  -- Value at startup
-			ast_sink_valid   		: in  std_logic;
-			ast_sink_error   		: in  std_logic_vector(1 downto 0);
 			ast_source_data  		: out std_logic_vector(23 downto 0);
 			ast_source_ready 		: in  std_logic;
 			ast_source_valid 		: out std_logic;
@@ -42,9 +37,8 @@ architecture bench of PlaySoundAndRam_tb is
 	component ramAccess
 		generic(
 			dataSize 	: natural := 32; -- bits der overføres
-			ramSize		: natural := 2048 -- ram-modul i bytes
+			ramSize		: natural := 256 -- ram-modul i bytes
 			);
-		
 		port(
 			-- Inputs
 			clk			: in std_logic; -- The clock
@@ -60,7 +54,7 @@ architecture bench of PlaySoundAndRam_tb is
 	end component;
 
 	constant dataSize 	: natural 								:= 32;
-	constant ramSize 	: natural 								:= 2048;
+	constant ramSize 	: natural 								:= 256;
 	
 	signal clk			: std_logic								:= '0'; -- The clock
 	signal reset_n		: std_logic;
@@ -77,15 +71,11 @@ architecture bench of PlaySoundAndRam_tb is
 	-- Ram interface
 	signal addr					: integer range 0 to ramSize-1;
 	signal data, data1, data2	: std_logic_vector(dataSize-1 downto 0);
-	signal ram_CS				: std_logic_vector(1 downto 0);
+	signal ram_CS				: std_logic_vector(1 downto 0) := "11";
 		
 	-- ST Bus --
 	signal ast_clk 				: std_logic := '0';   -- 12MHz
-	signal ast_sink_data    	: std_logic_vector(23 downto 0);
-	signal ast_sink_ready   	: std_logic                     := '0';  -- Value at startup
-	signal ast_sink_valid   	: std_logic;
-	signal ast_sink_error   	: std_logic_vector(1 downto 0);
-	signal ast_source_data  	: std_logic_vector(23 downto 0) ;--:= (others => '0');
+	signal ast_source_data  	: std_logic_vector(23 downto 0);
 	signal ast_source_ready 	: std_logic;
 	signal ast_source_valid 	: std_logic                     := '0';
 	signal ast_source_error 	: std_logic_vector(1 downto 0)  := (others => '0');
@@ -95,7 +85,7 @@ architecture bench of PlaySoundAndRam_tb is
 	constant ast_bitperiod		: time		:= 83 ns; --(12MHz) -- 20833 ns; -- clk period time for ast (1/48.000 Hz * 1.000.000.000 ns/sec)
 
 begin
-	PlaySound_init : PlaySound
+	PS : PlaySound
 		generic map(
 			dataSize 			=> dataSize,
 			ramSize 			=> ramSize )
@@ -108,16 +98,12 @@ begin
 			data 				=> data,
 			ram_CS 				=> ram_CS,
 			ast_clk 			=> ast_clk,
-			ast_sink_data 		=> ast_sink_data,
-			ast_sink_ready 		=> ast_sink_ready,
-			ast_sink_valid 		=> ast_sink_valid,
-			ast_sink_error 		=> ast_sink_error,
 			ast_source_data 	=> ast_source_data,
 			ast_source_ready 	=> ast_source_ready,
 			ast_source_valid 	=> ast_source_valid,
 			ast_source_error 	=> ast_source_error);
 			
-	ramAccess_init1 : ramAccess
+	RA1 : ramAccess
 		generic map (
 			dataSize 	=> dataSize,
 			ramSize 	=> ramSize )
@@ -130,7 +116,7 @@ begin
 			writedata 	=> writedata,
 			readData 	=> data1 );			
 	
-	ramAccess_init2 : ramAccess
+	RA2 : ramAccess
 		generic map (
 			dataSize 	=> dataSize,
 			ramSize 	=> ramSize )
@@ -146,7 +132,7 @@ begin
 	clk <= not clk after bitperiod/2;
 	ast_clk <= not ast_clk after ast_bitperiod/2;
 	
-	reset_n <= '0', '1' after 50 ns;
+	reset_n <= '0', '1' after 250 ns;
 	
 	data <= data1 when ram_CS = "01" else
 			data2 when ram_CS = "10" else
@@ -155,48 +141,52 @@ begin
 	stimulus : process
 	begin
 		
-		wait until reset_n = '0';
+		wait until reset_n = '1';
 		
 		wait for bitperiod;
-		ast_source_ready <= '0';				--Not ready to read
-		ramSamples_to_read <= "00000100";		--Set data to read = 2
+		ast_source_ready <= '0';			--Not ready to read
+		ramSamples_to_read <= X"04";		--Set data to read = 4
 		
 		wait for bitperiod;
 		CS0 <= '1';
 		CS1 <= '0';
 		writeAddr <= 0;
-		writeData <= "00000000000000000000000000000100";
+		writeData <= X"00000004";
 		
 		wait for bitperiod;
 		writeAddr <= 1;
-		writeData <= "00000000000000000000000000000101";
+		writeData <= X"00000005";
 		
 		wait for bitperiod;
 		writeAddr <= 2;
-		writeData <= "00000000000000000000000000000110";
+		writeData <= X"00000006";
 		
 		wait for bitperiod;
 		writeAddr <= 3;
-		writeData <= "00000000000000000000000000000111";
+		writeData <= X"00000007";
 		
 		wait for bitperiod;
 		
 		CS0 <= '0';
 		CS1 <= '1';
+		ramSamples_to_read <= X"03";
+		
+		wait for bitperiod;
+		
 		writeAddr <= 0;
-		writeData <= "00000000000000000000000000001011";
+		writeData <= X"0000000B";
 		
 		wait for bitperiod;
 		writeAddr <= 1;
-		writeData <= "00000000000000000000000000001100";
+		writeData <= X"0000000C";
 		
 		wait for bitperiod;
 		writeAddr <= 2;
-		writeData <= "00000000000000000000000000001101";
+		writeData <= X"0000000D";
 		
-		wait for bitperiod;
-		writeAddr <= 3;
-		writeData <= "00000000000000000000000000001110";
+		-- wait for bitperiod;
+		-- writeAddr <= 3;
+		-- writeData <= X"0000000E";
 		
 		wait for bitperiod;
 		CS0 <= '0';
@@ -272,6 +262,7 @@ begin
 		
 		wait for bitperiod;
 		ram_to_play <= '0';
+		ramSamples_to_read <= X"04";
 		
 		wait until falling_edge(ast_clk);
 		ast_source_ready <= '1';				--Ready to play

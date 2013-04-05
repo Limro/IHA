@@ -83,11 +83,11 @@ begin
 		
 		clk <= not clk after bitperiod/2;
 		
-		reset_n <= '1', '0' after 50 ns;
+		reset_n <= '0', '1' after 50 ns;
 		
 		stimulus : process
 		begin
-			wait until reset_n = '0';
+			wait until reset_n = '1';
 			wait for bitperiod;
 			
 			address <= X"00"; 			-- Write on RAM 0

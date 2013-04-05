@@ -10,12 +10,13 @@ architecture bench of ramAccess_tb is
 	component ramAccess
 		generic(
 			dataSize 	: natural := 32; -- bits der overføres
-			ramSize		: natural := 2048 -- ram-modul i bytes
+			ramSize		: natural := 256 -- ram-modul i bytes
 			);
 		
 		port(
 			-- Inputs
 			clk			: in std_logic; -- The clock
+			reset_n		: in std_logic;
 			CS			: in std_logic; -- Chip selected or not
 			writeAddr	: in integer range 0 to ramSize-1; -- Address to write to
 			readAddr	: in integer range 0 to ramSize-1; -- Address to read from
@@ -27,9 +28,10 @@ architecture bench of ramAccess_tb is
 	end component;
 	
 	constant dataSize 	: natural 								:= 32;
-	constant ramSize 	: natural 								:= 2048;
+	constant ramSize 	: natural 								:= 256;
 	
 	signal clk			: std_logic								:= '0'; -- The clock
+	signal reset_n		: std_logic								:= '1';
 	signal CS			: std_logic								:= '0'; -- Chip selected or not
 	signal writeAddr	: integer range 0 to ramSize-1			:= 0; -- Address to write to
 	signal readAddr		: integer range 0 to ramSize-1			:= 0; -- Address to read from
@@ -40,12 +42,13 @@ architecture bench of ramAccess_tb is
 	constant bitperiod    	: time 		:= 10 ns;    -- clk period time
 
 begin
-	ramAccess_init : ramAccess
+	RA : ramAccess
 		generic map (
 			dataSize 	=> dataSize,
 			ramSize 	=> ramSize )
 		port map (
 			clk 		=> clk,
+			reset_n		=> reset_n,
 			CS 			=> CS,
 			writeAddr 	=> writeAddr,
 			readAddr 	=> readAddr,
@@ -53,9 +56,12 @@ begin
 			readData 	=> readData );
 		
 	clk <= not clk after bitperiod/2;
+	reset_n <= '0', '1' after 50 ns;	
 	
 	stimulus : process
 	begin
+		wait until reset_n = '1';
+		
 		CS <= '0';
 
 		wait for bitperiod;
@@ -96,7 +102,7 @@ begin
 end;
 
 
-configuration transferProtocol_tb_cfg of ramAccess_tb is
+configuration RamAccess_tb_cfg of ramAccess_tb is
 	for bench
 	end for;
-end transferProtocol_tb_cfg;
+end RamAccess_tb_cfg;

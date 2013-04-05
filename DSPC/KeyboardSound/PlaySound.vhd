@@ -19,7 +19,7 @@ entity PlaySound is
 		-- Ram interface
 		addr					: out integer range 0 to ramSize-1;
 		data					: in std_logic_vector(dataSize-1 downto 0);
-		ram_CS					: out std_logic_vector(1 downto 0) := "00";
+		ram_CS					: out std_logic_vector(1 downto 0);
 			
 		-- ST Bus --
 		ast_clk 				: in  std_logic;   -- 12MHz
@@ -31,28 +31,30 @@ entity PlaySound is
 end PlaySound;
 
 architecture behavioural of PlaySound is
-	
-	signal read_count 	: signed (10 downto 0);
-	signal data1		: std_logic_vector ( dataSize-1 downto 0) := (others => '0');
-	signal cs1, cs2		: std_logic;		-- double register
+	signal read_count 	: unsigned (10 downto 0);
+	signal data1		: std_logic_vector (dataSize-1 downto 0) := (others => '0');
+	signal cs1			: std_logic;		-- double register
 begin	
 	--Ram chip select
 	chipSelect: process(clk)
-		
 	begin
-		if rising_edge(clk) then
+		if reset_n = '0' then
+			ram_CS <= "11";
+			cs1 <= 'U';
+		elsif rising_edge(clk) then
+		
 			cs1 <= ram_to_play;
-			cs2 <= cs1;
 			
-			if cs2 = '0' then
+			if cs1 = '0' then
 				ram_CS <= "01";
-			elsif cs2 = '1' then
+			elsif cs1 = '1' then
 				ram_CS <= "10";
 			else
 				ram_CS <= "11"; 		-- default nothing selected
 			end if;
+			
 		end if;
-	end process chipSelect;
+	end process;
 	
 	--Ram data reading
 	ramRead: process(ast_clk, reset_n)
@@ -64,20 +66,22 @@ begin
 			ast_source_valid <= '0';
 			ast_source_error <= (others => '0');
 			data1 <= (others => '0');
-			cs1 <= 'X';
-			cs2 <= 'X';
 			
 		elsif rising_edge(ast_clk) then
-		
-			if ast_source_ready = '1' then --and (ram_to_play = '1' or ram_to_play = '0') then
-				read_count <= read_count + 1;
+			if ast_source_ready = '1' then 
+				if ramSamples_to_read = X"00" then
+					ast_source_data <= (others => '0');
+				else
+					read_count <= read_count + 1;
 				
-				addr <= to_integer(read_count);	-- Write addr to ram
-				data1 <= data;				-- Read data from ram
-				ast_source_data <= data1(23 downto 0);
+					addr <= to_integer(read_count);	-- Write addr to ram
+					data1 <= data;				-- Read data from ram
+					ast_source_data <= data1(23 downto 0);
+				end if;
+				
 				ast_source_valid <= '1';
 				
-				if read_count >= signed(ramSamples_to_read)-1 then
+				if read_count+1 >= unsigned(ramSamples_to_read) then
 					read_count <= (others => '0');
 				end if;
 			else

@@ -38,7 +38,7 @@ begin
 	getData: process(clk, reset_n) 
 		variable ramSamples_to_write : std_logic_vector(7 downto 0) := (others => '0');
 	begin	
-	    if reset_n = '1' then
+	    if reset_n = '0' then
 			ram_cs_module0 <= '0';
 			ram_cs_module1 <= '0';
 			

@@ -38,15 +38,18 @@ begin
 	getData: process(clk, reset_n) 
 		variable ramSamples_to_write : std_logic_vector(7 downto 0) := (others => '0');
 	begin	
-	    if reset_n = '0' then
+	    if reset_n = '1' then
 			ram_cs_module0 <= '0';
 			ram_cs_module1 <= '0';
+			
 			ramSamples_to_read <= "00000000";
-			ram_to_play <= '1';
 			ramSamples_to_write := (others => '0');
+			
 			readdata <= (others => '0');
+			
 			ram_Addr <= 0;
 			ram_Data <= (others => '0');
+			ram_to_play <= '1';
 			
 		elsif rising_edge(clk) then
 			ram_cs_module0 <= '0';
@@ -64,16 +67,16 @@ begin
 						ram_Addr <= index;				-- write addr to ram
 						ram_Data <= writedata; 			-- write data to ram
 						index <= index + 1;				-- increment index				    
-						
-						--Which ram module to use
-						if ram_to_play = '0' then 		-- First ram module in use
-							ram_cs_module1 <= '1';
-						else							-- Second ram module in use
-							ram_cs_module0 <= '1';
-						end if;
 					end if;
 					
-					if index = to_integer(signed(ramSamples_to_write)) then
+					--Which ram module to use
+					if ram_to_play = '0' then 		-- First ram module in use
+						ram_cs_module1 <= '1';
+					else							-- Second ram module in use
+						ram_cs_module0 <= '1';
+					end if;
+					
+					if index+1 = to_integer(unsigned(ramSamples_to_write)) then
 						ramSamples_to_read <= ramSamples_to_write;
 						ram_to_play <= not ram_to_play;						
 					end if;

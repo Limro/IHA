@@ -15,7 +15,7 @@ architecture bench of transferProtocol_tb is
 		port(
 			-- Avalon Interface
 			clk     			: in  std_logic;                     			-- Avalon Clk
-			reset				: in  std_logic;                     			-- Avalon Reset
+			reset_n				: in  std_logic;                     			-- Avalon Reset
 			WE           		: in  std_logic;                     			-- Avalon wr
 			RE            		: in  std_logic;                     			-- Avalon rd
 			CS      			: in  std_logic;                     			-- Avalon cs
@@ -36,10 +36,10 @@ architecture bench of transferProtocol_tb is
 	end component;
 	
 	constant dataSize 		: natural := 32;
-	constant ramSize 		: natural := 2048;
+	constant ramSize 		: natural := 256;
 	
 	signal clk     			: std_logic								:= '0';
-	signal reset			: std_logic								:= '0';                     			
+	signal reset_n			: std_logic								:= '0';                     			
 	signal WE           	: std_logic								:= '0';
 	signal RE            	: std_logic								:= '0';
 	signal CS      			: std_logic								:= '0';
@@ -67,7 +67,7 @@ begin
 			ramSize 		=> ramSize)
 		port map(
 			clk 			=> clk,
-			reset 			=> reset,
+			reset_n 			=> reset_n,
 			WE 				=> WE,
 			RE 				=> RE,
 			CS 				=> CS,
@@ -83,50 +83,70 @@ begin
 		
 		clk <= not clk after bitperiod/2;
 		
+		reset_n <= '1', '0' after 50 ns;
+		
 		stimulus : process
 		begin
+			wait until reset_n = '0';
+			wait for bitperiod;
 			
-			address <= "00000000"; 		-- Write on RAM 0
+			address <= X"00"; 			-- Write on RAM 0
 			CS <= '1'; 					-- CS active
 			WE <= '1'; 					-- WE active
-			writedata <= "00000000000000000000000000000010" ; 	-- Write twice to the ram
+			writedata <= X"00000003" ; 	-- Write twice to the ram
 			
 			wait for bitperiod;
 			
-			assert(ram_to_play = '1')
-			report "ram_to_play set wrong" severity error;
-					
-			assert(ramSamples_to_read = "00000010")
-			report "ramSamples_to_read is not 2" severity error;
+			assert(ramSamples_to_read = "00000000")
+			report "ramSamples_to_read set wrong" severity error;
 			
-			
-			address <= "00000010"; 		-- Write data to RAM
-			writedata <= "00000000000000000000000000001000"; 	-- Write 8 to the ram
+			address <= X"01"; 			-- Write data to RAM
+			writedata <= X"00000008"; 	-- Write 8 to the ram
 			
 			wait for bitperiod;
 			
-			assert((ram_cs_module0 = '1') and (ram_cs_module1 = '0'))
-			report "ram_cs_module0 not set" severity error;
-			
-			address <= "00000010"; 		-- Write data to RAM
-			writedata <= "00000000000000000000000000000111"; 	-- Write 7 to the ram
-			
-			wait for bitperiod;
-				
-			address <= "00000001"; 		-- Write on RAM 1
-			writedata <= "00000000000000000000000000000001"; 	-- Write 7 to the ram
+			address <= X"01"; 			-- Write data to RAM
+			writedata <= X"00000007"; 	-- Write 7 to the ram
 			
 			wait for bitperiod;
 			
-			address <= "00000010"; 		-- Write data to RAM
-			writedata <= "00000000000000000000000000000101"; 	-- Write 5 to the ram
+			address <= X"01"; 			-- Write data to RAM
+			writedata <= X"00000011"; 	-- Write 17 to the ram
 			
 			wait for bitperiod;
+			assert((ram_cs_module0 = '1') and ram_cs_module1 = '0')
+			report "ram_cs_module0 not set" severity error;	
 			
+			assert(ramSamples_to_read = X"03")
+			report "ramSamples_to_read set wrong" severity error;
+			
+			CS <= '0';
 			WE <= '0';
 			
-			assert((ram_cs_module0 = '0') and (ram_cs_module1 = '1')) -- check correct ram module is selected 
-			report "Ram did not change" severity error;
+			wait for bitperiod*6;
+			
+			CS <= '1';
+			WE <= '1';
+			
+			wait for bitperiod;
+			
+			address <= X"00"; 			-- Write on RAM 1
+			writedata <= X"00000001"; 	-- Write 7 to the ram
+			
+			wait for bitperiod;
+			
+			address <= X"01"; 			-- Write on RAM 1
+			writedata <= X"00000004"; 	-- Write 4 to the ram
+			
+			wait for bitperiod;
+			
+			assert(ramSamples_to_read = X"01")
+			report "ramSamples_to_read set wrong" severity error;
+			
+			CS <= '0';
+			WE <= '0';
+			
+			wait for bitperiod;
 		
 			wait;
 		end process;

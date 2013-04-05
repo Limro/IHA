@@ -37,26 +37,26 @@ architecture mixStyle of Syntezise is
 begin
 	TP: entity work.TransferProtocol 
 	port map(
-			--Avalon Slave interface
-			clk				=> csi_clockreset_clk,
-			reset_n			=> csi_clockreset_reset_n,
-			WE           	=> avs_s1_write,
-			RE            	=> avs_s1_read,
-			CS      		=> avs_s1_chipselect,
-			address         => avs_s1_address,
-			writedata       => avs_s1_writedata,
-			readdata       	=> avs_s1_readdata,
+		--Avalon Slave interface
+		clk				=> csi_clockreset_clk,
+		reset_n			=> csi_clockreset_reset_n,
+		WE           	=> avs_s1_write,
+		RE            	=> avs_s1_read,
+		CS      		=> avs_s1_chipselect,
+		address         => avs_s1_address,
+		writedata       => avs_s1_writedata,
+		readdata       	=> avs_s1_readdata,
 
-			-- Ram interface
-			ram_Addr		=> TP_Addr,
-			ram_Data		=> TP_Data,
-			ram_cs_module0	=> TP_cs0,
-			ram_cs_module1	=> TP_cs1,
-			
-			-- PlaySound interface
-			ram_to_play 	=>	TP_ps,
-			ramSamples_to_read => TP_samplesToRead
-		);
+		-- Ram interface
+		ram_Addr		=> TP_Addr,
+		ram_Data		=> TP_Data,
+		ram_cs_module0	=> TP_cs0,
+		ram_cs_module1	=> TP_cs1,
+		
+		-- PlaySound interface
+		ram_to_play 	=>	TP_ps,
+		ramSamples_to_read => TP_samplesToRead
+	);
 
 	
 	PS_Data <= 	r0 when tmp = "01" else

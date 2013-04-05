@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <opcodeName visible="0" />
+   <connections preferredWidth="143" />
+   <irq preferredWidth="34" />
+   <export visible="0" />
+   <name preferredWidth="296" />
+  </columns>
+ </systemtable>
+ <clocktable>
+  <columns>
+   <clockname preferredWidth="246" />
+   <clocksource preferredWidth="245" />
+   <frequency preferredWidth="244" />
+  </columns>
+ </clocktable>
+ <window width="1382" height="744" x="-8" y="-8" />
+ <library
+   expandedCategories="Library/University Program/Audio &amp; Video,Library/University Program,Library,Library/Interface Protocols/SDI,Project/IHA,Library/Interface Protocols,Project" />
+</preferences>

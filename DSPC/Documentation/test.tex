@@ -7,15 +7,29 @@ For at sikre, at VHDL-koden virkede som ønsket, er koden testet med programmet M
 Koden er testet således, at alle linjer er blevet afprøvet, så der ikke er en en linje der vil sende underlig data ud.
 Ligeledes er der testet flere scenarier, hvor forskellige værdier sendes til og fra de forskellige komponenter.
 
-Grundet den mængde af data der sendes til ram-modulerne for hver frekvens der ønskes afspillet, at der ikke testet nær det antal der sendes over, men blot 
+Grundet den mængde af data der sendes til ram-modulerne for hver frekvens der ønskes afspillet, at der ikke testet nær det antal der sendes over, men blot enkelte, sekventielle værdier, således selve processen er vist funktionel.
+Hvis man ønskede at teste for, at alle værdier ville blive skrevet korrekt over vil det tage meget lang tid at verificere, bedst illustreret på figur \ref{fig:hz-graf}.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=1]{hz-graf}
+\caption{Mængden af data der skal overføres (y-akse) for en frekvens (x-akse)}
+\label{fig:hz-graf}
+\end{figure}
+
 
 Første test er af komponentet \textit{TransportProtocol}, der står for overførelsen af data fra microcontrolleren til ram-modulerne.
 Herunder ses et wave-udsnit af \textit{TransportProtocol}'s testbench:
 
-\testbench{tb-wave-TP, Waveforms for \textit{TransportProtocol}, fig:TP}.
-\\
-\\
-På figur\fxnote{Få fat i referencen} foretages der først et reset af komponentet (0-50 ns), hvorefter der skrives hvor mange samples der kommer (60-70 ns), værdierne skrives med 10 ns mellemrum (70-100 ns).
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.65]{tb-wave-TP}
+\caption{Waveforms for \textit{TransportProtocol}}
+\label{fig:TP}
+\end{figure}
+
+
+På figur \ref{fig:TP} foretages der først et reset af komponentet (0-50 ns), hvorefter der skrives hvor mange samples der kommer (60-70 ns), værdierne skrives med 10 ns mellemrum (70-100 ns).
 Ved 95 ns bliver den sidste værdi overført og det angives hvor mange samples der er overført.
 Alt dette skrives til \textit{ram\_cs\_module0}.
 
@@ -26,10 +40,39 @@ Denne skrives til \textit{ram\_cs\_module1}, hvor \textit{ram\_cs\_module0} er d
 
 
 Der testes ligeledes også når der ikke sendes værdier over -- altså hvor der ikke skal afspilles noget.
+\\
+\\
+Komponentet \textit{RamAccess} lagrer de overførte værdier. 
 
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=1]{tb-wave-RA}
+\caption{Waveforms for \textit{RamAccess}}
+\label{fig:RA}
+\end{figure}
 
+På figur \ref{fig:RA} foretages der først et reset på 50 ns, chipselect aktiveres og der skrives til adresse 0 med værdien 3 (60-70 ns).
+Herefter skrives til adresse 1 med værdien 1 (70-90 ns) og fordi \textit{readAddress} ikke ændres læses værdien fra adresse 0 ud (75-95 ns).
+Læsningsprocessen gentages fra 95 ns og frem.
+\\
+Dette viser, at \textit{RamAccess} umiddelbart virker som det skal.
+\\
+\\
+Komponentet \textit{PlaySound} er en smule mere omfattende og det testes sammen med \textit{RamAccess} for at opnå det bedste resultat.
 
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.65]{tb-wave-PSandRA}
+\caption{Waveforms for \textit{Playsound} og \textit{RamAccess}}
+\label{fig:PSandRA}
+\end{figure}
 
+Den viste sekvens på figur \ref{fig:PSandRA} er på 3,5 microsekunder.
+Først foretages et reset, for at nulstille alle værdier (0-250 ns), hvorefter der skrives nogle dummy-værdier ind i de to ram-moduler (270-350 ns).
+Herefter vælges læsning fra ram-modul1 (250-620 ns) og værdierne læses og genlæses indtil ram-modul0 vælges (620-2.170 ns).
+Det nye antal af værdier der skal læses bliver herefter læst ind (2.170-3.500 ns).
+
+Overstående test viser, at der kan læses fra \textit{RamAccess} når der ligger data deri, samt den kun afspiller det den bliver bedt om igen og igen.
 
 
 

@@ -10,4 +10,11 @@ Altera, {\em Media Computer System for the Altera DE2 Board}, May 2011.
   NiosII\_Computer\_Systems\bs DE2\bs \\DE2\_Media\_Computer\bs doc\bs
   DE2\_Media\_Computer.pdf.
 
+\bibitem{link1}
+U.~of~Toronto, ``{PS2 Controller}.''
+  \url{http://www.eecg.toronto.edu/~jayar/ece241_08F/AudioVideoCores/ps2/ps2.html},
+  4 2013.
+\newblock Generelt info om PS/2 interfacet og samtidig også en tabel over
+  hvilke hex-værdier der svarer til hvilke tastetryk.
+
 \end{thebibliography}

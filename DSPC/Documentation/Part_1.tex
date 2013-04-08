@@ -5,22 +5,21 @@
 
 
 Med dette projekt ønskes at opnå et system, hvor en bruger med et tastatur kan generere toner fra et tastetryk.
-Tastaturet vil være forbundet til DE2-boardet, som behandler inputtet fra tastaturet og genererer tonerne på baggrund af disse.
+Tastaturet vil være forbundet til et DE2-board, som behandler inputtet fra tastaturet og genererer tonerne på baggrund af disse ud igennem et par højtalere.
 \\
 \\
-Systemet opbygges således, at et tastatur med PS/2-udgang forbindes til DE2-boardet, hvorpå der sidder en FPGA af\textit{•} typen \textit{Cyclone II}.
-Tilsluttet til DE2-boardet er også et par højtalere forbundet via mini-jack stik.
-\\
+Projektet er designet således, at fokus har været på flest læringsmål fra kurset. Ligeledes er der taget udgangspunkt i flere af de emner, som der er blevet benyttet i undervisningen.
+
+Systemet er opbygget således, at et tastatur med PS/2-udgang forbindes til DE2-boardet, hvorpå der sidder en FPGA af typen \textit{Cyclone II}.
+Tilsluttet til DE2-boardet er også et par højtalere forbundet via line-out stikket.
 \\
 Intentionen med opstillingen er, at der ved et tastetryk på tasteturet bliver genereret en tone, en sinuskurve, som er forskellig for hver knap.
-\\
-\\
-Der oprettes en microprocessor, som bl.a. har forbindelse til driveren for tasteturet. 
-Driveren til tasteturet er tredjeparts software.
-\\
-Microprocessoren sender vha. en sinusgenerator værdierne for en tone fra C-kode til VHDL-koden.
-Værdierne gemmes i DE2-boardets ram-moduler, hvorfra den kan afspilles.
-Derudover kan der også trykkes på 3 af DE2-boardets knapper, der tilsammen vil udgøre en tone..
+
+
+Der genereres en microprocessor, som bl.a. har forbindelse til driveren for tasteturet. 
+Microprocessoren sender, vha. en sinusgenerator, værdierne for en tone fra C-kode til VHDL-koden.
+Værdierne gemmes i DE2-boardets ram-moduler, hvorfra de kan afspilles.
+Derudover kan der også trykkes på 3 af DE2-boardets knapper, der tilsammen vil udgøre en tone.
 \\
 Fra ram-modulerne sendes lyden ud til højtalerne via \textit{ST-bussen}, bit for bit.
 \\
@@ -31,7 +30,7 @@ Frekvensen der afspilles vises på 7-segments-displayet og på det store display v
 På figur \ref{fig:opstilling} ses opstillingen:
 \begin{figure}[hbtp]
 \centering
-\includegraphics[scale=0.4]{Opstilling.png}
+\includegraphics[scale=0.7]{Overview-Symbol}
 \caption{Opstilling}
 \label{fig:opstilling}
 \end{figure}

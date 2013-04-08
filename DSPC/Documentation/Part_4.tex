@@ -1,0 +1,169 @@
+\documentclass[Aflevering]{subfiles}
+\begin{document}
+
+\subsubsection{Bruger input}
+Som bruger har du to muligheder for at give input til systemet. Et PS/2-tastetur har vi valgt som det primære input, men har også implementeret således man kan give input fra knapperne og derfor nemmere teste systemet.
+
+
+
+\paragraph{PS/2 Tastetur}
+Fra tasteturet kan man trykke på en knap og derved kunne spille en tone. 
+PS/2 interfacet er som sådan lige til at gå til. 
+Enheden (mus eller tastetur) sender en række hexidecimale værdier der indikerer hvad brugeren gør. 
+Fx bliver der sendt '1C' når tasten 'A' trykkes ned og sekvensen 'F0,1C' bliver sendt når 'A' løftes igen. 
+Således kan man hele tiden holde styr på, hvilke taster der er trykket ned (så længe man ved hvad de forskellige hex-værdier svarer til). 
+Som det også antydes  bliver 'F0' sendt afsted når en tast løftes; 
+på den måde ved vi, at når 'F0' modtages er den næste værdi svarende til tasten der er løftet.
+\\
+\\
+Selve "driverne" til PS/2-tasteturet kunne vi godt selv have skrevet, men det vurderede vi som værende ikke-relevant at lægge vægt på og derfor har vi valgt at bruge Alteras egen implementation af interfacet til PS/2-porten. 
+På den måde er vi også blevet udfordret ved, at vi ikke kun bruger materiale udleveret i undervisningen. 
+Selve modulet, PS2 Controller,  tilføjes SOPC'en som alle de andre og relevante pins (clock og data) forbindes.
+\\
+\\
+For at få data fra tasteturet bliver vi ved med at kalde en funktion indtil den indikerer at der ikke er mere i tasteturets buffer (ved at returnere -1):
+
+\begin{lstlisting}[style=code-C++, caption=Opsamling af data, label=lst:ps2-data]
+PS2_dev = alt_up_ps2_open_dev (PS2_PORT_NAME);
+while(alt_up_ps2_read_data_byte (PS2_dev, &PS2_data) == 0)
+{
+	//Use PS2_data for something.
+}
+\end{lstlisting}
+
+Langt størstedelen af arbejdet omkring PS/2-tasteturet har, foruden det at forstå interfacet, været at implementere softwaren i C der gør, at vi kan bruge tasteturet på en fornuftig måde. 
+Forbindelsen ned til tasteturet er lavet på baggrund af de eksempler Altera selv har lagt med Quartus. 
+Udover det skulle der bl.a. konverteres fra "tastetur-hex" til "ASCII-hex"  og da der ikke er nogenlunde logisk sammenhæng mellem de to har vi valgt bare at implementere det vha. en switch-case.
+
+
+Derudover har der været et designvalg ift. om vi ønsker udelukkende bare at bruge en buffer for tasteturtryk eller om vi også ønskede et interrupt. 
+Sidstnævte har vi valgt fra, idet interrupts hurtigt kan give nogle problemer ift. hvordan ting eksekveres og vi har vurderet at vi hellere ville have en stabil funktionalitet frem for en hurtig.
+
+Problemet ved at vælge buffer-metoden kan være at man glemmer at tømme den jævnligt, men så længe man er opmærksom på dette, burde der ikke ske noget.
+
+Bemærk desuden at vi har valgt at afgrænse vores projekt til at vi kun understøtter tasterne 0-9 og A-G, da flere taster som sådan ikke ville give mere værdi, men bare ville tage længere tid at implementere.
+
+\paragraph{Knapper}
+Af test-grunde har vi valgt at tre af knapperne også kan bruges som input. 
+Vha. af switch 0 (SW0) bestemmes om der ønskes at bruges PS/2-tastetur eller de tre "test-knapper". 
+
+Knapperne kan bruges på mere eller mindre samme vis om tasteturet, men med mindre funktionalitet. 
+På den måde undgås at man skal sætte tasteturet til hvis det ikke er det man ønsker at afprøve. 
+De to input er helt adskilt, hvilket vil sige at keys ikke påvirker tasteturet når det benyttes og omvendt.
+
+Hertzene der spilles, når knapperne er trykket ned bestemmes ud fra deres binære værdi. 
+Fx giver et tryk på 1 og 2 samtidig 011 = 3. 
+Dette ganges med 200 for at få en fornuftig frekvens og således spænder tasterne over 200-1400 Hz.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsubsection{Visuel visning}
+
+\paragraph{7-segments display}
+7-segments displayet er klart den nemmeste måde at få nogenlunde brugbar information ud til brugeren. 
+I vores tilfælde spilles der toner og vi har derfor skønnet det som oplagt at bruge display'et til at vise hvilken frekvens der spilles ved lige nu - fx 440 Hz.
+
+I undervisningen er der udleveret to VHDL-filer der gør det muligt at lave en komponent til vores SOPC således, at vi kan skrive værdier dertil vha. MM-bussen. 
+Ved at skrive dertil skrives der dog pr. standard de hexadecimale værdier ud og idet normale mennesker ikke vil kunne forstå det har vi valgt i vores C-kode at konvertere vores frekvenser til en værdi der, når den bliver sendt til 7-segments displayet, vises som en decimal frekvens.
+
+\paragraph{LCD-skærm}
+LCD-skærmen er en mulighed til at få flere informationer ud til brugeren. 
+Der er to linjer, som gør det muligt at skrive en "hel del".  
+I vores tilfælde har vi valgt på første linje at indikere hvilket input der pt. benyttes. 
+Hvis der bruges PS/2-tastetur står der "Keyboard press" og bruges knapperne står der "Keys pressed". 
+På samme vis står der for de to input hvilke taster der pt. er trykke ned: For knapperne står angivet om 1, 2 og/eller 3 er trykket ned og for tasteturet står der hvilke taster som er trykket ned (i rækkefølgen de blev trykket ned).
+
+For at skrive til skærmen skal der simpelt bare åbnes en strøm som skrives til. Dette gør vi således hele tiden at have den sidst nye info omkring hvilke taster der er trykket ned.
+
+\paragraph{Afspilning af lyd}
+For at kunne afspille lyden sender hukommelsesmodulet de forskellige samples via ST-bussen til et komponent der sender dem videre ud på DAC'en. 
+Dette komponent, ST2IIS, er lavet meget på baggrund af et komponent vi fik givet i undervisningen. 
+Komponentet indeholder ikke længere nogen source (da det er hukommelses-modulet) og samtidig er skåret ind til benet således overflødig VHDL-kode så vidt muligt er fjernet. 
+Forskellen derudover er at vi i stedet for ADCLRCK nu venter på at DACLRCK er klar til at modtage signaler (går fra lav til høj eller høj til lav). 
+Samtidig har vi også implementeret modulet således at der nu spilles ud på begge kanaler (left/right). 
+I praksis betyder det at der sendes en sample (bestående af 24 bits) til DAC'en både når DACLRCK er høj (højre kanal) og lav (venstre kanal). 
+Det oprindelige modul havde en statemaskine til at holde styr på denne proces og dette har vi valgt at bibeholde for overskueligheden.
+
+
+Vi har bevidst valgt ikke at lave en test-bench til ST2IIS for at begrænse projektet en smule. 
+Samtidig er det originale modul, blevet testet i forbindelse med undervisningen, så til trods for vi har modificeret det, valgte vi at prioritere det at lave testbench'en til hukommelsesmodulet frem for til ST2IIS-modulet.
+
+
+
+\subsubsection{Beregning af sinuskurver}
+\label{sec:LUT}
+For at få en nogenlunde pæn tone valgte vi at implementere C-koden således den skulle sende samples svarende til en sinus-kurve ned til hukommelses-modulet. 
+For at gøre det har vi valgt at inkludere math-biblioteket, hvori funktionen sin() lå. 
+Vi fandt dog ret hurtigt ud af at det ville tage utrolig lang tid at beregne alle samples i en sinuskurve og derfor blev i nødt til at optimere lidt på det. 
+I stedet for at beregne en fuld svingning beregnede vi i stedet en kvart og derefter vendte og drejede den således vi kunne forme en fuld og derved rundt regnet spare en fjerdedel af tiden.
+
+For at gøre det nemmere os selv valgte vi så dog også at skære lidt af den fulde svingning ved at finde et tal tæt derpå, som går op i fire, således svingningen er nem at dele op i fire lige store dele. 
+Dette giver naturligvis ikke altid en lige så præcis hertz, men en tilnærmelsesvis god nok.
+
+For at finde antallet af samples vi skulle bruge udførte vi følgende udregning.  
+Bemærk hvorledes vi sørger for, at samlet antal af samples går op i fire.
+
+
+\begin{lstlisting}[style=code-C, caption=sample-udregning, label=lst:sample]
+quarter_samples = 48000/current_hertz/4;
+full_samples = quarter_samples*4;
+\end{lstlisting}
+
+Herefter kan vi beregne de fire vha. en række løkker og kendskabet til en sinuskurves udformning. Den første fjerdedel beregnes som beskrevet herunder. Implementeringen af de samlede fire dele kan ses i appendix \ref{App:SinusKode}.
+
+De enkelte samples beregnes således:
+
+\[
+ \left(1+sin\left(\frac{sample\_iterator*2*\pi}{full\_samples}\right)\right)*HALF\_MAX\_CODEC\_SIZE
+\]
+Hvor:
+	\begin{itemize}
+	\item sample\_iterator tæller fra 0 til $quarter\_samples - 1$
+	\item $HALF\_MAX\_CODEC\_SIZE=\dfrac{2^{24}-1}{2}$
+	\end{itemize}
+
+
+
+Et eksempel på en svinging er vist i appendix \ref{app:sinus1000}, hvor en frekvens på 1 kHz vises over 48 samples. Af grafen kan det observeres at vores data følger den reelle sinuskurve nogenlunde, men ikke 100\% idet vi har en mindre regnefejl i vores kode. Dette fandt vi desværre først ud af sent i projektet og har derfor valgt ikke at arbejde mere på det frem for at få færdiggjort vigtigere dele.
+Samtidig kan vi også se af appendix \ref{app:sinus200} at punkterne ved lavere frekvenser giver en mere jævn sinuskurve. 
+
+
+\subsubsection{Begrænsning frekvens}
+Idet vi havde valgt at begrænse antallet af pladser i de to ram-blokke til 256 var antallet af hertz også naturligt begrænset. 
+Idet CODEC'et kører ved en frekvens på 48 KHz er den maksimale frekvens vi kan spille ved:
+\[
+\frac{\text{48.000 Hz}}{\text{256}} = \text{187,5 Hz}
+\]
+
+Vores laveste frekvens var dog på 200 Hz fordi det passede bedst ind i vores system.
+
+\paragraph{Forslag til optimering af udregninger}
+For at vi nemt kunne afprøve vores system med en lang række frekvenser og samtidig forsimple vores design valgte vi at bruge sinus-funktionen i C-koden og kun at implementere to RAM-blokke. 
+At vi så senere fandt ud af at der ikke var plads til mere end to RAM-blokke (med 256 pladser i hver) er en helt anden sag.
+
+Det er dog ingen hemmelighed at især sinus-funktionen er meget langsom når man tager i betragtning at man normalt ville forvente der ikke ville gå særlig meget tid mellem tastetryk og at en tone begynder at spille. 
+Det eneste vi specielt har gjort for at optimere denne proces er at vi valgte at dele sinuskurven op i fire dele. 
+Ønskede vi at optimere endnu mere kunne vi have gjort diverse andre ting.
+
+Hovedsageligt ville det være en fordel at man ikke skulle beregne alle samples hele tiden. 
+Fx kunne man starte ud med at beregne alle ønskede frekvenser og gemme dem i nogle arrays før selv hovedsekvensen går i gang. 
+På samme måde kunne frekvenserne også være beregnet "manuelt" og ligge i en fil der loades ind.
+
+En af de helt klart bedste optimeringer ville i stedet være hvis der havde været flere buffere hvori frekvenser så skrives ned til fra en start. 
+Derefter skal man fra C-koden fortælle hvilken RAM-blok der skal spilles fra i stedet for at skulle skrive alt ned til dem hver eneste gang. 
+I princippet kunne dette virke lidt som en look-up-table
+
+
+
+
+\end{document}

@@ -6,10 +6,17 @@
 
 
 \subsection{Arkitektur}
-Efter selve projektet var blevet udtænkt, begyndte nedbrydningen af det således, at der kunne fordeles opgaver til de enkelte gruppemedlemmer.
+Efter selve projektet var blevet udtænkt, begyndte nedbrydningen af systemet således, at der kunne fordeles opgaver mellem de to gruppemedlemmer.
 
 Den oprindelige idé gik på, at der skulle sidde et komponent i FPGA'en, skrevet i VHDL, som ville tage imod en frekvensværdi og derefter generere de enkelte værdier til ram-modulerne.
-Dette blev omsat således, at værdierne blev beregnet fra C-kode og derefter sendt enkeltvis til ram-modulerne.
+Dette blev redesignet således, at værdierne blev beregnet fra C-kode og derefter sendt enkeltvis til ram-modulerne, da dette vil give en bedre mulighed for at skifte genereringen af frekvensværdierne.
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.45]{Opstilling.png}
+\caption{Systemoversigt}
+\end{figure}
+
 
 
 \subsubsection{VHDL-kode}
@@ -18,19 +25,18 @@ Dette indvolder de to komponenter, \textit{TransportProtocol} og \textit{PlaySou
 
 
 	\begin{itemize}
-	\item \textit{TransportProtocol}: skulle modtage data igennem \textit{Avalon Memory-Mapped}-interfacet, som kan omsættes til funktioner til C-kode. 
-Derudover skulle det kunne skrive data til hver af de to \textit{RamAccess}-moduler, der hver i sær vil kunne indeholde én frekvens. 
+	\item \textit{TransportProtocol}: skulle modtage data igennem \textit{Avalon Memory-Mapped}-interfacet, som kan skrives til gennem funktioner i C-kode. 
+Derudover skulle det kunne skrive data til hver af de to \textit{RamAccess}-moduler, der hver i sær vil kunne indeholde samples svarende til én sinuskurve. 
 
-Således ville \textit{TransportProtokol} holdes styr på, hvor mange samples hver frekvens benyttede, hvilket ram-modul der ikke blev afspillet fra og hvilken adresse i modulet dataen skulle gemmes på.
+Det er således \textit{TransportProtokol} der holder styr på, hvor mange samples hver frekvens benytter, hvilket ram-modul der ikke bliver spillet fra og hvilken adresse i modulet data skal gemmes på.
 
 
 	\item \textit{PlaySound}: Når data for en frekvens var gemt, skulle komponenten \textit{PlaySound} have besked herom således, at den vil spille den nyeste data fra det korrekte ram-modul.
 Når der læses data, er adressen der skal læses fra ens for alle ram-modulerne, således at de alle sender hver sin data til \textit{PlaySound}.	
-
-For at forenkle \textit{PlaySound}'s interface er der kun ét data-input og ikke et per ram-modul.
+For at forenkle \textit{PlaySound}'s interface er der kun ét data-input og ikke et pr. ram-modul.
 Ved at sætte en multiplexer mellem komponenten og alle ram-modulerne, kan et chipselect afgøre hvilket input der ønskes.
 
-Hver data fra ram-modulerne bliver herefter sendt videre igennem \textit{Avalon Streaming}-interfacet som \code{ast\_source\_data}.
+Hver data fra ram-modulerne bliver herefter sendt videre igennem \textit{Avalon Streaming}-interfacet som source i interfacet.
 
 	\end{itemize}
 
@@ -40,31 +46,31 @@ Hver data fra ram-modulerne bliver herefter sendt videre igennem \textit{Avalon 
 
 
 \subsubsection{C-kode}\label{sec:c-kode}
-I forbindelse med designet af C koden har vi så vidt muligt forsøgt at opdele koden i funktioner og filer således det er nemt at overskue. 
-Samtidig har vi beskrevet de forskellige funktioner således det er ligetil at gå til dem.
+I forbindelse med designet af C koden ønsker vi så vidt muligt at opdele koden i funktioner og filer således det er nemt at overskue. 
+I filerne beskrives de forskellige funktioner desuden, således det er ligetil at gå til dem.
 
 I vores projekt har vi følgende grupperinger:
 
 	\begin{itemize}
-	\item Main: I denne fil ligger main-funktionen der er med til at kalde alle de andre funktioner på baggrund af hvad brugeren gør. 
+	\item \textit{Main}: Her ligger main-funktionen der er med til at kalde alle de andre funktioner på baggrund af hvad brugeren gør. 
 	I funktionen er der en initieringsfase, hvor bl.a. hardware-komponenter sættes op. 
 	Herefter kører programmet i en while-loop som hele tiden tjekker op på enten tastetur eller knapper, behandler de inputs og sender data til displays og hukommelsesmodulet.
 
 
-	\item RAM Sound: Gør det muligt at skrive ned til hukommelsesmodulet. 
+	\item \textit{RAM Sound}: Gør det muligt at skrive ned til hukommelses-modulet. 
 	Det er meningen at man bruger den ene funktion til at angive hvor mange samples der efterfølgende kommer og den anden til at sende samples en efter en.
 	
-	\item Keyboard: Har som formål at indhente og bringe information om de seneste tasteturtryk. 
+	\item \textit{Keyboard}: Har som formål at indhente og bringe information om de seneste tasteturtryk. 
 	I forbindelse med opdatering af seneste tastetryk gives et array hvori de seneste taster er og som skal gives med igen senere for at få det korrekte billede. 
-	I filen er der også en funktion som bruges til at konvertere de HEX-tal tasteturet giver om til ASCII-karakterer.
+	Her er desuden også implementeret en funktion som bruges til at konvertere de HEX-tal tasteturet giver om til ASCII-karakterer.
 	
-	\item Keys: Denne opdaterer simpelt bare et array der angiver de knapper, der pt. er trykket ned. 
-	Idet knapperne hovedsagligt er med som test er denne del forsøgt nogenlunde simpel.
+	\item \textit{Keys}: Denne opdaterer et array der angiver de knapper, der pt. er trykket ned. 
+	Idet knapperne hovedsagligt er med som test er denne del nogenlunde simpel.
 	
-	\item 7-seg: Gør det muligt at skrive et tal ud på de fire 4 7-segments displays på DE2-boardet. 
+	\item \textit{7-seg}: Gør det muligt at skrive et tal ud på de fire 4 7-segments displays på DE2-boardet. 
 	På displayet  vil det blive vist som BCD-tal og ikke HEX-tal, som det ellers ville pr. standard.
 	
-	\item LCD: Her er det muligt at skrive ned til LCD-displayets to linjer. 
+	\item \textit{LCD}: Her er det muligt at skrive ned til LCD-displayets to linjer. 
 	Når man skriver ned til en af linjerne bliver den først ryddet, således der kan skrives på en frisk.
 	
 	
@@ -81,7 +87,7 @@ Herunder beskrives nogle af de problemstillinger, som der er mødt i udviklingspr
 \subsubsection{Forskellige clock-domæner}
 For at læse fra ram-modulerne og sende dette ud gennem ST-bussen, bruges der to forskellige clock-domæner. 
 Dette er en udfordring, omend let at overkomme, så medfører den komplikationer.
-På udklip \ref{lst:clockDomain} ses, hvordan \code{data} overføres fra et clock-domæne til et andet.
+På kodeudsnit \ref{lst:clockDomain} ses, hvordan \code{data} overføres sikkert fra et clock-domæne til et andet.
 \begin{lstlisting}[style=code-VHDL, label=lst:clockDomain, caption=Clock domæne]
 signal data1 : std_logic_vector (dataSize-1 downto 0);
 ...
@@ -96,10 +102,10 @@ begin
 
 
 \subsubsection{SOPC-builder}
-SOPC-builderen, der skal generere generere alle komponenterne, brokkede sig med følgende besked:
+SOPC-builderen, der skal generere alle komponenterne, brokkede sig med følgende besked:
 \\
 \textit{Fitter requires 2103 LABs to implement the project, but the device contains only 2076 LABs}.
-Problemet har muligvis dækket over, at vi bruger for mange logiske elementer i vores design, for da vi reducerede \textit{RamAccess}'s \code{ramSize}-variabel fra 2048 til 256, forsvandt fejlen.
+Problemet har dækket over, at vi bruger for mange logiske elementer i vores design, og da vi reducerede \textit{RamAccess}'s \code{ramSize}-variabel fra 2048 til 256, forsvandt fejlen.
 
 \subsubsection{PS/2 Keyboard}
 I forbindelse med implementeringen af PS/2-tasteturet løb vi ind i et mindre problem idet vi fandt frem til at PS/2-tasteturet kun kan holde styr på et vis antal tastetryk ad gangen og at dette antal er lidt "uforudsigeligt". 
@@ -109,7 +115,6 @@ Som en sidebemærkning ift. PS/2-tasteturet så var det i starten også et problem 
 Vi prøvede i første omgang med et USB-tastetur og en USB-til-PS/2 konverter, men dette gav ingen data overhovedet. 
 Til sidst fandt vi dog et tastetur i en kælder og kunne derved udføre vores projekt som ønsket.
 
-mapning mellem filnavne og betegnelser i diagrammet
 
 \subfile{test}
 

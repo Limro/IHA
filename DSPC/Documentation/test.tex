@@ -5,27 +5,17 @@
 \subsection{Analyse og optimering}
 
 Optimering af projektet har været i fokus, men er ikke vægtet i samme grad, som andre punkter.
-Dette viser sig i Quartus' analyse af projektet, hvor LE:Register-forholdet ikke er 1:1.
+Dette viser sig i Quartus' analyse af projektet, hvor forholdet mellem registre og logiske elementer ikke er 1:1.
 Der er totalt 23.272 logiske elementer og 13.549 registre.
 Langt størstedelen af alle disse registre kommer fra de to \textit{RamAccess}-moduler, som hver i sær har 5911 registre, hvorimod \textit{TransferProtocol} har 59, mens \textit{PlaySound} har 66.
 \\
 \\
-Quartus vil desværre ikke vise hvad fmax er, hvilket er en skam, da dette fortæller hvor høj frekvens systemet maksimalt vil kunne køre med.
+Quartus vil desværre ikke op til afleveringsfristen vise hvad \textit{fmax} er, hvilket er en skam, da dette fortæller hvor høj frekvens systemet maksimalt vil kunne køre med.
 \\
 \\
 I bund og grund ville det heller ikke give alt for meget mening at gå ned og optimere meget i VHDL-koden idet vi har valgt at skrive store dele af vores projekt i C som langt fra er så hurtigt som hvis man gjorde det direkte i VHDL. 
-Herunder er bl.a. også at vi vælger at bruge math-bibliotekets sinus-funktion hver gang en ny frekvens findes frem for at gemme det i en LUT. 
+Herunder bl.a. også at vi vælger at bruge \textit{math}-bibliotekets sinus-funktion hver gang en ny frekvens findes frem for at gemme det i en LUT. 
 Se mere herom under \ref{sec:LUT}
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -35,11 +25,11 @@ Se mere herom under \ref{sec:LUT}
 \subsection{Test og simulering}
 For at sikre, at VHDL-koden virker som ønsket, er koden testet med programmet ModelSim 10.1b, hvor hvert komponent er unittestet samt en integreringstest for 2 af komponenterne.
 
-Koden er testet således, at alle linjer er blevet afprøvet, så der ikke er en linje der vil sende underlig data ud.
+Koden er testet således, at alle kodelinjer er blevet afprøvet, så der ikke er en linje der vil sende underlig data ud.
 Ligeledes er der testet flere scenarier, hvor forskellige værdier sendes til og fra de forskellige komponenter.
 
-Grundet den mængde af data der sendes til ram-modulerne, for hver frekvens der ønskes afspillet, er der ikke testet nær det antal der sendes over, men blot enkelte, sekventielle værdier, således selve processen er vist funktionel.
-Hvis man ønskede at teste for, at alle værdier ville blive skrevet korrekt over vil det tage meget lang tid at verificere, bedst illustreret på figur \ref{fig:hz-graf}.
+Grundet den mængde af data der sendes til ram-modulerne, for hver frekvens der ønskes afspillet, er der ikke testet nær det antal der vil sendes over ved normal kørsel af systemet, men blot enkelte, sekventielle værdier, således selve processen er vist testet.
+Hvis man ønskede at teste for, at alle værdier ville blive skrevet korrekt over, vil det tage meget lang tid at verificere, bedst illustreret på figur \ref{fig:hz-graf}.
 \[
 \text{antal samples} = \frac{\text{48000 Hz}}{\text{ønsket frekvens}}
 \]
@@ -53,7 +43,7 @@ Hvis man ønskede at teste for, at alle værdier ville blive skrevet korrekt over 
 
 
 Første test er af komponentet \textit{TransportProtocol}, der står for overførelsen af data fra microcontrolleren til ram-modulerne.
-På figur \ref{fig:TP} ses et wave-udsnit af \textit{TransportProtocol}'s testbench:
+På figur \ref{fig:TP}\footnote{Se også appendix \ref{app:wave-TP}} ses et wave-udsnit af \textit{TransportProtocol}'s testbench:
 
 \begin{figure}[hbtp]
 \centering
@@ -85,15 +75,13 @@ Komponentet \textit{RamAccess} lagrer de overførte værdier.
 \label{fig:RA}
 \end{figure}
 
-På figur \ref{fig:RA} foretages der først et reset på 50 ns, chipselect aktiveres og der skrives til adresse 0 med værdien 3 (60-70 ns).
+På figur \ref{fig:RA}\footnote{Se og appendix \ref{app:wave-RA}} foretages der først et reset på 50 ns, chipselect aktiveres og der skrives til adresse 0 med værdien 3 (60-70 ns).
 Herefter skrives til adresse 1 med værdien 1 (70-90 ns) og fordi \textit{readAddress} ikke ændres, læses værdien fra adresse 0 ud (75-95 ns). 
 Dette vises også i \ref{app:RA}.
 Læsningsprocessen gentages fra 95 ns og frem.
 \\
-Dette viser, at \textit{RamAccess} umiddelbart virker som det skal.
 \\
-\\
-Komponentet \textit{PlaySound} er en smule mere omfattende og det testes sammen med \textit{RamAccess} for at opnå det bedste resultat.
+Komponentet \textit{PlaySound} er en smule mere omfattende og det testes sammen med \textit{Ram\-Access} for at opnå det bedste resultat.
 
 \begin{figure}[hbtp]
 \centering
@@ -102,12 +90,13 @@ Komponentet \textit{PlaySound} er en smule mere omfattende og det testes sammen 
 \label{fig:PSandRA}
 \end{figure}
 
-Den viste sekvens på figur \ref{fig:PSandRA} er på 3,5 microsekunder.
+Den viste sekvens på figur \ref{fig:PSandRA}\footnote{Se og appendix \ref{app:wave-PS}} er på 3,5 microsekunder.
 Først foretages et reset, for at nulstille alle værdier (0-250 ns), hvorefter der skrives nogle dummy-værdier ind i de to ram-moduler (270-350 ns).
 Herefter vælges læsning fra ram-modul1 (250-620 ns) og værdierne læses og genlæses indtil ram-modul0 vælges (620-2.170 ns).
 Det nye antal af værdier der skal læses bliver herefter læst ind (2.170-3.500 ns).
 
-Overstående test viser, at der kan læses fra \textit{RamAccess} når der ligger data deri, samt den kun afspiller det den bliver bedt om igen og igen.
+Overstående tests viser, at der kan læses fra \textit{RamAccess} når der ligger data deri, samt \textit{PlaySound} kun afspiller det den bliver bedt om igen og igen.
+Derudover kan der skrives i \textit{TransportProtocol} og videresendes data om både hvor mange samples der skal afspilles, samt hvilket ram-modul der skrives på og skal læses fra.
 
 
 

@@ -16,15 +16,15 @@ Tilsluttet til DE2-boardet er også et par højtalere forbundet via line-out stikk
 Intentionen med opstillingen er, at der ved et tastetryk på tasteturet bliver genereret en tone, en sinuskurve, som er forskellig for hver knap.
 
 
-Der genereres en microprocessor, som bl.a. har forbindelse til driveren for tasteturet. 
-Microprocessoren sender, vha. en sinusgenerator, værdierne for en tone fra C-kode til VHDL-koden.
-Værdierne gemmes i DE2-boardets ram-moduler, hvorfra de kan afspilles.
-Derudover kan der også trykkes på 3 af DE2-boardets knapper, der tilsammen vil udgøre en tone.
+Der genereres vha. værktøjer en microprocessor, som bl.a. indeholder en driver til tasteturet. 
+Microprocessoren sender, vha. en sinuskurve der sendes til et hukommelses-modul, værdierne for en tone fra C-kode til VHDL-koden.
+Værdierne gemmes i hukommelses-modulet, hvorfra de kan afspilles.
+Fra hukommelses-modulet sendes lyden ud til højtalerne via \textit{ST-bussen}, bit for bit.
 \\
-Fra ram-modulerne sendes lyden ud til højtalerne via \textit{ST-bussen}, bit for bit.
+Derudover kan der også benyttes 3 af DE2-boardets knapper, der tilsammen vil udgøre en tone.
 \\
 \\
-Frekvensen der afspilles vises på 7-segments-displayet og på det store display vises en fyldig tekst vedr. frekvensen.
+Frekvensen der afspilles vises på 7-segments-displayet og på det LCD-display vises en fyldig tekst vedr. frekvensen.
 \\
 \\
 På figur \ref{fig:opstilling} ses opstillingen:

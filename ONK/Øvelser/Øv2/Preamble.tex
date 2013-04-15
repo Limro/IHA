@@ -1,0 +1,89 @@
+%Report template by Christian Fischer Pedersen for IT-ONK
+%--------------------------------------------------------
+
+%Page layout
+%--------------------------------------------------------
+\documentclass[a4paper,10pt]{report}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+
+%Seperated files
+%--------------------------------------------------------
+\usepackage{subfiles}
+
+%Text typesetting
+%--------------------------------------------------------
+\usepackage{bookman}                  
+\usepackage[T1]{fontenc}              
+\usepackage[utf8]{inputenc}         
+\usepackage[english]{babel}        
+\usepackage[bf,small,raggedright,compact]{titlesec}
+\usepackage[parfill]{parskip}
+\usepackage{setspace}
+\setcounter{secnumdepth}{3}
+
+%Tables
+%----------------------------------------------------------
+\usepackage{tabularx}
+\usepackage{multirow} 
+\usepackage{multicol} 
+\usepackage{booktabs}
+
+%Misc
+%----------------------------------------------------------
+\usepackage{cite}
+\usepackage{appendix}
+\usepackage{amssymb}
+\usepackage{url}
+
+%Begin document
+%----------------------------------------------------------
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+{\LARGE \textbf{[Project title]}}\\
+{\large \textbf{Domain Name System\\ OR\\ Data Distribution Service\\ OR\\ Java Remote Method Invocation}}\\
+
+
+\vspace{4cm}
+\textbf{Handed in [April 20], [2013], by team no. [1]}\\~\\
+\begin{tabular}{ll}
+$[$Name 1$]$  & $[$Email address$]$ \\
+$[$Name 2$]$  & $[$Email address$]$ \\
+$[$Name 3$]$  & $[$Email address$]$ \\
+$[$Name 4$]$  & $[$Email address$]$ \\
+$[$Name 5$]$  & $[$Email address$]$ \\
+\end{tabular}
+\vfill
+\textbf{Electrical and Computer Engineering}\\
+\textbf{Aarhus University}\\
+\textbf{Finlandsgade 22, 8200 Aarhus N, Denmark}
+\end{center}
+\end{titlepage}
+
+\subfile{Abstract}
+
+\subfile{Introduction}
+
+\subfile{Subject}
+
+\subfile{Prototype}
+
+\subfile{Conclusion}
+
+
+\begin{thebibliography}{9}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\bibitem{1989_graham_1}
+R.L. Graham, D.E. Knuth, and O. Patashnik, \emph{Concrete
+mathematics}, Addison-Wesley, Reading, MA, 1989.
+
+\bibitem{2003_simpson_1} H. Simpson, \emph{Proof of the Riemann
+Hypothesis},  preprint (2003), available at 
+\url{http://www.math.drofnats.edu/riemann.ps}.
+
+\end{thebibliography}
+
+\end{document}

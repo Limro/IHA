@@ -1,0 +1,40 @@
+
+%Standard sti at søge efter billeder
+\graphicspath{{Figurer/}}
+
+%Linjeafstand
+\linespread{spacing}
+\linespread{1.5} %Afstanden
+
+
+%Macro for billeder til wave
+\newcommand{\testbench}[3]{\textit{Her kommer et billede} }%\label{#3} }
+
+
+%Gør plads til \subsubsubsection{}
+%\section{} % level 1
+%\subsection{} % level 2
+%\subsubsection{} % level 3
+%\paragraph{} % level 4 - equivalent to subsubsubsection
+%\subparagraph{} % level 5
+\setcounter{secnumdepth}{5}
+
+%Sæt ToC til at tage level 4 med
+\setcounter{tocdepth}{4}
+
+%Indsætter linebreak efter \paragraph{}
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+
+%For at bruge graphic H
+\usepackage{float}
+
+
+%Sidehoved
+\usepackage{fancyhdr}					% Header-style
+\pagestyle{fancy}

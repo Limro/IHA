@@ -1,0 +1,52 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[ansinew]{inputenc} 			% Windows
+%\usepackage[latin1]{inputenc} 			% Linux og Mac
+
+% Alle indstillinger for dokumenter
+\input{../Global_preamble}				
+
+%MicroType - skal forbedre læseoplevelsen iform af orddeling
+%\usepackage{microtype}
+
+% Specifikee instillinger for dokumentet
+\input{BAC-settings}
+
+
+%Overskrift, forfatter og dato
+\title{Bachelor forberedelse}
+\author{Rasmus Bækgaard, 10893}
+\date{09-04-2013}
+
+
+\begin{document}
+
+\tableofcontents
+
+\newpage
+\subfile{Part_1}
+
+\newpage
+\appendix
+
+\nocite{*}
+\bibliographystyle{ieeetr}
+\bibliography{references}
+
+
+\section{Appendix: Waves}
+\subfile{Part_7}
+
+
+\section{Appendix: Kode}
+\subfile{Part_6}
+
+\section{Appendix: Grafer}
+
+\subfile{Part_5}
+
+
+\newpage
+
+
+
+\end{document}

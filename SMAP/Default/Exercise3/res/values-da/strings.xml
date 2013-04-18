@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="action_settings">Indstillinger</string>
+    <string name="app_name">Øvelse 3</string>
+    <string name="hello_world">Hej verden</string>
+</resources>

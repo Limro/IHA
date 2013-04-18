@@ -1,0 +1,22 @@
+﻿
+
+Why does a FQDN end with a dot, “.”?
+Dette giver en utvetydig placering
+
+What is a DNS zone?
+En DNS Zone er et område en DNS Server råder over. 
+Her bruger den DNS "A" records
+
+How may DNS caching be more effective in recursive vs. iterative resolution?
+Det er meget hurtigere at huske hvad man lige har lavet, end at 
+skulle slå det op igen
+
+Why are client-side communication costs reduced in recursive name resolution?
+Fordi DNS-serveren selv finder ud af, hvor underdomænet hører til og 
+rekursivt til endelig placering
+
+Why does recursive resolution put higher performance demands on each name server?
+Hvis sub-domaniet ikke blot sendes retur til klient, skal DNS-serverne spørge 
+sub-domainer og sende endeligt svar retur.
+
+What is DNSSEC and why is it needed?

@@ -34,6 +34,7 @@
         android:layout_alignBottom="@+id/inputSeconds"
         android:layout_alignTop="@+id/inputSeconds"
         android:layout_toRightOf="@+id/inputSeconds"
-        android:text="@string/Start" />
+        android:text="@string/Start"
+        android:onClick="btnSet" />
 
 </RelativeLayout>

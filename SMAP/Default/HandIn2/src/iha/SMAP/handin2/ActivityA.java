@@ -17,20 +17,20 @@ public class ActivityA extends Activity {
 
 	static String Tag = "ActivityA";
 	TimerService mService;
-    boolean mBound = false;
+    boolean mBound;
 
     @Override
-     protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity);
-        Log.i(Tag, "onCreate Called");       
+        Log.i(Tag, "onCreate Called");    
+        mBound = false;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.activity, menu);
-        Log.i(Tag, "Menu clicked");
         return true;
     }
 
@@ -68,8 +68,17 @@ public class ActivityA extends Activity {
 		super.onStart();
 		Log.i(Tag, "onStart");
 		
-		Intent i = new Intent(this, TimerService.class);
-		bindService(i, mConnection, Context.BIND_AUTO_CREATE);
+//		Intent i = new Intent(this, TimerService.class);
+//		Log.i(Tag, "Binding to service...");
+//		if(bindService(i, mConnection, Context.BIND_AUTO_CREATE))
+//		{
+//			Log.i(Tag, "Succesfully started service");
+//		}
+//		else
+//		{
+//			Log.i(Tag, "Service NOT started correctly - suck it up");
+//		}
+		
 	}
 
 	@Override
@@ -80,33 +89,48 @@ public class ActivityA extends Activity {
 	}
 
     /** Defines callbacks for service binding, passed to bindService() */
-    private ServiceConnection mConnection = new ServiceConnection() {
-
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            // We've bound to LocalService, cast the IBinder and get LocalService instance
-            LocalBinder binder = (LocalBinder) service;
-            mService = binder.getService(); 
-            mBound = true;
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName arg0) {
-            mBound = false;
-        }
-    };
-    
+//    private ServiceConnection mConnection = new ServiceConnection() 
+//    {
+//        @Override
+//        public void onServiceConnected(ComponentName className, IBinder service) 
+//        {
+//            // We've bound to LocalService, cast the IBinder and get LocalService instance
+//            LocalBinder binder = (LocalBinder) service;
+//            mService = binder.getService(); 
+//            mBound = true;
+//            Log.i(Tag, "Establish connection to Service");
+//        }
+//
+//        @Override
+//        public void onServiceDisconnected(ComponentName arg0) 
+//        {
+//        	Log.i(Tag, "Disconnect from Service");
+//        	mBound = false;
+//        }
+//    };
+//    
 	public void btnSet(View v)
 	{
-		Intent i = new Intent();
+		Log.i(Tag, "Set button clicked");
+		
+		Bundle extra = new Bundle();
+		
 		EditText timeField = (EditText)findViewById(R.id.inputSeconds);
+		extra.putInt("timerData", Integer.parseInt(timeField.getText().toString()));
 		
-		i.putExtra("timerData", Integer.parseInt(timeField.getText().toString()));
+		Intent i = new Intent();
 		
-		//startActivityForResult(i, 1);
-		if(mBound)
+		i.putExtras(extra);		
+		i.setClass(this, TimerService.class);
+		
+		try
 		{
-			
+			Log.i(Tag, "Activating service");
+			startService(i);
+		}
+		catch(Exception ex)
+		{
+			Log.e(Tag, ex.toString());
 		}
 	}
 }

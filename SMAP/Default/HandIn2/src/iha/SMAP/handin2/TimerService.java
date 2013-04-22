@@ -6,6 +6,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.util.Log;
@@ -31,7 +32,25 @@ public class TimerService extends Service {
         // The service is starting, due to a call to startService()
     	Log.i(Tag, "onStartCommand");
     	
-    	intent.getBundleExtra("timerData");
+    	Bundle extra = intent.getExtras();
+    	if(extra != null)
+    	{
+    		Log.i(Tag, "bundle found in service");
+    		try
+    		{
+    			int time = extra.getInt("timerData");
+    			startAlert(time);
+    			stopSelf();
+    		}
+    		catch(Exception ex)
+    		{
+    			Log.e(Tag, ex.toString());
+    		}
+    	}
+    	else
+    	{
+    		Log.e(Tag, "Bundle not found! Give up all hope!");
+    	}
         return mStartMode;
     }
     @Override
@@ -58,34 +77,29 @@ public class TimerService extends Service {
     	Log.i(Tag, "onDestroy");
     }
     
-    public void SetTimer(int time)
-    {
-    	timer = new CountDownTimer(time * 1000, 1000) {
-			
-			@Override
-			public void onTick(long millisUntilFinished) {
-				// TODO Auto-generated method stub				
-			}
-			
-			@Override
-			public void onFinish() {				
-				startAlert(2);				
-			}
-		};
-    }
-    
 	public void startAlert(int time) 
 	{
-	    
-	    Intent intent = new Intent(this, MyBroadcastReceiver.class);
-	    
-	    PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 1, intent, 0);
-	    
-	    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-	    
-	    alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (time * 1000), pendingIntent);
-	    
-	    Toast.makeText(this, "Alarm set in " + time + " seconds", Toast.LENGTH_LONG).show();
+		try
+		{
+			Log.i(Tag, "BroadCasterIntent");
+		    Intent intent = new Intent(this, MyBroadcastReceiver.class);
+		    
+		    Log.i(Tag, "Getting BroadCast");
+		    PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 1, intent, 0);
+		    
+		    Log.i(Tag, "Getting alarmService");
+		    AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+		    
+		    Log.i(Tag, "Set alarm");
+		    alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + (time * 1000), pendingIntent);
+		    
+		    Log.i(Tag, "Toast");
+		    Toast.makeText(this, "Alarm set in " + time + " seconds", Toast.LENGTH_LONG).show();
+		}
+		catch(Exception ex)
+		{
+			Log.e(Tag, ex.toString());
+		}
 	}
 	
     public class LocalBinder extends Binder {

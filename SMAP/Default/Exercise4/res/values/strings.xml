@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="MyEditText">text</string>
+    <string name="action_settings">asd</string>
+    <string name="app_name">ToDoList</string>
+    <string name="addItemHint">New To Do Item</string>
+    <string name="addItemContentDescription">New To Do Item</string>
+</resources>

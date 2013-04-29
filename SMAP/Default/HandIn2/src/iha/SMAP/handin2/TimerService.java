@@ -3,15 +3,12 @@ package iha.SMAP.handin2;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 public class TimerService extends Service {
@@ -98,7 +95,7 @@ public class TimerService extends Service {
 		}
 		catch(Exception ex)
 		{
-			Log.e(Tag, ex.toString());
+			Log.e(Tag, ex.toString()); //Log error
 		}
 	}
 	

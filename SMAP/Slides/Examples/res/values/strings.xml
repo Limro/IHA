@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Themes</string>
+    <string name="hello">Hello World, Themes!</string>
+    <string name="title_text">Title Bar Text</string>
+    <string name="subtitle_text">Sub-title text</string>
+</resources>

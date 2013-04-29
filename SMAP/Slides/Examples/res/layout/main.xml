@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<TextView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/title_text"
+		style="?textTitle"/>
+
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="0px"
+		android:layout_weight="1"
+		style="?pageBackground">
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/subtitle_text"
+				style="?textSubheader"/>
+
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				style="?whiteBackground">
+
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:text="This is large text."
+					style="?textLarge"/>
+
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:text="This is regular text."
+					style="?textRegular"/>
+
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/hello"
+					style="?textRegular"/>
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="List view below"
+				style="?textSubheader"/>
+
+			<!-- You cannot have a ListView inside of a ScrollView. This LinearLayout acts like one. -->
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				style="?whiteBackground">
+
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:text="List item 1."
+					style="?listItem"/>
+
+				<View
+					android:layout_width="fill_parent"
+					android:layout_height="1sp"
+					style="?listDivider"/>
+
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:text="List item 2."
+					style="?listItem"/>
+
+				<View
+					android:layout_width="fill_parent"
+					android:layout_height="1sp"
+					style="?listDivider"/>
+
+				<TextView
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:text="List item 3."
+					style="?listItem"/>
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+	<!-- The buttons at the bottom of the screen. -->
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+
+		<Button
+			android:id="@+id/button1"
+			android:layout_width="0px"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="No theme"
+			style="?button"/>
+
+		<Button
+			android:id="@+id/button2"
+			android:layout_width="0px"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="Theme 1"
+			style="?button"/>
+
+		<Button
+			android:id="@+id/button3"
+			android:layout_width="0px"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="Theme 2"
+			style="?button"/>
+
+	</LinearLayout>
+
+</LinearLayout>

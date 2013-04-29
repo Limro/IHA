@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="iha.SMAP.handin2"
     android:versionCode="1"
     android:versionName="1.0" >
@@ -17,30 +16,26 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        
         <activity
             android:name="iha.SMAP.handin2.ActivityA"
-            android:label="@string/app_name" >
-            
+            android:label="@string/hello_world">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+            	<category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             
-        </activity>
-
-        <service
-            android:name="iha.SMAP.handin2.TimerService"
-            android:enabled="true"
-            android:exported="true" >
-        </service>
-
-        <receiver
-            android:name="iha.SMAP.handin2.MyBroadcastReceiver"
-            android:enabled="true"
-            android:exported="true" >
+            </activity>
+        <activity
+            android:name="iha.SMAP.handin2.ActivityB"
+            android:label="@string/title_activity_activity_b" />
+        
+        <receiver 
+            android:name="iha.SMAP.handin2.MyBroadcastReceiver">
         </receiver>
+        
+        <service 
+            android:name="iha.SMAP.handin2.TimerService">
+        </service>
         
     </application>
 

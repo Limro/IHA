@@ -47,7 +47,9 @@
 		    android:layout_alignParentLeft="true"
 		    android:layout_marginTop="9dp"
 		    android:layout_toLeftOf="@+id/buttonGo"
-		    android:inputType="textCapSentences" >
+		    android:inputType="textCapSentences"
+		    android:maxLines="1"
+		    android:hint="@string/hint" >
 
 		    <requestFocus />
 		</EditText>
@@ -65,8 +67,8 @@
 		
 	<ListView
 	    android:id="@+id/listView1"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content">
+        android:layout_height="0dip"
+        android:layout_weight="1" >
 	</ListView>
 
 </LinearLayout>

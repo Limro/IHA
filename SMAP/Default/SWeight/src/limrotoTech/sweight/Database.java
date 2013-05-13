@@ -16,31 +16,27 @@ import android.util.Log;
 
 public class Database
 {
-	private static final String DATABASE_NAME = "SWeightDatabase.db";
 
-	private static final String DATABASE_Login = "LoginTable";
-	private static final int DATABASE_VERSION = 1;
 	private static final String TAG = "Database";
 
+	private static final int DATABASE_VERSION = 1;
+	private static final String DATABASE_NAME = "SWeightDatabase.db";
 	private static final String DATABASE_TABLE_ENTRY = "EntryTable";
 	private static final String ENTRY_COL_ID = "Id";
 	private static final String ENTRY_COL_WEIGHT = "Weight";
 	private static final String ENTRY_COL_DATE = "Date";
 
-	// The index (key) column name for use in where clauses.
-	public static final String KEY_ID = "_id";
-
-	// The name and column index of each column in your database.
-	public static final String KEY_NAME = "name";
-
-	public static final int NAME_COLUMN = 1;
+	public static final int COL_ID = 1;
+	public static final int COL_DATE = 3;
+	public static final int COL_WEIGHT = 2;
 
 	// TODO: Create public field for each column in your table.
 	// SQL Statement to create a new database.
 	private static final String DATABASE_CREATE = "create table "
-			+ DATABASE_TABLE_ENTRY + " (" + ENTRY_COL_ID
-			+ " integer primary key autoincrement" + ", " + ENTRY_COL_WEIGHT
-			+ " real not null" + ", " + ENTRY_COL_DATE + " text not null);";
+			+ DATABASE_TABLE_ENTRY + " (" // begin
+			+ ENTRY_COL_ID + " integer primary key autoincrement" + ", " // col1
+			+ ENTRY_COL_WEIGHT + " real not null" + ", " // col2
+			+ ENTRY_COL_DATE + " text not null);"; // col3
 
 	// Object type stored in 'EntryTable'
 	public class Entry
@@ -151,8 +147,8 @@ public class Database
 		{
 			if (entry.moveToFirst())
 			{
-				Entry e = new Entry(entry.getDouble(3),
-						FormatTimeToDate(entry.getString(2)));
+				Entry e = new Entry(entry.getDouble(COL_WEIGHT),
+						FormatTimeToDate(entry.getString(COL_DATE)));
 				return e;
 			}
 			else
@@ -167,28 +163,32 @@ public class Database
 			return null;
 		}
 	}
-	
+
 	public List<Entry> getEntriesInPeriod(Date from, Date to)
 	{
-		Log.i(TAG, "Retrieving data from database, from " + FormatDateToTime(from) + " to " + FormatDateToTime(to));
+		Log.i(TAG, "Retrieving data from database, from "
+				+ FormatDateToTime(from) + " to " + FormatDateToTime(to));
 
-		String where = ENTRY_COL_DATE + "=>" + FormatDateToTime(from) + "AND" + ENTRY_COL_DATE + "=<" + FormatDateToTime(to);
-		Cursor entry = db.query(DATABASE_TABLE_ENTRY, null, where, null, null, null, null);
+		String where = ENTRY_COL_DATE + "=>" + FormatDateToTime(from) + "AND"
+				+ ENTRY_COL_DATE + "=<" + FormatDateToTime(to);
+		Cursor entry = db.query(DATABASE_TABLE_ENTRY, null, where, null, null,
+				null, null);
 
 		if (entry != null)
 		{
 			if (entry.moveToFirst())
 			{
 				List<Entry> list = new ArrayList<Entry>();
-				
-				Entry e = new Entry(entry.getDouble(3),
-						FormatTimeToDate(entry.getString(2)));
-				
+
+				Entry e = new Entry(entry.getDouble(COL_WEIGHT),
+						FormatTimeToDate(entry.getString(COL_DATE)));
+
 				list.add(e);
-				
-				while(entry.moveToNext())
+
+				while (entry.moveToNext())
 				{
-					Entry next = new Entry(entry.getDouble(3), FormatTimeToDate(entry.getString(2)));
+					Entry next = new Entry(entry.getDouble(COL_WEIGHT),
+							FormatTimeToDate(entry.getString(COL_DATE)));
 					list.add(next);
 				}
 				return list;
@@ -213,9 +213,9 @@ public class Database
 		val.put(ENTRY_COL_ID, rowIndex);
 		val.put(ENTRY_COL_DATE, FormatDateToTime(myObject.DateEntry));
 		val.put(ENTRY_COL_WEIGHT, myObject.WeightEntry);
-		
+
 		int output = db.update(DATABASE_TABLE_ENTRY, val, where, null);
-		return (output == 0 ? false : true );
+		return (output == 0 ? false : true);
 	}
 
 	private static class myDbHelper extends SQLiteOpenHelper
@@ -249,8 +249,7 @@ public class Database
 			// Upgrade the existing database to conform to the new version.
 			// Multiple
 			// previous versions can be handled by comparing _oldVersion and
-			// _newVersion
-			// values.
+			// _newVersion values.
 			// The simplest case is to drop the old table and create a new one.
 			_db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_ENTRY);
 			// Create a new one.

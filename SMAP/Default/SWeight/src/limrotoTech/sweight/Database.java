@@ -149,17 +149,20 @@ public class Database
 			{
 				Entry e = new Entry(entry.getDouble(COL_WEIGHT),
 						FormatTimeToDate(entry.getString(COL_DATE)));
+				entry.close();
 				return e;
 			}
 			else
 			{
 				Log.d(TAG, "No rows found!");
+				entry.close();
 				return null;
 			}
 		}
 		else
 		{
 			Log.d(TAG, "Nothing returned from database!");
+			entry.close();
 			return null;
 		}
 	}
@@ -171,6 +174,7 @@ public class Database
 
 		String where = ENTRY_COL_DATE + "=>" + FormatDateToTime(from) + "AND"
 				+ ENTRY_COL_DATE + "=<" + FormatDateToTime(to);
+		
 		Cursor entry = db.query(DATABASE_TABLE_ENTRY, null, where, null, null,
 				null, null);
 
@@ -191,17 +195,20 @@ public class Database
 							FormatTimeToDate(entry.getString(COL_DATE)));
 					list.add(next);
 				}
+				entry.close();
 				return list;
 			}
 			else
 			{
 				Log.d(TAG, "No rows found!");
+				entry.close();
 				return null;
 			}
 		}
 		else
 		{
 			Log.d(TAG, "Nothing returned from database! Check where clause");
+			entry.close();
 			return null;
 		}
 	}

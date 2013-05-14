@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -14,13 +13,14 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import java.text.ParseException;
 import android.util.Log;
 
+
 public class Database
 {
 
 	private static final String TAG = "Database";
 
 	private static final int DATABASE_VERSION = 1;
-	private static final String DATABASE_NAME = "SWeightDatabase.db";
+	//private static final String DATABASE_NAME = "SWeightDatabase.db";
 	private static final String DATABASE_TABLE_ENTRY = "EntryTable";
 	private static final String ENTRY_COL_ID = "Id";
 	private static final String ENTRY_COL_WEIGHT = "Weight";
@@ -38,20 +38,6 @@ public class Database
 			+ ENTRY_COL_WEIGHT + " real not null" + ", " // col2
 			+ ENTRY_COL_DATE + " text not null);"; // col3
 
-	// Object type stored in 'EntryTable'
-	public class Entry
-	{
-		public Entry(Double weight, Date date)
-		{
-			WeightEntry = weight;
-			DateEntry = date;
-		}
-
-		public Double WeightEntry;
-		public Date DateEntry;
-
-	}
-
 	// Variable to hold the database instance
 	private SQLiteDatabase db;
 
@@ -64,36 +50,40 @@ public class Database
 	public Database(Context _context)
 	{
 		context = _context;
-		dbHelper = new myDbHelper(context, DATABASE_NAME, null,
+		dbHelper = new myDbHelper(context, DATABASE_TABLE_ENTRY, null,
 				DATABASE_VERSION);
 	}
 
 	public Database open() throws SQLException
 	{
+		Log.i(TAG, "Opening database");
 		db = dbHelper.getWritableDatabase();
 		return this;
 	}
 
 	public void close()
 	{
+		Log.i(TAG, "Closing database");
 		db.close();
 	}
 
 	// Insert a 'Entry' in the database
 	public long insertEntry(Entry _myObject)
 	{
+		open();
 		Log.i(TAG, "Inserting row in database");
 
 		ContentValues val = new ContentValues();
 		val.put(ENTRY_COL_WEIGHT, _myObject.WeightEntry);
-		val.put(ENTRY_COL_DATE, FormatDateToTime(_myObject.DateEntry));
+		val.put(ENTRY_COL_DATE, _myObject.DateEntry);
 
-		Long output = db.insert(DATABASE_NAME, null, val);
+		Long output = db.insert(DATABASE_TABLE_ENTRY, null, val);
 		if (output == -1)
 		{
 			Log.d(TAG, "Value not inserted in database!");
 		}
 
+		close();
 		return output;
 	}
 
@@ -137,6 +127,7 @@ public class Database
 
 	public Entry getEntry(long rowIndex)
 	{
+		open();
 		Log.i(TAG, "Retrieving data from database, ID: " + rowIndex);
 
 		String where = ENTRY_COL_ID + "=" + rowIndex;
@@ -149,26 +140,26 @@ public class Database
 			{
 				Entry e = new Entry(entry.getDouble(COL_WEIGHT),
 						FormatTimeToDate(entry.getString(COL_DATE)));
-				entry.close();
+				close();
 				return e;
 			}
 			else
 			{
 				Log.d(TAG, "No rows found!");
-				entry.close();
+				close();
 				return null;
 			}
 		}
 		else
 		{
 			Log.d(TAG, "Nothing returned from database!");
-			entry.close();
 			return null;
 		}
 	}
 
 	public List<Entry> getEntriesInPeriod(Date from, Date to)
 	{
+		open();
 		Log.i(TAG, "Retrieving data from database, from "
 				+ FormatDateToTime(from) + " to " + FormatDateToTime(to));
 
@@ -195,33 +186,34 @@ public class Database
 							FormatTimeToDate(entry.getString(COL_DATE)));
 					list.add(next);
 				}
-				entry.close();
+				close();
 				return list;
 			}
 			else
 			{
 				Log.d(TAG, "No rows found!");
-				entry.close();
+				close();
 				return null;
 			}
 		}
 		else
 		{
 			Log.d(TAG, "Nothing returned from database! Check where clause");
-			entry.close();
 			return null;
 		}
 	}
 
 	public boolean updateEntry(long rowIndex, Entry myObject)
 	{
+		open();
 		String where = ENTRY_COL_ID + "=" + rowIndex;
 		ContentValues val = new ContentValues();
 		val.put(ENTRY_COL_ID, rowIndex);
-		val.put(ENTRY_COL_DATE, FormatDateToTime(myObject.DateEntry));
+		val.put(ENTRY_COL_DATE, myObject.DateEntry);
 		val.put(ENTRY_COL_WEIGHT, myObject.WeightEntry);
 
 		int output = db.update(DATABASE_TABLE_ENTRY, val, where, null);
+		close();
 		return (output == 0 ? false : true);
 	}
 
@@ -254,10 +246,8 @@ public class Database
 					+ ", which will destroy all old data");
 
 			// Upgrade the existing database to conform to the new version.
-			// Multiple
-			// previous versions can be handled by comparing _oldVersion and
-			// _newVersion values.
-			// The simplest case is to drop the old table and create a new one.
+			// Multiple previous versions can be handled by comparing _oldVersion and
+			// _newVersion values. The simplest case is to drop the old table and create a new one.
 			_db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_ENTRY);
 			// Create a new one.
 			onCreate(_db);

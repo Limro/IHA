@@ -11,6 +11,8 @@ public class MainActivity extends Activity
 {
 	private EditText filterText = null;
 	ArrayAdapter<String> adapter = null;
+	
+	private DownloadReceiver _downloadReceiver = null;
 
 	@Override
 	protected void onDestroy()
@@ -25,9 +27,20 @@ public class MainActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		_downloadReceiver = new DownloadReceiver();
 
-		FilterListener();
+		FilterListener(); //When text changes
 	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		//_downloadReceiver.o
+	}
+
+
 
 	private TextWatcher filterTextWatcher = new TextWatcher()
 	{

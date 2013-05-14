@@ -34,6 +34,18 @@
             android:enabled="true"
             android:exported="false" >
         </receiver>
+
+        <service
+            android:name="iha.SMAP.handin4.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+
+        <receiver
+            android:name=".DownloadReceiver"
+            android:enabled="true"
+            android:exported="true" >
+        </receiver>
     </application>
 
 </manifest>

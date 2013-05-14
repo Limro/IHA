@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="app_name">SWeight</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Weight">Weight:</string>
+    <string name="EnterWeight">Enter weight</string>
+    <string name="Enter">Enter</string>
+</resources>

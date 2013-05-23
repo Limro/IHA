@@ -13,7 +13,6 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import java.text.ParseException;
 import android.util.Log;
 
-
 public class Database
 {
 
@@ -26,9 +25,10 @@ public class Database
 	private static final String ENTRY_COL_WEIGHT = "Weight";
 	private static final String ENTRY_COL_DATE = "Date";
 
-	public static final int COL_ID = 1;
-	public static final int COL_DATE = 3;
-	public static final int COL_WEIGHT = 2;
+	public static final int COL_ID = 0;
+	public static final int COL_WEIGHT = 1;
+	public static final int COL_DATE = 2;
+	
 
 	// TODO: Create public field for each column in your table.
 	// SQL Statement to create a new database.
@@ -96,7 +96,7 @@ public class Database
 		return builder.toString();
 	}
 
-	// Helper function to dormate String to Date
+	// Helper function to format String to Date
 	public static Date FormatTimeToDate(String time)
 	{
 		SimpleDateFormat dateFormat = new SimpleDateFormat(
@@ -157,20 +157,23 @@ public class Database
 		}
 	}
 
-	public List<Entry> getEntriesInPeriod(Date from, Date to)
+	public List<Entry> getEntriesInPeriod(String from, String to)
 	{
 		open();
 		Log.i(TAG, "Retrieving data from database, from "
-				+ FormatDateToTime(from) + " to " + FormatDateToTime(to));
+				+ from + " to " + to);
 
-		String where = ENTRY_COL_DATE + "=>" + FormatDateToTime(from) + "AND"
-				+ ENTRY_COL_DATE + "=<" + FormatDateToTime(to);
+		String where = ENTRY_COL_DATE + " <= \"" + from + "\" AND "
+				+ ENTRY_COL_DATE + " >= \"" + to + "\"";
 		
+		Log.i(TAG, "Where: " + where);
 		Cursor entry = db.query(DATABASE_TABLE_ENTRY, null, where, null, null,
 				null, null);
 
+		
 		if (entry != null)
 		{
+			Log.i(TAG, "Something found in database");
 			if (entry.moveToFirst())
 			{
 				List<Entry> list = new ArrayList<Entry>();

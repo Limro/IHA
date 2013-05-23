@@ -18,6 +18,7 @@
         android:text="@string/EnterWeight"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+
     <RelativeLayout
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -43,9 +44,14 @@
 		    android:layout_toLeftOf="@+id/button1"
 		    android:layout_toRightOf="@+id/textView2"
 		    android:maxLines="1"
-	        android:inputType="numberDecimal" />
-	    
-	        <!-- android:imeOptions="actionDone" -->
+	        android:inputType="numberDecimal">
+	        
+	        	<requestFocus />
+	        </EditText>
+	    	
+	    	
+	        <!-- android:imeOptions="actionDone"
+	        android:windowSoftInputMode="stateVisible" -->
 	
 	    <Button
 	        android:id="@+id/button1"
@@ -55,7 +61,38 @@
         	android:layout_alignParentRight="true"
 	        android:text="@string/Enter" 
 	        android:onClick="OnAddClick"/>
+
+
 	    
     </RelativeLayout>
 
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="GetData"
+            android:text="Get database data"/>
+
+        <Button
+            android:id="@+id/btnGraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="See graph"
+            android:onClick="OnGraphClick"/>
+
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/listLatestData" 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        
+    </ListView>
 </LinearLayout>
+

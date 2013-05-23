@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ChartSelector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/ChartSelector"
+            android:text="@string/Select"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/ChartSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:entries="@array/selector_arrays"
+            android:prompt="@string/selector_text"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal">
+
+        <com.androidplot.xy.XYPlot
+            android:id="@+id/chartPlot"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"/>
+
+    </LinearLayout>
+
+</LinearLayout>

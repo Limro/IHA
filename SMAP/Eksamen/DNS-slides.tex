@@ -1,0 +1,112 @@
+\documentclass{beamer}
+
+\defbeamertemplate{footline}{centered page number}
+{%
+  \hspace*{\fill}%
+  \usebeamercolor[fg]{page number in head/foot}%
+  \usebeamerfont{page number in head/foot}%
+  \insertpagenumber\,/\,\insertpresentationendpage%
+  \hspace*{\fill}\vskip2pt%
+}
+\setbeamertemplate{footline}[centered page number]
+
+%----------------------- Preamble ----------------
+
+\usepackage[T1]{fontenc}	%Fremmedord
+\usepackage[utf8]{inputenc} %Input type
+\usepackage[danish]{babel}	%sprog
+\usepackage{lmodern}		%Dansk skriftpakke
+\hypersetup{pdfstartview={Fit}}
+
+%Standard sti at søge efter billeder
+%--------------------------------------------------
+%\begin{figure}[hbtp]
+%\centering
+%\includegraphics[scale=1]{filnavn-for-png}
+%\caption{Titel}
+%\label{fig:referenceNavn}
+%\end{figure}
+%--------------------------------------------------
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{{Figurer/}}
+
+
+%Speciel skrift for enkelt linje kode
+%--------------------------------------------------
+%Udskriver med fonten 'Courier'
+%Mere info her: http://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
+%Eksempel: Funktionen \code{void Hello()} giver et output
+%--------------------------------------------------
+\newcommand{\code}[1]{{\fontfamily{pcr}\selectfont #1}}
+
+%Tables
+%----------------------------------------------------------
+\usepackage{tabularx}
+\usepackage{multirow} 
+\usepackage{multicol} 
+\usepackage{booktabs}
+
+
+\title{ITSMAP exam}
+\subtitle{Zt4rTrainer}
+
+\author % (optional, for multiple authors)
+{10893, Rasmus Bækgaard\inst{1}\\
+10759, Kasper Vinther Andersen\inst{1}\\
+10648, Lars Anker Christensen\inst{1}\\
+10063, Lasse Hansen\inst{1}}
+
+\institute%[Universitäten Hier und Dort] % (optional)
+{
+  \inst{1}%
+  Information and Communication Technology\\
+  Aarhus University, School of Engineering
+}
+
+\date{June 19. 2013}
+
+\subject{subject\dots}
+
+%----------------------- Preamble ----------------
+
+\begin{document}
+
+\frame{\titlepage}
+	
+\begin{frame}
+	\frametitle{Table of content}
+	\tableofcontents%[currentsection, currentsubsection]
+\end{frame}
+
+
+\section{The purpose of DNS}
+\begin{frame}
+	\frametitle{What is the purpose of DNS}
+	
+	\begin{itemize}
+	\item HLT's replacement in 1982
+	\item Phone book
+	
+		\begin{itemize}
+		\item Ask for name -- receive IP-address
+		\item Connect directly to IP-address
+		\end{itemize}
+	
+	\end{itemize}
+	
+\end{frame}
+	
+\section{DNS hierarchy}
+\begin{frame}
+	\frametitle{DNS hierarchy}
+	
+%	\begin{figure}[hbtp]
+%	\centering
+%	\includegraphics[scale=0.4]{DNS-hierarki}
+%	\end{figure}
+	
+\end{frame}
+	
+ 
+\end{document}

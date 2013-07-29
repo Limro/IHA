@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{sparklines}
+\usepackage{fp}
+\newcount\slnum
+\makeatletter
+\newcommand\dosparkline[2][4]{%
+        \FPset\slmax{0}%
+        \FPset\slpos{0}%
+        \slnum0
+        \slparse#2,\relax
+        \FPadd\sladvance{1}{\the\slnum}%
+        \FPdiv\sladvance{1}\sladvance
+        \count@\slnum
+        \loop\ifnum\count@>0
+                \advance\count@-1
+                \FPdiv\sltemp{\csname sl@\the\count@\endcsname}\slmax
+                \expandafter\let\csname sl@\the\count@\endcsname\sltemp
+        \repeat
+        \begin{sparkline}{#1}
+                \count@0
+                \loop\ifnum\count@<\slnum
+                        \FPadd\slpos\slpos\sladvance
+                        % The {} are necessary
+                        \sparkspike \slpos{} \csname sl@\the\count@\endcsname{}
+                        \advance\count@1
+                \repeat
+        \end{sparkline}
+}
+\def\slparse#1,#2\relax{%
+        \FPset\sltemp{#1}%
+        \FPmax\slmax\slmax\sltemp
+        \expandafter\let\csname sl@\the\slnum\endcsname\sltemp
+        \advance\slnum1
+        \ifx\relax#2\relax\else
+                \slparse#2\relax
+        \fi
+}
+\makeatother
+\begin{document}
+\dosparkline[10]{16,53,31,25}
+
+\dosparkline{.16,.53,.31}
+\begin{sparkline}{4}
+  \sparkspike .166 .302
+  \sparkspike .500 1
+  \sparkspike .834 .585 
+\end{sparkline}
+
+\end{document}

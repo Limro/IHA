@@ -1,0 +1,56 @@
+\usepackage[latin1]{inputenc}
+\usepackage[danish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\author{Rasmus Bækgaard}
+
+
+%Create a square matrix
+%\begin{ArgMatrix}{2}
+%21 & 22 & 23 \\  
+%a & b & c
+%\end{ArgMatrix}
+%
+% Info: http://tex.stackexchange.com/questions/2233/whats-the-best-way-make-an-augmented-coefficient-matrix
+%
+\newenvironment{ArgMatrix}{%
+$
+  \left[\begin{array}{@{}*{100}{r}r@{}}
+}{%
+  \end{array}\right]
+  $
+}
+
+
+
+
+%Create multiple lines with holes
+%\begin{SysEqu}
+%x_1 && &- &5x_3 &+ &2x_4=& 1 \\
+%x_1 &+ &x_2 &+ &x_3 && =& 4 \\
+%&&&&&&0 =& 0
+%\end{SysEqu}
+\newenvironment{SysEqu}{%
+$$  \setlength\arraycolsep{0.1em}
+  \begin{array}{@{}*{100}{r}r@{}}
+}{%
+  \end{array}$$
+}
+
+%Create solution for x_1, x_n...
+%\begin{solu}
+%x_1 &= d \\
+%x_2 &= e \\
+%x_3 &= s
+%\end{solu}
+\newenvironment{solu}{%
+\[
+  \setlength\arraycolsep{0.1em}
+  \left\{\begin{array}{@{}*{100}{r}r@{}}
+}{%
+  \end{array}\right.
+\]
+}

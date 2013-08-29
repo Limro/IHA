@@ -1,0 +1,30 @@
+\usepackage[T1]{fontenc}              
+\usepackage[utf8]{inputenc} 
+\usepackage[danish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{ulem} %math
+\usepackage{enumerate}
+\usepackage{tcolorbox}
+
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{{../Figurer/}}
+
+%Create a box for theorems
+%\begin{theo}[titel] %optional
+%tekst
+%\end{theo}
+\newenvironment{theo}[1][Vigtigt]{%
+\begin{tcolorbox}[colback=green!5,colframe=green!40!black,title=\textbf{#1}]
+}{%
+\end{tcolorbox}
+}
+
+
+\newcommand{\code}[1]{{\fontfamily{pcr}\selectfont #1}}

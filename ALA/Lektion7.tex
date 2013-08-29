@@ -1,0 +1,183 @@
+\documentclass[english, danish]{article}
+\input{Preamble}
+
+\title{Lektion 7}
+
+\begin{document}
+\maketitle
+
+\section*{Dimension of vector space}
+\begin{theo}[Theorem 7] 
+If a vector space \textit{V} has a basis $\beta=\{b_1, b_2 \dots b_n\}$, then any set in \textit{V} containing more than \textit{n} vectors must be \textbf{linearly dependant}.
+\end{theo}
+
+\begin{theo} 
+\begin{itemize}
+\item Hvis der er flere vektorer end der er dimensioner ( $n \times m, n<m$) er der \textbf{frie variabler}.
+
+\item Hvis et span dækker over én vektor er det en linje i rummet, så som $\mathbb{R}^3$=\{
+\begin{ArgMat}
+1\\
+1\\
+2
+\end{ArgMat}\}
+\end{itemize}\end{theo}
+
+
+
+\begin{theo}[Theorem 10] 
+If a vector space \textit{V} has a basis of \textit{n} vektors, then every basis of \textit{V} must consist of exactly \textit{n} vektors.
+\end{theo}
+
+
+\begin{theo}[Defination] 
+If \textit{V} is spanned by a finite set, then \textit{V} is said to be \textbf{finite-dimensional}, and the dimension of \textit{V} , written as \textit{dim V}, is the number of vectors in a basis for \textit{V}. 
+The dimension of the zero vector space \{0\} is defined to be zero. 
+If \textit{V} is not spanned by a finite set, then \textit{V} is said to be \textbf{infinite-dimensional}.
+\end{theo}
+
+\subsection*{Infinite dimensional}
+S = the space of all double infinite sequences.\\
+$\vec{y} = \{ \dots, y_{-2}, y_{-1}, y_0, y_1, y_2, \dots\}$\\
+$\vec{b}_{-1} = \{ \dots, 0, 1, 0, 0, 0, \dots\}$\\
+$\vec{b}_{0} = \{ \dots, 0, 0, 1, 0, 0, \dots\}$\\
+$\vec{b}_{1} = \{ \dots, 0, 0, 0, 1, 0, \dots\}$
+\\
+\\
+Kan også udtrykkes med Fourier series:\\
+$f(x) = \sum \limits_{n=-\infty}^\infty C_n \cdot e^{jnx}$
+
+
+
+
+
+\begin{theo}[Theorem 11] 
+Let \textit{H} be a subspace of a \textbf{finite-dimensional} vector space \textit{V}. 
+Any linearly independent set in \textit{H} can be expanded, if necessary, to a basis for \textit{H}. 
+Also, \textit{H} is finite-dimensional and
+\[ dim H \leq dim V \]
+\end{theo}
+
+
+
+
+
+\begin{theo}[Theorem 12] 
+Let V be a p-dimensional vector space, $p \geq 1$. 
+\begin{itemize}
+\item Any linearly independent set of exactly \textit{p} elements in V is automatically a basis for \textit{V}. 
+\item Any set of exactly \textit{p} elements that spans V is automatically a basis for \textit{V}.
+
+\end{itemize}
+\end{theo}
+
+
+
+\begin{theo} 
+For ligningen $Ax = 0$, gælder det, at:
+\begin{itemize}
+\item \textbf{dim Col A} betyder \textit{kolonner med pivot}
+\item \textbf{dim Nul A} betyder \textit{kolonner med frie variabler}
+\end{itemize}
+\end{theo}
+
+
+
+\newpage
+\section*{Rank}
+\begin{theo} 
+\textbf{Column space:}
+\\
+A=
+\begin{ArgMat}
+1&1\\
+3&2\\
+2&4
+\end{ArgMat}, A=
+\begin{ArgMat}
+\vec{a}_1 & \vec{a}_2
+\end{ArgMat}
+, 
+col A = span $\{\vec{a}_1, \vec{a}_2\}$
+\\
+\\
+\textbf{Row space:}
+\\
+A=
+\begin{ArgMat}
+\vec{r}_1\\
+\vec{r}_2\\
+\vec{r}_3
+\end{ArgMat},
+$\vec{r}_1$=
+\begin{ArgMat}
+1&1
+\end{ArgMat}
+$\vec{r}_2$=
+\begin{ArgMat}
+3&2
+\end{ArgMat}
+$\vec{r}_3$=
+\begin{ArgMat}
+2&4
+\end{ArgMat}
+
+\end{theo}
+
+
+\begin{theo}[Definition] 
+\begin{align*}
+rank A &= \text{dim col A}\\
+	&= \text{dim row A}
+\end{align*}
+\end{theo}
+
+
+\begin{theo}[Theorem 14] 
+The dimensions of the column space and the row space of an $m \times n$ matrix A are equal. 
+This common dimension, the rank of \textit{A}, also equals the number of pivot positions in \textit{A} and satisfies the equation
+\[rank(A) + \text{dim Nul A} = n\]
+\end{theo}
+
+\begin{theo}[The invertible Matrix theorem] 
+Let A be an $n \times n$ matrix. Then the following statements are each equivalent to
+the statement that A is an invertible matrix.
+\begin{enumerate}[m]
+\item The columns of A form a basis of Rn.
+\item ColA D Rn
+\item dim ColA D n
+\item rankA D n
+\item NulA D f0g
+\item dim NulA D 0
+\end{enumerate}
+\end{theo}
+
+
+
+\newpage
+\section*{Change the Basis}
+Tricket går på, at et basis-par for én vektor kan omskrives til et andet basis-par, der stadig gælder for den samme vektor.
+$\left[\vec{x}\right]_c$ er basis.
+
+\begin{theo} 
+\begin{ArgMat}
+c_1 &c_2&|b_1 &b_2
+\end{ArgMat}$\sim$
+\begin{ArgMat}
+I &|\displaystyle \operatorname*{\mathit{P}}_{C \leftarrow \beta} 
+\end{ArgMat}
+
+
+\begin{ArgMat}
+b_1 &b_2 &|x
+\end{ArgMat} $\sim$
+\begin{ArgMat}
+I &| \left[x\right]_\beta
+\end{ArgMat}
+\end{theo}
+
+
+
+
+
+\end{document}

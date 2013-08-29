@@ -1,0 +1,109 @@
+\documentclass[danish,english]{article}
+\input{Preamble}
+
+\title{Cases}
+
+\begin{document}
+
+
+\maketitle
+\section*{Case 1}
+
+
+
+
+\subsection*{Subra}
+
+\begin{tabular}{c|cccc}
+t & 0 & 2.8 &9.5 & 22.7\\ \hline
+v & 0 & 30 & 60 & 90
+\end{tabular}
+\\
+\\
+v(t)
+\begin{solu}
+a_1(t-0)^3 + a_2(t-0)^2 + a_3(t-0) + a_4 & if 0 \leq t \leq 2.8\\
+b_1(t-2.8)^3 + b_2(t-2.8)^2 + b_3(t-2.8) + b_4 & if 2.8 \leq t \leq 9.5\\
+c_1(t-9.5)^3 + c_2(t-9.5)^2 + c_3(t-9.5) + c_4 & if 9.5 \leq t \leq 22.7\\
+\end{solu}
+\\
+\\
+v(0)=0, v(2.8)=30, v(9.5)=60, v(22.7)=90
+\\
+\\
+\begin{align}
+a_4 &= 0\\
+a_1(2.8)^3 + a_2(2.8)^2 + 2.8a_3 + a_4 &=30\\
+b_4 &= 30\\
+b_1(9.5)^3 + b_2(9.5)^2 + 9.5b_3 + b_4 &=60\\
+c_4 &= 60\\
+c_1(22.7)^3 + c_2(22.7)^2 + 22.7c_3 + c_4 &=90
+\end{align}
+
+
+Den afledte, $v'(t)$, er derfor:\\
+$v'(t) =$
+\begin{solu}
+3a_1(t-0)^2 + 2a_2(t-0)+a_3 & if 0 \leq t \leq 2.8\\
+3b_1(t-2.8)^2 + 2b_2(t-2.8)+b_3 & if 2.8 \leq t \leq 9.5\\
+3c_1(t-9.5)^2 + 2c_2(t-9.5)+c_3 & if 9.5 \leq t \leq 22.7\\	
+\end{solu}
+\\
+\\
+Hvis $v'(t)$ skal fortsætte i punkterne t=2.8 og t=9.5 betyder det, hvis man sætter t-værdierne ind hvor de mødes for hver parentes ind i ovenstående, at:\\
+\\
+\begin{align*}
+3(2.8)^2a_1 + 2(2.8)a_2 + a_3 &= b_3\\
+3(9.5-2.8)^2b_1 + 2(9.5-2.8)b_2 + b_3 &= c_3
+\end{align*}
+\\
+Omskrevet til:\\
+\begin{align}
+3(2.8)^2a_1 + 2(2.8)a_2 + a_3 -b_3&= 0\\
+3(9.5-2.8)^2b_1 + 2(9.5-2.8)b_2 + b_3 - c_3&= 0
+\end{align}
+\\
+\\
+Den anden afledte, $v''(t)$ skrives således:
+\\
+$v''(t) = $
+\begin{solu}
+6a_1(t-0) + 2a_2 &if 0 \leq t \leq 2.8\\
+6b_1(t-2.8) + 2b_2 &if 2.8 \leq t \leq 9.5\\
+6c_1(t-9.5) + 2c_2 &if 9.5 \leq t \leq 22.7
+\end{solu}
+\\
+\\
+For at gøre $v''(t)$ sammenhængende skal \textit{t} = 2.8 og \textit{t} = 9.5 (Hvilket betyder hældningen på tangenten er 0 -- altså lige) gøres følgende:
+\\
+\\
+\begin{align}
+6(2.8)a_1+2a_2-2b_2 &=0\\
+6(9.5-2.8)b_1+2b_2-2c_2 &=0
+\end{align}
+\\
+\\
+Derudover gøres der antagelserne, at $v''(0) = v''(22.7) = 0$, hvilket betyder:\\
+\begin{align}
+2a_2 &= 0\\
+6c_1(22.7-9.5)+2c_2 &= 0
+\end{align}
+\\
+\\
+Indtast dette i en matrix of \textit{rref} det giver:
+\begin{solu}
+a_1 & = & -0.0867 & a_2 &=& 0 & a_3 &=& 11.3941 &a_4 &=& 0\\
+b_1 &=& 0.0080 & b_2 &=& -0.7284 & b_3 &=& 9.3547 & b_4 &=& 30\\
+c_1 &=& 0.0143 & c_2 &=& -0.5674 & c_3 &=& 6.8186 &c_4 &=& 60
+\end{solu}
+\\
+\\
+Dette giver $v(t)=$
+\begin{solu}
+-0.0867(t)^3 & & &+& 11.3941(t) && & if &0 \leq t \leq 2.8 \\
+0.0080(t)^3 &-& 0.7284(t)^2 &+& 9.3547(t) &+& 30 & if &  2.8 \leq t\leq 9.5\\
+0.0143(t)^3 &-&0.5674(t)^2 &+& 6.8186(t) &+& 60 & if &9.5 \leq t \leq 22.7
+\end{solu}
+
+
+\end{document}

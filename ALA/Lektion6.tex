@@ -1,0 +1,318 @@
+\documentclass[danish, english]{article}
+\input{Preamble}
+\title{Lektion 6}
+
+\begin{document}
+\maketitle
+
+\begin{theo}[Theorem 4] 
+An indexed set $\{v_1, \dots, v_p\} $of two or more vectors, with $v_1 \neq 0$, is linearly dependent if and only if some $v_j$ (with j > 1) is a linear combination of the preceding vectors, $\{v_1, \dots, v_{j-1}\} $
+\end{theo}
+
+\begin{theo} 
+\begin{itemize}
+\item Fri variabel betyder \textbf{linear dependant}
+\item Hvis man ikke kan $c_1  \vec{v_1}+c_2\vec{v_2}+\dots+c_p\vec{v_p}=\vec{0}$ er det \textbf{linear independant}
+\end{itemize}
+\end{theo}
+
+\textbf{Example:}\\
+$A_1$ =
+\begin{ArgMat}
+1 &-1\\
+2&0
+\end{ArgMat}, $A_2$=
+\begin{ArgMat}
+2&1\\
+0&3
+\end{ArgMat}, $A_3$=
+\begin{ArgMat}
+1&-2\\
+2&1
+\end{ArgMat}
+\\
+\\
+$c_1A_1 + c_2A_2 + c_3A_3 =$ 
+\begin{ArgMat}
+0&0\\
+0&0
+\end{ArgMat} $\Rightarrow c_1$
+\begin{ArgMat}
+1 &-1\\
+2&0
+\end{ArgMat} $+ c_2$
+\begin{ArgMat}
+2&1\\
+0&3
+\end{ArgMat}, $+ c_3$
+\begin{ArgMat}
+1&-2\\
+2&1
+\end{ArgMat} = 
+\begin{ArgMat}
+0&0\\
+0&0
+\end{ArgMat}
+\\
+\\
+\begin{align*}
+c_1+2c_2+c_3 &=0\\
+-c_1+c_2-c_3 &= 0\\
+2c_1+2c_3 &= 0\\
+3c_2+c_3&=0
+\end{align*}
+\begin{ArgMat}
+1&2&1&0\\
+-1&1&-1&0\\
+2&0&2&0\\
+0&3&1&0
+\end{ArgMat}$\sim$
+\begin{ArgMat}
+1&0&0&0\\
+0&1&0&0\\
+0&0&1&0\\
+0&0&0&0
+\end{ArgMat}
+$c_1=c_2=c_3=0 \Leftrightarrow$ Kun den trivielle løsning, aka \textbf{linear independant}
+
+
+
+
+\newpage
+\subsection*{Spanning set}
+\begin{ArgMat}
+1&4&0&2&0\\
+0&0&1&-1&0\\
+0&0&0&0&1\\
+0&0&0&0&0
+\end{ArgMat} 
+Find pivot elementer.
+Ingen pivot $\Rightarrow$ fjern kolonne.
+Husk dog, at hvis en kolonne ikke har pivot kan den bruges hvis den er independant.
+\\
+\\
+Basis for col B = \{\begin{ArgMat}
+1\\
+0\\
+0\\
+0
+\end{ArgMat},
+\begin{ArgMat}
+0\\
+1\\
+0\\
+0
+\end{ArgMat},
+\begin{ArgMat}
+0\\
+0\\
+1\\
+0
+\end{ArgMat} \} 
+\\
+\\
+A=
+\begin{ArgMat}
+1&2&3&1\\
+4&5&6&1\\
+1&1&2&1
+\end{ArgMat}$\sim$
+\begin{ArgMat}
+1&0&0&0\\
+0&1&0&-1\\
+0&0&1&1
+\end{ArgMat}Dette er pivot elementerne. Disse kan bruges.
+\\
+Basis for col A = \{ \begin{ArgMat}
+1\\
+4\\
+2
+\end{ArgMat}, 
+\begin{ArgMat}
+2\\
+5\\
+1
+\end{ArgMat},
+\begin{ArgMat}
+3\\
+6\\
+2
+\end{ArgMat} \}
+
+
+
+\newpage
+\section*{Coordinate systems}
+\begin{theo}[Indsæt definition] 
+•
+\end{theo}
+\textbf{Example:}\\
+$p=\{$\begin{ArgMat}
+2\\
+1\\
+0
+\end{ArgMat},
+\begin{ArgMat}
+3\\
+1\\
+0
+\end{ArgMat},
+\begin{ArgMat}
+2\\
+1\\
+2
+\end{ArgMat} \}
+\\
+\begin{ArgMat}
+x
+\end{ArgMat}$_\beta=$
+\begin{ArgMat}
+-1\\
+2\\
+1
+\end{ArgMat} -- What is $\vec{x}$?
+\\
+\\
+$\vec{x} = (-1)$\begin{ArgMat}
+2\\
+1\\
+0
+\end{ArgMat}+2
+\begin{ArgMat}
+3\\
+1\\
+0
+\end{ArgMat}+1
+\begin{ArgMat}
+2\\
+1\\
+2
+\end{ArgMat}=
+\begin{ArgMat}
+6\\
+2\\
+2
+\end{ArgMat}
+\\
+\\
+$\vec{x}=$
+\begin{ArgMat}
+-1\\
+2\\
+1
+\end{ArgMat} What is \begin{ArgMat}
+\vec{x}
+\end{ArgMat}$_\beta$
+\\
+\\
+\begin{ArgMat}
+-1\\
+2\\
+1
+\end{ArgMat}=  $c_1$
+\begin{ArgMat}
+
+\end{ArgMat}=  $+ c_2$
+\begin{ArgMat}
+3\\
+1\\
+0
+\end{ArgMat}=  $+ c_3$
+\begin{ArgMat}
+-1\\
+2\\
+1
+\end{ArgMat} $\Rightarrow$
+
+
+
+
+\subsection*{Transistion matrix}
+$P_\beta=\left[\vec{1}_1 \dots \vec{b}_n\right]$
+
+
+\begin{theo}[Isomorphism] 
+One-to-one linear transformation from a vectorspace \textit{V} to a vectorspace \textit{W}
+\end{theo}
+
+$\mathbb{P}_3$\\
+$\beta = \{1, t, t^2, t^3\}$\\
+$p(t)=a_0+a_1t+a_2t^2+a_3t^3$
+
+\begin{align*}
+p_1(t)=1+2t^2\\
+p_2(t)=4+t+5t^2\\
+p_3(t)=3+2t
+\end{align*}
+$\left[P\right]_\beta = $
+\begin{ArgMat}
+a_0\\
+a_1\\
+a_2\\
+a_3
+\end{ArgMat}
+\\
+$\left[P_1\right]_\beta = $
+\begin{ArgMat}
+1\\
+0\\
+2
+\end{ArgMat}
+,
+$[P_2]_\beta = $
+\begin{ArgMat}
+4\\
+1\\
+5
+\end{ArgMat}
+,
+$[P_3]_\beta = $
+\begin{ArgMat}
+3\\
+2\\
+0
+\end{ArgMat}
+\\
+\\
+\begin{ArgMat}
+1&4&3&0\\
+0&1&2&0\\
+2&5&0&0
+\end{ArgMat}$\sim$
+\begin{ArgMat}
+1&4&3&0\\
+0&1&2&0\\
+0&0&0&0
+\end{ArgMat}. Her er free variables = $\infty$ solutions = lin. dep.
+\\
+\\
+$M_{2 \times 2} = $\begin{ArgMat}
+a &b\\
+c&d
+\end{ArgMat} -- samme som 
+\begin{ArgMat}
+1\\
+b\\
+c\\
+d
+\end{ArgMat}
+\\
+$M_{2 \times 2}$ og $\mathbb{R}^4$ er isomorphism.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

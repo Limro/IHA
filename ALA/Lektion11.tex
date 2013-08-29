@@ -1,0 +1,141 @@
+\documentclass[danish,english]{article}
+\input{Preamble}
+
+\title{Lektion 11}
+
+\begin{document}
+
+\maketitle
+
+\section*{The Gram-Schmidt Process}
+\begin{theo} 
+$\vec{u}_1 = \vec{x}_1\\
+\vec{u}_2 = \vec{x}_2 - proj_{\vec{u}_1} (\vec{x}_2)\\
+\vec{u}_2 = \vec{x}_2 -\dfrac{x_2 \cdot u_1}{v_1 \cdot v_1}v_1$
+\end{theo}
+
+
+\begin{theo}[In 3 dimensions] 
+$\vec{v}_1  \vec{x}_1\\
+v_2=x_2- proj_{v_1} (x_2)\\
+v_3=x_3-proj_{v_1} (x_3-proj_{v_2}$
+\\
+\\
+Hvis der er \textbf{lin. dep.} vektorer fås \textbf{nul-vektorer}
+\end{theo}
+
+
+
+\subsection*{QR factorization}
+\begin{theo}
+A=QR, hvor Q er orthonormal basis for col A ($m  \times n$), R er upper tiangul of matrix med positive numre på diagonalen.\\
+$Q^TQ=I$
+\end{theo}
+
+
+\textbf{Eksempel:}\\
+A=\begin{ArgMat}
+x_1, &\dots &x_2
+\end{ArgMat} hvilket betyder
+Q=
+\begin{ArgMat}
+v_1, &\dots, &v_2
+\end{ArgMat}
+
+$ \vec{x}_k=r_{1k}\vec{v}_1r_{2k}\vec{v}_2 + \dots + r_{kk}\vec{v}_k+0\cdot \vec{v}_k+1 + 0\cdot\vec{v}_n
+= [v_1 \dots \vec{v}_n]$
+\begin{ArgMat}
+r_{1k} \\
+r_{2k} \\
+r_{3k} \\
+r_{4k} \\
+r_{5k} \\
+0
+\end{ArgMat}
+\\
+\\
+A=Q
+\begin{ArgMat}
+r_{11}&r_{12}&r_{13}&r_{1n}\\
+0&r_{22}&r_{23}&r_{2n}\\
+\dots&\dots&\dots&\dots\\
+0&0&0&0
+\end{ArgMat}
+
+
+\begin{theo}[Omskrivning af Ax = b] 
+$A\vec{x}=\vec{b} \Leftrightarrow \\
+R\vec{x}=Q^T \vec{b}$
+\begin{ArgMat}
+R&Q^T \vec{b}
+\end{ArgMat} $\sim$
+\begin{ArgMat}
+r_{11} & & & &| 1\\
+ &	r_{22} & & &| 1\\
+ & & \dots & &| 1\\
+ 0& & & r_{nn}&| 1
+\end{ArgMat}
+\end{theo}
+
+
+
+
+
+\newpage
+\section*{Least Squares Problems}
+Hvis man gerne vil finde $R^2$ for en linje ud fra nogle punkter
+\begin{theo} 
+Den traditionelle metoder: $\sum \limits_{i=1}^n (y_i-(Ax_i+b))^2 $
+\\
+\\
+$Ax=b$ har ingen løsning.\\
+$A\hat{x}=\hat{b}$ har en løsning\\
+$\vec{b} - \hat{b} \perp col A\\
+\vec{b}-A\vec{x} \perp col A\\
+A^T\vec{b}=A^TA \hat{x}$ også kaldet \textbf{normal equation}\\
+$\hat{x}=(A^TA)^{-1}A^T\vec{b}$, hvis $A^TA$ er \textit{invertible}.
+\end{theo}
+
+\begin{theo}[Definition] 
+If A is $m \times n$ and b is in $\mathbb{R}^m$, a \textbf{least-squares} solution of Ax = b is an $\vec{x}$ in $\mathbb{R}^n$ such that
+\\
+$||b - A\vec{x}|| \leq ||b - A\vec{x}||$\\
+for all x in $\mathbb{R}^n$.
+\end{theo}
+
+
+
+
+
+\newpage
+\section*{Applications to linear models}
+\begin{theo} 
+$A\vec{x}= \vec{b}\\
+X\vec{\beta} = \vec{y}$\\
+Her er X = "design matrix, $\vec{\beta}$ = parameter vector og $\vec{y}$= observation vector.
+\\
+\\
+$y=\beta_0 + \beta_1e^{-x}\\
+X=$
+\begin{ArgMat}
+1&e^{-x1}\\
+1&\dots\\
+\dots & \dots\\
+1 & e^{-x_n}
+\end{ArgMat}\\
+
+$\vec{\beta} = \left(X^TX\right)^{-1}X^T \vec{y}$
+\end{theo}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

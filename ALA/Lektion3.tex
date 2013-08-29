@@ -1,0 +1,179 @@
+\documentclass[danish, english]{article}
+\input{Preamble}
+
+\title{Lektion 3}
+\begin{document}
+\maketitle
+
+\section{Matrix algebra}
+\begin{theo}[Multiplication] 
+AB = A
+\begin{ArgMat}
+b_1 & b_2 & \dots & b_p
+\end{ArgMat}=
+\begin{ArgMat}
+Ab_1 & Ab_2 & \dots & Ab_p
+\end{ArgMat}
+\\
+\\
+$A \cdot B =$
+\begin{ArgMat}
+a & b\\
+c & d
+\end{ArgMat} $\cdot$
+\begin{ArgMat}
+e & f\\
+g & h
+\end{ArgMat} =
+\begin{ArgMat}
+ae + bg & af+bh\\
+ce+dg & cf+dh
+\end{ArgMat}
+\\
+\\
+$B \cdot A =$
+\begin{ArgMat}
+e & f\\
+g & h
+\end{ArgMat} $\cdot$
+\begin{ArgMat}
+a & b\\
+c & d
+\end{ArgMat} =
+\begin{ArgMat}
+ac + fc & eb+fd\\
+ga+hc & gb+hd
+\end{ArgMat}
+
+Hvis man ganger to matrix'er med forskellig størrelse, skal de have størrelsen $m \times n$ og $n \times p$, hvilket giver resultatet $m \times p$
+\end{theo}
+
+\begin{theo} 
+\begin{itemize}
+\item Hvis kolonne 3 i matrix A er alle nuller bliver alle elementer i AB's række 3 nuller.
+\item Hvis kolonne 2 i matrix B er alle nuller, bliver alle elementer i AB's kolonne 2 nuller.
+\item Hvis kolonne 1 og 2 i matrix B er identiske, bliver AB's rækker (i de første to kolonner) ens
+\end{itemize}
+\end{theo}
+
+
+
+\section*{The inverse matrix}
+\begin{theo}[Regneregler] 
+\textit{I} = identisk matrix\\
+A is invertible if it is row equivanlent with \textit{I}\\
+\begin{ArgMat}
+A &|I
+\end{ArgMat}$\sim$
+\begin{ArgMat}
+I&|A^{-1}
+\end{ArgMat}
+\begin{align*}
+A\vec{x} &= \vec{b}\\
+A^{-1}A\vec{x} &= A^{-1}\vec{b}\\
+I\vec{x} &= A^{-1}\vec{b}\\
+\vec{x}&=A^{-1}\vec{b}
+\end{align*}
+Huske at gange ind fra den "rigtige side"
+\end{theo}
+
+\newpage
+\subsection*{Elementary row operations}
+\begin{theo}[Apply to matrix multiplication] 
+\textbf{Scaling:}\\
+A=\begin{ArgMat}
+a & b &c\\
+d&e&f\\
+g&h&i
+\end{ArgMat}, $E_s=$
+\begin{ArgMat}
+1&0&0\\
+0&2&0\\
+0&0&1
+\end{ArgMat}
+\\
+\\
+$E_sA =$
+\begin{ArgMat}
+a&b&c\\
+2d&2e&2f\\
+g&h&i
+\end{ArgMat}
+$E_s^{-1}E_sA$ \dots\\
+$E_s^{-1}=$
+\begin{ArgMat}
+1&0&0\\
+0&\dfrac{1}{2}&0\\
+0&0&1
+\end{ArgMat}
+\\
+\\
+\textbf{Swap:}\\
+$E_s=$
+\begin{ArgMat}
+0&\textbf{1}&0\\
+\textbf{1}&0&0\\
+0&0&1
+\end{ArgMat},
+$E_{sw}A=$
+\begin{ArgMat}
+d&e&f\\
+a&b&c\\
+g&h&i
+\end{ArgMat}
+\\
+$E_{sw}^{-1}E_{sw}A = A$ \dots
+\\
+\\
+\textbf{Adding:}
+\\
+$E_A =$
+\begin{ArgMat}
+1&0&0\\
+0&1&0\\
+\textbf{2}&0&1
+\end{ArgMat}, $E_AA=$
+\begin{ArgMat}
+a&b&c\\
+d&e&f\\
+2a+g&2b+h&ec+i
+\end{ArgMat}
+
+
+
+
+\end{theo}
+
+\begin{theo}[Homogen] 
+Hvis \textit{A} er homogen matrix til $A\textbf{x}=0$ og kun den trivielle løsning $x=0$, er A invertible, da trivielle løsninger har pivot elementer i alle rækker. 
+Uden frie variabler er den invertible.
+\\
+\begin{ArgMat}
+A &| \vec{0}
+\end{ArgMat}$\sim$
+\begin{ArgMat}
+I &| \vec{0}
+\end{ArgMat}
+\end{theo}
+
+
+
+\begin{theo}[Theorem 8: The Invertible Matrix Theorem] 
+Let A be a square $n \times n$ matrix. Then the following statements are equivalent.
+That is, for a given A, the statements are either all true or all false.
+\begin{enumerate}[a)]
+\item A is an invertible matrix.
+\item  A is row equivalent to the $n \times n$ identity matrix.
+\item  A has \textit{n} pivot positions.
+\item  The equation Ax = 0 has only the trivial solution.
+\item The columns of A form a linearly independent set.
+\item  The linear transformation x -> Ax is one-to-one.
+\item  The equation Ax = b has a unique solution for each \textit{b} in $\mathbb{R}^n$.
+\item  The columns of A span $\mathbb{R}^n$.
+\item  The linear transformation x -> Ax maps $\mathbb{R}^n$ onto $\mathbb{R}^n$.
+\item  There is an $n \times n$ matrix C such that CA = I .
+\item  There is an $n \times n$ matrix D such that AD = I .
+\item  $A^T$ is an invertible matrix.
+\end{enumerate}
+\end{theo}
+\end{document}

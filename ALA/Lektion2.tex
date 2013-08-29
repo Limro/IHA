@@ -1,0 +1,251 @@
+\documentclass[danish, english]{article}
+\input{Preamble}
+
+\title{Lektion 2}
+\begin{document}
+\maketitle
+
+\section*{1.4 The Matrix Equation $A\text{x}=b$}
+
+
+\begin{theo}[En matrix equation]
+\begin{ArgMat}
+a & b & c\\
+d & e & f
+\end{ArgMat}
+\begin{ArgMat}
+x_1\\
+x_2\\
+x_3
+\end{ArgMat} =
+\begin{ArgMat}
+\alpha\\
+\beta
+\end{ArgMat}
+
+\end{theo}
+
+
+\begin{theo}[Theorem 7] 
+If A is an $m \times n$ matrix, with columns $a_1, \dots , a_n$, and if \textbf{b} is in $\mathbb{R}^m$, the \textbf{matrix equation}
+\[Ax = b \]
+has the same solution set as the \textbf{vector equation}
+\[x_1a_1 + x_2a_2 + \dots + x_na_n = b \]
+which, in turn, has the same solution set as the system of linear equations whose \textbf{augmented matrix} is\\
+\centerline{
+\begin{ArgMat}
+a_1 & a_2 & \dots & a_n &b
+\end{ArgMat}}
+
+\end{theo}
+
+\begin{theo}
+The equation $A\textbf{x} = \textbf{b}$ has a solution if and only if \textbf{b} is a linear combination of the columns of $A$.
+\end{theo}
+
+A=\begin{ArgMat}
+a_{l1} &a_{l2}&\dots&a_{ln}\\
+\dots\\
+a_{m1} &a_{m2}&\dots&a_{mn}
+\end{ArgMat}=
+\begin{ArgMat}
+\vec{a_1}, \vec{a_2}, \dots, \vec{a_n}
+\end{ArgMat}
+\\
+\\
+$\vec{X}$ is  a vector in $\mathbb{R}^n$ \begin{ArgMat}
+x_1\\
+\dots\\
+x_n
+\end{ArgMat}
+\\
+\\
+$A\vec{x}=$\begin{ArgMat}
+x_1\\
+\dots\\
+x_n
+\end{ArgMat}= $x_1\vec{a_1}+x_2\vec{a_2}+\dots+x_n\vec{a_n}$
+
+
+\begin{theo}[Theorem 4] 
+Let $A$ be $a_{nm} \times n$ matrix. Then the following statements are logically equivalent.
+That is, for a particular $A$, either they are all true statements or they are all false.
+
+\begin{enumerate}
+\item For each b in $\mathbb{R}^m$, the equation $Ax = b$ has a solution.
+\item Each b in $\mathbb{R}^m$ is a linear combination of the columns of A.
+\item The columns of A span $\mathbb{R}^m$.
+\item A has a pivot position in every row.
+\end{enumerate}
+\end{theo}
+Eksempel:\\
+A=\begin{ArgMat}
+\vec{a_1} & \vec{a_2} & \vec{a_3} & \vec{a_4}
+\end{ArgMat}=
+\begin{ArgMat}
+1 & 4 & 2&1\\
+1&1&3&3\\
+0&0&0&0
+\end{ArgMat}
+\\
+\begin{enumerate}
+\item No, Choose $\vec{b}$ =
+\begin{ArgMat}
+\alpha\\
+\beta\\
+\neq 0
+\end{ArgMat}
+
+\item No, Choose $\vec{b}$ =
+\begin{ArgMat}
+\alpha\\
+\beta\\
+\neq 0
+\end{ArgMat}
+
+\item Can't get a $\vec{x_3}$ direction (det skal være i 3 dimensioner)
+
+\item Pivot is not in every row. (Check med MatLab: \textit{rref(A)})
+\end{enumerate}
+
+ 
+
+\section*{1.5 Solution Sets of Linear Systems}
+
+\begin{theo} 
+$A\vec{x}=\vec{0}$ -- Homogen equation(zero) -- $\vec{x} = \vec{0}$ er altid en solution, også kaldt "trivial solution".\\
+$A\vec{x}=\vec{b}$ -- Inhomogen equation
+\end{theo}
+
+
+Eksempel:\\
+\begin{align*}
+3x_1+5x_2-4x_3 = 0\\
+-3x_1-2x_2+4x_3=0\\
+6x_1+x_2-8x_3=0
+\end{align*}
+Skriv en \begin{ArgMat}
+A &|&\vec{0}
+\end{ArgMat} $\Rightarrow$
+\begin{ArgMat}
+3&5&-4&0\\
+-3&-2&4&0\\
+6&1&-8&0
+\end{ArgMat} $\sim$
+\begin{ArgMat}
+1&0&-\dfrac{4}{3}&0\\
+0&1&0&0\\
+0&0&0&0
+\end{ArgMat} $\Rightarrow$
+\begin{ArgMat}
+x_1\\
+x_2\\
+x_3
+\end{ArgMat} = $x_3$
+\begin{ArgMat}
+\dfrac{4}{3}\\
+0\\
+1
+\end{ArgMat}
+\\
+\\
+Eksempel:\\
+$5x_1+4_x2-x_3=0 \Rightarrow$
+\begin{ArgMat}
+A&|&0
+\end{ArgMat}=
+\begin{ArgMat}
+5&3&-1&0
+\end{ArgMat}$\sim$
+\begin{ArgMat}
+1&\dfrac{4}{5} & \dfrac{-1}{5}&|&0
+\end{ArgMat}\\
+Note -- ingen pivot i de to sidste (kun den første) $\Rightarrow$
+\\
+\begin{ArgMat}
+x_1\\
+x_2\\
+x_3
+\end{ArgMat}=
+\begin{ArgMat}
+\dfrac{-4}{5}x_2 + \dfrac{1}{5}x_3\\
+x_2\\
+x_3
+\end{ArgMat}=$x_2$
+\begin{ArgMat}
+\dfrac{-4}{5}\\
+1\\
+0
+\end{ArgMat}+$x_3$
+\begin{ArgMat}
+\dfrac{1}{5}\\
+0\\
+1
+\end{ArgMat}
+
+
+
+
+
+\section*{1.7 Linear Independence}
+\begin{theo} 
+\begin{itemize}
+\item Hvis en span indeholder $\vec{0}$ er den \underline{altid} \textbf{dependant}.
+\item Hvis du ikke kan skalere op og få samme en vektor er den \textbf{independant}
+\item Hvis der er en free variable er den \textbf{dependant}
+\end{itemize}
+
+\end{theo}
+\textbf{Indsæt definition}\\
+\\
+
+$\vec{v_1} = $\begin{ArgMat}
+1\\
+4\\
+3
+\end{ArgMat},
+$\vec{v_2} =$
+\begin{ArgMat}
+2\\
+3\\
+5
+\end{ArgMat},
+$\vec{v_3} =$
+\begin{ArgMat}
+3\\
+6\\
+2
+\end{ArgMat}
+\\
+Er \{$\vec{v_1} \vec{v_2} \vec{v_3}$\} linear independant?\\
+\\
+\begin{ArgMat}
+\vec{v_1}&\vec{v_2}&\vec{v_3}
+\end{ArgMat}
+\begin{ArgMat}
+x_1\\
+x_2\\
+x_3
+\end{ArgMat}=$\vec{0} \rightarrow$
+\begin{ArgMat}
+1 &2&3&0\\
+4&3&6&0\\
+3&5&2&0
+\end{ArgMat} $\sim \sim \sim$
+\begin{ArgMat}
+1 &0 &0&0\\
+0&1&0&0\\
+0&0&1&0
+\end{ArgMat}
+\begin{solu}
+x_1 = 0 \\
+x_2 = 0\\
+x_3 = 0	\\
+\end{solu}\\
+Dette er den \underline{eneste} trivial solution. 
+Den er derfor linear independant.
+
+
+
+
+\end{document}

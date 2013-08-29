@@ -1,0 +1,74 @@
+\documentclass[danish,english]{article}
+\input{Preamble}
+\title{Lektion 12}
+
+\begin{document}
+\maketitle
+
+
+\section*{Inner product vektor}
+Vectors in $\mathbb{R}^{n+1}$:
+\\
+\\
+\begin{ArgMat}
+p(t_0)\\
+p(t_1)\\
+\dots\\
+p(t_n)
+\end{ArgMat} $\cdot$
+\begin{ArgMat}
+q(t_0)\\
+q(t_1)\\
+\dots\\
+q(t_n)
+\end{ArgMat}
+$=Q(t_0)q(t0) + p(t_1)q(t_1) + \dots + p(t_n)q(t_n)$
+\\
+\\
+\begin{theo} 
+\begin{itemize}
+\item 3 basis vectors, ie. 1, t, $t^2$ gives $p(t)=a_0*1+a_1t+a_2t^2$ where $t_0=0, t_1=1, t_2=2$
+\item Find ortogonale basis vectors ($v_1 \cdot v_2 = 0$)
+\item .
+\end{itemize}
+\end{theo}
+
+
+\newpage
+\section*{Best apporximation in inner product space}
+$\mathbb{P}_3: a_0+a_1t+a_2t^2+a_3t^3$
+\begin{theo} 
+$\hat{t^3} = \dfrac{<t^3, v_1>}{<v^1, v_1>} +\dfrac{<t^3, v_2>}{<v^2, v_2>} +\dfrac{<t^3, v_3>}{<v^3, v_3>}$
+\end{theo}
+
+
+
+
+
+
+
+\newpage
+\section*{CauchySchwart inequality}
+\begin{theo}[Regneregel]
+$|<\vec{u}, \vec{v}>| \leq ||\vec{u}|| \cdot ||\vec{v}|| \Leftrightarrow 
+||proj_W(v)|| \leq ||\vec{v}||$
+\end{theo}
+
+\subsubsection*{Fourier series}
+$f(t)=\dfrac{a_0}{2}+\sum \limits_{q=1}^\infty a_q cos(qt)+\sum \limits_{q=1}^\infty b_q sin(qt)$\\
+Basis functions: $\left\{1, cos(t), sin(t), cos(2t), sin(2t),\dots\right\}$, this is an orthogonal basis, $<f,g>=\int_0^{2 \pi} f(t)g(t)=0$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,187 @@
+\documentclass[danish, english]{article}
+\input{Preamble}
+\title{Lektion 14}
+
+\begin{document}
+\maketitle
+
+
+\section*{The singular value decomposition, SVD}
+\begin{theo} 
+$A=PDP^{-1} \text{ for } n \times n\\
+A=U\sum V^T \text{ for } m \times n\\
+A^TA$ er symetrisk\\
+$(A^TA)^T = A^TA$ -- dette er ortogonal diagonliserbart
+\\
+\\
+$\left\{ \vec{v}_1, \vec{v}_2, \dots , \vec{v}_n\right\}$ orthonormal basis for $\mathbb{R}^n$ (eigenvectors of $A^TA$) or corresponding eigenvalues $\lambda_1 \dots \lambda_2$
+\\
+\\
+$||A\vec{v}_i||=\lambda_i$
+\\
+\\
+\textbf{The singular values of A are defined as $\sigma_i=\sqrt{\lambda_i}$}\\
+Hvis $A^TA$ kun har $\lambda$-værdierne, sæt alle disse tal til positiv og du har singular values
+\end{theo}
+
+\begin{theo}[Orthogonal set] 
+Er $\left\{A\vec{v}_1\dots A\vec{v}_n\right\}$ ortogonal?\\
+\\
+$\vec{v}_i$ og $\vec{v}_j$ er ortogonal\\
+\\
+${\vec{v}_i}^T\vec{v}_j = \delta_{ij}$
+\\
+\\
+$\delta_{ij}=$
+\begin{solu}
+1 & \text{if }i=j\\
+0 & \text{if }i\neq j
+\end{solu}
+
+$(Av_i)^TA\vec{v}_j = \lambda_i\delta_{ij}\\
+||A\vec{v}_i||^2 = \sigma_i$ thus $||A\vec{v}_i||=0 \text{ for } i > r \text{ and }A\vec{v}_i=\vec{0} \text{ for } i>r$
+\\
+\\
+Any vector in col A can be written as a linear combination of A's columns:
+\\
+$\vec{y}=A\vec{x}\\
+ \vec{x} = c_1\vec{v}_1 +\dots+\vec{c}_n\vec{v}_n$
+ \\
+ \\
+r = rank A
+$\vec{y}=v_1A\vec{v}_1 + \dots + \vec{c}_rA\vec{v}_r$
+Det betyder, at $\vec{y}$ er i $span\left\{A\vec{v}_1 \dots A\vec{v}_r\right\}$ dermed $\left\{A\vec{v}_1 \dots A\vec{v}_r\right\}$ er en ortogonal basis for col A.
+\end{theo}
+
+$A=U\Sigma V^T$\\
+U = singular value vector\\
+$\Sigma = $
+\begin{ArgMat}
+D &0\\
+0 &0
+\end{ArgMat}
+
+$\left\{A\vec{v}_1,\dots, A\vec{v}_r\right\}$ orthogonal basis for colA.
+Lets make it ortho\textbf{normal}:
+\\
+$\vec{U}_1=
+\dfrac{A\vec{v}_1}{||A\vec{v}_1||}=
+\dfrac{A\vec{v}_1}{\sigma_1}$ for 1 to \textit{r}.
+\\
+$\vec{U}_i$ is a $\mathbb{R}^m$ vector\\
+$\left\{\vec{u}_1,\dots, \vec{u}_r\right\}$ kan blive udvidet til en basis for $\mathbb{R}^m$.
+\\
+\\
+AV= \begin{ArgMat}
+\sigma_1 \vec{u}_1 & \dots & \sigma_r A\vec{u}_r & \vec{0} \dots \vec{0}
+\end{ArgMat}
+\\
+\\
+$U\Sigma=$
+\begin{ArgMat}
+\sigma_1\vec{u}_1 &
+\sigma_2\vec{u}_2 &
+\dots &
+\sigma_r\vec{u}_r &
+\vec{0} & \vec{0}
+\end{ArgMat}
+\\
+$AV = U\Sigma \Leftrightarrow A = U\Sigma V^T$
+\\
+\\
+\textbf{Eksempel}: (Matlab: \textit{[U,S,V]=svd(A)})
+\begin{itemize}
+\item Opskriv A
+\item Beregn $A^TA$
+\item Find $\lambda$ og sikre at det$(A^TA-\lambda I)=0$
+\item Lav \begin{ArgMat}
+A^TA-\lambda I &|0
+\end{ArgMat} for HVER $\lambda$
+\item rref denne og find $\vec{v_n}$ (én pr.  vector equation)
+\item Lav $A\vec{v}_n$ for hver \textit{n}
+\item Beregn $\vec{u}_1=\dfrac{A\vec{v}_n}{\sigma_n}$ for hver \textit{n}
+\item Beregn $A=U\Sigma V^T$
+\end{itemize}
+
+
+
+\section*{Pseudoinverse}
+\begin{theo} 
+$m\times n$ matrix A med rank \textit{r}\\
+$\Sigma$ contains rows or columns\\
+$\Sigma$=
+\begin{ArgMat}
+D &0\\
+0&0
+\end{ArgMat}
+D=
+\begin{ArgMat}
+\sigma_1 &&\\
+&\dots&\\
+&&\sigma_r
+\end{ArgMat}
+\\
+\\
+$A=U\Sigma V^T = $
+\begin{ArgMat}
+U_r & U_{m-r}
+\end{ArgMat}
+\begin{ArgMat}
+D &0\\
+0&0
+\end{ArgMat}
+\begin{ArgMat}
+V_r^T\\
+V_{n-r}^T
+\end{ArgMat} = $U_rDV_r^T$
+\\
+\\
+$U_r^TU_r=I\\
+V_r^TV_r=I'$
+\\
+\\
+$U_r, V_r$ are orthogonal matrices\\
+\textit{D} is invertible.
+\\
+\\
+$A^T \equiv V_rD^{-1}U_r^T$ og $AA^T = I$
+\end{theo}
+
+\textbf{Eksempel:}
+Hvis man har 2 vektorer med ukendt skalar på:
+\begin{itemize}
+\item Opskriv $A\vec{x}=\vec{b}$
+\item Skriv A og $\vec{b}$
+\item Lad $A\vec{x}=\vec{b} \Leftrightarrow \hat{x}=A^T\vec{b }$
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

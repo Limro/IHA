@@ -1,0 +1,89 @@
+\documentclass[danish, english]{article}
+\input{Preamble}
+\title{Lektion 4}
+\begin{document}
+\maketitle
+
+\section{Determinants}
+\begin{theo} 
+A = \begin{ArgMat}
+a & b\\
+c &d
+\end{ArgMat}
+\\
+det A = 
+\begin{deter}
+a & b\\
+c & d
+\end{deter} = ad-bc
+\end{theo}
+
+$A_{ij} =$ en matrix hvor man fjerner den \textit{i}'de række og den \textit{j}'de kolonne.
+
+
+
+\begin{theo}[Defination af \textit{Cofactor}] 
+$C{ij} = (-1)^{i+j} det A_{ij}$
+\\
+\\
+\textbf{Cofactor expansion along row \textit{i}}:
+\\
+$det A = a_{i1}C_{i1}+a_{i2}C_{i2} + \dots + a_{in}C_{in}$
+\\
+\\
+\textbf{Coloumn expansion along column \textit{j}}:
+\\
+$det A = a_{1j}C_{1j}+a_{2j}C_{2j} + \dots + a_{nj}C_{nj}$
+\end{theo}
+
+
+\begin{theo}[Elementary matrices] 
+Udregning af en determinant i pivot-form:\\
+$E_{sc} =$ \begin{ArgMat}
+1 & 0 & 0\\
+0&5&0\\
+0&0&1
+\end{ArgMat} = det($E_{sc}$)=5
+\\
+\\
+$E_{swap} =$ \begin{ArgMat}
+0&1&0\\
+1&0&0\\
+0&0&1
+\end{ArgMat} $\Rightarrow det(E_{swap})= 0+1(-1)^{1+2}$\begin{deter}
+1 & 0\\
+0&1
+\end{deter}$+0 = -1$
+\\
+\\
+$E_{add} = $
+\begin{ArgMat}
+1 &0&0\\
+0&1&0\\
+2&0&1
+\end{ArgMat} $\Rightarrow det(E_{add}) = 1$
+\\
+$det(AB)=det(A) \cdot det(B)$
+\end{theo}
+
+\begin{theo}[Theorem 3: determinant regneregler] 
+\begin{itemize}
+\item Hvis man swapper, ganges det hele med -1
+\item Hvis man ganger, skal der skaleres
+\item Hvis man plusser/minusser sker der ingenting
+\item Hvis en matrix har pivot i alle rækker er $det A = \prod\limits_{i=1}^n U_{ii}$ (ganget sammen)
+\item Hvis en matrix \underline{ikke} har pivot i alle rækker er $det A = 0$
+\end{itemize}
+\end{theo}
+
+Let \textit{U} be an echelon form of \textit{A} (only additions and swaps)
+\\
+$det A = (-1)^r det U \Rightarrow$ two possibilities for \textit{U}
+
+
+
+
+
+
+
+\end{document}

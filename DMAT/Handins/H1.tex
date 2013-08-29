@@ -1,0 +1,175 @@
+\documentclass[english,10pt,a4paper]{article}
+\input{../Preamble}
+
+\title{Workshop 1}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+$\bigg(p \wedge \Big( q \Rightarrow (\sim r)\Big) \bigg)  \Rightarrow  \Big( (\sim q) \vee r \Big)$:
+
+\begin{table}[h]
+\centering
+	\begin{tabular}{c|c|c|c|c|c}
+	\textbf{p} & \textbf{q} & \textbf{r} & \textbf{$\bigg(p \wedge \Big( q \Rightarrow (\sim r)\Big) \bigg)$} & \textbf{$\Big( (\sim q) \vee r \Big)$} &\textbf{$\bigg(p \wedge \Big( q \Rightarrow (\sim r)\Big) \bigg)  \Rightarrow  \Big( (\sim q) \vee r \Big)$}\\\hline
+	F & F & F & F & T & T\\	\hline
+	F & F & T & F & F & T\\	\hline
+	F & T & F & F & T & T\\	\hline
+	F & T & T & F & T & T\\	\hline
+	T & F & F & T & T & T\\	\hline
+	T & F & T & T & T & T\\	\hline
+	T & T & F & F & F & F\\	\hline
+	T & T & T & T & T & T\\	\hline
+	\end{tabular}
+\caption{Truthtable}
+\end{table}
+
+\section*{Problem 2}
+
+
+\begin{enumerate}[a]
+\item $\Big( p \wedge (\sim q)\Big) \wedge \Big(( \sim p) \vee q\Big) $.
+\begin{table}[h]
+\centering
+	\begin{tabular}{c|c|c|c|c}
+	\textbf{p} & \textbf{q} & \textbf{$\Big( p \wedge (\sim q)\Big)$} & \textbf{$ \Big(( \sim p) \vee q\Big) $}  & $\Big( p \wedge (\sim q)\Big) \wedge \Big(( \sim p) \vee q\Big) $\\\hline
+	T & T & F & T & F\\ 	\hline
+	T & F & T & F & F\\ 	\hline 
+	F & T & F & T & F\\ 	\hline 
+	F & F & F & T & F\\ 	\hline 
+	\end{tabular}
+\caption{Truthtable}
+\label{tab:title}
+\end{table}
+From the last column it is detminated that it is a contradiction.
+
+\item $(p \Rightarrow q) \Rightarrow (p \vee q)$. From the last column it is detminated to be neither.
+\begin{table}[h]
+\centering
+	\begin{tabular}{c|c|c|c|c}
+	\textbf{p} & \textbf{q} & $(p \Rightarrow q)$ & $(p \vee q)$ & $(p \Rightarrow q) \Rightarrow (p \vee q)$\\\hline
+	T & T & T & T & T\\ 	\hline
+	T & F & F & T & T\\ 	\hline 
+	F & T & T & T & T\\ 	\hline 
+	F & F & T & F & F\\ 	\hline 
+	\end{tabular}
+\caption{Truthtable}
+\label{tab:title}
+\end{table}
+
+\end{enumerate}
+
+\newpage
+\section*{Problem 3}
+
+\begin{enumerate}[a]
+\item For $p \wedge p \equiv p$:
+\begin{table}[h]
+\centering
+	\begin{tabular}{c|c|c}
+	\textbf{p} & $p \wedge p$ &\textbf{$p \wedge p \equiv p$} \\\hline
+	T & T  & T\\\hline 
+	F & F & T
+	\end{tabular}
+\caption{Truthtable}
+\label{tab:title}
+\end{table}
+
+\item  For $p \vee (p \wedge q) \equiv p$ and $p \wedge (p \vee q) \equiv p$:
+\begin{table}[h]
+\centering
+	\begin{tabular}{c|c|c|c|c|c}
+	\textbf{p} & 
+	\textbf{q} & 
+	$p \wedge q$ & 
+	$p \vee q$ & 
+	$p \vee (p \wedge q) \equiv p$ & 
+	$p \wedge (p \vee q) \equiv p$ \\\hline
+	T & T & T & T & T & T\\\hline 
+	T & F & F & T & T & T\\\hline
+	F & T & F & T & F & F\\\hline
+	F & F & F & F & F & F\\\hline
+	\end{tabular}
+\caption{Truthtable}
+\label{tab:title}
+\end{table}
+
+\item For $p \wedge T \equiv p$ and $p \vee T \equiv T$:
+\begin{table}[h]
+\centering
+	\begin{tabular}{c|c|c|c}
+	\textbf{p} & 
+	\textbf{T} & 
+	$p \wedge T \equiv p$ & 
+	$p \vee T \equiv T$   \\\hline
+	T & T & T & T \\\hline 
+	F & T & F & T \\\hline
+	\end{tabular}
+\caption{Truthtable}
+\label{tab:title}
+\end{table}
+
+
+\item For $p \wedge F \equiv F$ and $p \vee F \equiv p$:
+\begin{table}[h]
+\centering
+	\begin{tabular}{c|c|c|c}
+	\textbf{p} & 
+	\textbf{F} & 
+	$p \wedge F \equiv F$ & 
+	$p \vee F \equiv p$   \\\hline
+	T & F & F & T \\\hline 
+	F & F & F & F \\\hline
+	\end{tabular}
+\caption{Truthtable}
+\label{tab:title}
+\end{table}
+\end{enumerate}
+
+
+
+\section*{Problem 4}
+This is most likely because, the computer must do the operation which takes time (not much but some) and to save time the computer "short circuit".
+
+
+\section*{Problem 5}
+An example could be \code{if(2 == 3 || false == false)\{...\}} -- which shows the first condition will cause the \code{if} to break.
+
+
+
+\newpage
+\section*{Problem 7}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.75]{p7}
+\caption{Venn diagrammer}
+\label{fig:venn}
+\end{figure}
+On Figure \ref{fig:venn} the Venn diagrams have been numbered.
+The following show the correct logic:
+\begin{enumerate}
+\item $\emptyset$
+\item $\neg A \vee \neg B$
+\item $A \cap B$
+\item $\neg B \cap A$
+\item $(A \cap B) \cup ( \neg A \vee \neg B)$
+\item $\neg A \cap B$
+\item $\neg B$
+\item A
+\item $\neg A$
+\item B
+\item $A \cup \neg B$
+\item $(A \cup B) \cup \neg (A \cap B)$
+\item $B \cup r$
+\item $r \cup \neg(A\cap B)$
+\item $A\cup B $
+\item $\neg \emptyset$
+\end{enumerate}
+
+
+\newpage
+\section*{Problem 8}
+
+
+
+\end{document}

@@ -1,0 +1,284 @@
+\documentclass[danish, english]{article}
+\input{Preamble}
+\title{Lektion 5}
+
+\begin{document}
+\maketitle
+
+
+\section*{Vector space}
+
+\begin{theo}[De ti Axioms]
+A vector space is a nonempty set V of objects, called vectors, on which are defined two operations, called addition and multiplication by scalars (real numbers), subject to the ten axioms (or rules) listed below.
+The axioms must hold for all vectors u, v, and w in V and for all scalars c and d
+
+\begin{enumerate}
+\item The sum of u and v, denoted by u + v, is in V .
+\item u + v = v + u.
+\item (u + v) + w = u + (v + w).
+\item \textbf{There is a zero vector 0 in V} such that u + 0 = u.
+\item For each u in V , there is a vector -u in V such that u + (-u) = 0.
+\item The scalar multiple of u by c, denoted by cu, is in V .
+\item c(u + v) = cu + cv.
+\item (c + d)u = cu + du.
+\item c(d u) = (cd)u.
+\item 1u = u.
+
+\end{enumerate}
+\end{theo}
+
+\begin{itemize}
+\item \textbf{"Closed under addition"} for et set betyder, at hvis 2 tilfældige lægges sammen er resultatet i listen.
+
+\item \textbf{"Trace"} betyder en sum af de diagonale elementer
+
+\item $y_k = \left\{ \dots, y_{-2}, y_{-1}, y_0, y_1, y_2, \dots\right\}$ og $z_k = \left\{ \dots, z_{-2}, z_{-1}, z_0, z_1, z_2, \dots\right\}$ udgør et vector space
+
+\item Tænk på en vektor $\mathbb{R}^3$ som et diagram med kun \textit{x-} og \textit{y-}akse, hvor hvert x-går ud af aksen og fortæller sin værdi på y
+\end{itemize}
+
+
+\newpage
+\subsection*{Subspace}
+\begin{theo}[Defination] 
+A subspace of a vector space V is a subset H of V that has three properties:
+\begin{enumerate}[a)]
+\item The zero vector of V is in H.
+\item H is closed under vector addition. That is, for each u and v in H, the sum u + v is in H.
+\item H is closed under multiplication by scalars. That is, for each u in H and each scalar c, the vector cu is in H.
+\end{enumerate}
+
+\begin{itemize}
+\item A subspace forms a vector space by itself.
+\item Tag den Argumenterede matrix af et span og en vector og se om det kan løses. Kan det ligger det i span
+\end{itemize}
+
+\end{theo}
+Med formen 
+\begin{ArgMat}
+a\\
+b\\
+a+b
+\end{ArgMat}:
+\\
+\textbf{Addition:}
+\\
+\begin{ArgMat}
+a_1\\
+b_1\\
+a_1+b_1
+\end{ArgMat} +
+\begin{ArgMat}
+a_2\\
+b_2\\
+a_2+b_2
+\end{ArgMat} =
+\begin{ArgMat}
+a_1+a_2\\
+b_1+b_2\\
+a_1+b_1+a_2+b_2
+\end{ArgMat}=
+\begin{ArgMat}
+a_1+a_2\\
+b_1+b_2\\
+a_1+a_2+b_1+b_2
+\end{ArgMat}
+\\
+Dette giver  en nu vektor som er \textbf{closed under addition}.
+\\
+\\
+\textbf{Multiplication:}
+\\
+c
+\begin{ArgMat}
+a\\
+b\\
+a+b
+\end{ArgMat}=
+\begin{ArgMat}
+ca\\
+cb\\
+c(a+b)
+\end{ArgMat}=
+\begin{ArgMat}
+ca\\
+cb\\
+ca+cb
+\end{ArgMat}
+\\
+Da det sidste er en sum af de to øverste er \textbf{closed under multiplication}
+\\
+\\
+\textbf{Zero vector}:
+\\
+\begin{ArgMat}
+0\\
+0\\
+0
+\end{ArgMat}
+\\
+\\
+Med formen
+\begin{ArgMat}
+a\\
+b\\
+1
+\end{ArgMat}:
+\\
+\\
+\textbf{Addition:}
+\\
+\begin{ArgMat}
+a_1\\
+b_1\\
+1
+\end{ArgMat}+
+\begin{ArgMat}
+a_2\\
+b_2\\
+1
+\end{ArgMat}=
+\begin{ArgMat}
+a_1+a_2\\
+b_1+b_2\\
+2
+\end{ArgMat}\\
+2 er ikke \textbf{closed under addition}.
+\\
+\\
+\textbf{Multiplication: }
+\\
+c\begin{ArgMat}
+a\\
+b\\
+1
+\end{ArgMat}=
+\begin{ArgMat}
+ca\\
+cb\\
+c
+\end{ArgMat}\\
+\textit{c} er ikke \textbf{closed under multiplication}
+\\
+\\
+\textbf{Zero vector}:
+\\
+\begin{ArgMat}
+0\\
+0\\
+1
+\end{ArgMat} $\neq$ 0
+\\
+No zero vector
+
+
+
+
+
+\newpage
+\subsection*{Nulspace}
+\begin{theo}[Definition] 
+The null space of an $m \times n$ matrix A, written as \textit{Nul A}, is the set of all solutions
+of the homogeneous equation Ax = 0. 
+\\
+\centerline{$Nul A= \{x | x \in \mathbb{R}^n $ and $Ax = 0\}$}
+\\
+\\
+\textbf{Hvis der er frie variabler er der uendelig mange løsninger.}
+\end{theo}
+
+
+\begin{theo}[Theorem 2] 
+The nullspace of a $m \times x$ matrix is a subspace og $\mathbb{R}^n$
+\end{theo}
+
+\textbf{Zerovector}:\\
+$A\cdot \vec{0}=\vec{0}$
+\\
+\\
+\textbf{Addition}:\\
+$A\vec{u}=\vec{0}$ and $A\vec{v}=\vec{0}$\\
+$A(\vec{u}+\vec{v})=A\vec{u} + A\vec{v}=\vec{0}+\vec{0}=\vec{0}$
+\\
+\\
+\textbf{Multiplication}:\\
+$A(c\vec{u}) = c(A\vec{u})=c\cdot \vec{0}=\vec{0}$
+\\
+\\
+\textit{Find the nullspace of A} (Find A for $\vec{0}$):\\
+\begin{ArgMat}
+1&2&1&0\\
+-1&3&1&0
+\end{ArgMat}$\sim$
+\begin{ArgMat}
+1&2&1\\
+0&5&2
+\end{ArgMat}$\sim\sim$
+\begin{ArgMat}
+1& 0& \frac{1}{5}&0\\
+0&1&\frac{2}{5}&0
+\end{ArgMat}\\
+\begin{ArgMat}
+x_1\\
+x_2\\
+x_3
+\end{ArgMat}=\dots
+
+
+
+
+
+
+
+\subsection*{Columnspace}
+A=\begin{ArgMat}
+1&2\\
+3&3\\
+1&4
+\end{ArgMat} (Da dette er en 3x2 er der en fri variabel.)
+\\
+\\
+\textit{Zero vector?}\\
+Yes, choose $x_!=0, x_2 = 0$ and get \begin{ArgMat}
+0\\
+0\\
+0
+\end{ArgMat}
+\\
+\\
+\textit{Addition?}\\
+$\vec{b_1}=A\vec{x_1}, \vec{b_2}=A\vec{x_2}$\\
+$\vec{b_1}+\vec{b_2}=A\vec{x_1}+A\vec{x_2}=A(\vec{x_1}+\vec{x_2})$
+\\
+\\
+\textit{Multiplication?}\\
+$\vec{b}=A\vec{x}, c\vec{b}=cA\vec{x}=A(c\vec{x})$
+
+
+
+
+
+
+
+
+
+\newpage
+\subsection*{Linear tranformation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

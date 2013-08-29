@@ -1,0 +1,80 @@
+\documentclass[danish, english]{article}
+\input{Preamble}
+\title{Lektion 10}
+
+\begin{document}
+
+\maketitle
+
+\section*{Ortogonalitet og least squares}
+\begin{theo}[Inner product] 
+for vectors in $\mathbb{R}^n$\\
+$\vec{u}\cdot\vec{v} = \vec{u}^T\vec{v}=\sum \limits_{i=1}^n u_i\cdot v_i$
+\\
+\\
+Norm (length) er givet ved \\
+$||v||=\sqrt{v\cdot v}$
+\\
+\\
+Vinklen er givet ved:\\
+$||\vec{u}||\cdot ||\vec{v}|| cos\phi$\\
+Dette kan angives som \textbf{size of a product}.
+\\
+\textbf{Matlab: dot($v_1,v_2$)}
+\\
+\\
+Ortogonale vektorer er \textbf{linear independant}, men det gælder ikke nødvendigvis den anden vej.
+\end{theo}
+
+Hvis $\vec{y}$ er en vektor i \textit{W} med ortogonal basis $\{\vec{u} \dots \vec{u}_p\}$\\
+$\vec{y}=c_1\vec{v}_1 + c_2\vec{v}_2 + \dots + c_p\vec{u}_p$
+\\
+\\
+$c_1 = \dfrac{\vec{y}_1 \vec{u}_1}{\vec{u}_1 \vec{u}_1}$
+
+
+
+
+\newpage
+\section*{Orthogonal projections}
+\begin{theo} 
+$\vec{b} = \hat{b} + \vec{z}\\
+\hat{b} = \alpha\vec{a}\\
+\vec{a}\cdot \vec{z} = 0= \perp\\
+\alpha = \dfrac{\vec{a}\vec{b}}{\vec{a}\vec{a}}  \\
+\hat{b} = proj_{\vec{a}} \cdot \vec{b}=\dfrac{\vec{a}\vec{b}}{\vec{a}\vec{a}}\cdot \vec{a}$
+\\
+\\
+An orthogonal matrix ought to be called an orthonormal matrix. It's a square matrix where both rows and columns are orthogonal unit vectors and satisfies $U^T = U^{-1}$ and $U^TU=UU^T = 1$
+\end{theo}
+
+
+\begin{theo}[Theorem 9: The best approximation theorem] 
+$||y-\hat{y}||<||y-v||$
+\\
+\\
+$\hat{y}=\dfrac{\vec{y} \cdot \vec{u}_1}{\vec{u}_1 \vec{u}_1} \vec{u}_1 + \dfrac{\vec{y} \vec{u}_2}{\vec{u}_2 \vec{u}_2} \vec{u}_2$
+\end{theo}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

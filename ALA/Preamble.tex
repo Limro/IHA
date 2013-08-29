@@ -1,22 +1,43 @@
-\usepackage[latin1]{inputenc}
+\usepackage{tcolorbox}
+\usepackage{ulem} %math
 \usepackage[danish]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{enumerate}
+
+\usepackage[T1]{fontenc}              
+\usepackage[utf8]{inputenc}         
+\usepackage[danish]{babel} 
+\usepackage{lmodern}
+
 \usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \author{Rasmus Bækgaard}
 
 
+%Create a box for theorems
+%\begin{theo}[titel] %optional
+%tekst
+%\end{theo}
+\newenvironment{theo}[1][Vigtigt]{%
+\begin{tcolorbox}[colback=green!5,colframe=green!40!black,title=\textbf{#1}]
+}{%
+\end{tcolorbox}
+}
+
+
+
+
 %Create a square matrix
-%\begin{ArgMatrix}{2}
+%\begin{ArgMat}{2}
 %21 & 22 & 23 \\  
 %a & b & c
-%\end{ArgMatrix}
+%\end{ArgMat}
 %
 % Info: http://tex.stackexchange.com/questions/2233/whats-the-best-way-make-an-augmented-coefficient-matrix
 %
-\newenvironment{ArgMatrix}{%
+\newenvironment{ArgMat}{%
 $
   \left[\begin{array}{@{}*{100}{r}r@{}}
 }{%
@@ -24,7 +45,13 @@ $
   $
 }
 
-
+\newenvironment{deter}{%
+$
+  \left|\begin{array}{@{}*{100}{r}r@{}}
+}{%
+  \end{array}\right|
+  $
+}
 
 
 %Create multiple lines with holes
@@ -34,10 +61,10 @@ $
 %&&&&&&0 =& 0
 %\end{SysEqu}
 \newenvironment{SysEqu}{%
-$$  \setlength\arraycolsep{0.1em}
+$  \setlength\arraycolsep{0.1em}
   \begin{array}{@{}*{100}{r}r@{}}
 }{%
-  \end{array}$$
+  \end{array}$
 }
 
 %Create solution for x_1, x_n...
@@ -47,10 +74,10 @@ $$  \setlength\arraycolsep{0.1em}
 %x_3 &= s
 %\end{solu}
 \newenvironment{solu}{%
-\[
+$
   \setlength\arraycolsep{0.1em}
   \left\{\begin{array}{@{}*{100}{r}r@{}}
 }{%
   \end{array}\right.
-\]
+$
 }

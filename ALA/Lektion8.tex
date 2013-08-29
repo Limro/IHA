@@ -1,0 +1,242 @@
+\documentclass[danish,english]{article}
+\input{Preamble}
+
+\title{Lektion 8}
+
+\begin{document}
+\maketitle
+
+\section*{Eigenvectors}
+$A\vec{x} = \vec{b}$ og $A\vec{x} = \vec{o}$\\
+$A\vec{x} = \lambda\vec{x}$ og $A=PDP^{-1}$
+\\
+\\
+\textbf{Example:}\\
+A=
+\begin{ArgMat}
+5&-6\\
+2&-2
+\end{ArgMat}
+\\
+\\
+A\begin{ArgMat}
+3\\
+2
+\end{ArgMat} = 1
+\begin{ArgMat}
+3\\
+2
+\end{ArgMat}, hvor 1 = $\lambda$
+\\
+\\
+A\begin{ArgMat}
+6\\
+4
+\end{ArgMat} = 1
+\begin{ArgMat}
+6\\
+4
+\end{ArgMat}, hvor 1 = $\lambda$
+\\
+\\
+A\begin{ArgMat}
+2\\
+1
+\end{ArgMat} = 1
+\begin{ArgMat}
+4\\
+2
+\end{ArgMat} = 2
+\begin{ArgMat}
+2\\
+1
+\end{ArgMat}, hvor 2 = $\lambda$
+
+
+\begin{theo}[Definition] 
+If $\vec{v}$ is an eigevector $c\vec{v}$ is also an eigenvector.
+\end{theo}
+
+\begin{theo}[Definition] 
+An eigenvector of an $n \times n$ matrix \textit{A} is a nonzero vector \textit{x} such that $Ax = \lambda x$ for some scalar $\lambda$. 
+A scalar $\lambda$ is called an eigenvalue of \textit{A} if there is a nontrivial solution \textit{x} of $Ax = \lambda x$ such an \textit{x} is called an \textbf{eigenvector corresponding} to $\lambda$
+\end{theo}
+
+
+\begin{theo}[Regneregler] 
+\begin{align*}
+A\vec{x}&=\lambda I \vec{x}\\
+A\vec{x}-\lambda I \vec{x} &= \vec{0}\\
+(A-\lambda I)\vec{x}&=\vec{0}
+\end{align*}
+\begin{itemize}
+\item Find $A-\lambda I$
+\item Lav
+\begin{ArgMat}
+A-\lambda I&|\vec{0}
+\end{ArgMat}
+\item Isoler $x_1$ og $x_2$
+\item Opskriv
+\begin{ArgMat}
+x_1\\
+x_2
+\end{ArgMat}= $x_1$
+\begin{ArgMat}
+a_1\\
+b_1
+\end{ArgMat}+$x_2$
+\begin{ArgMat}
+a_2\\
+b_2
+\end{ArgMat} (Null space af $A-\lambda I$)
+\item Find $\vec{v}_2$
+\end{itemize}
+
+Find \textbf{Subspace}:\\
+\begin{enumerate}
+\item Zerovector: $A\vec{0}=\lambda\vec{0} \leftrightarrow \vec{0} = 0\vec{v}$
+\item Multiplication: 
+\item Addition: 
+\end{enumerate}
+\textbf{Opløftet:}\\
+$A\vec{x} =\lambda \vec{x}\\
+A^2\vec{x}=A(A\vec{x}) = A(\lambda \vec{x}) = \lambda(A\vec{x})= \lambda^2\vec{x}\\
+A^n\vec{x} = \lambda^n\vec{x}$
+\end{theo}
+
+A with $\lambda_1$ and $\lambda_2$ with corresponding eigenvectos $\vec{v}_1$ and $\vec{v}_2$\\
+$A\vec{v}_1=\lambda_1\vec{v}_1$\\
+$A\vec{v}_2=\lambda_2\vec{v}_2$
+\\
+\\
+$A(c\vec{v}_1+d\vec{v}_2 = c\lambda_1 \vec{v}_1+d\lambda_2 \vec{v}_2$\\
+$A^2(c\vec{v}_1+d\vec{v}_2 = c\lambda_1^2\vec{v}_1+d\lambda_2^2\vec{v}_2$
+
+
+
+\begin{theo}[Properbility vector] 
+$\vec{x}_{k+1} = A\vec{x}_k $ (Markov chain)\\
+$\vec{x}=$
+\begin{ArgMat}
+x_1\\
+\dots\\
+x_n
+\end{ArgMat},
+$\sum\limits_{i=1}^n x_u = 1$
+\end{theo}
+
+$A\vec{x} = \lambda\vec{x}\\
+(A-\lambda I)\vec{x}=\vec{0}$
+\\
+Find nontrivial $\vec{x}$'s therefore, choose $\lambda$ so $det(A-\lambda I)=0$
+\\
+\\
+A=
+\begin{ArgMat}
+3&2\\
+3&8
+\end{ArgMat}\\
+Form $A-\lambda I=$
+\begin{ArgMat}
+3&2\\
+3&8
+\end{ArgMat}$-\lambda$
+\begin{ArgMat}
+1&0\\
+0&1
+\end{ArgMat} =
+\begin{ArgMat}
+3-\lambda&2\\
+3&8-\lambda
+\end{ArgMat}\\
+\begin{align*}
+det(A-\lambda I)&=(3-\lambda)(8-\lambda)-2\cdot 3 &=0\\	
+&=\lambda^2-11\lambda+25-6 &= 0\\
+&=\lambda^2-11\lambda+18 &= 0\\
+\lambda &= \dfrac{11 +- \sqrt{-(11)^2-4\cdot 1\cdot 18}}{2\cdot 1} &= \left\{2 under(1)\right\}\\
+\lambda &= 2
+\end{align*}
+\begin{ArgMat}
+A-\lambda I&|\vec{0}
+\end{ArgMat}=
+\begin{ArgMat}
+1&2&0\\
+3&6&0
+\end{ArgMat}$\sim$
+\begin{ArgMat}
+1&2&0\\
+0&0&0
+\end{ArgMat} (fri variabel)
+\\
+$x_1+2x_2=0$ and $x_2=x_2$\\
+\begin{ArgMat}
+x_1\\
+x_2
+\end{ArgMat}=$x_2$
+\begin{ArgMat}
+-2\\
+1
+\end{ArgMat}
+\\
+\\
+\\
+$A^k$\\
+Nemt, hvis \textit{A} er diagonal:\\
+A=
+\begin{ArgMat}
+x&0&0\\
+0&y&0\\
+0&0&z
+\end{ArgMat}, $A^2 =$
+\begin{ArgMat}
+x^2 & 0&0\\
+0&y^2&0\\
+0&0&z^2
+\end{ArgMat}, $A^k =$
+\begin{ArgMat}
+x^k & 0&0\\
+0&y^k&0\\
+0&0&z^k
+\end{ArgMat}
+\\
+\\
+\\
+If $A=PDP^{-1}$, $A^k$ is easy:\\
+$A^k=A\cdot A \dots \cdot A= (PDP^{-1})(PDP^{-1}) \dots(PDP^{-1}) = PD^k P^{-1}$
+
+\begin{theo}[Regneregel] 
+\begin{itemize}
+\item $A=PDP^{-1}  \Leftrightarrow AP=PD$
+\item $AP=[\lambda_1 \vec{v}_1 \dots \lambda_n \vec{v}_n]$
+\item $PD=[\lambda_1 \vec{v}_1 \dots \lambda_n \vec{v}_n]$
+\item $A\vec{x}=PDP^{-1}\vec{x} = PD[\vec{x}]_{tV}$
+\end{itemize}
+\end{theo}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,349 @@
+\documentclass[danish, english]{article}
+\input{Preamble}
+\title{Lektion 1}
+\begin{document}
+\maketitle
+\section{Linear equation}
+\begin{theo}
+A system of linear equations has
+\begin{enumerate}
+\item no solution, or
+\item exactly one solution, or
+\item infinitely many solutions.
+\end{enumerate}
+A system of linear equations is said to be \textbf{consistent} if it has either one solution or infinitely many solutions; a system is \textbf{inconsistent} if it has no solution.
+Inconsistent er også, hvis der ikke er \textit{n} pivot'er.
+\end{theo}
+
+Generel udtryk:\\
+$a_1x_1+a_2x_2+\dots+a_nx_n=b$
+\\
+\\
+	\begin{solu}
+	x_1-2x_2+2x_3 = 10\\
+	2x_1  - 2x_2 +6x_3 =24 \\
+	-x_1+2x_2-x_3 = -7
+	\end{solu} = coifficient
+		\begin{ArgMat}
+		1 & -2 & 2 \\
+		2&-2&6 \\
+		-1 & 2 & -1
+		\end{ArgMat} = argument
+		\begin{ArgMat}
+		1 & -2 & 2 & 10\\
+		2&-2&6 & 24\\
+		-1 & 2 & -1 &-7
+		\end{ArgMat}		
+\\
+\\
+		
+$A\text{x} = \lambda \text{x}$
+\\
+\\
+
+	\begin{itemize}
+	\item Matices: Captial letters
+	\item Vectors: bold or arrow
+	\item scalars: standard letters
+	\item m $\times$ n matrix: \textit{m} rows, \textit{n columns}
+	\end{itemize}
+
+\subsection*{1 løsning}
+	\begin{ArgMat}
+	1 & 0&0&\alpha \\
+	0 & 1&0&\beta\\
+	0&0&1& \gamma
+	\end{ArgMat} =
+		\begin{solu}
+		x_1 = \alpha\\
+		x_2 = \beta\\
+		x_3 = \gamma
+		\end{solu}
+
+\subsection*{2. løsning}
+	\begin{ArgMat}
+	1 & 0&0&\alpha \\
+	0 & 1&0&\beta\\
+	0&0&0& \gamma
+	\end{ArgMat} =
+		\begin{solu}
+		x_1 = \alpha\\
+		x_2 = \beta\\
+		x_3 = \gamma
+		\end{solu}
+		
+$0x_1 + 0x_2+0x_3 = \gamma$ (Inconsistent -- false -- no solution)
+
+
+\section{Elementary row operations}
+
+
+	\begin{itemize}
+	\item Replacement: $r_i \rightarrow r_i +  \gamma \cdot r_j$
+	\item Swap: $r_i \leftrightarrow r_j$
+	\item Scale: $r_i \rightarrow \gamma \cdot r_j$
+	\end{itemize}
+
+
+\begin{theo} 
+Hvis man kan gå fra en matrix til en anden med ovenstående regler, er de \textbf{row equevalent}
+\end{theo}
+
+Eksempel:
+
+	\begin{ArgMat}
+	1 & 1\\
+	2 &2
+	\end{ArgMat} $\sim$
+	\begin{ArgMat}
+	1 & 1\\
+	0 & 0
+	\end{ArgMat}
+
+
+
+	\begin{ArgMat}
+	1 & -2 & 2& 10\\
+	2 & -2 & 6 & 24\\
+	-1 & 2 & -1 & -7
+	\end{ArgMat} $r_3 \rightarrow r_3 + r_1 $
+	\begin{ArgMat}
+	1 & -2 & 2 6 & 10\\
+	2 & -2 & 6 & 24\\
+	0 & 0 &1&3
+	\end{ArgMat} $r_2 \rightarrow r_2 - 2r_1$
+	\begin{ArgMat}
+	1&-2&2&10\\
+	0&2&2&4\\
+	0&0&1&3
+	\end{ArgMat}
+
+	$r_1 \rightarrow r_1 + r_2$
+	\begin{ArgMat}
+	1&0&4&14\\
+	0&2&2&4\\
+	0&0&1&3
+	\end{ArgMat} $r_2 \rightarrow \frac{1}{2}r_2$
+	\begin{ArgMat}
+	1&0&4&14\\
+	0&1&1&2\\
+	0&0&1&3
+	\end{ArgMat} $r_2 \rightarrow r_2-r_3$
+	\begin{ArgMat}
+	1&0&4&14\\
+	0&1&0&-1\\
+	0&0&11&3
+	\end{ArgMat}
+
+	$r_1 \rightarrow r_1 - 4r_3$
+	\begin{ArgMat}
+	1&0&0&2\\
+	0&1&0&-1\\
+	0&0&1&3
+	\end{ArgMat}
+	\begin{solu}
+	x_1 = &2\\
+	x_2 = &-1\\
+	x_3 = &3
+	\end{solu}
+	
+
+\section{Echelon form / row echelon form}
+
+\begin{theo}[Definition] 
+A rectangular matrix is in \textbf{echelon form} (or \textbf{row echelon form}) if it has the following three properties:
+	\begin{enumerate}
+	\item All nonzero rows are above any rows of all zeros.
+	\item Each leading entry of a row is in a column to the right of the leading entry of the row above it.
+	\item All entries in a column below a leading entry are zeros.
+
+If a matrix in echelon form satisfies the following additional conditions, then it is in \textbf{reduced echelon form} (or \textbf{reduced row echelon form}):
+	\item The leading entry is each nonzero row is 1.
+	\item Each leading 1 is the only nonzero entry in its column.
+	\end{enumerate}
+
+\end{theo}
+
+\begin{theo}[Theorem 1: Uniqueness of the Reduced Echelon Form] 
+Each matrix is row equivalent to one and only one reduced echelon matrix.
+\end{theo}
+	
+Eg:\\
+
+A=	\begin{ArgMat}
+	11&2\\
+	3&4
+	\end{ArgMat} =
+	\begin{ArgMat}
+	1&2\\
+	0&-2
+	\end{ArgMat} $-\frac{1}{2} = $
+	\begin{ArgMat}
+	1&2\\
+	0&1
+	\end{ArgMat} =	
+	\begin{ArgMat}
+	1&0\\
+	0&1
+	\end{ArgMat}
+
+
+
+
+
+\newpage
+
+\section{Pivot position}
+\begin{theo}[Pivots betydning] 
+Pivot betyder "nøgle" og udgør en nøglebetydning for en matrix.
+\begin{enumerate}
+\item Hver pivot fortæller "her starter noget der ikke blot kan skaleres".
+\item Der er kun det antal dimensioner der er pivot'er.
+\item En pivot's tal kaldes og \textbf{basic variables}. 
+\item Hver kolonne i en \textit{echelon form} er en variabel ($x_1, x_2 \dots$ -- Har en kolonne ingen pivot er det en \textbf{free variable}
+\item Hver kolonne angiver en \textit{x}-parameter
+\end{enumerate}
+\end{theo}
+
+
+\begin{theo}[Theorem 2: Existence and Uniqueness Theorem] 
+A linear system is consistent if and only if the rightmost column of the augmented matrix is not a pivot column—that is, if and only if an echelon form of the augmented matrix has no row of the form
+
+\centerline{
+\begin{ArgMat}
+0 & \dots & 0 & b
+\end{ArgMat} with b nonzero }
+
+If a linear system is consistent, then the solution set contains either (i) a unique solution, when there are no free variables, or (ii) infinitely many solutions, when there is at least one free variable.
+\end{theo}
+
+example:\\
+\begin{align*}
+x_1 + 2x_2 - x_3 = 5\\
+x_2-x_3 = 1\\
+2x_1+3x_2-x_3 = 9
+\end{align*}
+
+	
+		\begin{ArgMat}
+		1&2&-1&5\\
+		0&1&-1&1\\
+		2&3&-1&9
+		\end{ArgMat} $r_3 \rightarrow r_3-2r_1$
+		\begin{ArgMat}
+		1&2&-1&5\\
+		0&1&-1&1\\
+		0&-1&1&-1
+		\end{ArgMat} 
+		$r_3 \rightarrow r_3 + r_2$
+		\begin{ArgMat}
+		1&2&-1&5\\
+		0&1&-1&1\\
+		0&0&0&0
+		\end{ArgMat} 
+		
+		$r_1 \rightarrow r_1-2r_2$
+		\begin{ArgMat}
+		1&0&1&3\\
+		0&1&-1&1\\
+		0&0&0&0
+		\end{ArgMat}
+\\
+\\
+Pivot in row 1 and 2.
+No pivot in row 3  $\Rightarrow x_3$ is a free variable
+	
+	
+		\begin{solu}
+		x_1 + x_3 = 3\\
+		x_2 - x_3 = 1\\
+		x_3 = x_3
+		\end{solu} $\Rightarrow	$
+		\begin{solu}
+		x_1 = 3-x_3\\
+		x_2 = 1+x_3\\
+		x_3=x_3
+		\end{solu} $\Rightarrow$
+		\begin{ArgMat}
+		x_1\\
+		x_2\\
+		x_3
+		\end{ArgMat}=
+		\begin{ArgMat}
+		3-x_3\\
+		1+x_3\\
+		x_3
+		\end{ArgMat}=
+		\begin{ArgMat}
+		3\\
+		1\\
+		0
+		\end{ArgMat} + $x_3$
+		\begin{ArgMat}
+		-1\\
+		1
+		\end{ArgMat}
+		
+	
+	
+\section{Vector equations}
+2 fundamentale regler:
+\begin{itemize}
+\item $\vec{U} \rightarrow c\vec{U}$
+\item $\vec{U}, \vec{V} $
+\end{itemize}
+
+\subsection{Linear combinations}
+
+\begin{theo} 
+A vector equation\\
+\centerline{$x_1a_1 + x_2a_2 + \dots + x_na_n = b$}
+\\
+has the same solution set as the linear system whose augmented matrix is \centerline{\begin{ArgMat}
+a_1 & a_2 & \dots &a_n &b
+\end{ArgMat}}
+In particular, \textbf{b} can be generated by a linear combination of $\textbf{a}_1, \dots, \textbf{a}_n$ 
+if and only if there exists a solution to the linear system corresponding to the matrix.
+\end{theo}
+
+
+Given vectors $\vec{V_1} \dots \vec{V_p}$ in $\mathbb{R}^2$ and scalars $C_1 \dots c_p$ then we can form the linear combination $\vec{y} = c_1\vec{V_1} + c_2\vec{V_2}+ \dots + c_p\vec{V_p}$
+\\
+\\
+$\vec{a_1}$ = \begin{ArgMat}
+1\\
+5\\
+4
+\end{ArgMat}, 
+$\vec{a_2}$ = \begin{ArgMat}
+2\\
+-1\\
+3
+\end{ArgMat}, 
+$\vec{b}$ = \begin{ArgMat}
+10\\
+5\\
+25
+\end{ArgMat}
+\\
+Is $\vec{b}$ a lin. comb. og $\vec{a_1}$ and $ \vec{a_2}$?
+\\
+\\
+$x_1\vec{a_1} +x_2\vec{a_2} = \vec{b}$
+\\
+\\
+$x_1$\begin{ArgMat}
+1\\
+2\\
+4
+\end{ArgMat}+$x_2$\begin{ArgMat}
+2\\
+-1\\
+3
+\end{ArgMat}
+\\
+\\
+Span for én vektor er en linje i rummet.\\
+Span\{$C_1\vec{U} + C_2\vec{U}$\} er et område i rummet
+
+\end{document}

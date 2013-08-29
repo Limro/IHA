@@ -1,0 +1,119 @@
+\documentclass[danish, english]{article}
+\input{Preamble}
+\title{Lektion9}
+
+
+\begin{document}
+\maketitle
+\section*{Complex eigenvalues}
+Disse optræder normalt som "uheld".
+F.eks, hvis man tager determinanten af og kvardratroden er negativ; 
+$\dfrac{4 \pm \sqrt{-36}}{2}$
+\begin{theo} 
+\begin{itemize}
+\item Hvis man laver en 
+\begin{ArgMat}
+A-\lambda I&|0
+\end{ArgMat}
+ hvor $\lambda = 2-3i$ ved vi, at de rækkerne er \textbf{linear dependant}
+ 
+\item Hvis man har en matrix med kun reelle tal og én eigenvalue i komplex \textbf{kan det ikke gå op}.
+\end{itemize}
+\end{theo}
+
+\textbf{Eksemple:}
+\\
+\begin{ArgMat}
+A-\lambda I&|0
+\end{ArgMat} =
+\begin{ArgMat}
+-1+3i&5&0\\
+-2&1+3i&0
+\end{ArgMat}\\
+$x_2$ = free variabel:\\
+$-2x_1+(1+3i)x_2=0, x_2=x_2 \Leftrightarrow x_1 \dfrac{1+3i}{2}x_2, x_2=x_2 \Rightarrow$
+\begin{ArgMat}
+x_1\\
+x_2
+\end{ArgMat}$=x_2$
+\begin{ArgMat}
+\dfrac{1+3i}{2}\\
+1
+\end{ArgMat}=
+\begin{ArgMat}
+1+3i\\
+2
+\end{ArgMat}=$\vec{v_2}$
+
+
+\begin{theo}[Complex eigenvector] 
+$A\vec{x}^* = \lambda^*\vec{x}^*$ er en ny eigenvalue equation.\\
+$\lambda^*$ er en eigenvalue med eigenvector $\vec{x}^*$.
+\end{theo}
+
+
+$A=PDP^{-1}\\
+C=$
+\begin{ArgMat}
+a&-b\\
+b&a
+\end{ArgMat}, a, b $\in \mathbb{R}$ og $a \neq 0, b\neq 0$\\
+$r=|\lambda|=\sqrt{a^2+b^2}$\\
+$det(C-\lambda I) =(a-\lambda)^2+b^2=0 \Rightarrow \lambda=a \pm ib$
+
+$C=r\cdot I$
+\begin{ArgMat}
+\frac{a}{r} & \frac{-b}{r}\\
+\frac{b}{r} & \frac{a}{r}
+\end{ArgMat}=
+\begin{ArgMat}
+r&0\\
+0&r
+\end{ArgMat}
+\begin{ArgMat}
+cos \phi &-sin\phi\\
+sin\phi &cos\phi
+\end{ArgMat}\\
+Første del er scaling, anden del er rotation
+
+
+\begin{theo}[•] 
+$\dfrac{dz}{dt}=xa, x(t)c\cdot e^{a\cdot t}\\
+x_n' = a_{n1}x_1+\dots+a_{nn}x_n\\
+\vec{x}'=A\vec{x}\\
+\vec{x}'=\vec{x}'(t)=$
+\begin{ArgMat}
+x_1'(t)\\
+\dots\\
+x_n'(t)
+\end{ArgMat}
+\end{theo}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

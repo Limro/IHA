@@ -149,19 +149,19 @@ On Figure \ref{fig:venn} the Venn diagrams have been numbered.
 The following show the correct logic:
 \begin{enumerate}
 \item $\emptyset$
-\item $\neg A \vee \neg B$
+\item $\neg (A \cup B)$
 \item $A \cap B$
-\item $\neg B \cap A$
-\item $(A \cap B) \cup ( \neg A \vee \neg B)$
+\item $A \cup \neg B$
+\item $(A \cap B) \cup \neg (A \cup B)$
 \item $\neg A \cap B$
 \item $\neg B$
 \item A
 \item $\neg A$
 \item B
 \item $A \cup \neg B$
-\item $(A \cup B) \cup \neg (A \cap B)$
-\item $B \cup r$
-\item $r \cup \neg(A\cap B)$
+\item $(\neg A \cup B) \cup (A \cap \neg B)$
+\item $B \cup \neg A$
+\item $\neg(A\cap B)$
 \item $A\cup B $
 \item $\neg \emptyset$
 \end{enumerate}
@@ -169,6 +169,50 @@ The following show the correct logic:
 
 \newpage
 \section*{Problem 8}
+$S=\{2, 4, 5, 9\}, T=\{1,3,5,7,9\}, V=\{4, 5, 6\}$
+\begin{enumerate}[a]
+\item $|S\cap T| = \{5, 9\} =2$
+\item $|T\cup V| = \{1, 3, 4, 5 ,6, 7, 9\} =7$
+\item $|V-S| = \{2, 1, 1 ,-9\} = 3$
+\item $|S-V| = \{-2, -1, -1, 9\} = 3$
+\item $|T\cap S \cup V| = \{5,9\} \cup V = \{4, 5, 6, 9\} = 4$
+\item $|S \cup T \cup V| = \{1,2,3,4,5,6,7,9\} = 8$
+\end{enumerate}
+
+
+\section*{Problem 9}
+$|S \cup T| = \{1,2,3,4,5,7,9\} = 7, |S|=4, |T|=5, |S\cap T|=2$\\
+The expression can therefore be: $|S \cup T| = |S|+|T|-|S\cap T|$
+
+
+\section*{Problem 10}
+\begin{enumerate}[a]
+\item $\{b, c, x, y\}$
+\item $\{a, b, c, \emptyset\}$
+\item $\{a, b, c, \{\emptyset\}\}$
+\item $A \oplus B = \neg(A \cap B) \cup $
+\end{enumerate}
+
+
+
+\section*{Problem}
+You must use "Distributive".
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

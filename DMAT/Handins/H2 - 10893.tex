@@ -1,0 +1,117 @@
+\documentclass[english,10pt,a4paper]{article}
+\input{../Preamble}
+
+\title{Handin 2}
+\author{10893, Rasmus Bækgaard}
+\date{September 6th, 2013}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+$P(x) = x^2 + 1 = \text{even}, Q(x)=x^2 = \text{even}$ -- All values are odd.
+\\
+\\
+$P(x)$: For all elements in \textit{S}, $P(x) = x^2 +1$. 
+This is true, since all odd, square values are odd and plus one give an even number.
+\\
+$Q(x)$: For some elements in \textit{S}, $Q(x)=x^2$. This is false, since odd, square values are odd.
+
+
+\section*{Problem 2}
+Let P(n): $\dfrac{5n-6}{3}$ is an integer be an open sentence over the domain $\mathbb{Z}$. Determine, with explanations, whether the following statements are true:
+\begin{enumerate}[a]
+\item $\forall z \in \mathbb{Z}, P(z)$
+\item[] This statement is false, since not all integer values will give an integer. 
+Example: $\dfrac{5\cdot 1-6}{3}=\dfrac{-1}{3} \not = \mathbb{Z}$
+\item $\exists z \in \mathbb{Z}, P(z)$
+\item[] This statement is true, since some integer values will give an integer. 
+Example: $\dfrac{5\cdot 6 - 6}{3}=\dfrac{24}{3} = 8  = \mathbb{Z}$
+\end{enumerate}
+
+
+
+\section*{Problem 3}
+It is tempting to think that, if a statement involving the natural number \textit{n} is true for many consecutive values of \textit{n}, it must be true for all \textit{n}. 
+In that connection the example from Euler is illustrative.
+ Let $f(n) = n^2 + n + 41$ 
+\begin{enumerate}[a]
+
+\item Convince yourself (perhaps with the use of Mable or another tool) that f(1), f(2), … f(39) is prime, but f(40) is not. 
+\item[] Write a script in \textbf{MatLab} as follow:
+\end{enumerate}
+
+\begin{lstlisting}[caption=title, style=Code-Matlab, label=lst:ref]
+syms n;
+f(n) =n^2+n+41;
+ArrSize = 40;
+Array=[zeros(ArrSize,3)];
+
+for i=1: ArrSize
+    Array(i,1) = i;
+    Array(i,2) =f(i);
+    Array(i,3) = isprime(Array(i,2));
+end
+Array
+\end{lstlisting}
+\begin{enumerate}[b]
+\item[] Looking at the array list will show the values and if it's a prime number or not ( mark with '1' for \textit{true} and '0' for \textit{false}).
+Since the array list does not contain a '0' they are all primes but the last element.
+
+\item Show that, for any \textit{n} of the form $n = k^2 + 40$, \textit{f(n)} is not prime.
+\item[] If $f(n)$ is not a prime, it means atleast 2 values can be added to each other and it will give $f(n)$.
+\begin{align}
+\text{If } n &= k^2 + 40 \\
+f(n) &=\Big(k^2+40\Big)^2+\Big(k^2+40\Big)+41  & \text{Insert \textit{n} in } f(n)\\
+f(k) &= k^4 + 40^2 + 2k^2+k^2+81 & \text{Dissolve the paratheses}\\
+	&= k^4+3k^2+1681 & \text{Sum up}\\
+	&= \Big(k^2+3k+41 \Big)^2 & \text{Square root it}\\
+	&= \Big( k^2+3k+41 \Big) \cdot \Big( k^2+3k+41 \Big) & \text{rewrite it} \\
+	&= x \cdot x & \text{Notice it is a product} \label{equ:product}
+\end{align}
+\item[] From (\ref{equ:product}) we can see, that $f(n)$ is not a prime, since any number, \textit{k}, inserted in $f(k) =\Big(k^2+3k+41 \Big)^2$ gives a non-prime which means for any value we assign \textit{k} in $n=k^2+40$ will give us a non-prime.
+\end{enumerate}
+
+
+
+\section*{Problem 4}
+Prove that between any two different rational numbers there is another rational number.
+\\
+\\
+Since a rational number is a number expressed by two numbers, like $\dfrac{m}{n}$ you can always find a number between two other rational numbers.
+This is due to the amount of decimal will increase with higher numbers and if the rational numbers goes to rational you can always find a number between two rational numbers.
+
+
+\section*{Problem 5}
+Let $n \in N$. Prove that if $n^3 - 5n - 8 > 0$ then $n \geq 3$. What proof technique did you use? Why?
+\\
+\\
+An easy illustration, Figure \ref{fig:prob5}, created in \textbf{Matlab} will show why only the natural numbers from 3 and above is positive:
+
+\begin{lstlisting}[caption=title, style=Code-Matlab, label=lst:ref]
+n=0.1:1:10;
+f=power(n,3)-5*n-8;
+figure(1)
+subplot(1,1,1)
+plot(n, f, 's', n, f)
+axis([0 5 -25 100])
+title('f(n)')
+set(gca, 'XTick', [0:1:6])
+set(gca, 'YTick', [0])
+grid on
+\end{lstlisting}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.9]{H2-5}
+\caption{Diagram of equation}
+\label{fig:prob5}
+\end{figure}
+
+
+\section*{Problem 6}
+
+
+
+
+
+
+\end{document}

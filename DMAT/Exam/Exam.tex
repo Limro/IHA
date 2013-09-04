@@ -1,0 +1,126 @@
+\documentclass[english,10pt,a4paper]{article}
+\input{../Preamble}
+
+\title{Exam quistions}
+\author{10893, Rasmus Bækgaard}
+\date{August 30th, 2013}
+\begin{document}
+\maketitle
+
+\section{Set}
+
+\begin{theo}[Symbols] 
+
+\begin{itemize}
+\item \textbf{N} -- natural number (positive integers)
+\item \textbf{Z} -- integers -- hele tal.
+\item \textbf{Q} -- rational numbers -- $\dfrac{m}{n}$ where $m, n \in \mathbb{Z}$
+\item \textbf{I} -- irrational numbers -- like $\sqrt{2}, \pi$
+\item \textbf{R} -- real numbers -- Everything with and without comma.
+\item \textbf{C} -- complex numbers -- $a+b\cdot i$
+\item $\emptyset$ -- Empty set -- nothing
+\end{itemize}
+
+\end{theo}
+
+\begin{theo}[Cardinal number / cardinality] 
+The amount of elements in a set:\\
+$|S| = \{ 2, -3, \emptyset\} = 3$
+
+\end{theo}
+
+
+
+
+\subsection{Subset}
+\begin{itemize}
+\item A set within a set: $S=\{a, b, c\}, T = \{a, b \}, U= \{ a, b, c\}, V=\{c\}$
+\item Can be written as $T \subseteq S$
+	\begin{itemize}
+	\item Pronounced \textit{T is a \textbf{proper} subset of S}
+	\end{itemize}
+\item Can be written as $S \subseteq U$
+	\begin{itemize}
+	\item Pronounced \textit{S is a subset of U}
+	\end{itemize}
+	
+\item If a set is not in another set it's written as $T \not \subseteq V$
+\end{itemize}
+
+
+\begin{theo}[Intervals] 
+\begin{itemize}
+\item Open, $(a,b) = \{ x \in \mathbb{R}: a < x < b \}$
+\item Closed, $[a,b] = \{ x \in \mathbb{R}: a \leq x \leq b \}$
+\item Half open, $[a,b) = \{ x \in \mathbb{R}: a \leq x < b \}$
+\item Half closed, $(a,b] = \{ x \in \mathbb{R}: a < x \leq b \}$
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Power set] 
+\begin{itemize}
+\item A combination of all elements as \textbf{subsets}:
+\item[] $A=\emptyset, B= \{a,b\}, C=\{1,2,3\}$
+\item $\mathcal{P}(A) = \{\emptyset\} $
+\item $\mathcal{P}(B) = \{\emptyset, \{a\}, \{b\}, \{a,b\} \}$
+\item $\mathcal{P}(C) = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2, 3\}, \{1,2,3\} \}$
+\item Cardinality: $|\mathcal{P}(A)| = 2^{|A|}$
+\item $\mathcal{P}(set) = \{subset : subset \subseteq set\}$
+\end{itemize}
+\end{theo}
+
+
+
+\subsection{Set operations}
+\begin{theo}[Union] 
+\begin{itemize}
+\item Means "in total"
+\item Written as $A \cup B$
+\item[] \includegraphics[scale=1]{union} 
+\item SQL: \code{SELECT A, B IN Sets}
+\end{itemize}
+
+\end{theo}
+
+
+
+\begin{theo}[Intersection] 
+\begin{itemize}
+\item Means "in common"
+\item Written as $A \cap B$
+\item[] \includegraphics[scale=1]{Intersection} 
+\item If nothing is in common it's called \textbf{disjoint} and written $A \cap B = \emptyset$
+\item Can be written as $A \cap B = \{ x \in A \vee x \in B : x \in A \wedge x \in B \}$
+\item SQL: \\\code{SELECT A, B \\ FROM SetA \\INNER JOIN SetB \\ON A.a = b.a}
+\end{itemize}
+
+\end{theo}
+
+
+
+\begin{theo}[Difference] 
+\begin{itemize}
+\item Means "What does A have which B does not"
+\item Written as $A - B$
+\item[] \includegraphics[scale=1]{Difference} 
+\item Can also be written as $A \setminus B $
+\item SQL: \\\code{SELECT A, B \\ FROM SetA \\INNER JOIN SetB \\ON A.a = b.a}
+\end{itemize}
+
+\end{theo}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -8,7 +8,9 @@
 \maketitle
 
 \section*{Problem 1}
-$P(x) = x^2 + 1 = \text{even}, Q(x)=x^2 = \text{even}$ -- All values are odd.
+Let \textit{S} denote the set of odd integers and let $P(x): x2 + 1$ is even and $Q(x): x2$ is even be open sentences over \textit{S}. 
+State $\forall x \in S, P(x)$ and $\exists x \in S, Q(x)$ in words. 
+What is the truth value?
 \\
 \\
 $P(x)$: For all elements in \textit{S}, $P(x) = x^2 +1$. 
@@ -18,7 +20,7 @@ $Q(x)$: For some elements in \textit{S}, $Q(x)=x^2$. This is false, since odd, s
 
 
 \section*{Problem 2}
-Let P(n): $\dfrac{5n-6}{3}$ is an integer be an open sentence over the domain $\mathbb{Z}$. Determine, with explanations, whether the following statements are true:
+Let $P(n): \dfrac{5n-6}{3}$ is an integer be an open sentence over the domain $\mathbb{Z}$. Determine, with explanations, whether the following statements are true:
 \begin{enumerate}[a]
 \item $\forall z \in \mathbb{Z}, P(z)$
 \item[] This statement is false, since not all integer values will give an integer. 
@@ -62,11 +64,10 @@ Since the array list does not contain a '0' they are all primes but the last ele
 \begin{align}
 \text{If } n &= k^2 + 40 \\
 f(n) &=\Big(k^2+40\Big)^2+\Big(k^2+40\Big)+41  & \text{Insert \textit{n} in } f(n)\\
-f(k) &= k^4 + 40^2 + 2k^2+k^2+81 & \text{Dissolve the paratheses}\\
-	&= k^4+3k^2+1681 & \text{Sum up}\\
-	&= \Big(k^2+3k+41 \Big)^2 & \text{Square root it}\\
-	&= \Big( k^2+3k+41 \Big) \cdot \Big( k^2+3k+41 \Big) & \text{rewrite it} \\
-	&= x \cdot x & \text{Notice it is a product} \label{equ:product}
+f(k) &= k^4 + 40^2 +80k^2+ k^2+40+41 & \text{Dissolve the paratheses}\\
+	&= k^4+81k^2+1681 & \text{Sum up}\\
+	&= k\bigg(k^3 + 81k+\dfrac{1681}{k}\bigg) &k \text{ outside paratheses}\\
+	&= k \cdot x & \text{Notice it is a product} \label{equ:product}
 \end{align}
 \item[] From (\ref{equ:product}) we can see, that $f(n)$ is not a prime, since any number, \textit{k}, inserted in $f(k) =\Big(k^2+3k+41 \Big)^2$ gives a non-prime which means for any value we assign \textit{k} in $n=k^2+40$ will give us a non-prime.
 \end{enumerate}
@@ -106,12 +107,84 @@ grid on
 \label{fig:prob5}
 \end{figure}
 
+Also the equation can be rewritten as follow:
+\begin{align}
+n^3-5n-8 &> 0 &\\
+n^3-5n &> 8 & & \text{Move the }8\\
+n(n^2-5) &> 8 & & \text{Isolate \textit{n} on left side} \label{equ:iso}
+\end{align}
+
+Looking at (\ref{equ:iso}) it shows that $n^2-k$ is only getting bigger and bigger and with the scale outside it will always increase in value, as soon as it is positive, like $n=3 \Rightarrow 3^2-5 = 9-5=4$ but not $n=2 \Rightarrow 2^2-5=4-5=-1$.
+\\
+\\
+However it is perhaps clearer to see if we make it contrapositive:\\
+Prove that if $n^3 - 5n - 8 < 0$ then $n < 3$\\
+\\
+Now only the values 0, 1 and 2 must be calculated:
+\begin{align*}
+0^3-5 \cdot 0 - 8 &= -8 & True\\
+1^3-5\cdot 1-8 &= -12 & True\\
+2^3-5\cdot 2-8 &= -10 & True\\
+3^3-5\cdot 3-8 &= 5 & False
+\end{align*}
+The methods used are contrapositive proof, simple figures and logic explaining the coherence of the numbers, along with isolated examples.
+\\
+The contrapositive method is good for showing a few numbers,
+The figure is good to use since figure tells more faster than plain numbers.
+
 
 \section*{Problem 6}
+Prove that $\overline{A \cap B} = \overline{A} \cup \overline{B}$ for every two sets \textit{A} and \textit{B}. Does it hold for the empty set as well?
+\\
+\\
+To prove the statement we'll use DeMorgan's II law:
+\begin{align}
+\overline{A \cap B} &= \overline{(\overline{\overline{A}} \cap \overline{\overline{B}})} & \text{Double negation}\\
+	&= \overline{\overline{(\overline{A} \cup \overline{B})}} & \text{DeMorgan's I law}\\
+	&= \overline{A} \cup \overline{B} & \text{Double negation} 
+\end{align}
+
+It can hold empty sets -- The inverse of $\emptyset$ is everything. 
+And the union of everything and everything is it all.
+
+
+\section*{Problem 7}
+Let \textit{A, B} and \textit{C} be sets. Prove that $\overline{\overline{A} \cup \big( \overline{B} \cap C \big)} = (A \cap B) \cup (A - C)$:
+
+\begin{align}
+\overline{\overline{A} \cup \big( \overline{B} \cap C \big)} 
+	&= A \cap ( B \cup \overline{C}) & \text{DeMorgan's II law}\\
+	&= (A \cap B) \cup (A \cap \overline{C}) & \text{Associative law} \\
+	&= (A \cap B) \cup (A - C) &
+\end{align}
+
+
+
+\section*{Problem 8}
+Let \textit{A, B} and \textit{C} be sets. Prove that $(A-B) \cap (A-C) = A-(B\cup C)$:
+
+\begin{align}
+(A-B) \cap (A-C) &=(A \cap \overline{B}) \cap (A \cap \overline{C})\\
+	&=(A \cap A)  \cap (\overline{B} \cap \overline{C}) & \text{Assosiative law}\\
+	&= A \cap (\overline{B} \cap \overline{C})\\
+	&= A \cap (\overline{B \cup C}) & \text{DeMorgan}\\
+	&= A-(B\cup C) & \text{See problem 7 or the book p. 109}
+\end{align}
 
 
 
 
+\section*{Problem 9}
+What is wrong with the following “proof”? 
+Let $a, b \in \mathbb{R}$ and $a=b$.
+
+\begin{align}
+a &=b &  Good\\
+ab&=b^2 & Good\\
+ab-a^2 &= b^2-a^2 &Good \\
+a(b-a) &= (b-a)(b+1) & \text{Sure thing}\\
+a &= b+a & \text{No, }b-a\text{ is }a-a = 0. \text{ Don't divide by 0}
+\end{align}
 
 
 \end{document}

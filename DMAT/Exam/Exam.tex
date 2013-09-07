@@ -114,9 +114,57 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 
 
 
+\section{Proofs}
+
+
+\begin{theo}[Trivial proof] 
+\begin{itemize}
+\item Something that is true -- no need to prove it.
+\item Let $n \in \mathbb{Z}$. If $n^3 > 0$ then 3 is odd
+\end{itemize}
+\end{theo}
 
 
 
+\begin{theo}[Vacouos proof] 
+\begin{itemize}
+\item If something is always proven wrong
+\item Let $n \in \mathbb{Z}$. If \textbf{3 is even}, then $n^3 > 0$
+\item[] Clearly wrong!
+\end{itemize}
+\end{theo}
+
+
+
+\begin{theo}[Direct proof] 
+\begin{itemize}
+\item Show only what needs to be shown
+\item $\forall x \in S, P(x) \Rightarrow Q(x)$
+\item[] Show only that this is true and where it is false, e.g. show truth table.
+\item Is shown from lemmas and other proves.
+\end{itemize}
+\end{theo}
+
+
+
+\begin{theo}[Indirect proof / proof by contrapositive] 
+\begin{itemize}
+\item Reverse the result an means.
+\item Let $x \in S$. If $Q(x)$, then $P(x) \Rightarrow$
+\item[] Let $x \in S$. If $\neg Q(x)$, then $\neg P(x)$
+\end{itemize}
+\end{theo}
+
+
+
+\begin{theo}[Proof by cases] 
+\begin{itemize}
+\item Do subcases and show they span the result.
+\item Case 1: $n$ is even (U). Case 2: $n$ is odd (L). $\mathbb{Z} = U \cup L $
+\item Case 1: $n>0$ (U). Case 2: $n<0$ (L). $\mathbb{Z} = U \cup L$
+\item \textbf{Show $P \Leftrightarrow Q$ example}
+\end{itemize}
+\end{theo}
 
 
 

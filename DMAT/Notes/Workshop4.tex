@@ -1,0 +1,70 @@
+\documentclass[danish,english,10pt,a4paper]{article}
+\input{../Preamble}
+
+\title{Workshop 1, Week 2, Friday}
+\begin{document}
+\maketitle
+
+\section*{1}
+Prove: $\forall n \in \mathbb{Z}$, if \textit{n} is even, then $n^2$ is even.
+\\
+\\
+If $n= 2x$ n is even. Insert \textit{n} will give $n^2 = (2x)^2 \Leftrightarrow n^2=4x^2=2(2x^2)$ which is the even since 2 times an integer is even.
+
+
+\section*{2}
+Prove: $\forall n_1, n_2 \in \mathbb{Z}$, if $n_1$ and $n_2$ is even, then $n_1+n_2$ is even.
+\\
+\\
+Same as above: insert $x^2$ in $n_1$ and $n_2$ which gives even integer, since an even integer added with an even integer equals an even integer. $2k_1 + 2k_2 \Leftrightarrow 2(k_1+k_2)$
+
+
+\section*{3}
+
+
+\section*{4}
+Prove: Let $x \in \mathbb{Z}$ If $7x+5$ is odd, then \textit{x} is even.
+\\
+\\
+Assume \textit{x} is odd. Then $x=2y+1$ (definition) where $y \in \mathbb{Z}$.\\
+$7x+5 = 7(2y+1)+5 = 14y+7+5 = 14y+12 = 2(7y+6)$. 
+\\
+Since $7y+6$ is an integer, $7x+5$ is even.
+
+
+\section*{5}
+Let $n \in \mathbb{N}$. Then \textit{n} is even if and only if $3n^2+8$ is even.
+\begin{align*}
+3n^2+8 &= 3(2x)^2+8\\
+	&= 3\cdot 4x^2+8\\
+	&= 12x^2+8 \\
+	&= 2(6x^2+4) & \text{even natural + even natural = even natural}	
+\end{align*}
+Same with a \textbf{contriduction} -- If \textit{n} is odd then the second statement is odd.
+\begin{align*}
+3n^2+8 &= 3(2x+1)^2+8 & 2x+1 \text{ is odd}\\
+	&=3(2x^2+1+2x)+8\\
+	&=6x^2+3+6x+8\\
+	&=2(3x^2+3x+5)+1 & \text{proven odd}
+\end{align*}
+
+
+\section*{6}
+Let $n \in \mathbb{Z}$. Then $n^2-3n+9$ is odd:
+\\
+Case 1:
+\begin{align*}
+n^2-3n+9 &= (2x)^2-3(2x)+9 & n \text{ is even}\\
+	&=4x^2-6x+9	\\
+	&=2(2x^2-3x+4)+1 & \text{equals odd}
+\end{align*}
+Case 2:
+\begin{align*}
+n^2-3n+9 &= (2x+1)^2-3(2x+1)+9 & n \text{ is odd}\\
+	&=4x^2+1+2x-6x-3+9	\\
+	&=2(2x^2-2x+3)+1 & \text{equals odd}
+\end{align*}
+Since the P = odd integers and Q = even integers, then $\mathbb{Z} = P \cup Q$.
+
+
+\end{document}

@@ -1,0 +1,152 @@
+\documentclass[english,10pt,a4paper]{article}
+\input{../Preamble}
+
+\title{Handin 3}
+\author{10893, Rasmus Bækgaard}
+\date{September 6th, 2013}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+\textbf{Disprove the statement: If $n \in \{0, 1, 2, 3, 4\}$, then $2^n + 3^n + n(n-1)(n-2)$ is prime.}
+
+
+To disprove this a contraexample is needed. 
+Type in the following in Matlab:
+
+\begin{lstlisting}[caption=Problem 1, style=Code-Matlab, label=lst:ref]
+syms n;
+f(n)=2^n + 3^n + n*(n-1)*(n-2);
+
+Arr = zeros(5, 3);
+for i = 1:5
+    Arr(i,1)=i-1;
+    Arr(i,2)=f(i-1);
+    Arr(i,3)=isprime(Arr(i,2));
+end
+
+Arr
+\end{lstlisting}
+The result is listed in Figure \ref{fig:prob1}, where the first column is \textit{n}, second is the result and the third is a \code{bool} for if it is a prime or not.
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.9]{H3-1}
+\caption{Result of Matlab script}
+\label{fig:prob1}
+\end{figure}
+This shows, that $f(4) \not=$ prime.
+
+
+\section*{Problem 2}
+\textbf{Let $a,b \in \mathbb{Z}$. Disprove the statement; if $a\cdot b$ then $(a+b)^2$ are of opposite parity, then $a^2b^2$ and $a+ab+b$ are of opposite parity.}
+
+
+To disprove this we have to make a counterexample where you can start by saying $a=1, b=1$ and then $a=1, b=2$.
+To minimize time spend doing this and making a general solution for this, we make the following Matlab script:
+
+\begin{lstlisting}[caption=Problem 2, style=Code-Java, label=lst:prob2]
+arrSize=5;
+Arr = zeros(arrSize, 5);
+a=1;
+for i = 1:arrSize
+    b=i;
+   Arr(i,1)=a*b;
+   Arr(i,2)=(a+b)^2;
+   Arr(i,3)= a^2*b^2;
+   Arr(i,4)=a+a*b+b;
+   c = mod(Arr(i,1),2) ~= mod(Arr(i,2),2);
+   d = mod(Arr(i,3),2) ~= mod(Arr(i,4),2);
+   if c == d
+       Arr(i,5)=0;
+   else
+       Arr(i,5)=1;
+   end
+end
+
+Arr
+\end{lstlisting}
+Which gives us the result in Figure \ref{fig:prob2}, where column 1 is $a\cdot b$, column 2 is $(a+b)^2$, column 3 is $a^2b^2$, column 4 is $a+ab+b$ and column 5 is whether the first two columns are not same parity and the next two columns are not same parity (1 indeicate 'no').
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.9]{H3-2}
+\caption{Result of Matlab script}
+\label{fig:prob2}
+\end{figure}
+This is only the first 5 combinations, where $a=1$ and \textit{b} runs from 1 to 5.
+If $a=1, b=1$ the counterexample is shown.
+
+
+
+\section*{Problem 3}
+\textbf{Let $x, y \in \mathbb{R}^{+}$. Use a proof by contradiction to prove that if $x<y$ then $\sqrt{x} < \sqrt{y}$}
+\\
+\\
+Lets rewrite the statement:
+\begin{align}
+\forall x, y \in \mathbb{R}^+, &P \Rightarrow Q & P = x < y \text{ and } Q = \sqrt{x}<\sqrt{y} \\
+\exists x, y \in \mathbb{R}^+, &P \Rightarrow \neg Q \\
+\neg Q &= \neg(\sqrt{x} < \sqrt{y})\\
+\neg\sqrt{x} &< \neg \sqrt{y} \\
+\sqrt{x} &\geq \sqrt{y} & \text{Remove negation}\\
+x &\geq y & \text{Square both sides}
+\end{align}
+
+Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
+
+
+\section*{Problem 4}
+\textbf{Prove that there is no largest negative rational number. (Note: -1 is larger than -2.)}
+\\
+\\
+A rational number is defined by $\mathbb{Q}: \{ \frac{a}{b}:a, b \in (\mathbb{Q} \cup \mathbb{Z})\}$.
+By increasing \textit{b} and letting \textit{a} be a negativ number the number will be higher and higher but you can always find a higher number.
+\[ \dfrac{-a}{b} < \dfrac{-a}{b+1}\]
+
+
+
+\section*{Problem 5}
+\textbf{Prove that there exits no positive integer \textit{x} such that $2x < x^2 < 3x$}
+\\
+\\
+To prove there exist no positive integer, we can reduce the statement:
+\begin{align}
+2x < x^2 < 3x & \quad \text{Divide by } x\\
+2 < x < 3 \label{equ:p5}
+\end{align}
+Since there exist no integer in Equation (\ref{equ:p5}) between 2 and 3, the statement is proven.
+
+
+
+\section*{Problem 6}
+\textbf{Prove that if \textit{n} is an odd integer, then $7n-5$ is even by}
+\begin{enumerate}[a]
+\item \textbf{direct proof}
+\begin{itemize}
+\item  Since an odd number, \textit{n}, times another odd numner, 7, is odd, substracting a thrid odd number, 5, will give an even number.
+\item It can also be shown as follow:
+\begin{align}
+n&=odd\\
+P(n)&=7(2x+1)-5\\
+	&=14x+7-5\\
+	&=2(x+2)\\
+	&=2k
+\end{align}
+\end{itemize}
+\item \textbf{proof by contrapositive}
+\item[] This will give "\textit{n} is an odd integer, and $7n-5$ is odd"
+\begin{align}
+n&=even\\
+P(n)&=7(2x)-5\\
+	&=14x-5\\
+	&=2x-5\\
+	&=2(x-2)-1\\
+	&=2k-1
+\end{align}
+\item \textbf{proof by contradiction}
+\item []
+\end{enumerate}
+
+
+
+
+\end{document}

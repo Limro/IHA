@@ -1,0 +1,84 @@
+\documentclass[english,11pt,a4paper]{article}
+\input{../Preamble}
+
+\title{Handin 4}
+\author{10893, Rasmus Bækgaard}
+\date{September 20th, 2013}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+\textbf{Which of the  following sets are well-ordered? (Why/why not?)}
+\begin{enumerate}[a]
+\item $S=\{x \in \mathbb{Q}: x\geq -10\}$
+\item[] $S$ is not well-ordered, since there is a subset which has no least number. A subset could be written as  $x=]10:\infty)$ 
+
+\item $S=\{-2 ,-1, 0, 1, 2\}$
+\item[] $S$ is well-ordered, since it is finite and and only with natural numbers which can be written as $S=[-2:2]$.
+
+
+\item $S=\{x \in \mathbb{Q}: -1\leq x \leq 1\}$
+\item[] $S$ is not well-ordered, since it is in $\mathbb{Q}$ and a subset can be written as $U=]-1,1[$ which means we have no least value when we can divide by a larger number to get an even smaller number.
+
+
+\item $S=\{p :p \text{ is prime}\} = \{2, 3,5,7,9,11,13,\dots\}$
+\item[] $S$ is well-ordered, since there is a lower limit for any subset.
+\end{enumerate}
+
+
+
+\section*{Problem 2}
+\textbf{Use mathematical induction to prove that $1+5+9+\ldots+(4n-3)=2n^2-n$ for every positive integer $n$}.
+\\
+\\
+\textbf{Base case} 
+\\
+$P(1)$ should be true:
+\begin{align}
+4n-3 &= 2n^2-n \\
+4\cdot 1-3 &= 2\cdot 1^2-1 \\
+1 &= 1 \label{equ:p2-1}
+\end{align}
+From (\ref{equ:p2-1}) we have shown the base case is in fact true.
+\\
+\\
+\textbf{Induction step}
+\\
+The following should apply: $\forall k \in \mathbb{N}, P(k) \Rightarrow P(k+1)$
+\begin{align}
+1+5+9+\ldots+(4k-3) &= 2k^2-k & P(k)\\
+1+5+9+\ldots+(4(k+1)-3) &= 2(k+1)^2-k+1 & P(k+1)\\
+\overbrace{1+5+9+\ldots+(4k-3)}^{\text{This can be rewritten}}+(4(k+1)-3) &= \overbrace{k(4k-3)}^\text{to this}+(4(k+1)-3)\\
+	&= 4k^2-3k+4k+4-3 & \text{Now what?} \\
+	&= 4k^2+k+1 \label{equ:p2-2}\\
+%	&= (4k^2+4k)-3k-3\\
+%	&= 4(k^2+k)-3k-3 \\
+%	&= (2k+1)^2-1-3k-3\\
+	&= 2k^2+2k^2+k+1\\
+ 2(k+1)^2 &= 2(k^2+1+2k)\\
+	&= 2k^2+2+4k\\
+%	&= 4k^2+k+1 & \text{Insert in (\ref{equ:p2-2})}\\
+%	&= 2k^2 + 2k^2+k+1\\
+%	&=	
+\end{align}
+
+
+
+\section*{Problem 3}
+\textbf{Prove that $2^n \geq n^3$ for every integer $n \geq 10$}.
+\\
+\\
+\textbf{Base case:}
+\\
+$P(10): 2^{10}\geq 10^3 \Leftrightarrow 1024 \geq 1000$ which is true.
+\\
+\\
+\textbf{Induction case:}
+\\
+\begin{align}
+2^k &\geq 10^k & P(k)\\
+2^{k+1} &\geq 10^{k+1} & P(k+1)
+\end{align}
+
+
+\end{document}

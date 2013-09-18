@@ -52,8 +52,8 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \begin{itemize}
 \item Open, $(a,b) = \{ x \in \mathbb{R}: a < x < b \}$
 \item Closed, $[a,b] = \{ x \in \mathbb{R}: a \leq x \leq b \}$
-\item Half open, $[a,b) = \{ x \in \mathbb{R}: a \leq x < b \}$
-\item Half closed, $(a,b] = \{ x \in \mathbb{R}: a < x \leq b \}$
+\item Half open (bottom closed), $[a,b) = \{ x \in \mathbb{R}: a \leq x < b \}$
+\item Half closed (top closed), $(a,b] = \{ x \in \mathbb{R}: a < x \leq b \}$
 \end{itemize}
 \end{theo}
 
@@ -114,6 +114,7 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 
 
 
+\newpage
 \section{Proofs}
 
 
@@ -167,8 +168,107 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \end{theo}
 
 
+\newpage
+\section{Counterexamples and contradictive proof techniques}
+
+\begin{theo}[Counterexample] 
+\begin{itemize}
+\item A counterexample is \textbf{one case} that proves a statement \textbf{wrong}
+\item Example
+\\
+$\forall x \in \mathbb{N}, x < x^2$ \\
+$x=1 \Rightarrow 1 < 1^2 \Rightarrow 1 \not < 1$
+\end{itemize}
+\end{theo}
+
+\begin{theo}[Proof by contradiction] 
+\begin{itemize}
+\item A contradiction,$\neg Q$, is assumed to be false so that \textit{Q} is true.
+\item[] $(P \Rightarrow Q) = true$ becomes $(P \Rightarrow \neg Q) = false$
+\item[] $(P \Rightarrow Q) \Leftrightarrow (\neg Q \Rightarrow \neg P)$
+\item Example:
+\item[] Let $x, y \in \mathbb{R}^{+}$. Use a proof by contradiction to prove that if $x<y$ then $\sqrt{x} < \sqrt{y}$
+\\
+\\
+Lets rewrite the statement:
+\begin{align}
+\forall x, y \in \mathbb{R}^+, &P \Rightarrow Q & P = x < y \text{ and } Q = \sqrt{x}<\sqrt{y} \\
+\exists x, y \in \mathbb{R}^+, &P \Rightarrow \neg Q \\
+\neg Q &= \neg(\sqrt{x} < \sqrt{y})\\
+\neg\sqrt{x} &< \neg \sqrt{y} \\
+\sqrt{x} &\geq \sqrt{y} & \text{Remove negation}\\
+x &\geq y & \text{Square both sides}
+\end{align}
+
+Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Existence proofs] 
+ There are two kinds:
+\begin{itemize}
+\item \textbf{Witness}: A single example
+\item[] Example: $\exists x \in \mathbb{R}, x > 0$ and pick $x=1$
+\item \textbf{General/abstract}: 
+\item[] Example: $\exists p \in \text{room}, \forall p' \in \text{room}, \text{Hairlenght}(p) \geq \text{Hairlenght}(p')$
+\item[] Someone in the room has longer or equal long hair than everyone else -- remember more than 1 in room.
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Existence Disproofs] 
+\begin{itemize}
+\item Just like a contradiction, but for existential it's a property that never holds
+\end{itemize}
+\end{theo}
 
 
 
+
+\section{Mathematical induction}
+
+\begin{theo}[•] 
+\begin{itemize}
+\item Base step: $P(1)$ is true
+\item Induction step: $\forall k \in \mathbb{N}, P(k) \Rightarrow P(k+1)$ is true
+\item Conclusion: $P(n)$ is true for all natural numbers, $n$
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Induction hypothesis] 
+\begin{itemize}
+\item Induction step is $P(k) \Rightarrow P(k+1)$
+\item Remember to depend on $P(k)$
+\item Without this -- no induction
+\end{itemize}
+\end{theo}
+
+
+
+\begin{theo}[General induction] 
+\begin{itemize}
+\item We don't have to start at 1 or natural numbers
+\item Base set: $P(m)$ for some $m\in \mathbb{Z}$
+\item Induction step: $\forall k\in \{x \in \mathbb{Z}: \geq m \}, P(k) \Rightarrow P(k+1)$
+\item Conclusion: \footnote{Her mangler}
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Minimum counterexample] 
+\begin{itemize}
+\item A way of getting more information for the proof.
+\item Make a contradiction
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Short induction] 
+\begin{itemize}
+\item Let base be for \textbf{some} or \textbf{all} of $P(x)$
+\end{itemize}
+\end{theo}
 
 \end{document}

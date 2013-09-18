@@ -9,8 +9,8 @@
 
 \section*{Problem 1}
 \textbf{Disprove the statement: If $n \in \{0, 1, 2, 3, 4\}$, then $2^n + 3^n + n(n-1)(n-2)$ is prime.}
-
-
+\\
+\\
 To disprove this a contraexample is needed. 
 Type in the following in Matlab:
 
@@ -39,8 +39,8 @@ This shows, that $f(4) \not=$ prime.
 
 \section*{Problem 2}
 \textbf{Let $a,b \in \mathbb{Z}$. Disprove the statement; if $a\cdot b$ then $(a+b)^2$ are of opposite parity, then $a^2b^2$ and $a+ab+b$ are of opposite parity.}
-
-
+\\
+\\
 To disprove this we have to make a counterexample where you can start by saying $a=1, b=1$ and then $a=1, b=2$.
 To minimize time spend doing this and making a general solution for this, we make the following Matlab script:
 
@@ -133,20 +133,75 @@ P(n)&=7(2x+1)-5\\
 \end{align}
 \end{itemize}
 \item \textbf{proof by contrapositive}
+\item[] What this means is, that if we can find an equation that states \textit{n} cannot be odd:
+\item[]
+\begin{align}
+2x+1 &= 7 n-5 & \text{Try letting the equation be odd}\\
+2x+6 &= 7n\\
+2(x+3)&=7n & \text{Subtract }-6n \text{ on both sides}\\
+2(x+3)-6n &= n &\text{Find the form } 2(a-n) = n\\
+2(x+3-3n) &= n
+\end{align}
+\item[] If we tried to solve the left side and get an odd number, we will fail.
+No \textit{x} will give us a left side which is odd.
+Therefor \textit{n} is even.
+\item \textbf{proof by contradiction}
 \item[] This will give "\textit{n} is an odd integer, and $7n-5$ is odd"
 \begin{align}
 n&=even\\
 P(n)&=7(2x)-5\\
 	&=14x-5\\
-	&=2x-5\\
-	&=2(x-2)-1\\
-	&=2k-1
+	&=2(7x-2)-1\\
+	&=2k-1 \label{equ:6}
 \end{align}
-\item \textbf{proof by contradiction}
-\item []
 \end{enumerate}
+Equation(\ref{equ:6}) shows the contradiction is true and thereby the original statement is true.
+
+
+\section*{Problem 7}
+\textbf{Show that there exit two distinct irrational numbers \textit{a} and \textit{b} such that $a^b$ is rational.}
+\\
+\\
+Example: 
+\begin{align}
+a &= \sqrt{2}^{\sqrt{2}}\\
+b &= \sqrt{2}\\
+a^b &= {\sqrt{2}^{\sqrt{2}}}^{\sqrt{2}}\\
+a^b &= 2 \label{equ:7}
+\end{align}
+It has now been proven with Equation(\ref{equ:7}).
 
 
 
+\section*{Problem 8}
+\textbf{Disprove the statement: There is an integer \textit{n} such that $n^4+n^3+n^2+n$ is odd.}
+\\
+\\
+To disprove this we look at the what $n^x$ is equal to:
+\begin{align}
+n^4+n^3+n^2+n &\Leftrightarrow n(n+1)\Big(n^2+1\Big) & \text{Factor via WolframAlpha}\\
+\end{align}
+Case 1: \textit{n} is even and has the form $2a$:
+\begin{align}
+n(n+1)\Big(n^2+1\Big) &= (2k)(2k+1)\Big((2k)^2+1\Big)\\
+	&=\Big(4k^2+2k\Big)\Big(4k^2+1\Big)\\
+	&=16k^4+4k^2+8k^3+2k\\
+	&=2\Big(8k^4+4k^3+2k^2+k\Big)\\
+	&=2a
+\end{align}
+The form is $2a$ which shows us, that if the input is even it will com out even.
+\\
+Case 2: \textit{n} is odd and has the form $2a+1$:
+\begin{align}
+n(n+1)\Big(n^2+1\Big) &= (2k+1)(2k+1+1)\Big((2k+1)^2+1\Big)\\
+	&=\Big(4k^2+4k+1\Big)\Big(4k^2+1+4k+1\Big)\\
+	&=16k^2+16k^3+8k^2+4k^3+16k^2+8k+4k^2+4k+2\\
+	&=20k^3+44k^2+12k+2\\
+	&=2\Big(10k^3+22k^2+6k+1\Big)\\
+	&=2a
+\end{align}
+The form is again $2a$ which shows us, that if the input is odd it will come out even.
+\\
+It is now shown, that no matter the input parity, the output is even and thereby disproving the statement.
 
 \end{document}

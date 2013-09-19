@@ -45,47 +45,75 @@ From (\ref{equ:p2-1}) we have shown the base case is in fact true.
 \textbf{Induction step}
 \\
 The following should apply: $\forall k \in \mathbb{N}, P(k) \Rightarrow P(k+1)$
+\begin{proof}
 \begin{align}
 1+5+9+\ldots+(4k-3) &= 2k^2-k & P(k)\\
-1+5+9+\ldots+(4(k+1)-3) &= 2(k+1)^2-k+1 & P(k+1)\\
-\overbrace{1+5+9+\ldots+(4k-3)}^{\text{This can be rewritten}}+(4(k+1)-3) &= \overbrace{k(4k-3)}^\text{to this}+(4(k+1)-3)\\
-	&= 4k^2-3k+4k+4-3 & \text{Now what?} \\
-	&= 4k^2+k+1 \label{equ:p2-2}\\
-%	&= (4k^2+4k)-3k-3\\
-%	&= 4(k^2+k)-3k-3 \\
-%	&= (2k+1)^2-1-3k-3\\
-	&= 2k^2+2k^2+k+1\\
- 2(k+1)^2 &= 2(k^2+1+2k)\\
-	&= 2k^2+2+4k\\
-%	&= 4k^2+k+1 & \text{Insert in (\ref{equ:p2-2})}\\
-%	&= 2k^2 + 2k^2+k+1\\
-%	&=	
+1+5+9+\ldots+(4(k+1)-3) &= 2(k+1)^2-k+1 & P(k+1) \label{equ:2-2}\\
+	&= 1+5+9+\ldots+\underbrace{(4k-3)}_{\mathclap{\text{Notice}}}+(4(k+1)-3) &\text{Then magic} \\
+	&=(2k^2-k)+(4k+1)\\
+	&=2k^2+3k+1\\
+	&=2(k+1)^2-(k+1) 
 \end{align}
-
+\end{proof}
+The result the same as (\ref{equ:2-2}) true and therefor follows the Principle of Mathematical Induction.
 
 
 \section*{Problem 3}
 \textbf{Prove that $2^n \geq n^3$ for every integer $n \geq 10$}.
-\\
-\\
-\textbf{Base case:}
-\\
-$P(10): 2^{10}\geq 10^3 \Leftrightarrow 1024 \geq 1000$ which is true.
-\\
-\\
-\textbf{Induction case:}
-\\
+%\\
+%\\
+%\textbf{Base case:}
+%\\
+%$P(10): 2^{10}\geq 10^3 \Leftrightarrow 1024 \geq 1000$ which is true.
+%\\
+%\\
+%\textbf{Induction case:}
+\begin{proof}
+The inequality holds for $n=10$ since $2^{10} \geq 10^3 $. 
+Assume that $2^k \geq k^3$, where $k$ is a nonnegative integer. We show that $2^{k+1} \geq (k+1)^3$. When $k=10$ , we have $2^{10} = 1024 \geq 1000 = 10^3$. We therefor assume that $k \geq 10$. Then
 \begin{align}
-2^k &\geq 10^k & P(k)\\
-2^{k+1} &\geq 10^{k+1} & P(k+1)
+2^{k+1} = 2\cdot 2^k &\geq k^3+3k^2+3k+1  \Leftrightarrow\\
+2^k &\geq 3k^2+3k+1\\
+	&\geq 
 \end{align}
+By the Principle of Mathematical Induction, $2^n \geq n^3$ for every integer $n \geq 10$.
+\end{proof}
 
 
 
 
 
 \section*{Problem 4}
-\textbf{Use the method of minimum counterexample to prove that $3|\bigg(2^{2n}-1\bigg)$ for every positive integer \textit{n}}
+\textbf{Use the method of minimum counterexample to prove that $3|\Big(2^{2n}-1\Big)$ for every positive integer \textit{n}}
+
+
+
+\section*{Problem 5}
+\textbf{Use the Strong Principle of Mathematical to prove the following.\\
+Let $S= \{ i \in \mathbb{Z} : i \geq 2\}$ \\
+and the $P$ be a subset of $S$ with the properties that $2,3 \in P$ \\
+and if $n \in S$, then either $n \in P$ or $n=ab$, where $a,b\in S$. \\
+Then every element of $S$ either belongs to $P$ or it can be expressed as a product of elements of $P$.}
+\begin{proof}
+The set, $S$, consist of only integers greater than 2 and $P$ is a subset of $S$.
+Should $n$ be in the set $S$, it can be expressed as a product of two numbers in the subset, or it is in the subset it self.
+\\
+Case 1: $n$ is not a prime -- let's say 6. Here $n$ can be expressed as $2 \cdot 3 = 6$ and $n$ is therefor not in the subset, $P$.
+\\
+Case 2: $n$ is not a prime -- let's say 12. Here $n$ can be expressed as $3 \cdot 4 = 12$ and $n$ is not in the subset, but 4 is.
+\\
+Case 3: $n$ is a prime -- let's say 5. Here $n$ can not be expressed by the product of the elements in $P$ and is only the the set, $S$.
+\\
+With the cases we can see, that all elements of $S$ can be in the subset, $P$. 
+Some elements of $S$ cannot be the product of elements in $P$ and must therefor be in the subset.
+\end{proof}
+
+
+
+
+
+\section*{Problem 6}
+\textbf{Use the Strong Principle of Mathematical Induction to prove, that for each integer $n\geq 12$, there are non-negative integers $a$ and $b$ such the $n=3a+7b$.}
 
 
 \end{document}

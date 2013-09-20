@@ -11,14 +11,14 @@
 \textbf{Which of the  following sets are well-ordered? (Why/why not?)}
 \begin{enumerate}[a]
 \item $S=\{x \in \mathbb{Q}: x\geq -10\}$
-\item[] $S$ is not well-ordered, since there is a subset which has no least number. A subset could be written as  $x=]10:\infty)$ 
+\item[] $S$ is not well-ordered, since there is a subset which has no least number. A subset could be written as  $x=(-10:\infty)$ 
 
 \item $S=\{-2 ,-1, 0, 1, 2\}$
 \item[] $S$ is well-ordered, since it is finite and and only with natural numbers which can be written as $S=[-2:2]$.
 
 
 \item $S=\{x \in \mathbb{Q}: -1\leq x \leq 1\}$
-\item[] $S$ is not well-ordered, since it is in $\mathbb{Q}$ and a subset can be written as $U=]-1,1[$ which means we have no least value when we can divide by a larger number to get an even smaller number.
+\item[] $S$ is not well-ordered, since it is in $\mathbb{Q}$ and a subset can be written as $U=(-1,1]$ which means we have no least value when we can divide by a larger number to get an even smaller number.
 
 
 \item $S=\{p :p \text{ is prime}\} = \{2, 3,5,7,9,11,13,\dots\}$
@@ -49,34 +49,29 @@ The following should apply: $\forall k \in \mathbb{N}, P(k) \Rightarrow P(k+1)$
 \begin{align}
 1+5+9+\ldots+(4k-3) &= 2k^2-k & P(k)\\
 1+5+9+\ldots+(4(k+1)-3) &= 2(k+1)^2-k+1 & P(k+1) \label{equ:2-2}\\
-	&= 1+5+9+\ldots+\underbrace{(4k-3)}_{\mathclap{\text{Notice}}}+(4(k+1)-3) &\text{Then magic} \\
-	&=(2k^2-k)+(4k+1)\\
+	&= \underbrace{1+5+9+\ldots+(4k-3)}_{\mathclap{\text{Lefthand side of P(k)}}}+(4(k+1)-3)\\
+	&=2k^2-k+4k+1\\
 	&=2k^2+3k+1\\
 	&=2(k+1)^2-(k+1) 
 \end{align}
-\end{proof}
-The result the same as (\ref{equ:2-2}) true and therefor follows the Principle of Mathematical Induction.
+The result the same as (\ref{equ:2-2}) true and therefor follows the Principle of Mathematical Induction.\end{proof}
+
 
 
 \section*{Problem 3}
 \textbf{Prove that $2^n \geq n^3$ for every integer $n \geq 10$}.
-%\\
-%\\
-%\textbf{Base case:}
-%\\
-%$P(10): 2^{10}\geq 10^3 \Leftrightarrow 1024 \geq 1000$ which is true.
-%\\
-%\\
-%\textbf{Induction case:}
 \begin{proof}
 The inequality holds for $n=10$ since $2^{10} \geq 10^3 $. 
 Assume that $2^k \geq k^3$, where $k$ is a nonnegative integer. We show that $2^{k+1} \geq (k+1)^3$. When $k=10$ , we have $2^{10} = 1024 \geq 1000 = 10^3$. We therefor assume that $k \geq 10$. Then
 \begin{align}
-2^{k+1} = 2\cdot 2^k &\geq k^3+3k^2+3k+1  \Leftrightarrow\\
-2^k &\geq 3k^2+3k+1\\
-	&\geq 
+2^{k+1} = 2\cdot 2^k &\geq k^3+3k^2+3k+1 \label{equ:3-1}\\
+2\cdot 2^k &\geq 2\cdot k^3 & 2\cdot 10^2= 2048, 2\cdot 10^3 = 2000\\
+	&\geq k^3+k^3 & \text{Isolate the first } k^3\\
+	&\geq k^3+ 10k^2 & k^3 \geq 10k^2\\
+	&= k^3+ 3k^2+7k^2\\
+	&\geq k^3+3k^2+3k+1 & 7k^2 \geq 3k+1 \label{equ:3-2}
 \end{align}
-By the Principle of Mathematical Induction, $2^n \geq n^3$ for every integer $n \geq 10$.
+By the Principle of Mathematical Induction, $2^n \geq n^3$ for every integer $n \geq 10$, since (\ref{equ:3-1}) is equal to (\ref{equ:3-2}).
 \end{proof}
 
 
@@ -84,8 +79,19 @@ By the Principle of Mathematical Induction, $2^n \geq n^3$ for every integer $n 
 
 
 \section*{Problem 4}
-\textbf{Use the method of minimum counterexample to prove that $3|\Big(2^{2n}-1\Big)$ for every positive integer \textit{n}}
-
+\textbf{Use the method of minimum counterexample to prove that $3|\Big(2^{2n}-1\Big)$ for every positive integer \textit{n}.}
+\begin{proof}
+Assume, to the contraty, that there are positive integers $n$ such, that $6\not |(2^{2n}-1$. Then there is a a smallest positive integer $n$ such that $6\not |(2^{2n}-1$.
+Let $m$ be this integer.
+If $n=1$, then $2^{2n}-1 =3$; while if $n=2$, then $2^{2n}-1=15$.
+Sine $3|3$ and $3|15$, it follows that $3|(2^{2n}-1)$ for $n=1$ and $n=2$. Therefor, $m\geq 3$. So we can write $m=k+2$ where $1\leq k< m$. Observe that
+\begin{align}
+m^{2m}-1 &= m^2\cdot m^m -1 \\
+	&= (k+2)^2 \cdot (k+2)^{k+2} -1 \\
+	&= (k+2)^2 \cdot \Big((k+2)^k+(k+2)^2\Big)-1 \\
+	&= (k^2+2k+4)\cdot (m^{m+2}+2^{m+2}
+\end{align}
+\end{proof}
 
 
 \section*{Problem 5}
@@ -108,7 +114,7 @@ With the cases we can see, that all elements of $S$ can be in the subset, $P$.
 Some elements of $S$ cannot be the product of elements in $P$ and must therefor be in the subset.
 \end{proof}
 
-
+\textbf{Mellem 2 og k betyder det, at \dots rigtigt}
 
 
 

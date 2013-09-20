@@ -271,4 +271,61 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \end{itemize}
 \end{theo}
 
+
+\newpage
+\section{Mathematical induction}
+\begin{theo}[Least/smallest/minimum element] 
+\begin{itemize}
+\item The smallest element in a subset of a set.
+\item If all numbers in the set can be listed, you can find a least element
+\item If you do not have, $x \in \mathbb{Q}, x < 0$ can have a subset $(0, 10]$ and that has no listed minimum.
+\end{itemize}
+\end{theo}
+
+
+
+\begin{theo}[Well-ordered] 
+\begin{itemize}
+\item Nonempty subset with a least element
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Induction proof] 
+\begin{itemize}
+\item Proves a statement $P(n)$ holds for $P(n+1)$.
+\item Make \textbf{base step}: $p(1)$ is true
+\item[] This is also called \textbf{the induction hypothesis}.
+\item Make \textbf{induction step}: $\forall k \in \mathbb{N}, P(k) \Rightarrow P(k+1)$ is true.
+\item Make conclusion: $P(n)$ is true for all natural numbers, $n$.
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[The more general principle of mathematical induction] 
+\begin{itemize}
+\item Inequality
+\item[] $\forall n \in \mathbb{Z}^+, 2^n \geq n$ (For every nonnegative integer $n$\dots)
+\item[] Base step: $n=0$ is true since $2^0>0$. Assume $2^k>k$ gives the same.
+\item[] Induction Step: $2^{k+1}=k+1$. When $k=0$, we have $2^{0+1}=2 > 0+1=1$. Assume $k\geq 1$. Then
+\item[] $2^{k+1}=2\cdot 2^k > 2k=k+k \geq k+1$.
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Minimum counterexample] 
+\begin{itemize}
+\item 
+\end{itemize}
+\end{theo}
+
+
+
+\begin{theo}[Strong induction] 
+\begin{itemize}
+\item We have a base (proved elsewhere), a gap where some example should be, and a \textit{prior}, $k$ which will imply $k+1$.
+\end{itemize}
+\end{theo}
+
+
 \end{document}

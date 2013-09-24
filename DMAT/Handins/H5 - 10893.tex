@@ -1,0 +1,122 @@
+\documentclass[english,11pt,a4paper]{article}
+\input{../Preamble}
+
+\title{Handin 5}
+\author{10893, Rasmus Bækgaard}
+\date{September 27th, 2013}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+\textbf{Consider the following statements:}
+\\
+$(1+2)^2-1^2=2^3\\
+(1+2+3)^2-(1+2)^2=3^3\\
+(1+2+3+4)^2-(1+2+3)^2=4^3$
+\begin{enumerate}[a]
+\item Based on the three statement given above, what is the next statement suggested by these?
+\item[] $(1+2+3+4+5)^2-(1+2+3+4)^2=5^3$
+\item \label{enu:1}What conjecture is suggested by these statements?
+\item[] $(1+\ldots+n)^2-(1+\ldots+(n-1))^2=n^3$
+\item Verify the conjecture in (\ref{enu:1})
+\item[] Use the induction method:
+\item[] 
+\begin{align}
+1+2+3+\ldots+n&=\dfrac{n(n+1)}{2}\\
+\bigg(\dfrac{n(n+1)}{2}\bigg)^2-\Bigg(\dfrac{(n-1)\Big((n-1)+1\Big)}{2}\Bigg)^2
+	&=\dfrac{1}{4}\Big(n^4+2n^3+n^2\Big)-\dfrac{1}{4}\Big(n^4-2n^3+n^2\Big)\\
+	&=\dfrac{n^4+2n^3+n^2-n^4+2n^3-n^2}{4}\\
+	&=\dfrac{4n^3}{4}\\
+	&=n^3
+\end{align}
+\end{enumerate}
+
+
+
+\section*{Problem 2}
+\textbf{By an ordered partition of an integer $n \geq 2$ is meant a sequence of positive integers whose sum is $n$. For example, the ordered partition of 3 are $3,1+2,2+1,1+1+1$}
+\begin{enumerate}[a]
+\item Determine the ordered partition of 4
+\item[] This gives 8 partitions:\\
+$4, \\
+1+3, 3+1, \\
+2+2\\
+1+1+2, 1+2+1, 2+1+1, \\
+1+1+1+1$
+\item Determine the ordered partition of 5
+\item[] This gives 16 partitions: \\
+$5, \\
+1+4,4+1,\\
+3+2,2+3,\\
+3+1+1,1+3+1,3+1+1\\
+1+2+2,2+1+2,2+2+1,\\
+1+1+1+2,1+1+2+1,1+2+1+1,2+1+1+1,\\
+1+1+1+1+1$
+\item Make a conjecture converting the number of ordered partition of an integer $n\geq 2$.
+\item[] For 3 it's 4 partitions, for 4 it's 8 partitions, for 5 it's 16 partitions.\\
+This will be $n=2^{n-1}$
+\end{enumerate}
+
+
+
+
+\section*{Problem 3}
+\textbf{Express the following quantified statement in symbols:}
+\begin{enumerate}[a]
+\item \label{enu:3}For every odd integer $n$, the integer $3n+1$ is even:
+\item[]$\forall n, m \in \mathbb{Z}, n\%2 = 1: m = 3n+1 \Rightarrow m\%2=0$
+\item Prove that the statement in (\ref{enu:3}) is true.
+\item[] 
+\begin{align}
+n &= 2k+1\\
+m &= 3n+1\\
+	&=3(2k+1)+1\\
+	&=6k+1+1\\
+	&=2(3k+1)\\
+	&=2a\label{equ:3}
+\end{align}
+From (\ref{equ:3}) we can see, that all odd integers gives an even number.
+\end{enumerate}
+
+
+
+\section*{Problem 4}
+\textbf{Express the following quantified statement in symbols}
+\begin{enumerate}[a]
+\item \label{enu:4}There exists a positive even integer $n$, such that $3n+2^{n-2}$ is odd.
+\item[] This can be written as follow:
+\begin{align}
+\exists n, m \in \mathbb{Z}^+, n\%2=0 : m= 3n+2^{n-2} \Rightarrow m\%2=1
+\end{align}
+\item Prove that the statement in (\ref{enu:4}) is true.
+\item[] To prove the statement in (\ref{enu:4}) is true, we write $n=2$:
+\begin{align}
+m &= 3\cdot 2+2^{2-2}\\
+	&=6+2^0\\
+	&=6+1\\
+	&=7
+\end{align}
+\end{enumerate}
+
+
+
+\section*{Problem 5}
+\textbf{Prove or disprove: The sum of every five consecutive integers is divisible by 5 and the sum of no six consecutive integers is divisible by 6}
+\\
+\\
+It can be written as follow:
+\begin{align}
+\dfrac{n+(n+1)+(n+2)+(n+3)+(n+4)}{5} 
+	&=\dfrac{5n+10}{5}\\
+	&=n+5 \\
+\dfrac{n+(n+1)+(n+2)+(n+3)+(n+4)+(n+5)}{6}
+	&= \dfrac{6n+15}{6} \\
+	&= n\cdot \dfrac{15}{6} \label{equ:5}
+\end{align}
+From (\ref{equ:5}) we can see that it is not an integer.
+Therefor the statement is false.
+
+
+
+
+\end{document}

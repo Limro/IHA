@@ -14,12 +14,11 @@ $(1+2)^2-1^2=2^3\\
 (1+2+3)^2-(1+2)^2=3^3\\
 (1+2+3+4)^2-(1+2+3)^2=4^3$
 \begin{enumerate}[a]
-\item Based on the three statement given above, what is the next statement suggested by these?
+\item \textbf{Based on the three statement given above, what is the next statement suggested by these?}
 \item[] $(1+2+3+4+5)^2-(1+2+3+4)^2=5^3$
-\item \label{enu:1}What conjecture is suggested by these statements?
+\item \label{enu:1}\textbf{What conjecture is suggested by these statements?}
 \item[] $(1+\ldots+n)^2-(1+\ldots+(n-1))^2=n^3$
-\item Verify the conjecture in (\ref{enu:1})
-\item[] Use the induction method:
+\item \textbf{Verify the conjecture in (\ref{enu:1})}
 \item[] 
 \begin{align}
 1+2+3+\ldots+n&=\dfrac{n(n+1)}{2}\\
@@ -36,14 +35,14 @@ $(1+2)^2-1^2=2^3\\
 \section*{Problem 2}
 \textbf{By an ordered partition of an integer $n \geq 2$ is meant a sequence of positive integers whose sum is $n$. For example, the ordered partition of 3 are $3,1+2,2+1,1+1+1$}
 \begin{enumerate}[a]
-\item Determine the ordered partition of 4
+\item \textbf{Determine the ordered partition of 4}
 \item[] This gives 8 partitions:\\
 $4, \\
 1+3, 3+1, \\
 2+2\\
 1+1+2, 1+2+1, 2+1+1, \\
 1+1+1+1$
-\item Determine the ordered partition of 5
+\item \textbf{Determine the ordered partition of 5}
 \item[] This gives 16 partitions: \\
 $5, \\
 1+4,4+1,\\
@@ -52,7 +51,7 @@ $5, \\
 1+2+2,2+1+2,2+2+1,\\
 1+1+1+2,1+1+2+1,1+2+1+1,2+1+1+1,\\
 1+1+1+1+1$
-\item Make a conjecture converting the number of ordered partition of an integer $n\geq 2$.
+\item \textbf{Make a conjecture converting the number of ordered partition of an integer $n\geq 2$.}
 \item[] For 3 it's 4 partitions, for 4 it's 8 partitions, for 5 it's 16 partitions.\\
 This will be $n=2^{n-1}$
 \end{enumerate}
@@ -63,10 +62,12 @@ This will be $n=2^{n-1}$
 \section*{Problem 3}
 \textbf{Express the following quantified statement in symbols:}
 \begin{enumerate}[a]
-\item \label{enu:3}For every odd integer $n$, the integer $3n+1$ is even:
+\item \textbf{\label{enu:3}For every odd integer $n$, the integer $3n+1$ is even:}
 \item[]$\forall n, m \in \mathbb{Z}, n\%2 = 1: m = 3n+1 \Rightarrow m\%2=0$
-\item Prove that the statement in (\ref{enu:3}) is true.
+\item \textbf{Prove that the statement in (\ref{enu:3}) is true.}
 \item[] 
+\begin{proof}
+
 \begin{align}
 n &= 2k+1\\
 m &= 3n+1\\
@@ -76,6 +77,7 @@ m &= 3n+1\\
 	&=2a\label{equ:3}
 \end{align}
 From (\ref{equ:3}) we can see, that all odd integers gives an even number.
+\end{proof}
 \end{enumerate}
 
 
@@ -83,12 +85,12 @@ From (\ref{equ:3}) we can see, that all odd integers gives an even number.
 \section*{Problem 4}
 \textbf{Express the following quantified statement in symbols}
 \begin{enumerate}[a]
-\item \label{enu:4}There exists a positive even integer $n$, such that $3n+2^{n-2}$ is odd.
+\item \label{enu:4}\textbf{There exists a positive even integer $n$, such that $3n+2^{n-2}$ is odd.}
 \item[] This can be written as follow:
 \begin{align}
 \exists n, m \in \mathbb{Z}^+, n\%2=0 : m= 3n+2^{n-2} \Rightarrow m\%2=1
 \end{align}
-\item Prove that the statement in (\ref{enu:4}) is true.
+\item \textbf{Prove that the statement in (\ref{enu:4}) is true.}
 \item[] To prove the statement in (\ref{enu:4}) is true, we write $n=2$:
 \begin{align}
 m &= 3\cdot 2+2^{2-2}\\
@@ -115,6 +117,74 @@ It can be written as follow:
 \end{align}
 From (\ref{equ:5}) we can see that it is not an integer.
 Therefor the statement is false.
+
+
+\section*{Problem 6}
+\textbf{Consider the following statements:}
+\\
+$1=1, \\
+1+3=4, \\
+1+3+5=9, \\
+1+3+5+7 = 16, \\
+1+3+5+7+9=25$
+
+\begin{enumerate}[a]
+\item \textbf{Based on the three statements given above, what is the next statement suggested by these?}
+\item[] $1+3+5+7+9+11 = 36$
+\item \label{enu:6}\textbf{What conjecture is suggested by these statemets?}
+\item[] $1+3+\ldots+(2n-1) = n^2$
+\item \textbf{Verify the conjecture in (\ref{enu:6}) using induction.}
+\item[] Lets check the base step and the induction step:
+\begin{proof}
+
+\begin{align}
+1+3+\ldots+(2k-1) &= k^2 & P(k)\\
+2\cdot 1-1&=1^2 & P(1) \\
+1&=1 \label{equ:6-1}\\
+1+3+\ldots+(2(k+1)-1) &= (k+1)^2 & P(k+1)\\
+\underbrace{1+3+\ldots+(2k+1)}_{\mathclap{\text{This is P(k)}}}+2k+1 &= k^2+2k+1 & \text{Can be rewritten}\\
+	k^2+2k+1 &= k^2+2k+1 \label{equ:6-2}
+\end{align}
+We see the base step (\ref{equ:6-1}) is equal and the induction step (\ref{equ:6-2}) is equal as well.
+\end{proof}
+\end{enumerate}
+
+
+
+\section*{Problem 7}
+\textbf{Using induction, prove that:}
+\begin{enumerate}[a]
+\item $\forall n \in \mathbb{N},\textbf{ if }n \geq 2, \textbf{then }n^3-n$ \textbf{is always divisible by 3}
+\item[] 
+\begin{proof}
+Using the Method of Induction we show the base step and the induction step:
+\begin{align}
+\dfrac{k^3-k}{3} &= x & P(k),x \in \mathbb{N}\\
+\dfrac{2^3-2}{3} &= x\\
+\dfrac{6}{3} &= 2\label{equ:7-base} \\
+\dfrac{(k+1)^3-(k+1)}{3} &= x \in \mathbb{N}\\
+	&= \dfrac{k^3+3k^2+3k+1-k-1}{3} \\
+	&= \underbrace{\dfrac{k^3-k}{3}}_{\mathclap{\text{P(k)}}}+\dfrac{3k^2+3k}{3} & P(k+1)\\
+	&= x+k^2+k \label{equ:7-indu}
+\end{align}
+From the base step (\ref{equ:7-base}) we can see it is true, since $x$ is a natural number. 
+The induction step is also true, since it (\ref{equ:7-indu}) is a natural number.
+\end{proof}
+
+\item $\forall n \in \mathbb{N}, n<2^n$
+\item[]
+\begin{proof}
+Using the Method of Induction we show the base step and the induction step:
+\begin{align}
+k &< 2^k & P(k)\\
+0 &< 2^0 & P(0)\\
+0 &< 1 \label{equ:7-2-base}\\
+\underbrace{k}_{P(k)}+1 &< 2^{k+1} & P(k+1)\\
+2^k	+1 &< 2^k \cdot 2^1 \label{equ:7-2-indu}
+\end{align}
+We see the base step is true in (\ref{equ:7-2-base}) and the induction step is also true, shown in (\ref{equ:7-2-indu}).
+\end{proof}
+\end{enumerate}
 
 
 

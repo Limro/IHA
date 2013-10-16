@@ -43,6 +43,7 @@
 *.snm
 *.dvi
 *.vrb
+*.orig
 
 #Temporary folders
 [Bb]in

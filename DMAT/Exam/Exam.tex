@@ -112,7 +112,65 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 
 
 
+\newpage
+\section{Logic}
+\begin{theo}[Basic] 
+\begin{itemize}
+\item True or false
+\item Truth table
+\item \textbf{Open sentence} -- 1 or more variables, $x,y$ in a \textbf{domain}
+\item \textbf{Open sentence over the domain} -- $P(x)$
+\begin{itemize}
+\item $P(x): x+1 \geq 1$ is over the domain $\mathbb{Z}$ (integers)
+\end{itemize}
+\item \textbf{Negation} -- means "not"
+\end{itemize}
+\end{theo}
 
+\begin{theo}[Disjunctions and conjunctions] 
+\begin{itemize}
+\item \textbf{Disjunction} -- "or", written as $P \vee Q$. \textit{Any of them true?}
+\begin{itemize}
+\item \textbf{Exclusive or} -- xor
+\end{itemize}
+\item \textbf{Conjunction} -- "and", written as $P\wedge Q$. "Are both true?"
+\end{itemize}
+\end{theo}
+
+\begin{theo}[Implies and biconditional] 
+\begin{itemize}
+\item $P \Rightarrow Q$ -- politician logic.
+\begin{itemize}
+\item T, T = T
+\item T, F = F
+\item F, T = T
+\item F, F = T
+\end{itemize}
+\item $P$ is also called a \textbf{hypothesis / premesis}
+\item $Q$ is the \textbf{conclusion}
+\item $Q \Rightarrow P$ is a \textbf{converse}
+\item \textbf{Biconditional}, written as $P \Leftrightarrow Q$ and said "$P$ is equivalent to $Q$" or "If and only if"
+\end{itemize}
+\end{theo}
+
+\begin{theo}[Logical equivalence and  fundamental properties] 
+\begin{itemize}
+\item $\equiv$
+\end{itemize}
+\end{theo}
+
+\begin{theo}[De Morgan's laws] 
+\begin{itemize}
+\item Proof by truth table
+\end{itemize}
+\end{theo}
+
+\begin{theo}[Quantifiers] 
+\begin{itemize}
+\item $\forall$
+\item $\exists$
+\end{itemize}
+\end{theo}
 
 \newpage
 \section{Proofs}
@@ -226,9 +284,10 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 
 
 
+\newpage
 \section{Mathematical induction}
 
-\begin{theo}[•] 
+\begin{theo}[] 
 \begin{itemize}
 \item Base step: $P(1)$ is true
 \item Induction step: $\forall k \in \mathbb{N}, P(k) \Rightarrow P(k+1)$ is true
@@ -356,5 +415,130 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \end{itemize}
 \item Counter example, $P(k) \not \Rightarrow Q$
 \end{itemize}
+
+
+\newpage
+\section{Relations}
+\begin{theo}[Basic] 
+\begin{itemize}
+\item $R$ is a \textbf{relation} from $A$ to $B$: $R \subseteq A \times B$
+\begin{itemize}
+\item $A=\{x,y,z\}, B=\{1,2\}$
+\item[] $R=\{(x,2),(y,1), (y,2) \}$
+\end{itemize}
+\item If $(a,b) \in R$ then $a$ is \textbf{related} to $b$
+\item \textbf{Domain}: $R$ -- $dom(R)$ is the subset of $A$
+\begin{itemize}
+\item $dom(R)=\{a \in A: (a,b) \in R \text{ for some } b \in B\}$
+\end{itemize}
+\item \textbf{Range}: $R$ -- $range(R)$ is a subset of $B$.
+\begin{itemize}
+\item $range(R)=\{b \in B: (a,b) \in R \text{ for some } a \in A\}$
+\end{itemize}
+\item Inverse relation: $R = R^{-1}$
+\begin{itemize}
+\item $R^{-1} = \{(b,a):(a,b) \in R\}$
+\item \textbf{Example}: $R=\{(x,2),(y,1),(y,2)\} \rightarrow R^{-1}=\{(2,x),(1,y),(2,y)\}$
+\end{itemize}
+\item \textbf{Relation on a set}: If $A=\{1,2\}$ then $A \times A = \{(1,1),(1,2),(2,1),(2,2)\}$
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Reflection] 
+\begin{itemize}
+\item Reflection: $\forall x \in A: xRa \Rightarrow aRx$
+\end{itemize}
+\end{theo}
+
+\begin{theo}[Symmetric] 
+\begin{itemize}
+\item Symmetric: $\forall x, y \in A, xRy \Rightarrow yRx$
+\end{itemize}
+\end{theo}
+
+\begin{theo}[Transitive] 
+\begin{itemize}
+\item Transitive: $\forall x,y,z \in A, xRy \wedge yRz \Rightarrow xRz$
+\begin{itemize}
+\item $A=\{1\}$ is also transitive, since $(1,1)$ and $(1,1)$ you can go to $(1,1)$.
+\end{itemize}
+\end{itemize}
+\end{theo}
+
+\begin{theo}[Distance] 
+\begin{itemize}
+\item The distance between two numbers: $|a-b|$ is the numeric value.
+\end{itemize}
+\end{theo}
+
+\begin{theo}[Equivalence relation and -class] 
+\begin{itemize}
+\item A relation is equivalence when \textit{reflexive, symmetric and transitive} is all applied.
+\item Write up $R$ and write a class as
+\item[] $[a]=\{x \in A: x R a\}$
+\item[] Example:  $[a]=\{a,b\}$
+\item If a set has already been described, it is written:
+\item[] $[b] = [a]$
+\item[] $[c] = \{c\}$
+\end{itemize}
+\end{theo}
+
+\begin{theo}[Congruence Modulon] 
+\begin{itemize}
+\item Like modulus with modifications
+\item For $a,b$ where $n \geq 2$, $a$ is \textbf{congruent to} $b$ \textbf{modulo} $n$.
+\item[] Example: $24 \equiv 6 (\text{mod 9})$
+\item[] $\{0, 9, 18\} + 6 = 24$
+\item[] Example: 
+\end{itemize}
+\end{theo}
+
+
+
+\newpage
+\section{Functions}
+
+\begin{theo}[Basic] 
+\begin{itemize}
+\item $f: A \rightarrow B$ -- "Function $f$ from $A$ to $B$"
+\item Domain: $dom(f)$ -- Entire input
+\item Codomain: $codom(f)$ -- Entire output
+\item Image and map: $b=f(a)$ -- $b$ is the image and $f$ maps $a$ \textbf{into} $b$.
+\item Inverse image: $b=f(a)$ -- $a$ \underline{can} be the output, but not necessarily.
+\item Range: $range(f)$ -- What is output (not all)
+\item Onto: $range(f) = codom(f)$
+\item One-to-one: Every element n the target is only hit once
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Onto and one-to-one] 
+\begin{itemize}
+\item Onto or \textbf{surjective}: Multiple $f(x)$ gives $f(y)$
+\item One-one or \textbf{injective}: Straight over.
+\item One-one is also called \textbf{bijective} or \textbf{one-to-one correspondence} if it is both one-to-one \textit{and} onto (If range and codomain is equal)
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Identity function] 
+\begin{itemize}
+\item If $R$ is equivalence relation it's,  reflective, symmetric and transitive
+\item If the function is $A \rightarrow A$ it's called \textbf{Identity}.
+\item this means $R: \{ (a,a),(b,b), (c,c)\ldots\}$
+\begin{itemize}
+\item This is only used \textit{once} on each side
+\end{itemize}
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Composition] 
+\begin{itemize}
+\item $(f \circ g)(x)$
+\end{itemize}
+\end{theo}
+
 
 \end{document}

@@ -1,0 +1,208 @@
+\documentclass[english,11pt,a4paper]{article}
+\input{../Preamble}
+
+\title{Handin 6}
+\author{10893, Rasmus Bækgaard}
+\date{October 4th, 2013}
+\begin{document}
+\maketitle
+
+\section*{Problem 1}
+\textbf{Let $A= \{ a, b, c, d\}$. Give an example (with justification) of a relation $R$ on $A$ that has none of the following properties: reflexive, symmetric, transitive.}
+\\
+\\
+Let have the following pairs: $(a,b), (b,c), (c,d)$.
+\begin{itemize}
+\item It is not reflective, since it does not contain any $a\textbf{R}a$.
+\item It is not symmetric, since there is no $a\textbf{R}b \Rightarrow b\textbf{R}a$.
+\item It is not transitive, since it is not $a\textbf{R}b \wedge b\textbf{R}c \Rightarrow a\textbf{R}c$
+
+\end{itemize}
+
+
+\section*{Problem 2}
+\textbf{A relation $R$ is defined on $\mathbb{Z}$ by $a\textbf{R}b$ if $|a-b| \leq 2$. Which of the properties reflexive, symmetric and transitive does the relation $R$ possess? Justify your answers.}
+\\
+\\
+The following holds:
+\begin{itemize}
+\item It is reflective, since two equal number will give 0, which is less than 2.
+\item It is symmetric, since the absolute value of two numbers less or equal than 2 will be the same -- also when they are flipped.
+\item It is NOT transitive: The pair (0,2) holds the criteria, (2,4) holds the criteria, but (0,4) does not. 
+\end{itemize}
+
+
+
+
+\section*{Problem 3}
+Let $A$ and $B$ be sets with $|A|=|B|=4$.
+\begin{enumerate}[a]
+\item \label{enu:3} \textbf{Prove or disprove: If $R$ is a relation from $A$ to $B$ where $|R|=9$ and $R=R^{-1}$, then $A=B$}
+\item[] Assume we have a the set $A=\{1,2,3,4\}$ and $B=\{1,2,3,5\}$. Bot sets has the cardinality of 4. 
+\item[] A counter example is as follow: $R=\{ (1,1), (2,2), (3,3), (1,2), (2,1), (1,3), (3,1), (2,3), (3,2) \}$ where $|R| = 9$ and $R^{-1} = R$. $R$ is a subset of both $A$ and $B$.
+However the criteria is furfilled but $A$ and $B$ are not equal.
+Therefor it is false.
+
+
+\item \textbf{Show that by making a small change in the statement in (\ref{enu:3}), a different response to the resulting statement can be obtained.}
+\item[] Change $|R|=10$. 
+Because the set $R$ is a subset of both $A$ and $B$, they will have the same elements, since another pair is needed. 
+Because $R=R^{-1}$ the last pair must be the symmetric.
+That leaves us with the same last element in both $A$ and $B$.
+\end{enumerate}
+
+
+
+\section*{Problem 4}
+\textbf{Let $R$ be a relation defined on $\mathbb{Z}$ by $aRb$ if $a^3=b^3$. Show that $R$ is an equivalence relation on $\mathbb{Z}$ and determine the distinct equivalence classes.}
+\begin{proof}
+\begin{itemize}
+\item[]
+\item Since $a^3=a^3$ for each $a \in \mathbb{Z}$, it follows that $ a R a$ and $R$ is reflexive. 
+\item Let $a,b \in \mathbb{Z}$ such that $a R b$. 
+Then $a^3=b^3$ and therefore $b^3 = a^3$. Thus $b R a$ and $R$ is symmetric.
+\item Let $a,b,c \in \mathbb{Z}$ such that $aRb$ and $bRc$. Thus $a^3=b^3$ and $b^3=c^3$. 
+Hence $a^3=c^3$ and so $aRc$ and $R$ is transitive.
+\end{itemize}
+\end{proof}
+
+
+\section*{Problem 5}
+\textbf{Let $H=\{ 2^m : m \in \mathbb{Z}\}$. A relation $R$ is defined on the set $\mathbb{Q}^+$ of positive rationals by $aRb$ if $\dfrac{a}{b} \in H$}
+\begin{enumerate}[a]
+\item \textbf{Show that $R$ is an equivalence relation}
+\begin{itemize}
+\item Reflective: $\dfrac{a}{a} \Leftrightarrow 2^0$
+\item[] Thereby $aRa$ and $R$ is reflective.
+
+\item Symmetric: If $\dfrac{a}{b} =2^m$, then $\dfrac{b}{a}= 2^{-m}$ and therefor is symmetric.
+
+\item Transitive: 
+\begin{align}
+\dfrac{a}{b} &= 2^m \\
+\dfrac{b}{c} &= 2^n \\
+\dfrac{a}{b} \cdot \dfrac{b}{c} &= 2^m \cdot 2^n \\ \dfrac{a}{c} &= 2^{n + m} \\
+	&= 2^k, &k=m + n \\
+	 &k \in \mathbb{Z}
+\end{align} 
+\end{itemize}
+Here we can see, that $k$ is an integer and $\dfrac{a}{c} = 2^k$
+
+\item \textbf{Describe the elements in the equivalence class [3]}
+\item[] The elements must meet the requirements of  $\dfrac{x}{3} = 2^k \Leftrightarrow \dfrac{x}{2^k}=3$.
+We can therefor state that $[3] = \{\forall x,m \in \mathbb{Z} : \dfrac{x}{2^k} = 3, 2^k\cdot x = 3\} = \{ \ldots, 1.5, 3,6,12, \ldots\}$
+\end{enumerate}
+
+
+\newpage
+\section*{Problem 6}
+\textbf{Two parts:}
+\begin{enumerate}[a]
+\item \label{enu:6}\textbf{Prove that the intersection of two equivalence relations on a nonempty set is an equivalence relation}
+\item[]Suppose that $R_1$ and $R_2$ are two equivalence ralations defined on a set $S$.
+Let $R= R_1 \cap R_2$.
+First, we show that $R$ is reflexive.
+Let $a \in S$. Since $R_1$ and $R_2$ are equivalence relations on $S$, it follows that $(a,a) \in R_1$ and $(a,a) \in R_2$. 
+Thus $(a,a) \in R$ and so $R$ is reflexive. 
+Assume that $aRb$, where $a, b \in S$.
+Then $(a,b) \in R = r_a \cap R_2$. 
+Thus $(a,b) \in R_1$ and $(a,b)\in R_2$. 
+Since $R_1$ and $R_2$ are symmetric, $(b,a)\in R_1$ and $(b,a) \in R_2$. 
+Thus $(b,a) \in R$ and so $bRa$.
+Hence $R$ is symmetric.
+Finally, show that R is transitive.
+
+\item \textbf{Consider the equivalence relations $R_2$ and $R_3$ defined on $\mathbb{Z}$ by $aR_2b$ if $a \equiv b$ (mod 2) and $aR_3b$ if $a \equiv b$ (mod 3). By (\ref{enu:6}), $R_1=R_2 \cap R_3$ is an equivalence relation on $\mathbb{Z}$. Determine the distinct equivalence classes in $R_1$}
+\item[] Let $a \in \mathbb{Z}$.
+For $x \in \mathbb{Z}$, it follows that $xR_1a$ if and only if $xR_2a$ and $xR_3 a$. 
+That is, $x R_1a$ if and only if $x \equiv a$(mod 2) and $x\equiv a$(mod 3).
+
+First, suppose that $x \equiv a$ (mod 2) and $x\equiv a$(mod 3).
+Hence $x=a+2k$ and $x=a+3\alpha$ for some integers $k$ and $\alpha$.
+Therefor, $2k=3 \alpha$ and so $\alpha$ is even.
+This $\alpha = 2m$ for some integer $m$, implying that $x=a+3\alpha=a+3(2m)=a+6m$ and so $x-a=6m$.
+Hence $x \equiv a$ (mod 6).
+
+If $x \equiv a$(mod 6), then $x \equiv a$(mod 2) and $x \equiv a$ (mod 3).
+Thus $[a]=\{x \in \mathbb{Z}: x \equiv a$ (mod 6)$\}$.
+
+\end{enumerate}
+
+
+\section*{Problem 7}
+\textbf{Let $A=\{1,2,3\}$ and $B=\{a, b, c, d\}$. Give an example of a relation $R$ from $A$ to $B$ containing exactly three elements such that $R$ is not a function from $A$ to $B$. Explain why $R$ is not a function.}
+\\
+\\
+Let $R=\{(1,a),(2,b),(2,c)\}$.
+This is not a function, because there is splitting in the relation.
+
+\section*{Problem 8}
+\textbf{For a function $f: A \rightarrow B$ and subsets $C$ and $D$ of $A$ and $E$ and $F$ of $B$, prove the following:}
+\begin{enumerate}[a]
+\item $f(C \cup D) = f(C)\cup f(D)$
+\begin{align}
+f(C \cup D) &= f(C)\cup f(D)\\
+	&= \ldots \text{See Figure \ref{fig:venn}}
+\end{align}
+\item $f(C \cap D) \subseteq f(C)\cap f(D)$
+\item $f(C)-F(D) \subseteq f(C-D)$
+\item $f^{-1}(E\cup F)=f^{-1}(E) \cup f^{-1}(F)$
+\item $f^{-1}(E\cap F)=f^{-1}(E) \cap f^{-1}(F)$
+\item $f^{-1}(E - F)=f^{-1}(E) - f^{-1}(F)$
+\end{enumerate}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=0.75]{no}
+\caption{My reaction for lacking material in the text book}
+\label{fig:venn}
+\end{figure}
+
+
+\section*{Problem 9}
+\textbf{Prove that the function $f: R \rightarrow R$ defined by $f(x)=7x-2$ is bijective.}
+\\
+\\
+To prove the function is bijective if it is well-defined; that is, if $[a] = [b]$, then $f([a])=f([b])$.
+Assume then that $[a]=[b]$.
+Thus $a \equiv b$ (mod 1) and so $1|(a-b)$. 
+Hence $a-b=k$ for some integer $k$. Therefor,
+\begin{align}
+(7a-2)-(7b-2) &= 7(a-b)\\
+	&= 7k
+\end{align}
+Since $7k$ is an integer, $1|[(7a-2)-(7b-2)]$. Thus $(7a-2)\equiv (7b-2)$(mod 1) and $[7a-2]=[7b-2]$; so $f([a])=f([b])$. Hence $f$ is well-defined and thereby proven.
+
+\section*{Problem 10}
+chap. 9.5, p. 227-228\\
+
+\textbf{Prove or disprove the following:}
+
+\begin{enumerate}[a]
+\item \textbf{If two functions $f: A \rightarrow B$ and $g: B \rightarrow C$ are both bijective, then $g \cirdot f: A \rightarrow C$ is bijective.}
+\item[] Let $a \in A$ and suppose that $f(a)=b, g(b)=c$. Then
+\begin{align}
+(g\circ f)(a) &= g \circ f(a)\\
+	&= g\circ (b)\\
+	&= g(b)\\
+	&= c
+\end{align}
+Thus $g \circ f = A \rightarrow C$ and thereby proven.
+
+\item \label{enu:7-1}\textbf{Let $f: A \rightarrow B$ and $g: B \rightarrow C$ be two functions. If $g$ is onto, then $g \cirdot f: A \rightarrow C$ is onto.}
+\item[] Let $f$ and $g$ be surjective functions and let $c \in C$. Since $g$ is surjective, there exists $b\in B$ such that $g(b)=c$. On the other hand, since $f$ is surjective, it follows that there exists $a \in A$ such that $f(a)=b$. Hence $(g \circ f)(a)=g(f(a))=g(b)=c$. Thereby proven.
+
+\item \label{enu:7-2}\textbf{Let $f: A \rightarrow B$ and $g: B \rightarrow C$ be two functions. if $g$ is one-to-one, then $g \cirdot f:A \rightarrow C$ is one-to-one.}
+\item[]Let $f$ and $g$ be injective functions. Assume that $(g\circ f)(a_1)=(f \circ g)(a_2)$, where $a_1, a_2 \in A$. By definition, $g(f(a_1))=g(f(a_2))$. Since $g$ is injective, it follows that $f(a_1)=f(a_2)$. However, since $f$ is injective, it follows that $a_1=a_2$. This implies that $g \circ f$ is injective.
+
+\item \textbf{There exist a function $f: A \rightarrow B$ and $g: B \rightarrow C$ such that $f$ is not onto and $g\cirdot f: A \rightarrow C$ is onto.}
+\item[] Disproven, due to (\ref{enu:7-1}) counts for all functions.
+
+\item \textbf{There exist a function $f: A \rightarrow B$ and $g: B \rightarrow C$ such that $f$ is not one-to-one and $g\cirdot f: A \rightarrow C$ is one-to-one.}
+\item[] Disproven, due to (\ref{enu:7-2}) counts for all functions.
+\end{enumerate}
+
+
+
+
+
+\end{document}

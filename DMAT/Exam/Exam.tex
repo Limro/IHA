@@ -1,11 +1,14 @@
 \documentclass[english,10pt,a4paper]{article}
 \input{../Preamble}
 
-\title{Exam quistions}
+\title{Exam questions}
 \author{10893, Rasmus Bækgaard}
-\date{August 30th, 2013}
+\date{Nov. 22th, 2013}
 \begin{document}
 \maketitle
+
+\tableofcontents
+\newpage
 
 \section{Set}
 
@@ -13,7 +16,7 @@
 
 \begin{itemize}
 \item \textbf{N} -- natural number (positive integers)
-\item \textbf{Z} -- integers -- hele tal.
+\item \textbf{Z} -- integers -- whole numbers.
 \item \textbf{Q} -- rational numbers -- $\dfrac{m}{n}$ where $m, n \in \mathbb{Z}$
 \item \textbf{I} -- irrational numbers -- like $\sqrt{2}, \pi$
 \item \textbf{R} -- real numbers -- Everything with and without comma.
@@ -33,19 +36,21 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 
 
 \subsection{Subset}
+\begin{theo}[Basic]
 \begin{itemize}
 \item A set within a set: $S=\{a, b, c\}, T = \{a, b \}, U= \{ a, b, c\}, V=\{c\}$
 \item Can be written as $T \subseteq S$
 	\begin{itemize}
-	\item Pronounced \textit{T is a \textbf{proper} subset of S}
+	\item Pronounced: "\textit{T is a \textbf{proper} subset of S}".
 	\end{itemize}
 \item Can be written as $S \subseteq U$
 	\begin{itemize}
-	\item Pronounced \textit{S is a subset of U}
+	\item Pronounced: "\textit{S is a subset of U}".
 	\end{itemize}
 	
 \item If a set is not in another set it's written as $T \not \subseteq V$
 \end{itemize}
+\end{theo}
 
 
 \begin{theo}[Intervals] 
@@ -150,7 +155,7 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 
 \begin{theo}[Indirect proof / proof by contrapositive] 
 \begin{itemize}
-\item Reverse the result an means.
+\item Reverse the result and means.
 \item Let $x \in S$. If $Q(x)$, then $P(x) \Rightarrow$
 \item[] Let $x \in S$. If $\neg Q(x)$, then $\neg P(x)$
 \end{itemize}
@@ -162,7 +167,7 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \begin{itemize}
 \item Do subcases and show they span the result.
 \item Case 1: $n$ is even (U). Case 2: $n$ is odd (L). $\mathbb{Z} = U \cup L $
-\item Case 1: $n>0$ (U). Case 2: $n<0$ (L). $\mathbb{Z} = U \cup L$
+\item Case 1: $n\geq0$ (U). Case 2: $n<0$ (L). $\mathbb{Z} = U \cup L$
 \item \textbf{Show $P \Leftrightarrow Q$ example}
 \end{itemize}
 \end{theo}
@@ -225,10 +230,10 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 
 
 
+\newpage
+\section{Induction proof techniques}
 
-\section{Mathematical induction}
-
-\begin{theo}[•] 
+\begin{theo}[Basic] 
 \begin{itemize}
 \item Base step: $P(1)$ is true
 \item Induction step: $\forall k \in \mathbb{N}, P(k) \Rightarrow P(k+1)$ is true

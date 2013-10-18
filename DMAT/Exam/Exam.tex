@@ -12,26 +12,35 @@
 
 \section{Set}
 
+\begin{minipage}[t]{0.7\linewidth}
 \begin{theo}[Symbols] 
-
 \begin{itemize}
-\item \textbf{N} -- natural number (positive integers)
-\item \textbf{Z} -- integers -- whole numbers.
-\item \textbf{Q} -- rational numbers -- $\dfrac{m}{n}$ where $m, n \in \mathbb{Z}$
-\item \textbf{I} -- irrational numbers -- like $\sqrt{2}, \pi$
-\item \textbf{R} -- real numbers -- Everything with and without comma.
-\item \textbf{C} -- complex numbers -- $a+b\cdot i$
+\item $\mathbb{N}$ -- natural number (positive integers)
+\item $\mathbb{Z}$ -- integers -- whole numbers.
+\item $\mathbb{Q}$ -- rational numbers -- $\dfrac{m}{n}$ where $m, n \in \mathbb{Z}$
+\item $\mathbb{I}$ -- irrational numbers -- like $\sqrt{2}, \pi$
+\item $\mathbb{R}$ -- real numbers -- Everything with and without comma.
+\item $\mathbb{C}$ -- complex numbers -- $a+b\cdot i$
 \item $\emptyset$ -- Empty set -- nothing
 \end{itemize}
-
 \end{theo}
+\end{minipage}
+\hspace{0.25cm}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+\item[] \underline{Disposition}
+\item Symbols
+\item Sets/subsets
+\item Powersets
+\item Set operations
+\end{itemize}
+\end{minipage}
 
 \begin{theo}[Cardinal number / cardinality] 
 The amount of elements in a set:\\
 $|S| = \{ 2, -3, \emptyset\} = 3$
 
 \end{theo}
-
 
 
 
@@ -80,10 +89,15 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \subsection{Set operations}
 \begin{theo}[Union] 
 \begin{itemize}
+\begin{minipage}{0.7\linewidth}
 \item Means "in total"
 \item Written as $A \cup B$
-\item[] \includegraphics[scale=1]{union} 
 \item SQL: \code{SELECT A, B IN Sets}
+\end{minipage}
+\hspace{0.25cm}
+\begin{minipage}{0.25\linewidth}
+\includegraphics[scale=1]{union} 
+\end{minipage}
 \end{itemize}
 
 \end{theo}
@@ -91,27 +105,36 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 
 
 \begin{theo}[Intersection] 
+\begin{minipage}{0.7\linewidth}
 \begin{itemize}
 \item Means "in common"
-\item Written as $A \cap B$
-\item[] \includegraphics[scale=1]{Intersection} 
+\item Written as $A \cap B$ 
 \item If nothing is in common it's called \textbf{disjoint} and written $A \cap B = \emptyset$
 \item Can be written as $A \cap B = \{ x \in A \vee x \in B : x \in A \wedge x \in B \}$
 \item SQL: \\\code{SELECT A, B \\ FROM SetA \\INNER JOIN SetB \\ON A.a = b.a}
 \end{itemize}
-
+\end{minipage}
+\hspace{0.25cm}
+\begin{minipage}{0.25\linewidth}
+\includegraphics[scale=1]{Intersection}
+\end{minipage}
 \end{theo}
 
 
 
 \begin{theo}[Difference] 
+\begin{minipage}{0.7\linewidth}
 \begin{itemize}
 \item Means "What does A have which B does not"
-\item Written as $A - B$
-\item[] \includegraphics[scale=1]{Difference} 
+\item Written as $A - B$ 
 \item Can also be written as $A \setminus B $
 \item SQL: \\\code{SELECT A, B \\ FROM SetA \\INNER JOIN SetB \\ON A.a = b.a}
 \end{itemize}
+\end{minipage}
+\hspace{0.25cm}
+\begin{minipage}{0.25\linewidth}
+\includegraphics[scale=1]{Difference}
+\end{minipage}
 
 \end{theo}
 
@@ -119,6 +142,7 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 
 \newpage
 \section{Logic}
+\begin{minipage}[t]{0.65\linewidth}
 \begin{theo}[Basic] 
 \begin{itemize}
 \item True or false
@@ -131,6 +155,19 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \item \textbf{Negation} -- means "not"
 \end{itemize}
 \end{theo}
+\end{minipage}
+\hspace{0.10cm}
+\begin{minipage}[t]{0.3\linewidth}
+\begin{itemize}
+\item[] \underline{Disposition}
+\item Basic
+\item Dis- and con-junction: $\vee, \wedge$
+\item Implies and biconditional: $\Rightarrow \& \Leftrightarrow$
+\item Logical equivalence: $\equiv$
+\item De Morgan's laws
+\item Quantifiers: $\forall, \exists$
+\end{itemize}
+\end{minipage}
 
 \begin{theo}[Disjunctions and conjunctions] 
 \begin{itemize}
@@ -142,81 +179,186 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \end{itemize}
 \end{theo}
 
-\begin{theo}[Implies and biconditional] 
+\begin{theo}[Implies and biconditional]
+
+\begin{minipage}{0.6\linewidth} 
 \begin{itemize}
 \item $P \Rightarrow Q$ -- politician logic.
-\begin{itemize}
-\item T, T = T
-\item T, F = F
-\item F, T = T
-\item F, F = T
-\end{itemize}
 \item $P$ is also called a \textbf{hypothesis / premesis}
 \item $Q$ is the \textbf{conclusion}
 \item $Q \Rightarrow P$ is a \textbf{converse}
 \item \textbf{Biconditional}, written as $P \Leftrightarrow Q$ and said "$P$ is equivalent to $Q$" or "If and only if"
 \end{itemize}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}{0.3\linewidth}
+
+\begin{tabular}{cc|c}
+P & Q & $P \Rightarrow Q)$\\ 
+\hline
+T & T & T \\ 
+T & F & F \\
+F & T & T \\
+F & F & T
+\end{tabular} 
+\end{minipage}
 \end{theo}
 
 \begin{theo}[Logical equivalence and  fundamental properties] 
 \begin{itemize}
-\item $\equiv$
+\item $ P \vee Q \equiv Q \vee P$ (Commutative law)
+\item $P \vee (Q \vee R) \equiv (P \vee Q \vee R)$ (Associative law)
+\item $P\vee (Q \wedge R) \equiv (P \vee Q) \wedge (P \vee R) $ (Distributive law)
 \end{itemize}
 \end{theo}
 
 \begin{theo}[De Morgan's laws] 
+\begin{minipage}{0.5\linewidth}
 \begin{itemize}
 \item Proof by truth table
+\item $\neg (P \vee Q) \equiv (\neg P) \wedge (\neg Q)$
+\item $\neg (P \wedge Q) \equiv (\neg P) \vee (\neg Q)$
 \end{itemize}
+
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}{0.3\linewidth}
+
+\begin{tabular}{cc|c|c}
+P & Q & $\neg (P \wedge Q)$ & $(\neg P) \vee (\neg Q)$\\ 
+\hline
+T & T & F & F\\ 
+T & F & T & T\\
+F & T & T & T\\
+F & F & T & T
+\end{tabular} 
+\end{minipage}
 \end{theo}
 
 \begin{theo}[Quantifiers] 
 \begin{itemize}
-\item $\forall$
-\item $\exists$
+\item \textbf{Universal quantifier} -- $\forall$ -- $\forall x \in \mathbb{N}, x \geq 0$
+\item \textbf{Existential quantifier} -- $\exists$ -- $\exists x \in \mathbb{N}, x < 2$
+\item Can be written as:  $\exists x \in \mathbb{Z}, P(x)$, where $P(x): x^2 < 1$
 \end{itemize}
 \end{theo}
 
 \newpage
-\section{Proofs}
+\section{Proofs techniques}
 
 
-\begin{theo}[Trivial proof] 
+\begin{minipage}[t]{0.7\linewidth}
+\begin{theo}[Basic] 
 \begin{itemize}
-\item Something that is true -- no need to prove it.
-\item Let $n \in \mathbb{Z}$. If $n^3 > 0$ then 3 is odd
+\item \textbf{Axiom} -- statement whose truth is accepted without proof.
+\item \textbf{Theorem} -- statement which can be verified.
+\item \textbf{Corollary} -- a consequence of some earlier result and to be deduced from.
+\item \textbf{Lemma} --a result used as help for another statement.
 \end{itemize}
 \end{theo}
-
-
-
-\begin{theo}[Vacouos proof] 
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}[t]{0.27\linewidth}
 \begin{itemize}
-\item If something is always proven wrong
-\item Let $n \in \mathbb{Z}$. If \textbf{3 is even}, then $n^3 > 0$
-\item[] Clearly wrong!
+\item[] \underline{Disposition}
+\item Basic
+\item Conjecture
+\item Trivial proof
+\item Vacuous proof
+\item Direct proof
+\item Indirect / contrapositive
+\item Proof by cases
 \end{itemize}
+\end{minipage}
+
+
+
+\begin{theo}[Conjecture] 
+
+\begin{minipage}[t]{0.48\linewidth}
+\begin{itemize}
+\item A conjecture is something we \textbf{believe to be true}, normally based on examples.
+\end{itemize}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}[t]{0.48\linewidth}
+$1=1, \\
+1+2=3, \\
+1+2+3=6$.
+\\
+Conjecture: $1+\ldots+n=\sum\limits_{k=1}^n n= \dfrac{n(n+1)}{2}$
+\end{minipage}
 \end{theo}
 
+\noindent{
+\begin{minipage}[t]{0.5\linewidth}
+	\begin{theo}[Trivial proof] 
+		\begin{itemize}
+		\item Something that is true -- no need to prove it.
+		\item Let $n \in \mathbb{Z}$. If $n^3 > 0$ then 3 is odd
+		\end{itemize}
+	\end{theo}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}[t]{0.48\linewidth}
+	\begin{theo}[Vacuous proof] 
+		\begin{itemize}
+		\item If something is always proven wrong:
+		\item Let $n \in \mathbb{Z}$. If \textbf{3 is even}, then $n^3 > 0$
+		\item[] Clearly wrong!
+		\end{itemize}
+	\end{theo}
+\end{minipage}
+}
 
 
 \begin{theo}[Direct proof] 
+\begin{minipage}{0.75\linewidth}
 \begin{itemize}
 \item Show only what needs to be shown
 \item $\forall x \in S, P(x) \Rightarrow Q(x)$
-\item[] Show only that this is true and where it is false, e.g. show truth table.
-\item Is shown from lemmas and other proves.
+\item[] Show only that this is true also when $Q$ is false.
+\item Is shown from lemmas and other proofs.
 \end{itemize}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}{0.2\linewidth}
+Politician statement
+\begin{tabular}{cc|c}
+P & Q & P $\Rightarrow$ Q\\ 
+\hline
+T & T & T \\ 
+T & F & F\\
+F & T & T\\
+F & F & T
+\end{tabular} 
+
+\end{minipage}
 \end{theo}
 
 
 
 \begin{theo}[Indirect proof / proof by contrapositive] 
+\begin{minipage}{0.75\linewidth}
 \begin{itemize}
 \item Reverse the result and means.
 \item Let $x \in S$. If $Q(x)$, then $P(x) \Rightarrow$
 \item[] Let $x \in S$. If $\neg Q(x)$, then $\neg P(x)$
 \end{itemize}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}{0.2\linewidth}
+Politician statement
+\begin{tabular}{cc|c}
+P & Q & $\neg P \Rightarrow \neg Q$\\ 
+\hline
+T & T & T \\ 
+T & F & F\\
+F & T & T\\
+F & F & T
+\end{tabular} 
+
+\end{minipage}
 \end{theo}
 
 
@@ -226,23 +368,144 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \item Do subcases and show they span the result.
 \item Case 1: $n$ is even (U). Case 2: $n$ is odd (L). $\mathbb{Z} = U \cup L $
 \item Case 1: $n\geq0$ (U). Case 2: $n<0$ (L). $\mathbb{Z} = U \cup L$
-\item \textbf{Show $P \Leftrightarrow Q$ example}
 \end{itemize}
 \end{theo}
+
+
+\begin{theo}[Contradiction] 
+ $P \Rightarrow \neg Q$\\
+"Assume there's no smallest number" -- flip it:\\
+"Assume there's a smallest number called $r$ -- what about $0 < \dfrac{r}{2} < r$"
+\end{theo}
+
+
+\begin{theo}[Induction] 
+\begin{itemize}
+\item Base case $P(1)$, assuming $P(k)$ sticks
+\item Induction, $P(k+1)$
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Counter example] 
+$P(k) \not \Rightarrow Q$\\
+$\forall x \in \mathbb{N}, n > 2 \rightarrow n= 1 \not > 2$
+\end{theo}
+
+
+
+\newpage
+\section{Direct and contrapositive proof  techniques}
+
+\begin{minipage}[t]{0.7\linewidth}
+\begin{theo}[Basic] 
+\begin{itemize}
+\item \textbf{Axiom} -- statement whose truth is accepted without proof.
+\item \textbf{Theorem} -- statement which can be verified.
+\item \textbf{Corollary} -- a consequence of some earlier result and to be deduced from.
+\item \textbf{Lemma} --a result used as help for another statement.
+\end{itemize}
+\end{theo}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}[t]{0.25\linewidth}
+\begin{itemize}
+\item[] \underline{Disposition}
+\item Basic
+\item Deduction
+\item Direct proof
+\item Counter example
+\end{itemize}
+\end{minipage}
+
+
+\begin{theo}[Direct proof] 
+\begin{minipage}{0.75\linewidth}
+\begin{itemize}
+\item Show only what needs to be shown
+\item $\forall x \in S, P(x) \Rightarrow Q(x)$
+\item[] Show only that this is true also when $Q$ is false.
+\item Is shown from lemmas and other proofs.
+\end{itemize}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}{0.2\linewidth}
+Politician statement
+\begin{tabular}{cc|c}
+P & Q & P $\Rightarrow$ Q\\ 
+\hline
+T & T & T \\ 
+T & F & F\\
+F & T & T\\
+F & F & T
+\end{tabular} 
+
+\end{minipage}
+\end{theo}
+
+
+
+\begin{theo}[Deduction]  
+- given P show Q
+\begin{itemize}
+\item Direct proof $P \Rightarrow Q$
+\item Proof by cases $P(1) \Rightarrow Q, P(2) \Rightarrow Q$
+\item Proof by contrapositive $\neg Q \Rightarrow \neg P$
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Indirect proof / proof by contrapositive] 
+\begin{minipage}{0.75\linewidth}
+\begin{itemize}
+\item Reverse the result and means.
+\item Let $x \in S$. If $Q(x)$, then $P(x) \Rightarrow$
+\item[] Let $x \in S$. If $\neg Q(x)$, then $\neg P(x)$
+\end{itemize}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}{0.2\linewidth}
+Politician statement
+\begin{tabular}{cc|c}
+P & Q & $\neg P \Rightarrow \neg Q$\\ 
+\hline
+T & T & T \\ 
+T & F & F\\
+F & T & T\\
+F & F & T
+\end{tabular} 
+
+\end{minipage}
+\end{theo}
+
+\subsection{Her mangler}
+
 
 
 \newpage
 \section{Counterexamples and contradictive proof techniques}
 
+\begin{minipage}{0.7\linewidth}
 \begin{theo}[Counterexample] 
 \begin{itemize}
 \item A counterexample is \textbf{one case} that proves a statement \textbf{wrong}
 \item Example
 \\
 $\forall x \in \mathbb{N}, x < x^2$ \\
-$x=1 \Rightarrow 1 < 1^2 \Rightarrow 1 \not < 1$
+$x=1 \Leftrightarrow 1 < 1^2 \Leftrightarrow 1 \not < 1$
 \end{itemize}
 \end{theo}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+\item[] \underline{Disposition} 
+\item Counterexample
+\item Contradiction
+\item Existence proof
+\item Existence disproof
+\end{itemize}
+\end{minipage}
 
 \begin{theo}[Proof by contradiction] 
 \begin{itemize}
@@ -282,7 +545,8 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 
 \begin{theo}[Existence Disproofs] 
 \begin{itemize}
-\item Just like a contradiction, but for existential it's a property that never holds
+\item Just like a contradiction, but for existential it's a property that never holds:
+\item $\neg \big(\exists x \in S, R(x)\big) \equiv \forall x \in S, \neg R(x)$
 \end{itemize}
 \end{theo}
 
@@ -291,70 +555,35 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \newpage
 \section{Induction proof techniques}
 
-\begin{theo}[Basic] 
+
+\begin{minipage}{0.70\linewidth}
+\begin{theo}[Well-ordered] 
 \begin{itemize}
-\item Base step: $P(1)$ is true
-\item Induction step: $\forall k \in \mathbb{N}, P(k) \Rightarrow P(k+1)$ is true
-\item Conclusion: $P(n)$ is true for all natural numbers, $n$
-\end{itemize}
-\end{theo}
-
-
-\begin{theo}[Induction hypothesis] 
-\begin{itemize}
-\item Induction step is $P(k) \Rightarrow P(k+1)$
-\item Remember to depend on $P(k)$
-\item Without this -- no induction
-\end{itemize}
-\end{theo}
-
-
-
-\begin{theo}[General induction] 
-\begin{itemize}
-\item We don't have to start at 1 or natural numbers
-\item Base set: $P(m)$ for some $m\in \mathbb{Z}$
-\item Induction step: $\forall k\in \{x \in \mathbb{Z}: \geq m \}, P(k) \Rightarrow P(k+1)$
-\item Conclusion: \footnote{Her mangler}
-\end{itemize}
-\end{theo}
-
-
-\begin{theo}[Minimum counterexample] 
-\begin{itemize}
-\item A way of getting more information for the proof.
-\item Make a contradiction
-\end{itemize}
-\end{theo}
-
-
-\begin{theo}[Short induction] 
-\begin{itemize}
-\item Let base be for \textbf{some} or \textbf{all} of $P(x)$
-\end{itemize}
-\end{theo}
-
-
-\newpage
-\section{Mathematical induction}
-\begin{theo}[Least/smallest/minimum element] 
+\item Nonempty subset with a least element
 \begin{itemize}
 \item The smallest element in a subset of a set.
 \item If all numbers in the set can be listed, you can find a least element
 \item If you do not have, $x \in \mathbb{Q}, x < 0$ can have a subset $(0, 10]$ and that has no listed minimum.
+
+\end{itemize}
 \end{itemize}
 \end{theo}
-
-
-
-\begin{theo}[Well-ordered] 
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}{0.25\linewidth}
 \begin{itemize}
-\item Nonempty subset with a least element
+\item[] \underline{Disposition}
+\item Well-ordered
+\item Basic
+\item Induction hypothesis
+\item Strong induction
+\item Minimum counterexample
 \end{itemize}
-\end{theo}
+\end{minipage}
 
 
-\begin{theo}[Induction proof] 
+
+\begin{theo}[Basic] 
 \begin{itemize}
 \item Proves a statement $P(n)$ holds for $P(n+1)$.
 \item Make \textbf{base step}: $p(1)$ is true
@@ -365,20 +594,17 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \end{theo}
 
 
-\begin{theo}[The more general principle of mathematical induction] 
+\begin{theo}[Induction hypothesis] 
 \begin{itemize}
-\item Inequality
-\item[] $\forall n \in \mathbb{Z}^+, 2^n \geq n$ (For every nonnegative integer $n$\dots)
-\item[] Base step: $n=0$ is true since $2^0>0$. Assume $2^k>k$ gives the same.
-\item[] Induction Step: $2^{k+1}=k+1$. When $k=0$, we have $2^{0+1}=2 > 0+1=1$. Assume $k\geq 1$. Then
-\item[] $2^{k+1}=2\cdot 2^k > 2k=k+k \geq k+1$.
+\item Induction step is $P(k) \Rightarrow P(k+1)$
+\item Remember to depend on $P(k)$
+\item Without this -- no induction
+\begin{itemize}
+\item $\forall n \in \mathbb{Z}^+, 2^n \geq n$ (For every nonnegative integer $n$\dots)
+\item Base step: $n=0$ is true since $2^0>0$. Assume $2^k>k$ gives the same.
+\item Induction Step: $2^{k+1}=k+1$. When $k=0$, we have $2^{0+1}=2 > 0+1=1$. Assume $k\geq 1$. 
+\item Then $2^{k+1}=2\cdot 2^k > 2k=k+k \geq k+1$.
 \end{itemize}
-\end{theo}
-
-
-\begin{theo}[Minimum counterexample] 
-\begin{itemize}
-\item 
 \end{itemize}
 \end{theo}
 
@@ -386,43 +612,105 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 
 \begin{theo}[Strong induction] 
 \begin{itemize}
+\item We don't have to start at 1 or natural numbers.
 \item We have a base (proved elsewhere), a gap where some example should be, and a \textit{prior}, $k$ which will imply $k+1$.
+\item Base set: $\forall n \in \mathbb{N}, P(n) \text{ where } n \geq 10$. This gives us $P(10)$ as base case.
+\item Induction step: If $P(i)$ for every integer $i$ with $10 \leq i \leq k$, then $P(k+1)$ is true for every positive integer $k$ above or equal to 10.
+	\begin{itemize}
+	\item Not just $P(10)$ and $P(k)$ but also all in between:
+	\item[] $P(i), P(i+1), P(i+2) \ldots$
+	\end{itemize}
+\item Conclusion: $P(k+1)$ is true.
 \end{itemize}
 \end{theo}
+
+
+\begin{theo}[Minimum counterexample] 
+\begin{itemize}
+\item Assume a statement is false.
+\item Make it a contradiction, showing it is \textbf{not} false.
+\item A way of getting more information for the proof.
+\end{itemize}
+\end{theo}
+
 
 
 \newpage
-\section{Prove and disprove}
-\begin{theo}[Conjecture] 
+\section{Functions}
+
+\begin{minipage}{0.7\linewidth}
+\begin{theo}[Basic] 
 \begin{itemize}
-\item A conjecture is something we \textbf{believe to be true}, normally based on examples.
-\item Example: 
-\item[]$1=1, \\
-1+2=3, \\
-1+2+3=6$.
-\item[] Conjecture: $1+\ldots+n=2n-1$
+\item $f: A \rightarrow B$ -- "Function $f$ from $A$ to $B$"
+\item Domain: $dom(f)$ -- Entire input
+\item Codomain: $codom(f)$ -- Entire output
+\item Image and map: $b=f(a)$ -- $b$ is the image and $f$ maps $a$ \textbf{into} $b$.
+\item Inverse image: $b=f(a)$ -- $a$ \underline{can} be the output, but not necessarily.
+\item Range: $range(f)$ -- What is output (not all)
+\item Onto: $range(f) = codom(f)$
+\item One-to-one: Every element n the target is only hit once
+\end{itemize}
+\end{theo}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}{0.25\linewidth}
+\begin{itemize}
+\item \underline{Disposition}
+\item Basic
+\item Onto and one-to-one
+\item Identity function
+\item Composition
+\item Inverse function
+\end{itemize}
+\end{minipage}
+
+
+\begin{theo}[Onto and one-to-one] 
+\begin{itemize}
+\item Onto or \textbf{surjective}: Multiple $f(x)$ gives $f(y)$
+\item One-one or \textbf{injective}: Straight over.
+\item One-one is also called \textbf{bijective} or \textbf{one-to-one correspondence} if it is both one-to-one \textit{and} onto (If range and codomain is equal)
 \end{itemize}
 \end{theo}
 
+
+\begin{theo}[Identity function] 
 \begin{itemize}
-\item Deduction - given P show Q
+\item If $R$ is equivalence relation it's,  reflective, symmetric and transitive
+\item If the function is $A \rightarrow A$ it's called \textbf{Identity}.
+\item this means $R: \{ (a,a),(b,b), (c,c)\ldots\}$
 \begin{itemize}
-\item Direct proof $P \Rightarrow Q$
-\item Proof by cases $P(1) \Rightarrow Q, P(2) \Rightarrow Q$
-\item Proof by contrapositive $\neg Q \Rightarrow \neg P$
+\item This is only used \textit{once} on each side
 \end{itemize}
-\item Contradiction $P \Rightarrow \neg Q$
-\item Induction
+\end{itemize}
+\end{theo}
+
+
+\begin{theo}[Composition] 
 \begin{itemize}
-\item Base case $P(1)$, assuming $P(k)$ sticks
-\item Induction, $P(k+1)$
+\item $A \rightarrow f \rightarrow B \rightarrow g \rightarrow C$
+\item $(g \circ f)(x): A \rightarrow C$
+\item $(g \circ f)(x) = g\big(f(x)\big) \forall a \in A$
 \end{itemize}
-\item Counter example, $P(k) \not \Rightarrow Q$
+\end{theo}
+
+
+\begin{theo}[Inverse function]
+\begin{itemize}
+\item A set with pairs where the pairs are inverted.
+\item $R = \{(a,1), (b,2)\}\\
+	R^{-1}=\{(1,a),(2,b)\}$
+\item $R^{-1}=\{ (b,a):(a,b) \in R\}$
 \end{itemize}
+\end{theo}
+
 
 
 \newpage
 \section{Relations}
+
+
+\begin{minipage}{0.7\linewidth}
 \begin{theo}[Basic] 
 \begin{itemize}
 \item $R$ is a \textbf{relation} from $A$ to $B$: $R \subseteq A \times B$
@@ -447,6 +735,20 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \item \textbf{Relation on a set}: If $A=\{1,2\}$ then $A \times A = \{(1,1),(1,2),(2,1),(2,2)\}$
 \end{itemize}
 \end{theo}
+\end{minipage}
+\hspace{0.1cm}
+\begin[t]{minipage}{0.25\linewidth}
+\begin{itemize}
+\item[] \underline{Disposition}
+\item Basic
+\item Reflection
+\item Symmetric
+\item Transitive
+\item Distance
+\item Equivalence relation and -class
+\item Congruence modulon
+\end{itemize}
+\end{minipage}
 
 
 \begin{theo}[Reflection] 
@@ -495,52 +797,6 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \item[] Example: $24 \equiv 6 (\text{mod 9})$
 \item[] $\{0, 9, 18\} + 6 = 24$
 \item[] Example: 
-\end{itemize}
-\end{theo}
-
-
-
-\newpage
-\section{Functions}
-
-\begin{theo}[Basic] 
-\begin{itemize}
-\item $f: A \rightarrow B$ -- "Function $f$ from $A$ to $B$"
-\item Domain: $dom(f)$ -- Entire input
-\item Codomain: $codom(f)$ -- Entire output
-\item Image and map: $b=f(a)$ -- $b$ is the image and $f$ maps $a$ \textbf{into} $b$.
-\item Inverse image: $b=f(a)$ -- $a$ \underline{can} be the output, but not necessarily.
-\item Range: $range(f)$ -- What is output (not all)
-\item Onto: $range(f) = codom(f)$
-\item One-to-one: Every element n the target is only hit once
-\end{itemize}
-\end{theo}
-
-
-\begin{theo}[Onto and one-to-one] 
-\begin{itemize}
-\item Onto or \textbf{surjective}: Multiple $f(x)$ gives $f(y)$
-\item One-one or \textbf{injective}: Straight over.
-\item One-one is also called \textbf{bijective} or \textbf{one-to-one correspondence} if it is both one-to-one \textit{and} onto (If range and codomain is equal)
-\end{itemize}
-\end{theo}
-
-
-\begin{theo}[Identity function] 
-\begin{itemize}
-\item If $R$ is equivalence relation it's,  reflective, symmetric and transitive
-\item If the function is $A \rightarrow A$ it's called \textbf{Identity}.
-\item this means $R: \{ (a,a),(b,b), (c,c)\ldots\}$
-\begin{itemize}
-\item This is only used \textit{once} on each side
-\end{itemize}
-\end{itemize}
-\end{theo}
-
-
-\begin{theo}[Composition] 
-\begin{itemize}
-\item $(f \circ g)(x)$
 \end{itemize}
 \end{theo}
 

@@ -1,0 +1,15 @@
+Spg 8:
+At gennemgå:
+- Agenda
+!- Basic (Cartisian product)
+- Reflection
+- Symmetric
+- Transitive
+!- Distance )Drop den
+- Equivalence relation and -class
+- Congruence modulon
+- Proof by pitchbox!
+
+Fejl:
+- Element eller et set? (det samme)
+- Hvad er den lodrette steg?

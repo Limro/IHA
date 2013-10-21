@@ -1,0 +1,25 @@
+Spg 7:
+At gennemgå:
+- ToC
+- Hvad er funktion
+- Hvad er ikke funktion
+- Basic
+
+- Onto / surjective
+- One-to-one/injective
+- Bijective
+
+!- Identity function
+
+!- Composition
+
+!- Inverse function
+
+Fejl:
+- It "maps" and it's a "process"
+- Brug forskellige farver til at vise fejl
+- Lav komma istedet for "and"
+- Preimage of "map" er det samme?
+- Kald "Bob" for studensts
+- Det hedder "injective" - ikke "injection"
+- Real numbers med \mathbb{R}

@@ -12,7 +12,7 @@
 
 \section{Set}
 
-\begin{minipage}[t]{0.7\linewidth}
+\begin{minipage}{0.7\linewidth}
 \begin{theo}[Symbols] 
 \begin{itemize}
 \item $\mathbb{N}$ -- natural number (positive integers)
@@ -33,6 +33,7 @@
 \item Sets/subsets
 \item Powersets
 \item Set operations
+\item De Morgan Proof
 \end{itemize}
 \end{minipage}
 
@@ -44,20 +45,12 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 
 
 
-\subsection{Subset}
 \begin{theo}[Basic]
 \begin{itemize}
-\item A set within a set: $S=\{a, b, c\}, T = \{a, b \}, U= \{ a, b, c\}, V=\{c\}$
-\item Can be written as $T \subseteq S$
-	\begin{itemize}
-	\item Pronounced: "\textit{T is a \textbf{proper} subset of S}".
-	\end{itemize}
-\item Can be written as $S \subseteq U$
-	\begin{itemize}
-	\item Pronounced: "\textit{S is a subset of U}".
-	\end{itemize}
-	
-\item If a set is not in another set it's written as $T \not \subseteq V$
+\item A set within a set: $S=\{a, b, c\}, T = \{a, b \}, V=\{d\}$
+\item Some sets: $=\{a, b, c \}	, T=\{a,b\}, V = \{d \}$
+\item $T \subseteq S, V \not \subseteq S$
+\item $S \times V = \{ (a,d), (b,d), (c,d)\}$ -- called Cartesian product.
 \end{itemize}
 \end{theo}
 
@@ -75,24 +68,19 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \begin{theo}[Power set] 
 \begin{itemize}
 \item A combination of all elements as \textbf{subsets}:
-\item[] $A=\emptyset, B= \{a,b\}, C=\{1,2,3\}$
+\item[] $A=\emptyset, B= \{a,b\}$
 \item $\mathcal{P}(A) = \{\emptyset\} $
 \item $\mathcal{P}(B) = \{\emptyset, \{a\}, \{b\}, \{a,b\} \}$
-\item $\mathcal{P}(C) = \{\emptyset, \{1\}, \{2\}, \{3\}, \{1,2\}, \{1,3\}, \{2, 3\}, \{1,2,3\} \}$
-\item Cardinality: $|\mathcal{P}(A)| = 2^{|A|}$
-\item $\mathcal{P}(set) = \{subset : subset \subseteq set\}$
+\item Cardinality: $|\mathcal{P}(B)| = 2^{|B|} = 2^2 = 4$
 \end{itemize}
 \end{theo}
 
 
-
-\subsection{Set operations}
 \begin{theo}[Union] 
 \begin{itemize}
 \begin{minipage}{0.7\linewidth}
 \item Means "in total"
 \item Written as $A \cup B$
-\item SQL: \code{SELECT A, B IN Sets}
 \end{minipage}
 \hspace{0.25cm}
 \begin{minipage}{0.25\linewidth}
@@ -111,7 +99,6 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \item Written as $A \cap B$ 
 \item If nothing is in common it's called \textbf{disjoint} and written $A \cap B = \emptyset$
 \item Can be written as $A \cap B = \{ x \in A \vee x \in B : x \in A \wedge x \in B \}$
-\item SQL: \\\code{SELECT A, B \\ FROM SetA \\INNER JOIN SetB \\ON A.a = b.a}
 \end{itemize}
 \end{minipage}
 \hspace{0.25cm}
@@ -128,7 +115,6 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \item Means "What does A have which B does not"
 \item Written as $A - B$ 
 \item Can also be written as $A \setminus B $
-\item SQL: \\\code{SELECT A, B \\ FROM SetA \\INNER JOIN SetB \\ON A.a = b.a}
 \end{itemize}
 \end{minipage}
 \hspace{0.25cm}
@@ -139,25 +125,32 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \end{theo}
 
 
+\begin{theo}[De Morgan's set law] 
+\begin{align*}
+\overline{A \cup B} &= \overline{A} \cap \overline{B}\\
+X &\in \overline{A \cup B} \\
+X &\not \in A \cup B\\
+X &\not \in A\text{ and }X \not \in B\\
+X & \in \overline{A}\text{ and }X \in \overline{B}\\
+X &=\overline{A} \cap \overline{B}
+\end{align*}
+\end{theo}
+
+
 
 \newpage
 \section{Logic}
-\begin{minipage}[t]{0.65\linewidth}
+\begin{minipage}{0.65\linewidth}
 \begin{theo}[Basic] 
 \begin{itemize}
 \item True or false
 \item Truth table
-\item \textbf{Open sentence} -- 1 or more variables, $x,y$ in a \textbf{domain}
-\item \textbf{Open sentence over the domain} -- $P(x)$
-\begin{itemize}
-\item $P(x): x+1 \geq 1$ is over the domain $\mathbb{Z}$ (integers)
-\end{itemize}
 \item \textbf{Negation} -- means "not"
 \end{itemize}
 \end{theo}
 \end{minipage}
 \hspace{0.10cm}
-\begin{minipage}[t]{0.3\linewidth}
+\begin{minipage}{0.3\linewidth}
 \begin{itemize}
 \item[] \underline{Disposition}
 \item Basic
@@ -165,7 +158,6 @@ $|S| = \{ 2, -3, \emptyset\} = 3$
 \item Implies and biconditional: $\Rightarrow \& \Leftrightarrow$
 \item Logical equivalence: $\equiv$
 \item De Morgan's laws
-\item Quantifiers: $\forall, \exists$
 \end{itemize}
 \end{minipage}
 
@@ -235,36 +227,32 @@ F & F & T & T
 \end{minipage}
 \end{theo}
 
-\begin{theo}[Quantifiers] 
-\begin{itemize}
-\item \textbf{Universal quantifier} -- $\forall$ -- $\forall x \in \mathbb{N}, x \geq 0$
-\item \textbf{Existential quantifier} -- $\exists$ -- $\exists x \in \mathbb{N}, x < 2$
-\item Can be written as:  $\exists x \in \mathbb{Z}, P(x)$, where $P(x): x^2 < 1$
-\end{itemize}
-\end{theo}
+%\begin{theo}[Quantifiers] 
+%\begin{itemize}
+%\item \textbf{Universal quantifier} -- $\forall$ -- $\forall x \in \mathbb{N}, x \geq 0$
+%\item \textbf{Existential quantifier} -- $\exists$ -- $\exists x \in \mathbb{N}, x < 2$
+%\item Can be written as:  $\exists x \in \mathbb{Z}, P(x)$, where $P(x): x^2 < 1$
+%\end{itemize}
+%\end{theo}
 
 \newpage
 \section{Proofs techniques}
 
 
-\begin{minipage}[t]{0.7\linewidth}
+\begin{minipage}{0.7\linewidth}
 \begin{theo}[Basic] 
 \begin{itemize}
 \item \textbf{Axiom} -- statement whose truth is accepted without proof.
 \item \textbf{Theorem} -- statement which can be verified.
-\item \textbf{Corollary} -- a consequence of some earlier result and to be deduced from.
-\item \textbf{Lemma} --a result used as help for another statement.
 \end{itemize}
 \end{theo}
 \end{minipage}
 \hspace{0.1cm}
-\begin{minipage}[t]{0.27\linewidth}
+\begin{minipage}{0.27\linewidth}
 \begin{itemize}
 \item[] \underline{Disposition}
 \item Basic
 \item Conjecture
-\item Trivial proof
-\item Vacuous proof
 \item Direct proof
 \item Indirect / contrapositive
 \item Proof by cases
@@ -282,64 +270,37 @@ F & F & T & T
 \end{minipage}
 \hspace{0.1cm}
 \begin{minipage}[t]{0.48\linewidth}
-$1=1, \\
-1+2=3, \\
-1+2+3=6$.
-\\
-Conjecture: $1+\ldots+n=\sum\limits_{k=1}^n n= \dfrac{n(n+1)}{2}$
+Conjecture: For every odd integer $n$, the integer $3n+7$ is even.
 \end{minipage}
 \end{theo}
 
-\noindent{
-\begin{minipage}[t]{0.5\linewidth}
-	\begin{theo}[Trivial proof] 
-		\begin{itemize}
-		\item Something that is true -- no need to prove it.
-		\item Let $n \in \mathbb{Z}$. If $n^3 > 0$ then 3 is odd
-		\end{itemize}
-	\end{theo}
-\end{minipage}
-\hspace{0.1cm}
-\begin{minipage}[t]{0.48\linewidth}
-	\begin{theo}[Vacuous proof] 
-		\begin{itemize}
-		\item If something is always proven wrong:
-		\item Let $n \in \mathbb{Z}$. If \textbf{3 is even}, then $n^3 > 0$
-		\item[] Clearly wrong!
-		\end{itemize}
-	\end{theo}
-\end{minipage}
-}
-
 
 \begin{theo}[Direct proof] 
-\begin{minipage}{0.75\linewidth}
+\begin{minipage}{0.7\linewidth}
 \begin{itemize}
 \item Show only what needs to be shown
-\item $\forall x \in S, P(x) \Rightarrow Q(x)$
+\item $\forall x \in \mathbb{Z}, P \Rightarrow Q$
 \item[] Show only that this is true also when $Q$ is false.
-\item Is shown from lemmas and other proofs.
 \end{itemize}
 \end{minipage}
 \hspace{0.1cm}
-\begin{minipage}{0.2\linewidth}
-Politician statement
-\begin{tabular}{cc|c}
-P & Q & P $\Rightarrow$ Q\\ 
-\hline
-T & T & T \\ 
-T & F & F\\
-F & T & T\\
-F & F & T
-\end{tabular} 
-
+\begin{minipage}{0.25\linewidth}
+Odd $= 2a+1$, even $=2b$
+\begin{align*}
+y	&=3x+7\\
+	&=3(2a+1)+7\\
+	&=6a+3+7\\
+	&=6a+10\\
+	&=2(3a+5)\\
+	&=2b
+\end{align*}
 \end{minipage}
 \end{theo}
 
 
 
 \begin{theo}[Indirect proof / proof by contrapositive] 
-\begin{minipage}{0.75\linewidth}
+\begin{minipage}{0.65\linewidth}
 \begin{itemize}
 \item Reverse the result and means.
 \item Let $x \in S$. If $Q(x)$, then $P(x) \Rightarrow$
@@ -347,17 +308,10 @@ F & F & T
 \end{itemize}
 \end{minipage}
 \hspace{0.1cm}
-\begin{minipage}{0.2\linewidth}
-Politician statement
-\begin{tabular}{cc|c}
-P & Q & $\neg P \Rightarrow \neg Q$\\ 
-\hline
-T & T & T \\ 
-T & F & F\\
-F & T & T\\
-F & F & T
-\end{tabular} 
-
+\begin{minipage}{0.3\linewidth}
+$\forall x \in \mathbb{Z}, \neg P \Rightarrow \neg Q$\\
+$(P \Rightarrow Q) \Leftrightarrow (\neg P \Rightarrow \neg
+Q)$
 \end{minipage}
 \end{theo}
 
@@ -367,7 +321,6 @@ F & F & T
 \begin{itemize}
 \item Do subcases and show they span the result.
 \item Case 1: $n$ is even (U). Case 2: $n$ is odd (L). $\mathbb{Z} = U \cup L $
-\item Case 1: $n\geq0$ (U). Case 2: $n<0$ (L). $\mathbb{Z} = U \cup L$
 \end{itemize}
 \end{theo}
 
@@ -389,7 +342,7 @@ F & F & T
 
 \begin{theo}[Counter example] 
 $P(k) \not \Rightarrow Q$\\
-$\forall x \in \mathbb{N}, n > 2 \rightarrow n= 1 \not > 2$
+$\forall x \in \mathbb{N}, n \geq 2 \rightarrow n= 1 \not \geq 2$
 \end{theo}
 
 
@@ -401,9 +354,8 @@ $\forall x \in \mathbb{N}, n > 2 \rightarrow n= 1 \not > 2$
 \begin{theo}[Basic] 
 \begin{itemize}
 \item \textbf{Axiom} -- statement whose truth is accepted without proof.
-\item \textbf{Theorem} -- statement which can be verified.
-\item \textbf{Corollary} -- a consequence of some earlier result and to be deduced from.
-\item \textbf{Lemma} --a result used as help for another statement.
+\item \textbf{Conjecture} -- not yet proven.
+\item \textbf{Theorem} -- statement which can be verified. 
 \end{itemize}
 \end{theo}
 \end{minipage}
@@ -412,73 +364,55 @@ $\forall x \in \mathbb{N}, n > 2 \rightarrow n= 1 \not > 2$
 \begin{itemize}
 \item[] \underline{Disposition}
 \item Basic
-\item Deduction
 \item Direct proof
-\item Counter example
+\item Indirect / contrapositive
 \end{itemize}
 \end{minipage}
 
 
 \begin{theo}[Direct proof] 
-\begin{minipage}{0.75\linewidth}
+\begin{minipage}{0.7\linewidth}
 \begin{itemize}
 \item Show only what needs to be shown
-\item $\forall x \in S, P(x) \Rightarrow Q(x)$
+\item $\forall x \in \mathbb{Z}, P \Rightarrow Q$
 \item[] Show only that this is true also when $Q$ is false.
-\item Is shown from lemmas and other proofs.
 \end{itemize}
 \end{minipage}
 \hspace{0.1cm}
-\begin{minipage}{0.2\linewidth}
-Politician statement
-\begin{tabular}{cc|c}
-P & Q & P $\Rightarrow$ Q\\ 
-\hline
-T & T & T \\ 
-T & F & F\\
-F & T & T\\
-F & F & T
-\end{tabular} 
-
+\begin{minipage}{0.25\linewidth}
+Odd $= 2a+1$, even $=2a$
+\begin{align*}
+y	&=3x+7\\
+	&=3(2a+1)+7\\
+	&=6a+3+7\\
+	&=6a+10\\
+	&=2(3a+5)\\
+	&=2m
+\end{align*}
 \end{minipage}
 \end{theo}
 
 
 
-\begin{theo}[Deduction]  
-- given P show Q
+\begin{theo}[Proof by contrapositive / indirect]
+\begin{minipage}{0.7\linewidth} 
 \begin{itemize}
-\item Direct proof $P \Rightarrow Q$
-\item Proof by cases $P(1) \Rightarrow Q, P(2) \Rightarrow Q$
-\item Proof by contrapositive $\neg Q \Rightarrow \neg P$
-\end{itemize}
-\end{theo}
-
-
-\begin{theo}[Indirect proof / proof by contrapositive] 
-\begin{minipage}{0.75\linewidth}
-\begin{itemize}
-\item Reverse the result and means.
-\item Let $x \in S$. If $Q(x)$, then $P(x) \Rightarrow$
-\item[] Let $x \in S$. If $\neg Q(x)$, then $\neg P(x)$
+\item Reverse the result and means.\\
+$\big(Q \Rightarrow P\big) \Leftrightarrow \big(\neg Q \Rightarrow \neg P\big)$.
 \end{itemize}
 \end{minipage}
 \hspace{0.1cm}
-\begin{minipage}{0.2\linewidth}
-Politician statement
-\begin{tabular}{cc|c}
-P & Q & $\neg P \Rightarrow \neg Q$\\ 
-\hline
-T & T & T \\ 
-T & F & F\\
-F & T & T\\
-F & F & T
-\end{tabular} 
-
+\begin{minipage}{0.25\linewidth}
+Odd $= 2a+1$, even $=2a$
+\begin{align*}
+y	&=3x+7\\
+	&=3(2a)+7\\
+	&=6a+7\\
+	&=2(3a+3)+1\\
+	&=2m+1
+\end{align*}
 \end{minipage}
 \end{theo}
-
-\subsection{Her mangler}
 
 
 
@@ -599,13 +533,16 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \item Induction step is $P(k) \Rightarrow P(k+1)$
 \item Remember to depend on $P(k)$
 \item Without this -- no induction
-\begin{itemize}
-\item $\forall n \in \mathbb{Z}^+, 2^n \geq n$ (For every nonnegative integer $n$\dots)
-\item Base step: $n=0$ is true since $2^0>0$. Assume $2^k>k$ gives the same.
-\item Induction Step: $2^{k+1}=k+1$. When $k=0$, we have $2^{0+1}=2 > 0+1=1$. Assume $k\geq 1$. 
-\item Then $2^{k+1}=2\cdot 2^k > 2k=k+k \geq k+1$.
+\item $4n-3 = 2n^2-n$
 \end{itemize}
-\end{itemize}
+\begin{align}
+1+5+9+\ldots+(4k-3) &= 2k^2-k & P(k)\\
+1+5+9+\ldots+(4(k+1)-3) &= 2(k+1)^2-k+1 & P(k+1) \label{equ:2-2}\\
+	&= \underbrace{1+5+9+\ldots+(4k-3)}_{\mathclap{\text{Lefthand side of P(k)}}}+(4(k+1)-3)\\
+	&=2k^2-k+4k+1\\
+	&=2k^2+3k+1\\
+	&=2(k+1)^2-(k+1) 
+\end{align}
 \end{theo}
 
 
@@ -615,12 +552,10 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \item We don't have to start at 1 or natural numbers.
 \item We have a base (proved elsewhere), a gap where some example should be, and a \textit{prior}, $k$ which will imply $k+1$.
 \item Base set: $\forall n \in \mathbb{N}, P(n) \text{ where } n \geq 10$. This gives us $P(10)$ as base case.
-\item Induction step: If $P(i)$ for every integer $i$ with $10 \leq i \leq k$, then $P(k+1)$ is true for every positive integer $k$ above or equal to 10.
-	\begin{itemize}
-	\item Not just $P(10)$ and $P(k)$ but also all in between:
-	\item[] $P(i), P(i+1), P(i+2) \ldots$
-	\end{itemize}
-\item Conclusion: $P(k+1)$ is true.
+\begin{align*}
+Base, \underbrace{1,2, \ldots, k-2,k-1,}_{\mathclap{\forall x \leq k, P(x)}} \overbrace{prior}^k &\Rightarrow k+1\\
+	&\Rightarrow P(k+1)
+\end{align*} 
 \end{itemize}
 \end{theo}
 
@@ -648,7 +583,9 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \item Inverse image: $b=f(a)$ -- $a$ \underline{can} be the output, but not necessarily.
 \item Range: $range(f)$ -- What is output (not all)
 \item Onto: $range(f) = codom(f)$
-\item One-to-one: Every element n the target is only hit once
+\item One-to-one: Every element n the target is only hit
+ once
+\item Bijective proof
 \end{itemize}
 \end{theo}
 \end{minipage}
@@ -669,9 +606,11 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \begin{itemize}
 \item Onto or \textbf{surjective}: Multiple $f(x)$ gives $f(y)$
 \item One-one or \textbf{injective}: Straight over.
-\item One-one is also called \textbf{bijective} or \textbf{one-to-one correspondence} if it is both one-to-one \textit{and} onto (If range and codomain is equal)
 \end{itemize}
 \end{theo}
+
+%\item One-one is also called \textbf{bijective} or \textbf{one-to-one correspondence} if it is both one-to-one \textit{and} onto (If range and codomain is equal)
+
 
 
 \begin{theo}[Identity function] 
@@ -704,6 +643,25 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \end{itemize}
 \end{theo}
 
+\begin{theo}[Bijective] 
+\begin{minipage}{0.7\linewidth}
+\begin{itemize}
+\item One-one is also called \textbf{bijective} or \textbf{one-to-one correspondence} if it is both one-to-one \textit{and} onto (If range and codomain is equal)
+\item Inj: $\big(f(a) = f(b)\big) \Rightarrow (a=b)$
+\item Sur: $\forall b \in B, \exists a \in A: f(a)=b$
+\end{itemize}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}{0.25\linewidth}
+\begin{align*}
+f(x) &= 7x-2\\
+7a-2 &= 7b-2\\
+7a &= 7b\\
+a &= b
+\end{align*}
+\end{minipage}
+\end{theo}
+
 
 
 \newpage
@@ -719,20 +677,12 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \item[] $R=\{(x,2),(y,1), (y,2) \}$
 \end{itemize}
 \item If $(a,b) \in R$ then $a$ is \textbf{related} to $b$
-\item \textbf{Domain}: $R$ -- $dom(R)$ is the subset of $A$
-\begin{itemize}
-\item $dom(R)=\{a \in A: (a,b) \in R \text{ for some } b \in B\}$
-\end{itemize}
-\item \textbf{Range}: $R$ -- $range(R)$ is a subset of $B$.
-\begin{itemize}
-\item $range(R)=\{b \in B: (a,b) \in R \text{ for some } a \in A\}$
-\end{itemize}
 \item Inverse relation: $R = R^{-1}$
 \begin{itemize}
 \item $R^{-1} = \{(b,a):(a,b) \in R\}$
 \item \textbf{Example}: $R=\{(x,2),(y,1),(y,2)\} \rightarrow R^{-1}=\{(2,x),(1,y),(2,y)\}$
 \end{itemize}
-\item \textbf{Relation on a set}: If $A=\{1,2\}$ then $A \times A = \{(1,1),(1,2),(2,1),(2,2)\}$
+\item \textbf{Relation on a set} (Cartesian product): If $A=\{1,2\}$ then $A \times A = \{(1,1),(1,2),(2,1),(2,2)\}$
 \end{itemize}
 \end{theo}
 \end{minipage}
@@ -741,27 +691,36 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \begin{itemize}
 \item[] \underline{Disposition}
 \item Basic
-\item Reflection
+\item Reflective
 \item Symmetric
 \item Transitive
-\item Distance
 \item Equivalence relation and -class
 \item Congruence modulon
 \end{itemize}
 \end{minipage}
 
-
-\begin{theo}[Reflection] 
+\noindent
+\begin{minipage}{0.48\linewidth}
+\begin{theo}[Reflective] 
 \begin{itemize}
-\item Reflection: $\forall x, a \in A: xRa \Rightarrow aRx$
+\item Reflective: $\forall x \in A: xRx$
+\item Not on social medias
 \end{itemize}
 \end{theo}
+\end{minipage}
+\hspace{0.1cm}
+\begin{minipage}{0.48\linewidth}
 
 \begin{theo}[Symmetric] 
 \begin{itemize}
 \item Symmetric: $\forall x, y \in A, xRy \Rightarrow yRx$
+\item Facebook
 \end{itemize}
 \end{theo}
+
+\end{minipage}
+
+
 
 \begin{theo}[Transitive] 
 \begin{itemize}
@@ -769,36 +728,47 @@ Since $x<y$ and $x\geq y$ is clearly not the same, the statement is proven.
 \begin{itemize}
 \item $A=\{1\}$ is also transitive, since $(1,1)$ and $(1,1)$ you can go to $(1,1)$.
 \end{itemize}
+\item Not on social medias
 \end{itemize}
 \end{theo}
 
-\begin{theo}[Distance] 
-\begin{itemize}
-\item The distance between two numbers: $|a-b|$ is the numeric value.
-\end{itemize}
+
+\begin{theo}[Pitchbox] 
+Proof: If aRb, cRd, aRd $\rightarrow$ then bRc.
+\begin{enumerate}
+\item aRb
+\item cRd
+\item aRd
+\item Equivalence relations!
+\item bRa -- \textbf{4 - Symmetric}
+\item dRc -- \textbf{4 - Symmetric}
+\item aRc -- \textbf{3+6 -Transitive}
+\item bRc -- \textbf{5+7 -Transitive}
+\end{enumerate}
 \end{theo}
 
-\begin{theo}[Equivalence-relation and -class] 
-\begin{itemize}
-\item A relation is equivalence when \textit{reflexive, symmetric and transitive} is all applied.
-\item Write up $R$ and write a class as
-\item[] $[a]=\{x \in A: x R a\}$
-\item[] Example:  $[a]=\{a,b\}$
-\item If a set has already been described, it is written:
-\item[] $[b] = [a]$
-\item[] $[c] = \{c\}$
-\end{itemize}
+
+
+\begin{theo}[Congruence example] 
+Equivalence relation on $\mathbb{Z}$.\\
+$a\sim b$ if and only if $a \equiv b(mod 3)$
+Determine	the	distinct	equivalence	classes.
+\\
+$a$ is congruent to $b$ modulo $n$, provided that $n|a-b$.\\
+\\
+$[0] = \{ \ldots, -6, -3, 0, 3, 6, \ldots\}$ (Zero must be equal to itself, therefore it is in the class). "All integers(a) that are congruent to 0(b) mod 3(n)" \\
+$[1] = \{ \ldots, -5, -2, 1, 4, 7, \ldots\}$\\
+$[2] = \{ \ldots, -4, -1, 2, 5, 6, \ldots\}$\\
+$[3] = [0]$
+
+Mod n = Number of distinct equivalence classes.
 \end{theo}
 
-\begin{theo}[Congruence Modulon] 
-\begin{itemize}
-\item Like modulus with modifications
-\item For $a,b$ where $n \geq 2$, $a$ is \textbf{congruent to} $b$ \textbf{modulo} $n$.
-\item[] Example: $24 \equiv 6 (\text{mod 9})$
-\item[] $\{0, 9, 18\} + 6 = 24$
-\item[] Example: 
-\end{itemize}
-\end{theo}
+
+
+
+
+
 
 
 \end{document}

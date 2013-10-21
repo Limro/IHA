@@ -1,0 +1,11 @@
+Spg 4:
+- Agenda
+- Basic
+	+ Conjecture
+- Direct 
+- Indirect 
+
+
+Fejl:
+- Theorem ER bevist?
+- Peg på "2m" i det sidste

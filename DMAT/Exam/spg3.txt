@@ -1,0 +1,14 @@
+Spg 3:
+- Agenda
+!- Basic
+- Trivial
+- Vacuous
+- Direct
+- Indirect / contrapositive
+- Cases
+- Contradiction
+- Induction
+- Counterexample
+
+Fejl:
+- Har du proven by counterexample?

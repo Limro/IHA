@@ -1,0 +1,12 @@
+Spg 5:
+- Agenda (12:00-11:00 min)
+- (concepts) (11:00 - 9:45)
+- Counterexample (9:45 - 7:30)
+- Contradiction (7:30 - 1:25)
+!- Existence proof (1:25 - 0:15)
+!- Existence disproof
+
+Fejl:
+- Der skal stå 1 != 1^2 ?
+!- Skriv sætningen med symboler
+- Existential proof er et trivial proof

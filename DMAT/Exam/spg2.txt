@@ -1,0 +1,11 @@
+Spg 2:
+- Agenda (1:10) 10:50... 10:10
+- Basic
+- Dis- con-
+- => <=>
+- \equiv
+- De Morgan
+
+Fejl:
+- \equiv mangler
+- Tænk lige politiker-logikken igennem igen (rigtig, men svær at forstå)

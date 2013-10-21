@@ -1,0 +1,6 @@
+Spg 1:
+
+Fejl:
+- Order dine tal
+- Naturlige er endelige?
+- 

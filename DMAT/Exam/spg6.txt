@@ -1,0 +1,16 @@
+Spg 6:
+At gennemgå:
+- Agenda
+- Well-ordered
+	+ Flyt til efter basic
+- Basic
+- Induction hypothesis
+	+ Extented induction
+- Strong induction
+!- Minimum counterexample
+
+
+Fejl:
+- Trappe: Du kan tage store skridt!
+- Least element er base case?
+- Need of smaller proof

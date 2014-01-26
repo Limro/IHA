@@ -59,6 +59,8 @@
 *.synctex.gz
 *.orig
 
+*.pdf
+
 !/**/Material/*.pdf
 !**/Bilag/*.pdf #An exception
 

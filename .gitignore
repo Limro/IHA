@@ -62,6 +62,10 @@
 *.pdf
 
 !/**/Material/*.pdf
+!/**/Slides/*.pdf
+!/**/Noter/*.pdf
+!/**/Notes/*.pdf
+!/**/Documentation/*.pdf
 !**/Bilag/*.pdf #An exception
 
 ####### Temporary folders ####### 

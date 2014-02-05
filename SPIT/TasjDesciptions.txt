@@ -1,0 +1,16 @@
+Task descriptions as functional requirements
+
+1. Main purpose:
+- How to make Functional Requirement with system's context (which is forgotten)
+
+2. Key questions:
+- What is a good requirement
+
+
+3. Most important information:
+- The solution safes a lot of time and money
+
+4. Main conclusions:
+- The traditional approach required 10 times as much work because many stakeholders had to review
+and comment on the proposals. The new approach also ensured that stakeholders received
+the task support they needed or at least knew in advance what they would not receive.

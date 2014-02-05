@@ -1,0 +1,28 @@
+Goal-oriented Requirements:
+
+1. Main purpose:
+- Goals will make better Requirement document
+
+2. Key questions:
+- What should you do, to get from a goal to a document
+
+3. Most important information:
+- Goals provide the rationale for requirements
+- Object models and requirements can be derived systematically
+from goals
+- a goal graph provides vertical traceability
+
+4. Main conclusions:
+- same as 3
+
+5. Key concept to understand: 
+"The ultimate purpose of goal modelling and specification is
+to suport some form of goal-based reasoning for RE subprocesses
+such as requirements elaboration, consistency and
+completeness checking, alternative selection, evolution management,
+and so forth."
+
+6. Main assumption of the author:
+
+
+7. Implications 

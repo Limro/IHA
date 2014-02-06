@@ -1,0 +1,17 @@
+Specifying Software Requirements
+
+1. Main purpose:
+- How to make Requirement document precise, concise, unambiguous, and easy to check
+for completeness and consistency
+
+2. Key questions:
+- Are there techniques to use
+
+3. Most important information:
+- How do one write a document to make it good
+
+4. Main conclusions:
+- Write with special signs
+- Use templates
+- describe things in certain ways (see conclusion)
+

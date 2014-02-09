@@ -3,22 +3,18 @@
 A = [0.2 ; 0.8];
 B = [0.75 0.25 ; 0.25 0.75];
 
-% totalSum = 0;
-% for n = 1:length(B(:,1))
-%     totalSum = totalSum + (-log2(B(n,1)) -log2(B(n,2)));
-% end
-% totalSum
-
 %Entropy, H(X)
-sum(A(1:end,1) .* log2(1 ./ A(1:end,1)))
+HX = sum(A(1:end,1) .* log2(1 ./ A(1:end,1)))
 
 %H(Y/X)
+HYX = Equivocation(A, B);
 
 %H(Y)
-Hy(A, B)
+HY = Hy(A, B);
 
 %Mutal information, I(X/Y)
 IXY = HY - HYX
 
-%Answers: 0.722, 0.123, 0.189
-
+%capacity of the BSC
+Cs = 1 - HYX
+%0.189

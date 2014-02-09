@@ -1,3 +1,4 @@
+clc, clear
 % Exercise 1.1
 
 disp('Problem 1')
@@ -67,18 +68,8 @@ Pch = [3/5 2/5 ; 1/5 4/5];
 %   Determine the a priori and the two a posteriori entropies 
 %   of this channel.
 
+pri = Priori(Weight)
+pos0 = Posteriori(Weight, Pch, 0)
+pos1 = Posteriori(Weight, Pch, 1)
 
-[priori, post0, post1] = Posteriori(Weight, Pch);
-priori
-post0
-post1
-
-
-%--------------
-disp('test')
-A = [4/5 ; 1/5];
-B = [3/4 1/4; 1/8 7/8];
-[a, b c] = Posteriori(A, B);
-a
-b
-c
+%1, 0.8112, 0.9182

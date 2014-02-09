@@ -1,8 +1,8 @@
 Specifying Software Requirements
 
 1. Main purpose:
-- How to make Requirement document precise, concise, unambiguous, and easy to check
-for completeness and consistency
+- How to make Requirement document precise, concise, unambiguous, and 
+easy to check for completeness and consistency
 
 2. Key questions:
 - Are there techniques to use

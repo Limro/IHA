@@ -1,6 +1,7 @@
+%P(x_i/y_j)
 function pos = Post(A, B, x, y)
 
-% 100% probalbility on input
+
 TotalSum = 0;
 for i = 1:length(B(1,:))
     TotalSum = TotalSum + sum(B(1:end,i) .* A(1:end));

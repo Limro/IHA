@@ -1,6 +1,5 @@
-%P(x_i/y_j)
 function pos = Post(A, B, x, y)
-
+%P(x_i/y_j)
 
 TotalSum = 0;
 for i = 1:length(B(1,:))

@@ -1,0 +1,33 @@
+SPIT slide noter
+
+p. 3
+P - property
+S - Specification
+A - Assumptions
+A + S => P
+
+Continuous model - Noget fysisk der bevæger sig skal beskrives med formler
+Discrete model - Noget programmatisk skal beskrives med diskret matematik
+
+p. 4
+Blt 3 - Folk der vil have systemet er normalt ikke skarpe nok til at fortælle, hvad der kan gå galt.
+
+p. 6
+Blt 4 - De fleste mennesker forstår ikke programsprog
+
+p. 9 
+Blt 1.1 - Mange gange skriver man "hvis dette", men glemmer et "hvis ikke"
+
+p. 11
+Blt 4 - Model checker kan checker alle outcomes for, om dit program kan køre død
+
+p. 20
+Functional: Ting der skal virke på en bestmet måde
+Non-func: Hvordan skal GUI være
+
+p. 23
+blt 4 - forhindrer deadlocks
+blt 5 - Mulige eksikveringer
+
+p. 24
+blt 1,1 - Invariants (noget der altid er sandt, f.eks en non-empty collection)

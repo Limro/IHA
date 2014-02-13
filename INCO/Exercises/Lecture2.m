@@ -1,6 +1,6 @@
 clc, clear
 % Exercise 1.1
-
+disp('Exercise 1.1')
 disp('Problem 1')
 M = zeros(6,2);
 

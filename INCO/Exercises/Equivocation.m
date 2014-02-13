@@ -1,4 +1,8 @@
 function res = Equivocation(A, B)
+%Equivocation, H(X/Y)
+%A = P(X) (all values)
+%B = Channel describtion
+%Sum(P(x_i, y_j)*log2(1/P(x_i/y_J)))
 
 summa = 0;
 for x = 0:length(B(:,1))-1

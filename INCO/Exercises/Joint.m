@@ -3,4 +3,5 @@ function res = Joint(A, B, x, y)
 % Joint probability
 
 res = Backward(A, B, x, y) * Py(A, B, y);
+
 end

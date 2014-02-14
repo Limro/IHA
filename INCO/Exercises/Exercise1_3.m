@@ -18,4 +18,3 @@ IXY = HY - HYX
 
 %capacity of the BSC
 Cs = 1 - HYX
-%0.189

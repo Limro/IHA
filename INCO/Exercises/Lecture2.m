@@ -26,7 +26,9 @@ H = sum(M(1:end,1).*M(1:end,2))
 
 % (b)   Calculate the maximum possible source entropy, 
 %       and hence determine the source efficiency.
-MaxSourceEntropy = log2(6) %log2(MaxArraySize)
+Hmax = log2(6) %log2(MaxArraySize)
+
+eff = H/Hmax * 100
 
 
 %%%%%---------------------------------------------
@@ -57,8 +59,11 @@ end
 Bits = 3*M(4,2)+M(1,2)+M(5,2)
 disp(M)
 
-%-------------------------------------------------
-disp('Problem 3')
+%% n00b -hater!
+%Flappy, du musta stuppa drinki
+
+
+disp('Problem 1.7')
 %   Consider a binary channel with input and output 
 %   alphabets {0, 1} and the transition probability matrix:
 %   P(0) = 0.5, P(1) = 0.5

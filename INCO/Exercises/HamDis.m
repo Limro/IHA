@@ -1,14 +1,6 @@
-function res = HamDis(Matrix)
-%Hammering distance
-%Matrix to analyse
+function dist = HammingDist(A, B)
+% Calculate the Hamming distance of two vectors.
 
-min = length(Matrix(:,1));
-for i = 1 : size(Matrix(:,1))
-    for j = i+1 : size(Matrix(:,1))
-       tmp = HamWeight(Matrix(i,:), Matrix(j,:));
-       if tmp < min
-           min = tmp;
-       end
-    end
+dist = HammingWeigth(A + B);
+
 end
-res = min;

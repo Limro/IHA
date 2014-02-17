@@ -1,19 +1,10 @@
 \usepackage{tcolorbox}
 \usepackage{ulem} %math
-\usepackage[danish]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{enumerate}
-
-\usepackage[T1]{fontenc}              
-\usepackage[utf8]{inputenc}         
-\usepackage[danish]{babel} 
-\usepackage{lmodern}
-
-\usepackage[left=3cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-\author{Rasmus Bækgaard}
 
 
 %Create a box for theorems
@@ -81,3 +72,253 @@ $
   \end{array}\right.
 $
 }
+
+\usepackage{lastpage}
+
+
+\newcommand{\HRule}{\rule{\linewidth}{0.8mm}}
+
+%Tekst i fotter
+\newcommand{\footerText}{\thepage\xspace /\pageref{LastPage}}
+\newcommand{\ProjectName}{433 MHz styring af AeroQuad}
+
+
+\chapterstyle{hangnum}
+
+
+
+
+\nouppercaseheads
+\makepagestyle{mystyle} 
+
+\makeevenhead{mystyle}{}{\\ \leftmark}{} 
+\makeoddhead{mystyle}{}{\\ \leftmark}{} 
+\makeevenfoot{mystyle}{}{\footerText}{} 
+\makeoddfoot{mystyle}{}{\footerText}{} 
+\makeatletter
+\makepsmarks{mystyle}{% Overskriften på sidehovedet
+  \createmark{chapter}{left}{shownumber}{\@chapapp\ }{.\ }} 
+\makeatother
+\makefootrule{mystyle}{\textwidth}{\normalrulethickness}{0.4pt}
+\makeheadrule{mystyle}{\textwidth}{\normalrulethickness}
+
+\makepagestyle{plain}
+\makeevenhead{plain}{}{}{}
+\makeoddhead{plain}{}{}{}
+\makeevenfoot{plain}{}{\footerText}{}
+\makeoddfoot{plain}{}{\footerText}{}
+\makefootrule{plain}{\textwidth}{\normalrulethickness}{0.4pt}
+
+\pagestyle{mystyle}
+
+%%----------------------------------------------------------------------
+%
+%%Redefining chapter style
+%%\renewcommand\chapterheadstart{\vspace*{\beforechapskip}}
+%\renewcommand\chapterheadstart{\vspace*{10pt}}
+%\renewcommand\printchaptername{\chapnamefont }%\@chapapp}
+%\renewcommand\chapternamenum{\space}
+%\renewcommand\printchapternum{\chapnumfont \thechapter}
+%\renewcommand\afterchapternum{\space: }%\par\nobreak\vskip \midchapskip}
+%\renewcommand\printchapternonum{}
+%\renewcommand\printchaptertitle[1]{\chaptitlefont #1}
+\setlength{\beforechapskip}{0pt} 
+\setlength{\afterchapskip}{0pt} 
+%\setlength{\voffset}{0pt} 
+\setlength{\headsep}{25pt}
+%\setlength{\topmargin}{35pt}
+%%\setlength{\headheight}{102pt}
+%\setlength{\textheight}{302pt}
+\renewcommand\afterchaptertitle{\par\nobreak\vskip \afterchapskip}
+%%----------------------------------------------------------------------
+
+
+
+
+%Sidehoved og -fod pakke
+%Margin
+\usepackage[left=2cm,right=2cm,top=2.5cm,bottom=2cm]{geometry}
+\usepackage{lastpage}
+
+
+
+%%URL kommandoer og sidetal farve
+%%Kaldes med \url{www...}
+%\usepackage{color} %Skal også bruges
+\usepackage{hyperref}
+\hypersetup{ 
+	colorlinks	= true, 	% false: boxed links; true: colored links
+    urlcolor	= blue,		% color of external links
+    linkcolor	= black, 	% color of page numbers
+    citecolor	= blue,
+}
+
+
+
+%Mellemrum mellem linjerne    
+\linespread{1.5}
+
+
+%Seperated files
+%--------------------------------------------------
+%Opret filer således:
+%\documentclass[Navn-på-hovedfil]{subfiles}
+%\begin{document}
+% Indmad
+%\end{document}
+%
+% I hovedfil inkluderes således:
+% \subfile{navn-på-subfil}
+%--------------------------------------------------
+\usepackage{subfiles}
+
+%Prevent wierd placement of figures
+%\usepackage[section]{placeins}
+
+%Standard sti at søge efter billeder
+%--------------------------------------------------
+%\begin{figure}[hbtp]
+%\centering
+%\includegraphics[scale=1]{filnavn-for-png}
+%\caption{Titel}
+%\label{fig:referenceNavn}
+%\end{figure}
+%--------------------------------------------------
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+\graphicspath{{../Figures/}}
+
+%Speciel skrift for enkelt linje kode
+%--------------------------------------------------
+%Udskriver med fonten 'Courier'
+%Mere info her: http://tex.stackexchange.com/questions/25249/how-do-i-use-a-particular-font-for-a-small-section-of-text-in-my-document
+%Eksempel: Funktionen \code{void Hello()} giver et output
+%--------------------------------------------------
+\newcommand{\code}[1]{{\fontfamily{pcr}\selectfont #1}}
+
+
+% Følgende er til koder.
+%----------------------------------------------------------
+%\begin{lstlisting}[caption=Overskrift på boks, style=Code-C++, label=lst:referenceLabel]
+%public void hello(){}
+%\end{lstlisting}
+%----------------------------------------------------------
+
+%Exstra space
+\usepackage{xspace}
+%Navn på bokse efterfulgt af \xspace (hvis det skal være mellemrum
+%gives det med denne udvidelse. Ellers ingen mellemrum.
+\newcommand{\codeTitle}{Kodeudsnit\xspace}
+
+%Pakker der skal bruges til lstlisting
+\usepackage{listings}
+\usepackage{color}
+\usepackage{textcomp}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\renewcommand{\lstlistingname}{\codeTitle}
+\lstdefinestyle{Code}
+{
+	keywordstyle	= \bfseries\ttfamily\color[rgb]{0,0,1},
+	identifierstyle	= \ttfamily,
+	commentstyle	= \color[rgb]{0.133,0.545,0.133},
+	stringstyle		= \ttfamily\color[rgb]{0.627,0.126,0.941},
+	showstringspaces= false,
+	basicstyle		= \small,
+	numberstyle		= \footnotesize,
+%	numbers			= left, % Tal? Udkommenter hvis ikke
+	stepnumber		= 2,
+	numbersep		= 6pt,
+	tabsize			= 2,
+	breaklines		= true,
+	prebreak 		= \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	breakatwhitespace= false,
+%	aboveskip		= {1.5\baselineskip},
+  	columns			= fixed,
+  	upquote			= true,
+  	extendedchars	= true,
+ 	backgroundcolor = \color{lbcolor},
+	lineskip		= 1pt,
+%	xleftmargin		= 17pt,
+%	framexleftmargin= 17pt,
+	framexrightmargin	= 0pt, %6pt
+%	framexbottommargin	= 4pt,
+}
+
+%Bredde der bruges til indryk
+%Den skal være 6 pt mindre
+\usepackage{calc}
+\newlength{\mywidth}
+\setlength{\mywidth}{\textwidth-6pt}
+
+
+% Forskellige styles for forskellige kodetyper
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}%
+{\colorbox[cmyk]{0.43, 0.35, 0.35,0.35}{\parbox{\mywidth}{\hspace{5pt}#1#2#3}}}
+\captionsetup[lstlisting]
+{
+	format			= listing,
+	labelfont		= white,
+	textfont		= white, 
+	singlelinecheck	= false, 
+	width			= \mywidth,
+	margin			= 0pt, 
+	font			= {bf,footnotesize}
+}
+
+\lstdefinestyle{Code-C} {language=C, style=Code}
+\lstdefinestyle{Code-Java} {language=Java, style=Code}
+\lstdefinestyle{Code-C++} {language=[Visual]C++, style=Code}
+\lstdefinestyle{Code-VHDL} {language=VHDL, style=Code}
+\lstdefinestyle{Code-Bash} {language=Bash, style=Code}
+
+%Text typesetting
+%--------------------------------------------------------
+%\usepackage{baskervald}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}              
+\usepackage[utf8]{inputenc}         
+\usepackage[english]{babel}       
+
+\setlength{\parindent}{0pt}
+\nonzeroparskip
+
+%\setaftersubsecskip{1sp}
+%\setaftersubsubsecskip{1sp}
+ 
+
+
+%Dybde på indholdsfortegnelse
+%----------------------------------------------------------
+%Chapter, section, subsection, subsubsection
+%----------------------------------------------------------
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+
+%Tables
+%----------------------------------------------------------
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow} 
+\usepackage{multicol} 
+\usepackage{booktabs}
+\usepackage{wrapfig}
+\renewcommand{\arraystretch}{1.5}
+
+
+
+%Misc
+%----------------------------------------------------------
+\usepackage{cite}
+\usepackage{appendix}
+\usepackage{amssymb}
+\usepackage{url,ragged2e}
+\usepackage{enumerate}
+\usepackage{amsmath} %Math bibliotek
+
+
+\usepackage{longtable}

@@ -8,7 +8,7 @@ disp('Exercise 3.2')
 g = [1 1 1 1 0 0 0 0];
 m = [ 1 0 1 0 1]; %message vector
 pol = cyclpoly(8,5);
-[parmat,genmat,k] = cyclgen(8,pol);
+[parmat,genmat,k] = cyclgen(8,pol,'all');
 genmat
 
 if genmat(1,:) == g
@@ -16,3 +16,5 @@ if genmat(1,:) == g
 else
     disp('Not equal')
 end
+
+valid_code = encode(m, 8, 5, 'cyclic', pol)

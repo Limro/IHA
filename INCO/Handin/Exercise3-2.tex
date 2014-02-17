@@ -1,0 +1,43 @@
+\documentclass[Main]{subfiles}
+
+\begin{document}
+\section*{Exercise 3.2}
+
+\textbf{Verify that the generator polynomial $g(X) = 1 + X + X^2 + X^3$ generates  a binary cyclic code $C_{cyc}(8, 5)$ and determine the code polynomial    for the message vector m = (10101) in systematic form.}
+\\
+\\
+The script in \codeTitle \ref{lst:3.2} will determine how the binary cyclic code is generated and will also compare it to the polynominal, \code{g}.
+To determine the code polynomial for the messages an encoding is needed, which Matlab also provides.
+\begin{lstlisting}[caption=Matlab script for exercise 3.2, style=Code-Matlab, label=lst:3.2]
+g = [1 1 1 1 0 0 0 0];
+pol = cyclpoly(8,5);
+[parmat,genmat,k] = cyclgen(8,pol);
+genmat
+
+if genmat(1,:) == g
+    disp('Equal')
+else
+    disp('Not equal')
+end
+
+valid_code = encode(m, 8, 5, 'cyclic', pol)
+\end{lstlisting}
+The output is show below:
+\\
+\\
+\begin{ArgMat}
+1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+1 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0 & 0 & 0 & 1 & 0\\
+1 & 1 & 1 & 0 & 0 & 0 & 0 & 1
+\end{ArgMat}
+\\
+\\
+\code{Equal}
+\\
+\code{valid\_code = 0 1 0 1 0 1 0 1} 
+
+
+
+\end{document}

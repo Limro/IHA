@@ -9,8 +9,15 @@ G = [
 %(a) Find the parity check matrix H and hence write down 
 %    the parity check equations.
 H = ParityMatrix(G)
+c = ParityEquations(G)
 
 
 %(b) Find the minimum Hamming distance of the code.
 dmin = HammingDistance(H)
+
+%%
+
+
+C = ParityEquations(G)
+
 

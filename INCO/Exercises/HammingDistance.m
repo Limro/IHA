@@ -1,5 +1,5 @@
 function dmin = HammingDistance(A)
-% Calculate the Hamming distance of two vectors.
+% Calculate the Hamming distance of every two vectors of a vector.
 
 s = length(A(:,1));
 dmin = 0;

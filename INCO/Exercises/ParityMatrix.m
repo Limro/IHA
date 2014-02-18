@@ -1,7 +1,8 @@
 function [res] = ParityMatrix(G)
 %Parity check matrix.
 
-nk = length(G(1,:))-log2(length(G(:,1)));
+[r, c] = size(G);
+nk = c - log2(r);
 P = G(:,1:nk);
 EyeSize = length(P(1,:));
 [res] = [eye(EyeSize) P'];

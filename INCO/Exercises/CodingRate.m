@@ -3,7 +3,9 @@ function res = CodingRate(M)
 %message: x. 2^x = #rows
 %Coding rate = #rows/matrixColumns
 
-messageLength = log2(length(M(:,1)));
-res = messageLength / length(M(1,:));
+[r c] = size(M);
+
+messageLength = log2(r);
+res = messageLength / c;
 
 end

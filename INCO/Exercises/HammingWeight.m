@@ -1,5 +1,5 @@
 function dist = HammingWeight(A, B)
-% Calculate the Hamming weigth of a vector.
+% Calculate the Hamming weight of a vector.
 
 dist = 0;
 temp = 0;

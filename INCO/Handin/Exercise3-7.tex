@@ -1,0 +1,71 @@
+\documentclass[Main]{subfiles}
+\begin{document}
+
+\section{Exercise 3.7}
+
+A binary linear cyclic block code with a code length of $n = 14$ has the generator polynomial $g(X) = 1 + X^2 + X^6$.
+
+\paragraph{Determine the number of information and parity check bits in each code vector}
+The information bits are as follow; $n =14$ and $g$ is of the 6th order, making 6 redundant bits, $r$.
+\begin{align}
+r &= 6\\
+k = n-r &= 14-6 = 8
+\end{align}
+
+
+
+\paragraph{Determine the number of code vectors in the code}
+The amount of code vectors is defined as $2^k = 2^8 = 256$
+
+
+\paragraph{Determine the generator and parity check matrices of the code}
+\begin{lstlisting}[caption=Matlab script for exercise 3.7c, style=Code-Matlab, label=lst:37c]
+n = 14;
+g = [1 0 1 0 0 0 1]; %g(x)=1+x^2+x^6
+
+[parmat,genmat,h] = cyclgen(n,g,'system')
+\end{lstlisting}
+The result is listed below:
+\\
+\\
+\code{Parity Matrix = }
+\begin{ArgMat}
+1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0\\
+0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1\\
+0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 1
+\end{ArgMat}
+\\
+\\
+\\
+\code{Generator matrix = }
+\begin{ArgMat}
+1 &0 &1 &0 &0 &0 &1 &0 &0 &0 &0 &0 &0 &0\\
+0 &1 &0 &1 &0 &0 &0 &1 &0 &0 &0 &0 &0 &0\\
+0 &0 &1 &0 &1 &0 &0 &0 &1 &0 &0 &0 &0 &0\\
+0 &0 &0 &1 &0 &1 &0 &0 &0 &1 &0 &0 &0 &0\\
+1 &0 &1 &0 &1 &0 &0 &0 &0 &0 &1 &0 &0 &0\\
+0 &1 &0 &1 &0 &1 &0 &0 &0 &0 &0 &1 &0 &0\\
+1 &0 &0 &0 &1 &0 &0 &0 &0 &0 &0 &0 &1 &0\\
+0 &1 &0 &0 &0 &1 &0 &0 &0 &0 &0 &0 &0 &1
+\end{ArgMat}
+
+\paragraph{Determine the minimum Hamming distance of the code}
+The minimum Hamming distance is found like in \codeTitle \ref{lst:Hamming}
+
+\begin{lstlisting}[caption=Matlab script for exercise 3.7d, style=Code-Matlab, label=lst:37d]
+dmin = HammingDistance(genmat)
+\end{lstlisting}
+\begin{align*}
+d_{min} = 3
+\end{align*}
+
+
+\paragraph{Determine the burst error-detection capability of the code}
+
+
+\paragraph{Describe briefly how to encode and decode this code}
+
+\end{document}

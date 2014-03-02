@@ -11,7 +11,7 @@ for i=1:length(V(1,:))
     value = root*(2^i);
     
     %modulo of vector messages gives the rest value
-	tmp = mod(value, base)
+	tmp = mod(value, base);
 	
     %Is this in the collection, col?
 	flag = 0;
@@ -33,12 +33,12 @@ for i = 1:length(col(1,:))
     val(i,1) = x+a^col(1,i);
 end
 
-produ = prod(val)
-redu = subs(produ, a, 1)
-exp = expand(redu)
+produ = prod(val) %Product of all values
+redu = subs(produ, a, 1) %Replaces 'a' with '1'
+exp = expand(redu) %Expand all values
 
-mod(exp,2)
+% minPol = mod(redu,2); %Find result of 
+minPol = mod2partly(exp); %Find result of 
 
 roots = 0;
-minPol = col;
 end

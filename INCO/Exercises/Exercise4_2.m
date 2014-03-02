@@ -6,25 +6,19 @@ disp('Exercise 4.2')
 % elements.
 
 pol = [1 0 1 0 0 1];
-[ E V P ] = gfPol2Table(pol);
+[ E, V, P ] = gfPol2Table(pol);
 
-[E P V];
+[E, P, V]
 
 disp('Exercise 4.3')
 
-% profile on
 % Determine the minimal polynomials of the elements of the Galois field 
 %   GF(2^5) constructed in Problem 4.2.
 
-% syms a;
-% [minPol b] = minimumPoly(E,P,a)
 
-[E V P] = gfPol2Table([1 0 0 1 1]);
-f = [E P V]
+%[E, V, P] = gfPol2Table(pol);
+%f = [E P V];
 
-a = 7;
-[P1, roots] = Test(V,a);
+syms a;
+[minPol, b] = minimumPoly(E,P,a)
 
-% profile viewer
-% p = profile('info');
-% profsave(p,'profile_results

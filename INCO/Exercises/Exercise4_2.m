@@ -15,10 +15,87 @@ disp('Exercise 4.3')
 % Determine the minimal polynomials of the elements of the Galois field 
 %   GF(2^5) constructed in Problem 4.2.
 
+m = log2(length(E));
+syms a x;
 
-%[E, V, P] = gfPol2Table(pol);
-%f = [E P V];
 
-syms a;
-[minPol, b] = minimumPoly(E,P,a)
+b1 = conjugateRoots(a, m);
+b2 = conjugateRoots(a^3, m);
+b3 = conjugateRoots(a^5, m);
+b4 = conjugateRoots(a^7, m);
+b5 = conjugateRoots(a^11, m);
+b6 = conjugateRoots(a^13, m);
+b7 = conjugateRoots(a^15, m);
 
+
+phi(1,1) = minimumPoly(E,P,a^1);
+phi(2,1) = minimumPoly(E,P,a^3);
+phi(3,1) = minimumPoly(E,P,a^5);
+phi(4,1) = minimumPoly(E,P,a^7);
+phi(5,1) = minimumPoly(E,P,a^11);
+phi(6,1) = minimumPoly(E,P,a^13);
+phi(7,1) = minimumPoly(E,P,a^15);
+
+pretty(phi)
+
+%%
+disp('Exercise 4.4')
+
+% Determine the generator polynomial of the binary BCH code 
+% C_BCH(31, 16) able to correct error patterns of size t =< 3 
+
+n = 31; %C_BCH(n,k) | n = 2^m-1
+k = 16;
+t = 3;
+r = n-k; %degree of generator polynomial
+
+% Find r elements. phi consist of 5 elements each
+pol = phi(3,1)*phi(4,1)*phi(5,1)
+
+% Minimum amount of elements in the generator polynomial
+d_min = 2*t+1
+
+% Expand the expression and remove even elements
+generator = mod(expand(pol),2)
+
+disp('Generator contains 11 elements > d_min')
+
+
+%% Exercise 4.5
+
+% Determine the generator polynomial of a binary BCH code of code 
+% length n = 31 able to correct error patterns of size t = 2 or less. 
+
+% Also, determine the value of k and the minimum Hamming distance of 
+% the code.
+
+t = 2;
+
+% minimum amount of elements needed
+d_min = 2*t+1
+
+% Polynomial with atleast d_min big
+pol = phi(7,1)*phi(2,1)
+
+% Expand and remove even elements
+generator = mod(expand(pol),2)
+
+%Degree (r) of the generator
+r = degree(generator)
+
+% column count calculated
+k = n-r
+
+
+%% Exercise 4.6
+%Answer: (a)6
+
+% A binary cyclic BCH code C BCH (n, k) has code length n = 15 and 
+% generator polynomial 
+% g(X) = (X + 1)(1 + X + X 4 )(1 + X + X 2 + X 3 + X 4 ). 
+
+% (a) What is the minimum Hamming distance of the code?
+
+n = 15;
+syms x;
+g = (x+1)*(1+x+x^4)*(1+x+x^2+x^3+x^4);

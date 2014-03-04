@@ -62,6 +62,7 @@ disp('Generator contains 11 elements > d_min')
 
 
 %% Exercise 4.5
+disp('Exercise 4.5')
 
 % Determine the generator polynomial of a binary BCH code of code 
 % length n = 31 able to correct error patterns of size t = 2 or less. 
@@ -89,6 +90,7 @@ k = n-r
 
 %% Exercise 4.6
 %Answer: (a)6
+disp('Exercise 4.6')
 
 % A binary cyclic BCH code C BCH (n, k) has code length n = 15 and 
 % generator polynomial 
@@ -99,3 +101,84 @@ k = n-r
 n = 15;
 syms x;
 g = (x+1)*(1+x+x^4)*(1+x+x^2+x^3+x^4);
+
+% exp = expand(g)
+% mod = mod(exp,2)
+
+m = 5;
+syms a x;
+
+
+%t = (n-k)/m
+%Because both k and t is a real number the following must apply
+k = 5;
+t = (n-k)/m
+dmin = 2*t+1
+
+
+pol = [1 1 1 1 1 1];
+[ E, V, P ] = gfPol2Table(pol);
+
+
+%% Exercise 4.7
+% (a) Show that the shortest binary cyclic BCH code with the generator 
+% polynomial g(X) = (1 + X + X4)(1 + X + X2 + X3 + X4) has code 
+% length n = 15 and minimum Hamming distance dmin = 5.
+
+clear
+disp('Exercise 4.7')
+
+syms x;
+g = (1+x+x^4)*(1+x+x^2+x^3+x^4);
+
+
+exp = expand(g);
+modu = mod(exp,2)
+
+%Amount of elements = m
+m = 5;
+
+%Since n = 2^m-1
+n=2^m-1
+
+
+%% Exercise 4.8
+clear
+disp('Exercise 4.8')
+% Use the BCH bound to show that the minimum Hamming distance of the cyclic
+% code with block length n = 7 and g(X) = (X + 1)(1 + X + X3) is 4.
+% (a) What is the minimum Hamming distance if n = 14 and why?
+
+syms x;
+n = 7;
+g = (x+1)*(1+x+x^3);
+
+% expa = expand(g)
+% modu = mod(expa,2)
+
+pol = [1 1 0 1];
+[ E, V, P ] = gfPol2Table(pol);
+
+[E, P, V]
+
+m = log2(length(E));
+
+%t = (n-k)/m
+k = 4;
+t = (n-k)/m;
+dmin = 2*t+1
+
+
+% syms a x;
+% 
+% 
+% b1 = conjugateRoots(a, m)
+% b2 = conjugateRoots(a^3, m)
+% b3 = conjugateRoots(a^5, m)
+% 
+% 
+% phi(1,1) = minimumPoly(E,P,a^1);
+% phi(2,1) = minimumPoly(E,P,a^3);
+% phi(3,1) = minimumPoly(E,P,a^5);
+% 
+% pretty(phi)

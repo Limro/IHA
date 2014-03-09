@@ -168,17 +168,82 @@ k = 4;
 t = (n-k)/m;
 dmin = 2*t+1
 
+%BUT IT'S WRONG!
 
-% syms a x;
-% 
-% 
-% b1 = conjugateRoots(a, m)
-% b2 = conjugateRoots(a^3, m)
-% b3 = conjugateRoots(a^5, m)
-% 
-% 
-% phi(1,1) = minimumPoly(E,P,a^1);
-% phi(2,1) = minimumPoly(E,P,a^3);
-% phi(3,1) = minimumPoly(E,P,a^5);
-% 
-% pretty(phi)
+
+%% Exercise 4.9
+clear
+disp('Exercise 4.9')
+
+% The binary cyclic BCH code C_BCH(15, 7) is able to correct error patterns 
+% of size t = 2 or less, and has a generator polynomial of the form 
+% g(X) = (1 + X + X4)(1 + X + X2 + X3 + X4) = 1 + X4 + X6 + X7 + X8, 
+% which operates over the Galois field GF(24) (Appendix B, Table B.4).
+% Assume that the received vector is r = (100000001000000) and decode it
+% using the Euclidean algorithm.
+
+r = [1 0 0 0 0 0 0 0 1 0 0 0 0 0 0];
+g = [1 0 0 0 1 0 1 1 1];
+t = 2;
+n = 15;
+k = 7;
+
+%Calculate Syndrom vector
+[parmat,genmat,h] = cyclgen(n,g,'system');
+syndrome = mod(r*parmat',2)
+
+syms a x;
+s1 = a^4;
+s2 = a^7;
+s3 = a^8;
+
+%Calculate syndrom polynomial
+%S(x)= ...
+S(x) = s1 + s2*x + s3*x^3
+
+%Initialize process in Euclidean algorithm
+% r_(-1) = A = ...
+% r_0 = B = S(x)
+%r_i(x) =s_i(x)*x^(2*t) + t_i(x)*S(x)
+A = x^(2*t)
+B = S(x)
+
+%Do table
+table = zeros(4,4);
+table(1,1) = -1;
+table(2,1) = 0;
+table(3,1) = 1;
+table(4,1) = 2;
+
+table(1,2) = A;
+table(2,2) = B;
+table(3,2) = table(1,2)-table(3,3)*table(2,2);
+table(4,2) = table(2,2)-table(4,3)*table(3,2);
+
+
+%t_i(x) should be monic polynomial
+
+%Error location polynomial:
+%sigma(x) = lambda * t_i(x)
+
+
+%Error evaluation polynomial:
+%W(x) = -lambda*r_i(x)
+
+
+%GF(2^m), n = 2^m-1, a^-h = a^(n-h), C_BCH(n,k)
+
+
+%Perform Chien search on sigma(x) gives two roots
+
+
+
+
+
+
+
+
+
+
+
+

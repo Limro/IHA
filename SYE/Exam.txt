@@ -1,0 +1,72 @@
+Exam
+
+- Up to 10 mins about the project
+- How is the course used?
+- How was the entire understanding of the project?
+- BE EXTREMELY CONCRETE ON OWN PROJECT!
+- What was your own role in the project
+
+- 5-7 min on part 2
+- Pick a number between 1-9
+- Be more general
+
+
+
+(1)
+	- From needs to SRS
+		- Specify operations
+		- Transforming it
+		"I need something" -> "This is how it should be done"
+
+(2)
+	- Trace the life cycle
+	- What to do with the SRS afterwards
+		- How to do it?
+	- "house of qualities" - traceablillity matrix
+
+(3)
+	- How do management work (produce new version of documents and baseline)
+	- What happen if something changes afterwards?
+		- It can change in some ways
+	- What parts can be used (and traced)
+	- What will changes? Nails ex.
+
+(4)
+	- SysML and graphical notation for writing SRS
+	- Easy to communicate
+	- Simulated
+	- Remember diagrams (not symbols, just conceptual)
+	- E.g: take handin and show
+
+(5)
+	- How to decide (decicion management)
+	- Explore design specs
+		- Realize system in multiple ways - what to choose?
+	- Should make it or not (could fail horriblely)
+	- Draft the system and see if profit is possible
+		- Don't bid if you can't
+	- Consequences, business forms, people to use (diagram) ...
+
+(6)
+	- Start with requirement - what kind of engineering should be used? How do we get there?
+	- Be aware of small parts needed in a system. Buy or build?
+		- If neither buy of build then it cannot be done by you
+	- Can it be done?
+	- Does it fit the organization
+
+(7)
+	- Entire life cycle
+
+(8)
+	- Internal negociation
+	- Make request for proposal
+	- Make documents
+	- SUBCONTRACTING!
+
+(9)
+	- Like software engineering in the real world
+	- Hoover dam
+	- Don't test in place
+	- Test small parts
+	- How to determin if the system can be used / verifyable / how to test it
+	- Must be thought of very early

@@ -12,33 +12,35 @@ Exam
 
 
 
-(1)
+(1) Explain the tools and methods used in system engineering to transform user needs into system requirements.
 	- From needs to SRS
 		- Specify operations
 		- Transforming it
 		"I need something" -> "This is how it should be done"
+		
+	Phase: "Concept and project Definition phase"
 
-(2)
+(2) Clarify the important characteristics of system requirements and explain how requirements are managed during the life-cycle of a system.
 	- Trace the life cycle
 	- What to do with the SRS afterwards
 		- How to do it?
 	- "house of qualities" - traceablillity matrix
 
-(3)
+(3) Describe the principles of configuration management in system engineering and explain the concepts of baseline and change management.
 	- How do management work (produce new version of documents and baseline)
 	- What happen if something changes afterwards?
 		- It can change in some ways
 	- What parts can be used (and traced)
 	- What will changes? Nails ex.
 
-(4)
+(4) Explain and demonstrate how the System Modeling Language (SysML) can be used to analyse and describe complex systems.
 	- SysML and graphical notation for writing SRS
 	- Easy to communicate
 	- Simulated
 	- Remember diagrams (not symbols, just conceptual)
 	- E.g: take handin and show
 
-(5)
+(5) Explain the concept of decision management and analysis in system engineering.
 	- How to decide (decicion management)
 	- Explore design specs
 		- Realize system in multiple ways - what to choose?
@@ -47,23 +49,23 @@ Exam
 		- Don't bid if you can't
 	- Consequences, business forms, people to use (diagram) ...
 
-(6)
+(6) Explain the relationship between user requirements, system architecture, engineering disciplines and organisation.
 	- Start with requirement - what kind of engineering should be used? How do we get there?
 	- Be aware of small parts needed in a system. Buy or build?
 		- If neither buy of build then it cannot be done by you
 	- Can it be done?
 	- Does it fit the organization
 
-(7)
+(7) Explain the concept of a life-cycle model and relate it to system development.
 	- Entire life cycle
 
-(8)
+(8) Explain the agreement process of acquisition and supply and its significance for system engineering.
 	- Internal negociation
 	- Make request for proposal
 	- Make documents
 	- SUBCONTRACTING!
 
-(9)
+(9) Explain the interrelated concepts of validation, verification and integration in system engineering.
 	- Like software engineering in the real world
 	- Hoover dam
 	- Don't test in place

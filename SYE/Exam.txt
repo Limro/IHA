@@ -49,7 +49,9 @@ Exam
 (2) Clarify the important characteristics of system requirements and explain how requirements are managed during the life-cycle of a system.
 	- Trace the life cycle
 	- What to do with the SRS afterwards
-		- How to do it?
+		Do SSR, System requirement review.
+		Then SDP, System design phase, starts - negotiate contract, identify subsystems and interfaces between and create a PDD and a DDD.
+
 	- "house of qualities" - traceability matrix
 
 
@@ -80,7 +82,6 @@ Exam
 	Changes from the user will affect the CIs. Trace this.
 	A bad CI can be traced to where it comes from.
 
-
 (4) Explain and demonstrate how the System Modeling Language (SysML) can be used to analyze and describe complex systems.
 	- SysML and graphical notation for writing SRS
 	- Easy to communicate
@@ -101,17 +102,17 @@ Exam
 
 	Consist of blocks
 
-
-
 (5) Explain the concept of decision management and analysis in system engineering.
 	- How to decide (decision management)
-		Risk analysis
+		- Risk accesment: risk = likelyhood * consequences
 	- Explore design specs
 		- Realize system in multiple ways - what to choose?
 	- Should make it or not (could fail horribly)
 	- Draft the system and see if profit is possible
 		- Don't bid if you can't
+	- Formal and informal work
 	- Consequences, business forms, people to use (diagram) ...
+	- tracing
 
 (6) Explain the relationship between user requirements, system architecture, engineering disciplines and organization.
 	- Start with requirement - what kind of engineering should be used? How do we get there?
@@ -159,6 +160,13 @@ Exam
 
 (9) Explain the interrelated concepts of validation, verification and integration in system engineering.
 	- Like software engineering in the real world
+		V-model:
+			concept 								System validation
+				System req.						System verification and deployment
+					High-L. Design 			Subsystem verification
+						Detailed Design/Unit test
+							Development
+
 	- Hoover dam
 	- Don't test in place
 	- Test small parts

@@ -14,23 +14,24 @@ Exam
 
 (1) Explain the tools and methods used in system engineering to transform user needs into system requirements.
 	- From needs to SRS
-		- Specify operations
-		- Transforming it		
-		
-	Phase: "Concept and project Definition phase"
-		- Need analysis: define and validate needs and operational req.
-		- Concept Exploration: feasible concepts and defines functional performance
-		- Concept definition: Pick a concept based on performance, cost, schedule and risk
-
-	Process from "I need something" -> "This is how it should be done"
-		• Operations Analysis — understanding the needs for a new system; (Do "objectives tree" to describe outcome)
-		• Functional Analysis — deriving functions required to accomplish operations;
-		• Feasibility Definition — visualizing a feasible implementation approach; 
-		• Needs Validation — demonstrating cost - effectiveness.
-
 	Why(needed?), what is required?, how to build it?
-	Do elicitation (interviews)
-	
+
+	Phase: "Concept and project Definition phase"
+		Need analysis - define and validate needs and operational req.
+		Requirements Analysis — identifies why requirements are needed
+		Process from "I need something" -> "This is how it should be done"
+			• Operations Analysis — understanding the needs for a new system; (Do "objectives tree" to describe outcome)
+			• Functional Analysis — deriving functions required to accomplish operations;
+			• Feasibility Definition — visualizing a feasible implementation approach; 
+			• Needs Validation — demonstrating cost - effectiveness.
+
+		Clear statements of objectives.
+			› State the initial problem and the need that is to be satisfied and what is required to achieve this.
+			› Define the characteristics of the set of acceptable solutions.
+
+	Do elicitation (interviews with stakeholders)
+	Check with multiple different specialist who should work on the job - get their input.
+
 	Get understanding of the project
 		- Hierarchy with subsystems and component
 		- System building blocks
@@ -39,27 +40,10 @@ Exam
 			- Material elements (Structure and process material)
 			- Energy elements, provide energy/power
 	
-	1. Requirements Analysis — identifies why requirements are needed,
-	2. Functional Definition — translates requirements into functions,
-	3. Physical Definition — synthesizes alternative physical implementations, and
-	4. Design Validation — models the system environment.
-	
-
-	Clear statements of objectives.
-	› State the initial problem and the need that is to be satisfied and what is required to achieve this.
-	› Define the characteristics of the set of acceptable solutions.
-
-
-	Check with multiple different specialist who should work on the job - get their input.
 
 	Check risk
 
 	OBS: Missing requirements have a domino effect - cost removing a defect increases exponentially
-
-
-	- Components are the parts of a system
-	- Attributes are the properties (characteristics, configuration, qualities, powers, constraints and states)
-	- Relationships between pairs of linked components are the result of engineering the attributes of both components so that the pairs operates together effectively in contributing to the system’s purpose(s)
 
 
 (2) Clarify the important characteristics of system requirements and explain how requirements are managed during the life-cycle of a system.

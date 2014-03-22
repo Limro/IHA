@@ -1,0 +1,273 @@
+##########################################################
+List what CAN be explained - only do a few
+##########################################################
+
+1. Contents of a good specification
+
+	- Check that all parts match and everything is included
+	- Validate that stakeholders are happy (customer, user, developer)
+
+	- Write down business goals!
+	- Understandable for the customer
+		- Word != meaning
+		- Meaning != consequences for business
+		- Show similar system/ pilot test.
+
+	- Correct: was that customer's actual need
+	- Unambiguous: Misunderstood
+	- Complete: Get all Non-trivial requirements written (Also get GUI in Task and Support)
+	- Consistent: No conflicts
+	- Verifiable: A "nice" user interface, isn't measurable.
+	- Modifiable: Categorize, prioritize and static labels in SRS
+	- Traceable: Forward and backward
+
+	- Describe data (Do CRUDO check on tasks vs. )
+	- Quality (performance, security, reliability, availability, interoperability, usability)
+	- ID on req.
+	- Risk assessment
+	- Tests
+	- Run through check list
+
+	(1)
+	Agenda:
+	- Stakeholders
+	- 7 checks
+	- Data
+	- Quality
+
+	Excellent:
+	- Structured + agenda
+	- Good with stakeholders
+	- Good with examples
+	- Good combination of practice and theory
+	- Good at keeping time
+	- Good body language
+
+	Remember:
+	- State it's an informal spec
+	- Happy stakeholders can't all be happy
+	- Requirement level, domain level
+	- Tendering process from proposal to ...
+	- Perspective / ref to checklist etc.
+	- CRUDO drawing
+	- Template for specs missing
+	- Write more on the board
+	- Verify must be "Verifyable"
+	- More references to other parts
+	- Short sentence
+
+
+2. Discuss pros and cons with informal specification
+	# Agenda
+		- Informal (hvad er)
+		- UC vs. Tasks
+		- Informal Pros
+		- Informal Cons
+
+	- Informal spec er beskrivende ord.
+		Task description eller IEEE standard
+		- Formal spec beskrives med matematisk tilgang og bruges abstrakt - mere i spg. 3
+
+	Use Case:
+		- Trigger (kan være meget uklar)
+		- Aktor gør dit, computer gør dat
+		- Opfinder dialogbokse, som kan være skadelige for udviklingen
+		- Kan indeholde trivielle detaljer
+		- Bruges hvis der bygges noget helt fra scratch
+		- Gemmer business goals
+		- Skabelon kan give forkerte requirements
+
+	Tasks:
+		- Tasks løses af bruger OG computer
+		- Mange løsningsmuligheder
+		- Frit flow (Meget nem at gøre dynamisk [MS Word eksempel])
+		- Kunden kan se en løsningsmulighed
+		- Bruges hvis det erstatter noget
+		- Stor reuse i skabelon for maintenance, dokumentation, useability og security
+		- Work areas opdeler overordnede problemer
+		- Programmer ikke
+			Ikke noget if this then that
+		- Viser om supplier har løsning
+		- Håndtere mange krav i andre sektioner
+
+	Pros:
+		- Kunden forstår hvad der sker
+			- Alle stakeholders (både supplier og customer) kan være med
+		- Reviews bliver meget nemmere
+		- Ikke abstrakt
+		- Domain-level og high-level can blive udtrykt
+		- Ikke-funktionelle krav (GUI) kan beskrives
+
+	Cons:
+		- Man kan misforstå naturligt sprog (ambiguity)
+		- Hvis der skal bruges sikkerhed kan det kun beskrives og ikke eftervises
+		- Matematik / logik kan ikke bruges
+		- Der skal review'es, som kunne have være repeatable analyser
+		- Giver ikke lige så stor indsigt i softwaren som formal
+		- Giver ikke elegant software design
+		- Implementationsfriheden er besgrænset
+		- Kan ikke direkte overføres til kode
+
+3. Discuss pros and cons with formal specification
+	- What is formals  pec?
+		- Elicitaion of req.
+		- Example for critical system
+
+	- Pros and cons
+		- What does this do for time spend?
+		- Myth (Toyota uses it)
+
+	- Focus on model based techniques
+		- ZDM-SL, Z, B
+		- Mention other techniques
+			- Logic base
+			- Algebraic 
+
+	- Compare with informal spec Question 3
+		- When to use what
+
+	- Compare to CGI guy
+
+4. Relationships between assumptions, specifications and system properties
+	- Do examples with card tower
+	- Assumption: 
+		- Noget man antager skal stå der
+			Vær opmærksom på req. der ikke er eksplisite 
+
+	- Specifications:
+		- Listede krav fra kunden
+
+	- Properties:
+		- Ønsket behaviour af det nye system i miljøet
+
+	- Assumption + Specification => properties
+	- Vi troede tårnet blot skulle være 12 ft høj, men antog 15 var fint (14 limit)
+		
+	- Elicitation teknik (Spg 7):
+		- Lav brainstorm
+		- Send spørgsmål til brugerne af systemet
+		- Lav brugerinterviews
+		- Fokusgroups
+		- Observation
+		- Task demonstration
+		- Domain workshop
+		- Stakeholder analyse
+
+	- Talk of formal and informal specification to verify you statements
+
+	- Move to Inspection types used for this:
+		- Ad-hoc: Bring expert who can think of many issues for the system
+		- Scenario: When the specs has been written
+
+
+5. Compare different specification techniques
+	- Formal (Description + pros and cons)
+		- Abstract og giver frihed til implementering
+		- Kan gøre brug af matemtik og logik
+		- Kan overføres til kode til implementering
+		- Ingen GUI
+		- MEGET svær at forstå for mening mand
+		- Meget stor insigt i, hvordan software skal være
+		- Bruger ikke reviews men repeatable analyser
+		- Kan ikke misforståes hvis man kan læse det.
+
+
+	- Informal (Description + pros and cons)
+		- Kunden forstår hvad der sker
+			- Alle stakeholders (både supplier og customer) kan være med
+		- Reviews bliver meget nemmere
+		- Ikke abstrakt
+		- Domain-level og high-level can blive udtrykt
+		- Ikke-funktionelle krav (GUI) kan beskrives
+		- Bruger 'shall' og 'should' til at beskrive hvad skal og hvad kunne tænkes
+
+	Use Case:
+		- Bruges hvis der bygges noget helt fra scratch
+		- Trigger (kan være meget uklar)
+		- Aktor gør dit, computer gør dat
+		- Opfinder dialogbokse, som kan være skadelige for udviklingen
+		- Kan indeholde trivielle detaljer
+		- Gemmer business goals
+		- Skabelon kan give forkerte requirements
+
+	Tasks:
+		- Tasks løses af bruger OG computer
+		- Mange løsningsmuligheder
+		- Frit flow (Meget nem at gøre dynamisk [MS Word eksempel])
+		- Kunden kan se en løsningsmulighed
+		- Bruges hvis det erstatter noget
+		- Stor reuse i skabelon for maintenance, dokumentation, useability og security
+		- Work areas opdeler overordnede problemer
+		- Programmer ikke
+			Ikke noget if this then that
+		- Viser om supplier har løsning
+		- Håndtere mange krav i andre sektioner
+
+	- IEEE template (Ucs + pros and cons)
+
+	- Task Description(Tasks + pros and cons)
+
+
+6. Reviewing and validating a specification
+	- Why important
+
+	- What a good spec?
+		- 7 checks
+	- Ad-hoc
+		- pros/cons
+		- example
+	- Checklist
+		- pros/cons
+		- example
+	- Scenario
+		- pros/cons
+		- example
+	-CRUDO
+	- How inspection meetin is performed
+	- Review vs. inspection
+	- Formal specification
+	- Tendering
+
+7. The tendering process using specifications
+	- Talk about picture SolIT01 p. 66
+		- Talk about IEEE template and Søren Lauesen's task-description (Write specification)
+			- Will formal or informal specs be best? (customer dependant)
+		
+	- Talk about elicitation process
+		- Lav brainstorm
+		- Send spørgsmål til brugerne af systemet
+		- Lav brugerinterviews
+		- Fokusgroups
+		- Observation
+		- Task demonstration
+		- Domain workshop
+		- Stakeholder analyse
+		
+	- Puplic vs. private sector
+
+8. Requirements elicitation (WAY OF FINDING!!!)
+	- Formulating the goal
+		- How the elecitation process goes
+		- Finding stakeholders
+
+	- Techniques:
+		- interviews
+		- stakeholders analysis
+		- Observation
+		- ... Question 7, step 2 and 3
+
+	- Relate to project
+
+	- Talk about picture SolIT01 p. 66
+
+
+9. Formal VDM-SL specifications
+	- What is VDM-SL
+	- More than one langauge
+	- Example (SMALL) - the one you did
+		- Data types
+		- Functions
+		- Operations
+		- States
+	- Refer to Question 3 and 4
+

@@ -14,11 +14,11 @@ List what CAN be explained - only do a few
 		- Show similar system/ pilot test.
 
 	- Correct: was that customer's actual need
-	- Unambiguous: Misunderstood
-	- Complete: Get all Non-trivial requirements written (Also get GUI in Task and Support)
-	- Consistent: No conflicts
-	- Verifiable: A "nice" user interface, isn't measurable.
-	- Modifiable: Categorize, prioritize and static labels in SRS
+	- Unambiguous: Må ikke kunne misforståes
+	- Complete: Få alle ikke-trivielle krav skrevet (Også GUI)
+	- Consistent: Ingen konflikter
+	- Verifiable: Et "nice" user interface, kan ikke måles.
+	- Modifiable: Kategoriser, prioriter og brug statiske labels i SRS
 	- Traceable: Forward and backward
 
 	- Describe data (Do CRUDO check on tasks vs. )
@@ -108,14 +108,28 @@ List what CAN be explained - only do a few
 		- Implementationsfriheden er besgrænset
 		- Kan ikke direkte overføres til kode
 
+Ikke gjort
 3. Discuss pros and cons with formal specification
-	- What is formals  pec?
-		- Elicitaion of req.
+	- Hvad er formals spec?
+		- Abstrakt representation af system med matematik og concepter
+		- Modeller bruges til at analysere og bevise det kan lade sig gøre og udlede ny behaviour
+		- 
+		- Elicitation of req.
 		- Example for critical system
 
-	- Pros and cons
-		- What does this do for time spend?
-		- Myth (Toyota uses it)
+	- Pros og cons
+		- (Pro) Kan reducere udviklingproblemer op til 2½ gange mindre (IBM: CICS 198X)
+		- (Pro) Pris på udvikling kan falde (IBM: CICS 198X)
+		- (Pro) Kan opdage fejl i algoritmer (INMOS)
+		- (Pro) Kvaliteten af software meget højrere (Pracis)
+		- (Pro) Kunder kan blive mere tilfredse (Siemens)
+		- (Pro) Reviews er ikke behøvet pga. repeatable analyser
+		
+		- (Con) Kunden skal have kendskab til algebra og modellering
+		- (Con) Alle stakeholders kan ikke være med
+		- (Con) Abstrakt - måske godt
+		- (Con) Kan ikke udtrykke domain-level go high level goals
+		- (COn) Kan ikke beskrive GUI
 
 	- Focus on model based techniques
 		- ZDM-SL, Z, B
@@ -129,7 +143,7 @@ List what CAN be explained - only do a few
 	- Compare to CGI guy
 
 4. Relationships between assumptions, specifications and system properties
-	- Do examples with card tower
+	- Eksempel med korttårn
 	- Assumption: 
 		- Noget man antager skal stå der
 			Vær opmærksom på req. der ikke er eksplisite 
@@ -141,7 +155,7 @@ List what CAN be explained - only do a few
 		- Ønsket behaviour af det nye system i miljøet
 
 	- Assumption + Specification => properties
-	- Vi troede tårnet blot skulle være 12 ft høj, men antog 15 var fint (14 limit)
+		- Vi troede tårnet blot skulle være 12 ft høj, men antog 15 var fint (14 limit)
 		
 	- Elicitation teknik (Spg 7):
 		- Lav brainstorm
@@ -153,13 +167,20 @@ List what CAN be explained - only do a few
 		- Domain workshop
 		- Stakeholder analyse
 
-	- Talk of formal and informal specification to verify you statements
+	- Afhængigt af projektet vælges (in)formal specification, der underbygger statements
 
-	- Move to Inspection types used for this:
-		- Ad-hoc: Bring expert who can think of many issues for the system
-		- Scenario: When the specs has been written
-
-
+	- Inspektionstyper:
+		- Ad-hoc: 
+			- Tag en ekspert med, som kan belyse problemer for systemet
+			- Manglende funktionallitet, performance, interfaces og omgivelser
+			- Find tvetydig, ikke-konsistent info, forkerte facts osv.
+		- Scenario:
+			- Se på data typer og deres informationer
+			- Se på data for funktionelle krav
+			- Find in- og output for funktionelle krav
+			- Find system events for funktionelle krav
+			- Find precision og reponsetids krav (ambigiuos / tvetydige)
+			
 5. Compare different specification techniques
 	- Formal (Description + pros and cons)
 		- Abstract og giver frihed til implementering
@@ -207,33 +228,60 @@ List what CAN be explained - only do a few
 
 	- Task Description(Tasks + pros and cons)
 
-
 6. Reviewing and validating a specification
-	- Why important
+	- Hvorfor?
+		- Det er aldrig rigtigt første gang
+		- Man finder mange ting der mangler
+		- Man finder forkerte ting
 
-	- What a good spec?
-		- 7 checks
-	- Ad-hoc
-		- pros/cons
-		- example
-	- Checklist
-		- pros/cons
-		- example
-	- Scenario
-		- pros/cons
-		- example
-	-CRUDO
-	- How inspection meetin is performed
+	- Hvad er en god spec?
+		- Correct: was that customer's actual need
+		- Unambiguous: Må ikke kunne misforståes
+		- Complete: Få alle ikke-trivielle krav skrevet (Også GUI)
+		- Consistent: Ingen konflikter
+		- Verifiable: Et "nice" user interface, kan ikke måles.
+		- Modifiable: Kategoriser, prioriter og brug statiske labels i SRS
+		- Traceable: Forward and backward
+
 	- Review vs. inspection
+		- Review holdes med Stakeholders
+			- Review i spg 4
+		- Inspection gør ikke nødvendigvis
+			- Her skal også findes løsning
+			- Alt noteres
+
+	- Ad-hoc (inspektion):
+		- (Pro) Tag en ekspert med, som kan belyse problemer for systemet
+		- (Pro) Manglende funktionallitet, performance, interfaces og omgivelser
+		- (Pro) Find tvetydig, ikke-konsistent info, forkerte facts osv.
+		- (Con) Finder kun hvad der ses
+		- (Con) Inspection team vurderer det / ikke stakeholders
+
+	- Checklist (inspektion):
+		- (Pro) Samme som Ad-hoc, blot mere systematisk
+		- (Con) Meget lang
+		- (Pro/Con) Typisk lavet til et specielt område inden for firmaets arbejde
+
+	- Scenario (Flere perspektiver):
+		- Se på data typer og deres informationer
+		- Se på data for funktionelle krav
+		- Find in- og output for funktionelle krav
+		- Find system events for funktionelle krav
+		- Find precision og reponsetids krav (ambigiuos / tvetydige)
+		- (Pro) Meget analytisk
+		- (Con) Ingen list at køre igennem
+
+	- CRUDO (Tegn!!)
+	
 	- Formal specification
-	- Tendering
+		- Design og udfør et VDM-program og flow
 
 7. The tendering process using specifications
 	- Talk about picture SolIT01 p. 66
 		- Talk about IEEE template and Søren Lauesen's task-description (Write specification)
 			- Will formal or informal specs be best? (customer dependant)
 		
-	- Talk about elicitation process
+	- Tekniker 
 		- Lav brainstorm
 		- Send spørgsmål til brugerne af systemet
 		- Lav brugerinterviews
@@ -244,30 +292,57 @@ List what CAN be explained - only do a few
 		- Stakeholder analyse
 		
 	- Puplic vs. private sector
+		- I den private sektor er overstående fint
+		- I den offentlige sektor er alle spørgsmål offentlige
+		- Offentlige skal vudere ud fra fastsatte mål (x% pris, y% leveringstid, z% kvalitet)
 
 8. Requirements elicitation (WAY OF FINDING!!!)
+	- Formuler business goals
+		- Kan ikke blot læses af needs (sjældent)
+		- Tower-projekt
+
+	- Tekniker 
+		- Lav brainstorm
+		- Send spørgsmål til brugerne af systemet
+		- Lav brugerinterviews
+		- Fokusgroups
+		- Observation
+		- Task demonstration
+		- Domain workshop
+		- Stakeholder analyse
+
 	- Formulating the goal
 		- How the elecitation process goes
 		- Finding stakeholders
 
-	- Techniques:
-		- interviews
-		- stakeholders analysis
-		- Observation
-		- ... Question 7, step 2 and 3
-
-	- Relate to project
-
 	- Talk about picture SolIT01 p. 66
-
 
 9. Formal VDM-SL specifications
 	- What is VDM-SL
+		- s. 24, 63
+		- Typer specificer data
+		- Funktioner specificer opførelse
+		- Bruges til at opstille modeller for systemer
+
 	- More than one langauge
+		- Model-baseret (VDM)
+		- Algebra
+		- Transition-baseret
+		- Process algebra
+		- Logik-baseret
+		- Reaktive
+
 	- Example (SMALL) - the one you did
 		- Data types
 		- Functions
 		- Operations
 		- States
+
+		- Tilføj CardId (p. 3, cs. 5)
+		- Gør dem alle unikke (p. 4, cs. 6)
+		- Map gæsterne til et SÆT af nøgler (kan være 1) og søg for ingen har de samme (p. 4, cs. 7)
+		- Opret kopi af nøgle med unikt ID (p.4 cs. 8)
+		- 
+
 	- Refer to Question 3 and 4
 

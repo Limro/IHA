@@ -1,0 +1,114 @@
+\documentclass[Main]{subfiles}
+
+\begin{document}
+\section*{Exercise 3.3}
+
+A binary linear cyclic code $C_{cyc}(n, k)$ has code length $n = 7$ and generator polynomial $g(X) = 1 + X^2 + X^3 + X^4$.
+
+\paragraph{(a) Find the code rate, the generator and parity check matrices of the code in
+systematic form, and its minimum Hamming distance.}
+
+To find the code rate, we must know the length of the message length.
+The message length is defined $k$.
+The polynomial, $g(x)$, is in general defined as $g(x) = g_0 + g_1\cdot x^1 + \ldots + x^r$.
+The exercise gives us $g(x)$ where $r = 4$.
+
+\begin{align}
+\text{Coding rate} = \dfrac{k}{n} = \dfrac{4}{7} = 0.428
+\end{align}
+The generator matrix is found with Matlab, shown in \codeTitle \ref{lst:3.3a}.
+
+\begin{lstlisting}[caption=Matlab script for exercise 3.3 a, style=Code-Matlab, label=lst:3.3a]
+n = 7;
+r = 4;
+k = n-r;
+
+pol = cyclpoly(n,k);
+[parmat, genmat, length] = cyclgen(n, pol, 'system');
+
+codingrate = k/n
+H = ParityMatrix(parmat)
+dmin = HammingDistance(H)
+\end{lstlisting}
+The function \code{ParityMatrix(parmat)} is defined in \codeTitle \ref{lst:Parity}.
+
+\begin{lstlisting}[caption=Matlab script a parity matrix, style=Code-Matlab, label=lst:Parity]
+function [res] = ParityMatrix(G)
+%Parity check matrix.
+
+[r, c] = size(G);
+nk = c - log2(r);
+P = G(:,1:nk);
+EyeSize = length(P(1,:));
+[res] = [eye(EyeSize) P'];
+
+end
+\end{lstlisting}
+The function \code{HammingDistance(H)} is defined in \codeTitle \ref{lst:Hamming}.
+It looks at all vectors in a matrix, finds the weight of all combinations and return the lowest.
+
+\begin{lstlisting}[caption=Matlab script for minimum Hamming distance, style=Code-Matlab, label=lst:Hamming]
+function dmin = HammingDistance(A)
+% Calculate the Hamming distance of every two vectors of a vector.
+
+s = length(A(:,1));
+dmin = 0;
+temp = 0;
+for i = 1:s
+    for j = i+1 : s
+        temp = HammingWeight(A(i,:), A(j,:));
+    end
+    
+    if temp < dmin
+        dmin = temp;
+    elseif dmin == 0 %First run goes here
+        dmin = temp;
+    end
+end
+
+end
+\end{lstlisting}
+The function \code{HammingWeight(A, B)} is defined in \codeTitle \ref{lst:HammingW}.
+It looks at each bit in two vectors and compares them, returning the weight of the two vectors.
+
+\begin{lstlisting}[caption=Matlab script for Hamming Weight, style=Code-Matlab, label=lst:HammingW]
+function dist = HammingWeight(A, B)
+% Calculate the Hamming weight of a vector.
+
+dist = 0;
+temp = 0;
+for i = 1:length(A)
+    if A(1,i) ~=  B(1,i)
+        temp = temp + 1;
+    end
+    
+    if temp == 0
+        %The zero vector
+    elseif temp > dist
+        dist = temp;
+    elseif dist == 0 %First run goes here
+        dist = temp;
+    end
+end
+
+end
+\end{lstlisting}
+The result is seen below:
+\\
+\\
+\code{H = }
+\begin{ArgMat}
+1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 1 & 1 & 0 & 1 & 1
+\end{ArgMat}
+\\
+\\
+$d_{min} = 4$
+
+
+\paragraph{(b) If all the information symbols are '1's, what is the corresponding code vector in its systematic form?}
+
+\end{document}

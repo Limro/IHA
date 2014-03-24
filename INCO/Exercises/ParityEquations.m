@@ -1,5 +1,5 @@
 function [res] = ParityEquations(M)
-%Systematic form fo block code parity equations
+%Systematic form for block code parity equations
 
 [r, c] = size(M);
 mv = sym(zeros(1, r));

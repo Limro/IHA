@@ -3,9 +3,9 @@ function [H, P] = ParityMatrix(G)
 % Construct a ParityMatrix from a generator matrix, G
 
 [r, c] = size(G);
-nk = c - log2(r);
+nk = c - r;
 P = G(:,1:nk);
-EyeSize = length(P(1,:));
-H = [eye(EyeSize) P'];
+EyeSize = eye(nk, nk);
+H = [EyeSize P'];
 
 end

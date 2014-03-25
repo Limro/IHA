@@ -1,0 +1,58 @@
+\documentclass[Main]{subfiles}
+
+\begin{document}
+
+
+\section*{Problem 3}
+
+\paragraph{1. How many valid codewords of this code?}
+The number of valid codewords are found witht he equation $2^k$.
+Since the generator matrix is of size $G(n,k) = G(15,5)$ we have valid codewords for $2^5 = 32$.
+
+
+\paragraph{2. Is this code cyclic? Explain the reasons.}
+\dots
+
+
+\paragraph{3. Convert the generator matrix in systematic form.}
+The matrix can be converted by reducing the rows as in \codeTitle \ref{lst:syste}
+
+
+\begin{lstlisting}[caption=Generator matrix in systematic form, style=Code-Matlab, label=lst:syste]
+G = [ ...
+    1 1 1 0 1 1 0 0 1 0 1 0 0 0 0;
+    0 1 1 1 0 1 1 0 0 1 0 1 0 0 0;
+    0 0 1 1 1 0 1 1 0 0 1 0 1 0 0;
+    0 0 0 1 1 1 0 1 1 0 0 1 0 1 0;
+    0 0 0 0 1 1 1 0 1 1 0 0 1 0 1];
+
+Systematic = mod(rref(G),2);
+[r,c] = size(Systematic);
+P = Systematic(:,r+1:c);
+Gsys = [eye(r,r) P]
+\end{lstlisting}
+\code{Gsys = }
+\begin{ArgMat}
+1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0\\
+ 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1\\
+ 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 1 & 1 & 0\\
+ 0 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 1 & 1\\
+ 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1
+\end{ArgMat}
+
+
+
+
+\paragraph{4. Encode the source message m = (10110) in a systematic code, find the code vector c.}
+
+To find the code vector $c$, multiply $m$ with the new generator matrix as in \codeTitle \ref{lst:vector}
+
+\begin{lstlisting}[caption=Code vector, style=Code-Matlab, label=lst:vector]
+m = [1 0 1 1 0];
+c = mod(m * Gsys,2)
+\end{lstlisting}
+\code{c = [ 1 0 1 1 0 0 1 0 1 0 0 0 0 1 1]}
+
+
+
+\end{document}

@@ -41,12 +41,10 @@ H = ParityMatrix(G)
 \end{lstlisting}
 \code{H = }
 \begin{ArgMat}
- 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1\\
- 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0\\
- 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 1\\
- 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 1\\
- 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0\\
- 0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0
+1 & 0 & 0 & 0 & 0 & 1 & 1 & 1\\
+0 & 1 & 0 & 0 & 1 & 1 & 1 & 0\\
+0 & 0 & 1 & 0 & 1 & 1 & 0 & 1\\
+0 & 0 & 0 & 1 & 1 & 0 & 1 & 1
 \end{ArgMat}
 \\
 \\
@@ -55,13 +53,13 @@ The function \code{ParityMatrix(G)} is implemented as in \codeTitle \ref{lst:Par
 \begin{lstlisting}[caption=ParityMatrix, style=Code-Matlab, label=lst:Parity]
 function [H, P] = ParityMatrix(G)
 % Parity check matrix.
-% Construct a ParityMatrix from a generator matrix, G
+% Construct a Parity Matrix from a generator matrix, G
 
 [r, c] = size(G);
-nk = c - log2(r);
+nk = c - r;
 P = G(:,1:nk);
-EyeSize = length(P(1,:));
-H = [eye(EyeSize) P'];
+EyeSize = eye(nk, nk);
+H = [EyeSize P'];
 
 end
 \end{lstlisting}
@@ -107,7 +105,14 @@ HammingMin = HammingDistance(H)
 
 \paragraph{4. Calculate the syndrome vector for the received vector $r = (01110110)$ and find the error location. Decode the received vector.}
 
+To calculate the syndrome vector, multiply the receive vector with the transposed parity check matrix, as shown in \ref{lst:syndrome}
 
+
+\begin{lstlisting}[caption=Syndrome vector, style=Code-Matlab, label=lst:syndrome]
+r = [0 1 1 1 0 1 1 0];
+syndrome = mod(r*H',2)
+\end{lstlisting}
+\code{syndrome = [0 1 0 0]}
 
 
 

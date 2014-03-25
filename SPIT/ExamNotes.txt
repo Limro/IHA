@@ -108,14 +108,24 @@ List what CAN be explained - only do a few
 		- Implementationsfriheden er besgrænset
 		- Kan ikke direkte overføres til kode
 
-Ikke gjort
 3. Discuss pros and cons with formal specification
-	- Hvad er formals spec?
+	#Agenda#
+	- Hvad er formal spec
+	- Pro & cons
+	- Alternativer
+
+	- Hvad er formal spec?
 		- Abstrakt representation af system med matematik og concepter
 		- Modeller bruges til at analysere og bevise det kan lade sig gøre og udlede ny behaviour
 		- 
 		- Elicitation of req.
 		- Example for critical system
+
+	- Focus on model based techniques
+		- ZDM-SL, Z, B
+		- Mention other techniques
+			- Logic base
+			- Algebraic 
 
 	- Pros og cons
 		- (Pro) Kan reducere udviklingproblemer op til 2½ gange mindre (IBM: CICS 198X)
@@ -131,18 +141,16 @@ Ikke gjort
 		- (Con) Kan ikke udtrykke domain-level go high level goals
 		- (COn) Kan ikke beskrive GUI
 
-	- Focus on model based techniques
-		- ZDM-SL, Z, B
-		- Mention other techniques
-			- Logic base
-			- Algebraic 
-
-	- Compare with informal spec Question 3
+	- Compare with informal spec Question 2
 		- When to use what
 
-	- Compare to CGI guy
-
 4. Relationships between assumptions, specifications and system properties
+	# Agenda
+		- Korttårn
+		- A + S => P
+		- Elcitation
+		- Inspektionstyper (informal)
+
 	- Eksempel med korttårn
 	- Assumption: 
 		- Noget man antager skal stå der
@@ -182,6 +190,14 @@ Ikke gjort
 			- Find precision og reponsetids krav (ambigiuos / tvetydige)
 			
 5. Compare different specification techniques
+	# Agenda:
+		- Formal (Pros og cons)
+		- Informal (Pros og cons)
+		- IEEE standard
+			- Use Case
+		- Task description
+			- Tasks
+
 	- Formal (Description + pros and cons)
 		- Abstract og giver frihed til implementering
 		- Kan gøre brug af matemtik og logik
@@ -229,6 +245,14 @@ Ikke gjort
 	- Task Description(Tasks + pros and cons)
 
 6. Reviewing and validating a specification
+	# Agenda
+		- Hvorfor
+		- God spec
+		- Review vs, Inspektion
+		- Inspektionstyper
+		- CRUDO
+		- Formal spec
+
 	- Hvorfor?
 		- Det er aldrig rigtigt første gang
 		- Man finder mange ting der mangler
@@ -277,6 +301,12 @@ Ikke gjort
 		- Design og udfør et VDM-program og flow
 
 7. The tendering process using specifications
+	# Agenda
+		- Elicitation
+		- Teknikker
+		- Public vs. privat sektor
+		- Specifikations typer (spg. 5)
+
 	- Talk about picture SolIT01 p. 66
 		- Talk about IEEE template and Søren Lauesen's task-description (Write specification)
 			- Will formal or informal specs be best? (customer dependant)
@@ -297,6 +327,12 @@ Ikke gjort
 		- Offentlige skal vudere ud fra fastsatte mål (x% pris, y% leveringstid, z% kvalitet)
 
 8. Requirements elicitation (WAY OF FINDING!!!)
+	# Agenda
+		- Elicitation
+		- Teknikker
+		- Formuler mål
+		- Specifikations typer (spg. 5)
+
 	- Formuler business goals
 		- Kan ikke blot læses af needs (sjældent)
 		- Tower-projekt
@@ -318,6 +354,12 @@ Ikke gjort
 	- Talk about picture SolIT01 p. 66
 
 9. Formal VDM-SL specifications
+	# Agenda 
+		- Hvad er VDM-SL
+		- Formal sprog
+		- Eksempel
+		- Informelle og formelle pros and cons
+
 	- What is VDM-SL
 		- s. 24, 63
 		- Typer specificer data

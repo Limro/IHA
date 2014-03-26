@@ -1,4 +1,5 @@
 clc, clear
+addpath('C:\Users\Rasmus\Documents\IHA\INCO\Exercises')
 
 A = [0.2 ; 0.8];
 B = [0.8 0.1 0.1 ; 0.1 0.1 0.8];
@@ -20,7 +21,13 @@ HY = Hy(A, B)
 IXY = HY - HYX
 
 %capacity of the BSC
-Cs = 1 - HYX
+%Cs = 1 - HYX
+
+%capacity of the BEC
+Cs = Hmax(A, B) - HYX
+
+Effeciency = IXY/Cs*100
+
 
 %%
 P = [0 1 1 1; 1 1 1 0; 1 1 0 1;1 0 1 1];
@@ -32,6 +39,10 @@ HammingMin = HammingDistance(H)
 r = [0 1 1 1 0 1 1 0];
 syndrome = mod(r*H',2)
 
+e = [syndrome 0 0 0 0];
+c = mod(r+e,2)
+
+
 %% P3
 
 G = [ ...
@@ -41,13 +52,16 @@ G = [ ...
     0 0 0 1 1 1 0 1 1 0 0 1 0 1 0;
     0 0 0 0 1 1 1 0 1 1 0 0 1 0 1]
 
+cyc = [ 1 zeros(1,size(G,2)-1) 1];
+[q,p] = gfdeconv(cyc, G(1,:), 2)
+
 Systematic = mod(rref(G),2)
 [r,c] = size(Systematic);
 P = Systematic(:,r+1:c);
-Gsys = [eye(r,r) P]
+Gsys = [P eye(r,r)]
 
 m = [1 0 1 1 0];
-c = mod(m * Gsys,2)
+c = mod(m*Gsys,2)
 
 %% P4
 
@@ -60,15 +74,11 @@ g = [1 1 0 0 1]; %g(x)=1+x+x^4
 m = log2(length(E));
 syms a x;
 
-b1 = conjugateRoots2(V, a)
-b2 = conjugateRoots2(V, a^3)
-b3 = conjugateRoots2(V, a^5)
-b4 = conjugateRoots2(V, a^7)
+%b1 = conjugateRoots2(V, a)
+%b2 = conjugateRoots2(V, a^3)
 
 phi(1,1) = minimumPoly(E,P,V,a^1);
 phi(2,1) = minimumPoly(E,P,V,a^3);
-phi(3,1) = minimumPoly(E,P,V,a^5);
-phi(4,1) = minimumPoly(E,P,V,a^7);
 
 pretty(phi)
 
@@ -78,23 +88,6 @@ generator = mod(expand(pol),2)
 g = [1 0 0 0 1 0 1 1 1];
 r = [0 0 0 1 1 1 1 1 1 1 0 0 0 1 1];
 
-%Calculate Syndrom vector
-[parmat,genmat,h] = cyclgen(n,g,'system');
-syndrome = mod(r*parmat',2)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+t = 2;
+SyndromeVectors(E, P, r, t)
 

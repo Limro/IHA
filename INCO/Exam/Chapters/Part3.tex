@@ -11,7 +11,23 @@ Since the generator matrix is of size $G(n,k) = G(15,5)$ we have valid codewords
 
 
 \paragraph{2. Is this code cyclic? Explain the reasons.}
-\dots
+It is.
+A theorem says a cyclic code has no remainder of a division of $X^n+1$ with the generator vector, as shown in \codeTitle \ref{cyc}
+
+\begin{lstlisting}[caption=Remainder of cyclic division, style=Code-Matlab, label=lst:cyc]
+G = [ ...
+    1 1 1 0 1 1 0 0 1 0 1 0 0 0 0;
+    0 1 1 1 0 1 1 0 0 1 0 1 0 0 0;
+    0 0 1 1 1 0 1 1 0 0 1 0 1 0 0;
+    0 0 0 1 1 1 0 1 1 0 0 1 0 1 0;
+    0 0 0 0 1 1 1 0 1 1 0 0 1 0 1]
+
+cyc = [ 1 zeros(1,size(G,2)-1) 1];
+[~, p] = gfdeconv(cyc, G(1,:), 2)
+\end{lstlisting}
+\code{p = 0}.
+\\
+This means, that the division gives us the remainder of 0, which proves this is a cyclic code.
 
 
 \paragraph{3. Convert the generator matrix in systematic form.}
@@ -26,18 +42,18 @@ G = [ ...
     0 0 0 1 1 1 0 1 1 0 0 1 0 1 0;
     0 0 0 0 1 1 1 0 1 1 0 0 1 0 1];
 
-Systematic = mod(rref(G),2);
+Systematic = mod(rref(G),2)
 [r,c] = size(Systematic);
 P = Systematic(:,r+1:c);
-Gsys = [eye(r,r) P]
+Gsys = [P eye(r,r)]
 \end{lstlisting}
 \code{Gsys = }
 \begin{ArgMat}
-1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0\\
- 0 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1\\
- 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 1 & 1 & 0\\
- 0 & 0 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 1 & 1\\
- 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1
+ 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0\\
+ 0 & 1 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0\\
+ 1 & 1 & 0 & 1 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0\\
+ 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 0\\
+ 1 & 1 & 0 & 1 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 1
 \end{ArgMat}
 
 
@@ -51,7 +67,7 @@ To find the code vector $c$, multiply $m$ with the new generator matrix as in \c
 m = [1 0 1 1 0];
 c = mod(m * Gsys,2)
 \end{lstlisting}
-\code{c = [ 1 0 1 1 0 0 1 0 1 0 0 0 0 1 1]}
+\code{c = [ 0 1 0 1 0 0 0 0 1 1 1 0 1 1 0]}
 
 
 

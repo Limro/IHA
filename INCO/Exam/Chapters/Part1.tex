@@ -58,7 +58,7 @@ The function \texttt{Hy(A,B)} is defined in \codeTitle \ref{lst:Hy}
 \begin{lstlisting}[caption=Output entropy -- H(Y), style=Code-Matlab, label=lst:Hy]
 function res = Hy(A, B)
 % Output entropy, H(Y)
-% H(Y) = P(y_1)*log2(1/P(y_1) + P(y_n)*log2(1/P(y_n)
+% H(Y) = P(y_1)*log2(1/P(y_1)) + ... + P(y_n)*log2(1/P(y_n))
 % A = P(X) (all values)
 % B = Channel describtion
 
@@ -78,10 +78,10 @@ and with \codeTitle \ref{lst:Py}
 \begin{lstlisting}[caption=P(Y), style=Code-Matlab, label=lst:Py]
 function res = Py(A, B, y)
 % A = P(X) (all values)
-% B = Channel describtion
+% B = Channel description
 % y = Which y to be calculated
 % P(Y) = P_11 * P(x_1) + P_21 * P(x_2) +...+ P_u1 * P(x_u)
-% Probability that a given sumbol is present at the channel ouput
+% Probability that a given symbol is present at the channel output
 
     value = 0;
     for i = 1:length(A(:))
@@ -108,7 +108,7 @@ H(y) &= \sum_j P(y_i)log_2 \dfrac{1}{P(y_j)}\\
 %	&= 0.9341\\
 H(y,x) &= \sum_{i,j} P(x_i, y_i)log_2\dfrac{1}{P(y_j/x_i)}\\
 I(x,y) &= H(y) - H(y,x)	
-%ChannelCapacity &= 1- H(y/x)\\
+%ChannelCapacity &= H_{max}(Y)- H(y/x)\\
 %	&= 0.1887
 \end{align}
 
@@ -213,20 +213,19 @@ end
 \paragraph{4.  What is the channel capacity?}
 The channel capacity can be calculated as 
 \begin{align}
-ChannelCapacity &= 1- H(Y/X)\\
-	&= 1 - 0.9219\\
-	&= 0.0781
+C_s &= I_{max}(X,Y)\\
+	&= H_{max}(Y) - H(Y/X)\\
+	&= 1.3690 - 0.9219\\
+	&= 0.4471
 \end{align}
 
 
 \paragraph{5.  What is the channel efficiency?}
 The channel efficiency can be calculated as:
 \begin{align}
-eff &= \dfrac{H(x)}{H_{max}(x)} \\
-H_{max}(x) &= \dfrac{1}{M} \sum log_2 M\\
-	&= log_2(5)\\
-	&= \dfrac{0.7219}{log_2(5)} \cdot 100\% \\
-	&= 31.1\%
+eff &= \dfrac{I(Y/X)}{C_s} \\
+	&= \dfrac{0.3}{0.4471} \cdot 100\% \\
+	&= 67.1\%
 \end{align}
 
 \end{document}

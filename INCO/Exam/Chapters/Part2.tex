@@ -105,7 +105,7 @@ HammingMin = HammingDistance(H)
 
 \paragraph{4. Calculate the syndrome vector for the received vector $r = (01110110)$ and find the error location. Decode the received vector.}
 
-To calculate the syndrome vector, multiply the receive vector with the transposed parity check matrix, as shown in \ref{lst:syndrome}
+To calculate the syndrome vector, multiply the receive vector with the transposed parity check matrix, as shown in \codeTitle \ref{lst:syndrome}
 
 
 \begin{lstlisting}[caption=Syndrome vector, style=Code-Matlab, label=lst:syndrome]
@@ -113,6 +113,15 @@ r = [0 1 1 1 0 1 1 0];
 syndrome = mod(r*H',2)
 \end{lstlisting}
 \code{syndrome = [0 1 0 0]}
+\\
+\\
+Bit two needs to be swapped, as shown in \codeTitle \ref{lst:swap}
+
+\begin{lstlisting}[caption=Swapping 2 bit, style=Code-Matlab, label=lst:swap]
+e = [syndrome 0 0 0 0];
+c = mod(r+e,2)
+\end{lstlisting}
+\code{c = (00110110)}.
 
 
 

@@ -74,10 +74,10 @@ First we'll find the parity check matrix, transpose this and multiply it with th
 g = [1 0 0 0 1 0 1 1 1];
 r = [0 0 0 1 1 1 1 1 1 1 0 0 0 1 1];
 
-[parmat,genmat,h] = cyclgen(n,g,'system');
-syndrome = mod(r*parmat',2)
+t = 2;
+SyndromeVectors(E, P, r, t)
 \end{lstlisting}
-\code{syndrome = [ 0 1 1 0 0 0 1 1]}
+\code{SyndromeVectors = [1 1 0 1]}
 
 
 
@@ -96,7 +96,7 @@ The syndrome vector components satisfy the equation below:}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{my-work-here-is-done.jpg}
+\includegraphics[width=0.5\textwidth]{Nothing}
 \caption{My solution}
 \end{figure}
 

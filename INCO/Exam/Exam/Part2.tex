@@ -1,0 +1,130 @@
+\documentclass[Main]{subfiles}
+
+\begin{document}
+
+\section*{Problem 2}
+Consider a systematic code $C_b(8,4)$ whose parity check equations are
+\begin{align*}
+c_0 &= m_1+m_2+m_3\\
+c_1 &= m_0+m_1+m_2\\
+c_2 &= m_0+m_1+m_3\\
+c_3 &= m_0+m_2+m_3
+\end{align*}
+where $m_0, m_1, m_2$ and $m_3$ are the message bits, and $c_0, c_1, c_2$ and $c_3$ are
+the parity check bits.
+
+\paragraph{1. What is the coding rate of this code?}
+
+The coding rate can be found as:
+\begin{align}
+CodingRate &=\dfrac{k}{n} = \dfrac{4}{8} = 0.5
+\end{align}
+
+\paragraph{2. Find the generator matrix \textbf{G} and the parity check matrix \textbf{H} for this code.}
+
+The generator matrix must look like 
+\\
+G = \begin{ArgMat}
+0 & 1 & 1 & 1 & 1 & 0 & 0 & 0\\
+1 & 1 & 1 & 0 & 0 & 1 & 0 & 0\\
+1 & 1 & 0 & 1 & 0 & 0 & 1 & 0\\
+1 & 0 & 1 & 1 & 0 & 0 & 0 & 1
+\end{ArgMat}
+\\
+With this we can find the parity check matrix as shown in \codeTitle \ref{lst:p2HMat}
+
+
+\begin{lstlisting}[caption=Parity Matrix -- H, style=Code-Matlab, label=lst:p2HMat]
+P = [0 1 1 1; 1 1 1 0; 1 1 0 1;1 0 1 1];
+G = [P eye(4,4)];
+H = ParityMatrix(G)
+\end{lstlisting}
+\code{H = }
+\begin{ArgMat}
+1 & 0 & 0 & 0 & 0 & 1 & 1 & 1\\
+0 & 1 & 0 & 0 & 1 & 1 & 1 & 0\\
+0 & 0 & 1 & 0 & 1 & 1 & 0 & 1\\
+0 & 0 & 0 & 1 & 1 & 0 & 1 & 1
+\end{ArgMat}
+\\
+\\
+The function \code{ParityMatrix(G)} is implemented as in \codeTitle \ref{lst:Parity}
+
+\begin{lstlisting}[caption=ParityMatrix, style=Code-Matlab, label=lst:Parity]
+function [H, P] = ParityMatrix(G)
+% Parity check matrix.
+% Construct a Parity Matrix from a generator matrix, G
+
+[r, c] = size(G);
+nk = c - r;
+P = G(:,1:nk);
+EyeSize = eye(nk, nk);
+H = [EyeSize P'];
+
+end
+\end{lstlisting}
+
+
+
+\paragraph{3. What's the minimum distance of this code? Explain how find the
+minimum distance.}
+To find the minimum distance of a code count the difference of each bit in two vectors.
+The smallest is the minimum distance.
+\\
+This can be done with in \texttt{Matlab}:
+
+\begin{lstlisting}[caption=Minimum Hamming distance, style=Code-Matlab, label=lst:dmin]
+function dmin = HammingDistance(A)
+% Calculate the Hamming distance of every two vectors of a matrix.
+
+s = length(A(:,1));
+dmin = 0;
+temp = 0;
+for i = 1:s
+    for j = i+1 : s
+        temp = HammingWeight(A(i,:), A(j,:));
+    end
+    
+    if temp < dmin
+        dmin = temp;
+    elseif dmin == 0 %First run goes here
+        dmin = temp;
+    end
+end
+
+end
+\end{lstlisting}
+Using this function:
+
+\begin{lstlisting}[caption=Calculate the minimum distance, style=Code-Matlab, label=lst:]
+HammingMin = HammingDistance(H)
+\end{lstlisting}
+\code{HammingMin = 4}.
+
+
+
+\paragraph{4. Calculate the syndrome vector for the received vector $r = (01110110)$ and find the error location. Decode the received vector.}
+
+To calculate the syndrome vector, multiply the receive vector with the transposed parity check matrix, as shown in \codeTitle \ref{lst:syndrome}
+
+
+\begin{lstlisting}[caption=Syndrome vector, style=Code-Matlab, label=lst:syndrome]
+r = [0 1 1 1 0 1 1 0];
+syndrome = mod(r*H',2)
+\end{lstlisting}
+\code{syndrome = [0 1 0 0]}
+\\
+\\
+Bit two needs to be swapped, as shown in \codeTitle \ref{lst:swap}
+
+\begin{lstlisting}[caption=Swapping 2 bit, style=Code-Matlab, label=lst:swap]
+e = [syndrome 0 0 0 0];
+c = mod(r+e,2)
+\end{lstlisting}
+\code{c = (00110110)}.
+
+
+
+
+
+\end{document}

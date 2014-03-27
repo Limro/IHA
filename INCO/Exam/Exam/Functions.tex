@@ -1,0 +1,58 @@
+\documentclass[Main]{subfiles}
+\begin{document}
+
+
+\begin{align*}
+H(X) &= \sum_{i=1}^M P_i\cdot I_i = \sum_{i=1}^M P_i\cdot log_2\bigg[\dfrac{1}{P_i}\bigg] & \text{Source entropy}
+\\
+\\
+H(Y) &= \sum_j P(y_j)\cdot log_2 \bigg[\dfrac{1}{P(y_j)}\bigg] &\text{Output entropy}
+\\
+\\
+P(Y) &= \sum_{i=1}^u P_{i1} \cdot P(x_i) &\text{Probability of Y}
+\\
+\\
+I(X,Y) &= H(Y) - H(Y/X) &\text{Mutual/trans information}
+\\
+\\
+H(Y/X) &= \sum_{i,j} P(x_i, y_j) \cdot log_2\bigg[\dfrac{1}{P(x_i/y_j)}\bigg] & \text{Equivocation / Output channel entropy}
+\\
+\\
+P(x_i, y_j) &= P(x_i/y_j) \cdot P(y_j) & \text{Joint probability}
+\\
+\\
+P(x_i/y_j) &= \dfrac{P(y_j/x_i)\cdot P(x_i)}{\sum_{i=1}^U P(y_j/x_i)\cdot P(x_i)} & \text{Backward probability}
+\\
+\\
+C_s &= I_{max}(X,Y) & \text{Channel capacity}\\
+	&= H_{max}(Y) - H(Y/X)
+\\
+\\
+\eta &= \dfrac{I(Y/X)}{C_s}	& \text{Effeciency}
+\\
+\\
+Syndrome &= r \circ H^T & \text{Syndrome}
+\\
+\\
+g(x) &= LCM \floor{ \phi_1 \cdot \phi_3 \cdot \ldots \cdot \phi_{2t-1}} & \text{BCH code}
+\end{align*}
+\[
+%\renewcommand\arraystretch{1.2}
+\begin{array}{cccccccccccccccccc}
+&& \text{quotient}, q(x)  &\\
+\cline{3-4}
+\text{receive vector}, r(x) &\vline & \text{generator vector}, g(x)  \\
+\cline{4-4}
+& & & \text{remainder}, p(X)
+\end{array}
+\]
+
+
+\begin{lstlisting}[caption=Polynomial division, style=Code-Matlab, label=lst:PolDiv]
+r = [1 0 1];
+g = [1 1];
+[q, p] = gfdeconv(r, g, 2)
+\end{lstlisting}
+
+
+\end{document}

@@ -21,6 +21,9 @@ H(Y/X) &= \sum_{i,j} P(x_i, y_j) \cdot log_2\bigg[\dfrac{1}{P(x_i/y_j)}\bigg] & 
 P(x_i, y_j) &= P(x_i/y_j) \cdot P(y_j) & \text{Joint probability}
 \\
 \\
+H(X/y_j) &= \sum_{i=1}^U P(x_i/y_j)\cdot log_2 \bigg[\dfrac{1}{P(x_i/y_j)}\bigg] & \text{Posteri entropy}
+\\
+\\
 P(x_i/y_j) &= \dfrac{P(y_j/x_i)\cdot P(x_i)}{\sum_{i=1}^U P(y_j/x_i)\cdot P(x_i)} & \text{Backward probability}
 \\
 \\
@@ -32,10 +35,9 @@ C_s &= I_{max}(X,Y) & \text{Channel capacity}\\
 \\
 \\
 Syndrome &= r \circ H^T & \text{Syndrome}
-\\
-\\
-g(x) &= LCM \floor{ \phi_1 \cdot \phi_3 \cdot \ldots \cdot \phi_{2t-1}} & \text{BCH code}
 \end{align*}
+
+
 \[
 %\renewcommand\arraystretch{1.2}
 \begin{array}{cccccccccccccccccc}
@@ -54,5 +56,51 @@ g = [1 1];
 [q, p] = gfdeconv(r, g, 2)
 \end{lstlisting}
 
+\section{BCH code}
+\begin{table}[H]
+\centering
+\begin{tabular}{llll}
+	& BCH code & Hamming code & RS code\\\hline
+Code length & $n=2^m-1$ & $n = 2^m-1$ & $n=q-1$\\
+Number of parity bits & $n-k \leq mt$ & $n-k=m$ & $n-k=2t$\\
+Minimum Hamming distance & $d_{min} \geq 2t+1$ & $d_{min}=HammingDistance() $ & $d_{min} \geq 2t+1$
+\end{tabular}
+\caption{Slides: BCH\_HO1, p. 5}
+\end{table}
+
+\begin{align*}
+g(x) &= LCM \floor{ \phi_1 \cdot \phi_3 \cdot \ldots \cdot \phi_{2t-1}} & \text{BCH code}
+\\
+\\
+s_i &=r( \alpha^i)=r_0+r_1(\alpha^i)+\ldots+r_{n-1}(\alpha^i)^{n-1} & \text{Syndrome vectors}
+\end{align*}
+
+Minimal polynomial and conjugated roots.
+\begin{align*}
+\phi (X) &= \prod_{i=0}^{e-1}(X + \beta^{2^l})
+\end{align*}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l l}
+\hline
+Conjugate roots & Minimal polynomials \\\hline
+0 & X \\
+1 & 1+X \\
+$\alpha, \alpha^{2}, \ldots$ & $1+X+\ldots$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\paragraph{Error location}
+Find the syndromes!
+\\
+Given an equation: $(s_1^3+s_3)X^2+S_1^2X+s_1= 0$ replace the unknowns with syndromes $\Rightarrow X^2+X+1=0$
+\\
+\\
+Do Magic trick:
+$X^2+(x_1+x_2)X+(x_1\cdot x_2) = 0$ -- notice that both $x_1+x_2=1$ and $x_1 \cdot x_2 = 1$. Here it was '1', but it could be $\alpha^2$\dots
+\\
+This will be the roots and the error location.
 
 \end{document}

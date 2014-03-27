@@ -2,43 +2,51 @@
 
 \begin{document}
 
+\section*{Matlab functions}
 
 \codeTitle \ref{lst:gfPol2Table} will generate a code table for the Galois Field, based on the input polynomial vector.
 The output will be a list of alphas, $\alpha$, (with 0 and 1), what each alpha corresponds to and the binary representation of the alphas.
+
 \begin{lstlisting}[caption=gfPol2Table, style=Code-Matlab, label=lst:gfPol2Table]
-function [minPol b] = minimumPoly(E,P,V,root)
-% Returns the minimum polynomial and the conjugated roots, given the
-% exponential and polynomial form of the Galois Field, and one root.
-% [minPol b] = minimumPoly(E,P,root)
-% See gfPol2Table for E and P parameter.
-%
-% Note: 
-% root = 0 -> X     (Not supported)
-% root = 1 -> 1 + X (Not supported)
-%
-% Ex: 
-% [E V P] = gfPol2Table([...]);
-% [minPol b] = minimumPoly(E,P,a^3);
+function [E V P] = gfPol2Table(primPoly)
+% Returns a GF field table, represented in Exponential form (E), binary
+% vector form(V), and Polynomial form (P).
+% [E V P] = gfPoly2Table(primPoly)
+% primPoly is in binary form in ascending order
+% Ex: Pi(X) = 1 + X^2 + X^5 -> primPoly = [1 0 1 0 0 1]
 
-m = log2(length(E));
-syms X;
-% All conjugate roots for root:
-b = conjugateRoots2(V, root);
+m = length(primPoly)-1;
 
-% Minimal polynomium:
-minPol = 1;
-for i=1:length(b)
-    minPol = minPol * (X+b(i));
-end
- 
-% Substitute all exponential forms with polynomial form and reduce:
-while degree(subs(minPol,X,1)) >= m
-    minPol = subs(minPol,E,P);
-    minPol = expand(minPol);
+% Exponential form:
+E = sym(zeros(2^m,1));
+E(2) = sym(1);
+E(3) = sym(sprintf('a'));
+for i = 4:2^m
+    E(i) = sym(sprintf('a^%d',i-2));
 end
 
-% Modulo 2:
-minPol = mod2partly(minPol);
+% Vector form:
+V = zeros(2^m,m+1);
+V(2,1) = 1;
+primPoly(end) = 0;
+for i=3:2^m
+    V(i,:) = circshift(V(i-1,:),[1 1]);
+    if V(i,end) == 1
+        V(i,end) = 0;
+        V(i,:) =  mod(V(i,:) + primPoly,2);
+    end
+end
+V = V(:,1:m);
+
+% Polynomial form:
+a = E(2:m+1);
+P = sym(zeros(2^m,1));
+for i = 1:2^m
+    temp = 0;
+    for j = 1:m
+        temp = temp + V(i,j)*a(j);
+    end
+    P(i) = temp;
 end
 \end{lstlisting}
 
@@ -46,6 +54,21 @@ end
 
 \codeTitle \ref{lst:minimumPoly} will generate the minimum polynomials for the root, based on the the output of alphas from \codeTitle \ref{lst:gfPol2Table}.
 The ouput is the minimal polynomial and conjugated roots.
+\begin{align*}
+\phi (X) &= \prod_{i=0}^{e-1}(X + \beta^{2^l})
+\end{align*}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{l l}
+\hline
+Conjugate roots & Minimal polynomials \\\hline
+0 & X \\
+1 & 1+X \\
+$\alpha, \alpha^{2}, \ldots$ & $1+X+\ldots$ \\
+\hline
+\end{tabular}
+\end{table}
 
 \begin{lstlisting}[caption=MinimumPoly, style=Code-Matlab, label=lst:minimumPoly]
 function [minPol b] = minimumPoly(E,P,V,root)
@@ -107,7 +130,10 @@ end
 \end{lstlisting}
 
 
-\begin{lstlisting}[caption=Mod2Partly, style=Code-Matlab, label=lst:•]
+\codeTitle \ref{lst:mod2} replaces \texttt{Matlab}'s \code{mod(x,2)} function, because this can't handle a symbolic factor (alpha).
+Besides that, it does exactly the same as modulo 2.
+
+\begin{lstlisting}[caption=Mod2Partly, style=Code-Matlab, label=lst:mod2]
 function y = mod2partly(eq)
 % Returns the input equation, where each element is modulo 2. Matlab mod
 % function does not work if an element consist of 3 multiplicated symbolic
@@ -135,9 +161,10 @@ end
 end
 \end{lstlisting}
 
+\codeTitle \ref{lst:asd} find the conjugated roots of the alpha input, \code{root} in the Galois Field represented in input \code{V}.
+This function makes sure, that the roots won't duplicate in the output.
 
-
-\begin{lstlisting}[caption=Conjugate roots, style=Code-Matlab, label=lst:•]
+\begin{lstlisting}[caption=Conjugate roots, style=Code-Matlab, label=lst:asd]
 function b = conjugateRoots2(V,root)
 % Returns all the conjugated roots, given one root.
 % b = conjugateRoots(root,m).
@@ -183,6 +210,8 @@ end
 
 end
 \end{lstlisting}
+
+
 
 
 

@@ -5,7 +5,7 @@
 
 \codeTitle \ref{lst:gfPol2Table} will generate a code table for the Galois Field, based on the input polynomial vector.
 The output will be a list of alphas, $\alpha$, (with 0 and 1), what each alpha corresponds to and the binary representation of the alphas.
-\begin{lstlisting}[caption=gfPol2Table, style=Code-Matlab, label=lst:1]
+\begin{lstlisting}[caption=gfPol2Table, style=Code-Matlab, label=lst:gfPol2Table]
 function [E V P] = gfPol2Table(primPoly)
 % Returns a GF field table, represented in Exponential form (E), binary
 % vector form(V), and Polynomial form (P).
@@ -48,6 +48,48 @@ for i = 1:2^m
 end
 end
 \end{lstlisting}
+
+
+
+\codeTitle \ref{lst:minimumPoly} will generate the minimum polynomials for the root, based on the 
+
+\begin{lstlisting}[caption=MinimumPoly, style=Code-Matlab, label=lst:minimumPoly]
+function [minPol b] = minimumPoly(E,P,root)
+% Returns the minimum polynomial and the conjugated roots, given the
+% exponential and polynomial form of the Galois Field, and one root.
+% [minPol b] = minimumPoly(E,P,root)
+% See gfPol2Table for E and P parameter.
+%
+% Note: 
+% root = 0 -> X     (Not supported)
+% root = 1 -> 1 + X (Not supported)
+%
+% Ex: 
+% [E V P] = gfPol2Table([...]);
+% [minPol b] = minimumPoly(E,P,V,a^3);
+
+m = log2(length(E));
+syms X;
+% All conjugate roots for root:
+b = conjugateRoots2(V,root);
+
+% Minimal polynomium:
+minPol = 1;
+for i=1:length(b)
+    minPol = minPol * (X+b(i));
+end
+ 
+% Substitute all exponential forms with polynomial form and reduce:
+while degree(subs(minPol,X,1)) > m
+    minPol = subs(minPol,E,P);
+    minPol = expand(minPol);
+end
+
+% Modulo 2:
+minPol = mod2partly(minPol);
+end
+\end{lstlisting}
+
 
 
 

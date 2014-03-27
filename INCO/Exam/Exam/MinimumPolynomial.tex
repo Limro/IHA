@@ -51,10 +51,11 @@ end
 
 
 
-\codeTitle \ref{lst:minimumPoly} will generate the minimum polynomials for the root, based on the 
+\codeTitle \ref{lst:minimumPoly} will generate the minimum polynomials for the root, based on the the output of alphas from \codeTitle \ref{lst:gfPol2Table}.
+The ouput is the minimal polynomial and conjugated roots.
 
 \begin{lstlisting}[caption=MinimumPoly, style=Code-Matlab, label=lst:minimumPoly]
-function [minPol b] = minimumPoly(E,P,root)
+function [minPol b] = minimumPoly(E,P,V,root)
 % Returns the minimum polynomial and the conjugated roots, given the
 % exponential and polynomial form of the Galois Field, and one root.
 % [minPol b] = minimumPoly(E,P,root)
@@ -90,6 +91,27 @@ minPol = mod2partly(minPol);
 end
 \end{lstlisting}
 
+\codeTitle \ref{lst:minimumPoly} calls a function, called \code{degree}, shown in \codeTitle \ref{lst:degree}.
+This will return the degree of the input equation.
+
+\begin{lstlisting}[caption=Degree, style=Code-Matlab, label=lst:degree]
+function d = degree(eq)
+% Returns the maximum degree of the input equation.
+% d = degree(eq)
+%
+% Note: Only accepts an equation with elements with only one '^'.
+a = strtrim(strsplit(char(eq),'+'));
+d = 0;
+for i=1:length(a)
+    f = strsplit(char(a(i)),'^');
+    if length(f) == 2
+        if d < double(sym(f(2)))
+            d = double(sym(f(2)));
+        end
+    end
+end
+end
+\end{lstlisting}
 
 
 

@@ -3,4 +3,77 @@
 \begin{document}
 \section*{Problem 4}
 
+\paragraph{1. Determine the code length and the code rate.}
+The code length, 
+\begin{align*}
+n &= 2^m-1\\
+	&= 2^3-1\\
+	&= 7
+\end{align*}
+Then we find $k$:
+\begin{align*}
+n-k &= 2t\\
+7-k &= 2\cdot 2\\
+k &= 3
+\end{align*}
+The code rate is $\dfrac{k}{n} = \dfrac{3}{7}$
+
+\paragraph{2. Determine the primitive polynomial $p_i(X)$}
+First we generate a Galois Field fulfilling $(\alpha+\alpha^2)(1+\alpha^2)=\alpha^2$. 
+In this case $p_i(X) = 1+ X^2+X^3$ gives us:
+\begin{ArgMat}
+   0 &           0 \\
+   1 &           1 \\
+   a &           a \\
+ a^2 &         a^2 \\
+ a^3 &     a^2 + 1 \\
+ a^4 & a^2 + a + 1 \\
+ a^5 &       a + 1 \\
+ a^6 &     a^2 + a 
+\end{ArgMat}
+\\
+\\
+Since 
+\begin{align*}
+(\alpha+\alpha^2)(1+\alpha^2) &= \alpha+\alpha^3+\alpha^2+\alpha^4\\
+	&= \alpha+\alpha^2+1+\alpha^2+\alpha^2+\alpha+1\\
+	&= \alpha^2
+\end{align*}
+
+
+
+
+\paragraph{Determine the generator polynomial of this RS code, g(X).}
+The code has the following roots: $\alpha, \alpha^2, \ldots, \alpha^{2t} \Rightarrow \alpha, \alpha^2, \alpha^3, \alpha^4$.
+\\
+Since this is Reed-Solomon code this will be the generator polynomial:
+\begin{align*}
+g(x) &= (X+\alpha)(X+\alpha^2)(X+\alpha^3)(X+\alpha^4)
+\end{align*}
+
+
+
+
+
+\paragraph{Decode a received polynomial $r(X) = X^5 + X^2 + \alpha^3X$ by Euclidean
+Algorithm. 
+Find the error polynomial and the code polynomial (Hint: The syndrome polynomial is $S(X) = \alpha^3 X^3 + \alpha X^2 + X$.}
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{Nothing}
+\caption{My solution}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
 \end{document}

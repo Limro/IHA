@@ -3,4 +3,71 @@
 \begin{document}
 \section*{Problem 2}
 
+
+
+\paragraph{1. Find the generator matrix of C, i.e., G, in the systematic form.}
+First we find the generator in systematic form:
+\\\\
+\code{G = }
+\begin{ArgMat}
+0 & 1 & 1 & 1 & 0 & 0\\
+1 & 0 & 1 & 0 & 1 & 0\\
+1 & 1 & 0 & 0 & 0 & 1
+\end{ArgMat}
+
+
+\paragraph{2. Find the generator matrix of the dual code $C_\perp$ i.e., $G_\perp$ in the systematic form.}
+Now we find the dual code with with the parity check matrix in systematic form:
+\\
+\\
+\code{H = }
+\begin{ArgMat}
+1 & 0 & 0 & 0 & 1 & 1\\
+0 & 1 & 0 & 1 & 0 & 1\\
+0 & 0 & 1 & 1 & 1 & 0
+\end{ArgMat}
+
+\paragraph{3. What is the minimum distance of the code $C_\perp$?}
+The minimum distance is calculated by comparing each vector to the others and finding the difference for each bit.
+The two vectors with the lowest difference is the minimum Hamming distance.
+\\
+In this case it is 4, between the first and second row.
+
+
+\paragraph{4. Determine the error detection and error correction capabilities of $C_\perp$}
+Since $2t+1 \leq d_{min}$ (calculated above) the equation is:
+\begin{align*}
+2t+1 &\leq d_{min}\\
+2t+1 &\leq 4\\
+2\cdot1+1 & \leq 4\\
+t = 1
+\end{align*}
+The error correction capability is therefor 1.
+\\
+The error detection is 2, obviously.
+
+
+\paragraph{5. If the channel error rate is $10^{-3}$, please estimate the decoding failure probability at the decoder of the $C_\perp$}
+To calculate the decoding failure probability we use the following formula:
+\begin{align*}
+P_{be} &= \left(\begin{matrix}
+n-1\\
+t
+\end{matrix}\right) p^{t+1} \\
+	&= \left(\begin{matrix}
+	5\\
+	1
+	\end{matrix}\right)\cdot \big(10^{-3}\big)^2
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
 \end{document}

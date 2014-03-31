@@ -68,21 +68,26 @@ m = log2(length(E));
 syms a x;
 
 b1 = conjugateRoots2(V, a)
-b2 = conjugateRoots2(V, a^3)
+b2 = conjugateRoots2(V, a^2)
+b3 = conjugateRoots2(V, a^3)
+b4 = conjugateRoots2(V, a^4)
 
 phi(1,1) = minimumPoly(E,P,V,a^1);
-phi(2,1) = minimumPoly(E,P,V,a^3);
+phi(2,1) = minimumPoly(E,P,V,a^2);
+phi(3,1) = minimumPoly(E,P,V,a^3);
+phi(4,1) = minimumPoly(E,P,V,a^4);
 
 pretty(phi)
 
-pol = phi(1,1)*phi(2,1)
+pol = phi(1,1)*phi(2,1)*phi(3,1)*phi(4,1)
+
 generator = mod(expand(pol),2)
 
-g = [1 1 1 1 1 1 1];
-r = [0 1 1 0 0 1];
-
-t = 2;
-SyndromeVectors(E, P, r, t)
+% g = [1 1 1 1 1 1 1];
+% r = [0 1 1 0 0 1];
+% 
+% t = 2;
+% SyndromeVectors(E, P, r, t)
 
 
 

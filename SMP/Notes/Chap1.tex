@@ -1,0 +1,229 @@
+\documentclass[Main]{subfiles}
+\begin{document}
+
+\chapter{Chapter 1}
+
+\begin{itemize}
+\item Trial
+\subitem Et eksperiment
+
+\item Elementær hændelse
+\subitem ét udfald
+
+\item Sammensat hændelse 
+\subitem Flere forskellige udfald
+
+\item Simultan hændelse
+\subitem Involvere mere end ét eksperiment
+\end{itemize}
+
+Det gælder at $N_A+N_B+\ldots+N_n = N$.
+\\
+Frekvensen af A kan udtrykkes som:
+\begin{align*}
+r(A) &= \dfrac{N_A}{N}
+\end{align*}
+
+
+
+
+
+\section{Conditional probability}
+Lad sige, at man ønsker at få to bestemte udfald (heads og heads) ved at kaste 2 mønter:
+\begin{align}
+Pr(A,B) = Pr(A) \cdot Pr(B) \label{equ:simu}
+\end{align}
+Dette er en simultan hændelse.
+
+\begin{table}[H]
+\begin{tabular}{ccc}
+Kast 1 & Kast 2 & Pr\\ \hline
+H & H & $\frac{1}{4}$\\
+H & T & $\frac{1}{4}$\\
+T & H & $\frac{1}{4}$\\
+T & T & $\frac{1}{4}$\\ \hline
+& & $\sum = 1$
+\end{tabular}
+\end{table}
+
+Med en loaded mønt ser det anderledes ud, da $Pr(H) = 0.6$ og $Pr(T)=0.4$
+\begin{table}[H]
+\begin{tabular}{ccc}
+Kast 1 & Kast 2 & Pr\\ \hline
+H & H & $0.36$ (Se formel \ref{equ:simu})\\
+H & T & $0.24$\\
+T & H & $0.24$\\
+T & T & $0.16$\\ \hline
+& & $\sum = 1$
+\end{tabular}
+\end{table}
+
+
+Hvis man ønsker sammensat hændelse for Pr(Præcis ét H) med $Pr(H)=0.5, Pr(T)=0.5$:
+
+\begin{table}[H]
+\begin{tabular}{ccc}
+Kast 1 & Kast 2 & Pr\\ \hline
+H & H & $0.36$ (Se formel \ref{equ:simu})\\
+H & T & $0.24$\\
+T & H & $0.24$\\
+T & T & $0.16$\\ \hline
+& & $\sum = 1$
+\end{tabular}
+\end{table}
+På ovenstående vil række 1 og 2 være én heads. 
+Plus disse sammen for at få en sammensat hændelse:
+\begin{align*}
+Pr(2)+Pr(4) = \frac{1}{2}
+\end{align*}
+
+Med tre mønter ser det således ud:
+\begin{table}[H]
+\begin{tabular}{cccc}
+Kast 1 & Kast 2 & Kast 3& Pr\\ \hline
+H & H & H & $\dfrac{1}{8}$ \\
+\rowcolor{gr}
+H & H & T & $\dfrac{1}{8}$ \\
+H & T & H & $\dfrac{1}{8}$ \\
+\rowcolor{gr}
+H & T & T & $\dfrac{1}{8}$ \\
+T & H & H & $\dfrac{1}{8}$ \\
+\rowcolor{gr}
+T & H & T&  $\dfrac{1}{8}$ \\
+T & T & H & $\dfrac{1}{8}$ \\
+\rowcolor{gr}
+T & T & T & $\dfrac{1}{8}$ \\ \hline
+& & & $\sum = 1$
+\end{tabular}
+\end{table}
+For én heads vil række 4, 6 og 7 opfylde reglen:
+$Pr(H,T,T)+Pr(T,H,T)+Pr(T,T,H) = \dfrac{3}{8}$.
+
+Med en loaded mønt hvor $Pr(H) = 0.6, Pr(T)=0.4$ og præcis én mønt:
+\begin{align}
+Pr(H,T,T) + Pr(T,H,T) + Pr(T,T, H) &=
+Pr(H)Pr(T)Pr(T) \nonumber\\
+&+Pr(T)Pr(H)Pr(T)+ Pr(T)Pr(T)Pr(H)\\
+	&=(0.6 \cdot 0.4 \cdot 0.4)\cdot3\\
+	&= 0.096\cdot 3\\
+	&= 0.288
+\end{align}
+
+
+
+\section{Relativ frekvens}
+$N$ er det totale antal udfald.
+\\
+$N_A$ er antallet af ønsket udfald af typen $A$
+\\
+$Pr(A) \approx \dfrac{N_A}{N}$
+\begin{align*}
+N_A &= 150\\
+N &= 1000 \\
+A &= (10 \Omega, 5 W)\\
+	&= \dfrac{150}{1000} = 0.15\\
+Pr(10 \Omega | 5W) &= \dfrac{150}{360}
+\end{align*}
+
+\begin{table}[H]
+\begin{tabular}{ccc}
+$\Omega$ & W & Pr \\ \hline
+\dots	&\dots	&\dots	\\
+10 & 5 & $Pr(10 \Omega) \cdot Pr(5 W | 10 \Omega)$\\
+& & $Pr(5 W) \cdot Pr(10 \Omega | 5 W)$\\
+\end{tabular}
+\end{table}
+
+Den totale sandsynlighed af en kolonne eller en række kaldes en \textit{marginal sandsynlighed}.
+
+\begin{align*}
+Pr(A,B) &= Pr(A) \cdot Pr(B|A)\\
+	&= Pr(B)\cdot Pr(A|B)
+\end{align*}
+
+\textbf{Uafhængighed} -- så hvis og kun hvis:
+\begin{align*}
+Pr(A|B) &= Pr(A)\\
+Pr(B|A) &= Pr(B)\\
+Pr(A, B) &= Pr(A)\cdot Pr(B|A)\\
+	&= Pr(A) \cdot Pr(B)
+\end{align*}
+
+\section{Venn diagrammer}
+
+\begin{tikzpicture}
+    \draw \firstcircle node[below] {$A$};
+    \draw \secondcircle node [above] {$B$};
+    \draw \thirdcircle node [below] {$C$};
+
+    % Now we want to highlight the intersection of the first and the
+    % second circle:
+
+    \begin{scope}
+      \clip \firstcircle;
+      \fill[red] \secondcircle;
+    \end{scope}
+
+    % Next, we want the highlight the intersection of all three circles:
+
+    \begin{scope}
+      \clip \firstcircle;
+      \clip \secondcircle;
+      \fill[green] \thirdcircle;
+    \end{scope}
+
+    % The intersection trick works pretty well for intersections. If you need
+    % the set-theoretic difference between two sets, things are a little more
+    % complicated:
+
+    % Suppose we want to highlight the part of the first circle that is not 
+    % also part of the second circle. For this, we need to clip against the 
+    % "complement" of the second circle. The trick is to add a large rectangle
+    % that encompasses everything and then use the even-odd filling rule 
+    % (see the manual again):
+
+    \begin{scope}[shift={(6cm,0cm)}]
+        \begin{scope}[even odd rule]% first circle without the second
+            \clip \secondcircle (-3,-3) rectangle (3,3);
+        \fill[yellow] \firstcircle;
+        \end{scope}
+        \draw \firstcircle node {$A$};
+        \draw \secondcircle node {$B$};
+    \end{scope}
+    
+    % When using the above, you will notice that the border lines of the
+    % original circles are erased by the intersection parts. To solve this
+    % problem, either use a background layer (see the manual) or simply draw
+    % the border lines after everything else has been drawn.
+    
+    % The last trick is to cheat and use transparency
+    \begin{scope}[shift={(3cm,-5cm)}, fill opacity=0.5]
+        \fill[red] \firstcircle;
+        \fill[green] \secondcircle;
+        \fill[blue] \thirdcircle;
+        \draw \firstcircle node[below] {$A$};
+        \draw \secondcircle node [above] {$B$};
+        \draw \thirdcircle node [below] {$C$};
+    \end{scope}
+\end{tikzpicture}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

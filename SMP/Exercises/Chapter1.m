@@ -195,5 +195,169 @@ PrAuB = (size(union(A,C),2)* 1/6) / size(S,1)
 PrA_CuB = size(union(setdiff(A,C),B),2) * 1/6 / size(S,1)
 
 
+%% 1-6.2
+clc
+
+Cards = 52;
+King = 4/Cards; % 
+Spade = 13/Cards; % 
+Spades_10 = 1/Cards; % 
+
+% a) AuB: Kings + spades
+AuB = (13+3)/52
+
+% b) AiB: Spades and a king
+AiB = 1/52
+
+% c) AucB: Not spade but kings + rest
+AucB = (52-13+1)/52
+
+% d) AuC: A king or spade 10
+AuC = 5/52
+
+% e) BuC: Spade or 10 spade
+BuC = 13/52
+
+% f) AiC: A king AND spade 10
+AiC = 0
+
+% g) BiC: A spade AND spade 10
+BiC = 1/52
+
+% h) (AiB)uiC: (king and spade) + not spade 10 (+ rest)
+AiBuiC = 51/52
+
+% i) AiBiC: king and spade and spade10
+AiBiC = 0
+
+%% 1-7.1
+clc
+A = [0.4 ; 0.6];
+
+B = [1-0.08 0.08; 
+    0.05 1-0.05];
+
+% a) 0 from a 0
+P_00 = A(1,1)*B(1,1); % Pr(r_0|t_0)
+P_10 = A(2,1)*B(2,1); % Pr(r_0|t_1)
+
+res = (P_00)/(P_00+P_10)
+
+% b) 1 from a 1
+P_01 = A(1,1)*B(1,2);
+P_11 = A(2,1)*B(2,2);
+res = P_11/(P_01+P_11)
+
+% c) Any is error
+%res = received 0 from 1 + received 1 from 0
+res = P_10 + P_01
+
+%% 1-7,3
+clc
+% 10 buttons, 7 works, 2 works 50%, 1 does not
+
+% a) no candy
+res = 1 - (7/10 + (2*0.5)/10)
+
+% b) No => never work
+res = (1/10) / (2*(0.5*1/10) + 1/10)
+
+% c) Yes => half time work
+res = (2*(0.5)*1/10)/(7/10 + 2*(0.5)*1/10)
+
+%% 1-9,1
+clc
+%syms A B C D E F ;
+A = ['A' 'B' 'C' 'D' 'E' 'F'];
+B = [1 2 3 4 5 6];
+
+% A1 B1 C1 D1 E1 F1
+% A2 B2 C2 D2 E2 F2
+% A3 B3 C3 D3 E3 F3
+% A4 B4 C4 D4 E4 F4
+% A5 B5 C5 D5 E5 F5
+% A6 B6 C6 D6 E6 F6
+
+%% 1-10,1
+n = 3;
+k = 2;
+p = 1/2;
+q = 1-p;
+
+% a) Both 2 heads
+dude = nchoosek(n, k)*p^k*q^(n-k)
+both = dude*dude
+
+% b) 0 heads and 3 heads
+
+n = 3;
+k = 0;
+p = 1/2;
+q = 1-p;
+dude_non = nchoosek(n, k)*p^k*q^(n-k)
+
+n = 3;
+k = 3;
+p = 1/2;
+q = 1-p;
+dude_all = nchoosek(n, k)*p^k*q^(n-k)
+
+both = dude_all * dude_non
+
+%% 1-10,2
+clc
+% a)
+n = 7;
+k = 4;
+p = 1/2;
+%q = 1-p;
+W_47 = ExactInTrials(n, k, p)
+
+n = 9;
+k = 5;
+p = 1/2;
+W_59 = ExactInTrials(n, k, p)
+% res 1 higher
+
+% b)
+n = 7;
+k = 4;
+p = 1/2;
+
+W_47 = AtLeastInTrials(n, k, p)
 
 
+n = 9;
+k = 5;
+p = 1/2;
+
+W_59 = AtLeastInTrials(n, k, p)
+%Same size
+
+%% 1-10,6
+clc
+ErrorC = 0.062;
+
+% a) 6 trials, no error
+n = 6;
+k = 0;
+p = ErrorC;
+Ex_6 = ExactInTrials(n, k, p)
+
+% b) 6 trials, 1 error
+n = 6;
+k = 1;
+p = ErrorC;
+Ex_6 = ExactInTrials(n, k, p)
+
+% c) 6 trials, more than 1 error
+n = 6;
+k = 1;
+p = ErrorC;
+Ex_6 = MoreInTrials(n, k, p)
+
+% d) 6 trials, 1 or more than 1 error
+n = 6;
+k = 1;
+p = ErrorC;
+Ex_6 = AtLeastInTrials(n, k, p)

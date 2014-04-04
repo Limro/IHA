@@ -1,0 +1,16 @@
+Arbitrarily interleaving atomic statements
+	- Process one does one thing, next process does something
+
+Non-determinism
+	- 2 statements from any 2 processes may or may not execute truly parallel.
+	- Changing time will change concurrency processes
+	- Distributed computer have their own time stamp. These must be send around or shared.
+	- No common time must be send around
+	- One cannot observe the system's GLOBALE state (all processes)
+		- Only if you turn it off
+	- Best to do is constructed images of state that may have existed
+
+Channels
+	- You can lose data because of different routing
+	- Things can be reordered due to delay
+

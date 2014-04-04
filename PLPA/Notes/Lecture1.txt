@@ -1,0 +1,32 @@
+What is a paradigm?
+	- A pattern or a model
+	- A world view underlying the theories and methodology of a particular scientific subject
+
+How we think about the solution of a given problem
+	- Cooking recipe
+	- Dealing with tree (cutting and inserting)
+		- This is much easier in Scheme than in C# or java
+
+Imperative laguages:
+	- C/C++
+	- Control flow (if, while...)
+	- Call functions/prodcedures/methods
+	- Assignments
+
+lambda-Calculus:
+	- Based on functions
+		- Everything is a function (including numbers)
+	- Used for math
+
+Partial paradigms
+	- Object-oriented
+		- OO is about structure
+		- Typical polumorphism
+		- Usually associated with imperative language
+	- Concurrent
+		- Address pproblems related to dealing with many actions at once
+	- Reactive
+		- Focusses on data flows/propagation of change
+		- Spreadsheets and Verilog
+
+	

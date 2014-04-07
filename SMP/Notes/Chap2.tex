@@ -1,0 +1,128 @@
+\documentclass[Main]{subfiles}
+
+\begin{document}
+
+\chapter{Stokastiske variabler}
+
+\begin{tabular}{lll}
+S	& Population & Kunne være den danske befolkning\\
+$\alpha$ 	& Eet element i S & Dronning Magrethe\\
+$X(\alpha)$ & Stokastisk variabel & En funktion, der måler en egenskab ved $\alpha$ (f.eks alder)\\
+Udfald & Delmængde af S & $\{ \alpha \in S:X(\alpha) \leq x \}$
+\end{tabular}
+\\
+Sandsynligheden for udfald $\{ \alpha \in S:X(\alpha) \leq x \}$ skrives som $Pr(X \leq x)$
+
+\paragraph{Tæthedsfunktion}
+\begin{align*}
+Pr(x_1 < X \leq x_2) &= \int_{x_1}^{x_2} f_X(x)\cdot dx \\
+	&= F_X(x_2) - F_X(x_1)
+\end{align*}
+
+
+\paragraph{Fordelingsfunktion ($F_X$)}
+\begin{align*}
+Pr(X \leq x) = F_X(x) &= \int_{-\infty}^x f_X(u) \cdot du\\
+f_X(x) &= \dfrac{d F_X(x)}{dx}\\
+Pr( X > x) &= 1- Pr(X \leq x)\\
+	&= 1- F_X(x)
+\end{align*}
+
+
+
+\paragraph{Middelværdi}
+Det vægtede gennemsnit:
+\begin{align*}
+E[K] &= \sum_{k=0}^n k\cdot Pr(K=k)\\
+	&= \sum_{k=0}^n k\cdot Pr(k)
+\end{align*}
+
+
+
+\paragraph{Middelværdi og varians}
+Forventet værdi, $E[X]$:
+\begin{align*}
+E[X] &= \int_{-\infty}^\infty x \cdot f_X(x) dx\\
+E[g(x)] &= \int_{-\infty}^\infty g(x) \cdot f_X(x) dx & \text{Funktion}\\
+E[X^2] &= \int_{-\infty}^\infty  x^2 \cdot f_X(x) dx & \text{Mean square}\\
+E[(X-\overline{X})^2] &= \int_{-\infty}^\infty (x-\bar{x})^2 \cdot f_X(x) dx  & \text{Varians}\\
+	&= Var(X)\\
+	&= E[X^2]-(E[X])^2
+\end{align*}
+
+
+
+\paragraph{Uniform fordeling}
+I intervallet $[a,b]$:
+\begin{align*}
+E[X] &= \frac{1}{2} (b-a)\\
+Var(X) &= \frac{1}{12}(b-a)^2
+\end{align*}
+Binomial fordeling med $n$ trials og sandsynlighedsparameter $p$
+\begin{align*}
+E[X] &= n \cdot p\\
+Var(X) &= n \cdot p \cdot (1-p)
+\end{align*}
+Gauss fordeling (normalfordeling)
+\begin{align*}
+f_X(x) &= \dfrac{1}{\sqrt{2 \pi \Omega^2}}\cdot e^{-(x-\mu)^2/{2\omega^2}}
+\end{align*}
+
+\section{Transformationssætningen}
+Givet er 
+\begin{itemize}
+\item Funktionen $Y=g(x)$
+\item Tætheden $f_X(x)$
+\item grænser $\alpha\leq X \leq b$
+\end{itemize}
+
+\begin{tabular}{lll}
+1 & Inverse & Beregn x = $g^{-1}(y)$\\
+2 & Differentier & Beregn $\dfrac{d}{dy}g^{-1}(y) = \dfrac{dx}{dy}(y)$\\
+3 & Grænser	& Giver $\alpha \leq X \leq b$, beregn $a_Y  \leq Y \leq b_Y$\\
+4 & Formal & $f_Y(y) = \det(\frac{dx}{dy}) f_X(g^{-1} (y)) $
+\end{tabular}
+
+\paragraph{Eksempel}
+\begin{FunArg}
+\dfrac{1}{2}+\dfrac{1}{4}\cdot x & -1 \leq x \leq 1 \\
+0 & \text{ellers}
+\end{FunArg}
+\begin{align*}
+g(x) = y &= \dfrac{1}{2}(x+1)\\
+y &= \dfrac{1}{2}(x+1) \Leftrightarrow\\
+x &= 2y-1\\
+\dfrac{dx}{dy} &= \dfrac{d(2y-1)}{dy} = 2\\
+-1 \leq X \leq 1 &\Leftrightarrow\\
+-1 \leq 2y-1 \leq 1 &\Leftrightarrow\\
+0 \leq y \leq 1 \\
+f_Y(y) &= \det \dfrac{dx}{dy} f_X(2y-1)\\
+	&= 2\cdot (\dfrac{1}{2}+\dfrac{1}{4}(2y-1))\\
+	&= y+\dfrac{1}{2}
+\end{align*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

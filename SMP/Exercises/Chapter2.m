@@ -62,32 +62,23 @@ d = fun(3)-fun(1)
 
 %% 2-3.2
 clc, clear
-fun = @(x) 1-exp(-(x-1));
-syms y
-fun2 = int(1-exp(-(y-1)), y)
-fun3 = @(x) x+exp(1-x);
-fun4 = y+exp(1-y)
-fun5 = diff(fun4)
-fun6 = @(x) 1-exp(1-x);
+syms x
+f = diff(1-exp(-(x-1)),x)
 
-fsteps = 0.1:0.1:1;
-ssteps = 1.1:0.1:5;
-fp = zeros(1,size(fsteps,2));
-sp = fun6(ssteps);
+t = 0.1 : 0.1 : 10;
+f1 = subs(f, x, t); %Replace sym, x, with real values, t
 
-fSteps = horzcat( fsteps, ssteps);
-fX = horzcat(fp, sp);
-
-% plot(fSteps, fX) 
+% plot(t,f1) 
 % hold on
 % grid on
-% axis([0, 5, 0, 3])
+% axis([0, 6, 0, 3])
 
+format long
 % b) Pr(2 < X <=3)
-b = 1- integral(fun,2,3)
+b = int(f,x,2,3)
 
 % c) less than 2
-c = 1 - integral(fun,1,2)
+c = int(f,x,1,2)
 
 %% 2-3.3
 clear, clc
@@ -113,19 +104,70 @@ clc, clear
 % A{1- exp(-(x-1))}. F_X = 1 => A{1-0} = 0
 
 % a) F_X(2)
-fx = @(x) 1-exp(-(x-1));
+Fx = @(x) 1-exp(-(x-1));
 
 syms x;
-fxS = 1-exp(-(x-1));
-dv = diff(fxS)
-v = int(dv)
-
-b = int(x*v)
-f = @(x) exp(1-x).*(x+1)
-b = integral(f,1,100)
+fxS = subs(diff(Fx,x));
+a = int(x*fxS, x, 1, Inf)
 
 
 % b)
-b = int(x^2*fxS, x)
+%b = int(x^2*fxS, x)
+b = int(x^2*fxS, x, 1, Inf)
+
+% c)
+c = b - a^2
+
+%% 2-5.1
+clear, clc
+% a)
+x = 0:0.1:20;
+mean        = 5;
+variance    = 16;
+stddev      = sqrt(variance);   % Standard deviation
+fx = normpdf(x,mean,stddev);
+Fx = normcdf(x,mean,stddev);
+% figure
+% subplot(2,2,1)
+% plot(x,fx), title('f_X(x)')
+% subplot(2,2,2)
+% plot(x,Fx), title('F_X(x)')
+
+syms x;
+fx = normcdf(0,mean,stddev);
+
+a = 1 - fx
+
+% b) 0 < x < mean
+fx_5 = normcdf(5,mean,stddev);
+b = fx_5 - fx
+
+% c) x > mean*2
+c = 1 - normcdf(mean*2,mean,stddev)
+
+%% 2-5.3
+clc, clear 
+% a) find mean value
+% mean = Pr(X <= bar(X)) = 0.5
+mean = 1
+
+% b)
+format 
+Pr_greater_5 = 0.0228;
+Pr_leq_5 = 1-Pr_greater_5;
+
+% opslag på 2.0
+
+% arr = zeros(1,40);
+% for i = 1:40
+%     arr(1,i) = 1/(sqrt(2*pi)) * intexp(;
+% end
+% arr
+
+
+
+
+
+
 
 

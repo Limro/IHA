@@ -1,0 +1,6 @@
+Facts:
+	- parent(tom,peter) is a predicate
+	- Names  of individuals are known as atoms
+	- Atoms and numbers are called constants
+	- The number of arguments of a predicate is called its arity
+		- listing(parent/2)

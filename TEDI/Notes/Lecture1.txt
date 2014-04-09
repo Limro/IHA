@@ -14,3 +14,20 @@ Channels
 	- You can lose data because of different routing
 	- Things can be reordered due to delay
 
+
+
+
+
+LTL
+====
+
+Always 		En firkant - "for any time, t, in the future"
+Eventually 	En ruder - "for some time, t, in the future"
+not:		!,	
+and:		&&,	
+or:			||,	
+implies:	->,	
+equivalent:	<->	
+always:		[],	
+eventually	<>,	
+until:		U

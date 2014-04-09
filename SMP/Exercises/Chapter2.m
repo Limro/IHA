@@ -52,7 +52,7 @@ Pr_x2 = integral(func,-1,0.5) - integral(func,-1,-0.5)
 
 % b) F_X(2)
 fun = @(x) 1-exp(-(x-1));
-fun(2)
+b = fun(2)
 
 % c) between 2 < X < inf
 c = fun(inf)-fun(2)
@@ -85,7 +85,47 @@ fX = horzcat(fp, sp);
 
 % b) Pr(2 < X <=3)
 b = 1- integral(fun,2,3)
+
+% c) less than 2
+c = 1 - integral(fun,1,2)
+
+%% 2-3.3
+clear, clc
+fx = @(x) exp(-2*abs(x)); % from -inf < x < inf
+
 syms x;
-diff(1-exp(-(x-1)),x)
+fx = exp(-2*x);
+fy = fx.^2;
+dx = diff(fx)
+dy = diff(fy)
+dydx = dy./dx
+dxdy = dx./dy
+
+plotfigure(x,y)
+
+syms x y;
+fxSym = exp(-2*abs(x));
+fy = diff(fxSym)
+
+
+%% 2-4.1
+clc, clear 
+% A{1- exp(-(x-1))}. F_X = 1 => A{1-0} = 0
+
+% a) F_X(2)
+fx = @(x) 1-exp(-(x-1));
+
+syms x;
+fxS = 1-exp(-(x-1));
+dv = diff(fxS)
+v = int(dv)
+
+b = int(x*v)
+f = @(x) exp(1-x).*(x+1)
+b = integral(f,1,100)
+
+
+% b)
+b = int(x^2*fxS, x)
 
 

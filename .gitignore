@@ -154,3 +154,8 @@ proguard/
 
 ## Matlab ##
 *.asv
+
+
+############ Prolog ###########################
+TEDI/Programs/
+!TEDI/Programs/*.cm

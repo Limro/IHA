@@ -32,14 +32,25 @@ always:		[],
 eventually	<>,	
 until:		U
 
+
+Patterns
+========
+
 Invariance: []p
 	- p is always true
-	
+
 latching: <>[]p
 	- Eventually p is always true
 
 Infinitely often: [] <>p
 	- Will always switch back and forth
+
+ltl commands:
+=============
+
+Overtaking: ltl otk {
+[](ptry->(!qcsU(qcsU(!qcsU pcs))))
+}
 
 
 Lifeness:
@@ -50,4 +61,42 @@ Lifeness:
 
 Weak fairness:
 	- If there's a choise of !p and p, then !p will be chosen
+
+
+Array syntax
+============
+
+- int a[5] 
+	is like a[0] to a[4]
+- No for loop can assign values
+- Multidimentional arrays are not allowed
+- Be carefull - it will blow up the program
+
+Records (L4S5)
+=======
+- Like structs
+- Be careful - it will blow up the program
+
+Symbolic names (L4S6)
+==============
+- Max 244
+- Bruges som reference
+
+Sparse arrays
+=============
+- Only stores value not equal '0'
+
+Channels
+========
+- Communication channels used to model distri. systems
+- Sends or receive messages
+	- ch !e
+		Send 'e' on channel ch (push())
+	- ch = e
+		Receive 'e' on channel ch (pop())
+
+- A channel can be a buffer
+
+- Rendezvous (run-devu') is capacity = 0
+- Buffered is capacity > 0
 

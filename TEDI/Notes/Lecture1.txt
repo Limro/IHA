@@ -31,3 +31,23 @@ equivalent:	<->
 always:		[],	
 eventually	<>,	
 until:		U
+
+Invariance: []p
+	- p is always true
+	
+latching: <>[]p
+	- Eventually p is always true
+
+Infinitely often: [] <>p
+	- Will always switch back and forth
+
+
+Lifeness:
+	- eventually p, means
+		- ? -> ? -> p -> ? -> ?...
+	- Now it will try to find
+		- !p -> !p -> !p -> !p -> !p ...
+
+Weak fairness:
+	- If there's a choise of !p and p, then !p will be chosen
+

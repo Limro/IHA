@@ -159,3 +159,8 @@ proguard/
 ############ Prolog ###########################
 TEDI/Programs/
 !TEDI/Programs/*.cm
+
+
+########## JSPIN ###############
+!TEDI/Programs/**/*.pml
+TEDI/Programs/

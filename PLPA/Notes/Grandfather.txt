@@ -1,0 +1,23 @@
+grandfather(X0,Z0) <- father(X0,Y0), parent(Y0,Z0) # <=>
+
+m(eve, X) ~ m(eve, tim)
+eve = eve, X = tim
+
+m(X2,Y2) ~ m(eve, X)
+X2= eve, Y2= X
+X2 = eve, Y2 = tim
+
+p(eve, X) ~ p( X2, Y2)
+eve = X2, X = Y2
+X2 = eve, Y2 = X
+X2 = eve, Y2 = tim
+
+f(tom, Y0) ~ f(tom, eve)
+tom = tom, Y0 = eve
+
+f(X0, Y0), p(Y0, Z0) ~ f(tom, Y0), p(Y0,X)
+X0 = tom, Y0 = Y0, Z0 = X
+X0 = tom, Y0 = eve, Z0 = tim
+
+gf(tom,X0) ~ gf(X,Z0)
+tom = X0, X = Z0

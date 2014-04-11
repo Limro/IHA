@@ -1,0 +1,21 @@
+Når man skriver
+	H :- G_1, ..., G_n
+	bliver der introduceret en ny lokal variabel. (W-23.S4)
+
+
+Derivation (W-23.S6)
+==========
+Ha' en liste, udskift et element med en anden liste ved at gange med theta...
+
+Refutation (W-23.S8)
+==========
+Tilbagevisning.
+Man har en query med rules. Disse ender all i facts.
+	Når alle rules er et fact, er man færdig.
+Hvert niveau er et Goal, markeret med 
+	G = G_0, G_1, G_2,...
+Det tegnes normalt med et graph tree, hvor hvert prik er en 'rule'.
+
+Unification
+-----------
+De steps der tages, for at noget er sandt (variablerne)

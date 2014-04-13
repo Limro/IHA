@@ -1,0 +1,3 @@
+[submodule "TEDI/Documentation/Modules"]
+	path = TEDI/Documentation/Modules
+	url = git@github.com:Limro/LatexModules.git

@@ -1,0 +1,37 @@
+C-- (L5S2-3)
+============
+
+- Minder om C++
+- cout og cin kan bruges
+- Variabler skrives som
+	code blocks {
+		int x; ...
+	}
+
+- For-løkker, skal skrives som C
+- Ingen overflow check
+- Multi dimensional arrays
+	int matrix[M][N];
+- typedefs virker
+- Const virker
+
+- Referencer på tværs af filer sker med extern og IKKE #define
+
+- Start processer samtidig med cobegin (L5S11)
+	- Kun i main{}
+	- Main er suspended til cobegin er færdig (dvs. alle processor er færdige)
+
+- Semaphores: (L5S13-17)
+	semaphore s = N;
+	binarysem b = 0;
+
+	- Wait( semaphore& s) // decrement
+	- signal( semaphore& s) // increment
+
+- Monitors (L5S18-19)
+	- Kun i Main
+	- Data inden i kan ikke ses udefra
+
+- Concurrency support: (L5S20-23)
+
+- Atomic (L5S28)

@@ -8,7 +8,7 @@ Devise a way to verify the logarithm program designed in the lecture that comput
 A possible program for the implementation in Promela is shown in \codeTitle \ref{lst:program}.
 
 
-\begin{lstlisting}[caption=Program in Prolog, style=Code-Matlab, label=lst:program]
+\begin{lstlisting}[caption=Program in Prolog, style=Code-Prolog, label=lst:program]
 int n = 1; 
 int k = 0; 
 
@@ -30,6 +30,32 @@ active proctype log()
 \end{lstlisting}
 
 %Note that the assertion 2^k <= n <= 2^(k+1) cannot be expressed directly in Promela. So you have to design a test process in Promela that could do this. See the use of _nr_pr on slide 21 of Lecture 2. 
+
+To test this we add the program in \codeTitle \ref{lst:MyImp}.
+This way, the program creates a local variable, \code{k}, which be incremented until it reached \code{n}.
+Another variable (\code{value} -- starting at 1) will be multiplied with 2 for each time \code{k} is incremented.
+When the proctype finish it will have counted the same as the proctype \code{log}
+
+
+\begin{lstlisting}[caption=Test implementation, style=Code-Prolog, label=lst:MyImp]
+int n = 1;
+
+active proctype logCheck(){
+	int k = 0;
+	int value = 1;
+
+	do 
+	:: k != n -> 
+		value = value * 2;
+		k++;
+	:: else ->
+		break;
+	od;
+	assert true;
+}
+\end{lstlisting}
+
+
 
 \section*{Part 2}
 Analyse and explain the algorithm on slide 35 of Lecture 2, also shown in \codeTitle \ref{lst:SecondP}
@@ -66,7 +92,7 @@ It will then jump back to the \code{label} "again".
 
 
 
-\subsection{How does it work?}
+\subsection*{How does it work?}
 
 The  trick is performed in line 9 where each process waits for the other process to reach the same line.
 Each process set the turn for it self and wait for the other with \code {turn==1-\_pid} or the other process to finish its use of the variable \code{ncrit} which is obtained in line 13.
@@ -74,7 +100,7 @@ Each process set the turn for it self and wait for the other with \code {turn==1
 \\
 When the second process has used ncrit, the flag for its process is lowered which will allow the first process to use ncrit.
 
-\subsection{How do you verify that?}
+\subsection*{How do you verify that?}
 To be 100\% sure this is the case and neither uses \code{ncrit} at the same time, an \code{atomic\{\}} can be placed around line 10 to 12.
 However, since line 11 asserts \code{ncrit} never is more than 1 no matter what, the two processes can't both increment after each other in line 10.
 

@@ -15,9 +15,6 @@ Channels
 	- Things can be reordered due to delay
 
 
-
-
-
 LTL
 ====
 
@@ -88,15 +85,46 @@ Sparse arrays
 
 Channels
 ========
-- Communication channels used to model distri. systems
+- Communication channels used to model distributed systems
 - Sends or receive messages
 	- ch !e
 		Send 'e' on channel ch (push())
 	- ch = e
 		Receive 'e' on channel ch (pop())
 
+If there's only one process:
+chan c = [0] of byte:
+...
+c! 1 /* Deadlock, since only one process */
+...
+
+/**/
+chan c = [1] of byte
+...
+c! 1 /* Will run pass, since the channel now is a buffer */
+
+- Anyone can receive a channel.
+	To come around this, create a channel within a proctype, and a channel of [0] byte in another, and send the first channel as a buffer. (L4S15)
 - A channel can be a buffer
 
 - Rendezvous (run-devu') is capacity = 0
 - Buffered is capacity > 0
+
+- Do a request-Reply (S4L19)
+
+
+Random receive (L4S25-26)
+--------------
+- Returns the first element in buffer that matches'e'.
+
+- Without removing:
+ch ? <e> //Assign first value 
+
+ch ? [e] //The first is, return true
+ch ?? [e] //Any such is, return true
+
+
+
+
+
 

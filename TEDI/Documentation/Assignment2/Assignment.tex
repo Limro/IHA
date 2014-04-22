@@ -1,0 +1,45 @@
+\documentclass[Main]{subfiles}
+
+\begin{document}
+
+\section*{Part 1}
+
+Model a client-server network that has peer-to-peer connections.
+What is transmitted on the peer-tp-peer connections should not be visible to clients and servers outside that connection.
+\\
+\\
+This is shown in \codeTitle \ref{lst:p2p}.
+First we need to create a channel, \code{c}, which we can transmit through.
+Then we create a proctype to send from, \code{Client1}, with its own channel, \code{transmitter}.
+This channel is send through the first channel, \code{c}, to the proctype \code{Client2}, wait for it to receive the private channel and send the predefined information, \code{data}.
+
+\begin{lstlisting}[caption=Peer-to-peer network, style=Code-C, label=lst:p2p]
+chan c = [1] of { byte }; 
+
+active proctype Client1()
+{
+	byte data = 5;
+	chan transmitter = [0] of { byte }; 
+	c ! transmitter;
+	transmitter ! data;
+}
+
+active proctype Client2()
+{
+	byte dataReceive = 0;
+	chan receiver;
+
+	c ? receiver;
+	receiver ? dataReceive;
+	
+	assert( dataReceive == 5 );
+}
+\end{lstlisting}
+This way we have created a peer-to-peer connection with a private channel.
+
+\newpage
+\section*{Part 2}
+
+
+
+\end{document}

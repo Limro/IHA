@@ -164,7 +164,20 @@ Pr_leq_5 = 1-Pr_greater_5;
 % end
 % arr
 
+%% 2-7.3
+clc, clear
+tau = 6;
+syms x;
+f_tau = 1/tau*exp(-x/tau);
 
+% a) less than 6
+Pr_a = int(f_tau, x, 0, 6)
+
+% b) more than 10
+Pr_b = int(f_tau, x, 10, Inf)
+
+% c) 5 < tau <= 6
+Pr_c = int(f_tau, x, 5, 6)
 
 
 

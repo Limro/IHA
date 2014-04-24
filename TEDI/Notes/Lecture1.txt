@@ -128,3 +128,98 @@ ch ?? [e] //Any such is, return true
 
 
 
+Concurrent Systems (CoSy) to Distributed Systems (DiSy)
+=======================================================
+
+
+DS is
+-----
+- No shared clock
+- No shared memory
+
+
+Asynchronous DS
+---------------
+- Collection of sequential processes
+	- Each execute a sequence of EVENTS
+- Channels are reliable but may deliver messages out-of-order
+- Asynchronous means: no bounds on relative speeds of processes and message delays
+
+- Will normally be shown in timelines
+	- A process is denoted P_i
+	- An event is denoted e_i^k
+	- The sequence event is denoted h_i = e_i^0, e_i^1...
+	- Global events are denoted H = h_1 \union h_2 \union ...
+
+- Communication through send(m) and receive(m)
+- Events can affects each other:
+	- Send from P_1 -> P_3
+	- Send from P_1 -> P_2 -> P_3
+	- L6S12-14
+
+- For denoting global event ordering, see L6S15
+
+
+Global state
+------------
+\omega_i^k = local state of process p_i after event e_i^k
+\omega_i^0 = initial state of process p_i
+
+Global states: \sum = (\omega_1, \omega_2, ...)
+
+Cut
+---
+- A cut is the latest events before the cut of each processes
+- A cut is denoted C, C', C'' ...
+- If all events are to be listed in a cut, they must be shown as they occur in time (not separated by process)
+
+
+Run
+---
+- A run list all events in global history, H, but HAS not be in correct sequence.
+
+
+Observed / constructed states (L6S22-28)
+========================================
+- Cuts kan være consistent eller ej. Der skal bruges en metode til dette: (L6S23)
+	\forall event e, e': (e \in C) \and (e' -> e) => e' \in C
+	
+	This means "an event will not cross a cut"
+
+- A run, R, is consistent if
+	\forall event e, e' where e -> e', e appears before e' in R
+
+A run, R = e^1 e^2 e^3 ... result in a sequence of global states \sum^0 \sum^1 \sum^2 \sum^3, where \sum^0 = (\omega_1^0, \omega_2^0, ..., \omega_n^0)
+
+
+DS properties (S6L30-31)
+========================
+- Absence of dead-lock or starvation
+- Efficiency in memory usage or numbers of messages that needs to be exchanged
+- Robustness
+
+Errors
+------
+- A fail-safe system is one that, in the event of failure, responds in a way that will cause no harm, or at least a minimum of harm, to other systems or danger to personnel.
+
+- Fault-tolerance is the property that enables a system) to continue operating properly in the event of the failure of (or one or more faults within) some of its components. If its operating quality decreases at all, the decrease is proportional to the severity of the failure, as compared to a naively-designed system in which even a small failure can cause total breakdown.
+
+
+Mutual exclusion (L6S33-40)
+================
+- Use shared resources (file, hardware, net, bandwidth)
+	- No nice synchronization like semaphores or shared clock
+	- must send a request or take a token (as a request as well)
+
+- Desired properties (and metrics) of algorithms (s 35)
+
+- Round-robin token: (S.37)
+	- Fault: token can be lost
+	- Deadlock: can happen
+	- Response time: Can be quite large, since it has to pass all processes
+	- Memory: Small - few states needed remembered (have/have not token)
+	- 
+
+
+
+

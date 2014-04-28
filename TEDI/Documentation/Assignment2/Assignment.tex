@@ -3,11 +3,9 @@
 \begin{document}
 
 \section*{Part 1}
+\paragraph{Model a client-server network that has peer-to-peer connections.
+What is transmitted on the peer-to-peer connections should not be visible to clients and servers outside that connection.}
 
-Model a client-server network that has peer-to-peer connections.
-What is transmitted on the peer-tp-peer connections should not be visible to clients and servers outside that connection.
-\\
-\\
 This is shown in \codeTitle \ref{lst:p2p}.
 First we need to create a channel, \code{c}, which we can transmit through.
 Then we create a proctype to send from, \code{Client1}, with its own channel, \code{transmitter}.
@@ -37,8 +35,14 @@ active proctype Client2()
 \end{lstlisting}
 This way we have created a peer-to-peer connection with a private channel.
 
-\newpage
+
+
+
 \section*{Part 2}
+\paragraph{Model a buffered channel by means of rendezvous channels.}
+
+This is exactly what was done is the first part.
+If anything else was wanted, please specify better or reply to the email send by Lasse Brøsted (10769), who asked what the second part meant.
 
 
 

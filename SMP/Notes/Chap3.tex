@@ -1,0 +1,110 @@
+\documentclass[Main]{subfiles}
+
+\begin{document}
+
+\chapter{Stokastiske variabler}
+
+\section{Histogram matching}
+For at finde $F_y(y)$ fra $F_x(x)$, så skal man finde værdien for $x_i$ og overføre den til $F_y(y)$ (slide Chap. 3, s. 6).
+
+
+
+\begin{lstlisting}[caption=Uniform fordeling med random tal, style=Code-Matlab, label=lst:uni]
+yrange = -5:0.1:5;
+Fy = normcdf(yrange,0,1);
+
+N = 1000;
+x = rand(1,N);
+Fx = unifcdf(x,0,1);
+
+for i = 1:N
+distance = abs(Fx(i)-Fy);
+[min_val,min_ix] = min(distance);
+y(i) = yrange(min_ix);
+end
+
+\end{lstlisting}
+
+Fordelingsfunktionen er per definition integralet fra $-\infty$ til $\infty $.
+
+Slide 23/61 for vigtige relationer.
+
+Givet $f(x,y)$, hvordan beregner man de marginale
+sandsynligheder $f_X(x)$ og $f_Y(y)$?
+
+\begin{align*}
+f_X(x) &= \int_{-\infty}^{\infty} f(x,y) dy\\
+f_Y(y) &= \int_{-\infty}^{\infty} f(x,y) dx
+\end{align*}
+
+Hvordan beregnes de betingede tætheder $f(x|y)$ og $f(y|x)$?
+
+\begin{align*}
+f(x|y) &= \dfrac{f(x,y)}{f_Y(y)}\\
+f(y|x) &= \dfrac{f(x,y)}{f_X(x)}
+\end{align*}
+
+Bayes regel:
+\begin{align*}
+f(y|x) &= \dfrac{g(x|y) \cdot f_Y(y)}{f_X(x)}\\
+f(x|y) &= \dfrac{g(x|y) \cdot f_X(x)}{f_Y(y)} & \text{Måske}
+\end{align*} 
+
+
+\section{Korrelation}
+
+Afhænger X og Y af hinanden?\\
+Centrer om middelværdien!
+\\
+Se slide 27/61.
+\\
+\\
+En stærk korrelationskoefficient ligger oven i hinanden.
+
+\section{Symmetrisk Gaussfordeling}
+
+Når $f(x|y) = f_X(x)$, så er $X$ og $Y$ uafhængige. (slide 34/61).
+\\\\
+Hvis de ikke er uafhængige (slide 36/61), så ligger data IKKE oven i hinanden.
+Altså er $f(x|y) \not = f_X(x)$.
+Den betingede graf er smallere end den marginale.
+\\
+\\
+Beregn areal under den sorte kurve (slide 37/61): $f(x|y=0) = \dfrac{f(x,y=0)}{f_Y(y=0)}$ og $f(y|x=0.64) = \dfrac{f(x=0.64, y)}{f_X(x=0.64)}$
+
+
+
+
+
+
+\section{Hvor er robotten}
+Slide. 40-49/61
+\\
+\\
+Vi ved ikke hvor robotten er til start -- den marginale tæthed $f_X(x)$ er derfor uniform.
+Dette er \textit{a priori}, før måling, viden om positionen.
+\\
+\\
+Målestøjen er normalfordelt: $ N \sim \mathbb{N}(0.5)$.
+Så må $f(y|x) = f(x+n|x) = f_N(n) = f_N(y-x)$.
+\\
+\\
+Dette er også "Kalmers".
+
+
+\section{Sum af stokastiske variabler}
+Slide 50-54.
+\\
+\\
+Hvor mange kombinationer af en funktion kan der forekomme. Summer disse i en graf.
+Kaldes en foldning eller \texttt{conv()} i Matlab, $ f_z = f_x \otimes f_y$
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,39 @@
+Scheme og LISP
+==============
+
+Lisp
+----
+- A family of programmin language
+- Can adapt to modern language
+
+Scheme
+------
+Dialect og LISP
+We use R5RS-revesion
+
+
+Syntax
+======
+
+(define x 5)
+
+(define plus1
+    (lambda (x) (+1 x)))
+
+(plus1 3)
+
+(let ((x 1) (y 2))
+	(+ x y))
+
+(let* ((x 1) (y x))
+	(+ x y))
+
+(cons 1 2) //Det samme som et array med 1 og 2
+(car (cons 1 2))
+
+(list 1 2 3) //En liste med 1 2 3
+
+(null? (list 1 2 3)) //Er listen tom?
+
+(length (list 1 2 3)) //Lændge af en liste
+

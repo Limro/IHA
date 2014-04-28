@@ -1,3 +1,6 @@
 [submodule "TEDI/Documentation/Modules"]
 	path = TEDI/Documentation/Modules
 	url = git@github.com:Limro/LatexModules.git
+[submodule "PLPA/Documentation/Modules"]
+	path = PLPA/Documentation/Modules
+	url = git@github.com:Limro/LatexModules.git

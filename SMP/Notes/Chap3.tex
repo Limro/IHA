@@ -4,6 +4,12 @@
 
 \chapter{Stokastiske variabler}
 
+
+\section{Marginal}
+Marginal density function; $f_X(x) = \int_{-\infty}^{\infty} f(x,y) dy $.
+\\
+Faktisk er det alle variabler, som ikke er ønsket( aka. alt der ikke er x).
+
 \section{Histogram matching}
 For at finde $F_y(y)$ fra $F_x(x)$, så skal man finde værdien for $x_i$ og overføre den til $F_y(y)$ (slide Chap. 3, s. 6).
 
@@ -89,7 +95,7 @@ Målestøjen er normalfordelt: $ N \sim \mathbb{N}(0.5)$.
 Så må $f(y|x) = f(x+n|x) = f_N(n) = f_N(y-x)$.
 \\
 \\
-Dette er også "Kalmers".
+Dette er også "Kalman-filter".
 
 
 \section{Sum af stokastiske variabler}

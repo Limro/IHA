@@ -37,3 +37,21 @@ Syntax
 
 (length (list 1 2 3)) //Lændge af en liste
 
+
+
+====================
+Atom
+	- constanter, null lister, identifier (operatorer), variables
+
+Compound excpression
+	- Starts with ()
+	- Will apply the first and the second to the third element
+
+Scheme calculates something once, saves the value and recall the value when needed (for another identic calculcation).
+
+
+
+Tail recursive
+--------------
+Must return the same function and NO MORE in an else
+

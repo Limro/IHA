@@ -1,0 +1,118 @@
+\documentclass[Main]{subfiles}
+
+\begin{document}
+
+
+\chapter{Kapitel 5} % (fold)
+
+\section{Stokastiske processor} % (fold)
+\label{sec:stokastiske_processor}
+
+% section stokastiske_processor (end)
+
+\begin{itemize}
+\item Uendelige mange tidsfunktion.
+\item Kan have forskellige offset (dvs. y-akse).
+\item Kan være "uniform" 
+\item Når man sampler observere kun én af uendelig muligt mange
+\item Hvordan laver man en generalisering ud fra én observation?
+\end{itemize}
+
+Arbitrær samplet funktion, $X(t)$.
+\\
+Stokasitsk variabel til tiden $t_1$, $X(t_1) = X_1$
+\\
+Tæthedsfuntion: $f_X(x)$ -- viser sandsynligheder for værdi.
+\\
+Diskret: Istedet for en graf som ved ovenstående, er det blot enkelte pile.
+\\
+Deterministisk: Ved måling af noget i en tid kan det predikteres i al fremtid.
+
+Det kan ikke gøre ved non-deterministisk.
+
+Deterministisk og non-deterministiske har samme tæthedsfunktion!
+
+\begin{align*}
+X(t) &= A\cdot cos( \omega t+\theta), \theta \sim \mu(0, 2\pi)
+\end{align*}
+
+
+\section{Strengt Stationær} % (fold)
+
+Ved to tidspuntker og $\Delta t$ gælder, at ved tæthedsfunktionen af to tider.
+De to tider har en fordeling.
+Simultan tæthedsfunktion -- $x_1$ = noget og $x_2$ = noget andet.
+Hvis man rykker funktionen skal tæthedsfunktionen være den samme (hvilket ikke kan testes i praksis).
+\\
+Derimod bruges "stationær i bredforstand".
+Her skal middelværdien være den samme! 
+\\
+$E(X(t_1)) = E(X(t_2))$ 
+\\\\
+og for alle valg af $t_1$ og $t_2$ er 
+\\
+$ E(X(t_1) \cdot X(t_2)) = funktion(t_1-t_2)$
+
+
+% section strengt_stationær (end)
+
+
+\section{Ergodisk proces} % (fold)
+\label{sec:ergodisk_proces}
+
+Hvis ensemble midling = tidslig midling:
+\begin{align*}
+\bar{X} &= \int_{-\infty}^\infty x \cdot f(x) dx = \lim\limits_{T \to \infty} \dfrag{1}{2T} \int_{-T}^T x(t) dt
+\end{align*}
+
+Ved formlen $X(t) = A \cdot cos(\omega t)$ er der ikke ens middelværdi.
+
+
+% section ergodisk_proces (end)
+
+
+\section{Måling af procesparametre} % (fold)
+\label{sec:måling_af_procesparametre}
+
+
+Et estimat af middelværdien:
+Estimat har hat på, stregen betyder middelværdi.
+
+\begin{align*}
+\hat{\bar{X}} &= \int_0^T x(t) dt \\
+E[ X(t) ] &= \int_{-\infty}^\infty x \cdot f(x) dx  \\
+	&= \int_0^{2 \pi} A \cdot cos(\omega t + \theta) \cdot \dfrac{1}{2 \pi} \cdot d\phi \\
+E [ X(t_1) X(t_2)] &= \int_{-\infty}^{\infty} x \cdot y \cdot f(x,y) \cdot dx \cdot dy
+\end{align*}
+
+\begin{align*}
+E[\hat{\bar{X}} ] &= E[ \dfrac{1}{T} \cdot \int_0^T x(t) dt] \\
+	&= \int_{-\infty}^\infty (\dfrac{1}{T} \int_0^T x(t) dt) \cdot f_{\hat{\bar{X}}}{\hat{\bar{x}}} \cdot d{\hat{\bar{x}}} \\
+	&= \dfrac{1}{T} \cdot \int_{-\infty}^\infty (\int_{-\infty}^\infty x(t)  \cdot f_{\hat{\bar{X}}}{\hat{\bar{x}}} \cdot d{\hat{\bar{x}}} ) dt \\
+\end{align*}
+
+Gennemsnittet af alle X'er:
+\begin{align*}
+\hat{\bar{X}} &= \dfrac{1}{n} \sum_{i=1}^n X_i \\
+E[\hat{\bar{X}}] &= E[\dfrac{1}{n} \sum_{i=1}^n X_i] \\
+	&= \dfrac{1}{n} \sum_{i=1}^n E[X_i] \\
+	&= \dfrac{1}{n} \sum_{i=1}^n \bar{X} \\
+	&= \bar{X}
+\end{align*}
+
+Mean square og varians (hvor bred er Gauss-kurven):
+\begin{align*}
+E[\hat{\bar{X}}^2] &= \dfrac{1}{N^2} \sum_{i=1}^N \sum_{j=1}^N E[X_i \cdot X_j] \\
+	&= \dfrac{1}{N} \sigma_x^2+(\bar{x})^2 \\
+Var(\hat{\bar{X}}) &= E(( \hat{\bar{x}})^2) - ( E(\hat{\bar{x}}))^2 \\
+	&= \dfrac{1}{N} \sigma_x^2
+\end{align*}
+
+% section måling_af_procesparametre (end)
+
+
+
+
+
+
+\end{document}

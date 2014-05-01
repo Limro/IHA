@@ -221,5 +221,41 @@ Mutual exclusion (L6S33-40)
 	- 
 
 
+Deadlock
+========
+- SPIN tells us of deadlocks
+- Safety clain:
+	#define mutex (critical <= 1)
+- SPIN only needs a single *claim* that your model isn't true.
+- Never claim, []mutex, er et loop, der vil sige vi er fejl på den, hvis den nogen sinde slutter. (L8S6)
+	- Kræver "Safety"-mode.
+
+
+- Man kan spørge på noget vil ske på et tidspunkt, <>csp.
+	- SPIN forsøger at finde et loop, hvor det ikke vil ske.
+	- Kræver "livingness"-mode
+
+- Hvis man leder efter starvation skal man bruge "Acceptance"-mode
+	ltl{<>noStarve}
+
+
+Neilsen-Muzuno algorithm
+========================
+
+- DAG (Directed a... Graph)
+
+- Each node contains the following:
+	- The "next" node (int)
+		- If a node had request an another request it later
+	- The "last" node (int)
+		- Which way should search for the node who needs CR
+		- Direction of token
+	- The holding" node (bool)
+
+- Messages:
+	- Request(s,r)
+		- s = node sending request
+		- r = node wanting token
+	
 
 

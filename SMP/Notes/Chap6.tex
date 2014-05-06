@@ -1,0 +1,105 @@
+\documentclass[Main]{subfiles}
+
+\begin{document}
+
+\chapter{Chapter 6} % (fold)
+\label{cha:chapter_6}
+
+\begin{theo}[Autokorrelation]
+Korrelation: Hvor meget to stokastiske ligninger ligner hiannden. (Se kap. 5)
+\\\\
+Hvor meget liger en ligning sig ved $X(t)$ i forhold til $X(t+ \tau)$:
+\begin{align*}
+	R_X(t_1,t_2) &= E[X(t_1) \cdot X(t_2)] \\
+	&= E[X_1 \cdot X_2] \\
+	&= \int_{-\infty}^\infty \int_{-\infty}^\infty x_1 \cdot x_2 \cdot f(x_1,x_2) dx_1 dx_2
+\end{align*}
+
+En stationær process:\\
+\begin{align*}
+R_X(t_1,t_2) &= R_X(t_1+T,t_2+T) \\
+	&= E[X(t_1+T) \cdot X(t_2+T)] \\
+	&= E[X(t) \cdot X(t+ \tau)]
+\end{align*}
+
+Den er symmetrisk så $R_X(\tau) = R_X(-\tau)$.
+\\
+
+\end{theo}
+
+
+\begin{theo}[Krydskorrelation]
+Kan bruges til at lede efter steder (tidspunkter $\tau$), hvor
+signalet $X(t)$ ligner signalet $Y(t)$.
+\end{theo}
+
+
+\begin{theo}[Tidslig autokorrelation]
+\begin{align*}
+\mathbb{R}_X(\tau) = \lim\limits_{T \to \infty} \dfrac{1}{2T} \int_{-T}^T x(t) \cdot x(t+\tau) d\tau
+\end{align*}
+
+$\tau = 0 $ betyder mean-square og de ligner hinanden maximalt.
+\\
+$\tau \not = 0$ er en kopi forskudt og jo større forskydning, jo større er sandsynligheden for, at de ikke ligner hinanden.
+Ved $t_a$ ved man, at man har "kast en ny mønt".
+\\\\
+Hvis $|\tau| > t_a$ er  $R_X(\tau) = 0$.
+\\
+Hvis $|\tau| < t_a$ kan $\tau < 0 $ eller $\tau \leq 0$.
+\\
+Ved $\tau \leq 0$ er $\Pr(t_1$ og $t_1+\tau$ i samme interval) $= \dfrac{t_1+\tau}{t_a}$
+\\
+Ved $\tau < 0$ er $\Pr(t_1$ og $t_1+\tau$ i samme interval) $= \dfrac{t_1-\tau}{t_a}$
+
+\end{theo}
+
+\begin{theo}[Deterministisk og non-deterministisk]
+Et deterministisk ser ud som det gør.
+\\
+\\
+Et non-' bliver større og større mod tau.
+\begin{lstlisting}[, style=Code-Matlab, label=lst:labelName]
+Rx = conv(x, fliplr(x));
+\end{lstlisting}
+Dette giver høj, positiv korrelation: ved $\tau = 0$. 
+Uden om er $R_X$ mindre, da signalet ligner mindre.
+\\
+Ved at midle at værdien ENORM ved $\tau$.
+\end{theo}
+
+\begin{theo}[Eksempel]
+\begin{align*}
+X(t) &= A \cdot cos(\omega t + \theta)\\
+	& \theta \sim uniform(0, 2 \pi) \rightarrow
+\end{align*}
+$f_\theta (\theta) =$
+\begin{FunArg} 
+\dfrac{1}{2\pi} & 0 \leq \theta \leq 2\pi \\
+0 & \text{ellers}
+\end{FunArg}
+
+\begin{align*}
+R_X(\tau) &= E[X(t) \cdot X(t+\tau)] \\
+	&= E[(A \cdot cos(\omega t+\theta)) \cdot (A cos(\omega (t+\tau) + \theta))] \\
+	&= A^2 \cdot E[cos( \omega t+ \theta) \cdot cos(\omega (t+\tau)+\theta)] \\
+	&= A^2 \cdot E\left[\frac{1}{2} cos(2\omega t+\omega \tau + 2 \theta) + \frac{1}{2} cos( \omega t)\right] \\
+	&= \dfrac{A^2}{2} \int_0^{2 \pi} (cos (2 \omega t + \omega \tau) + cos(\omega \tau)) \cdot \dfrac{1}{2 \pi} \cdot d\theta \\
+	&= \dfrac{A^2}{2} cos( \omega \tau) \\
+E(X) &= \int_{-\infty}^\infty x \cdotf(x) \cdot dx
+\end{align*}
+
+\end{theo}
+
+Hvis X og Y er uafhængige gælder at co-variansen = 0.
+\begin{theo}[Regneregler]
+\begin{align*}
+Var(X) &= E(X^2)- (E(X))^2 \\
+\end{align*}
+\end{theo}
+
+
+
+
+% chapter chapter_6 (end)
+\end{document}

@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{63A39661-A8E0-47BC-9105-25F091CD9A3B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Calculator</RootNamespace>
+    <AssemblyName>Calculator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IronScheme">
+      <HintPath>..\packages\IronScheme.0.9.103684\lib\IronScheme.dll</HintPath>
+    </Reference>
+    <Reference Include="IronScheme.Web.Runtime">
+      <HintPath>..\packages\IronScheme.0.9.103684\lib\IronScheme.Web.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot">
+      <HintPath>..\packages\OxyPlot.Core.2014.1.296.1\lib\portable-net4+sl4+wp71+win8\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Wpf">
+      <HintPath>..\packages\OxyPlot.Wpf.2014.1.296.1\lib\NET45\OxyPlot.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Xps">
+      <HintPath>..\packages\OxyPlot.Wpf.2014.1.296.1\lib\NET45\OxyPlot.Xps.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="MainViewModel.cs" />
+    <Page Include="Graph.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Graph.xaml.cs">
+      <DependentUpon>Graph.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="lib\as-match.sls" />
+    <None Include="lib\bench.sls" />
+    <None Include="lib\datatype.sls" />
+    <None Include="lib\diff.sls" />
+    <None Include="lib\fectors.sls" />
+    <None Include="lib\ironscheme\clr.sls" />
+    <None Include="lib\ironscheme\clr\dynamic.sls" />
+    <None Include="lib\ironscheme\clr\helpers.sls" />
+    <None Include="lib\ironscheme\clr\reflection.sls" />
+    <None Include="lib\ironscheme\clr\shorthand-helper.sls" />
+    <None Include="lib\ironscheme\clr\shorthand.sls" />
+    <None Include="lib\ironscheme\console.sls" />
+    <None Include="lib\ironscheme\contracts-helper.sls" />
+    <None Include="lib\ironscheme\contracts.sls" />
+    <None Include="lib\ironscheme\conversions.sls" />
+    <None Include="lib\ironscheme\datetime.sls" />
+    <None Include="lib\ironscheme\debugger.sls" />
+    <None Include="lib\ironscheme\environment.sls" />
+    <None Include="lib\ironscheme\ffi.sls" />
+    <None Include="lib\ironscheme\files.sls" />
+    <None Include="lib\ironscheme\fsm-cond-helpers.sls" />
+    <None Include="lib\ironscheme\fsm-cond.sls" />
+    <None Include="lib\ironscheme\integrable.sls" />
+    <None Include="lib\ironscheme\io.sls" />
+    <None Include="lib\ironscheme\linq.sls" />
+    <None Include="lib\ironscheme\process.sls" />
+    <None Include="lib\ironscheme\random.sls" />
+    <None Include="lib\ironscheme\record-case.sls" />
+    <None Include="lib\ironscheme\regex-cond.sls" />
+    <None Include="lib\ironscheme\regex.sls" />
+    <None Include="lib\ironscheme\registry.sls" />
+    <None Include="lib\ironscheme\strings.sls" />
+    <None Include="lib\ironscheme\syntax.sls" />
+    <None Include="lib\ironscheme\syntax\define-macro.sls" />
+    <None Include="lib\ironscheme\syntax\library-utils.sls" />
+    <None Include="lib\ironscheme\syntax\parameters.sls" />
+    <None Include="lib\ironscheme\syntax\shorthand.sls" />
+    <None Include="lib\ironscheme\syntax\symbolic-case.sls" />
+    <None Include="lib\ironscheme\syntax\utils.sls" />
+    <None Include="lib\ironscheme\threading.sls" />
+    <None Include="lib\ironscheme\typed.sls" />
+    <None Include="lib\ironscheme\typed\core.sls" />
+    <None Include="lib\ironscheme\typed\integrable.sls" />
+    <None Include="lib\ironscheme\typed\parsing-helper.sls" />
+    <None Include="lib\ironscheme\typed\parsing.sls" />
+    <None Include="lib\ironscheme\typed\struct-case.sls" />
+    <None Include="lib\ironscheme\typed\struct-descriptor.sls" />
+    <None Include="lib\ironscheme\typed\struct.sls" />
+    <None Include="lib\ironscheme\unsafe\fixnums.sls" />
+    <None Include="lib\ironscheme\web-utils.sls" />
+    <None Include="lib\ironscheme\web.sls" />
+    <None Include="lib\ironscheme\web\controllers.sls" />
+    <None Include="lib\ironscheme\web\models.sls" />
+    <None Include="lib\ironscheme\web\routing-helper.sls" />
+    <None Include="lib\ironscheme\web\routing.sls" />
+    <None Include="lib\ironscheme\web\views.sls" />
+    <None Include="lib\ironscheme\xml.sls" />
+    <None Include="lib\LICENSE.fectors" />
+    <None Include="lib\LICENSE.minikanren" />
+    <None Include="lib\list-match.sls" />
+    <None Include="lib\match.sls" />
+    <None Include="lib\minikanren.sls" />
+    <None Include="lib\minikanren\mk.sls" />
+    <None Include="lib\minikanren\mkextraforms.sls" />
+    <None Include="lib\minikanren\mkprelude.sls" />
+    <None Include="lib\pfds\bbtrees.sls" />
+    <None Include="lib\pfds\deques.sls" />
+    <None Include="lib\pfds\dlists.sls" />
+    <None Include="lib\pfds\fingertrees.sls" />
+    <None Include="lib\pfds\heaps.sls" />
+    <None Include="lib\pfds\private\lazy-lists.sls" />
+    <None Include="lib\pfds\psqs.sls" />
+    <None Include="lib\pfds\queues.sls" />
+    <None Include="lib\pfds\sequences.sls" />
+    <None Include="lib\pfds\sets.sls" />
+    <None Include="lib\pregexp.sls" />
+    <None Include="lib\README.fectors" />
+    <None Include="lib\README.minikanren" />
+    <None Include="lib\simple-regression-testing.sls" />
+    <None Include="lib\smart-curry.sls" />
+    <None Include="lib\srfi\0.sls" />
+    <None Include="lib\srfi\0\cond-expand.sls" />
+    <None Include="lib\srfi\1.sls" />
+    <None Include="lib\srfi\101.sls" />
+    <None Include="lib\srfi\101\random-access-lists.sls" />
+    <None Include="lib\srfi\102.sls" />
+    <None Include="lib\srfi\102\procedure-arity.sls" />
+    <None Include="lib\srfi\11.sls" />
+    <None Include="lib\srfi\111.sls" />
+    <None Include="lib\srfi\111\boxes.sls" />
+    <None Include="lib\srfi\112.sls" />
+    <None Include="lib\srfi\112\environment-inquiry.sls" />
+    <None Include="lib\srfi\11\let-values.sls" />
+    <None Include="lib\srfi\13.sls" />
+    <None Include="lib\srfi\13\srfi-13.scm" />
+    <None Include="lib\srfi\13\strings.sls" />
+    <None Include="lib\srfi\14.sls" />
+    <None Include="lib\srfi\14\char-sets.sls" />
+    <None Include="lib\srfi\14\srfi-14.scm" />
+    <None Include="lib\srfi\16.sls" />
+    <None Include="lib\srfi\16\case-lambda.sls" />
+    <None Include="lib\srfi\19.sls" />
+    <None Include="lib\srfi\19\srfi-19.scm" />
+    <None Include="lib\srfi\19\time.sls" />
+    <None Include="lib\srfi\19\time\compat.ironscheme.sls" />
+    <None Include="lib\srfi\1\lists.sls" />
+    <None Include="lib\srfi\2.sls" />
+    <None Include="lib\srfi\23.sls" />
+    <None Include="lib\srfi\23\error.sls" />
+    <None Include="lib\srfi\23\error\tricks.sls" />
+    <None Include="lib\srfi\25.sls" />
+    <None Include="lib\srfi\25\arlib.scm" />
+    <None Include="lib\srfi\25\array.scm" />
+    <None Include="lib\srfi\25\ix-ctor.scm" />
+    <None Include="lib\srfi\25\list.scm" />
+    <None Include="lib\srfi\25\multi-dimensional-arrays.sls" />
+    <None Include="lib\srfi\25\multi-dimensional-arrays\all.sls" />
+    <None Include="lib\srfi\25\multi-dimensional-arrays\arlib.sls" />
+    <None Include="lib\srfi\25\op-ctor.scm" />
+    <None Include="lib\srfi\25\test.scm" />
+    <None Include="lib\srfi\26.sls" />
+    <None Include="lib\srfi\26\cut.scm" />
+    <None Include="lib\srfi\26\cut.sls" />
+    <None Include="lib\srfi\27.sls" />
+    <None Include="lib\srfi\27\random-bits.sls" />
+    <None Include="lib\srfi\27\random.ss" />
+    <None Include="lib\srfi\2\and-let%252a.sls" />
+    <None Include="lib\srfi\31.sls" />
+    <None Include="lib\srfi\31\rec.sls" />
+    <None Include="lib\srfi\37.sls" />
+    <None Include="lib\srfi\37\args-fold.sls" />
+    <None Include="lib\srfi\37\srfi-37-reference.scm" />
+    <None Include="lib\srfi\38.sls" />
+    <None Include="lib\srfi\38\with-shared-structure.ironscheme.sls" />
+    <None Include="lib\srfi\39.sls" />
+    <None Include="lib\srfi\39\parameters.ironscheme.sls" />
+    <None Include="lib\srfi\41.sls" />
+    <None Include="lib\srfi\41\streams.sls" />
+    <None Include="lib\srfi\41\streams\derived.sls" />
+    <None Include="lib\srfi\41\streams\primitive.sls" />
+    <None Include="lib\srfi\42.sls" />
+    <None Include="lib\srfi\42\design.scm" />
+    <None Include="lib\srfi\42\eager-comprehensions.sls" />
+    <None Include="lib\srfi\42\ec.scm" />
+    <None Include="lib\srfi\42\extension.scm" />
+    <None Include="lib\srfi\42\timing.scm" />
+    <None Include="lib\srfi\43.sls" />
+    <None Include="lib\srfi\43\vector-lib.scm" />
+    <None Include="lib\srfi\43\vectors.sls" />
+    <None Include="lib\srfi\45.sls" />
+    <None Include="lib\srfi\45\lazy.sls" />
+    <None Include="lib\srfi\48.sls" />
+    <None Include="lib\srfi\48\intermediate-format-strings.sls" />
+    <None Include="lib\srfi\48\intermediate-format-strings\compat.ironscheme.sls" />
+    <None Include="lib\srfi\6.sls" />
+    <None Include="lib\srfi\61.sls" />
+    <None Include="lib\srfi\61\cond.sls" />
+    <None Include="lib\srfi\64.sls" />
+    <None Include="lib\srfi\64\testing.scm" />
+    <None Include="lib\srfi\64\testing.sls" />
+    <None Include="lib\srfi\67.sls" />
+    <None Include="lib\srfi\67\compare-procedures.sls" />
+    <None Include="lib\srfi\67\compare.ss" />
+    <None Include="lib\srfi\69.sls" />
+    <None Include="lib\srfi\69\basic-hash-tables.sls" />
+    <None Include="lib\srfi\6\basic-string-ports.sls" />
+    <None Include="lib\srfi\6\basic-string-ports\compat.ironscheme.sls" />
+    <None Include="lib\srfi\78.sls" />
+    <None Include="lib\srfi\78\check.scm" />
+    <None Include="lib\srfi\78\lightweight-testing.sls" />
+    <None Include="lib\srfi\78\lightweight-testing\compat.ironscheme.sls" />
+    <None Include="lib\srfi\8.sls" />
+    <None Include="lib\srfi\8\receive.sls" />
+    <None Include="lib\srfi\9.sls" />
+    <None Include="lib\srfi\98.sls" />
+    <None Include="lib\srfi\98\os-environment-variables.ironscheme.sls" />
+    <None Include="lib\srfi\99.sls" />
+    <None Include="lib\srfi\99\records.sls" />
+    <None Include="lib\srfi\99\records\helper.sls" />
+    <None Include="lib\srfi\99\records\inspection.sls" />
+    <None Include="lib\srfi\99\records\procedural.sls" />
+    <None Include="lib\srfi\99\records\syntactic.sls" />
+    <None Include="lib\srfi\9\records.sls" />
+    <None Include="lib\srfi\compile-all.ironscheme.sps" />
+    <None Include="lib\srfi\private\include.sls" />
+    <None Include="lib\srfi\private\include\compat.ironscheme.sls" />
+    <None Include="lib\srfi\private\let-opt.sls" />
+    <None Include="lib\srfi\private\make-aliased-libraries.sps" />
+    <None Include="lib\srfi\private\OS-id-features.sls" />
+    <None Include="lib\srfi\private\platform-features.ironscheme.sls" />
+    <None Include="lib\srfi\private\registry.sls" />
+    <None Include="lib\tiny-talk.sls" />
+    <None Include="lib\wak\fmt.sls" />
+    <None Include="lib\wak\fmt\c.sls" />
+    <None Include="lib\wak\fmt\color.sls" />
+    <None Include="lib\wak\fmt\js.sls" />
+    <None Include="lib\wak\fmt\private\fmt-c.scm" />
+    <None Include="lib\wak\fmt\private\fmt-color.scm" />
+    <None Include="lib\wak\fmt\private\fmt-column.scm" />
+    <None Include="lib\wak\fmt\private\fmt-js.scm" />
+    <None Include="lib\wak\fmt\private\fmt-pretty.scm" />
+    <None Include="lib\wak\fmt\private\fmt-unicode.scm" />
+    <None Include="lib\wak\fmt\private\fmt.doc" />
+    <None Include="lib\wak\fmt\private\fmt.scm" />
+    <None Include="lib\wak\fmt\private\mantissa.scm" />
+    <None Include="lib\wak\foof-loop.sls" />
+    <None Include="lib\wak\foof-loop\nested.sls" />
+    <None Include="lib\wak\foof-loop\private\foof-loop.scm" />
+    <None Include="lib\wak\foof-loop\private\nested-foof-loop.scm" />
+    <None Include="lib\wak\LICENSE.BSD.wak" />
+    <None Include="lib\wak\LICENSE.fmt" />
+    <None Include="lib\wak\LICENSE.foof-loop" />
+    <None Include="lib\wak\LICENSE.MIT.wak" />
+    <None Include="lib\wak\LICENSE.riastreams" />
+    <None Include="lib\wak\LICENSE.syn-param" />
+    <None Include="lib\wak\private\define-values.sls" />
+    <None Include="lib\wak\private\include.sls" />
+    <None Include="lib\wak\private\include\compat.ironscheme.sls" />
+    <None Include="lib\wak\private\include\filesys.sls" />
+    <None Include="lib\wak\private\include\helper.sls" />
+    <None Include="lib\wak\private\include\utils.sls" />
+    <None Include="lib\wak\private\let-optionals.sls" />
+    <None Include="lib\wak\README.trc-testing" />
+    <None Include="lib\wak\riastreams.sls" />
+    <None Include="lib\wak\riastreams\private\stream.scm" />
+    <None Include="lib\wak\syn-param.sls" />
+    <None Include="lib\wak\syn-param\private\syn-param.scm" />
+    <None Include="lib\wak\trc-testing.sls" />
+    <None Include="lib\wak\trc-testing\display-condition.sls" />
+    <None Include="lib\wak\trc-testing\limited-write.sls" />
+    <None Include="lib\wak\trc-testing\parameters.sls" />
+    <None Include="lib\wak\trc-testing\port-tracker.sls" />
+    <None Include="lib\wak\trc-testing\private\test.scm" />
+    <None Include="lib\wak\trc-testing\restart.sls" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="test.ss" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

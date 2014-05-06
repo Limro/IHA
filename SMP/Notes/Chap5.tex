@@ -41,10 +41,12 @@ X(t) &= A\cdot cos( \omega t+\theta), \theta \sim \mu(0, 2\pi)
 
 Ved to tidspuntker og $\Delta t$ gælder, at ved tæthedsfunktionen af to tider.
 De to tider har en fordeling.
-Simultan tæthedsfunktion -- $x_1$ = noget og $x_2$ = noget andet.
+Simultan tæthedsfunktion: $x_1$ = noget og $x_2$ = noget andet.
 Hvis man rykker funktionen skal tæthedsfunktionen være den samme (hvilket ikke kan testes i praksis).
-\\
-Derimod bruges "stationær i bredforstand".
+
+
+
+\begin{theo}[Stationær i bredforstand]
 Her skal middelværdien være den samme! 
 \\
 $E(X(t_1)) = E(X(t_2))$ 
@@ -52,6 +54,8 @@ $E(X(t_1)) = E(X(t_2))$
 og for alle valg af $t_1$ og $t_2$ er 
 \\
 $ E(X(t_1) \cdot X(t_2)) = funktion(t_1-t_2)$
+
+\end{theo}
 
 
 % section strengt_stationær (end)
@@ -62,9 +66,10 @@ $ E(X(t_1) \cdot X(t_2)) = funktion(t_1-t_2)$
 
 Hvis ensemble midling = tidslig midling:
 \begin{align*}
-\bar{X} &= \int_{-\infty}^\infty x \cdot f(x) dx = \lim\limits_{T \to \infty} \dfrag{1}{2T} \int_{-T}^T x(t) dt
+\bar{X} &= \int_{-\infty}^\infty x \cdot f(x) dx = \lim\limits_{T \to \infty} \dfrac{1}{2T} \int_{-T}^T x(t) dt
 \end{align*}
-
+Man kan altså midle på to forskellige steder og få det samme.
+\\
 Ved formlen $X(t) = A \cdot cos(\omega t)$ er der ikke ens middelværdi.
 
 

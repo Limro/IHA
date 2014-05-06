@@ -55,3 +55,19 @@ Tail recursive
 --------------
 Must return the same function and NO MORE in an else
 
+
+Environments
+============
+
+An environment is a list of pair
+- car = symbol
+- cdr = value
+
+Kan kaldes med lambda eller let
+- value kan være en procedure
+
+Shadowing er lokale variabler (let i en let med samme variabel)
+
+Letrec kan parse lokale variabler igennem en rekursive funktion.
+- Den vil tage den reele værdi og bruge den når den parser den.
+

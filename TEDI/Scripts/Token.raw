@@ -1,0 +1,1370 @@
+ltl ltl_0: [] (<> (((incrit[0]) && (incrit[1])) && (incrit[2])))
+starting claim 2
+using statement merging
+Never claim moves to line 3	[(!(((incrit[0]&&incrit[1])&&incrit[2])))]
+  2:	proc  0 (:init::1) Token.pml:56 (state -)	[values: 1!tokgrant,0]
+  2:	proc  0 (:init::1) Token.pml:56 (state 1)	[ch[0]!tokgrant,0]
+		queue 1 (ch[0]): [tokgrant,0]
+		queue 2 (ch[1]): 
+		queue 3 (ch[2]): 
+
+Never claim moves to line 2	[DO]
+Starting P with pid 2
+  4:	proc  0 (:init::1) Token.pml:59 (state 2)	[(run P(0))]
+
+Starting P with pid 3
+  5:	proc  0 (:init::1) Token.pml:60 (state 3)	[(run P(1))]
+
+Starting P with pid 4
+  6:	proc  0 (:init::1) Token.pml:61 (state 4)	[(run P(2))]
+
+  8:	proc  3 (P:1) Token.pml:15 (state 1)	[incrit[id] = 0]
+
+ 10:	proc  3 (P:1) Token.pml:17 (state 2)	[holding = 0]
+		P(3):holding = 0
+
+ 10:	proc  3 (P:1) Token.pml:18 (state 3)	[waiting = 0]
+		P(3):waiting = 0
+		P(3):holding = 0
+
+ 10:	proc  3 (P:1) Token.pml:19 (state 4)	[requester = 0]
+		P(3):requester = 0
+		P(3):waiting = 0
+		P(3):holding = 0
+
+ 10:	proc  3 (P:1) Token.pml:20 (state 5)	[pidx = 0]
+		P(3):pidx = 0
+		P(3):requester = 0
+		P(3):waiting = 0
+		P(3):holding = 0
+
+ 12:	proc  3 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+ 12:	proc  3 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(3):pidx = 0
+
+ 14:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+ 16:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+ 18:	proc  3 (P:1) Token.pml:45 (state -)	[values: 1!tokreq,2]
+ 18:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 1 (ch[0]): [tokgrant,0][tokreq,2]
+
+ 20:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 1
+
+ 22:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+ 24:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+ 26:	proc  3 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,2]
+ 26:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,2]
+
+ 28:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 2
+
+ 30:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+ 32:	proc  3 (P:1) Token.pml:46 (state 25)	[else]
+
+ 34:	proc  3 (P:1) Token.pml:46 (state 26)	[(1)]
+
+ 34:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 3
+
+ 36:	proc  3 (P:1) Token.pml:48 (state 30)	[else]
+
+ 38:	proc  3 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(3):waiting = 1
+
+ 40:	proc  2 (P:1) Token.pml:15 (state 1)	[incrit[id] = 0]
+
+ 42:	proc  2 (P:1) Token.pml:17 (state 2)	[holding = 0]
+		P(2):holding = 0
+
+ 42:	proc  2 (P:1) Token.pml:18 (state 3)	[waiting = 0]
+		P(2):waiting = 0
+		P(2):holding = 0
+
+ 42:	proc  2 (P:1) Token.pml:19 (state 4)	[requester = 0]
+		P(2):requester = 0
+		P(2):waiting = 0
+		P(2):holding = 0
+
+ 42:	proc  2 (P:1) Token.pml:20 (state 5)	[pidx = 0]
+		P(2):pidx = 0
+		P(2):requester = 0
+		P(2):waiting = 0
+		P(2):holding = 0
+
+ 44:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,2]
+ 44:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): 
+		P(2):requester = 2
+
+ 46:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+ 48:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+ 50:	proc  2 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+ 50:	proc  2 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(2):pidx = 0
+
+ 52:	proc  2 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+ 54:	proc  2 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+ 56:	proc  2 (P:1) Token.pml:45 (state -)	[values: 1!tokreq,1]
+ 56:	proc  2 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 1 (ch[0]): [tokgrant,0][tokreq,2][tokreq,1]
+
+ 58:	proc  2 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(2):pidx = 1
+
+ 60:	proc  2 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+ 62:	proc  2 (P:1) Token.pml:46 (state 25)	[else]
+
+ 64:	proc  2 (P:1) Token.pml:46 (state 26)	[(1)]
+
+ 64:	proc  2 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(2):pidx = 2
+
+ 66:	proc  2 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+ 68:	proc  2 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+ 70:	proc  2 (P:1) Token.pml:45 (state -)	[values: 3!tokreq,1]
+ 70:	proc  2 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 3 (ch[2]): [tokreq,1]
+
+ 72:	proc  2 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(2):pidx = 3
+
+ 74:	proc  2 (P:1) Token.pml:48 (state 30)	[else]
+
+ 76:	proc  2 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(2):waiting = 1
+
+ 78:	proc  3 (P:1) Token.pml:23 (state -)	[values: 3?tokreq,1]
+ 78:	proc  3 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 3 (ch[2]): 
+		P(3):requester = 1
+
+ 80:	proc  3 (P:1) Token.pml:28 (state 10)	[else]
+
+ 82:	proc  3 (P:1) Token.pml:28 (state 11)	[(1)]
+
+ 84:	proc  1 (P:1) Token.pml:15 (state 1)	[incrit[id] = 0]
+
+ 86:	proc  1 (P:1) Token.pml:17 (state 2)	[holding = 0]
+		P(1):holding = 0
+
+ 86:	proc  1 (P:1) Token.pml:18 (state 3)	[waiting = 0]
+		P(1):waiting = 0
+		P(1):holding = 0
+
+ 86:	proc  1 (P:1) Token.pml:19 (state 4)	[requester = 0]
+		P(1):requester = 0
+		P(1):waiting = 0
+		P(1):holding = 0
+
+ 86:	proc  1 (P:1) Token.pml:20 (state 5)	[pidx = 0]
+		P(1):pidx = 0
+		P(1):requester = 0
+		P(1):waiting = 0
+		P(1):holding = 0
+
+ 88:	proc  1 (P:1) Token.pml:31 (state -)	[values: 1?tokgrant,0]
+ 88:	proc  1 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 1 (ch[0]): [tokreq,2][tokreq,1]
+
+ 90:	proc  1 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(1):holding = 1
+
+ 90:	proc  1 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(1):waiting = 0
+		P(1):holding = 1
+
+ 92:	proc  1 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+ 94:	proc  1 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+		incrit[0] = 1
+		incrit[1] = 0
+		incrit[2] = 0
+
+ 96:	proc  1 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+ 98:	proc  1 (P:1) Token.pml:23 (state -)	[values: 1?tokreq,2]
+ 98:	proc  1 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 1 (ch[0]): [tokreq,1]
+		P(1):requester = 2
+
+100:	proc  1 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+102:	proc  1 (P:1) Token.pml:26 (state -)	[values: 3!tokgrant,0]
+102:	proc  1 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 3 (ch[2]): [tokgrant,0]
+
+104:	proc  1 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(1):holding = 0
+
+106:	proc  3 (P:1) Token.pml:31 (state -)	[values: 3?tokgrant,0]
+106:	proc  3 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 3 (ch[2]): 
+
+108:	proc  3 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(3):holding = 1
+
+108:	proc  3 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(3):waiting = 0
+		P(3):holding = 1
+
+110:	proc  3 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+112:	proc  3 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+		incrit[0] = 1
+		incrit[1] = 0
+		incrit[2] = 1
+
+114:	proc  3 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+116:	proc  1 (P:1) Token.pml:23 (state -)	[values: 1?tokreq,1]
+116:	proc  1 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 1 (ch[0]): 
+		P(1):requester = 1
+
+118:	proc  1 (P:1) Token.pml:28 (state 10)	[else]
+
+120:	proc  1 (P:1) Token.pml:28 (state 11)	[(1)]
+
+122:	proc  1 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+122:	proc  1 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(1):pidx = 0
+
+124:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+126:	proc  1 (P:1) Token.pml:46 (state 25)	[else]
+
+128:	proc  1 (P:1) Token.pml:46 (state 26)	[(1)]
+
+128:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 1
+
+130:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+132:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+134:	proc  1 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,0]
+134:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,0]
+
+136:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 2
+
+138:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+140:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+142:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,0]
+142:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): 
+		P(2):requester = 0
+
+144:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+146:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+148:	proc  1 (P:1) Token.pml:45 (state -)	[values: 3!tokreq,0]
+148:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 3 (ch[2]): [tokreq,0]
+
+150:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 3
+
+152:	proc  1 (P:1) Token.pml:48 (state 30)	[else]
+
+154:	proc  1 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(1):waiting = 1
+
+156:	proc  3 (P:1) Token.pml:23 (state -)	[values: 3?tokreq,0]
+156:	proc  3 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 3 (ch[2]): 
+		P(3):requester = 0
+
+158:	proc  3 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+160:	proc  3 (P:1) Token.pml:26 (state -)	[values: 1!tokgrant,2]
+160:	proc  3 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 1 (ch[0]): [tokgrant,2]
+
+162:	proc  3 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(3):holding = 0
+
+164:	proc  3 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+164:	proc  3 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(3):pidx = 0
+
+166:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+168:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+170:	proc  3 (P:1) Token.pml:45 (state -)	[values: 1!tokreq,2]
+170:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 1 (ch[0]): [tokgrant,2][tokreq,2]
+
+172:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 1
+
+174:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+176:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+178:	proc  3 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,2]
+178:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,2]
+
+180:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 2
+
+182:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+184:	proc  3 (P:1) Token.pml:46 (state 25)	[else]
+
+186:	proc  3 (P:1) Token.pml:46 (state 26)	[(1)]
+
+186:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 3
+
+188:	proc  3 (P:1) Token.pml:48 (state 30)	[else]
+
+190:	proc  3 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(3):waiting = 1
+
+192:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,2]
+192:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): 
+		P(2):requester = 2
+
+194:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+196:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+198:	proc  1 (P:1) Token.pml:31 (state -)	[values: 1?tokgrant,2]
+198:	proc  1 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 1 (ch[0]): [tokreq,2]
+
+200:	proc  1 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(1):holding = 1
+
+200:	proc  1 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(1):waiting = 0
+		P(1):holding = 1
+
+202:	proc  1 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+204:	proc  1 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+206:	proc  1 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+208:	proc  1 (P:1) Token.pml:23 (state -)	[values: 1?tokreq,2]
+208:	proc  1 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 1 (ch[0]): 
+		P(1):requester = 2
+
+210:	proc  1 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+212:	proc  1 (P:1) Token.pml:26 (state -)	[values: 3!tokgrant,0]
+212:	proc  1 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 3 (ch[2]): [tokgrant,0]
+
+214:	proc  1 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(1):holding = 0
+
+216:	proc  3 (P:1) Token.pml:31 (state -)	[values: 3?tokgrant,0]
+216:	proc  3 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 3 (ch[2]): 
+
+218:	proc  3 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(3):holding = 1
+
+218:	proc  3 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(3):waiting = 0
+		P(3):holding = 1
+
+220:	proc  3 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+222:	proc  3 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+224:	proc  3 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+226:	proc  1 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+226:	proc  1 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(1):pidx = 0
+
+228:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+230:	proc  1 (P:1) Token.pml:46 (state 25)	[else]
+
+232:	proc  1 (P:1) Token.pml:46 (state 26)	[(1)]
+
+232:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 1
+
+234:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+236:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+238:	proc  1 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,0]
+238:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,0]
+
+240:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 2
+
+242:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+244:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+246:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,0]
+246:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): 
+		P(2):requester = 0
+
+248:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+250:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+252:	proc  1 (P:1) Token.pml:45 (state -)	[values: 3!tokreq,0]
+252:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 3 (ch[2]): [tokreq,0]
+
+254:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 3
+
+256:	proc  1 (P:1) Token.pml:48 (state 30)	[else]
+
+258:	proc  1 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(1):waiting = 1
+
+260:	proc  3 (P:1) Token.pml:23 (state -)	[values: 3?tokreq,0]
+260:	proc  3 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 3 (ch[2]): 
+		P(3):requester = 0
+
+262:	proc  3 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+264:	proc  3 (P:1) Token.pml:26 (state -)	[values: 1!tokgrant,2]
+264:	proc  3 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 1 (ch[0]): [tokgrant,2]
+
+266:	proc  3 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(3):holding = 0
+
+268:	proc  3 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+268:	proc  3 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(3):pidx = 0
+
+270:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+272:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+274:	proc  3 (P:1) Token.pml:45 (state -)	[values: 1!tokreq,2]
+274:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 1 (ch[0]): [tokgrant,2][tokreq,2]
+
+276:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 1
+
+278:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+280:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+282:	proc  3 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,2]
+282:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,2]
+
+284:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 2
+
+286:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+288:	proc  3 (P:1) Token.pml:46 (state 25)	[else]
+
+290:	proc  3 (P:1) Token.pml:46 (state 26)	[(1)]
+
+290:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 3
+
+292:	proc  3 (P:1) Token.pml:48 (state 30)	[else]
+
+294:	proc  3 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(3):waiting = 1
+
+296:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,2]
+296:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): 
+		P(2):requester = 2
+
+298:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+300:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+302:	proc  1 (P:1) Token.pml:31 (state -)	[values: 1?tokgrant,2]
+302:	proc  1 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 1 (ch[0]): [tokreq,2]
+
+304:	proc  1 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(1):holding = 1
+
+304:	proc  1 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(1):waiting = 0
+		P(1):holding = 1
+
+306:	proc  1 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+308:	proc  1 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+310:	proc  1 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+312:	proc  1 (P:1) Token.pml:23 (state -)	[values: 1?tokreq,2]
+312:	proc  1 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 1 (ch[0]): 
+		P(1):requester = 2
+
+314:	proc  1 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+316:	proc  1 (P:1) Token.pml:26 (state -)	[values: 3!tokgrant,0]
+316:	proc  1 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 3 (ch[2]): [tokgrant,0]
+
+318:	proc  1 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(1):holding = 0
+
+320:	proc  3 (P:1) Token.pml:31 (state -)	[values: 3?tokgrant,0]
+320:	proc  3 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 3 (ch[2]): 
+
+322:	proc  3 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(3):holding = 1
+
+322:	proc  3 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(3):waiting = 0
+		P(3):holding = 1
+
+324:	proc  3 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+326:	proc  3 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+328:	proc  1 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+328:	proc  1 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(1):pidx = 0
+
+330:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+332:	proc  1 (P:1) Token.pml:46 (state 25)	[else]
+
+334:	proc  1 (P:1) Token.pml:46 (state 26)	[(1)]
+
+334:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 1
+
+336:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+338:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+340:	proc  1 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,0]
+340:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,0]
+
+342:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 2
+
+344:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+346:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+348:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,0]
+348:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): 
+		P(2):requester = 0
+
+350:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+352:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+354:	proc  1 (P:1) Token.pml:45 (state -)	[values: 3!tokreq,0]
+354:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 3 (ch[2]): [tokreq,0]
+
+356:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 3
+
+358:	proc  1 (P:1) Token.pml:48 (state 30)	[else]
+
+360:	proc  1 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(1):waiting = 1
+
+362:	proc  3 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+364:	proc  3 (P:1) Token.pml:23 (state -)	[values: 3?tokreq,0]
+364:	proc  3 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 3 (ch[2]): 
+		P(3):requester = 0
+
+366:	proc  3 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+368:	proc  3 (P:1) Token.pml:26 (state -)	[values: 1!tokgrant,2]
+368:	proc  3 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 1 (ch[0]): [tokgrant,2]
+
+370:	proc  3 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(3):holding = 0
+
+372:	proc  3 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+372:	proc  3 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(3):pidx = 0
+
+374:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+376:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+378:	proc  3 (P:1) Token.pml:45 (state -)	[values: 1!tokreq,2]
+378:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 1 (ch[0]): [tokgrant,2][tokreq,2]
+
+380:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 1
+
+382:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+384:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+386:	proc  3 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,2]
+386:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,2]
+
+388:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 2
+
+390:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+392:	proc  3 (P:1) Token.pml:46 (state 25)	[else]
+
+394:	proc  3 (P:1) Token.pml:46 (state 26)	[(1)]
+
+394:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 3
+
+396:	proc  3 (P:1) Token.pml:48 (state 30)	[else]
+
+398:	proc  3 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(3):waiting = 1
+
+400:	proc  1 (P:1) Token.pml:31 (state -)	[values: 1?tokgrant,2]
+400:	proc  1 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 1 (ch[0]): [tokreq,2]
+
+402:	proc  1 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(1):holding = 1
+
+402:	proc  1 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(1):waiting = 0
+		P(1):holding = 1
+
+404:	proc  1 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+406:	proc  1 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+408:	proc  1 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+410:	proc  1 (P:1) Token.pml:23 (state -)	[values: 1?tokreq,2]
+410:	proc  1 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 1 (ch[0]): 
+		P(1):requester = 2
+
+412:	proc  1 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+414:	proc  1 (P:1) Token.pml:26 (state -)	[values: 3!tokgrant,0]
+414:	proc  1 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 3 (ch[2]): [tokgrant,0]
+
+416:	proc  1 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(1):holding = 0
+
+418:	proc  3 (P:1) Token.pml:31 (state -)	[values: 3?tokgrant,0]
+418:	proc  3 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 3 (ch[2]): 
+
+420:	proc  3 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(3):holding = 1
+
+420:	proc  3 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(3):waiting = 0
+		P(3):holding = 1
+
+422:	proc  3 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+424:	proc  3 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+426:	proc  3 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+428:	proc  1 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+428:	proc  1 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(1):pidx = 0
+
+430:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+432:	proc  1 (P:1) Token.pml:46 (state 25)	[else]
+
+434:	proc  1 (P:1) Token.pml:46 (state 26)	[(1)]
+
+434:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 1
+
+436:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+438:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+440:	proc  1 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,0]
+440:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,2][tokreq,0]
+
+442:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 2
+
+444:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+446:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+448:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,2]
+448:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): [tokreq,0]
+		P(2):requester = 2
+
+450:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+452:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+454:	proc  1 (P:1) Token.pml:45 (state -)	[values: 3!tokreq,0]
+454:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 3 (ch[2]): [tokreq,0]
+
+456:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 3
+
+458:	proc  1 (P:1) Token.pml:48 (state 30)	[else]
+
+460:	proc  1 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(1):waiting = 1
+
+462:	proc  3 (P:1) Token.pml:23 (state -)	[values: 3?tokreq,0]
+462:	proc  3 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 3 (ch[2]): 
+		P(3):requester = 0
+
+464:	proc  3 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+466:	proc  3 (P:1) Token.pml:26 (state -)	[values: 1!tokgrant,2]
+466:	proc  3 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 1 (ch[0]): [tokgrant,2]
+
+468:	proc  3 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(3):holding = 0
+
+470:	proc  3 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+470:	proc  3 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(3):pidx = 0
+
+472:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+474:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+476:	proc  3 (P:1) Token.pml:45 (state -)	[values: 1!tokreq,2]
+476:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 1 (ch[0]): [tokgrant,2][tokreq,2]
+
+478:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 1
+
+480:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+482:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+484:	proc  3 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,2]
+484:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,0][tokreq,2]
+
+486:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 2
+
+488:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+490:	proc  3 (P:1) Token.pml:46 (state 25)	[else]
+
+492:	proc  3 (P:1) Token.pml:46 (state 26)	[(1)]
+
+492:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 3
+
+494:	proc  3 (P:1) Token.pml:48 (state 30)	[else]
+
+496:	proc  3 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(3):waiting = 1
+
+498:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,0]
+498:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): [tokreq,2]
+		P(2):requester = 0
+
+500:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+502:	proc  1 (P:1) Token.pml:31 (state -)	[values: 1?tokgrant,2]
+502:	proc  1 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 1 (ch[0]): [tokreq,2]
+
+504:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+506:	proc  1 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(1):holding = 1
+
+506:	proc  1 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(1):waiting = 0
+		P(1):holding = 1
+
+508:	proc  1 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+510:	proc  1 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+512:	proc  1 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+514:	proc  1 (P:1) Token.pml:23 (state -)	[values: 1?tokreq,2]
+514:	proc  1 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 1 (ch[0]): 
+		P(1):requester = 2
+
+516:	proc  1 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+518:	proc  1 (P:1) Token.pml:26 (state -)	[values: 3!tokgrant,0]
+518:	proc  1 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 3 (ch[2]): [tokgrant,0]
+
+520:	proc  1 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(1):holding = 0
+
+522:	proc  3 (P:1) Token.pml:31 (state -)	[values: 3?tokgrant,0]
+522:	proc  3 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 3 (ch[2]): 
+
+524:	proc  3 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(3):holding = 1
+
+524:	proc  3 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(3):waiting = 0
+		P(3):holding = 1
+
+526:	proc  3 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+528:	proc  3 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+530:	proc  3 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+532:	proc  1 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+532:	proc  1 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(1):pidx = 0
+
+534:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+536:	proc  1 (P:1) Token.pml:46 (state 25)	[else]
+
+538:	proc  1 (P:1) Token.pml:46 (state 26)	[(1)]
+
+538:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 1
+
+540:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+542:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+544:	proc  1 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,0]
+544:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,2][tokreq,0]
+
+546:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 2
+
+548:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+550:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+552:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,2]
+552:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): [tokreq,0]
+		P(2):requester = 2
+
+554:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+556:	proc  1 (P:1) Token.pml:45 (state -)	[values: 3!tokreq,0]
+556:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 3 (ch[2]): [tokreq,0]
+
+558:	proc  3 (P:1) Token.pml:23 (state -)	[values: 3?tokreq,0]
+558:	proc  3 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 3 (ch[2]): 
+		P(3):requester = 0
+
+560:	proc  3 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+562:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+564:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 3
+
+566:	proc  1 (P:1) Token.pml:48 (state 30)	[else]
+
+568:	proc  3 (P:1) Token.pml:26 (state -)	[values: 1!tokgrant,2]
+568:	proc  3 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 1 (ch[0]): [tokgrant,2]
+
+570:	proc  3 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(3):holding = 0
+
+572:	proc  3 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+572:	proc  3 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(3):pidx = 0
+
+574:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+576:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+578:	proc  3 (P:1) Token.pml:45 (state -)	[values: 1!tokreq,2]
+578:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 1 (ch[0]): [tokgrant,2][tokreq,2]
+
+580:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 1
+
+582:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+584:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+586:	proc  3 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,2]
+586:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,0][tokreq,2]
+
+588:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 2
+
+590:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+592:	proc  3 (P:1) Token.pml:46 (state 25)	[else]
+
+594:	proc  3 (P:1) Token.pml:46 (state 26)	[(1)]
+
+594:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 3
+
+596:	proc  3 (P:1) Token.pml:48 (state 30)	[else]
+
+598:	proc  3 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(3):waiting = 1
+
+600:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,0]
+600:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): [tokreq,2]
+		P(2):requester = 0
+
+602:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+604:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+606:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,2]
+606:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): 
+		P(2):requester = 2
+
+<<<<<START OF CYCLE>>>>>
+608:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+610:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+612:	proc  1 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(1):waiting = 1
+
+614:	proc  1 (P:1) Token.pml:31 (state -)	[values: 1?tokgrant,2]
+614:	proc  1 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 1 (ch[0]): [tokreq,2]
+
+616:	proc  1 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(1):holding = 1
+
+616:	proc  1 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(1):waiting = 0
+		P(1):holding = 1
+
+618:	proc  1 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+620:	proc  1 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+622:	proc  1 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+624:	proc  1 (P:1) Token.pml:23 (state -)	[values: 1?tokreq,2]
+624:	proc  1 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 1 (ch[0]): 
+		P(1):requester = 2
+
+626:	proc  1 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+628:	proc  1 (P:1) Token.pml:26 (state -)	[values: 3!tokgrant,0]
+628:	proc  1 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 3 (ch[2]): [tokgrant,0]
+
+630:	proc  1 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(1):holding = 0
+
+632:	proc  3 (P:1) Token.pml:31 (state -)	[values: 3?tokgrant,0]
+632:	proc  3 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 3 (ch[2]): 
+
+634:	proc  3 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(3):holding = 1
+
+634:	proc  3 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(3):waiting = 0
+		P(3):holding = 1
+
+636:	proc  3 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+638:	proc  3 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+640:	proc  3 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+642:	proc  1 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+642:	proc  1 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(1):pidx = 0
+
+644:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+646:	proc  1 (P:1) Token.pml:46 (state 25)	[else]
+
+648:	proc  1 (P:1) Token.pml:46 (state 26)	[(1)]
+
+648:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 1
+
+650:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+652:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+654:	proc  1 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,0]
+654:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,0]
+
+656:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 2
+
+658:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+660:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+662:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,0]
+662:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): 
+		P(2):requester = 0
+
+664:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+666:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+668:	proc  1 (P:1) Token.pml:45 (state -)	[values: 3!tokreq,0]
+668:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 3 (ch[2]): [tokreq,0]
+
+670:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 3
+
+672:	proc  1 (P:1) Token.pml:48 (state 30)	[else]
+
+674:	proc  1 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(1):waiting = 1
+
+676:	proc  3 (P:1) Token.pml:23 (state -)	[values: 3?tokreq,0]
+676:	proc  3 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 3 (ch[2]): 
+		P(3):requester = 0
+
+678:	proc  3 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+680:	proc  3 (P:1) Token.pml:26 (state -)	[values: 1!tokgrant,2]
+680:	proc  3 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 1 (ch[0]): [tokgrant,2]
+
+682:	proc  3 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(3):holding = 0
+
+684:	proc  3 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+684:	proc  3 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(3):pidx = 0
+
+686:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+688:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+690:	proc  3 (P:1) Token.pml:45 (state -)	[values: 1!tokreq,2]
+690:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 1 (ch[0]): [tokgrant,2][tokreq,2]
+
+692:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 1
+
+694:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+696:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+698:	proc  3 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,2]
+698:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,2]
+
+700:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 2
+
+702:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+704:	proc  3 (P:1) Token.pml:46 (state 25)	[else]
+
+706:	proc  3 (P:1) Token.pml:46 (state 26)	[(1)]
+
+706:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 3
+
+708:	proc  3 (P:1) Token.pml:48 (state 30)	[else]
+
+710:	proc  3 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(3):waiting = 1
+
+712:	proc  1 (P:1) Token.pml:31 (state -)	[values: 1?tokgrant,2]
+712:	proc  1 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 1 (ch[0]): [tokreq,2]
+
+714:	proc  1 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(1):holding = 1
+
+714:	proc  1 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(1):waiting = 0
+		P(1):holding = 1
+
+716:	proc  1 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+718:	proc  1 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+720:	proc  1 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+722:	proc  1 (P:1) Token.pml:23 (state -)	[values: 1?tokreq,2]
+722:	proc  1 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 1 (ch[0]): 
+		P(1):requester = 2
+
+724:	proc  1 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+726:	proc  1 (P:1) Token.pml:26 (state -)	[values: 3!tokgrant,0]
+726:	proc  1 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 3 (ch[2]): [tokgrant,0]
+
+728:	proc  1 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(1):holding = 0
+
+730:	proc  3 (P:1) Token.pml:31 (state -)	[values: 3?tokgrant,0]
+730:	proc  3 (P:1) Token.pml:31 (state 14)	[ch[id]?tokgrant,_]
+		queue 3 (ch[2]): 
+
+732:	proc  3 (P:1) Token.pml:32 (state 15)	[holding = 1]
+		P(3):holding = 1
+
+732:	proc  3 (P:1) Token.pml:33 (state 16)	[waiting = 0]
+		P(3):waiting = 0
+		P(3):holding = 1
+
+734:	proc  3 (P:1) Token.pml:34 (state 17)	[critical = (critical+1)]
+		critical = 1
+
+736:	proc  3 (P:1) Token.pml:35 (state 18)	[incrit[id] = 1]
+
+738:	proc  3 (P:1) Token.pml:36 (state 19)	[critical = (critical-1)]
+		critical = 0
+
+740:	proc  1 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+740:	proc  1 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(1):pidx = 0
+
+742:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+744:	proc  1 (P:1) Token.pml:46 (state 25)	[else]
+
+746:	proc  1 (P:1) Token.pml:46 (state 26)	[(1)]
+
+746:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 1
+
+748:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+750:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+752:	proc  1 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,0]
+752:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,2][tokreq,0]
+
+754:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 2
+
+756:	proc  1 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+758:	proc  1 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+760:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,2]
+760:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): [tokreq,0]
+		P(2):requester = 2
+
+762:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+764:	proc  1 (P:1) Token.pml:45 (state -)	[values: 3!tokreq,0]
+764:	proc  1 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 3 (ch[2]): [tokreq,0]
+
+766:	proc  3 (P:1) Token.pml:23 (state -)	[values: 3?tokreq,0]
+766:	proc  3 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 3 (ch[2]): 
+		P(3):requester = 0
+
+768:	proc  3 (P:1) Token.pml:25 (state 7)	[(holding)]
+
+770:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+772:	proc  1 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(1):pidx = 3
+
+774:	proc  1 (P:1) Token.pml:48 (state 30)	[else]
+
+776:	proc  3 (P:1) Token.pml:26 (state -)	[values: 1!tokgrant,2]
+776:	proc  3 (P:1) Token.pml:26 (state 8)	[ch[requester]!tokgrant,id]
+		queue 1 (ch[0]): [tokgrant,2]
+
+778:	proc  3 (P:1) Token.pml:27 (state 9)	[holding = 0]
+		P(3):holding = 0
+
+780:	proc  3 (P:1) Token.pml:39 (state 20)	[((!(holding)&&!(waiting)))]
+
+780:	proc  3 (P:1) Token.pml:41 (state 21)	[pidx = 0]
+		P(3):pidx = 0
+
+782:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+784:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+786:	proc  3 (P:1) Token.pml:45 (state -)	[values: 1!tokreq,2]
+786:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 1 (ch[0]): [tokgrant,2][tokreq,2]
+
+788:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 1
+
+790:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+792:	proc  3 (P:1) Token.pml:44 (state 23)	[((pidx!=id))]
+
+794:	proc  3 (P:1) Token.pml:45 (state -)	[values: 2!tokreq,2]
+794:	proc  3 (P:1) Token.pml:45 (state 24)	[ch[pidx]!tokreq,id]
+		queue 2 (ch[1]): [tokreq,0][tokreq,2]
+
+796:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 2
+
+798:	proc  3 (P:1) Token.pml:41 (state 22)	[((pidx<=2))]
+
+800:	proc  3 (P:1) Token.pml:46 (state 25)	[else]
+
+802:	proc  3 (P:1) Token.pml:46 (state 26)	[(1)]
+
+802:	proc  3 (P:1) Token.pml:41 (state 29)	[pidx = (pidx+1)]
+		P(3):pidx = 3
+
+804:	proc  3 (P:1) Token.pml:48 (state 30)	[else]
+
+806:	proc  3 (P:1) Token.pml:49 (state 35)	[waiting = 1]
+		P(3):waiting = 1
+
+808:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,0]
+808:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): [tokreq,2]
+		P(2):requester = 0
+
+810:	proc  2 (P:1) Token.pml:28 (state 10)	[else]
+
+812:	proc  2 (P:1) Token.pml:28 (state 11)	[(1)]
+
+814:	proc  2 (P:1) Token.pml:23 (state -)	[values: 2?tokreq,2]
+814:	proc  2 (P:1) Token.pml:23 (state 6)	[ch[id]?tokreq,requester]
+		queue 2 (ch[1]): 
+		P(2):requester = 2
+
+spin: trail ends after 814 steps
+#processes: 4
+		critical = 0
+		incrit[0] = 1
+		incrit[1] = 0
+		incrit[2] = 1
+		queue 1 (ch[0]): [tokgrant,2][tokreq,2]
+		queue 2 (ch[1]): 
+		queue 3 (ch[2]): 
+814:	proc  3 (P:1) Token.pml:21 (state 36)
+814:	proc  2 (P:1) Token.pml:24 (state 12)
+		P(2):requester = 2
+814:	proc  1 (P:1) Token.pml:49 (state 35)
+814:	proc  0 (:init::1) Token.pml:64 (state 6)
+MSC: ~G line 2
+814:	proc  - (ltl_0:1) _spin_nvr.tmp:2 (state 8)
+4 processes created
+Exit-Status 0
+null

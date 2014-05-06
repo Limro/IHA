@@ -1,0 +1,15 @@
+never ltl_0 {    /* !([] (<> (((incrit[0]) && (incrit[1])) && (incrit[2])))) */
+T0_init:
+	do
+	:: (! ((((incrit[0]) && (incrit[1])) && (incrit[2])))) -> goto accept_S4
+	:: atomic { (false) -> assert(!(false)) }
+	:: (1) -> goto T0_init
+	od;
+accept_S4:
+	do
+	:: (! ((((incrit[0]) && (incrit[1])) && (incrit[2])))) -> goto accept_S4
+	:: atomic { (false) -> assert(!(false)) }
+	od;
+accept_all:
+	skip
+}

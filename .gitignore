@@ -65,7 +65,7 @@
 !/**/Material/**/*.pdf
 !/**/Slides/*.pdf
 !/**/Noter/*.pdf
-!/**/Notes/*.pdf
+#!/**/Notes/*.pdf
 !/**/Documentation/*.pdf
 !**/Bilag/*.pdf #An exception
 

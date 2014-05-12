@@ -40,9 +40,19 @@ normcdf(55.4453) = 1
 \end{theo}
 
 Til at bergene udfald af 2 muligheder bruges Bernoullifordelingen.
+
+
+
+
+
+
+
+\newpage
 \begin{theo}[Bernoullifordelingen]
 To udfald: $B = \{0,1\}$.
-\\
+
+
+
 Sandsynligheder:
 \begin{align*}
 Pr(B=1) &= p & \text{succes} \\
@@ -59,6 +69,13 @@ X &= \sum_{i=1}^n B_i
 Antalsværdien kan sendes med: $X \sim binominal(n,p)$
 
 \end{theo}
+
+
+
+
+
+
+
 
 \begin{theo}[Binomialfordeling]
 Middelværdi:
@@ -77,7 +94,10 @@ Var(X) &=\sum_{Z \in \{ 0,1\}}(z-p)^2 \cdot P(X=z) \\
 	(&= n \cdot p(1-p))
 \end{align*}
 
-Dette ligner en Gausfordeling, hvis $n \cdot p > 5$ og $n \cdot(1-p) > 5$.  \\
+Dette ligner en Gausfordeling, hvis $n \cdot p > 5$ og $n \cdot(1-p) > 5$. 
+\\
+Standardisering af binomialfordelte data: $z = \dfrac{x-np}{\sqrt{np(1-p)}} \sim N(0,1)$
+\\
 Så vil $Pr(X \leq k) = F_{binomial}(k) \approx \phi\left( \dfrac{k-np}{\sqrt{np(1-p)}}\right)$
 
 Approsimation kan gøres ved følgende:
@@ -93,7 +113,156 @@ z_upper = (upper-n*p)/sqrt(n*p*(1-p))
 pval = normcdf(z_lower) + (1 - normcdf(z_upper))
 \end{lstlisting}
 
+\end{theo}
+
+
+
+
+
+
+
+
+\begin{theo}[Signifikansniveau]
+Der skal vælges en "p-værdi" for hypotesetest.
+Det betegnes med $\alpha$ og kaldes signifikansniveau.
+
+\begin{itemize}
+	\item p-værdi større end $\alpha \Rightarrow$ data strider ikke imod hypotesen.
+	\item Typoiske værdier for $\alpha$ er 0.05 eller 0.01
+\end{itemize}
 
 \end{theo}
+
+
+
+
+
+
+
+
+
+\begin{theo}[Begreber]
+\begin{itemize}
+	\item Teststørrelse
+	\subitem Teststørrelse er en funktion af data, $W = W(x)$.
+	\subitem Teststørrelsen er en stokastisk variabel!!!
+	\subitem Teststørrelsen bruges til at bestemme graden af overensstemmelse mellem data og hypotese.
+	\item Statistisk model
+	\subitem Beskriver teststørrelsens sandsynlighedsfordeling.
+	\subitem Fordelingen afhænger af en eller flere parametre.
+\end{itemize}
+
+Parameteren for en statistisk model er $p$ i $x\sim binomial(580,p)$ som eksempel.
+
+\begin{itemize}
+	\item Parameter
+\subitem Vi antager, at de samplede data kommer fra en population, hvor den sande værdi af parameteren i den statistiske model er ukendt.
+\subitem Hvis vi gentager eksperimentet under identiske betingelser, vil den sande parameter være uændret, selvom vi får andre data.
+\item Parameter-skøn eller estimat
+\subitem Et skøn af parameteren beregnes på baggrund af de observerede data.
+\end{itemize}
+
+\end{theo}
+
+
+
+
+
+
+\begin{theo}[Notation]
+\begin{itemize}
+	\item  Generelt betegner vi den sande parameter $\theta$.
+\subitem Bemærk, $\theta$ kan være en vektor.
+\item Parameter estimatet betegnes $\hat{\theta} = \hat{\theta}(x)$
+\subitem og er altså en funktion af data (x).
+\item Estimatet er en stokastisk variabel!!!
+\end{itemize}
+\end{theo}
+
+
+
+
+
+\newpage
+
+\begin{theo}[Estimation]
+Givet data, hvad kan man sige om parameteren $p$?
+\begin{itemize}
+	\item Estimat: $\hat{p} = \hat{p}(x) = \dfrac{x}{n}$
+	\item Usikkerhed: konfidensinterval
+	\item Unbiased: $E[\hat{p}] = E\left[\dfrac{x}{n}\right]=\dfrac{1}{n} E[x] = \dfrac{1}{n}(n \cdot p) = p$
+	\item Varians: $Var(\hat{p}) = Var\left(\dfrac{x}{n}\right) = \dfrac{1}{n^2} Var(x)=\frac{1}{n^2}(n \cdot p \cdot (1-p))= \dfrac{1}{n}p \cdot(1-p)$
+\end{itemize}
+\end{theo}
+
+
+
+
+
+
+
+\begin{theo}[Maximum likelihood]
+Tæthedsfunktionen for de observerede data, giver $\hat{p}$ er $f(x|\hat{p} = \left(\begin{matrix}
+	n\\
+	x
+	\end{matrix}\right) \hat{p}^x (1-\hat{p})^{n-x}$
+
+Dette kan også skrives som:
+$x \cdot log(\hat{p}) + (n-x) \cdot log(1-\hat{p})$.
+\\
+For at finde det maximale punkt differentieres det og sættes lige med 0. 
+Herefter isoleres $\hat{p}$ og giver:
+$\hat{p} = \dfrac{x}{n}$
+\end{theo}
+
+
+
+\begin{theo}[Binomialfordeling i Matlab]
+\begin{itemize}
+	\item Tæthedsfunktion:
+	\item[] \begin{lstlisting}[style=Code-Matlab]
+	Pr(X = x) = binopdf(x,n,p)
+	Pr(X \leq x) = binocdf(x,n,p)
+	\end{lstlisting}
+\end{itemize}
+\end{theo}
+
+
+
+\begin{theo}[95\% konfidensinterval]
+
+\begin{itemize}
+	\item Definition:
+\subitem Sandsynligheden for, at 95\% konfidensintervallet indeholder den sande parameterværdi, skal være 0.95:
+$Pr(\theta \text{er indeholdt i intervallet} [\theta_- ; \theta_+]) = 0.95$
+\item Bogens overordnede strategi
+\subitem Vi ser kun på fordelinger, som har parameter $\theta$, og som kan approksimeres med en normalfordeling.
+\subitem Beregn den standardiserede teststørrelse: $z= \dfrac{x-\mu}{\sigma} \sim N(0,1)$
+Så gælder der, at $Pr(-1.96 \leq z \leq 1.96) = 0.95$
+\subitem Brug dette til at beregne 95\% konfidensintervallet, $[\theta_- ; \theta_+]$
+\end{itemize}
+
+Antag binomialfordelte data kan bruges.
+Nedre og øvre grænse:
+\begin{align*}
+p_-(x) &= \dfrac{1}{n+u^2} \left[x+\dfrac{u^2}{2}\pm u \sqrt{\dfrac{x(n-x)}{n} + \dfrac{u^2}{4}}\right]\\
+u &= \Phi^{-1}(1- \dfrac{\alpha}{2})
+\end{align*}
+\begin{lstlisting}[style=Code-Matlab]
+u = norminv(1-0.05/2) = 1.96
+\end{lstlisting}
+
+Der er flere værdier der har $\alpha > 0.05$.
+Disse kaldes kondifensintervallet og skrives som $(1-\alpha) \cdot 100\% $
+
+\end{theo}
+
+
+
+
+
+
+
+
 
 \end{document}

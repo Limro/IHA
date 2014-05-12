@@ -57,7 +57,6 @@ Ved $\tau < 0$ er $\Pr(t_1$ og $t_1+\tau$ i samme interval) $= \dfrac{t_1-\tau}{
 \begin{theo}[Deterministisk og non-deterministisk]
 Et deterministisk ser ud som det gør.
 \\
-\\
 Et non-' bliver større og større mod tau.
 \begin{lstlisting}[, style=Code-Matlab, label=lst:labelName]
 Rx = conv(x, fliplr(x));
@@ -86,13 +85,13 @@ R_X(\tau) &= E[X(t) \cdot X(t+\tau)] \\
 	&= A^2 \cdot E\left[\frac{1}{2} cos(2\omega t+\omega \tau + 2 \theta) + \frac{1}{2} cos( \omega t)\right] \\
 	&= \dfrac{A^2}{2} \int_0^{2 \pi} (cos (2 \omega t + \omega \tau) + cos(\omega \tau)) \cdot \dfrac{1}{2 \pi} \cdot d\theta \\
 	&= \dfrac{A^2}{2} cos( \omega \tau) \\
-E(X) &= \int_{-\infty}^\infty x \cdotf(x) \cdot dx
+E(X) &= \int_{-\infty}^\infty x \cdot f(x) \cdot dx
 \end{align*}
 
 \end{theo}
 
 Hvis X og Y er uafhængige gælder at co-variansen = 0.
-\begin{theo}[Regneregler]
+\begin{theo}[Regneregler, L6S25]
 \begin{align*}
 Var(X) &= E(X^2)- (E(X))^2 \\
 \end{align*}

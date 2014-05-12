@@ -259,3 +259,21 @@ Neilsen-Muzuno algorithm
 	
 
 
+Snapshots (L10S3-4)
+=========
+- Lave snapshots af, hvordan et globalt system ser ud.
+	- Et System dump hvis der sker fejl
+- Kan laves superimposed (eller kørende parallelt)
+
+Chandy-Lamport's snapshot algorithm
+-----------------------------------
+- Beskeder kan sendes til alle processor, men rækkefølgende de ankommer i er ikke kendt.
+- Men hvad sker der med beskederne undervejs?
+	- "Inconsistency", hvis noget ikke optages rigtigt i snapshot
+- Processen venter lidt efter den har sendt beskederne og tager derefter et snapshot
+- Hver process der sender sender sine beskeder og slutter med en empty message - så alle processor der modtager skal huske på, hvad de har modtaget siden sidste empty message.
+	- En process siger så den stadie er:
+		a_1(m1,m2)
+	- Fra dette kan man genskabe systemet fra beskederne og så se, hvordan systemet bør se ud.
+- CL sender en "marker message" til start og procesorne ved de skal optage det der kommer ind.
+	- Process listed in L10S8

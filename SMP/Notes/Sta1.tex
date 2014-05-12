@@ -1,0 +1,99 @@
+\documentclass[Main]{subfiles}
+
+\begin{document}
+
+\chapter{Hypotese test}
+
+\begin{theo}[Hypotesetest]
+Notation: $H: \mu = \ldots $ \\
+$ z = \dfrac{x - \mu}{ \frac{\sigma}{\sqrt{n}}}  $: $x$ er gennemsnittet.\\
+$ z \sim N(0,1)$: Standard normalfordeling.
+
+\begin{lstlisting}[style=Code-Matlab]
+%Sand middelverdi og std. afvigelse
+mu = 24;
+sigma = 3;
+% Samplede data
+n = 40;
+x = randn(1,n)*sigma + mu;
+% Gennemsnit
+xhat = mean(x);
+% TeststQrrelse
+mu_hyp = 50;
+z = (xhat-mu_hyp)/(sigma/sqrt(n))
+\end{lstlisting}
+
+
+\begin{align*}
+Pr ( Z \leq |z| \cup Z > |z|) & \\
+	&= Pr(Z) \leq -55.4453) + Pr(Z > 55.4453) \\
+	&= \omega(-55.4453) + \Sigma(1 - \Sigma(55.4453)) \\
+	&= (1 - \Sigma(55.4453)) + (1 - \Sigma(55.4453)) \\
+	&= 2(1 - \Sigma(55.4453)) \\
+	&= 2(1-1) \\
+	&= 0
+\end{align*}
+
+\begin{lstlisting}[style=Code-Matlab]
+normcdf(55.4453) = 1
+\end{lstlisting}
+\end{theo}
+
+Til at bergene udfald af 2 muligheder bruges Bernoullifordelingen.
+\begin{theo}[Bernoullifordelingen]
+To udfald: $B = \{0,1\}$.
+\\
+Sandsynligheder:
+\begin{align*}
+Pr(B=1) &= p & \text{succes} \\
+Pr(B=0) &= 1-p & \text{failure}
+\end{align*}
+
+Generel notation: $B_i\sim bernoulli(p)$
+\\
+\\
+Antallet af successer: 
+\begin{align*}
+X &= \sum_{i=1}^n B_i
+\end{align*}
+Antalsværdien kan sendes med: $X \sim binominal(n,p)$
+
+\end{theo}
+
+\begin{theo}[Binomialfordeling]
+Middelværdi:
+\begin{align*}
+E[X] &= \sum_{Z \in \{ 0,1\}}Z \cdot P(X=z) \\
+	&= 0 \cdot Pr(X=0)+1 \cdot Pr(X=1) \\
+	&= p \\
+	(&= n \cdot p)
+\end{align*}
+
+
+\begin{align*}
+Var(X) &=\sum_{Z \in \{ 0,1\}}(z-p)^2 \cdot P(X=z) \\
+	&= (0-p)^2 \cdot Pr(X=0) + (1-p)^2 \cdot Pr(X=1) \\
+	&= p(1-p) \\
+	(&= n \cdot p(1-p))
+\end{align*}
+
+Dette ligner en Gausfordeling, hvis $n \cdot p > 5$ og $n \cdot(1-p) > 5$.  \\
+Så vil $Pr(X \leq k) = F_{binomial}(k) \approx \phi\left( \dfrac{k-np}{\sqrt{np(1-p)}}\right)$
+
+Approsimation kan gøres ved følgende:
+\begin{lstlisting}[style=Code-Matlab]
+%% Approksimativ P-vErdi
+n = 580;
+p = 1/4;
+x = 152; % Observation
+lower = n*p-abs(n*p-x)
+upper = n*p+abs(n*p-x)
+z_lower = (lower-n*p)/sqrt(n*p*(1-p))
+z_upper = (upper-n*p)/sqrt(n*p*(1-p))
+pval = normcdf(z_lower) + (1 - normcdf(z_upper))
+\end{lstlisting}
+
+
+\end{theo}
+
+\end{document}

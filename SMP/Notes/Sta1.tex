@@ -202,7 +202,7 @@ Givet data, hvad kan man sige om parameteren $p$?
 
 
 \begin{theo}[Maximum likelihood]
-Tæthedsfunktionen for de observerede data, giver $\hat{p}$ er $f(x|\hat{p} = \left(\begin{matrix}
+Tæthedsfunktionen for de observerede data, giver $\hat{p}$ er $f(x|\hat{p}) = \left(\begin{matrix}
 	n\\
 	x
 	\end{matrix}\right) \hat{p}^x (1-\hat{p})^{n-x}$
@@ -258,11 +258,39 @@ Disse kaldes kondifensintervallet og skrives som $(1-\alpha) \cdot 100\% $
 \end{theo}
 
 
+\begin{theo}[Poissonfedeling]
+Bruges til en beskrive en proces med forskellige ankomsttider.
+\begin{itemize}
+	\item Opdel tidsakse i $N$ intervaller af længden $\Delta t$
+	
+	\item Sandsynlighed for overservering af $X = x$ i intervallet $[1;N]: X = \sum_{i=1}^n B_i \sim binomial(N, \lambda \cdot \Delta t)$.
+	
+	\item[] $Pr(X=x) = \binom{N}{k}(\lambda \cdot \Delta t)^x(1-\lambda \cdot \Delta t)^{N-x}$
+	
+	\item Observation:
+	
+	\item[] $N \cdot (\lambda \cdot \Delta t) = konstant = \dfrac{1}{\Delta t} \cdot (\lambda \cdot \Delta t) = t \cdot \lambda = \gamma$
+	
+	\item[] $Pr(X=x) \dfrac{(\lambda \cdot t)^x}{x!} e^{-\lambda \cdot t} = \dfrac{y^x}{x!}e^{-\gamma} $
 
+	\item Hvis $\gamma ? \lambda \cdot t > 5$ er $X$ cirka normalfordelt.
 
+	\item Approksimativt 95\% konfidensinterval:
+	\item[]$[\lambda_-(x);\lambda_+(x)] = \left[\dfrac{1}{t}\left[x+\dfrac{u^2}{2}-u \sqrt{x+\dfrac{u^2}{4}}\right] ; \dfrac{1}{t}\left[x+\dfrac{u^2}{2}+u \sqrt{x+\dfrac{u^2}{4}}\right] \right]$
+\end{itemize}
+\begin{lstlisting}[style=Code-Matlab]
+%TEthedsfunktion:
+Pr(X=x) = poisspdf(x,gamma)
 
+%Fordelingsfunktion:
+Pr(X=x) = poisscdf(x,gamma)
+\end{lstlisting}
+\end{theo}
 
-
+\begin{theo}[Estimat af $\sigma^2$]
+$s^2 = \dfrac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2$
+\end{theo}
+Dette giver $E[s^2] = \sigma^2$
 
 
 \end{document}

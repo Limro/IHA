@@ -10,18 +10,19 @@
         acc
         (task1 (cdr lst1) 
                (cdr lst2) 
-               (list acc (cons (car lst1) (car lst2)))
+               (cons (cons (car lst1) (car lst2)) acc )
                )
     )))
 
 (define zip 
   (letrec ((acc '()))
     (lambda (lst1 lst2)
-      (task1 lst1 lst2 acc))))
+      (reverse (task1 lst1 lst2 acc)))))
     
 ;; To check with
 ;(zip '(1 2) '(a b))
 ;(zip '(1 2 3) '(a b))
+;(zip '(1 2 3) '(a b c))
 
 
 
@@ -38,56 +39,47 @@
 
 ; filter
 (define foldlFilter
-  (letrec (( acc 0))
     (lambda (proc lst)
-      (foldl 
-       proc
-       (if (proc (car lst)) ; true or false?
-           (list acc (car lst))
-           acc)
-       (cdr lst))
-    )))
+      (reverse (foldl 
+       (lambda (acc val)
+           (if (proc val)
+               (cons val acc)
+               acc))
+       '() lst)
+      )))
 
 
-;(foldlFilter positive? '(-1 2 3 -4))
+;(foldlFilter positive? '(1 2 3 -4))
 
 ; sumprod
 
 (define sumprod
-  (lambda (lst1 lst2)
-    (foldl 
-     (lambda (n)
-       (+ n (foldl * 1 (list (car lst1) (car lst2)))))
-              '() 
-              (list (car lst1) (car lst2)))
-       ))
+    (lambda (lst1 lst2)
+      (foldl 
+       (lambda (x y)
+         (+ x (* (cdr y) (car y))))
+       0 (zip lst1 lst2))
+      ))
         
-  ;(sumprod (cdr lst1) (cdr lst2))
 ;(sumprod '(1 2 3) '(4 5 6))
 
 
 
-;;Dedup explained:
-;; Take the first element in the list in the accumulator.
-;; Check if the first cdr element is equal car accumulator.
-;;   If so, rerun the procedure with cdr list.
-;;   If not, add the car list to the accumulator (so car list is first in the acuumulator)
-;; Repeat
+;Dedup
 (define dedup
-  ;(letrec ((acc (list (car lst))))
     (lambda (lst)
       (if (null? lst)
-          acc
-          (if (= (car acc) (car lst))
-              (dedup (cdr lst))
-              (lambda (acc)
-                (list (car lst) acc)
-                (dedup (cdr lst)
-                )
-                acc
-              )))))
+          '()
+      (reverse (foldl
+       (lambda (x y)
+         (if (equal? (car x) y)
+             x
+             (cons y x)))
+              (list (car lst)) lst))
+      )))
 
-;(dedup '(1 1 2 1 1))
+;(dedup '(1 1 1 2 3 3))
+;(dedup '())
   
   
 ;; Task 3
@@ -103,44 +95,33 @@
 ;;Part1:
 ; Map
 (define foldMap
-  (letrec ((x '()))
   (lambda (proc lst)
     (foldr
-     (lambda (acc n) 
-       (if (null? n)
-           acc
-           (list acc (proc 
-                      (if (list? n)
-                          (car n)
-                          (car (list n)))))
-           ))
-     lst '() ))))
+     (lambda (n acc)
+       (cons (proc n) acc))
+     lst '())))
 
 ;(foldMap abs '( -1 -2 3 4) )
 
 
 ;Reverse
 (define foldlReverse
-  (letrec ((x '()))
     (lambda (lst)
       (foldr
-       (lambda (acc n)
-         (if (null? n)
-             acc 
-             ;(list 
-             (list x  acc
-              (if (list? n)
-                  (car n)
-                  n))
-              ;acc)))
-             ))
-       lst '() ))))
+       (lambda (n acc)
+         ;(cons n acc))
+         (append acc (list n))) ; Sorry for append
+         lst '())
+      ))
+         
 
 (foldlReverse '(1 2 3 4))
 
 ;; Part 2
-;; foldr will take the procedure and apply that to the car lst and the redo this, until it hit's the last elemtn in a list.
+;; foldr ('r' short for 'right') folds the other way than foldl - from behind. 
+;; This means the first procedure returned is on the last element in the input list.
 
 ;; Part 3
-;; Fold needs to return a result - this can be done through the accumulator
+;; Fold needs to return a result of multiple steps and calculations.
+;; This can be done through the accumulator.
   

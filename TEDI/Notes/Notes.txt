@@ -277,3 +277,19 @@ Chandy-Lamport's snapshot algorithm
 	- Fra dette kan man genskabe systemet fra beskederne og så se, hvordan systemet bør se ud.
 - CL sender en "marker message" til start og procesorne ved de skal optage det der kommer ind.
 	- Process listed in L10S8
+
+
+
+Linear logic
+============
+
+- Diamond: eventually
+- Square: Always
+- Circle: "next state"
+
+Sande udsagn:
+	Lav tegninger
+- Duality: dobbelt negation
+- Distributivity: Always(p->q) -> (always p -> always q) 
+- Transitivity (Altid altid p)
+	- Betyder for alle stadier fremover, vil p altid være p

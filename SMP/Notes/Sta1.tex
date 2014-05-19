@@ -288,9 +288,104 @@ Pr(X=x) = poisscdf(x,gamma)
 \end{theo}
 
 \begin{theo}[Estimat af $\sigma^2$]
-$s^2 = \dfrac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2$
+$s^2 = \dfrac{1}{n-1} \sum_{i=1}^n (x_i - \bar{x})^2$.
+\\
+Dette giver $E[s^2] = \sigma^2$.
 \end{theo}
-Dette giver $E[s^2] = \sigma^2$
+
+\begin{lstlisting}[caption=P-værdi af ukendt varians, style=Code-Matlab]
+tcdf(a, b)
+\end{lstlisting}
+
+
+\begin{theo}[Fraktilsammenligning]
+Er data faktisk korrekt spredt?
+\\
+\\
+Test i matlab:
+\\
+\begin{lstlisting}[style=Code-Matlab]
+%% Eksempel 4 - t-test: jordens massefylde
+% Tabel 6.1: Henry Cavendishs mAlinger af jordens massetEthed i 1797.
+x = [ 5.36 5.29 5.58 5.65 5.57 5.53 5.62 5.29 ...
+5.44 5.34 5.79 5.10 5.27 5.39 5.42 5.47 ...
+5.63 5.34 5.46 5.30 5.75 5.68 5.85 ];
+
+qqplot(x)
+\end{lstlisting}
+\end{theo}
+
+
+\begin{theo}[Estimation]
+Estimation kan beregnes som: $\hat{\delta} = \hat{\mu_1} - \hat{\mu_2} = \bar{x_1}-\bar{x_2}$.
+
+\begin{lstlisting}[style=Code-Matlab]
+%% Eksempel 1 - sammenligning af to middelvErdier (kendt varians)
+mu1 = 3;
+n1 = 20;
+mu2 = 4;
+n2 = 10;
+sigma = 1;
+u = 1.96;
+
+% Simulerede data
+x1 = randn(1,n1)*sigma + mu1;
+x2 = randn(1,n2)*sigma + mu2;
+
+% ParameterskQn (middelvErdi)
+x1_bar = mean(x1);
+x2_bar = mean(x2);
+
+% TeststQrrelse (H: mu1 = mu2)
+z = (x1_bar-x2_bar)/(sigma*sqrt(1/n1+1/n2))
+pval = 2*(1-normcdf(abs(z)))
+
+% 95% konfidensinterval
+d_nedre = x1_bar-x2_bar - u*sigma*sqrt(1/n1+1/n2)
+d_oevre = x1_bar-x2_bar + u*sigma*sqrt(1/n1+1/n2)
+
+%plot
+figure
+plot(1, x1, 'b.', 2, x2, 'r.' ,1, x1_bar, 'b+', 2, x2_bar, 'r+')
+axis([0.5 2.5 1.1*min([x1 x2]) 1.1*max(x1 x2])])
+
+\end{lstlisting}
+\end{theo}
+
+
+\begin{theo}[Empirisk varians]
+Se slide \texttt{StatKap7, s. 16}.
+\\
+Størrelsen man får er t-fordelt. 
+\\I Matlab:
+\\ 
+\begin{lstlisting}[style=Code-Matlab]
+%% Eksempel 2 - sammenligning af to middelvErdier (ukendt varians)
+...
+% Simulerede data
+x1 = randn(1,n1)*sigma + mu1;
+x2 = randn(1,n2)*sigma + mu2;
+
+% ParameterskQn
+x1_bar = mean(x1);
+x2_bar = mean(x2);
+s2_1 = var(x1)
+s2_2 = var(x2)
+s2 = 1/(n1+n2-2)*((n1-1)*s2_1+(n2-1)*s2_2)
+s = sqrt(s2)
+
+% TeststQrrelse (H: mu1 = mu2)
+t = (x1_bar-x2_bar)/(s*sqrt(1/n1+1/n2))
+pval = 2*(1-tcdf(abs(t),n1+n2-2))
+
+% 95% konfidensinterval
+t0 = tinv(0.975,n1+n2-2)
+d_nedre = x1_bar-x2_bar - t0*s*sqrt(1/n1+1/n2)
+d_oevre = x1_bar-x2_bar + t0*s*sqrt(1/n1+1/n2)
+\end{lstlisting}
+
+\end{theo}
+
 
 
 \end{document}

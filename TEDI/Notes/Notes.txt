@@ -293,3 +293,29 @@ Sande udsagn:
 - Distributivity: Always(p->q) -> (always p -> always q) 
 - Transitivity (Altid altid p)
 	- Betyder for alle stadier fremover, vil p altid være p
+
+
+Semantic (L12S3)
+========
+- Automaton
+	- Et set af states og et set af state-to-state
+	- Type 1 = finite (standard)
+	- Type 2 == infinite (Büchi)
+		Mark with double circle
+
+- LTL formler:
+	- Kan udtrykkes med Büchi
+	Eksempel:
+		<> p (kan være p) - Automaton
+		!<>p (kan ikke på et tidspunkt være p) - Modbevis
+		B =~ []!p (til alle tider, vær ikke p) - Næsten en Büchi besked
+
+		Mark as (M || B) (M = model) giver P = A * B
+
+Knapper i J-Spin
+================
+- Check for deadlock free: fjern weak-fairness og sæt i acceptance
+	Skriv 'ltl dlfree { []<>(...) }'
+	Kaldes også non-determinism
+
+- Weak-Fairness (If something can happen, it will happen)

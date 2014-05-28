@@ -258,12 +258,12 @@ Disse kaldes kondifensintervallet og skrives som $(1-\alpha) \cdot 100\% $
 \end{theo}
 
 
-\begin{theo}[Poissonfedeling]
+\begin{theo}[Poissonfordeling]
 Bruges til en beskrive en proces med forskellige ankomsttider.
 \begin{itemize}
 	\item Opdel tidsakse i $N$ intervaller af længden $\Delta t$
 	
-	\item Sandsynlighed for overservering af $X = x$ i intervallet $[1;N]: X = \sum_{i=1}^n B_i \sim binomial(N, \lambda \cdot \Delta t)$.
+	\item Sandsynlighed for observering af $X = x$ i intervallet $[1;N]: X = \sum_{i=1}^n B_i \sim binomial(N, \lambda \cdot \Delta t)$.
 	
 	\item[] $Pr(X=x) = \binom{N}{k}(\lambda \cdot \Delta t)^x(1-\lambda \cdot \Delta t)^{N-x}$
 	
@@ -358,7 +358,6 @@ Se slide \texttt{StatKap7, s. 16}.
 \\
 Størrelsen man får er t-fordelt. 
 \\I Matlab:
-\\ 
 \begin{lstlisting}[style=Code-Matlab]
 %% Eksempel 2 - sammenligning af to middelvErdier (ukendt varians)
 ...
@@ -386,6 +385,23 @@ d_oevre = x1_bar-x2_bar + t0*s*sqrt(1/n1+1/n2)
 
 \end{theo}
 
+\chapter{Linear regression}
 
+\begin{itemize}
+	\item Reponsvariabel: x (værdi ud af y-aksen)
+	\item Forklarende variable: t (tid ud af x-akse)
+	\item Data kommer i par
+	\item Middelværdi af $x_i$ (y-aksen): $\gamma + \beta \cdot t_i$, (ret linje)
+	\item Variansen er den samme over det hele.
+\end{itemize}
+
+Parameterskøb findes i \texttt{StatKap9, slide 11}:
+\begin{itemize}
+	\item Hældning
+	\item Skæring
+	\item Empirisk varians
+\end{itemize}
+
+Check først, at det er normalfordelt (med \texttt{qqplot})
 
 \end{document}

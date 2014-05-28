@@ -1,0 +1,191 @@
+\documentclass{article}
+
+\include{Preamble}
+
+\title{Reeksamen Forår 2013}
+\author{Rasmus Bækgaard}
+
+\begin{document}
+\maketitle
+
+\section*{Opgave 1}
+
+\subsection*{1}
+\paragraph{Vis, at for at $F_X$ er en gyldig fordelingsfunktion, så skal $k = \dfrac{1}{4}.$} % (fold)
+\label{par:paragraph_name}
+
+Dette løses ved, at $F_X(\infty) = F_X(4) = 1$.
+Dette udregnes:
+\begin{align}
+F_X(4) &= k \cdot 4 = 1 \Leftrightarrow k = \dfrac{1}{4}
+\end{align}
+
+\subsection*{2} % (fold)
+\label{sub:2}
+
+% subsection 2 (end)
+
+\begin{align}
+Pr\left(X \leq \dfrac{2}{3} \right) &= F_X \left( \dfrac{2}{3} \right) \\
+	&= \dfrac{1}{4} \cdot \dfrac{2}{3} \\
+	&= \dfrac{2}{12}  \\
+	&= \dfrac{1}{6}  \\
+Pr\left(X > 3 \right) &= 1- Pr\left(X \leq 3 \right) \\
+	&= 1- F_X \left( 3 \right) \\
+	&= \dfrac{1}{4} \cdot 3 \\
+	&= \dfrac{1}{4}
+\end{align}
+
+
+\subsection*{3} % (fold)
+\label{sub:3}
+
+% subsubsection 3 (end)
+
+\begin{align}
+E\left[X^2\right] &= \int_0^4 x \cdot f(x) dx & f(x) = \dfrac{d F_X}{dx} = \dfrac{1}{4} \\
+	&= 2 & \text{Se Matlab kode herunder} \\
+Var(X) &= E\left(X^2 \right) - \left( E[X]\right)^2 \\
+	&= \dfrac{16}{3} - 2^2 \\
+	&= \dfrac{4}{3}
+\end{align}
+
+\begin{lstlisting}[caption=Opg 1.3, style=Code-Matlab, label=lst:1.3]
+syms x
+
+% E[X^2]
+diff( x*1/4, x)
+int(x*ans, x, 0, 4)
+
+%Var(X) 
+var = 16/3 - 2^2
+
+\end{lstlisting}
+
+\newpage
+
+\section*{Opgave 2} % (fold)
+\label{sec:opgave_2}
+
+\subsection*{1} % (fold)
+\label{sub:subsection_name}
+
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width =0.7\textwidth]{ReF2013-2-1}
+\caption{Opgave 2.1 -- tre versioner}
+\label{fig:opg21}
+\end{figure}
+
+\begin{lstlisting}[caption=Matlab kode for Figur \ref{fig:opg21}, style=Code-Matlab, label=lst:21]
+N = 3;
+
+% A~U(-1,1)
+A = rand(1,N)*2 - 1;
+% A = [ -0.5 0 0.5 ];
+
+% B~U(-2,2)
+B = rand(1,N)*4 - 2;
+% B = [ -1.5 0.1 1.4 ];
+
+t = 0:0.1:5;
+
+figure
+hold on
+for i = 1:N
+    X = A(i)*t+B(i);
+    plot(t,X)
+end
+axis([0 5 -2 2])
+hold off
+\end{lstlisting}
+% subsection subsection_name (end)
+
+
+\subsection*{2} % (fold)
+\begin{align}
+E\left[X(t) \right] &= E\left[A \cdot t + B\right] \\
+	&= t \cdot E[A] + E[B] \\
+	&= t \cdot 0 + 0 \\
+	&= 0 \\
+E \left[\left( X(t) \right)^2 \right] &= E \left[X(t) \cdot X(t) \right] \\
+	&= E\left[(A \cdot t + B) \cdot (A \cdot t + B) \right] \\
+	&= E\left[ (A \cdot t)^2 + (A \cdot t + B) \cdot 2 + B^2 \right] \\
+	&= t^2 \cdot E\left[ A^2 \right] + 2t \cdot 2 \cdot E[A] + 2 \cdot E[B] + E\left[B^2 \right] \\
+	&= t^2 \cdot Var(A) + 2 \cdot 0 + Var(B) \\
+	&= t^2 \cdot \dfrac{\left( 1- (-1)\right)^2}{12} + \dfrac{\left( 2- (-2)\right)^2}{12} \\
+	&= t^2 \cdot \dfrac{1}{3} + \dfrac{4}{3} & \text{Se Matlab herunder} \\
+Var(X) &= E\left( X^2 \right) - \left( E[X] \right)^2 & E[X] = 0\\
+	&= t^2 \cdot \dfrac{1}{3} + \dfrac{4}{3}
+\end{align}
+
+\begin{lstlisting}[caption=Opg 2.2, style=Code-Matlab, label=lst:Opg2.2]
+syms t;
+Var = t^2 * (1-(-1))^2/12 + (2-(-2))^2/12
+\end{lstlisting}
+
+
+% subsection 2 (end)
+
+\subsection*{3} % (fold)
+Autokorrelationsfunktion:
+\begin{align}
+R_X(t_1, t_2) &= E\left( X(t_1) \cdot X(t_2) \right) \\
+	&=E\left[ (A \cdot t_1 + B) \cdot (A \cdot t_2 + B)\right] \\
+	&=E\left[ A \cdot t_1 \cdot A \cdot t_2 + A \cdot t_1 \cdot B + A \cdot t_2 \cdot B + B^2 \right] \\
+	&= t_1 \cdot t_2 \cdot E\left[ A^2\right] + t_1 \cdot E[A] \cdot E[B] + t_2 \cdot E[A] \cdot E[B] + E\left[B^2\right] \\
+	&= t_1 \cdot t_2 \cdot Var(A) + t_1 \cdot 0 \cdot 0 + t_2 \cdot 0 \cdot 0 + Var(B) \\
+	&= t_1 \cdot t_2 \cdot \frac{1}{3} +  \dfrac{4}{3} 
+\end{align}
+Processen er stationær hvis:
+\begin{enumerate}
+	\item $E\left( X(t) \right) = 0$, altså uafhængig af t.
+	\subitem Det er den
+	\item $R_X(t_1, t_2)$ er en funktion af $t_1-t_2$.
+	\subitem Det er den ikke
+\end{enumerate}
+Den er derfor ikke stationær.
+% section 3 (end)
+
+
+% section opgave_2 (end)
+
+\section*{Opgave 3} % (fold)
+\label{sec:opgave_3}
+
+\subsection*{1} % (fold)
+Estimat af $\hat{\lambda}$:
+\begin{align}
+\hat{\lambda} &= \dfrac{x}{t} \\
+	&= \dfrac{24}{3} \\
+	&= 8
+\end{align}
+
+% subsection 1 (end)
+
+\subsection*{2} % (fold)
+\begin{align}
+Pr\left(X > 6 \right) &= 1 - Pr(X \leq 6) \\
+	&= 1- F_{posisson}(6)\\
+	&= 0.6866 & \text{Se Matlab herunder}
+\end{align}
+
+\begin{lstlisting}[caption=Kode for Opg 3.2, style=Code-Matlab, label=lst:opg32]
+x = 6;
+lambda = 8;
+Pr = 1-poisscdf(x, lambda)
+\end{lstlisting}
+
+% subsection 2 (end)
+
+% section opgave_3 (end)
+
+\newpage
+\section*{Opgave 4} % (fold)
+\label{sec:opgave_4}
+
+
+
+% section opgave_4 (end)
+\end{document}

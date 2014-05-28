@@ -4,3 +4,6 @@
 [submodule "PLPA/Documentation/Modules"]
 	path = PLPA/Documentation/Modules
 	url = git@github.com:Limro/LatexModules.git
+[submodule "SMP/Exam/LatexModules"]
+	path = SMP/Exam/LatexModules
+	url = git@github.com:Limro/LatexModules.git

@@ -28,7 +28,7 @@
 
 ;;Task 2
 
-;fold
+;foldl
 (define foldl
   (lambda (proc acc lst)
     (if (null? lst)
@@ -120,8 +120,9 @@
 ;; Part 2
 ;; foldr ('r' short for 'right') folds the other way than foldl - from behind. 
 ;; This means the first procedure returned is on the last element in the input list.
+;; However foldr is not tail-recurssion. This is due to the facts, that foldl gives it self as parameter, where as foldr does not. Foldl calculates the first two values and continues, foldr must get to the last two values and then return the result step by step.
 
 ;; Part 3
 ;; Fold needs to return a result of multiple steps and calculations.
 ;; This can be done through the accumulator.
-  
+;; By taking an acummulator a default return value can be returned, should the list provided be empty.

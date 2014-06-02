@@ -1,0 +1,94 @@
+De første 5 minutter er om rapportens Architecture afsnit.
+Er der huller spørger de ind.
+
+
+1)
+Main problem in each paradigms - compare to the others
+- Variables
+- Side effects
+- Main concepts
+
+2)
+- The way computation works 
+- Use substitutionmodel to a Scheme function
+	
+
+	- This is expression, this and this
+	- Bring example:
+		(( lambda (x)
+			(+ x 2))
+			23)
+		(let*)...
+- Must talk about 3)
+
+3)
+- High-order
+	Concept
+- Connect to material in the course
+	- Pass funciton
+	- Abstraction
+		- lambda is an operator in higher-order
+			Give it more information to pass
+		- Erlang
+			Upgrade on the fly
+			Default function
+				Fold function
+
+
+
+4)
+- It fit, doesn't fit, try next clause
+- Show a fail of refutation
+
+5)
+- Unifiers, refutation
+
+6)
+- Logic: Coroutining
+	- Restructure to smaller
+	- !!! Simple examples !!!
+	- No deep theory
+	- Prolog.now (små opgaver der kan vises)
+	
+- Functional: 
+
+
+
+
+Substitution:
+((( lambda (x)
+     (lambda (y)
+       (+ x y)))
+  12)
+ 23)
+
+;; ( nr 2 - komplek expression
+
+( ;
+ ( ;
+  ( ; #<function lambda (y) (+ x y )) : [?/x]> ; indsæt på x
+   12)
+  23))
+
+;;
+(; lambda (y) (+ x y)) : [12/x]
+ 23)
+
+;;
+((lambda (y) (+ 12 y))
+  23)
+
+;;
+; ends up being
+(+ 12 23)
+35
+;;;;;;;;;;;;;;;;;;;;;;
+
+(let (( x 5))
+  (+ 2 x))
+;;
+((lambda (x)
+   (+ 2 x))
+ 5)
+;function value with the substitution (5)
+(+ 2 5)

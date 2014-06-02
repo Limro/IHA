@@ -1,0 +1,22 @@
+Concurrency in Prolog
+=====================
+Week 9.
+
+Co-routining
+	Do something, stop at some point and wait for something to happen and continue with something (Ikke nødvendigvis det samme).
+
+
+Funktioner:
+-----------
+Slide 9.
+
+- freeze(X,G) - delay executing of goal G until veriable X is bound
+
+- Frozen(X,G): Unify G with a conjection of goals suspended on variable X, or true if no goal has suspended
+
+- When(X,G): Delay execution of goal G until the condition C are satisfied:
+	- Ground(V) (ingen variabler tilbage på V's plads)
+	- 
+
+Slide 10:
+- dif(X,Y): Succeed if the two arguments do not unify

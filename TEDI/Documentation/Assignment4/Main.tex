@@ -1,0 +1,47 @@
+\documentclass{article}
+
+\include{Preamble}
+
+\title{Handin 4 for TEDI}
+\author{Rasmus Bækgaard, 10893}
+\date{May 27, 2014}
+\begin{document}
+\maketitle
+
+\section{Equation} 
+
+\begin{align*}
+\Box ! ( N < 5)  && \text{Counter example} \\
+! \Box ! f && f = (N < 5)\\
+\Diamond f \\
+F f \leftrightarrow \text{true U f}  && F f \leftrightarrow \neg G \neg f\\
+F f \leftrightarrow \text{true U }(N < 5) 
+\end{align*}
+
+Now for the Automaton part: 
+\begin{align*}
+g &= true \\
+h &= f \\
+C(f) &= \{ h, \neg h, g, \neg g, \text{true U h}, \neg\text{true U h}\} \\
+M(f) &= \{ h, g, \text{true U h}\} \\
+T &: \text{A transition} \\
+S &: \text{A state, } \iota \\
+a &:\text{The name of the transition with literals, }\mathbb{L}
+\end{align*}
+The first we do is identifying the output, \textit{true U (N<5)}, which is compared with the 3 different rules on slide 17 in \texttt{TEDI Lesson 13.pdf}.
+Here the second rule is applied, $g  R g \in S \leftrightarrow h \in S \vee (g \in S \wedge g U h \in T)$
+
+This tells us we can create $g U h$ in a states, if we create $h$ in one state, $g$ in another state, each state with $ g U h$, and the state with $g$ should send a transition to all states with $g U h$ with the message ($a$) of the either $g$ or $h$.
+
+Next we can add an initial state from $(S, a, T) \in \Delta''$ if and only if $a = T \cap \mathbb{L}$ and $ S= \iota $ and $ f \in T$, which means "Add $a$ for transitions literals from the initial state containing $g U h$"
+
+This is illustrated in Figure \ref{fig:the}:
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{Basic}
+\caption{Büchi figure}
+\label{fig:the}
+\end{figure}
+
+
+\end{document}

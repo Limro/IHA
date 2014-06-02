@@ -1,0 +1,44 @@
+1) Model-chcing
+- Which buttons and which does what
+- LTL, automata and never claim
+	- Simple examples
+
+2) Fairness and non-determinism
+- How to model
+- Aspects
+	- Real life
+	- Modelling
+
+3) Monitoring
+- Problem of DS
+- Why do they exist
+- Why no "global observer state"
+- Space-time diagram
+
+4) Mutual excultion from NEILSEN-MIZUNO!!!
+- What can Mutex do?
+
+5) Broadcast algorithm
+- Bragging algo
+- What is the problem with non-bragging
+- Create the BACI program-implementation
+
+6)
+- Snapshots
+- Cuts
+- Chandy-Lamport algorithm
+
+7)
+- How to specify properties on a HIGHER level
+- Liveness
+- Assertions
+- LTL-formulars
+	- new variabels to look with
+		#define eating(p) (eat == p)
+- Verification
+
+8) 
+- Test local things for a global property
+	- ei. execution sequency
+- How does Promela and C-- relate?
+

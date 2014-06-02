@@ -1,0 +1,36 @@
+Hand in: Linear Temporal Logic
+==============================
+Rasmus Bækgaard, 10893, 10893@iha.dk
+------------------------------------
+
+1)
+[]<>[] p <-> <>[]p
+{counter example}
+
+<>[]<>p <-> []<>p
+-[]-[]<>p <-> []<>p    			(<>p <-> -[]-p)
+[]-[]<>p <-> -[]<>p 			(apply negation on both sides)
+[]-[]-[]-p <-> -[]<>p 			(<>p <-> -[]-p)
+[]<>[]-p <-> -[]<>p 			(-[]- <-> <>)
+[]<>[]-p <-> -[]-[]-p 			(<>p <-> -[]-p)
+[]<>[]-p <-> <>[]-p 			(reduce)
+
+[]-p = p (cannot be - succesful counterexamples proved by contradiction)
+
+2) <>[]p -> []<>p
+
+2a) 
+"At some point p will remain true" can occour if "at all times p can occur".
+Marked with *...* below
+Q -> P -> *P -> ...*
+P -> Q -> *P -> ...*
+
+2b)
+<>[]p -> []<>p
+<>[]p -> O<>p
+<>[]p -> []Op
+[]p -> Op "Always p will give next step p"
+
+3)
+Flipping the arrow at 2b shows why this is not true:
+[]p <- Op "The next step is always p" is not correct

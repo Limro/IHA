@@ -1,0 +1,17 @@
+\documentclass{article}
+\begin{document}
+
+[] ! (N<5) 
+
+Proof by contra example:
+! [] ! (N < 5)
+! [] ! f
+<> f
+
+F f <-> -G -f
+F f <-> true U f
+F f <-> true U (N < 5)
+
+Side 17.
+
+\end{document}

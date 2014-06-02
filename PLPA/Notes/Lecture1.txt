@@ -24,7 +24,7 @@ Partial paradigms
 		- Typical polumorphism
 		- Usually associated with imperative language
 	- Concurrent
-		- Address pproblems related to dealing with many actions at once
+		- Address problems related to dealing with many actions at once
 	- Reactive
 		- Focusses on data flows/propagation of change
 		- Spreadsheets and Verilog

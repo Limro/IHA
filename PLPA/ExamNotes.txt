@@ -2,13 +2,40 @@ De første 5 minutter er om rapportens Architecture afsnit.
 Er der huller spørger de ind.
 
 
-1)
+1) Discuss the main differences between imperative, functional and logic programming.
 Main problem in each paradigms - compare to the others
 - Variables
 - Side effects
 - Main concepts
 
-2)
+	Logic
+		- Deals in facts
+			- relations = predicates
+			- names = atoms
+			- Atoms and numbers = constants
+			- Value assigned to predicate = arity
+			- Methods = functors
+			- Operators:
+				:- 	separate head and body
+				?-	query (rules without head)
+				, 	separate goals
+				is 	Arithmetic evaluation
+			- Returns true/false unless variables (X) are used
+
+		- Explain EXACTLY what should happen and give me solutions
+			- Will not return what is wrong or where it's wrong
+				- Can use Unification and repeat and reminds of C-family (very inefficient)
+	Functional
+		- 
+		- No variabels out of a procedure / method
+			- Use parameters and let/let*/letrec
+		- Really good for math and message passing (distributed systems)
+			- Erland satelite
+	Imperative
+		- Object oriented.
+		- Explain exactly what should happen and what not should happen
+
+2) Explain the "Substitution Model" as used by Scheme.
 - The way computation works 
 - Use substitutionmodel to a Scheme function
 	
@@ -21,7 +48,7 @@ Main problem in each paradigms - compare to the others
 		(let*)...
 - Must talk about 3)
 
-3)
+3) Explain what higher-order programming is, what it requires, and what it allows.
 - High-order
 	Concept
 - Connect to material in the course
@@ -36,14 +63,14 @@ Main problem in each paradigms - compare to the others
 
 
 
-4)
+4) Explain the correspondence between search trees and Prolog.
 - It fit, doesn't fit, try next clause
 - Show a fail of refutation
 
-5)
+5) Explain how logical variables are used in Prolog computations.
 - Unifiers, refutation
 
-6)
+6) Discuss the concept of concurrency in functional and logic programming as presented in the lectures.
 - Logic: Coroutining
 	- Restructure to smaller
 	- !!! Simple examples !!!

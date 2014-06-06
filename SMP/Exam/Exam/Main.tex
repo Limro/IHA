@@ -13,10 +13,238 @@
 \subsection*{1} % (fold)
 \label{sub:1}
 
+Her findes $F_X(x)$ ved indsættelse i formel:
+\begin{align}
+F_X(x) &= \int_{-\infty}^x f_x(u) du \\
+	&= \int_0^x \dfrac{1}{8} x^2 + \dfrac{1}{3} \\
+	&= \dfrac{1}{24} \cdot x \cdot \left( x^2 + 8 \right) & \text{Se Matlab kode heruder}
+\end{align}
+
+\begin{lstlisting}[caption=Opgave 1 del 1, style=Code-Matlab, label=lst:opg11]
+syms x u;
+int((1/8)*u^2+(1/3),u,0,x)
+\end{lstlisting}
+
+For fordelingsfunktioner gælder, at de er 0 før ved $x < 0$ og 1 efter ovenstående interval: \\
+$\uuline{F = 
+\begin{cases}
+0 & x < 0 \\
+\dfrac{1}{24} \cdot x \cdot \left( x^2 + 8 \right) & 0 \leq x \leq 2\\
+1 & x > 2
+\end{cases}}$
+\\
+\\
+For at beregne $Pr(X > 1)$ gøres følgende: 
+\begin{align}
+Pr(x > 1) &= 1- Pr(x \leq 1) \\
+	&= 1- F_X(1) \\
+	&= \uuline{\dfrac{5}{8}}
+\end{align}
+
+
+\subsection*{2} % (fold)
+
+Middelværdien udregnes som følger:
+
+\begin{align}
+E[X] &= \int_0^2 x \cdot f(x) dx \\
+	&= \int_0^2 x \cdot \dfrac{1}{8} x^2 + \dfrac{1}{3} dx \\
+	&= \uuline{\dfrac{7}{6}}
+\end{align}
+
+Herefter udregnes variansen som følger:
+\begin{align}
+E\left[ X^2 \right] &= \int_0^2 x^2 \cdot f(x) dx \\
+	&= \int_0^2 x^2 \cdot \dfrac{1}{8} x^2 + \dfrac{1}{3} dx \\
+	&= \dfrac{76}{45} \\
+Var(X) &= E\left[ X^2 \right] - \left(E[X]\right)^2 \\
+	&= \uuline{\dfrac{59}{180}}
+\end{align}
+
+\begin{lstlisting}[caption=Opgave 1 del 2, style=Code-Matlab, label=lst:opg12]
+syms x
+EX = int(x*(1/8*x^2 + 1/3), x, 0, 2)
+EX2 = int(x^2*(1/8*x^2 + 1/3), x, 0, 2)
+
+Var = EX2 - EX^2
+\end{lstlisting}
+
+\subsection*{3} % (fold)
+Tæthedsfunktionen vises for $Y$ ved at bruge transformationssætningen:
+\\
+Invers:
+\begin{align}
+y = 2 \cdot x \Leftrightarrow x = \dfrac{y}{2}
+\end{align}
+Differentier:
+\begin{align}
+\dfrac{dx}{dy} = \dfrac{1}{2}
+\end{align}
+Find grænserne:
+\begin{align}
+0 \leq x \leq 2 \Leftrightarrow 0 \leq \dfrac{y}{2} \leq 2 \Leftrightarrow 0 \cdot 2 \leq y \leq 2 \cdot 2 \Leftrightarrow 0 \leq y \leq 4
+\end{align}
+Brug af formel:
+\begin{align}
+f_y(y) &= \left| \dfrac{dx}{dy} \right| \cdot f_X(x) \\
+	&= \left| \dfrac{1}{2}\right| \cdot \dfrac{1}{8} x^2 + \dfrac{1}{3} \\
+	&= \dfrac{1}{2} \cdot \dfrac{1}{8} \dfrac{y}{2}^2 + \dfrac{1}{3} & \text{Jeg tror du har sat } \dfrac{1}{3} x \text{ ind\dots}\\
+	&= \uuline{\dfrac{y^2}{64}+\dfrac{1}{3}} 
+\end{align} 
+
+Da tæthedsfunktionen er 0 uden for intervallet følger det, at 
+$ f_Y(y) = 
+\begin{cases}
+\dfrac{y^2}{64}+\dfrac{1}{3} & 0 \leq y \leq 4 \\
+0 & \text{ellers}
+\end{cases}$
+
+
+\section*{Opgave 2} % (fold)
+
+\subsection*{1} % (fold)
+Middelværdien har en konstant, $B$, og processen er i intervallet $[0 ; 2\pi]$, hvilket svarer til en fuld omgang på en cirkel.
+\begin{align}
+E\left[X(t)\right] &= E\left[ A \cdot sin( \omega \cdot t + \theta) + B \right] \\
+	&= E[A] \cdot E[sin(\omega \cdot t + \theta)] + E[B] \\
+	&= 0 \cdot E[sin(\omega \cdot t + \theta)] + E[B] \\
+	&= E[B] \\
+	&= \uuline{B}
+\end{align}
+Det følger altså, at middelværdien er $B$, da $B$ ikke er en stokastisk variabel.
+
+\subsection*{2} % (fold)
+Autokorrelationensfunktionen kan findes således:
+\begin{align}
+R_X(t_1, t_2) &= E\left[ X(t_1) \cdot X(t_2) \right] \\
+	&= E\left[ \left(A \cdot sin( \omega \cdot t_1 + \theta) + B \right) \cdot \left(A \cdot sin( \omega \cdot t_2 + \theta) + B \right) \right] \\
+	&= E\left[ \left(A^2 \cdot sin \left(\omega \cdot t_1 + \theta \right)  \cdot sin \left(\omega \cdot t_2 + \theta \right)\right) + \left(A \cdot sin \left(\omega \cdot t_1 + \theta \right) + B\right)  + \left(A \cdot sin \left(\omega \cdot t_2 + \theta \right) + B\right) + B^2 \right] \\
+	&= E\left[A^2] + E\left[sin \left(\omega \cdot t_1 + \theta \right)  \cdot sin \left(\omega \cdot t_2 + \theta \right)\right)\right]
+	+ 2 \cdot E[A] \cdot E\left[sin \left(\omega \cdot t_1 + \theta \right) \right] \\ &+ 2 \cdot E[B] + E\left[sin \left(\omega \cdot t_2 + \theta \right) \right]
+	+ E\left[B^2 \right] \nonumber \\
+	&= Var(A) + Var(B) + E\left[sin \left(\omega \cdot t_1 + \theta \right)  \cdot sin \left(\omega \cdot t_2 + \theta \right)\right] + 0 + 0 + E\left[sin \left(\omega \cdot t_2 + \theta \right) \right] \\
+	&\text{Suddenly -- magic\dots} \nonumber \\
+	&= \dfrac{1}{2}cos \left(\omega(t_1- t_2)\right) + B^2
+\end{align}
+
+Den er der næsten ovenfor$\dots$ \\
+Men den ER stationær, da $R_X(t_1, t_2)$ indeholder ledet $t_1 - t_2$.
 
 
 
 
+\newpage
+\section*{Opgave 3} % (fold)
+
+\subsection*{1} % (fold)
+Parametrene er som følger:\\
+\begin{align}
+x &= 0.01\\
+n &= 10 \\
+p &= \text{hypotesen}
+\end{align}
+
+
+\subsection*{2} % (fold)
+
+Vi skal finde sandsynligheden for, at der ved 2 ud af 10 forekommer en 1\% change for hver af dem:
+
+\begin{align}
+\text{Sandsynlighed} &= \dfrac{2}{10} \cdot 0.01 \\
+	&= 0.002 \\
+	&= \uuline{0.2\% \text{ chance}}
+\end{align}
+
+\subsection*{3} % (fold)
+
+Vi foretager en hypotesetest for binomialfordeling: 
+
+\begin{align}
+H: p &= p_0 \\
+	&= \dfrac{15}{100} \\
+	&= 0.15
+\end{align}
+
+Vi finder nu en p-værdi:
+\begin{align}
+z &= \dfrac{x - n \cdot p_0}{\sqrt{n \cdot p_0 \cdot(1-p_0)}}\\
+	&= \dfrac{15 - 1000 \cdot 0.15}{\sqrt{1000 \cdot 0.15 \cdot(1-0.15)}}
+	&= -11.9558 \\
+p_\text{værdi} &= 2 \cdot \left| 1- \phi(\left|z\right|) \right|
+\end{align}
+
+I et 95\% konfidensinterval skal vi nu gerne finde vores p-værdi inden for dette interval:
+\begin{align}
+interval &= \dfrac{1}{n+u^2} \left[ x + \dfrac{u^2}{2} \pm u \sqrt{\dfrac{x(n-x)}{n}+\dfrac{u^2}{4}}\right] \\
+Min_{interval} &= 0.0091 \\
+Max_{interval} &= 0.0246 \\
+\end{align}
+
+\begin{lstlisting}[caption=Opgave 3, style=Code-Matlab, label=lst:opg33]
+x = 15;
+n = 1000;
+p0 = 0.15;
+
+z = (x-n*p0)/(sqrt(n*p0*(1-p0)))
+
+val = (2/10) *0.01
+
+u = norminv(1- (0.05/2));
+
+min = 1/(n+u^2) * (x+ u^2/2 - u*sqrt((x*(n-x)/n) + (u^2/4)))
+max = 1/(n+u^2) * (x+ u^2/2 + u*sqrt((x*(n-x)/n) + (u^2/4)))
+\end{lstlisting}
+
+Her vilde jjeg så have samlignet de $p_\text{værdi}$ og intervallet mellem $Min_{interval} \text{ og } Max_{interval}$, men da jeg ikke kan huske hvordan $p_\text{værdi}$ udregnes, må det stå hen. \\
+Hvis det var inden for intervallet ville det stemme over ens med observationerne og visa versa.
+
+\section*{Opgave 4} % (fold)
+
+\subsection*{1} % (fold)
+
+Ved at indtaste data i \texttt{Matlab} findes middelværdien til 330.75 mL. \\
+Variansen findes til 4.6184.
+
+\begin{lstlisting}[caption=Opgave 4.1, style=Code-Matlab, label=lst:41]
+X = [ 330 334 328 330 330 331 335 330 331 330 ...
+    331 330 332 329 335 330 326 331 330 332 ];
+
+mean(X)
+var(X)
+\end{lstlisting}
+
+
+\subsection*{2} % (fold)
+Tidspres! \\
+Jeg vurderer den er korrekt kalibreret, men da jeg ikke ved hvor præcis den skal være, giver det ikke meget mening at udføre 95\% interval. 
+Må den vær 0.1 mL ved siden af? 
+Eller måske 0.5 mL?
+\\
+Men gør brug af formlen på Slides 22 i "StatKap4+5+6", og indsæt i formel.
+
+\subsection*{3} % (fold)
+Der skal bruges $n \geq \left( \dfrac{1.96 \cdot varians}{B} \right) ^2$. 
+Indsæt selv et $B$ (sammen slides, s. 25)
+
+
+% subsection 3 (end)
+
+% subsection 2 (end)
+% section opgave_4 (end)
+
+% subsection 2 (end)
+
+% subsection 1 (end)
+
+
+% section opgave_3 (end)
+
+%\begin{figure}[hbtp]
+%\centering
+%\includegraphics[width=0.8 \textwidth]{filnavn-for-png}
+%\caption{Titel}
+%\label{fig:referenceNavn}
+%\end{figure}
 
 
 

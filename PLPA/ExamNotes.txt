@@ -3,119 +3,160 @@ Er der huller spørger de ind.
 
 
 1) Discuss the main differences between imperative, functional and logic programming.
-Main problem in each paradigms - compare to the others
-- Variables
-- Side effects
-- Main concepts
+	Main problem in each paradigms - compare to the others
+	- Variables
+	- Side effects
+		Changing something somewhere
+		Scheme:
+			- Write, read and display do this
+			- Set! as well
+		Prolog:
+			- Asserts
+		C#:
+			- Fucking everything!
+	- Main concepts
+	- Pattern Matching
+		Scheme:
+			- Yes, 'match'
+		Prolog:
+			- ?- [a,b] = [a,X]
+	   			X = b         Unification
+		C#:
+			- LinQ.where(t => t.id = ID)
+	- Lambda expression
+		Mathematical computations simplified
+		Scheme:
+			- Kinda build on it.
+				(lambda (x) (+ x x))
+				(+ 2 2)
+		Prolog:
+			- Grandfather(tim, X)
+		C#:
+			- int func(int x){ return x+x; }
+	- Search
+		Scheme:
+			- 'find', 'memq', 'memv', 'member'
+		Prolog:
+			- Yes, deapth-first search
+			- Use 'cut' to 
+		C#:
+			- LinQ.where(t => t.id = ID)
 
-	Logic
-		- Deals in facts
-			- relations = predicates
-			- names = atoms
-			- Atoms and numbers = constants
-			- Value assigned to predicate = arity
-			- Methods = functors
-			- Operators:
-				:- 	separate head and body
-				?-	query (rules without head)
-				, 	separate goals
-				is 	Arithmetic evaluation
-			- Returns true/false unless variables (X) are used
 
-		- Explain EXACTLY what should happen and give me solutions
-			- Will not return what is wrong or where it's wrong
-				- Can use Unification and repeat and reminds of C-family (very inefficient)
-	Functional
-		- 
-		- No variabels out of a procedure / method
-			- Use parameters and let/let*/letrec
-		- Really good for math and message passing (distributed systems)
-			- Erland satelite
-	Imperative
-		- Object oriented.
-		- Explain exactly what should happen and what not should happen
+
+		Logic
+			- Deals in facts
+				- Returns true/false unless variables (X) are used
+
+			- Explain EXACTLY what should happen and give me solutions
+				- Will not return what is wrong or where it's wrong
+					- Can use Unification and repeat and reminds of C-family (very inefficient)
+		Functional
+			- No variables out of a procedure / method
+				- Use parameters and let/let*/letrec
+			- Really good for math and message passing (distributed systems)
+				- Erland satellite
+		Imperative
+			- Object oriented.
+			- Explain exactly what should happen AND what not should happen
 
 2) Explain the "Substitution Model" as used by Scheme.
-- The way computation works 
-- Use substitutionmodel to a Scheme function
-	
+	- The way computation works 
+	- Use substitutionmodel to a Scheme function
 
-	- This is expression, this and this
-	- Bring example:
-		(( lambda (x)
-			(+ x 2))
-			23)
-		(let*)...
-- Must talk about 3)
+		- This is expression, this and this
+		- Bring example:
+			(( lambda (x)
+				(+ x 2))
+				23)
+			->
+			(+ x 2) : [23/x]
+			(+ 23 2)
+			25
+
+			(let (( x 1) (y 2)) (< x y))
+			->
+			(< x y) : [1,2 / x,y]
+			(< 1 2)
+			#t
+		
+	- Must talk about 3)
 
 3) Explain what higher-order programming is, what it requires, and what it allows.
-- High-order
-	Concept
-- Connect to material in the course
-	- Pass funciton
-	- Abstraction
-		- lambda is an operator in higher-order
-			Give it more information to pass
-		- Erlang
-			Upgrade on the fly
-			Default function
-				Fold function
+	- High-order
+		- Able to pass functions as arguments
+			Logic
+				call/1, findall/3, setod/3
+			Scheme
+				(define (add-y y)
+				  (lambda (x) (+ x y)))
 
+				(define add-5 (add-y 5)) 
 
+				(add-5 2) : 7
+			C# messages with messages
+	- Connect to material in the course
+		- Pass function
+		- Abstraction
+			- lambda is an operator in higher-order
+				Give it more information to pass
+			- Erlang
+				Upgrade on the fly
+				Default function
+					Fold function
+		- Concurrency
+			- Data race is no more
+			- All data is pure
 
 4) Explain the correspondence between search trees and Prolog.
-- It fit, doesn't fit, try next clause
-- Show a fail of refutation
+	- Prolog uses occur-check in each step - this gives slow (WC exponential) performance
+		- Without it's constant time
+		- This can be implemented in Prolog
+	- Going backwards in a tree is called 'backtracking'
+		- Remember current clause of each node
+		- Unwinding unifications to nodes occurring earlier in the tree
+	- If only 1 result is wanted you can 'cut' the search 
+		- If not it will continue to search 
+		- min(X,Y,X) :- X=<Y, !. (red cut)
+			- No Backtracking from this
+		- By implementing more rules you can keep searching (green cut)
+
+	- It fit, doesn't fit, try next clause
+	- Show a fail of refutation
 
 5) Explain how logical variables are used in Prolog computations.
-- Unifiers, refutation
+	- Unifiers, refutation
 
 6) Discuss the concept of concurrency in functional and logic programming as presented in the lectures.
-- Logic: Coroutining
-	- Restructure to smaller
-	- !!! Simple examples !!!
-	- No deep theory
-	- Prolog.now (små opgaver der kan vises)
-	
-- Functional: 
+	- No data race
+	- Logic: 
+		- Coroutining
+			- Suspend goals when not enough information is available
+			- Resume goals when needed information becomes available
+			- 'Freeze'-'when' to lock and unlock variables
 
+		- Restructure to smaller
+			delete(X, [], []).
 
+			/* Value infornt of list */
+			delete(X, [X|L], M)
+				:- 	delete(X,L,M).
 
+			/* if X != Y*/
+			delete(X, [Y|L],[Y|M])
+				:- delete(X, L, M).
 
-Substitution:
-((( lambda (x)
-     (lambda (y)
-       (+ x y)))
-  12)
- 23)
+		- Used on IBM's Watson
+		
+	- Functional: 
+		- Modern CPU architecture with multiple cores
+		- Good for network communication
+			- Messaging by priority, addressing and pass-by-value
+			- Send / receive messages sync or async
+		- Erlang can run telephone switch (31.5 ms/year downtime)
+			- Upgrade on the fly
+		- No shared state between processes
+		- Asynch communication messages
+		- Values are copied - no references
+		- Distribution of messages is the some local as remote
 
-;; ( nr 2 - komplek expression
-
-( ;
- ( ;
-  ( ; #<function lambda (y) (+ x y )) : [?/x]> ; indsæt på x
-   12)
-  23))
-
-;;
-(; lambda (y) (+ x y)) : [12/x]
- 23)
-
-;;
-((lambda (y) (+ 12 y))
-  23)
-
-;;
-; ends up being
-(+ 12 23)
-35
-;;;;;;;;;;;;;;;;;;;;;;
-
-(let (( x 5))
-  (+ 2 x))
-;;
-((lambda (x)
-   (+ 2 x))
- 5)
-;function value with the substitution (5)
-(+ 2 5)

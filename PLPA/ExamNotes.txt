@@ -27,7 +27,7 @@ Er der huller spørger de ind.
 		Mathematical computations simplified
 		Scheme:
 			- Kinda build on it.
-				(lambda (x) (+ x x))
+				((lambda (x) (+ x x)) 2)
 				(+ 2 2)
 		Prolog:
 			- Grandfather(tim, X)
@@ -86,7 +86,7 @@ Er der huller spørger de ind.
 	- High-order
 		- Able to pass functions as arguments
 			Logic
-				call/1, findall/3, setod/3
+				call/1, findall/3, setof/3
 			Scheme
 				(define (add-y y)
 				  (lambda (x) (+ x y)))

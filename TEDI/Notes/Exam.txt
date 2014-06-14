@@ -1,44 +1,107 @@
-1) Model-chcing
-- Which buttons and which does what
-- LTL, automata and never claim
-	- Simple examples
+1. Model - checking safety and liveness properties 
+	- Discuss the difference between safety and liveness. 
+		- Safety: Must never happen
+			Mutual exclusion: 
+			ltl mutex { []!(csP && csQ) }
+			(and set JSpin in safety mode)
 
-2) Fairness and non-determinism
-- How to model
-- Aspects
-	- Real life
-	- Modelling
+		- Liveness: Must eventually happen
+			Absence of deadlock:
+			ltl dlk { []<>(!wantP || !wantQ) }
+			(and set JSpin in acceptance mode)
 
-3) Monitoring
-- Problem of DS
-- Why do they exist
-- Why no "global observer state"
-- Space-time diagram
+		- What each button do
 
-4) Mutual excultion from NEILSEN-MIZUNO!!!
-- What can Mutex do?
+	- Explain how LTL, automata and never claims are related. 
+		- Promela != ltl 
+			LTL = Linear Temporal logic
+			Spin translate it to Promela
+			Translation = never claim with Büchi acceptance condition.
 
-5) Broadcast algorithm
-- Bragging algo
-- What is the problem with non-bragging
-- Create the BACI program-implementation
+		- Simple axample
+	(Slides, Chapters 5, 8 and 10 in Principles of the Spin Model Checker) 
 
-6)
-- Snapshots
-- Cuts
-- Chandy-Lamport algorithm
+2. Fairness and nondeterminism 
+	- Explain the concepts of nondeterminism fairness. 
+		- Weakly fairness:
+			"If always executable then it's eventually executed"
+		- Fairness:
+			"If something is infinitely enabled (true) it is eventually taken"
+		- Non-determinism
+			"2 processes can execute whenever they want and we don't know in which order"
 
-7)
-- How to specify properties on a HIGHER level
-- Liveness
-- Assertions
-- LTL-formulars
-	- new variabels to look with
-		#define eating(p) (eat == p)
-- Verification
+	- Discuss their relationship. 
 
-8) 
-- Test local things for a global property
-	- ei. execution sequency
-- How does Promela and C-- relate?
+	- How is fairness related to  deadlock, termination and safety? 
+		- Safety - must never happen:
+			ltl mutex { []!(csP && csQ) }
+		- Termination of program:
+			active proctype Q(){ endProcP = true; }
+		- Deadlock:
+			"if deadlock is possible, it will happen".
 
+	- What are the limitations of weak fairness? 
+
+	- Does nondeterminism  occur in C-- programs? 
+		Yes, if a prrocess is stated within a 'cobegin'
+
+	- How can C-- programs be made (weakly) fair? 
+		int i = 2;
+		void proc1() {... i++ ...}
+		void proc2() { i = 1;}
+		main(){ cobegin {proc1(), proc2(); } }
+
+	- Aspects
+		- Real life
+		- Modelling
+	(Slides, Exercises, Chapter 5 in Principles of the Spin Model Checker) 
+
+3. Monitoring distributed computations and consistent observations 
+	- Explain the concepts of causality, runs, cuts and consistent observations of distributed systems, the problems involved 
+	- Explain how an observer of distributed computations may draw valid or invalid conclusions about system global state.
+	- You should use plenty of space - time diagrams to exemplify your explanation. 
+	(Slides, Section 1 - 2 (cursory) and 3 - 6 in "Consistent Global States of Distributed Systems: Fundamental Concepts and Mechanisms") 
+
+	- Problem of DS
+	- Why do they exist
+	- Why no "global observer state"
+	- Space-time diagram
+
+4. The mutex problem for distributed systems and the Neilsen - Mizuno algorithm 
+	- Outline (some of) the problems inherent in asynchronous distributed systems that a mutex (mutual exclusion) algorithm must overcome. 
+	- Explain the Neilsen - Mizuno algorithm as an example of a mutex algorithm. 
+	(Slides, Exercises, Section 1 - 3 in the article "A Dag - Based Algorithm for Distributed Mutual Exclusion",  selected parts of Section 1 - 2 (cursory) and 3 - 6 in "Consistent Global States of Distributed Systems:  Fundamental Concepts and Mechanisms") 
+
+5. Your own improved “Broadcast I want the token” - algorithm 
+	- Bragging algo
+	- What is the problem with non-bragging
+	- Explain your own improved “Broadcast I want the token” - algorithm, 
+		- Use your BACI/C-- implementation and Spin model to demonstrate or argue its properties. 
+		If you don’t have a working C—implementation it’s okay to use the whiteboard, handouts etc. to outline your algorithm, the way it works and its rationale. 
+		Apart from simply running Spin on your model, you must present your model and your reasoning behind it (why does it look like it does, what specific traits and properties of your algorithm did you want to capture and verify etc.). 
+	(Slides, Exercises) 
+
+6. Making snapshots of distributed systems and the Chandy - Lamport snapshot algorithm 
+	- Outline (some of) the problems inherent in asynchronous distributed systems that a snapshot algorithm must address. 
+	- Explain the Chandy-Lamport algorithm as an example of a snapshot algorithm. 
+	- cuts
+	(Slides, Section13 in "Consistent Global States of Distributed Systems: Fundamental Concepts and Mechanisms", selected parts of Section 1 - 2 (cursory) and 3 - 6 in "Consistent Global States of Distributed Systems: Fundamental Concepts and Mechanisms") 
+
+7. Specifying systems and properties. 
+	- What is a specification? 
+	- How are safety properties and liveness properties specified? 
+	- How are assertions used? What is the purpose of verification? What are counterexamples? 
+	- Liveness
+	- Assertions
+	- LTL-formulars
+		- new variabels to look with
+			#define eating(p) (eat == p)
+	- Verification
+	(Slides, Chapters 2, 3, 4, 5 in Principles of the Spin Model Checker) 
+
+8. Testing and modelling 
+	- Explain the purpose of Promela models. Discuss verification, model checking and testing. 
+	- Explain the relationship between C-- programs and Promela models. 
+	- How can test cases for C-- be generated with  the help of Promela models? 
+	- Can Promela models be used to verify C-- programs? 
+	(Slides, Chapters 2, 3, 4, 5 in Principles of the Spin Model Checker) 

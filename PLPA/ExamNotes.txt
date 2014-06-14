@@ -4,45 +4,6 @@ Er der huller spørger de ind.
 
 1) Discuss the main differences between imperative, functional and logic programming.
 	Main problem in each paradigms - compare to the others
-	- Variables
-	- Side effects
-		Changing something somewhere
-		Scheme:
-			- Write, read and display do this
-			- Set! as well
-		Prolog:
-			- Asserts
-		C#:
-			- Fucking everything!
-	- Main concepts
-	- Pattern Matching
-		Scheme:
-			- Yes, 'match'
-		Prolog:
-			- ?- [a,b] = [a,X]
-	   			X = b         Unification
-		C#:
-			- LinQ.where(t => t.id = ID)
-	- Lambda expression
-		Mathematical computations simplified
-		Scheme:
-			- Kinda build on it.
-				(lambda (x) (+ x x))
-				(+ 2 2)
-		Prolog:
-			- Grandfather(tim, X)
-		C#:
-			- int func(int x){ return x+x; }
-	- Search
-		Scheme:
-			- 'find', 'memq', 'memv', 'member'
-		Prolog:
-			- Yes, deapth-first search
-			- Use 'cut' to 
-		C#:
-			- LinQ.where(t => t.id = ID)
-
-
 
 		Logic
 			- Deals in facts
@@ -59,6 +20,45 @@ Er der huller spørger de ind.
 		Imperative
 			- Object oriented.
 			- Explain exactly what should happen AND what not should happen
+
+	- Side effects
+		Changing something somewhere
+		Scheme:
+			- Write, read and display do this
+			- Set! as well
+		Prolog:
+			- Asserts
+		C#:
+			- Fucking everything!
+
+	- Pattern Matching
+		Scheme:
+			- Yes, 'match'
+		Prolog (variables):
+			- ?- [a,b] = [a,X]
+	   			X = b         Unification
+		C#:
+			- LinQ.where(t => t.id = ID)
+
+	- Lambda expression
+		Mathematical computations simplified
+		Scheme:
+			- Kinda build on it.
+				((lambda (x) (+ x x)) 2)
+				(+ 2 2)
+		Prolog:
+			- Grandfather(tim, X)
+		C#:
+			- int func(int x){ return x+x; }
+
+	- Search
+		Scheme:
+			- 'find', 'memq', 'memv', 'member'
+		Prolog:
+			- Yes, deapth-first search
+			- Use 'cut' to 
+		C#:
+			- LinQ.where(t => t.id = ID)
 
 2) Explain the "Substitution Model" as used by Scheme.
 	- The way computation works 

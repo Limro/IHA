@@ -127,8 +127,25 @@
 
 6. Making snapshots of distributed systems and the Chandy - Lamport snapshot algorithm 
 	- Outline (some of) the problems inherent in asynchronous distributed systems that a snapshot algorithm must address. 
+		Good:
+			- Used for roll back and restart
+			- Can create "system dump" for debugging
+		Not good:
+			- May send messages
+			- May require dedicated computations
+			- Can leave a footprint on memory, cpu, network bandwidth
+			- 
+
 	- Explain the Chandy-Lamport algorithm as an example of a snapshot algorithm. 
-	- cuts
+		- Record local state when a special message is received (easy)
+		- Send message to all connected channels
+		- Record all incomming messages on channel until follow-up message arives
+
+	
+	- Cuts:
+		A cut is the current state of all processes
+		Mark a cut, see how long the other processes will run before the first interferes.
+
 	(Slides, Section13 in "Consistent Global States of Distributed Systems: Fundamental Concepts and Mechanisms", selected parts of Section 1 - 2 (cursory) and 3 - 6 in "Consistent Global States of Distributed Systems: Fundamental Concepts and Mechanisms") 
 
 7. Specifying systems and properties. 

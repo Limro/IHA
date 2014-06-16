@@ -150,14 +150,24 @@
 
 7. Specifying systems and properties. 
 	- What is a specification? 
+	
 	- How are safety properties and liveness properties specified? 
-	- How are assertions used? What is the purpose of verification? What are counterexamples? 
-	- Liveness
-	- Assertions
+	
+	- How are assertions used? 
+		- Something that should hold
+		- If not, stop the program and throw the error
+
+	- What is the purpose of verification? 
+		- errors written in the code, syntax errors
+		- Search for assertion errors. 
+			If it finds one it stops
+
+	- What are counterexamples? 
+
 	- LTL-formulars
 		- new variables to look with
 			#define eating(p) (eat == p)
-	- Verification
+	
 	(Slides, Chapters 2, 3, 4, 5 in Principles of the Spin Model Checker) 
 
 8. Testing and modeling 

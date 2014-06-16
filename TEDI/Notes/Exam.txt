@@ -150,28 +150,48 @@
 
 7. Specifying systems and properties. 
 	- What is a specification? 
+		- Exact statement of needs and characteristics.
+		- Things that should always hold.
+			- No deadlocks, starvation and so on.
 	
 	- How are safety properties and liveness properties specified? 
+		- Safety: Must never happen
+			Mutual exclusion: 
+			ltl mutex { []!(csP && csQ) }
+			(and set JSpin in safety mode)
+
+		- Liveness: Must eventually happen
+			Absence of deadlock:
+			ltl dlk { []<>(!wantP || !wantQ) }
+			(and set JSpin in acceptance mode)
 	
 	- How are assertions used? 
 		- Something that should hold
-		- If not, stop the program and throw the error
+			- If not, stop the program and throw the error
+		- Pre and postconditions
 
 	- What is the purpose of verification? 
 		- errors written in the code, syntax errors
 		- Search for assertion errors. 
 			If it finds one it stops
+		- Trail the steps
+			Log a file with every state and run in "Guided Simulation"
+			This will show what steps caused an error
 
 	- What are counterexamples? 
+		- When asserting for, lets say, n > 2, SPIN looks for something where n <= 2.
+			One example is enough to active the assertion.
 
 	- LTL-formulars
 		- new variables to look with
-			#define eating(p) (eat == p)
+			- Safety - must never happen:
+				ltl mutex { []!(csP && csQ) }
 	
 	(Slides, Chapters 2, 3, 4, 5 in Principles of the Spin Model Checker) 
 
 8. Testing and modeling 
-	- Explain the purpose of Promela models. Discuss verification, model checking and testing. 
+	- Explain the purpose of Promela models. 
+	- Discuss verification, model checking and testing. 
 	- Explain the relationship between C-- programs and Promela models. 
 	- How can test cases for C-- be generated with  the help of Promela models? 
 	- Can Promela models be used to verify C-- programs? 

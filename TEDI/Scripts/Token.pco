@@ -1,0 +1,18 @@
+BACI System: C-- to PCODE Compiler, 10/03/2010
+Source file: C:\Users\Rasmus\Documents\IHA\TEDI\Scripts\Token.pml  Mon Jun 16 15:21:42 2014
+0  -1                 PCODE table
+ lc   f    x    y
+1  1            IDENTIFIER table
+index   identifier    link  obj  type  ref normal   lev   adr   mon atomic
+   1  ++-outer-++       0     7     0     0     1     0     0     0     0
+0  0         BLOCK table
+index last lastpar psize vsize
+   0    1       0    0    0
+0  -1           ARRAY table
+index inxtype eltyp elref  low  high  elsize  size
+0   0  60                  STRING table
+0  0           Input File array
+index parent      file name
+   0    -1   C:\Users\Rasmus\Documents\IHA\TEDI\Scripts\Token.pml
+0  -1           PCODE debugging information
+   lc findex flineno

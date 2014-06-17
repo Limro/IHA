@@ -18,7 +18,15 @@
 			Spin translate it to Promela
 			Translation = never claim with Büchi acceptance condition.
 
-		- Simple axample
+		- Automata:
+			- The meaning of a process described as 
+				- sets of states
+				- sets of state-to-state transitions
+			- Two kinds:
+				- Finite words (standard)
+				- Infinite words (Büchi)
+
+		- Simple example
 	(Slides, Chapters 5, 8 and 10 in Principles of the Spin Model Checker) 
 
 2. Fairness and nondeterminism 
@@ -43,7 +51,7 @@
 	- What are the limitations of weak fairness? 
 
 	- Does nondeterminism  occur in C-- programs? 
-		Yes, if a prrocess is stated within a 'cobegin'
+		Yes, if a process is stated within a 'cobegin'
 
 	- How can C-- programs be made (weakly) fair? 
 		int i = 2;
@@ -53,11 +61,11 @@
 
 	- Aspects
 		- Real life
-		- Modelling
+		- Modeling
 	(Slides, Exercises, Chapter 5 in Principles of the Spin Model Checker) 
 
 3. Monitoring distributed computations and consistent observations 
-	- Explain the concepts of causality, runs, cuts and consistent observations of distributed systems, the problems involved .
+	- Explain the concepts of causality, runs, cuts and consistent observations of distributed systems, the problems involved.
 		- Runs:
 			Total ordering, R, including all events of global history, H.
 			May not correspond with physical execution.
@@ -82,17 +90,10 @@
 	- Explain how an observer of distributed computations may draw valid or invalid conclusions about system global state.
 		- Bad reading of an run, R.
 
-
 	- You should use plenty of space - time diagrams to exemplify your explanation. 
 		- Global space time diagram: TEDI Lesson 6, slide 19.
 
 	(Slides, Section 1 - 2 (cursory) and 3 - 6 in "Consistent Global States of Distributed Systems: Fundamental Concepts and Mechanisms") 
-
-
-	- Problem of DS
-	- Why do they exist
-	- Why no "global observer state"
-	- Space-time diagram
 
 4. The mutex problem for distributed systems and the Neilsen - Mizuno algorithm 
 	- Outline (some of) the problems inherent in asynchronous distributed systems that a mutex (mutual exclusion) algorithm must overcome. 
@@ -120,7 +121,7 @@
 	- What is the problem with non-bragging
 	- Explain your own improved “Broadcast I want the token” - algorithm, 
 		- Use your BACI/C-- implementation and Spin model to demonstrate or argue its properties. 
-		If you don’t have a working C—implementation it’s okay to use the whiteboard, handouts etc. to outline your algorithm, the way it works and its rationale. 
+		If you don't have a working C—implementation it's okay to use the white board, handouts etc. to outline your algorithm, the way it works and its rationale. 
 
 		- Apart from simply running Spin on your model, you must present your model and your reasoning behind it (why does it look like it does, what specific traits and properties of your algorithm did you want to capture and verify etc.). 
 	(Slides, Exercises) 
@@ -182,7 +183,7 @@
 		- When asserting for, lets say, n > 2, SPIN looks for something where n <= 2.
 			One example is enough to active the assertion.
 
-	- LTL-formulars
+	- LTL-formulas
 		- new variables to look with
 			- Safety - must never happen:
 				ltl mutex { []!(csP && csQ) }
@@ -191,8 +192,41 @@
 
 8. Testing and modeling 
 	- Explain the purpose of Promela models. 
+		- Concurrency programming
+		- Validation of a model run concurrently
+		- Create different (but similar) processes and let them interact with each other without a "master thread" or shared data.
+		- Check model behaves as intended.
+	
 	- Discuss verification, model checking and testing. 
+		- Verification
+			- Static verification:
+
+		- Model checking:
+			- Check model and not the program
+			- Can check each state (which means counters, like int have 2^32 states)
+			- Runs every computation for a program
+
+		- Testing (in general):
+			- Unit test KNOWN cases
+				- Promela test ALL cases
+
+		- Create a trail
+		- Guided Simulation will show different states
+		- Use assert to ensure correct data
+	
 	- Explain the relationship between C-- programs and Promela models. 
-	- How can test cases for C-- be generated with  the help of Promela models? 
+		- C-- = real programming language
+		- Promela = model checker language
+		- C-- is easier than Promela to write (from .Net family)
+		- Both easy to create concurrency with
+	
+	- How can test cases for C-- be generated with the help of Promela models? 
+		- Insert asserts
+		- Insert LTL-formulas
+	
 	- Can Promela models be used to verify C-- programs? 
+		- Yes, we did that in an exercise.
+		- Only the model aspect.
+		- Write some C--, translate to Promela, validate output(model)
+
 	(Slides, Chapters 2, 3, 4, 5 in Principles of the Spin Model Checker) 

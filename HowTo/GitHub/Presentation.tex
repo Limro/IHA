@@ -1,12 +1,14 @@
 
 % additional usepackage{beamerthemeshadow} is used
 \documentclass{beamer}
-\usepackage{beamerthemeshadow}
+%\usepackage{beamerthemeshadow}
 
 \usepackage{lmodern} % Font
 \usepackage[T1]{fontenc} % Can use danish characters
 \usepackage[utf8]{inputenc} %input encoding. Can be used on Linux, Mac and Windows         
 \usepackage[english]{babel} %Split words accoding to English
+
+\input{../Modules/Modules/FigureSetup}
 
 \begin{document}
 
@@ -41,88 +43,96 @@
 
 \frame{
 	\frametitle{How do you save a file only you use?}
-		
+	\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=0.9\textwidth]{SingleUser}
+	\end{figure}		
 }
 
-
-\section{Section no. 2} 
-\subsection{Lists I}
-\frame{\frametitle{unnumbered lists}
-\begin{itemize}
-\item Introduction to  \LaTeX  
-\item Course 2 
-\item Termpapers and presentations with \LaTeX 
-\item Beamer class
-\end{itemize} 
-}
-
-\frame{\frametitle{lists with pause}
-\begin{itemize}
-\item Introduction to  \LaTeX \pause 
-\item Course 2 \pause 
-\item Termpapers and presentations with \LaTeX \pause 
-\item Beamer class
-\end{itemize} 
-}
-
-\subsection{Lists II}
-\frame{\frametitle{numbered lists}
+\subsection{What do you do with files in collaboration?}
+\frame{ 
+	\frametitle{What do you do with files in collaboration?}
 \begin{enumerate}
-\item Introduction to  \LaTeX  
-\item Course 2 
-\item Termpapers and presentations with \LaTeX 
-\item Beamer class
-\end{enumerate}
-}
-\frame{\frametitle{numbered lists with pause}
-\begin{enumerate}
-\item Introduction to  \LaTeX \pause 
-\item Course 2 \pause 
-\item Termpapers and presentations with \LaTeX \pause 
-\item Beamer class
+\item You create it.
+\item You save it.
+\item Someone modifies it.
+\item You modify it.
+\item That someone saves it.
+\item Now you don't have those changes.
 \end{enumerate}
 }
 
-\section{Section no.3} 
-\subsection{Tables}
-\frame{\frametitle{Tables}
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Date} & \textbf{Instructor} & \textbf{Title} \\
-\hline
-WS 04/05 & Sascha Frank & First steps with  \LaTeX  \\
-\hline
-SS 05 & Sascha Frank & \LaTeX \ Course serial \\
-\hline
-\end{tabular}}
 
-
-\frame{\frametitle{Tables with pause}
-\begin{tabular}{c c c}
-A & B & C \\ 
-\pause 
-1 & 2 & 3 \\  
-\pause 
-A & B & C \\ 
-\end{tabular} }
-
-
-\section{Section no. 4}
-\subsection{blocs}
-\frame{\frametitle{blocs}
-
-\begin{block}{title of the bloc}
-bloc text
-\end{block}
-
-\begin{exampleblock}{title of the bloc}
-bloc text
-\end{exampleblock}
-
-
-\begin{alertblock}{title of the bloc}
-bloc text
-\end{alertblock}
+\subsection{Merge}
+\frame{ 
+	\frametitle{Merge}
+When conflicts occur they must be solved one way or another.
+The most common way is to merge files.
+\\
+This is taking what was in the original file, the modified, compare them and bring the correct output.
+	\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{Merge}
+	\end{figure}
 }
+
+\section{GitHub} 
+\frame{\frametitle{What is GitHub?} 
+\begin{itemize}
+\item \texttt{Git} was created by Linus Torvals for the Linux kernel because he really didn't like earlier version control systems. 
+\item[] If you like others  
+	\begin{quotation}
+	you are ugly and stupid -- Linus Torvals
+	\end{quotation}
+\item Bigger projects using it: Android, Perl, Qt, VLC media player etc\dots
+\item Will save all the versions of your files and your collaborators versions.
+\end{itemize}
+}
+
+\subsection{Merge}
+\frame{ 
+	\frametitle{Merge}
+When conflicts occur they must be solved one way or another.
+The most common way is to merge files.
+\\
+This is taking what was in the original file, the modified, compare them and bring the correct output.
+	\begin{figure}[hbtp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{Merge}
+	\end{figure}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}
 

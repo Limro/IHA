@@ -1,0 +1,92 @@
+\documentclass{article}
+
+\title{HowTo -- GitHub}
+\author{Rasmus Bækgaard, 10893}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Setup a GitHub account}
+
+\begin{itemize}
+\item Go to \url{github.com}
+
+\item Create a user.
+\subitem Make something you can use for work aswell
+
+\item Select a free plan. 
+It will stay free and you can even get a private (hidden) repository for free (more on that later)
+
+\item Under the gray bar, hit the \textbf{Set up Git}
+
+	\begin{itemize}
+	\item[] Follow the instructions on your screen, but listed here as well:
+
+	\item Download and install the application for GitHub at \url{https://windows.github.com/} 
+	\subitem Mac users can use \url{https://mac.github.com/}
+	\subitem Linux users -- you know what to do.
+
+	\item Enter mail / username and password when promted
+
+	\item Enter public email and the name that should appear (please use your real name)
+
+	\item If you encounter a 3th step, skip this.
+	\end{itemize}
+
+\end{itemize}
+
+Now -- that wasn't so bad?
+
+
+\section{Your first project}
+
+\begin{itemize}
+\item Click the '+' to create a new project
+
+\item Give it a name and select a filter
+
+	\begin{itemize}
+	\item Filters can, and should be, expanded to fit each project/repository.
+	\item The filter prevents unwanted files to be shared with others
+	\item[] Example: You compile a \texttt{LaTeX} and creates a \texttt{.pdf}-file.
+	You don't want to merge that with existing files since you have no clue of how a \texttt{.pdf}-file is written and the \texttt{LaTeX}-tool will do it for you.
+	\end{itemize}
+
+\item Notice two files have been created:
+	
+	\begin{itemize}
+	\item \texttt{.gitattributes}
+	\item \texttt{.gitignore}
+
+	\item[] These files some merge strategies (which we shall not dwell on) and which files (or entire folders) should be ignored.
+	\end{itemize}
+
+\item Go ahead and make a Visual Studio project or just a simple \texttt{.txt}-file, save it and return to the GitHub application.
+
+\item Notice the new bar called "Uncommitted changes" and click on "Show".
+
+\item To the right you will see the files saved which are not on the \texttt{.gitignore} list.
+
+\item You can expand the files to see what has been added (marked with a small '+'), removed (marked with a small '-') and unchanged (not marked).
+
+\item Commit files with a summary (and if you want to, a description) -- this is a must!
+\subitem If you don't want to commit 
+
+\item Hit the "check mark" to commit the files.
+\subitem This is only a commit. It's a "safe this as ready to upload" and will also serve as a bookmark which you can revert back to.
+
+\item Publish the content by clicking in the top right corner on "Publish Repository" and give it a description.
+
+\item If you add another file or modify an existing one, a "Uncomitted changes" will show up.
+\subitem Commit it and hit "Sync" to push the commit to GitHub.com
+
+
+
+
+
+\end{itemize}
+
+\end{document}

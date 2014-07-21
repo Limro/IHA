@@ -1,0 +1,128 @@
+
+% additional usepackage{beamerthemeshadow} is used
+\documentclass{beamer}
+\usepackage{beamerthemeshadow}
+
+\usepackage{lmodern} % Font
+\usepackage[T1]{fontenc} % Can use danish characters
+\usepackage[utf8]{inputenc} %input encoding. Can be used on Linux, Mac and Windows         
+\usepackage[english]{babel} %Split words accoding to English
+
+\begin{document}
+
+\title{Version control and GitHub}  
+\author{Rasmus Bækgaard}
+\date{\today} 
+
+\frame{\titlepage} 
+
+\frame{\frametitle{Table of contents}\tableofcontents} 
+
+
+\section{What is version control?} 
+\frame{\frametitle{What is version control?} 
+\begin{itemize}
+\item Why is it needed?
+\item When is it needed?
+\item Do you need it?
+\end{itemize}
+}
+
+\subsection{What do you do with files?}
+\frame{ 
+	\frametitle{What do you do with files?}
+\begin{itemize}
+\item Create it
+\item Save it
+\item Modify it
+\item Save it again, and again, and again\dots
+\end{itemize}
+}
+
+\frame{
+	\frametitle{How do you save a file only you use?}
+		
+}
+
+
+\section{Section no. 2} 
+\subsection{Lists I}
+\frame{\frametitle{unnumbered lists}
+\begin{itemize}
+\item Introduction to  \LaTeX  
+\item Course 2 
+\item Termpapers and presentations with \LaTeX 
+\item Beamer class
+\end{itemize} 
+}
+
+\frame{\frametitle{lists with pause}
+\begin{itemize}
+\item Introduction to  \LaTeX \pause 
+\item Course 2 \pause 
+\item Termpapers and presentations with \LaTeX \pause 
+\item Beamer class
+\end{itemize} 
+}
+
+\subsection{Lists II}
+\frame{\frametitle{numbered lists}
+\begin{enumerate}
+\item Introduction to  \LaTeX  
+\item Course 2 
+\item Termpapers and presentations with \LaTeX 
+\item Beamer class
+\end{enumerate}
+}
+\frame{\frametitle{numbered lists with pause}
+\begin{enumerate}
+\item Introduction to  \LaTeX \pause 
+\item Course 2 \pause 
+\item Termpapers and presentations with \LaTeX \pause 
+\item Beamer class
+\end{enumerate}
+}
+
+\section{Section no.3} 
+\subsection{Tables}
+\frame{\frametitle{Tables}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Date} & \textbf{Instructor} & \textbf{Title} \\
+\hline
+WS 04/05 & Sascha Frank & First steps with  \LaTeX  \\
+\hline
+SS 05 & Sascha Frank & \LaTeX \ Course serial \\
+\hline
+\end{tabular}}
+
+
+\frame{\frametitle{Tables with pause}
+\begin{tabular}{c c c}
+A & B & C \\ 
+\pause 
+1 & 2 & 3 \\  
+\pause 
+A & B & C \\ 
+\end{tabular} }
+
+
+\section{Section no. 4}
+\subsection{blocs}
+\frame{\frametitle{blocs}
+
+\begin{block}{title of the bloc}
+bloc text
+\end{block}
+
+\begin{exampleblock}{title of the bloc}
+bloc text
+\end{exampleblock}
+
+
+\begin{alertblock}{title of the bloc}
+bloc text
+\end{alertblock}
+}
+\end{document}
+

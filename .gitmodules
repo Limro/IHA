@@ -7,3 +7,6 @@
 [submodule "SMP/Exam/LatexModules"]
 	path = SMP/Exam/LatexModules
 	url = git@github.com:Limro/LatexModules.git
+[submodule "HowTo/Modules"]
+	path = HowTo/Modules
+	url = https://github.com/Limro/LatexModules.git

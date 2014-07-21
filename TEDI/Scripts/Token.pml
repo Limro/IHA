@@ -1,11 +1,9 @@
-// Define's and ghost variables for checking mutex &
-// starvation properties
-#define mutex (critical <= 1)
 byte critical = 0;
-#define nostarve (incrit[0] && incrit[1] && incrit[2])
+
+// #define nostarve (incrit[0] && incrit[1] && incrit[2])
 bool incrit[3];
 
-// Only 2 types of messages, request token or taken granted
+// Only 3 types of messages, request token or taken granted
 mtype {tokreq,tokgrant,tokrec};
 chan ch [3] = [3] of {mtype, byte};
 
@@ -94,4 +92,6 @@ init
 // * Check for mutual exclusion
 // ltl{[]mutex}    
 // * Check for starvation
- ltl{[]<>nostarve}
+// ltl{[]<>nostarve}
+
+ltl { <> }

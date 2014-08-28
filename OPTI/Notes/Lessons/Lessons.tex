@@ -1,0 +1,35 @@
+\documentclass[10pt, a4]{Memoir}
+
+\include{Preamble}
+
+\begin{document}
+\chapter{OPTI lessons}
+
+\section{Lesson 1} % (fold)
+\label{sec:lesson_1}
+
+\subsection{Matrix Games}
+
+\begin{itemize}
+	\item Opstil tabel med, hvad R får ud af alle outcomes
+	\item Opskriv worst case for hver række
+	\item[] Find max at disse. $max[min[a_{ij}]]$
+	\item Opskriv worst vase for hver kolonne
+	\item[] Find max at disse.  $min[max[a_{ij}]]$
+\end{itemize}
+
+\subsection{Proberbility vector}
+
+\begin{align}
+x &= [x_1, x_2 \ldots, x_m] \\
+\sum x_i &= 1\\
+y &= [y_1, y_2 \ldots, y_n] \\
+\sum y_i &= 1\\
+E[x,y] &= \sum_{j=1}^n \sum_{i=1}^m x_i \cdot a_{ij} \cdot y_i \\
+	&= x^T \cdot A \cdot y
+\end{align}
+
+
+% section lesson_1 (end)
+
+\end{document}

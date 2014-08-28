@@ -1,0 +1,20 @@
+TI-ARDI
+
+Dependable systems:
+	A system, which is crucial and running on specific hardware. I.e. a pacemaker
+
+Current systems:
+	- Some lack QoS
+	- A standard isn't implemented on all products
+
+COTS:
+	- Critical system has been build directly on the hardware for many years. This is not a good idea should hardware be changed.
+	- Infrastructure Middleware was introduced to take care of the small layers
+	- Distributed Middleware could now control multiple devices
+	- Common Middleware service can handle the distributed
+	- Domain specific services can handle specific services for certain units.
+
+Avoid Monoliths:
+	- One big file with everything in it
+	- No architecture, no patterns
+

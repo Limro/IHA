@@ -1,0 +1,136 @@
+\documentclass[10pt, a4]{Memoir}
+
+\include{Preamble}
+
+\begin{document}
+
+\section{Lesson 2}
+
+\subsection{Changing environments}
+\begin{itemize}
+\item With relational database
+\subitem Could be windmills and collecting data from many mills
+
+\item With external information providers
+	\begin{itemize}
+	\item RMI: kalder et objekt på en anden maskine.
+	\item RPC: kalder en funktion på en anden maskine.
+	\end{itemize}
+
+\item with Internet application
+	\begin{itemize}
+	\item[] Slide 4
+	\item Server can place a cookie on the computer, due to bad connection
+	\item QoS (latency, performance) not guarenteed. 
+	\end{itemize}
+
+\item QoS
+	\begin{itemize}
+	\item slide 5
+	\item CORBA tries to implement it in version 3.0
+	\end{itemize}
+
+\item Nomadic mobility (telefoner)
+	\begin{itemize}
+	\item slide 6
+	\item Lysmaster med wifi hotspots
+	\item Det mobile object kan skifte driver afhængig af hvor den er, eller hvad der om den.
+	\end{itemize}
+
+\item Qbiquitos/pervasive computing
+	\begin{itemize}
+	\item slide 7
+	\item Adhoc network (spontant netværk)
+	\subitem En masse sensorer laver et netværk og opsamler data 	
+	\subitem Et netværk i alle biler
+	\item At give en lile enhed en IPv6 er spild af plads, hvis den blot smides ud senere.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Programming Models}
+\begin{itemize}
+\item Client-server
+	\begin{itemize}
+	\item Du puller data
+	\end{itemize}
+
+\item Publish/subscribe
+\item Peer-to-peer
+\item Async interaction
+	\begin{itemize}
+	\item slide 9/10
+	\item RMI and RPC
+	\end{itemize}
+
+\item Shared memory
+	\begin{itemize}
+	\item slide 11
+	\item Will look like shared memory for multiple computers (Dropbox - data forsvinder og rettes med det samme / Google Docs).
+	\item JavaSpace does the same trick
+	\end{itemize}
+
+\item Mobile code and mobile agents
+	\begin{itemize}
+	\item slide 12
+	\item Travels nodes to find out where to go next
+	\item Will seem autonomous.
+	\end{itemize}
+
+\end{itemize}
+
+
+\subsection{Arkitektur}
+
+\begin{itemize}
+\item Distributed transparency
+	\begin{itemize}
+	\item slide 13
+	\item I stedet for 2 funktioner på én maskine er der to funktioner på 2 maskiner (én hver). Disse kan snakke sammen på samme måde
+	\subitem Nogle af disse har exceptions implementeret
+	\end{itemize}
+
+\item Layering
+	\begin{itemize}
+	\item Man tilgår kun laget over eller under (kan også have adgang til alle lag)
+	\end{itemize}
+
+\item Monolithic 
+	\begin{itemize}
+	\item Small devices der skal bruge det - Corba har det, men er alt for stort!
+	\end{itemize}
+
+\end{itemize}
+
+\subsection{Dynamic configurations}
+
+\begin{itemize}
+\item Disconnect operations
+	\begin{itemize}
+	\item slide 16
+	\item Bluetooth's nyeste version (BLE -- low energy) disconnecter på meget kort forbindelsen før opretelse igen for at spare strøm.
+	\end{itemize}
+
+\item Adaptive applications
+	\begin{itemize}
+	\item Lav internethastighed kan give lidt net
+	\end{itemize}
+
+\end{itemize}
+
+
+
+
+
+
+\section{SAP 1}
+Der er 3 actors i systemet:
+\begin{itemize}
+\item Der er en infrastructure, som bruges af en app (og eges af infrastruktur owner). Denne har derfor en høj abstraction.
+\item Applikations owner ønsker så noget lavet i infrastrukturen. 
+Dette gør Component owner sammen med infrastruktur owner.
+\item Ved at gøre det multiparadigm kan mange forskellige elementer hentes ind til infrastrukturen.
+\end{itemize}
+
+
+
+\end{document}

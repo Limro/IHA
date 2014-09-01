@@ -70,6 +70,80 @@ v = [3 4 5]'
 simplex(c, A, b, v, 1)
 
 
+%% Lay 9.3 - 3
+clc, clear
+A = [5 1 1 0 0;3 2 0 1 0];
+b = [20 30]';
+c = [-4 -10 0 0 1]';
+v = [3 4]';
+
+Arg = [A b ; c' 0]
+minC = min(Arg(end,:)) % row 2
+
+ratio1 = Arg(1,end)/Arg(1,2)
+ratio2 = Arg(2,end)/Arg(2,2) %lowest
+
+Arg = [Arg(1,:) ; Arg(2,:)/2 ; Arg(3,:)]
+Arg = [Arg(1,:)-1*Arg(2,:) ; Arg(2,:) ; Arg(3,:)+10*Arg(2,:)] 
+%Ratio with lowest gives 5/0 - nono
 
 
+%simplex(c, A, b, v, 1);
+
+%% Lay 9.3 - 9
+clc, clear
+
+format shortg
+A = [2 3 1 0 0; 5 4 0 1 0 ];
+b = [36 55]';
+c = [-10 -12 0 0 1]';
+v = [3 4]';
+Arg = [ A b; c' 0]
+minC = min(Arg(end,:)) % row 2
+
+ratio1 = Arg(1,end)/Arg(1,2) %lowest
+ratio2 = Arg(2,end)/Arg(2,2) 
+
+Arg = [Arg(1,:)/3 ; Arg(2,:) ; Arg(3,:)]
+Arg = [Arg(1,:) ; Arg(2,:)-4*Arg(1,:) ; Arg(3,:)+12*Arg(1,:)]
+
+minC = min(Arg(end,:)) % row 2
+
+ratio1 = Arg(1,end)/Arg(1,1) 
+ratio2 = Arg(2,end)/Arg(2,1)%lowest
+
+Arg = [Arg(1,:) ; Arg(2,:)/(7/3) ; Arg(3,:)]
+Arg = [Arg(1,:)-2/3*Arg(2,:) ; Arg(2,:) ; Arg(3,:)+2*Arg(2,:)]
+%Ratio with lowest gives 5/0 - nono
+
+simplex(c, A, b, v, 1)
+
+
+%% Lay 9.3 - 10
+clc, clear
+
+%format shortg
+A = [1 5 1 0 0 ;3 2 0 1 0 ];
+b = [70 54]';
+c = [-5 -4 0 0 1]';
+v = [3 4]';
+Arg = [ A b; c' 0]
+minC = min(Arg(end,:)) % row 2
+
+ratio1 = Arg(1,end)/Arg(1,1) 
+ratio2 = Arg(2,end)/Arg(2,1) %lowest
+
+Arg = [Arg(1,:) ; Arg(2,:)/3 ; Arg(3,:)]
+Arg = [Arg(1,:)-1*Arg(2,:) ; Arg(2,:); Arg(3,:)+5*Arg(2,:)]
+
+minC = min(Arg(end,:)) % row 2
+
+ratio1 = Arg(1,end)/Arg(1,2) %lowest 
+ratio2 = Arg(2,end)/Arg(2,2)
+
+Arg = [Arg(1,:)/(13/3) ; Arg(2,:) ; Arg(3,:)]
+Arg = [Arg(1,:) ; Arg(2,:)-(2/3)*Arg(1,:) ; Arg(3,:)+(2/3)*Arg(1,:)]
+%Ratio with lowest gives 10/0 - nono
+
+%simplex(c, A, b, v, 1)
 

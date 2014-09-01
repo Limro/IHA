@@ -132,5 +132,18 @@ Dette gør Component owner sammen med infrastruktur owner.
 \end{itemize}
 
 
+\section{Lesson 3 -- Reactor pattern}
+
+Kan bruges ved Embedded system og netværk.
+\\
+Det fungerer som følger:
+\begin{itemize}
+\item En til flere clienter forsøger at forbinde til en server
+\item Reactor ligger på server (men kan også ligge på clienten)
+\item Serveren venter på noget sker og gør ikke noget indtil et event (connect / read $dots$) kommer ind.
+\subitem Den bruger main thread
+\item 
+\end{itemize}
+
 
 \end{document}

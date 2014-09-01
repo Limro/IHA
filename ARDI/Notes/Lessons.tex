@@ -4,6 +4,9 @@
 
 \begin{document}
 
+
+\chapter{ARDI}
+
 \section{Lesson 2}
 
 \subsection{Changing environments}
@@ -131,18 +134,77 @@ Dette gør Component owner sammen med infrastruktur owner.
 \item Ved at gøre det multiparadigm kan mange forskellige elementer hentes ind til infrastrukturen.
 \end{itemize}
 
-
+\newpage
 \section{Lesson 3 -- Reactor pattern}
 
 Kan bruges ved Embedded system og netværk.
 \\
 Det fungerer som følger:
+
 \begin{itemize}
 \item En til flere clienter forsøger at forbinde til en server
 \item Reactor ligger på server (men kan også ligge på clienten)
+
 \item Serveren venter på noget sker og gør ikke noget indtil et event (connect / read $dots$) kommer ind.
 \subitem Den bruger main thread
-\item 
+
+\item Sockets er inkapslet i et \code{handle}
+\item Hvert request er processeret synkron og i seriel
+\subitem Ved modtagelse laves et demultiplex og eventet sendes til den service der processerer dem.
+\item Bruger IoC
+\end{itemize}
+Der er følgende klasser:
+
+\begin{itemize}
+\item EventHandler
+	\begin{itemize}
+	\item handle\_event()
+	\item get\_handle()
+	\end{itemize}
+\item[] Denne del er et interface for konkrete eventhandlers fra clienter.
+\item[] Den har et 1-til-1 ejerskab med \code{Handle}-klassen.
+
+\item Reacter
+	\begin{itemize}
+	\item Handle\_events()
+	\item register\_handler()
+	\item remove\_handler()
+	\end{itemize}
+\item[] De sidste to tilføjer og fjerner den enkelte EventHandler's handle
+\item[] \code{Reactor} dispatcher flere EventHandler
+\item[] \code{Reactor} er en singleton
+
+\item Demultiplexer
+	\begin{itemize}
+	\item select()
+	\end{itemize}
+\item[] Bruges af \code{Reactor}
+\end{itemize}
+Implementation
+\begin{enumerate}
+\item Definer \code{EventHandler} interface
+\subitem Slide 12-13
+\item Definer \code{reactor} interface
+\subitem Slide 14
+\subitem \code{register\_handler}'s overloading kunne klares med en default parameter for \code{Handle}
+\item Implementer \code{reactor} interface
+\item Beslut antal af \code{reactors} der skal bruges
+\subitem Slide 19
+\item Implementer konkrete \code{EventHandler}s
+\end{enumerate}
+Fordele:
+
+\begin{itemize}
+\item Slide 25
+\item Kan bruges på flere OSs
+\item Kan bruges som et modul
+\item Kan serilizeres
+\end{itemize}
+Ulemper:
+\begin{itemize}
+\item Slide 26
+\item Kan være svært at teste
+\item Single thread kan stoppe andre i at køre (duhh)
 \end{itemize}
 
 

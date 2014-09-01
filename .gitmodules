@@ -10,3 +10,6 @@
 [submodule "HowTo/Modules"]
 	path = HowTo/Modules
 	url = https://github.com/Limro/LatexModules.git
+[submodule "SOEP/LatexModules"]
+	path = SOEP/LatexModules
+	url = git@github.com:Limro/LatexModules.git

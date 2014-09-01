@@ -1,0 +1,36 @@
+\input{../Modules/Modules/CodeBoxesSetup}
+\input{../Modules/Modules/CodeWordsSetup}
+\input{../Modules/Modules/FigureSetup}
+\input{../Modules/Modules/InfoBoxes}
+\input{../Modules/Modules/MathArgumentedMatrixSetup}
+\input{../Modules/Modules/MathDeterminantMatrix}
+%\input{../Modules/Modules/MathMacros}
+\input{../Modules/Modules/SubfilesSetup}
+\input{../Modules/Modules/TableSetup}
+\input{../Modules/Modules/TextSetup}
+\input{../Modules/Modules/TikzSetup}
+\input{../Modules/Modules/ParagraphSetup}
+\input{../Modules/Modules/MemoirSetup}
+
+\usepackage{enumerate}
+
+
+%Create multiple lines with holes
+%\begin{SysEqu}
+%x_1 && &- &5x_3 &+ &2x_4=& 1 \\
+%x_1 &+ &x_2 &+ &x_3 && =& 4 \\
+%&&&&&&0 =& 0
+%\end{SysEqu}
+\newenvironment{SysEqu}{%
+$  \setlength\arraycolsep{0.1em}
+  \begin{array}{@{}*{100}{r}r@{}}
+}{%
+  \end{array}$
+}
+
+%Mellemrum mellem linjerne    
+\linespread{1.5}
+
+
+%\setlength{\parindent}{0pt}
+%\nonzeroparskip 

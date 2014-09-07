@@ -13,3 +13,6 @@
 [submodule "SOEP/LatexModules"]
 	path = SOEP/LatexModules
 	url = git@github.com:Limro/LatexModules.git
+[submodule "OPTI/Notes/Modules"]
+	path = OPTI/Notes/Modules
+	url = git@github.com:Limro/LatexModules.git

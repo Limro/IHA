@@ -16,3 +16,6 @@
 [submodule "OPTI/Notes/Modules"]
 	path = OPTI/Notes/Modules
 	url = git@github.com:Limro/LatexModules.git
+[submodule "ARDI/Modules"]
+	path = ARDI/Modules
+	url = git@github.com:Limro/LatexModules.git

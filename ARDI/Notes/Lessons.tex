@@ -213,11 +213,24 @@ Ulemper:
 
 
 \newpage
-\section*{Lesson 4}
+\section*{Lesson 5 -- Aceeptor/Connector pattern}
 
+En client, $C$, en server, $S$, og to peers, $p1, p2$.
 \begin{itemize}
-	\item 
+	\item $C$ skal blot kommunikere med $S$ eller omvendt.
+	\item $S$ kan have en $reactor$ og dispatche $event handlers$ (kan også på $C$, men det er lidt underligt, hvis den ikke skal andet end forbinde til serveren. Til $p1$ er det fint at have den).
+	\item $Acceptor$ og $Connector$ placeres over Wrapper'en.
+	\item $C$ har connector, $S$ har acceptor, $p1$ og $p2$ har begge
+	\item Når forbindelsen mellem $p1$ og $p2$ er sat op har de en $logical channel$ / \code{sock\_stream} 
+	\item Over \code{Acceptor} pg \code{Connector} laves selve applikationen.
+	\item \code{Reactor} og \code{Proactor}'en kaldes tilsammen \code{dispatcher}.
+	\item En \code{Service handler} er et interface der bruges sammen med \code{Acceptor} og \code{Connector}'en.
+	\item Alle 3 arver fra \code{Event Handler} sammen med \code{Reactor}'en.
 \end{itemize}
-
+Applikationer for \code{Service Handler}
+\begin{itemize}
+	\item Slide 45
+	\item S
+\end{itemize}
 
 \end{document}

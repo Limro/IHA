@@ -196,6 +196,36 @@ $f(x) = f(x_0) + \dfrac{f'(x_0)}{1!}(x-x_0) + \dfrac{f'(x_0)}{2!}(x-x_0)^2 + \ma
 
 
 
+\newpage
+\section*{Lesson 6 - Gradient methods}
+
+\subsection{descent formula}
+\begin{itemize}
+	\item Gradient er en column vector som skal afledes $\nabla f'(x)$
+	\item En kurve i et plan, hvor der kan tegnes en vector retning. Det er hældningen i ét punkt.
+	\item Retningen er den vej, man går mest op ad kurven.
+	\item Hvis man vil gå til et nyt sted $x^{k+1}$ fra et startsted, $x^k$, kan man flytte sig ved at trække $x \cdot \alpha \nabla f |_{x=x^k}$ fra, altså $x^{k+1} = x^k - x \cdot \alpha \nabla f |_{x=x^k}$
+	\item Hvis alpha er for stor tager man for store spring og vil derfor aldrig finde minimum.
+\end{itemize}
+
+\subsection{Steepest descent algorithm}
+Hvordan finder man det bedste punkt?
+Kan bruges til at fjerne støj
+
+\begin{itemize}
+	\item $\alpha_k = \underset{\alpha \geq 0}{\text{arg min}} = f(x^{k+1} = x^k - x \cdot \alpha \nabla f |_{x=x^k})$
+	\item Når $\nabla f(x^{k+1}) = 0$ stopper man
+	\subitem Se slides for flere stop-kriterier.
+\end{itemize}
+
+
+\subsection{Quadratisk form}
+
+$\alpha _k = \underset{\alpha}{\text{arg}} \{ f(x^k - \alpha \nabla f|_{x=x^k}) \}$ 
+\\
+$f(x) = \frac{1}{2} x^T Q x - b^T x$ \quad $Q^T = Q$
+\\
+$\nabla f = Q x - b$
 
 
 \end{document}

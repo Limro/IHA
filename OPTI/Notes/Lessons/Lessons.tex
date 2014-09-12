@@ -137,4 +137,65 @@ a & b \\ c & d
 x_1 \\ x_2
 \end{ArgMat}
 
+
+
+
+\newpage
+\section{Lesson 5 -- One dimentional problem}
+
+Der bruges forskellige metoder til at finde \texttt{unimodal funktionen}.
+
+\subsection{Golden Section Search}
+
+\begin{itemize}
+	\item Indsæt 2 punkter: $a_0, b_0$
+	\item Indsæt 2 nye punkter, $a_1$ i afstanden $a_1 = a_0+ \varrho \cdot(b_0-a_0)$ og $b_1$ med konstant afstand fra $a_0$ til $a_1$ og samme afstand fra $b_0$ til $b_1$ i afstanden $b_1 = b_0 - \varrho \cdot(b_0-a_0)$
+	\item Hvis afstanden $f(a_1) < f(b_1) \Rightarrow [a_0, b_1]$
+	\item Hvis afstanden $f(a_1) > f(b_1) \Rightarrow [a_1, b_0]$
+	\item Kør rekursivt
+	\item Insæt nye punkter $a_n$ og $b_n$
+	\item Forsøg herefter at få $f(a_n) < f(b_n)$ hvor $f(b_n) = f(b_{n-1}) \Rightarrow [a_0,b_n]$
+	\item Forsøg at få $f(a_n) > f(b_n)$ hvor $f(b_n) = f(b_{n-1}) \Rightarrow [a_2,b_0]$
+	\item Når $a_{n-1} = b_n$ gælder den gyldne regsl: $\dfrac{3- \sqrt{5}}{2} = 0.382$
+
+\end{itemize}
+
+
+\subsection{Fibonacci Search 1D}
+Denne metode er bedre, da intervallet bliver større (og går derfor hurtigere).
+
+\begin{align*}
+1-2 \varrho_k &= \varrho_{k+1}(1-\varrho_k) \\
+\varrho_{k+1} &= \dfrac{1-2 \varrho_k}{1-\varrho_k}
+\end{align*}
+
+\begin{itemize}
+	\item 
+
+\end{itemize}
+
+
+
+\subsection{Newton's Method 1D}
+Denne er endnu bedre.
+
+$f(x) = f(x_0) + \dfrac{f'(x_0)}{1!}(x-x_0) + \dfrac{f'(x_0)}{2!}(x-x_0)^2 + \mathbb{R}(x-x_0) $
+
+\begin{itemize}
+	\item Find $a$ min. for $f$, brug Tayler exp.
+	\item $f(x) \sim{=} q(x)$
+	\item $q'(x)=0 $
+	\item $q'(x) = \dfrac{f'(x_0)}{1!} + \dfrac{f'(x_0)}{2!}\cdot 2(x-x_0) + \mathbb{R}(x-x_0)$
+	\item $X_{k+1} = X_k-\dfrac{f'(x_k)}{f''(x_k)}$ and set $g(x) = f'(x)$
+\end{itemize}
+
+
+\subsection{Secant method 1D}
+
+
+
+
+
+
+
 \end{document}

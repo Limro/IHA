@@ -1,4 +1,4 @@
-\documentclass[10pt, a4]{Memoir}
+\documentclass[oneside, 10pt]{memoir}
 
 \include{Preamble}
 
@@ -272,13 +272,117 @@ Applikationer for \code{Service Handler}
 
 
 
+\newpage
+\section*{Lesson 7 -- Proactor}
+
+\begin{itemize}
+	\item Proactor bruges mest på serveren (og ikke så meget på clienten)
+	
+	\item Bruges som "proactive" 
+	\begin{itemize}
+		\item Beder andre processor (trådet/asynkrone) om at gøre noget
+		\item Håndterer de forskellige processors output
+		\item Note: Dette kan kun bruges på større (32 bit) systemer -- ikke på RTOS
+	\end{itemize}
+
+	\item Når de asynkorne processor er færdige, bruges en \code{CompletionHandler} til at færdigegøre og afslutte processen.
+
+	\item \code{Event Demuxer} er asynkron
+
+	\item En \code{initiator} bruger Asynkrone Operation, \code{Completion Event Queue}, \code{Proactor} og \code{Completion Handler}
+
+	\item 
+\end{itemize}
 
 
 
 
 
+\newpage
+\section*{Lesson 8}
+
+ \code{ServiceHandlers} klasser kan decoples med flere patterns:
+\begin{itemize}
+	
+	\item Proxy Pattern
+	\begin{itemize}
+		\item Man kalder sit subject igennem en proxy, der forwarder til det rigtige objekt
+		\item Dette kan være på den lokale maskine, men også over en netværksforbindelse
+		\item Det kan også være en testklasse
+	\end{itemize}
+
+	\item Broker Structure
+	\begin{itemize}
+		\item Broker'en sættes mellem en server proxy og en client proxy.
+		\item Den er altså et mellemled, der blot forwarder et kald.
+	\end{itemize}
+
+	\item Half Object Plus Protocol (HOPP)
+	\begin{itemize}
+		\item Hvordan kan et objekt optræde i flere netværk
+		\item Man kan lave et Network Proxy Object (NPO) (ikke bedst)
+		\item Lav 2 objekter, der kommunikerer med hinanden (Synchronization Protocol)
+	\end{itemize}
+
+	\item Data Trandfer Object (DTO)
+	\begin{itemize}
+		\item Kræver en \code{get} og en \code{set} for hver variabel
+		\item Alt kan dog skrives i ét hug.
+	\end{itemize}
+\end{itemize}
 
 
+\newpage
+\section*{Lesson 9}
+
+\begin{itemize}
+	\item Half Sync / Half Async
+	
+	\begin{itemize}
+		\item Der findes to lag: synkron og asynkron.
+		
+		\item Synk kan have flere tråde.
+		
+		\item Asynk tager imod events og kan betegnes som \texttt{ISR} (Interrupt Service Routine).
+		
+		\item Synk er for App. developers.
+
+		\item Asynk er for System developers (low level niveau).
+		\begin{itemize}
+			\item Her skal performance improves.
+			\item Skriv så korte interrupts som muligt.
+		\end{itemize}
+		
+		\item Beskeder imellemsendes igennem en queue.
+		
+		\item Implementering:
+		\begin{itemize}
+			\item Én queue til flere services. Denne må supporte flere waits.
+			\item Flere queues til flere services. Dette kræver en demultiplexer strategi (hvilke beskeder skal i hvor?).
+		\end{itemize}
+
+		\item Bennefits:
+		\begin{itemize}
+			\item Bedre performance of simplificering, da enkelte tråde ikke skal håndtere andet end det de skal lave.
+			\item Seperation of concerns
+		\end{itemize}
+
+		\item Liabiliites
+		\begin{itemize}
+			\item Boundary-crossing i form af data copying, synkronisering.
+			\item Højrelevel applikationer får ikke så meget ud af det
+			\item Debugging og testing bliver sværre. 
+		\end{itemize}
+	\end{itemize}
+
+
+	\item Leader / Follower
+	\begin{itemize}
+		\item Man har én elader og flere followers.
+		\item Når leaderen skal gøre noget, overdrages leader til den næste follower med \code{PromoteNewLeader()}. (Hvis en tråd kommer tilbage uden en leader bliver denne automatisk det.)
+	\end{itemize}
+
+\end{itemize}
 
 
 

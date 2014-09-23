@@ -264,6 +264,44 @@ I stedet for at zig-zagge kan man gå mere direkte igennem nogle cirker.
 
 
 
+\newpage
+\section*{Lesson 9}
+
+\begin{itemize}
+	\item Når man bruger linear equations kan de løses med slack variabler
+	\item Men hvis der sker afrundinger kan der opstå fejl
+	\item Dette løses med \texttt{relative residual}
+	\item[] $\dfrac{||b - Ax'||}{||b||} = \dfrac{||r||}{||b||}$
+	\item Derudover er der relative error, som \dots
+	\item[] $\dfrac{||x' - x||}{||x||} = \dfrac{||e||}{||b||}$
+	\item Denne værdi skal estimeres, da $x$ er ukendt:
+	\item[] $r = b-Ax'$ \dots
+	\item[] $r = A \cdot e$
+	\item[] $||A \cdot e|| = ||r|| \Leftrightarrow ||A|| \cdot ||e \geq ||r||$
+	\item[] $||A^{-1} r|| = ||e|| \Leftrightarrow ||A^{-1}|| \cdot ||e \geq ||r||$
+	\item[] $||A|| \cdot ||x|| \geq ||b||$
+	\item[] $||A^{-1}|| \cdot ||b|| \geq ||x||$
+	\item Dette kan oversættes til $\dfrac{1}{||a|| \cdot ||A^{-1}|| \cdot ||b||} \dfrac{||r||}{||b||} \leq \dfrac{||e||}{||x||} \leq ||A|| \cdot ||A^{-1}|| \cdot \dfrac{||r||}{b||}$
+	\item[] 
+	$||$\begin{ArgMat}
+	a_1 \\ \dots \\ a_n
+	\end{ArgMat}$||_\infty = \underset{i}{max}\text{ }|a_i|$
+\end{itemize}
+
+Eksempel:
+\begin{itemize}
+	\item Hvis man har $Ax=b$ er der ikke nødvendigvis en løsning.
+	\item Omskriv til $||Ax-b||$ og find minimum, som en funktion af $x$.
+	\item $Ax = proj_{R(A)}^b = A \cdot	(AA^T)^{-1} \cdot A^T b$
+\end{itemize}
+
+Eksempel 2:
+\begin{itemize}
+	\item For $f(x) = ||Ax-b||^2$ er $\nabla f = A^TAx - A^Tn $
+	\item[] $\Rightarrow A^TAx-A^Tb = 0$
+	\item[] $\Leftrightarrow x = (A^TA)^{-1}A^T b$
+\end{itemize}
+
 
 
 

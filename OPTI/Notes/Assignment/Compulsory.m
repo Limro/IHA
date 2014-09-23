@@ -46,4 +46,26 @@ simplex(c, A, b, v, 1);
 
 %% Exercise 2
 clc, clear
-M = [2 6 ;1 -2]
+
+[x1, x2] = meshgrid(-10:1:10, -10:1:10);
+x = [x1;x2];
+f1 = x1.^2 + 3*x2.^2 - 2*x1.*x2 + 3*x2;
+[C,h1] = contour(x1, x2, f1, [0 3 10 50 100 200 400]);
+set(h1, 'ShowText', 'on', 'TextStep', get(h1,'LevelStep') * 2)
+colormap cool
+title('Level sets of f(x)')
+xlabel('x1')
+ylabel('x2')
+
+%%
+clc, clear
+Q = [2 -2;-2 6];
+b = [0;3];
+Q* [1;1] - [0;3]
+eigs(Q)
+
+syms x1 x2;
+
+[val1, val2] = solve(Q*[x1;x2]-b == 0)
+
+

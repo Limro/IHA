@@ -4,5 +4,67 @@
 \begin{document}
 
 \section*{Exercise 3}
+Consider the function: $F:R \rightarrow R$ where: $f(x) = \dfrac{1}{2}x^2 - cos(x)$.
+
+\paragraph{Sketch the graph of $f$ and find the 1. and 2. deriviative of $f$.}
+
+The sketch:
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width = 0.6 \textwidth]{CH3-1}
+\vspace{-15pt}
+\caption{Sketch of function $f(x) = \dfrac{1}{2}x^2 - cos(x)$}
+\label{fig:ch3-1}
+\end{figure}
+
+The first derivative:
+\begin{lstlisting}[caption=Derivatives and plot, style=Code-Matlab, label=lst:CH3-1]
+syms x;
+f = 1/2*x.^2 -cos(x);
+
+figure(1)
+ezplot(f);
+
+fm = diff(f)
+fmm = diff(fm)
+\end{lstlisting}
+\begin{align*}
+f'(x) &= x+ sin(x).\\
+f''(x) &= cos(x) + 1
+\end{align*}
+
+\paragraph{Now use the Newton method to find the minimizer of $f$ e.g. use initial value: $x^{(0)} = 0.25$, and calculate the values $x^{(0)}, x^{(1)}, x^{(2)}$ ,\dots 
+How many iterations are needed for an accuracy of $\epsilon < 10^{-5}$  on
+the minimum.} 
+
+To find new values of $x^{k}$ the following formula is used: $x^{k+1} = x^k - \dfrac{f'(x^k)}{f''(x^k)}$
+Insert this into \texttt{Matlab} returns the following output:
+
+\begin{lstlisting}[caption=Newton's Method, style=Code-Matlab, label=lst:CH3-2]
+fm = @(x) x+sin(x);
+fmm = @(x) cos(x)+1;
+
+x0 = 0.25;
+x1 = x0 - (fm(x0)/fmm(x0))
+x2 = x1 - (fm(x1)/fmm(x1))
+x3 = x2 - (fm(x2)/fmm(x2))
+\end{lstlisting}
+
+\begin{align*}
+x_1 &= -0.0026 \\
+x_2 &= 3.0277 \cdot 10^{-9} \\
+x_3 &= 0
+\end{align*}
+
+Since the accuracy needed was $10^{-5}$ and $x_2$ has $10^{-9}$ the third step of iteration is enough.
+
+
+
+
+
+
+
+
 
 \end{document}

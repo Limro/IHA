@@ -1,0 +1,94 @@
+%!TEX root = Main.tex
+\documentclass[Main]{subfiles}
+
+\begin{document}
+
+\section*{Exercise 6}
+
+\paragraph{Calculate the first 3 steps in conjugate gradient algorithm, $x^{(0)}, x^{(1)}, x^{(2)}$ to find the minimizer for $f$ using the initial point $x = (1,1)^T$.}
+
+The gradient of $f$ is $gr(x) = Q \cdot x-b$:
+\begin{lstlisting}[caption=Gradient, style=Code-Matlab, label=lst:CH6-1]
+g0 = gr(x0(1), x0(2))
+\end{lstlisting}
+
+$ g_0 =  
+\begin{bmatrix}
+0 \\ 
+1
+\end{bmatrix} $
+\\
+\\
+Since it's not zero, we continue and find a direction, $d_0 = -g_0$ to find $\alpha_0$ and $x^1$:
+
+\begin{lstlisting}[caption=Finding $x^1$, style=Code-Matlab, label=lst:CH6-2]
+d0 = -g0;
+a0 = -(g0.'*d0)/(d0.'*Q*d0)
+x1 = x0+a0*d0
+\end{lstlisting}
+
+\[
+x^1=
+\begin{bmatrix}
+1\\
+\frac{5}{6}
+\end{bmatrix}
+\]
+The gradient is now caluculated again:
+\begin{lstlisting}[caption=$Gradient_1$, style=Code-Matlab, label=lst:CH6-3]
+g1 = gr(x1(1), x1(2))
+\end{lstlisting}
+\[g_1 = \begin{bmatrix}
+\frac{1}{3} \\0
+\end{bmatrix}\]
+Now we can find $\beta_0$ and the new direction:
+\begin{lstlisting}[caption=New direction and $\beta$, style=Code-Matlab, label=lst:CH6-4]
+b0 = g1.'*Q*d0/(d0'*Q*d0)
+d1 = -g1+b0*d0
+\end{lstlisting}
+\begin{align*}
+b_0 = \frac{1}{9}\\
+d_1 = 
+\begin{bmatrix}
+-\frac{1}{3} \\
+-\frac{1}{9}
+\end{bmatrix}
+\end{align*}
+Now we can repeat the algorithm, by finding $\alpha_1$ and $x_2$:
+
+\begin{lstlisting}[style=Code-Matlab, label=lst:CH6-5]
+a1 = -(g1.'*d1)/(d1.'*Q*d1)
+x2 = x1+a1*d1
+\end{lstlisting}
+\begin{align*}
+a_1 = \dfrac{3}{4} \\
+x_2 = 
+\begin{bmatrix}
+\frac{3}{4} \\
+\frac{3}{4}
+\end{bmatrix}
+\end{align*}
+
+And we have found the minimum.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

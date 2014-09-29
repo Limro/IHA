@@ -44,7 +44,7 @@ range/(interval(2) - interval(1)) >= (1+2*E)/fibnum(N+1)
 
 
 f = @(x) x^2+4*cos(x);
-M = zeros(N, 8); %Golden section
+M = zeros(N, 8); % initialization
 % iteration_k | p | a_k | b_k | f(a_k) | f(b_k) | [min uncertain interval | max uncertain interval  ]
 
 M(1,:) = [ 0 0 interval(1) interval(2) f(M(1,2)) f(M(1,3)) interval(1) interval(2)];

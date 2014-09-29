@@ -370,7 +370,7 @@ Applikationer for \code{Service Handler}
 		\item Liabiliites
 		\begin{itemize}
 			\item Boundary-crossing i form af data copying, synkronisering.
-			\item Højrelevel applikationer får ikke så meget ud af det
+			\item Højerelevel applikationer får ikke så meget ud af det
 			\item Debugging og testing bliver sværre. 
 		\end{itemize}
 	\end{itemize}
@@ -386,7 +386,48 @@ Applikationer for \code{Service Handler}
 
 
 
+\newpage
+\section*{Interceptor}
 
+\begin{itemize}
+	\item Bruges med frameworks og til komponenter.
+	
+	\item Man har 2 dele:
+	\begin{itemize}
+		\item App, udviklet af app. devs.
+		\item Framework, udviklet af FW. devs.
+	\end{itemize}
+
+	\item Man skal vælge hvor funktionaliteten skal ligge (ikke ligegyldigt).
+	\subitem Det skal kunne genbruges!
+	
+	\item I App'en er der lavet handlers som incepter events fra frameworket. (Det minder om callbacks).
+	
+	\item App'en må gerne ændre hvordan frameworket virker, men det skal man være påpasselig med.
+
+	\item Mange frameworks har en Facade, eller blot et interface, men kan også være helt åbne.
+
+	\item Det giver en god opdeling af app'en og FW'et.
+
+	\item Golden rule: Udvikel forskellige apps før frameworket laves.
+\end{itemize}
+
+\subsection*{Intercepter pattern}
+\begin{itemize}
+	\item FW'et kan ikke forudsige hvem den skal servicere
+
+	\item Skal tillade integration af flere services (ellers er det ikke et framework)
+
+	\item Disse må ikke påvirke det nuværende system.
+
+	\item FW'et skal muligvis monitoreres og kontrolleres.
+
+	\item Applikation skal registreres med 'out-of-band' interfaces
+
+	\item Dispatcher (i FW'et) kan dynamisk tilføje og fjerne apps (interceptors)
+
+	\item 
+\end{itemize}
 
 
 

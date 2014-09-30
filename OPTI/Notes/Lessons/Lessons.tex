@@ -303,6 +303,27 @@ Eksempel 2:
 \end{itemize}
 
 
+\newpage
+\section*{Genetic algorithm}
+\begin{itemize}
+	\item Bruges i mange tilfælde
+	\item Kommer fra genetik
+\end{itemize}
+Virker som følger:
+\begin{itemize}
+	\item Map $\Omega$ ind i $\{0, 1\}^L$ (Power set der er $L$ lang)
+	\item Ét $L$ kaldes et kromosom.
+	\item Fitness (det der passer bedst: $f: \{0,1\}^L \rightarrow R$)
+	\item Definer population med $k$ iterationer: $P(k)$
+	\item Definer mating pool: $M(k)$
+	\item Start med $P(0)$, lav en selection og få $M(0)$, evolution giver $P(1)$ \dots
+	\item Select de kromosomer, der har en høj fitness
+	\subitem Selection kaldes også "fitness sampling"
+	
+	\item I evolution laver mancrossover:
+	De 2 der crosses kaldes "parents", mens outcome kaldes for "offspring kromosomer"
+	\item Man laver et crossover point et sted (behøver ikke være specificeret\dots)
+\end{itemize}
 
 
 \end{document}

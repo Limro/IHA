@@ -446,11 +446,109 @@ Applikationer for \code{Service Handler}
 
 
 
+\newpage
+\section*{JAWS}
+Adaptive web Server
+\begin{itemize}
+	\item Created with ACE fw
+	\item It must use a concurrency model (threads)
+	\item Dispatcher (synk eller asynk)
+	\item File caching
+	\item Protocol HTTP/1.0 og/eller /1.1
+	\item Skal skrædersyes til brugernes behov (små filer / store billeder)
+	\item Bygges normalt med selvskrevet kode og nogle patterns - når man skriver fw bruges der kun de komponenter stillet til rådighed til at skrive det.
+\end{itemize}
+JAWS:
+\begin{itemize}
+	\item Event Dispatcher m. Acceptor 
+	\item Concurrencu med State
+	\item I/O med Proactor og asynk
+	\item \dots se slides
+\end{itemize}
+Protocol Pipeline
+\begin{itemize}
+	\item CGI er langsom, da det starter en ny tråd
+	\item Hvert filter data kommer igennem er en process der starter.
+	\item 
+\end{itemize}
 
 
 
 
 
+\newpage
+\section*{Component configuration}
+\begin{itemize}
+	\item Du skal altid have din server til at køre 24/7.
+	\item Serveren bruger \code{.dll}-filer, som skal kunne ændres (importes) on-the-fly.
+	\item Det kan \emph{ikke} bruges på 8-bit systemer.
+	\item Årsag kan være til at ændre funktionalitet, eller rette en bug.
+\end{itemize}
+Christian algorithm
+
+\begin{itemize}
+	\item Kører godt til www-modtagere.
+	\item Kaldes "the time server" (passive).
+	\item Andre spørger efter tiden.
+\end{itemize}
+Berkeley
+
+\begin{itemize}
+	\item Er aktiv.
+	\item Pusher tiden ud.
+\end{itemize}
+Implementering (Se slides)
+
+\begin{itemize}
+	\item Interfaces på komponenterne
+	\item Lav et \code{Component Repository}, der kan behandle \code{.dll}-filerne (insert, remove, find, suspend, resume)
+	\item Det enkelte komponent har metoderne init, fini(sh), suspend, resume, info
+	\item De konkrete komponenter arver fra ovenstående.
+	\item Selve applikationen vil bruger \code{Component Configurator} til at få de konkrete implementeringer.
+
+	\item Først initierer man komponentet, derefter indsættes det.
+	\item Noter, at applicationen har et interface til det enkelte komponent (ikke det med init, fini(sh)), men et andet, specifikt interface.
+	\item Se life cycle på slide 11
+
+	\item I komponentet har \code{init} samme parametre som \code{Main} har.
+
+	\item Importer med et lille script (slide 17)
+	\item Det kan have sikkerhedsproblemer
+	\item Kan gøre det hele lidt mere kompliseret
+	\item Der kan kun bruges et interface (men man skriver selv sine filer...)
+\end{itemize}
+
+
+
+
+
+
+
+\section*{Eksamen}
+\begin{itemize}
+	\item 20 pr mand inkl votering
+	\item Husk at lave agenda (og skriv den op)
+	\item Undlad at læse op
+	\item Hvert spørgsmål har 3 underspørgsmål
+	\item Der er muligvis uddybende spørgsmål fra dem
+	\item 
+\end{itemize}
+Spørgsmål:
+\begin{itemize}
+	\item 2: Hvad betyder det
+	\item Måske noget artikel
+
+	\item 3: Forskellen på c er et reaktor pattern på den ene af dem
+
+	\item 4: Proaktor - den kan invoke asyn operation, men en reaktor kan have leader/follow og gøre det sammen
+
+	\item 5: ATEM skulle lave den nye arkitektur ?
+
+	\item 6: Exercise 5 her
+	\item[] Husk at fordele tiden ud over alle spørgsmål
+
+	\item 8: 
+\end{itemize}
 
 
 

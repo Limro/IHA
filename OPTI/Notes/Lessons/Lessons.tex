@@ -326,4 +326,104 @@ Virker som følger:
 \end{itemize}
 
 
+
+
+
+
+
+\newpage
+\section*{Problems with equality constraints}
+
+Der er tre modeller:
+\begin{itemize}
+	\item Linear ($f(x_1 x_2) = $x gange x divider\dots)
+	\item Non-linear ($f(x_1 x_2) = $cos/sin gange\dots)
+	\item Constraints ($x_1^2 + x_2^2 = 1$)
+\end{itemize}
+Hvad gør man med constraints:
+\begin{itemize}
+	\item Tegn en 3D model.
+	\item Lav en cirkel i rummet $h(x_1 x_2) = (x-x_1)^2 + (y-y_1)^2-r$.
+	\item Find nogle punkter på cirklen og de tilhørende værdier på 3D-modellen.
+	\item Der er gerne flere constraints
+	\item For hver constrain reduceres det dimensionerne med 1, hvis $\nabla h_i(x)$ er linear independant i alle punkter (Der må ikke være x'er i resultatet).
+	\item Hvis der ikke reduceres i dimensioner findes enten et plan (der rammer ét bestemt punkt med en bestemt vinkel), en linje (tangent), eller et punkt.
+	\item Dette punkt kaldes tangent space og beskrives som $T(x*) = \{ y | \nabla h^T y = 0 \}$, hvor $x*$ er punktet der skal rammes.
+	\item Jacobian er $Dh(x) = \begin{bmatrix}
+	\nabla h_1(x)^T \\ \nabla h_2(x)^T
+	\end{bmatrix}$
+	\item Normal space er  $T(x*)^\perp = N(x*)$, altså det ortogonale rum af tangenten.
+\end{itemize}
+
+\subsection*{Lagrange condition}
+\begin{itemize}
+	\item Gælder for en cirkel med rumfang (en cylinder).
+	\item Find gradienten af $f$ og af $h$: $\nabla f(x*) + \lambda \nabla h(x*) = 0$, hvilket giver ukendt $\lambda$.
+	\item Hvis man $\dfrac{d}{dt}|_{t=0} f(x(t)) = 0$ pga FONC reglen
+	\item Når man påfører en elipse på et bøjet plan får man en elipse der ikke følger $x$-planet.
+	\item Ved at indsætte tal i ovenståedn formel fåes 3 ukendte i 2 ligninger
+	\item Dette løses ved at indsætte elipsen i matrixen.
+	 (3 ligninger med 3 ubekendte).
+	 \item Forsøg herefter af isolere ALLE $x$'erne og opstil de resterende linger, så de bliver 0. 
+	 Dette giver normal nogle punkter for hver $x_i = 0$
+	 \item Herefter kan tallene indsættes i elipse-formlen, $h(x_i x_j x_k)$, og se hvor minimizeren er.
+\end{itemize}
+Eksempel xx
+\begin{itemize}
+	\item Definer en kasse
+	\item Definer volume
+	\item Lav inddelinger
+	\item Opskriv $f(x y x)$ med flader af kombinationerne $xy + xz + yz$
+	\item Opskriv $f(x y z) = xyz - volume$
+	\item Find $\nabla$ af $f$ og $h$
+	\item Indsæt i matrix
+	\item Find muligheder for hver row = 0
+\end{itemize}
+Maximer
+\begin{itemize}
+	\item 
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\newpage
+\section*{Opsumering}
+
+\subsection{Optimization} % (fold)
+\label{sub:calculus}
+\begin{itemize}
+	\item Der findes lokale og globale minimizers
+	\item Disse skrives som $x*$
+	\item En lokal minimizer kan også findes på en flad linje, da $f(x) \geq f(x*)$
+	\item Gradienten er $\nabla f(x)$ (column vector)
+	\item Første afledte er en row vector, $Df(X) = \nabla f(x)^T$
+	\item Anden orden er $D^2f(x)$, hvilket giver flere rækker
+	\item Når man finder anden orden kaldes det "kvadratisk form".
+	\item[] Denne form findes også med $\frac{1}{2}x^T Qx - x^T b$
+	\item Retningen kan findes ved at indsætte startpunktet, $x_0$, i $Qx-b$
+	\item \textbf{Chain rule!}
+	\item \textbf{Firs-Order Necessary Condition} (FONC)
+	\item[] En minimizer er har en positiv hældning (Da ligemeget hvor du går hen går du opad og du står i minimum). Dette er $\nabla f(x*)=0$
+	\item Hvis man kan finde et $d$, således $d^T(\nabla f)_ {x=x_0}$ bliver negativ, så er man \emph{ikke} i FONC.
+	\item $Q(x) = x^T A x$
+	\item \textbf{Second-Order Necessary COndition} (SONC) - her er $F$ Hessian af $f$
+	\item Fortæl ikke om feasible direction
+
+\end{itemize}
+% subsection calculus (end)
+
+
+
+
+
+
+
+
+
 \end{document}

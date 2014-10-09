@@ -194,12 +194,80 @@ Spg 3:
 \end{itemize}
 
 
+\begin{itemize}
+	\item Om planlægning -- Udskyd, ansæt flere, se om der skal laves noget andet
+	\item Alting tager mere end et år.
+	\item Sig heller man ikke kan/kan som det er -- flere folk, bedre evner hos folk
+\end{itemize}
 
 
 
+\newpage
+\section*{Faults}
+
+\begin{itemize}
+	\item Fault prevention
+	\begin{itemize}
+		\item Don't have it
+	\end{itemize}
+
+	\item Fault tolerance:
+	\begin{itemize}
+		\item Det skal blot blive ved med at virke
+		\item Måske et sekondært system
+	\end{itemize}
 
 
+	\item Systematic fault
+	\begin{itemize}
+		\item Disse er der ALTID
+	\end{itemize}
 
+	\item Duration
+	\begin{itemize}
+		\item Intermittent er noget, som er der, så forsvinder, så kommer tilbage\dots
+		\item Kan nogle gange kun findes, hvis man reproducerer alt
+		\item Derfor bruger safetycritical system ikke concurrentcy
+	\end{itemize}
+
+	\item Fjern fejl, før de kommer ud (test din kode)
+
+\end{itemize}
+Redundancy
+
+\begin{itemize}
+	\item Static: repliker man dele og brug andre komponenter
+	\begin{itemize}
+		\item Repliker et kritisk element
+		\item Tilføj et "voting element", der kan sige hvad der skal bruges
+		\item For at voting-delen ikke går ned laver man et "unbreakable" ssytem (NAN-gates)
+	\end{itemize}
+
+	\item N-Modular
+	\begin{itemize}
+		\item Tilføj et enkelt element mere
+
+		\item Det fylder akstra
+	\end{itemize}
+
+	\item Dynamisk: Når én failer, start en anden.
+	\begin{itemize}
+		\item Det bruges en fault detection til at opdage, om noget af systemet går ned.
+	\end{itemize}
+
+	\item Temporal: Regn efter, at det er rigtigt
+
+	\item Software: Regn det samme parallelt, men med 2 forskellige implementeringer (gerne med forskellige teams på opgaven)
+	\subitem Virker ikke altid og koster ekstra
+
+	\item 
+\end{itemize}
+Reliability
+
+\begin{itemize}
+	\item Hardware kan gå i stykker - software kan \epmh{ikke}.
+	\item 
+\end{itemize}
 
 
 

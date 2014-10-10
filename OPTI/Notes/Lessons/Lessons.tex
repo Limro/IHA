@@ -419,6 +419,54 @@ Maximer
 % subsection calculus (end)
 
 
+\subsection{Gradient} % (fold)
+\label{sub:gradient}
+
+\begin{itemize}
+	\item Man tager Taylor epansion i ét punkt
+	\item Det er en førsteordens tilnærmelse
+	\item 1D: $f(x) = f(x_0) + \dfrac{1}{!} f'(x_0)(x-x_0)$
+	\item Det kan tilnærmes via en ret linje
+	\item nD: $f(x) = f(x_0) + \dfrac{1}{!} (\nabla f)^T(x_0)(x-x_0)$
+
+	\item For at flytte sig skal $f(x_1) < f(x_0)$ -- altså skla resten være negativ
+	\item Man flytter sig i retningen $d$
+	\item Det nye punkt findes ved $x_1 = x_0 + \alpha d$, således at $\alpha ( \nabla f |_{x=x_0})^T d < 0$
+
+	\item Det mest negative er når $d = (\nabla f |_{x=x_0})$
+	\item På denne måde nærmer man sit minimum.
+	\item Det kaldes også "steepest decend", når man nærmer sig.
+	\item Det foregår i iterationer -- hvor meget skal man flytte sig, og i hvor stort et interval?
+	\item Ved cirkler bevæger man sig til man ikke kan mere, vender sig ortogonalt og repeat (langsom metode).
+	\item Man bruger et stopkriterie.
+\end{itemize}
+
+% subsection gradient (end)
+
+\subsection{Conjugate direction} % (fold)
+\label{sub:conjugate_direction}
+
+\begin{itemize}
+	\item Kræver ikke Hessian.
+	\item Foregår i iterationer.
+	\item Kræver ingen matrix inversion.
+	\item En mellemting mellem Steepest Decent og Newton's Method.
+	
+	\item For $d_0, d_1 , d_2 \dots d_{n-1}, Q > 0, Q^T = Q$
+	\item $d_i^T Q d_j \begin{Bmatrix}
+	= 0 & i \not= j \\
+	\not= 0 & i = j
+	\end{Bmatrix}$
+	\item Det er conjugated directions, når de er ortogonale?
+	\item Vi har alle $d$'erne -- hvorfra er ligegyldigt, men vi har dem.
+	\item FONC vil ikke sikre et minimum.
+	\item Se slides for fremgangsmetode.
+	\item Husk eksempel.
+	\item Man ændrer gradienterne, så de bliver conjugated.
+	\item For hver iteration finder man minimum af et space.
+	\item Forklar sammenhængen mellem algoritmerne (conjugate gradient algorithm og )
+\end{itemize}
+% subsection conjugate_direction (end)
 
 
 

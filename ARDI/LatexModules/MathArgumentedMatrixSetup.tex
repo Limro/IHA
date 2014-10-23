@@ -1,0 +1,28 @@
+\usepackage{ulem} %math
+% \uuline{result} for double lines under a result
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+%Create a square matrix
+%\begin{ArgMat}{2}
+%21 & 22 & 23 \\  
+%a & b & c
+%\end{ArgMat}
+%
+% Info: http://tex.stackexchange.com/questions/2233/whats-the-best-way-make-an-augmented-coefficient-matrix
+%
+\newenvironment{ArgMat}{%
+$
+  \left[\begin{array}{@{}*{100}{r}r@{}}
+}{%
+  \end{array}\right]
+  $
+}
+
+\newenvironment{MatPos}{%
+$  \left\{ \begin{array}{@{}*{100}{l}r@{}}%
+}{%
+  \end{array}\right.$ %
+}

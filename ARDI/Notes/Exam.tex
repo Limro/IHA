@@ -1,0 +1,186 @@
+\documentclass{article}
+
+\include{Preamble}
+
+\begin{document}
+\section{Reactor Pattern}
+
+The Reactor architectural pattern allows event-driven applications to demultiplex \& dispatch service requests that are delivered to an application from one or more clients.
+
+Generelt:
+\begin{itemize}
+	\item Bruges primært til servere, der \textit{venter} på events.
+	Den checker dog hele tiden på, om der er kommet noget nyt.
+	\item \code{Reactor} håndtere events til forskellige processer
+	\item Modtages synkront og serielt
+	\item Hvert event sorteres af en \code{Multiplex}er (baseret på indhold) og uddeles af en \code{Dispatcher} til en process. 
+	Alle applikationsspecifike funtioner udføres af specifikke \code{EventHandler}s.
+	\item Inversion of Control bruges (dependency (interface) injection) og gøre koden generisk. Se \codeTitle \ref{lst:DI}.
+\end{itemize}
+
+Implementering:
+\begin{itemize}
+	\item Klassen \code{Reactor} bruger GoF Bridge pattern (pointer til implementering -- også kaldet \emph{pimpl idiom}, da der kun er én implementering). 
+	\item Klassen \code{Reactor} bruges som en Singleton.
+	\item Klassen \code{Demultiplexter}'s \code{select()} har "file descripter set"    parametre. 
+	Disse checkes for \code{READ}, \code{WRITE}, exceptions og time outs.
+\end{itemize}
+
+Fordele:
+\begin{itemize}
+	\item Separation of concerns
+	\item[] Afkobler \code{Demux} og \code{Dispatcher} fra applikationsspecifik kode
+	
+	\item Modularity and reuseability
+	\item[] Hvert event er sit eget komponent.
+
+	\item Portability
+	\item[] \code{Reactor} er frakoblet low-level kode og kan bruges af højre levels.
+
+	\item Har et super godt samspil med \code{Wrapper Facade} pattern til low-level.
+\end{itemize}
+
+Ulemper:
+\begin{itemize}
+	\item Semi-svær at debugge.
+	\item Single-threaded applikationer standser \code{Reactor} til de er færdige.
+\end{itemize}
+
+Andet:
+\begin{itemize}
+	\item \code{Reactor} kan bruges på clienten, hvis denne har nogle faste mønstre der kan sendes og modtages data i.
+	I modsætning til serveren vil den kun kalde \code{HandleEvent()} én gang og exite.
+	\item Sammensæt med Acceptor pattern, således serveren kalder accepter, og den registrere et gyldigt event.
+	\item \code{Proactor}\fxnote{Skriv om dette}
+\end{itemize}
+
+\begin{lstlisting}[caption=Bridge / interface injection, style=Code-C++, label=lst:DI]
+Reactor(IClass *impl)
+{ impl->getData(); }
+\end{lstlisting}
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=0.9 \textwidth]{Reactor}
+\end{figure}
+
+
+
+
+
+\newpage
+\section{Paradigms for Distributed Communication}
+
+Space, time and flow:
+\begin{itemize}
+	\item Space decoupling betyder, at en publisher ikke kender til sine subscribers.
+	Der er en service der klarer dette for den.
+
+	\item Time decoupling betyder, at beskeder fra en publisher ikke skal komme per omgående til subscriber.
+	Når først pubslisher udgiver, kan der gå tid til subscriber modtager.
+
+	\item Flow decoupling betyder, at den forstyrrer når den vil?\fxnote{Check om dette er rigtigt}
+\end{itemize}
+
+
+RMI og publish/subscriber:
+\begin{itemize}
+	\item RMI -- Remote Method Invocation betyder, at du over et netværk kan aktivere en kommando, der bliver eksikveret (og muligvis sendt tilbage).
+
+	\begin{itemize}
+	 	\item Understøttes af Java, CORBA og Mircrosoft's DCOM
+	 	\item Dur kun mellem 2 maskiner.
+		\item Time og space er coupled :(
+		\item Flow couple er meget stærk på consumer siden.
+		\begin{itemize}
+		 	\item Er ikke stærkt, hvis producer ikke forventer et svar
+		 	\item Altså asynk
+		 \end{itemize} 
+	\end{itemize} 
+
+	\item Publisher/Subscriber
+	\begin{itemize}
+		\item Decoupler space, time og flow ved at lade alt køre i en kanal (Socket/kø)
+		\item The channel decouples
+	\end{itemize}
+\end{itemize}
+
+\begin{figure}[ht]
+\begin{minipage}[b]{0.45\linewidth}
+\centering
+\includegraphics[width=\textwidth]{RMI}
+\caption{RMI}
+\label{fig:figure1}
+\end{minipage} 						% No linebreak from here
+\hspace{0.5cm}						% ...
+\begin{minipage}[b]{0.45\linewidth}	% to here. They will over-under with linebreak
+\centering
+\includegraphics[width=\textwidth]{PS}
+\caption{Publish/Subscribe}
+\label{fig:figure2}
+\end{minipage}
+\end{figure}
+
+
+Skal vi fortælle om de 3 versioner af p/s eller de andre, ringe løsninger?
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Acceptor/Connector Pattern}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,14 @@
+%Math package
+
+%--------------------- Floor and ceiling ---------------------
+% Source:
+% http://tex.stackexchange.com/questions/118173/how-to-write-ceil-and-floor-in-latex
+%  \begin{equation*}
+%    \floor*{\frac{x}{2}} < \frac{x}{2} < \ceil*{\frac{x}{2}}
+%  \end{equation*}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%-------------------------------------------------------------

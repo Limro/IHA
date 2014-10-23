@@ -1,0 +1,39 @@
+% Insert a figure with caption and a reference
+% Set caption above \includegraphics... if you want
+% the caption shown above the figure
+%--------------------------------------------------
+%\begin{figure}[hbtp]
+%\centering
+%\includegraphics[width=1\textwidth]{filnavn-for-png}
+%\caption{Titel}
+%\label{fig:referenceNavn}
+%\end{figure}
+%--------------------------------------------------
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{float}
+
+% Search paths after figures
+% List multiple paths as follow
+% \graphicspath{ {path 1} {path 2} }
+\graphicspath{{../Figures/} {../Notes/Figures/}}
+
+
+% Figures side by side or over-under:
+%--------------------------------------------------
+% \begin{figure}[ht]
+% \begin{minipage}[b]{0.45\linewidth}
+% \centering
+% \includegraphics[width=\textwidth]{fig1}
+% \caption{Figure 1}
+% \label{fig:figure1}
+% \end{minipage} 						% No linebreak from here
+% \hspace{0.5cm}						% ...
+% \begin{minipage}[b]{0.45\linewidth}	% to here. They will over-under with linebreak
+% \centering
+% \includegraphics[width=\textwidth]{fig2}
+% \caption{Figure 2}
+% \label{fig:figure2}
+% \end{minipage}
+% \end{figure}
+%--------------------------------------------------

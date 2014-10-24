@@ -136,6 +136,59 @@ Skal vi fortælle om de 3 versioner af p/s eller de andre, ringe løsninger?
 \section{Acceptor/Connector Pattern}
 
 
+\subsection{Explain the "Acceptor/connector" pattern mechanism}
+Acceptor-connector decoupler forbindelsen og services-laget.
+Når først en forbindelse er accepteret, oprettes en seperat stream mellem de to.
+Herefter vil \code{Reactor}'en (i et \code{while(1)}) bede \code{ServiceHandler}'en udføre sine opgaver.
+
+Acceptor:
+\vspace{-10pt}
+\begin{itemize}
+	\item Ligger på serveren.
+	\item Modtager kun eventet \code{Accept()}  ment til den aktuelle \code{Acceptor}.
+	\item Opretter konkrete \code{ServiceHandler}'re for events med \code{template}s  -- disse indeholder IP og port.
+	\item Alle andre beskeder sendes direkte til \code{ServiceHandler} fra peer og aktiveres af \code{Dispatcher}'ens \code{HandleEvent()}.
+\end{itemize}
+
+Connector:
+\vspace{-10pt}
+\begin{itemize}
+	\item Connector ligger på clienterne.
+	\item Connectoren opretter en \code{ServiceHandler}, der snakker med Acceptorens \code{ServiceHandler}.
+	\item Sender predefinere beskeder i form af \code{READ}, \code{WRITE} og \code{CONNECT} til serveren, hvor \code{CONNECT} binder \code{ServiceHandler}ne sammen.
+	\item Beskederne sendes igennem en \code{ServiceHandler}en.
+\end{itemize}
+
+
+
+\subsection{Describe when to use an acceptor, a connector or both patterns in a node}
+\begin{itemize}
+	\item Acceptor bruges i alle servere, der har forskellige opgaver.
+	Det vil forsimple besked-tilgangen og der kan oprettes seperate \code{ServiceHandler}e til forskellige connections.
+	\item Connector bruges, hvis man har de tilsvarende beskeder til Acceptoren. 
+	Dette vil sikre, at der ikke sendes beskeder der ikke må sendes?
+
+	\item Brug begge i én node, når du ønsker p2p forbindelse i form af torrents and the likes.
+\end{itemize}
+
+
+
+\subsection{Describe the difference between a synchronous and an asynchronous connector}
+Synkron:
+\vspace{-10pt}
+\begin{itemize}
+	\item 
+\end{itemize}
+
+Asynkron:
+\vspace{-10pt}
+\begin{itemize}
+	\item Clienter der har langsom forbindelse får ikke serveren til at vente.
+	\item Clienter der er single-threaded kigger blot i en kø 
+	\item Hvis (p2p) clienten har mange peers, som kobler til i tilfældig orden.
+	\item Bruges sammen med en Proactor
+	\item Generelt mange forbindelser vil 
+\end{itemize}
 
 
 
@@ -143,7 +196,50 @@ Skal vi fortælle om de 3 versioner af p/s eller de andre, ringe løsninger?
 
 
 
+\newpage
+\section{Proactor and ACT Patterns}
 
+\subsection{Explain the "Proactor" pattern mechanism and its interaction with the  
+Asynchronous Completion Token (ACT) pattern}
+
+Asynchronous Completion Token (ACT):
+\vspace{-10pt}
+\begin{itemize}
+	\item Design pattern.
+	\item Tillader effiktiv demultiplx og processering ved asynkrone operationer.
+	\item Vil ved færdiggørelse returnere ACT (og resultat).
+\end{itemize}
+
+Proaktor:
+\vspace{-10pt}
+\begin{itemize}
+	\item Erstatter \code{Reactor} som dispatcher.
+	\item Sætter asynk-tråde til at udfører store opgaver og fortsætter med mindre i mellemtiden.
+	\item Når en asynk bliver færdig, skubbes denne ind i en event-kø. 
+	\item Denne gør Proactoren opmærksom på, at det er færdig og skubbes frem i køen af \code{HandleEvent()}.
+	\item Herefter sendes dette videre til en \code{CompletionHandler} (det samme som ServiceHandler).
+\end{itemize}
+
+
+\subsection{Describe for what and when these pattern are used}
+
+Proactor:
+\vspace{-10pt}
+\begin{itemize}
+	\item Ved long-duration oprerationer, der eksikveres asynk.
+	\item Hvis man derimod lader en asynk tråd håndtere lange kald, kan små kald passere imens. (forstil dig noget MatLab kode skal køre).
+\end{itemize}
+
+
+\subsection{Describe the benefits in comparison with the use of a Reactor pattern in combination with a concurrency pattern}
+
+
+\begin{itemize}
+	\item I reaktor pattern skal alt håndteres på lige fod. Det skal proactor ikke.
+	\item Der er bedre OS portablility.
+	\item Der laves færre tråde, da nogle \code{CompletionHandler}s ikke behøver tråde (alle concurrency vil).
+	\item Dette undlader context switching.
+\end{itemize}
 
 
 

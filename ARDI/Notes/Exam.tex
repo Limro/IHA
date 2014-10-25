@@ -246,6 +246,181 @@ Proactor:
 
 
 
+\newpage
+\section{Architecture Trade Off Method (ATAM) and Architecture Documentation}
+
+\subsection{Describe for what and when the ATAM method is used}
+\begin{itemize}
+	\item ATAM (Architecture Trade off Analysis Method) er en metode til at checke, om systemet opfylder requirements.
+	\begin{itemize}
+		\item Funktionelle (main input til domain modellen)
+		\item Ikke-funktionelle 
+		\begin{itemize}
+			\item Distribueret.
+			\item Portabel.
+			\item Oppe så mange \% af tiden.
+			\item Sikker mod hackere.
+			\item Minimum så hurtig.
+		\end{itemize}
+	\end{itemize}
+	\item Skal overvejes, når man laver system architecturen.
+\end{itemize}
+
+
+\subsection{Explain the ATAM method steps}
+
+Elicitation:
+\vspace{-10pt}
+\begin{enumerate}
+	\item Saml scenarier for system brug fra repræsentative stakeholders.
+	\item Saml krav, begrænsninger og omgivelser.
+	\item Beskriv Architectural Views (flere -- der skal kunne opfylde de vigtige kvalitets krav).
+	\item Lav Attribute-specific analysis.
+	\item Find sensitive punkter.
+	\item Find trade offs.
+\end{enumerate}
+
+Evaluering:
+\vspace{-10pt}
+\begin{enumerate}
+	\item Presenter ATAM.
+	\item Presenter business driver (forretningsmodel?).
+	\item Presenter architecture.
+	\item Find og prioriter ikke-funktionelle krav.
+	\item Alternativer:
+	\begin{itemize}
+	 	\item Find alternative arkitekturtilgange.	
+	 	\item Analyser det
+		\item Præsenter resultat.
+		\item Lav risk-analyse.
+	 \end{itemize} 
+
+	\item Lav rationelle valg (dokumenteret).
+\end{enumerate}
+
+\subsection{Describe the purpose of Architecture View Models and the relation to ATAM}
+
+\begin{itemize}
+	\item Architecture View Models har samme formål.
+	\item AVM er lavet i flere omgange med $N+1$.
+	\item $+1$ er scenarie/UC view.
+	\item Alle indholder noget der viser komponentsammensætningen i lag, hvilke tasts der skal køre og hvordan hardwaren skal være.
+	\item Nogle viser sikkerhed, nogle distribuere modeller, nogle de enkelte klasser.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Leader/Followers Pattern and Half sync/half async Pattern}
+
+\subsection{Explain the "Leader/followers" pattern mechanism}
+Metafor:
+\vspace{-10pt}
+\begin{itemize}
+	\item Du vil med en taxa og skal tage den første.
+	\item Denne taxa udfører en opgave.
+	\item Den næste taxa er nu først.
+	\item Når den førstenævnte taxa er færdig, stiller den sig bag i køren af taxa'er.
+\end{itemize}
+
+Mekanismen:
+\vspace{-10pt}
+\begin{itemize}
+	\item Opret en pool af tråde, som alle kan gøre det samme.
+	\item Vælg én som leader, giv denne den første opgave asynk og lad den næste blive promoveret.
+	\item Når en tråd er færdig kalder den \code{Join()}\fxnote{Er det join()?} på \code{TreadPool} og sover til den bliver leader.
+\end{itemize}
+
+
+\subsection{Explain the main structure of the "half sync/half async" pattern the half sync/half async pattern}
+
+\begin{itemize}
+	\item Har synkrone og asynkrone tråde.
+	\item Disse skal kunne snakke sammen.
+	\item Imellem er en kø (singleton eller en kø pr service), som \code{read/write}- og \code{dequeue/enqueue}-operationer ligges i.
+	\item Database kørsel i synkrone, separate tråde.
+	\item Små, interrupt protokoller i asynkrone tråde.
+	\item Vælg buffer strategi:
+	\begin{itemize}
+		\item FIFO
+		\item Prioritet
+		\item Notification 
+	\end{itemize}
+\end{itemize}
+
+
+\subsection{Describe the advantages of the Leader/Followers pattern in comparison with the half sync/half async pattern}
+
+Leader/Follow over half sync/async:
+\vspace{-10pt}
+\begin{itemize}
+	\item LF har ikke brug for en buffer imellem sine tråde.
+	\item Der er ikke et locking overhead mellem tråde.
+	\item Simplere at implementere
+\end{itemize}
+
+Half sync/async over Leader/Follow:
+\vspace{-10pt}
+\begin{itemize}
+	\item Kan nemmer implementere forskellige prioriteringsalgoritmer
+	\item Kun én tråd kan demultiplex'e ad gangen.
+\end{itemize}
+
+
+
+
+
+\newpage
+\section{Interceptor Pattern}
+
+\subsection{Explain the "Interceptor" pattern mechanism}
+\begin{itemize}
+	\item Det kan tilføje services on-the-fly til et framework og aktiveres på et event.
+	\item Disse kan tilgå frameworket, hvis de får tilsendt klassernes pointere.
+\end{itemize}
+
+
+\subsection{Describe how the interceptor can be used in developing a framework and the division of responsibilities between developers}
+
+
+\subsection{Describe benefits and liabilities}
+
+
+
+
+\newpage
+\section{JAWS Framework}
+
+\subsection{Explain the overall architecture of the JAWS-frameworket and how it is designed based on POSA2, POSA1 and GoF patterns}
+
+
+\subsection{Describe the reconfiguration possibilities in JAWS}
+
+
+\subsection{Describe the purpose of the used POSA2 design patterns}
+
+
+
+
+\newpage
+\section{Component Configurator Pattern}
+
+\subsection{Explain the "Component Configurator" pattern mechanism}
+
+
+\subsection{Describe how it can support dynamic reconfiguration at run-time}
+
+
+\subsection{Describe benefits and liabilities}
+
 
 
 

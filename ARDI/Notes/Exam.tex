@@ -177,7 +177,7 @@ Connector:
 Synkron:
 \vspace{-10pt}
 \begin{itemize}
-	\item 
+	\item \fxnote{empty}
 \end{itemize}
 
 Asynkron:
@@ -229,6 +229,8 @@ Proactor:
 	\item Ved long-duration oprerationer, der eksikveres asynk.
 	\item Hvis man derimod lader en asynk tråd håndtere lange kald, kan små kald passere imens. (forstil dig noget MatLab kode skal køre).
 \end{itemize}
+
+ATC\fxnote{Noget her}
 
 
 \subsection{Describe the benefits in comparison with the use of a Reactor pattern in combination with a concurrency pattern}
@@ -340,7 +342,7 @@ Mekanismen:
 \end{itemize}
 
 
-\subsection{Explain the main structure of the "half sync/half async" pattern the half sync/half async pattern}
+\subsection{Explain the main structure of the "half sync/half async" pattern}
 
 \begin{itemize}
 	\item Har synkrone og asynkrone tråde.
@@ -383,15 +385,45 @@ Half sync/async over Leader/Follow:
 
 \subsection{Explain the "Interceptor" pattern mechanism}
 \begin{itemize}
-	\item Det kan tilføje services on-the-fly til et framework og aktiveres på et event.
+	\item Der kan tilføje services on-the-fly til et framework og aktiveres på et event.
+	\item For at finde dem, skal frameworket bruge sin dispatcher mekanisme, så interceptor interfacet kan 'hooke' sig på.
+	\item Normalt 1 dispatcher pr. interceptor.
+	\item Dispatcher definer et interface frameworket kalder ved bestemte events. 
+	Når fw kalder dette invokes alle de konkrete intercepter's callbacks som har registreret sig.
 	\item Disse kan tilgå frameworket, hvis de får tilsendt klassernes pointere.
+	\item Servicen må ikke ændre på, hvordan frameworket virker!
+	\begin{itemize}
+		\item Mange framework har en Facade eller et interface (men kan være helt åbne)
+	\end{itemize}
+	\item Registrer service med 'out-of-band' interface
 \end{itemize}
 
 
 \subsection{Describe how the interceptor can be used in developing a framework and the division of responsibilities between developers}
-
+\fxnote{Her mangler}
 
 \subsection{Describe benefits and liabilities}
+
+Fordele:
+\vspace{-10pt}
+\begin{itemize}
+	\item Kan udvide funktionalitet.
+	\item Flexibelt:
+	\begin{itemize}
+	 	\item Kan hentes fra et prædefineret bibliotek.
+	 	\item Kan hentes med et script på run-time.
+	 \end{itemize} 
+	\item Seperation of concerns.
+	\item Reusability.
+	\item Support for monitoring og kontrol af framework.
+\end{itemize}
+
+Ulemper:
+\vspace{-10pt}
+\begin{itemize}
+	\item Komplex design
+	\item Fejlfyldte og ondsindet interceptors
+\end{itemize}
 
 
 
@@ -400,29 +432,127 @@ Half sync/async over Leader/Follow:
 \section{JAWS Framework}
 
 \subsection{Explain the overall architecture of the JAWS-frameworket and how it is designed based on POSA2, POSA1 and GoF patterns}
+\begin{itemize}
+	\item JAWS er et FW for web servere.
+	\item JAWS bruger ACE FW.
+	\item Består af en masse små dele: 
+	\begin{itemize}
+		\item Reactor, Acceptor, Proactor, Active Object (POSA2)
+		\item Service configurator (POSA2)
+		\item Event dispatchers (POSA)
+		\item Strategy (Indkapsling), adapter, state, singleton, factory (GOF)
+		\item Pipes of filters (POSA1)
+		\begin{itemize}
+			\item Spawner ikke tråde til højre og venstre.
+			\item Kan udvide arkitektur uden ekstra tråde.
+		\end{itemize}
+		\item Bruger concurrency strategi, der fjerner et stort overhead og giver high-performance med Thread-per-Request og en Thread Pool.
+	\end{itemize}
+	\item Bruger Inversion of Control til callbacks og hook methods.
+	\item Skal skrædersyes til brugernes behov (små filer / store billeder).
+\end{itemize}
 
 
 \subsection{Describe the reconfiguration possibilities in JAWS}
+\begin{itemize}
+	\item Kommer i pakker, man selv kan vælge fra.
+	\item Forskellige caching strategier
+	\begin{itemize}
+		\item Least Recently Used.
+		\item Least Frequently Used.
+		\item Hinted (kun det, der er på siden).
+		\item Structured caching (Hvad vil der måske blive trykket på).
+	\end{itemize}
+	\item Pipelining er en pull-push metode, hvor der er en masse filtre på, som kan tilpasses den enkelte side.
+
+	\item Component Configurator Structure
+\end{itemize}
 
 
 \subsection{Describe the purpose of the used POSA2 design patterns}
+\begin{itemize}
+	\item Stategy patterns:
+	\begin{itemize}
+		\item Reactor -- dispatcher for de tasks, der skal udføres synkront.
+		\item Proactor -- dispatcher med thread pool for de tasks, der skal udføres asynkront.
+		\item Acceptor -- Et factory, der modtager for indkommende forbindelser, som også opretter services for dem.
+		\item I/O -- Alle I/O-klasser indeholder \code{receive/send-data/file}
+	\end{itemize}
+
+	\item Pipelining:
+	\begin{itemize}
+		\item Data processering med filetyper, fil encoding of compressing, samt størrelse og sidst-brugt rettelser.
+		\item CGI (Common Gateway Interface) kan lave søgemaskiner, maps, interfaces til databaser mm, men er ineffiktivt.
+		\item Dét, der gør interception muligt.
+		\item Kan bruges til search enginens med filtre der er konstrueret dynamisk.
+	\end{itemize}
+
+	\item Concurrency strategi -- Undgå Key overhead:
+	\begin{itemize}
+		\item Context switching koster
+		\item Tråd/process oprettelse
+		\item Synkroniserirng
+	\end{itemize}
+
+	\item Concurrency strategi -- Thread pool
+	\begin{itemize}
+		\item Gør Leader/Follower mulig
+		\item Tråde skal ikke oprettes løbende
+		\item Arbejder sammen med Proactor og Acceptor
+	\end{itemize}
+
+\end{itemize}
+
+
+
 
 
 
 
 \newpage
 \section{Component Configurator Pattern}
+\begin{itemize}
+	\item Tillader at linke og unlinke .dll på run-time uden recompile eller modificering.
+	\item Komponenterne kan bruges af forskellige processor uden genstart.
+\end{itemize}
 
 \subsection{Explain the "Component Configurator" pattern mechanism}
+\begin{itemize}
+	\item Lad dine komponenter arve fra \code{IComponent}.
+	\item Lav et \code{ComponentRepository}, som kender alle komponenter.
+	\item Brug \code{template} til at udføre et bestemt stykke arbejde.
+	\item Tilføj komponentet med \code{insert(name, *c)} (repo), \code{Init()} (komp).
+	\item Brug \code{Suspend()} og \code{Resume()} for at standse og stoppe brugen.
+	\item Fjern det med \code{Remove(name)} (Repo).
+	\item Kan dynamisk loades vha. kommando linje, eller vha. inline kode.
+\end{itemize}
 
 
 \subsection{Describe how it can support dynamic reconfiguration at run-time}
+\begin{itemize}
+	\item 
+\end{itemize}
 
 
 \subsection{Describe benefits and liabilities}
 
+Fordele:
+\vspace{-10pt}
+\begin{itemize}
+	\item Ret en bug i run-time.
+	\item Ret funktionalitet.
+	\item Central administraiton.
+	\item Testbar, genbruglige og mudular.
+	\item Bruges i ACE FW.
+\end{itemize}
 
-
+Ulemper:
+\vspace{-10pt}
+\begin{itemize}
+	\item Kan ponentielt crashe hele systemet.
+	\item Sikkerhed generelt nedsat.
+	\item Run-time overhead og komplexitet øges.
+\end{itemize}
 
 
 

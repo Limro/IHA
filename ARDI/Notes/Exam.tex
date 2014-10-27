@@ -158,6 +158,7 @@ Connector:
 	\item Sender predefinere beskeder i form af \code{READ}, \code{WRITE} og \code{CONNECT} til serveren, hvor \code{CONNECT} binder \code{ServiceHandler}ne sammen.
 	\item Beskederne sendes igennem en \code{ServiceHandler}en.
 \end{itemize}
+\fxnote{Hvordan registreres asynkron connector? (Disable socket for ikke oprette flere forbindelser til den -- race-condition -- fjern handler fra dispatcher)}
 
 
 
@@ -249,14 +250,19 @@ ATC\fxnote{Noget her}
 
 
 \newpage
-\section{Architecture Trade Off Method (ATAM) and Architecture Documentation}
-
+\section{Architecture Trade Off Method Analysis (ATAM) and Architecture Documentation}
+\textbf{Kom frem til arkitekturen af systmet}
+\begin{itemize}
+	\item Se på kvaliteter
+	\item Se på risks
+	\item Se på attributer
+\end{itemize}
 \subsection{Describe for what and when the ATAM method is used}
 \begin{itemize}
 	\item ATAM (Architecture Trade off Analysis Method) er en metode til at checke, om systemet opfylder requirements.
 	\begin{itemize}
 		\item Funktionelle (main input til domain modellen)
-		\item Ikke-funktionelle 
+		\item Ikke-funktionelle  (kvantitative værdier)
 		\begin{itemize}
 			\item Distribueret.
 			\item Portabel.
@@ -286,6 +292,9 @@ Evaluering:
 \vspace{-10pt}
 \begin{enumerate}
 	\item Presenter ATAM.
+	\begin{itemize}
+		\item Der skal være forskellige antal servere, caching, encryption
+	\end{itemize}
 	\item Presenter business driver (forretningsmodel?).
 	\item Presenter architecture.
 	\item Find og prioriter ikke-funktionelle krav.
@@ -465,7 +474,7 @@ Ulemper:
 	\end{itemize}
 	\item Pipelining er en pull-push metode, hvor der er en masse filtre på, som kan tilpasses den enkelte side.
 
-	\item Component Configurator Structure
+	\item Component Configurator
 \end{itemize}
 
 

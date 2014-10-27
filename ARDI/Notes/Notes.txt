@@ -1,0 +1,55 @@
+
+
+-Rationelle og dokumenteret beslutninger
+
+- Må du ændre på FW funktionaliteten?
+
+
+
+
+
+Tilføj!
+1: 
+- Hvad er registerEvent()
+- Sekvensdiagram
+- Skriv om Proactor (asynkron - rækkefølge ikke vigtig)
+	- Reaktor kan dog bruge concurrency pattern.
+- Client og Server (registerEvent og ingen loop på clienten)
+
+2: Slides med time, space, flow i ét.
+
+4: 
+- Man demuxer til hvilken CompletionHandler der skal bruges
+	
+5:
+- Skriv nogle views
+	- Data
+	- Logic
+	- Deployment
+	- Security
+	- Process
+- Det overlapper Views
+
+7:
+- Out-of-band er det uden for FW værdier
+- CO: det der har ændret sig
+	- blot et bindeled
+- Stil interfaces til rådighed for udviklere (ikke FW)
+
+- Ulempe: sikkerhed på interceptorer
+
+8: 
+- Forklar de enkelte opdelinger i 8-1 kort, men samlet.
+- Del 3: hvordan bruger den det (kort!)
+
+9:
+- Suppler med Interceptor
+- Slide med script
+- Husk eksempel (skift sprog)
+
+
+
+
+
+- Spørgsmål til Finn
+3: Disable ved asynkron connector?

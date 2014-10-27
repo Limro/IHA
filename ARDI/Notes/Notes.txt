@@ -1,13 +1,4 @@
 
-
--Rationelle og dokumenteret beslutninger
-
-- Må du ændre på FW funktionaliteten?
-
-
-
-
-
 Tilføj!
 1: 
 - Hvad er registerEvent()

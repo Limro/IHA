@@ -1,0 +1,38 @@
+
+\usepackage{longtable}
+\usepackage{lastpage} %Finds last page number
+
+\newcommand{\signature}{\underline{\hspace{6.5cm}}}
+
+
+
+%--------------------------------------------------
+%\begin{Authors}
+%\AT
+%{Name}
+%{Student number}
+%{Major}
+%\end{Authors}
+%--------------------------------------------------
+\newcommand{\AuthorWidth}{0.4 \textwidth}
+\newcommand{\AuthorSpace}{0.1 \textwidth}
+
+\newenvironment{Authors}
+{\begin{longtable}{ p{\AuthorWidth}  p{\AuthorSpace} p{\AuthorWidth}}}
+%Each \AT goes here
+{\end{longtable}}
+
+\newcommand{\AT}[3]{\parbox[t]{\AuthorWidth}
+{% content here
+\begin{minipage}{\linewidth}
+
+\vspace{40pt} 	%Space in each row for hand signature
+\center 		% All text is centered
+\signature 
+\\ 
+#1 				% The name of the author
+\\
+#2, #3 			% Student number, field of studie
+\end{minipage} 
+%
+}}

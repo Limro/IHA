@@ -1,0 +1,78 @@
+% Følgende er til koder.
+%----------------------------------------------------------
+%\begin{lstlisting}[caption=Overskrift på boks, style=Code-C++, label=lst:referenceLabel]
+%public void hello(){}
+%\end{lstlisting}
+%----------------------------------------------------------
+
+%Exstra space
+\usepackage{xspace}
+%Navn på bokse efterfulgt af \xspace (hvis det skal være mellemrum
+%gives det med denne udvidelse. Ellers ingen mellemrum.
+\newcommand{\codeTitle}{Code snippet\xspace}
+
+%Pakker der skal bruges til lstlisting
+\usepackage{listings}
+\usepackage{color}
+\usepackage{textcomp}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\renewcommand{\lstlistingname}{\codeTitle}
+\lstdefinestyle{Code}
+{
+	keywordstyle	= \bfseries\ttfamily\color[rgb]{0,0,1},
+	identifierstyle	= \ttfamily,
+	commentstyle	= \color[rgb]{0.133,0.545,0.133},
+	stringstyle		= \ttfamily\color[rgb]{0.627,0.126,0.941},
+	showstringspaces= false,
+	basicstyle		= \small,
+	numberstyle		= \footnotesize,
+%	numbers			= left, % Tal? Udkommenter hvis ikke
+	stepnumber		= 2,
+	numbersep		= 6pt,
+	tabsize			= 2,
+	breaklines		= true,
+	prebreak 		= \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	breakatwhitespace= false,
+%	aboveskip		= {1.5\baselineskip},
+  	columns			= fixed,
+  	upquote			= true,
+  	extendedchars	= true,
+ 	backgroundcolor = \color{lbcolor},
+	lineskip		= 1pt,
+%	xleftmargin		= 17pt,
+%	framexleftmargin= 17pt,
+	framexrightmargin	= 0pt, %6pt
+%	framexbottommargin	= 4pt,
+}
+
+%Bredde der bruges til indryk
+%Den skal være 6 pt mindre
+\usepackage{calc}
+\newlength{\mywidth}
+\setlength{\mywidth}{1.435\textwidth} % Hvis bredden header ikke virker er dette hvad skal ændres!
+
+
+% Forskellige styles for forskellige kodetyper
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}%
+{\colorbox[cmyk]{0.43, 0.35, 0.35,0.35}{\parbox{\mywidth}{\hspace{5pt}#1#2#3}}}
+\captionsetup[lstlisting]
+{
+	format			= listing,
+	labelfont		= white,
+	textfont		= white, 
+	singlelinecheck	= false, 
+	width			= \mywidth,
+	margin			= 0pt, 
+	font			= {bf,footnotesize}
+}
+
+\lstdefinestyle{Code-C} {language=C, style=Code}
+\lstdefinestyle{Code-Java} {language=Java, style=Code}
+\lstdefinestyle{Code-C++} {language=[Visual]C++, style=Code}
+\lstdefinestyle{Code-VHDL} {language=VHDL, style=Code}
+\lstdefinestyle{Code-Bash} {language=Bash, style=Code}
+\lstdefinestyle{Code-Matlab} {language=Matlab, style=Code}
+\lstdefinestyle{Code-Prolog} {language=Prolog, style=Code}

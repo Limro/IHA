@@ -1,0 +1,105 @@
+\documentclass[oneside, 10pt]{article}
+
+\include{Preamble}
+
+\title{Middleware and Communication}
+\author{Rasmus Bækgaard}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Precision Time Protocol}
+
+Determinism:
+\begin{itemize}
+	\item Synkronisere clocks mellem forskellige enheder.
+	\item Standard protokol, IEEE 1588.
+	\item Alt er om deadlines (ikke hurtigt -- men før en deadline)
+	\item Deadline beregning på relativ event eller absolut synkroniseret clock på L1S4.
+	\item Timings, L1S5.
+	\item Forskel på real-time (Hard, form, soft), L1S6-7
+	\begin{itemize}
+		\item Hard: bilen gør ikke det den skal.
+		\item Firm: Ikke helt så meget (skade til materiel, men ikke noget slemt).
+		\item Soft: Skype mister lidt forbindelse, men du snakker stadig.
+	\end{itemize}
+
+	\item Man møder deadline, eller man møder ikke (binært). Det kan ikke nedbrydes (selvom man gerne vil, som ovenover)
+	\item Determinism: Det næste stadie vil være unikt og vi ved hvad det vil være.
+	\item Non-determinism: man kan gå i flere stadier (og vi ved ikke hvilke).
+
+	\item Ethernet er ikke deterministic, pga. en protocol med et element, som ikke er deterministic.
+\end{itemize}
+
+Automa:
+\begin{itemize}
+	\item Hvis man laver et system med en formel bruger man en model, som checker formlen igenne en model-checker.
+	\item Deterministics finite automaton, DFA, er en en Turing-machine. L1S11
+	\begin{itemize}
+		\item $\delta$: Én fra $Q$ og én fra $\Sigma$ giver én ny $Q$
+		\item Dobbelt cirkel: slut/accept punkt
+		\item L1S12: der er et lige antal '0'er -- derfor tager den imod en \code{string}
+		\item $*$ betyder antal gange fra 0 til mange gange.
+	\end{itemize}
+
+	\item Timed Finite Automata, TFA:
+	\begin{itemize}
+		\item Der findes forskellige definationer af dette på nettet, men brug dette.
+		\item Tager tid med i beregningerne
+		\item $I$ er en initialiser for clock.
+		\item $\sim \in \{ =, <, >, \leq, geq\}$
+		\item $\neg$ betyder "ikke"
+	\end{itemize}
+
+	\item For hvert nyt stadie er clock'en en anden.
+	\item S1L16: tegnene på linjerne betyder "given that"
+
+\end{itemize}
+
+\subsection{Precision Time Protocol, PTP}:
+Generelt:
+\begin{itemize}
+	\item En teknologi
+	\item Udgivet af IEEE
+	\item Synkroniserer clocks på et netværk
+	\item Serverne kan have forskellige tider, kaldet også "local time".
+	\item Jo tættere på hardware et timestamp er, jo mindre er fejlen
+	\subitem Der findes dedikeret hardware til dette.
+	\item Synkronisering skal ske continuereligt
+	\item PTP kan på mindre end 1 minut nå $\pm$ 50ns præcision. (Udstyr kan synkronisere så godt som hvert sekund!)
+	\item Bruges i LTE/5G netværk
+	\item Der findes en algoritme der afgører, hvilken clock er bedst egnet som master
+	\begin{itemize}
+	 	\item "Stratum" er en værdi for den bedste master clock.
+	 	\item Hvis master clock fejler, vil den næste blive valgt.
+	 \end{itemize} 
+	 \item Der findes et PHY niveau under interrupt niveau, som modtager RX og sender TX.
+\end{itemize}
+
+Synkronisering:
+\begin{itemize}
+	\item L1S32-33
+	\item Man kender Line delay
+	\item Boundary clock (special switch), der vil agere som kopi af (Grand) Master clock (L1S35-37)
+	\item Hver boundary switch har et delay, som den forsøger at eliminere selv.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

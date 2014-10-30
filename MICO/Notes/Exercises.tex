@@ -1,0 +1,42 @@
+\documentclass[oneside, 10pt]{article}
+
+\include{Preamble}
+
+\title{Middleware and Communication -- exercises}
+\author{Rasmus Bækgaard}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+\section{Exercise 1}
+\subsection{Determinism and real-time}
+\begin{enumerate}
+	\item Discuss how deterministic finite automata (DFA) define determinism
+	\item[] 
+	
+	\item Discuss how non-deterministic finite automata (NFA) define non-determinism
+	\item[]
+
+	\item I modsætning til DFA og NFA bruger TFA tiden som faktor.
+	Derudover har TFA ikke et $Q$ med finite state, men $L$ med finite sets of locations (minder dog om). 
+	$L_0$ er i $L$ som start placering og $L_F$ som slutplacering.
+	$C$ er et finite set af clocks og $E$ udregnes med hensyn til de clocks der måtte være i systemet.
+	TFA har en local clock invariant (de små bobler med hensyn til forskellige clocks).
+
+	\item Det er tilladt. Dette skyldes, at $E \in \ldots ( \Sigma \cup \{ \epsilon \}) \ldots$. En empty string kan resultere i, at systemet skifter state uden input (se L1S14) -- non-deterministic.
+
+	\item  Discuss why TFA can be used to model distributed real-time systems.
+	\item[] Man kan kun komme i et state, fordi man har sine clock constraints, $\Phi(C)$
+
+	\item  Discuss the relationship between (non)determinism and dead-line guarantees in real-time systems.
+	\item[] I et deterministisk system er der kun den ene vej, som vil ende i dit mål, men ikke nødvendigvis inden for dead-line. 
+	I et non-deterministisk system kan du splitte dig op i flere veje og ikke nødvendigvis nå de mål overhovedet (og ikke inden for tiden), men det er muligt.
+
+
+
+\end{enumerate}
+
+
+\end{document}

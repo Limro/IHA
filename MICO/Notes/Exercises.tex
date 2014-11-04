@@ -31,12 +31,47 @@
 	\item[] Man kan kun komme i et state, fordi man har sine clock constraints, $\Phi(C)$
 
 	\item  Discuss the relationship between (non)determinism and dead-line guarantees in real-time systems.
-	\item[] I et deterministisk system er der kun den ene vej, som vil ende i dit mål, men ikke nødvendigvis inden for dead-line. 
-	I et non-deterministisk system kan du splitte dig op i flere veje og ikke nødvendigvis nå de mål overhovedet (og ikke inden for tiden), men det er muligt.
-
-
-
+	\item[] I et deterministisk system er der kun den ene vej, som vil ende i dit mål, men ikke garanteret inden for dead-line. 
+	I et non-deterministisk system kan du splitte dig op i flere veje og ikke nødvendigvis nå de mål overhovedet (og ikke inden for tiden), men det er muligt at garantere.
 \end{enumerate}
+
+Precision Time Protocol
+\begin{itemize}
+	\item Discuss whether the Precision Time Protocol (PTP) is deterministic
+	\item[] Ja -- Selve protokollen er, men fordi man kan have asynmetrisk delay (delay frem og tilbage er det samme) og ikke-trådet netværk.
+
+	\item Discuss what a packet-switched network is
+	\item[]  Data i små pakker, der har en adresse på sig. 
+	På denne måde kan flere bruge samme linje og kun se det, der er relevant for en selv.
+
+	\item  Discuss to what extent the PTP is tailored for packet-switched networks only
+	\item[] Master sender 2 pakker, som alle kan modtage. 
+	PTP synkroniserer på Slave-side og mange slaves kan modtage de 2 pakker (kaldet "multi cast").
+
+	\item Discuss whether the PTP works on Ethernet only
+	\item[] It works on all packet-switched networks.
+
+	\item Discuss how the PTP can support real-time operations on Ethernet
+	\item[] Kun operationer, som siger "gør noget klokken $X$" er realtid.
+	Pakker ankommer ikke i realtid. 
+
+	\item Discuss the offset correction and delay correction in the PTP
+	\item[] Offset: Forskellen mellem Master-tid og Slave-tid.
+	\item[] Delay: Korrektion med Slave request og respond
+
+	\item Discuss whether it is fair to assume a symmetric line delay in the delay correction
+	\item[]
+
+	\item Discuss how the PTP can play a role in Long Term Evolution (LTE) and LTE Advanced
+	\item Sketch and discuss a DFA, NFA or TFA that models the PTP
+\end{itemize}
+
+\section{Article}
+\begin{itemize}
+	\item Har forfatterne lavet andre, citerede artikler?
+	\item SyncE -- clock går lige igennem PHY-laget.
+	\item Se slides
+\end{itemize}
 
 
 \end{document}

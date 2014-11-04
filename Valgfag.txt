@@ -1,0 +1,13 @@
+Valgfag:
+
+- AUGMENTED REALITY (Q3) - http://kursuskatalog.au.dk/coursecatalog/Course/show/54394/
+
+- DIGITAL KONTROL I EN FYSISK VERDEN (Q3+Q4) - http://kursuskatalog.au.dk/coursecatalog/Course/show/56254/
+
+- Hardware-software Co-design (Q4) - http://kurser.iha.dk/ee-ict-master/tihsc/
+
+- ARKITEKTUR OG DESIGN AF EMBEDDED REALTIDSSYSTEMER (Q3) - http://kursuskatalog.au.dk/coursecatalog/Course/show/47719/
+
+- WIRELESS SENSOR NETWORKS AND ELECTRONICS (Q4) - http://kurser.iha.dk/ee-ict-master/tiwsne/
+
+- WEBTEKNOLOGI (Q4) - http://kursuskatalog.au.dk/coursecatalog/Course/show/54450/

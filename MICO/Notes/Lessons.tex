@@ -12,7 +12,7 @@
 
 \section{Precision Time Protocol}
 
-Determinism:
+\subsection{Determinism}:
 \begin{itemize}
 	\item Synkronisere clocks mellem forskellige enheder.
 	\item Standard protokol, IEEE 1588.
@@ -33,7 +33,7 @@ Determinism:
 	\item Ethernet er ikke deterministic, pga. en protocol med et element, som ikke er deterministic.
 \end{itemize}
 
-Automa:
+\subsection{Automa}
 \begin{itemize}
 	\item Hvis man laver et system med en formel bruger man en model, som checker formlen igenne en model-checker.
 	\item Deterministics finite automaton, DFA, er en en Turing-machine. L1S11
@@ -90,6 +90,60 @@ Synkronisering:
 
 
 
+
+
+\newpage
+\section{Real-time Ethernet}
+
+\subsection{Generelt}
+\begin{itemize}
+	\item Vanilla ethernet er \emph{ikke} deterministisk.
+	\item Det kan dog gøres, med de rigtige værktøjer.
+	\item Motivationen var, at få det rykket ind til firmaer (til ALT).
+	\item Datamængden der sendes er meget lille, responstiden skal være meget lille, men det sker meget ofte, L2S5.
+	\item OSI er en måde som en arkitektur skal/burde være.
+	\item Ethernet kaldes IEEE 802.3 L2S8.
+	\item Pakkerne i en ethernet pakke kaldes et "frame". L2S10
+	\begin{itemize}
+		\item Det man sender ligger i \code{Payload}
+		\item 802.1Q tag \emph{kan} bruges også.
+		\item Resten er noget, som blot skal være der
+	\end{itemize}
+
+	\item Fordelen ved optic: Ingen EMC forstyrelser
+\end{itemize}
+
+\subsection{Single segment}
+\begin{itemize}
+	\item CSMA/CD, Carrier Send Multiple Access / Collision detection
+	\item Deadline gurantees må ikke have collisions!
+	\item Man lytter, til der har været en hvis pause på linjen, L2S18
+	\item Overførelsel sker, som på L2S20-21
+	\begin{itemize}
+		\item Når collision sker, har de 2 linjer en back-off algoritme (Many Faces of Ethernet)
+	\end{itemize}
+\end{itemize}
+
+
+\subsection{Multi segment}
+\begin{itemize}
+	\item Bruger switches, L2S25.
+	\item Store and foward (L2S29) er bedre ved industriel, mens Cut through er bedre ved ingen støj (et hjem).
+	\item Variation i latency er det største problem, L2S30.
+	\item Nagle's algoritme er dårlig for Real-time systemer, da en algoritme gør noget (lettere) ukontrolleret.
+\end{itemize}
+
+\subsection{Single segment real-time}
+
+\begin{itemize}
+	\item Shared medium (Christian gennemgik nogle grafer)
+	\item Når man sender data, fyldes pakken ikke helt, men efterlader lidt i begge ender.
+\end{itemize}
+
+\subsection{Multi segment real-time}
+\begin{itemize}
+	\item EtherNet/IP $\rightarrow$ (Internet Protocol)
+\end{itemize}
 
 
 

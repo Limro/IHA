@@ -11,3 +11,5 @@ Valgfag:
 - WIRELESS SENSOR NETWORKS AND ELECTRONICS (Q4) - http://kurser.iha.dk/ee-ict-master/tiwsne/
 
 - WEBTEKNOLOGI (Q4) - http://kursuskatalog.au.dk/coursecatalog/Course/show/54450/
+
+- R&D - ReactorBox / eValg

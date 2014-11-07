@@ -1,0 +1,62 @@
+%Setup for the 'memoir' package (replace 'article')
+
+%Margin
+\usepackage[left=3cm,right=2cm,top=2.5cm,bottom=2cm]{geometry}
+
+\linespread{1.5}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.8mm}}
+
+%Tekst i fotter
+\usepackage{lastpage} %Finds last page number
+\usepackage{xspace} %Inserts necesary space bestween the page number, the dash and the total pagenumber
+\newcommand{\footerText}{\thepage\xspace /\pageref{LastPage}}
+
+
+% Specific chapter style.
+% See more at: ftp://ftp.tex.ac.uk/tex-archive/info/MemoirChapStyles/MemoirChapStyles.pdf
+\chapterstyle{hangnum}
+
+\nouppercaseheads
+\makepagestyle{mystyle} 
+
+\makeevenhead{mystyle}{}{\\ \leftmark}{} 
+\makeoddhead{mystyle}{}{\\ \leftmark}{} 
+\makeevenfoot{mystyle}{}{\footerText}{} 
+\makeoddfoot{mystyle}{}{\footerText}{} 
+\makeatletter
+\makepsmarks{mystyle}{% Overskriften på sidehovedet
+  \createmark{chapter}{left}{shownumber}{\@chapapp\ }{.\ }} 
+\makeatother
+\makefootrule{mystyle}{\textwidth}{\normalrulethickness}{0.4pt}
+\makeheadrule{mystyle}{\textwidth}{\normalrulethickness}
+
+\makepagestyle{plain}
+\makeevenhead{plain}{}{}{}
+\makeoddhead{plain}{}{}{}
+\makeevenfoot{plain}{}{\footerText}{}
+\makeoddfoot{plain}{}{\footerText}{}
+\makefootrule{plain}{\textwidth}{\normalrulethickness}{0.4pt}
+
+\pagestyle{mystyle}
+
+%%----------------------------------------------------------------------
+%
+%%Redefining chapter style
+%%\renewcommand\chapterheadstart{\vspace*{\beforechapskip}}
+%\renewcommand\chapterheadstart{\vspace*{10pt}}
+%\renewcommand\printchaptername{\chapnamefont }%\@chapapp}
+%\renewcommand\chapternamenum{\space}
+%\renewcommand\printchapternum{\chapnumfont \thechapter}
+%\renewcommand\afterchapternum{\space: }%\par\nobreak\vskip \midchapskip}
+%\renewcommand\printchapternonum{}
+%\renewcommand\printchaptertitle[1]{\chaptitlefont #1}
+\setlength{\beforechapskip}{0pt} 
+\setlength{\afterchapskip}{0pt} 
+%\setlength{\voffset}{0pt} 
+\setlength{\headsep}{25pt}
+%\setlength{\topmargin}{35pt}
+%%\setlength{\headheight}{102pt}
+%\setlength{\textheight}{302pt}
+\renewcommand\afterchaptertitle{\par\nobreak\vskip \afterchapskip}
+%%----------------------------------------------------------------------

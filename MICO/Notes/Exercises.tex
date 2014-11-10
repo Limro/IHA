@@ -74,4 +74,103 @@ Precision Time Protocol
 \end{itemize}
 
 
+
+
+
+
+
+
+
+
+\section{Exercises 2}
+
+\subsection{Single segment Ethernet}
+
+\begin{enumerate}
+	\item  Discuss the cause of non-determinism in single segment Ethernet
+	\item [] Implementationsmetoden svarer til en hub -- et single shared medium, og collission kunne resultere i store forsinkelser (Deraf non-deterministisk).
+
+	\item  Discuss the functioning of CSMA/CD and in particular the Back-Off Algorithm (BOA)
+	\item [] Carrier Send Multiple Access / Collision detection
+	\item [] Giver collissions, hvilket resulterer i Back-Off algoritmen, hvor en forbindelse får et lille delay og prøver igen (og rekursiv med større delay). 
+	Hvis ikke der er sendt noget efter $x$ antal gange vil den stoppe helt med at sende.
+
+	\item  Discuss medium monopolization – and the likelihood thereof – by BOA
+	\item [] Dette er worst-case scenariet for Back-Off algoritmen, hvor én node bliver ved med at sende og andre noder må vige.
+
+	\item  State the expected back-off time in BOA as a function of collisions, i.e. E(c)
+	\item [] $E(c) = r \cdot t_{slot},$ where $r \sim \mathcal{U}[0, \ldots, 2^c-1], t_{slot} = 51.2 \mu s $ at $10 \frac{Mbit}{s} $ eller $ 5.12 \mu s$ at $100 \frac{Mbit}{s}, c \leq 10 $ (L2S21).
+	\item [] $E(c) = \bigg(\sum\limits_{i=0}^c \frac{1}{c+1} \cdot (2^c-1)\bigg) \cdot t_{slot}$
+
+	\item  What is the maximum back-off time when the truncation occurs after c = 10 collisions?
+	\item[] $E(10) = (2^{10} - 1) \cdot t_{slot}$
+
+	\item  Sketch a NFA that models non-determinism in single segment Ethernet
+	\item[] See Figure \ref{fig:NFA}.
+
+\end{enumerate}
+\begin{figure}[hbtp]
+\centering
+\includegraphics[width=0.9 \textwidth]{NFA}
+\caption{NFA for non-determinism in single segment Ethernet}
+\label{fig:NFA}
+\end{figure}
+
+
+
+\subsection{Switched Ethernet}
+\begin{enumerate}
+	\item 1. Discuss the benefits of micro-segmentation
+	\item[]
+	
+	\item 2. What kind of network device offer micro-segmentation capabilities?
+	\item[]
+	
+	\item 3. Discuss the role of CSMA/CD in fully switched (full duplex) Ethernet
+	\item[]
+	
+	\item 4. Why are latency and packet delay variations of concern in switched Ethernet?
+	\item[]
+
+	\item 5. How may latency and packet delay variations influence dead-line guarantees of a real-time system based on Ethernet?
+	\item[]
+	
+	\item 6. How does overflow and overflow prevention in switches impact predictability of worst-case transmission time bounds?
+	\item[]
+	
+	\item 7. Discuss the purpose of the Spanning Tree algorithm
+	\item[]
+	
+\end{enumerate}
+
+\subsection{Real time Ethernet}
+
+\begin{enumerate}
+	\item 1. Discuss the motivation for having Ethernet as a field-bus technology
+	\item[]
+	
+	\item 2. Discuss the relevance of leaving bandwidth for normal asynchronous traffic in real-time Ethernet deployments
+	\item[]
+	
+	\item 3. Discuss the Ethernet Frame structure and how it supports real-time Ethernet methods
+	\item[]
+	
+	\item 4. Discuss the real-time facilitating techniques applied in ProfinetIRT, EtherCAT, Ethernet Powerlink, Sercos III, and EtherNet/IP
+	\item[]
+	
+	\item 5. How is overhead/payload ratio reduced in EtherCat?
+	\item[]
+	
+	\item 6. Why is the Precision Time Protocol important to Ethernet/IP?
+	\item[]
+	
+	\item 7. Discuss the Leaky Bucket algorithm and how it is relevant to real-time Ethernet
+	\item[]
+	
+\end{enumerate}
+	
+
+
+
+
 \end{document}

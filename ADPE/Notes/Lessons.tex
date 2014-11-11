@@ -1,0 +1,81 @@
+\documentclass[oneside, 10pt]{article}
+
+\include{Preamble}
+
+\title{Advanced pervasive computing}
+\author{Rasmus Bækgaard}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Distributed Context Awareness}
+
+Context:
+\begin{itemize}
+	\item Man tænker altid på noget i en hvis context (det kan man træne sig fra).
+	\item Vigtig for den måde mennesker opfatter ting -- bør også være for maskiner.
+	\item Maskiner kan få context gennem sensorer (temperatur, lyd, lys mm.)
+	\item En "feature" er eks. tid (noget man får fra context) eller en masse data, samlet og kun gældende for et bestemt øjeblik.
+	\item De 5 'w' -- What, What, Where, When, Why \textbf{Vigtig for eksamen}.
+	\item Opdel i katagorier
+	\begin{itemize}
+		\item Primær og sekundær
+		\item Location, Identity, Time og Activity
+	\end{itemize}
+	\item Alle enheder skal kunne sende sine fata til ét sted, og her kan data'en blive fortolket. Alle enheder har et stadie de er i. Man kan bruge resoning engine til at afgøre, hvad det alt sammen betyder.
+\end{itemize}
+
+Context Awareness: 
+\begin{itemize}
+	\item Der skal helst være 3 features: \textbf{Vigtig!}
+	\begin{itemize}
+		\item Præsenter information og service til brugeren
+		\item Eksikver automatisk en service
+		\item Tag context af information til senere brug!
+	\end{itemize}
+	\item To kategorier:
+	\begin{itemize}
+		\item Infrastruktur context awareness (eks. smart phone -- kan være besværlige).
+		\item Self-contained (eks. smart phone app -- kan bruge features på en infrastruktur).
+	\end{itemize}
+	\item Context tagging:
+	\begin{itemize}
+		\item Hvis man tager blodtryk -- bevægede man sig og hvor var man mm.
+	\end{itemize}
+\end{itemize}
+
+Context Models:
+\begin{itemize}
+	\item Man laver modeller for at forstå det, validere at det vil virker, finde strukturen mm.
+	\item Attributes:
+	\begin{itemize}
+		\item Kan være et ID,
+		\item En type og en værdi
+		\item En sandsynlighed -- hvad kunne man lave?
+	\end{itemize}
+	\item En projekter kunne være af typen "projektor", type = smart projekter, ID = 2 og har en URL (værdi) = \dots
+	\item Object oriented models:  meget tæt på det kode man normalt skriver
+	\item Logic based: Alt skrive med logik og matematik (meget ITTT)
+	\item Ontology based: Noget fra filosofi om at kategorisere (alt der kan beskrives som en entity) -- meget tæt på domain modeller, men kan også være meget specifikke (eks. hvordan implementeres noget).
+	\item \textbf{Brug ikke AMML med ASET!} -- lav god kode, en webservice og en domain model istedet.
+
+	\item Context reasoning og interpretation
+	\begin{itemize}
+		\item Brug TCP/IP stack for flere enheder der skal kunne kommunikere.
+		\item Hvad betyder det, når \dots
+		\item Man kan ikke reagere på ét event. Men en timeline af event vil betyde noget. \textbf{Medbring figurer fra slide (pie chart og stock chart)}
+	\end{itemize}
+	\begin{itemize}
+		\item Lifecycle
+	\end{itemize}
+\end{itemize}
+
+Enabling tech:
+\begin{itemize}
+	\item Z-Wave, ZigBee, Bluetooth, ENOCEAN
+\end{itemize}
+
+
+\end{document}

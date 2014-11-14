@@ -151,6 +151,66 @@ Synkronisering:
 
 
 
+\newpage
+\section{DDS middleware}
+
+Middleware:
+\begin{itemize}
+	\item Abstraher netværk, transport, HW arkitektur, programming language mm. væk.
+	\item Bruges ved netværks opgaver.
+	\item Kaldes også "plumbing", fordi det forbinder ting -- eg. legacy systemer.
+	\item Der findes forskelige interfaces (sprog) som mna kan bruges til det.
+	\item MW \textbf{skulle} decouple space, time og flow (Om man bruger Pub/Sub eller andet).
+	\item DDS er lavet til Realtime-systems.
+\end{itemize}
+
+Publish/subscriber:
+\begin{itemize}
+	\item Har Content/property, som kan filtrere beskeder.
+	\item Der kan også angives en type som filter.
+	\item De kan tilskrives til mere en ét \texttt{topic}.
+\end{itemize}
+
+DDS intro:
+\begin{itemize}
+	\item QoS parametre siger alt om den data der sendes
+	\begin{itemize}
+	 	\item Hvor meget
+	 	\item Hvor når
+	 	\item Hvor tit
+	 	\item Hvor længe gemmes det
+	 	\item mm.
+	 \end{itemize} 
+
+	 \item Meget skalerbar (men discovery protokollerne er ikke så effiktive).
+	 \item Kan være det, der enabler Internet of Things og Industrial automation
+	 \begin{itemize}
+	 	\item Bluefinn har lavet en ubåd, som bruger dette.
+	 \end{itemize}
+\end{itemize}
+
+DDS mekanismen:
+\begin{itemize}
+	\item DCPS: Data-centric pub-sub er det der vises på L3S36
+	\item 3 metoder at modtage data, L3S40
+	\item Topics: Et navn og en type, hvor navnet er unikt i domainet og typen er data definitionen i et Topic (specificeret med IDL).
+	\item I stedet for flere, ens, topics kan man bruge et key L3S43-44
+	\item Discovery er det, der finde ud af hvem der er med i klubben -- L3S49-52
+	\begin{itemize}
+		\item SDP -- ikke den bedste protokol (her kunne man lave mater thesis, da opskallering giver meget data trafik.)
+	\end{itemize}
+\end{itemize}
+
+QoS:
+\begin{itemize}
+	\item Durability, L3S54
+\end{itemize}
+
+IDL:
+\begin{itemize}
+	\item Fælles sproget (som det hele er skrevet over)
+\end{itemize}
+
 
 
 

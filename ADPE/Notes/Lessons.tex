@@ -78,4 +78,147 @@ Enabling tech:
 \end{itemize}
 
 
+
+
+
+\newpage
+\section{Context Frameworks}
+
+
+Udfordringer:
+\begin{itemize}
+	\item Primært Java -- omskriv til Open Source .NET 
+	\item De kan være meget komplekse og derfor sværre at bruge
+	\item Sikkerhed er der ikke meget af og de er ikke heteorgene (er skrevet i andre sprog)
+	\item Du skal selv skrive context for egne sensorer (hvilket tager lang tid). An
+	\item Begrænset dokumentation og tutorials, da folk laver det til sig selv og kun til lokalnetværk (ikke internettet).
+\end{itemize}
+
+Context toolkit:
+\begin{itemize}
+	\item Widget er et interface, som en app kan tilgå.
+	\item Interpreters er det, der kan omsætte informationen til noget brugbart/læsbart.
+	\item Aggregator er det, der samler oplysninger og smider det vidre til apps
+	\item Service er det, der hele tiden kører og kan holde ting opdateret
+	\item Discover er det, der er rundt omrking, hvad de kan tilbyde og hvordan de bruges.
+	\item \textbf{Tag slide med in om dette.}
+\end{itemize}
+
+Java context-awareness Framework
+\begin{itemize}
+	\item De forskillige \code{GenericFoo} kan arve flere forskellige, konkrete klasser.
+	\item Kombinationer af dem alle gør, at man kan udføre en handling (åben dør for sygeplejeske til ældrehjem).
+	\item \textbf{Medbring slide med JCAF}
+\end{itemize}
+
+
+\section{Intelligent Environment og UbiComp UIs}
+
+Intelligent environments:
+\begin{itemize}
+	\item Så småt en realitet
+	\item De kan være (næsten usynlige), men behøver blot have et smartere interface
+\end{itemize}
+
+Shapes and sizes:
+\begin{itemize}
+	\item Leap (der registrere dine bevægelser), 
+	\item SmartWatch 
+	\item Microsoft Surface
+\end{itemize}
+
+UbiComp UI:
+\begin{itemize}
+	\item Tangible UI -- et bord der kan f.eks. se hvad der ligger på bordet og bruge de ting.
+	\item En overflade, der bliver til input/output display (projekteret billede).
+	\item Ambient  UI -- Lys der blot blinker der en besked eller retter det en anden vej.
+	\item Context-aware UI -- Reagerer på, hvad der sker (eller ikke sker)
+	\item Artificial Reality interface -- Google glass eller gennemsigtig skærm, som kan vise information om det du ser.
+\end{itemize}
+
+
+
+
+\newpage
+\section{Intelligent Environments and Activity Classification}
+
+\begin{itemize}
+	\item Grundet for lidt funding, er der ikke blevet gjort nok på dette område
+	\item Det kræver meget udstyr
+	\item Specielt til plejehjem
+\end{itemize}
+
+
+Smart Homes:
+\begin{itemize}
+	\item Man skal kunne bo uafhængig af andre
+	\item For yngre mennesker ($\leq 50$ år) er dette konfortable problemer (patienner, vaskemaskine, varmeforbrug).
+	\item Se L4S6 for forskellige typer.
+\end{itemize}
+
+
+Smart Spaces:
+\begin{itemize}
+	\item Når bordet eller muren bliver til en skærm
+\end{itemize}
+
+
+User interfaces:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+
+AAL Smart Homes:
+\begin{itemize}
+	\item 
+\end{itemize}
+
+
+Activity of Daily Living, ADL:
+\begin{itemize}
+	\item Det vi gør hver dag for os selv (spiser, sover, tage medicin, arbejder, madlavning\dots)
+	\item Dette er vigtigt, da variation i dette kan være tegn på sygdom af forskellig art.
+	\item Ældre mennesker husker ikke så godt og vil også få svært ved at tage sig af sig selv. Dette kan normalt registreres med hvor meget man sover (hvilket kun kræver én sensor).
+	\item ADL skalaen, L4S11, beskriver hvor meget hjælp man skal have.
+	\item ADL monitoring, L4S12, er de værktøjer der kan bruges. L4S13 beskriver de FW der kan bruges
+	\begin{itemize}
+		\item SPINE, Signal Processing in Node Environment:
+		\item Sensorer man kan tage på (wearable)
+		\item Bruger bluetooth eller 820.15.4
+		\item Der findes en central koordinator
+		\item Lavet i Java, men skulle nok kunne omskrives
+		\item Ny firmware kan blive uploaded, mens man har det aktivt
+		\item "In-node signal processing" giver meget lang batterilevetid.
+		\item Kan også bruges til at spore grises færd (hvornår de skal føde).
+	\end{itemize}
+\end{itemize}
+
+
+IE Challenges:
+\begin{itemize}
+	\item Det er en stor opgave, at træne hvert system til personligt brug i et hjem.
+	\item Batteri er også meget krævende, da de skal skiftes relativt ofte
+	\item Sensorer bliver mindre og billigere -- dette kan gøre det nemmere at lave denne teknologi. Nok standard i alle nye bygninger om 10-15 år.
+	\item Deployment er nok det største problem, da man skal vide, hvad er det man forbinder.
+	\item Sikkerhed er også et problem, da WPS kan tillade konstant-søgende systemer i ens system.
+	\item Hvis man ønsker at sælge ting i HW-stores skal det være meget nemt deployable
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}

@@ -216,4 +216,73 @@ IDL:
 
 
 
+\newpage
+\section{Time-Triggered Systems}
+
+X-by-Wire betyder, at man bruger elektriske ledning istedet for mekaniske/hydraliske. 
+$X$, da der er flere forskellige typer.
+
+Time-triggered:
+\begin{itemize}
+	\item Design time: Noget sker på et bestemt tidspunkt - e.g. 2 værdier læses med et givent mellemrum $T$. L4S4
+	\item Transmission of message er clock'en.
+	\item Task execution: Et handle, der bliver triggered ved læsning af værdien.
+	\item Monitoring of external states: sampling af sensores.
+	\item Kaldes TDMA (Time Division Multiple Access):
+	\begin{itemize}
+		\item Man må kun skrive i en bestemt timeslot
+		\item Hvert slot kan have forskellig timeslots
+		\item L4S5
+	\end{itemize}
+	\item Fault tolerance betyder flere buser at skrive på. Derfor må man ikke have et single point of failure.
+\end{itemize}
+
+Event-triggered:
+\begin{itemize}
+	\item Noget kan sende et event, som systemet reagere på.
+	\item Normalt med event handlers.
+\end{itemize}
+
+SAE Comminication Classes:
+\begin{itemize}
+	\item har ca. 100k ingeniør medlemmer
+	\item L4S11
+\end{itemize}
+
+X-by-Wire:
+\begin{itemize}
+	\item brake-, stee-,  mm.
+	\item Det er meget nemmere at føre en printbane/ledning, end at have hydraliske lednninger til at bremse.
+	\item Hvis man er for tæt på den forankørende bil, kan bilen selv tage over.
+	\item Man kan flytte komponenter - eg. rattet i bilen.
+	\item FTU - fault tolerant unit
+\end{itemize}
+
+
+CAN:
+\begin{itemize}
+	\item Oftes langsommere en 1 Mbit/s.
+\end{itemize}
+
+TTP:
+\begin{itemize}
+	\item A: en nedskallering.
+	\item C: Fuld version -- det der fokuseres på.
+	\item Composability: Udvikelt noder uafhængigt og sæt dem sammen senere.
+	\begin{itemize}
+		\item L4,2S7
+		\item Hvis man har $x$-antal FTU'er forbundet til en bus, er arkitekturen.
+		\item Node er det der designes i én enhed. Disse kan laves af sub-contractors.
+	\end{itemize}
+	\item Man skal altid vide hvad er aktivt og passiv (FT membership service) L4,2S6
+	\item Kan skalere op til 25 Mbit/s
+	\item En Round er en rotation af alle kritiske komponenter.
+	\item Ikke-kritiske komponenter kan tilskrives til eks. hver 3. round. Dette kaldes Cluster round (når der er forskellige rounds)
+	\item Bus guardian: Guard access to the network (intelligent switch), kender det schedule der skal bruge komponentet. Beskytter mod "the babling idiot" -- hvis komponentet bliver ved med at snakke, så snakker den ikke over sig.
+	\item Bedre en en fuardian per node vil være et bus/star, L4,2S14
+
+	\item Dual port ram: Det mellem host og protokol af de enkelte nodes. Den kan, eks., genstarte nodes der ikke svarer længere (watchdog). Den kan også se hvilke notes der virker, hvilke beskeder der sendes frem og tilbage.
+	\item TTP Frame: De beskeder der sendes i et slot.
+\end{itemize}
+
 \end{document}

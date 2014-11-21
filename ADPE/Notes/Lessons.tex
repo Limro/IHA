@@ -10,6 +10,15 @@
 
 \maketitle
 
+Generelt:
+\begin{itemize}
+	\item Gør maskiner så intelligente, at de kan gøre ting for os
+	\item Hvis man har faldedetector kan den ikke selv afgøre om det er et fald (false positive), men flere enheder kan forstå context og undgå falske alarmer.
+	\item Skal køre automatisk - vi vil ikke hele tiden spørge sensorer.
+	\item Man skal ikke bruge lang tid på opsætning -- det skal være out-of-the-box og virkende.
+	\item Hvordan deployer man smart en ny sensor? Helst uden konfiguration.
+\end{itemize}
+
 \section{Distributed Context Awareness}
 
 Context:
@@ -213,7 +222,7 @@ Et system:
 	\item Hvis man så vil tilføje et Fall detetion, så hører Bed- og bathroom sensor måske også til hos en ADL klassificering. Og det skal også styres med Light Control.
 \end{itemize}
 
-Til eksmane:
+Til eksamen:
 \begin{itemize}
 	\item Skriv også, hvad der er på forbindelserne til et system (UML-diagram)
 	\begin{itemize}
@@ -222,6 +231,79 @@ Til eksmane:
 	\item Bring assignment 2 med ind, da den vil forklare en masse ting (service discovery, sensors osv)
 	\item 
 \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\section{Zero configuration and service discovery}
+
+L5S4:
+\begin{itemize}
+	\item Hvordan undgår man opsætning (eller tæt på?) -- zero configuration.
+	\item Find automatisk hardware-enheder: router, printer, telefoner mm.
+	\item Vi skal have autodiscovery.
+	\item Også uden DHCP server (IPv4 Link-Local Addressing)
+	\item I stedet - brug Multicast DNS.
+	\begin{itemize}
+		\item Send data diagram ud, de lever en hvis tid, men det virker i lokale netværk (mellem to maskiner)
+		\item Det er rigtig dårligt for internet\dots
+	\end{itemize}
+
+	\item DNS Server Discovery (DNSSD) skal kunne bruges
+\end{itemize}
+
+Standardization efforts:
+\begin{itemize}
+	\item Alle kan forbinde til en statisk addresse, hvis ikke DHCP-serveren virker.
+	\item Man kan bruge Link-Local uden DHCP (spørg om der er nogen der har en adresse -- hvis ikke er det nu din). Det giver en addresse i stil med \code{169.254.0.0/16}.
+
+	\item UPNP tager ikke så mange porte? som Bonjour.
+\end{itemize}
+
+UPNP:
+\begin{itemize}
+	\item Med en webservice har du mulighed for at lave kontrol af en server (musik mm)
+\end{itemize}
+
+Bonjour:
+\begin{itemize}
+	\item Kræver en DNSDS daemon
+	\item Implementer kun, hvis det skal bruges.
+\end{itemize}
+
+Addressering og naming:
+\begin{itemize}
+	\item I DNS tjekker man pr. punktum. Hvis der ikke er noget netværk findes der noget der hedder "local".
+	\item Dette er link-local.
+	\item Bonjour's daemon snakker gennem Multicast DNS Queries. (mDNSResponder)
+	\item Naming følger S5L9
+	\item Kommunikation er standard TCP/IP til start
+	\item Herefter bruges daemon til kommunikation.
+	\item DNS responder vil forblive det samme, da den kan få en anden IP. IP gemmes also ikke, men DNS responder's navn.
+	\begin{itemize}
+		\item Eksempel på L5S17-20
+		\item Få navn
+		\item Få service instance
+		\item Lav et DNS lookup (ingen DHCP, lav MultiCast)
+		\item Send multicast request og modtag IP
+	\end{itemize}
+
+	\item En direkte forbindelse med kabel giver en local address.
+\end{itemize}
+
+
+
+
+
+
 
 
 

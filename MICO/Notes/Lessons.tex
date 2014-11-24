@@ -285,4 +285,36 @@ TTP:
 	\item TTP Frame: De beskeder der sendes i et slot.
 \end{itemize}
 
+
+\section{FlexRay}
+
+\begin{itemize}
+	\item Er blevet foreslået til biler, da man kan kombinere Timer Trigger (Static) og Event Trigger (dynamic).
+	\item Det bruger X-by-wire.
+\end{itemize}
+
+Context:
+\begin{itemize}
+	\item Mest brugte bus er CAN-bus, 1 Mbit/s
+	\item For FlexRay kan man få 10 Mbit/s
+	\item Noter L4,3S5 -- FlexRay udgør backbone for systemet.
+\end{itemize}
+
+Generelt:
+\begin{itemize}
+	\item 1 channel giver ikke redundancy.
+	\item 2 channels skipper security, men giver dobbelt hastighed.
+\end{itemize}
+
+Communication:
+\begin{itemize}
+	\item Der er clock synkronisation, der laves i intervaller (ala PTP).
+
+	\item BF = buffer (L4S18)
+	\item With/without protocol knowledge = Bus guard
+\end{itemize}
+
+
+
+
 \end{document}

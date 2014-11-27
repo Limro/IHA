@@ -121,6 +121,10 @@ Java context-awareness Framework
 \end{itemize}
 
 
+
+
+
+\newpage
 \section{Intelligent Environment og UbiComp UIs}
 
 Intelligent environments:
@@ -303,6 +307,38 @@ Addressering og naming:
 
 
 
+
+
+\newpage
+\section{Location based services}
+
+\begin{itemize}
+	\item Findes i mobiltelefoner
+	\item "Valuable assets" --  biler, fly, cykler mm.
+	\item Privacy er SUPER VIGTIGT!
+	\item Forskellig præcision til forskellige apps
+	\begin{itemize}
+		\item Biler -- meget
+		\item Generel placering -- ikke så meget
+	\end{itemize}
+
+	\item Langt de fleste apps bruger koordinater. Det gør den i lag -- L5S8.
+	\item Hvis man kender noise, kan de filtreres væk.
+\end{itemize}
+
+Moving average filter:
+\begin{itemize}
+	\item Pludselige forandringer kan fjernes og holde den underlæggende trend.
+	\item Det mest besværlige er at berenge gennemsnittet.
+	\item Window Size -- hvor mange smaples skal der bruges?
+	\item Hvis man forsøger sig med 2D-planlægning, skal man bruge et 2-dimentionelt data array. Man skal blot holde styr på flere dimensioner her.
+	\item Trådløse signal modtages i dBm -- L5S13.
+\end{itemize}
+
+Moving median filtering position data:
+\begin{itemize}
+	\item Medianen (tal i midten efter sortering) vægter ikke tal. Derfor vil gennemsnit af $[1, 3, 100 ]$ og medianen være meget forskellig
+\end{itemize}
 
 
 

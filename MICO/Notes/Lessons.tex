@@ -406,6 +406,45 @@ Forskellen:
 
 
 
+\newpage
+\section{Time Triggered CAN}
+Slides: TT-CAN
+\begin{itemize}
+	\item Der kan laves mere deterministisk netværk med dette
+	\item Kan bruges med andet triggered ethernet
+	\item Alt styres af en Global Clock
+	\begin{itemize}
+		\item Dette gøres med en referencebesked (L5S7)
+		\item Man kan bruge 8 forskellige, med forskellige ID
+		\item Når en sådan node modtages sættes tiden fra referencen
+		\item De har prioritet over alle andre.
+		\item Dette er Level 1 extension for CAN
+		\begin{itemize}
+			\item 1 byte i et normalt frame af 8 -- én har kontrolinformation.
+			\item Den, der sender skal have en TT controller, så den ved hvornår den skal sende fra sin node.
+		\end{itemize}
+
+
+		\item Level 2 extension
+		\begin{itemize}
+			\item Her bliver urene synkroniseret bedre.
+			\item Der bruges 4 bytes på reference beskeden.
+			\item Master sender sin egen tid \textbf{med} i beskeden.
+		\end{itemize}
+	\end{itemize}
+
+	\item Hvert time window kan have forskellig størrelse. (L5S10)
+	\item Hvis noget er korruptet, vil det gå indover det næste frame. Dette skal der gøres noget ved (men hvad, ved jeg ikke -- sende igen senere).
+	\item TDMA = Basic Cycle
+	\item Cluster Cycle = System Matrix
+	\item L5S12 viser, hvornår man kan modtage og sende nodes. Den ved dog, at de kan være forsinket, så de er større end de bør være.
+
+	\item Man kan kombinere hvornår man skal sende data. Den cycle man er i, L5S13, beskrives af reference beskeden i starten.
+
+	\item Det skal selv implementeres eller købes.
+\end{itemize}
+
+
 
 
 

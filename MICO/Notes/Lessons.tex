@@ -317,4 +317,107 @@ Communication:
 
 
 
+
+
+\newpage
+\section{CAN-BUS}
+
+Generelt:
+\begin{itemize}
+	\item Over 50 m bliver hastigheden under 1 Mbit/s
+	\item  Bruges til at sende beskeder på 8 bytes
+	\item Bruges primært i biler og andre industri-setup
+	\item FlexRay er 10 Mbit/s
+	\item TTP er 25 Mbit/s \fxnote{Hvad er dette?}
+	\item Man bruger CAN, fordi det kan distribueres.
+	\item Man skal her starte med at finde ud af, hvilken funktionalitet/hardware skal man bruge, og så lave softwaren dertil.
+\end{itemize}
+
+Udviklings scenarier:
+\begin{itemize}
+	\item Køb noget fra et katalog, der har CAN interface
+	\item Lav noget med et bestemt interface (ud over CAN) som subcontractor
+	\item Lav noget hvor CAN blot bruges internt (proprietary product).
+\end{itemize}
+
+Pros:
+\begin{itemize}
+	\item Billige
+	\item Kan købes seperat
+	\item Meget udbredt
+	\item Nem at forbinde
+	\item Der findes rigtig mange produkter der blot kan købes
+	\item Der er (C)OTS tools
+\end{itemize}
+
+More stuff:
+\begin{itemize}
+	\item Bruger CSMA/CA
+	\begin{itemize}
+		\item Er der trafik? Hvis nej, så kobler man sig på
+		\item Hvis 2 joiner samtidig vil den éne vinde. Her bruges et Arbitration field
+	\end{itemize}
+	\item Det er event driven protokol
+	\item Der findes både CAN 2.0A (11 bit) og CAN 2.0B (29 bit) og begge bruges.
+\end{itemize}
+
+Hvordan det virker:
+\begin{itemize}
+	\item Hver node har et ID, der programmeres ind i noden fra start.
+	\item Jo lavere nummer, jo højere prioritet. Assign evntuelt et span til hver node, så der kan skubbes noget ind imellem.
+	\item CAN 2.0A
+	\begin{itemize}
+		\item L5S17-18
+		\item 
+	\end{itemize}
+\end{itemize}
+
+Error detection:
+\begin{itemize}
+	\item EOF skal være rene 0'er - ellers er der fejl.
+	\item Bit stuffing -- 6 ens bit i træk
+\end{itemize}
+
+Implementering:
+\begin{itemize}
+	\item Ens CAN Controller skal se efter, om beskeder fra det fysiske lag er til denne node
+\end{itemize}
+
+
+\subsection{HigherLayerProtocol}
+L5,2
+
+
+Man kan lave CAN på 3 måder:
+\begin{itemize}
+	\item Uden CAL
+	\item Med CAN Kingdom, hvor man kan lave små grupper
+	\item Med CANopen (i Europa) / DeviceNet (I USA og Asien)
+\end{itemize}
+
+Forskellen:
+\begin{itemize}
+	\item Beskeder over 8 bytes skal flyttes til HLP
+	\item HLP har ikke et API udaf til.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}

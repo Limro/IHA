@@ -9,7 +9,7 @@ mean = mean(data)
 median = median(data)
 e = std(data)*ones(size(x));
 
-%%
+
 
 figure(1)
 plot(x, data, 'r')

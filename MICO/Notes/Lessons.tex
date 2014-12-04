@@ -449,6 +449,28 @@ Slides: TT-CAN
 
 
 
+\newpage
+\section{TT-Ethernet}
+
+Sammen med andre systemer:
+\begin{itemize}
+	\item CAN er Event triggered (1Mbit/s).
+	\item TTCAN -- doh, Time triggered. 
+	\item TTCAN hører sammen med TTCAN.
+	\item TT-Ethernet (100 Mbit/s / 1Gbit/s) er baseret på normalt (switched)Ethernet, FlexRay (10 Mbits/s) og TTP(25 Mbit/s).
+	\item TT-E er det eneste, der kan udvikles til "safety critical" systems.
+	\item TT-E har ikke kabler, kun switches\dots forskel?
+\end{itemize}
+
+Generelt:
+\begin{itemize}
+	\item Man \emph{skal} ikke bygge et safety critical system, men det er godt til det.
+	\item Deterministisk på L6S4 betyder, at man kan fortælle hvornår signalet kommer (inden for en hvis tid -- definer selv).
+	\item Control functions -- enheder der skal synkroniseres
+	\item Diagnostic info -- fejlmeddeleser der skal flyttes rundt
+	\item Multimedia -- music streaming, VOIP
+\end{itemize}
+
 
 
 

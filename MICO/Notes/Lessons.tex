@@ -457,7 +457,7 @@ Sammen med andre systemer:
 	\item CAN er Event triggered (1Mbit/s).
 	\item TTCAN -- doh, Time triggered. 
 	\item TTCAN hører sammen med TTCAN.
-	\item TT-Ethernet (100 Mbit/s / 1Gbit/s) er baseret på normalt (switched)Ethernet, FlexRay (10 Mbits/s) og TTP(25 Mbit/s).
+	\item TT-Ethernet (100 Mbit/s / 1 Gbit/s) er baseret på normalt (switched)Ethernet, FlexRay (10 Mbits/s) og TTP(25 Mbit/s).
 	\item TT-E er det eneste, der kan udvikles til "safety critical" systems.
 	\item TT-E har ikke kabler, kun switches\dots forskel?
 \end{itemize}
@@ -469,6 +469,29 @@ Generelt:
 	\item Control functions -- enheder der skal synkroniseres
 	\item Diagnostic info -- fejlmeddeleser der skal flyttes rundt
 	\item Multimedia -- music streaming, VOIP
+	\item High availability -- Man skal kunne gengive systemet
+	\item L6S10 -- TT Ethnet Controller sørger for, at man ikke behøver en TTP stack. Det klarer den selv
+	\item Fungerer også med normale computere, tilsluttet gennem ethernet kabel
+	\item Switches er der, der kender tiden (Master clock)
+	\item L6S14 -- De blå er tidspunkter, hvor man kan sende sine egne pakker
+	\item Corrupted pakker skal gensendes i standard ethernet. TT-Ethernet bruger cut-through.
+	\item Unprotected betyder, der ikke er en guardian på noden. L6S17-18
+\end{itemize}
+
+Teknisk:
+\begin{itemize}
+	\item CAN: 8 bytes
+	\item[] TTP: 240
+	\item[] FlexRay: 254
+	\item[] TT-Ethernet: 1500-1514.
+	\item L6S22 -- man kan have flere bits, som ikke har membership.
+	\item L6S25 -- Alle beskeder kan identificeres på afsendelse.
+\end{itemize}
+
+Safety Critical L6S27+:
+\begin{itemize}
+	\item L6S28 -- du kan købe switches uden guardians også. Alt andet skal også supportere 2 porte.
+	\item For at synkronisere L6S33 hosts i venstre side, kan man IEEE 1588 dem (PTP)
 \end{itemize}
 
 

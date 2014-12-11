@@ -1,0 +1,83 @@
+MICO exam questions
+________________________________________________-
+
+10-12 minutter.
+De skal have tid til spørgsmål.
+
+Print screenshot eller slides.
+
+1. PTP protocol
+- Main priciple:
+	- Hvornår
+	- problemer den løser
+	- Hvad bruges det til (scenarier)
+	- EN lille tegning med et netværk
+	- Lidt om klok (master/boundary)
+- Fortæl om matmatikken
+- Benyt DDS prototype for at sige - "tadaa - sådan her"
+
+
+
+
+2. Real-time single-segment ethernet
+	1. Definationerne (ikke for lang tid her)
+	2. Hvor er influence på dead-line guratiess
+	3. 
+
+
+
+
+
+3. Multi-segment
+	1. Nævn Simplex, half-full duplex, switched ethernet vs. single seg
+		- Ting der gør det...
+	2. Hvor udregnes det?
+	3. 
+
+
+
+
+4. DDS
+	1. Primært DCPS og de komponenter der er dér
+	2. ...
+	3. Medbring konkret omkring QoS med dealines
+
+
+
+
+
+! Fordel tiden ligeligt på Finn's spørgsmål !
+
+
+
+
+
+
+5. TTA og TTP
+	1. Vinduestørrelse, clusters og rounds
+	3. safety critical og hard realtime perform
+	4. time
+
+
+
+
+6. 
+	1. ...
+	2. Dynamisk del, som kan køres i dynmic-only mode
+	3. ...
+	4. Referer til de andre spøgsmål
+
+
+
+7. CAN og TTCAN
+	1. identifier, collision og hvem der vinder, transmisionshastighed på en wire
+	2. 
+	3. Hvorfor bruge TTCAN mod CAN
+	4. 
+
+
+8. TT-ethernet
+	1. standard = non-critical setup
+	2. Double noder og double bus. 
+	3. 
+	4. 

@@ -424,7 +424,21 @@ Triangulering med ToTal:
 
 \subsection{Kalman filter details}
 
+\begin{itemize}
+	\item Bruger probability density functions, PDF.
+	\item Lav antagelse til $t_0$. Det giver en PDF/Gauss for hvor god en antagelse man har (jo smallere, jo bedre).
+	\item Predict næste position ved $t_1$. Det giver en bredere PDF/Gauss.
+	\item Lav correction for $t_1$,
+	\item Fuse de to overstående for real position, dvs. gang de to Gaussian sammen og få en ny Gauss.
+	\item Gentag de sidste 3 steps.
+\end{itemize}
 
+Formel (L8S22-30):
+\begin{itemize}
+	\item $x$: information om enhed
+	\item $u$: påvirker også $x_k$
+	\item $z$: Vi kan ikke måle noget, der er helt ved siden af.
+\end{itemize}
 
 
 

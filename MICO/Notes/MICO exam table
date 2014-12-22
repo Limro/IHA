@@ -1,0 +1,52 @@
+MICO exam table
+
+Paradigm:		
+RMI: 			Client/server
+DDS: 			Publisher / Subscriber
+TTP/FlexRay:	TDMA / Time Triggered
+CAN: 			Event T
+TT-CAN:			Time T / Event T
+TT-Ethernet:	Time T / Event T
+
+1:1 / 1:M / M:M
+RMI: 			1:1
+DDS: 			M:M (flere publishers og subscribers til SAMME TOPIC)
+TTP/FlexRay:	1:M (En sender kan sende til flere modtagere) (og M:M, da der kan være flere noder på eks. en bremse)
+CAN: 			1:M 
+TT-CAN:			1:M
+TT-Ethernet:	1:M (men Event Trigger delen har 1:1, hvis ønsket)
+
+
+Realtime i soft/hard(deterministic):
+RMI: 			soft
+DDS: 			Med QoS er både soft og hard
+TTP/FlexRay:	Hard
+CAN: 			Soft
+TT-CAN:			Hard (og soft)
+TT-Ethernet:	Hard (of soft - men ikke normalt)
+
+
+Safety critical (ingen enheder går ned, uden der kommer en ny op):
+RMI: 			No
+DDS: 			No, men kan bygges til det.
+TTP/FlexRay:	Yes - lavet til det
+CAN: 			No
+TT-CAN:			No - cut wire og den dør
+TT-Ethernet:	Både og - Double switches og busses og redudante noder
+
+
+Adrsseing the receivers:
+RMI: 			Man skal have addressen af objektet
+DDS: 			Publish to topic
+TTP/FlexRay:	Know time slot
+CAN: 			Baseret på det ID, der sendes ud (11 bit eller 29 bit)
+TT-CAN:			Et timeslot (For TT) eller et ID (for ET, der ikke skal sende noget)
+TT-Ethernet:	Timeslot eller broadcast
+
+Coupling(C)/Decoupled(D) i Spare(S)/Time(T)/Flow(F):
+RMI: 			C: STF
+DDS: 			D: STF
+TTP/FlexRay:	D: SF (sender er F), C: S, ukendt modtager
+CAN: 			Samme
+TT-CAN:			Samme
+TT-Ethernet:	1:M = S-D, 1:1 = S-C, Begge = T-C og modtager magen til oven over.

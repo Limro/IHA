@@ -384,12 +384,45 @@ Triangulering med ToTal:
 	\item "Dead", fordi man bruger tidligere positioner.
 	\item Skal kunne forudsige placeringer.
 	\item Dette var den eneste måde at udregne ens placering på i gamle dage, hvis man ikke havde et fix på noget (land mark).
-	\item 
 \end{itemize}
 
 
 
 
+
+
+
+\newpage
+\section{Kalman estimator}
+
+\subsection{Multisensor data fusion}
+\begin{itemize}
+	\item For at samle forskellige metoder at forudsige punkter fra data, kan de fuses med et Kalman filter.
+	\item Kaldes og multisensor information fusion.
+	\item Der bruges normalt mere end blot én teknik til at beregne en position af en enhed.
+	\item Self-driving cars bruger (højst sandsynligt) dette filter eller et lignende.
+	\item Generelt brug på L8S8.
+	\item Specific brug på L8S12.
+\end{itemize}
+
+
+
+
+\subsection{Kalman filter overview}
+\begin{itemize}
+	\item Det kan filtrere støj væk.
+	\item Alle sensorer har noget støj.
+	\item Giver et bedre resultat, end mean og andre filtre.
+	\item Det prøver at se på den "rigtige sandhed" -- dvs. under alt støjen.
+	\item MMSE (L8S14): minimer mean square error mellem signalet og estimationen.
+	\item Støjen skla dog være normalfordelt, uniformt
+	\item Convergence: Det går lige efter sandheden\dots
+	\item Går på predictict $\leftrightarrow$ correct princippet
+\end{itemize}
+
+
+
+\subsection{Kalman filter details}
 
 
 

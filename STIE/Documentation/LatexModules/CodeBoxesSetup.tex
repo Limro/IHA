@@ -49,22 +49,21 @@
 %Bredde der bruges til indryk
 %Den skal være 6 pt mindre
 \usepackage{calc}
-\newlength{\mywidth}
-\setlength{\mywidth}{1.435\textwidth} % Hvis bredden header ikke virker er dette hvad skal ændres!
 
 
 % Forskellige styles for forskellige kodetyper
 \usepackage{caption}
 \DeclareCaptionFont{white}{\color{white}}
 \DeclareCaptionFormat{listing}%
-{\colorbox[cmyk]{0.43, 0.35, 0.35,0.35}{\parbox{\mywidth}{\hspace{5pt}#1#2#3}}}
+{\colorbox[cmyk]{0.43, 0.35, 0.35,0.35}{\parbox{\textwidth - \marginparsep}{\hspace{5pt}#1#2#3}}}
+
 \captionsetup[lstlisting]
 {
 	format			= listing,
 	labelfont		= white,
 	textfont		= white, 
 	singlelinecheck	= false, 
-	width			= \mywidth,
+	width			= \textwidth - \marginparsep,
 	margin			= 0pt, 
 	font			= {bf,footnotesize}
 }

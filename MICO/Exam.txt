@@ -1,3 +1,42 @@
+
+2: Realtime single-segment ethernet
+- Define briefly (non)determinism via (non)deterministic finite automata
+	- Determinisme: Du ved hvilket stadie du vil være i ved alle udfald
+	- Non-Determinisme: Du kan stå i flere stadier ved samme output
+
+- Explain (non)determinism versus dead-line guarantees in real-time systems
+	- Dealine: Du skal have udført en opgave til en bestemt tid
+	- Garanti, hvis du har determinisme
+	- Måske når du det ved non-determinisme
+	- Deadline kan misses eller aldrig nåes, hvis der bruges:
+		- Flertrådet processor
+		- Globale variabler
+		- Hardware timer
+		- Tilfældige værdier
+		- Lagret værdier på hdd'en
+		- Timing-sensativ
+
+- Explain CSMA/CD, the Back-Off Algorithm, and medium monopolization in relation to
+dead-line guarantees in real-time systems
+	- CSMA/CD: Carrier Sense Multiple Access with Collision Detection
+		- Bruges, da kun ét modul har adgang til mediet adgangen
+		- Send, når ingen andre gør
+		- Alle kan se alt data
+		- Detekter transmision med Network Interface Card (NIC)
+			- Filtrer hvem der skal se hvad
+		- Collision, hvis begge sender på samme tid
+			- Broadcast jam-signal og alle stopper med at sende.
+!			- Hvordan virker denne?
+	- Medium monopolization:
+		- Hvis én node bliver ved med at sende og andre ikke kan komme til
+		- A og B sender og A laver Back-Off
+			- B sender mere og A må holde tilbage endnu
+			- B stopper, men skal så sende mere, og først nu forsøger A, som må holde tilbage.
+	- Svært at bruge CSMA/CD til determinism, pga. Back-Off algoritmen
+	- Tids-kritiske pakker vil måske stå tilbage for ikke-tids-kritiske
+		- Kan undgåes med full duplex, hvor man kan sende begge veje på samme tid.
+
+
 7: 
 CAN bus: (Controller Area Network)
 - CAN A og CAN b 11/29 bits (identifier).
@@ -76,7 +115,7 @@ Pros & Cons:
 			- Bruger Store-and-forward for Best-Effort pakker 
 		- Hvis en ET besked modtages mens TT bliver behandlet, gemmes den og sendes bagefter
 	- Bruger en controller for TT-trafik
-		- Alle controller har fælles tid
+		- Alle controller har fælles tid - PTP, IEEE 1588
 		- Hver har reserveret tid at sende i.
 
 - Safety critical TT-system:
@@ -85,7 +124,7 @@ Pros & Cons:
 		- Har sin egen fault-tolerant clock synk
 		- Kender TT skemaet 
 		- Bestemmer udgående beskeders starttid.
-	- 2 busser til kommunikation
+	- 2 busser pr modul til kommunikation.
 	- Redudant fail tolerant units (host + controller)
 	- Protected kategorier:
 			- Start-up
@@ -97,5 +136,19 @@ Pros & Cons:
 		- TT sendes altid
 
 
+- TTE vs TPP and FlexRay
+	- Når der bruges mange noder
+	- Når der skal sende meget data hurtigt
+	- Når der skal være protection på TE
+	- Når afstande blive store (+50 m)
 
-
+- Pros and Cons:
+	- Pros:
+		- Kan snakke med ikke-TT hosts
+		- Store afstande
+		- Meget hurtigt
+		- Både ET og TT
+		- 
+	- Cons:
+		- Udvikles kun af TTTech 
+		- Helt sikkert dyrt

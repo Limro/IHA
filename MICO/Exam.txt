@@ -57,7 +57,45 @@ Pros & Cons:
 
 8: TT-Ethernet:
 - Principle
-	- Standard = non-critical setup
+	- Time triggered
+	- Mega hurtigt: Gbps
+	- Mange enheder
+	- Deterministisk
+	- Bruges i NASA' Orion rumskib
+	- Kan bruges med standard ethernet controllers
+		- Best-Effeort (standard)
+		- TT: send i skema
+	- Switch:
+		- Standard = non-critical setup
+			- Bruger Store-and-forward paradigm (læs pakke og checksum / drop korruptet pakker).
+		- TT-E'er (critical)
+			- Cut-through paradigm:
+				- Læser kun til type field, før den forwarder
+				- Har et konstant delay før forwarding
+				- Forwarder også corrupted pakker
+			- Bruger Store-and-forward for Best-Effort pakker 
+		- Hvis en ET besked modtages mens TT bliver behandlet, gemmes den og sendes bagefter
+	- Bruger en controller for TT-trafik
+		- Alle controller har fælles tid
+		- Hver har reserveret tid at sende i.
 
-- Safety critical
-	- Double noder og double bus.
+- Safety critical TT-system:
+	- Min. 2 TT-E switche
+	- Guardians for switch/bus protection (ligger rundt om switch)
+		- Har sin egen fault-tolerant clock synk
+		- Kender TT skemaet 
+		- Bestemmer udgående beskeders starttid.
+	- 2 busser til kommunikation
+	- Redudant fail tolerant units (host + controller)
+	- Protected kategorier:
+			- Start-up
+			- Synk
+			- TT beskeden
+		- TDMA scheme
+		- Fixed message length
+		- To redudante channels
+		- TT sendes altid
+
+
+
+

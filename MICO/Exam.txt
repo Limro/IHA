@@ -1,0 +1,63 @@
+7: 
+CAN bus: (Controller Area Network)
+- CAN A og CAN b 11/29 bits (identifier).
+- Moduler, forbundet i et netværk
+- Langsomt over 50 m (<= 1 Mbit/s)
+	- Bitrate (Mbit/s) < 60/Lmax(m)
+- Distribueres nemt - mange leverandører
+- Bruger CSMA/CA (Carrier Sence Multiple Access / Colission Acoidance)
+- Event Triggered
+- Data Link Layer og Physical layer
+	- Data LL: Lav frame, timing og error handling.
+	- Physical: Det der sender.
+- Bruger en Message Identifier som flere kan læse
+- Transporter 8 bytes (send flere beskeder hvsi der er brug for det)
+- Hver node har et programmeret ID
+	- Jo lavere ID, jo højere prioritet
+		- Collisions bruger prioritet (en bitwise arbitration)
+	- Send kun, hvis der ikke er trafik. Eventuelt i et span
+
+
+TT-CAN og Higher Layer Protocol:
+- Kører OGSÅ time triggered
+- Forsøger at undgå latency jitter
+- Vil garantere deterministisk kommunikation
+- 1/4 byte(s) er control - resten er user data
+- Global tid med drift correction
+- Pakker kan sendes i forskellig rækkefølge
+	Behøver ikke være ABC ABC ABC - send som du vil.
+- Arbitrating window: events
+- Exclusive: Periodiske (gentagende)
+- Nemt at videreudvikle for folk der kender CAN
+
+
+Brug af CAN og TTCAN:
+- CAN:
+	- Flere spontanious beskeder end arbitration
+	- Bruges i biler / busser / mariner / textil / factory automation / medical
+- TT-CAN:
+	- Bruges hvor der skal bruges deterministiske signaler
+	- Samlebånd og fremtidig udstyr
+
+
+Pros & Cons:
+- CAN pro:
+	- Bruger ET
+	- Kører asynk
+	- Brugbar til soft RT systemer
+	- Mange µC'er har integreret CAN controller
+	- COTS
+	- Billige
+- CAN con:
+	- Lav hastighed over større afstande
+	- Max 1 Mbit/s
+	- Kun én wire (break, it all fall apart)
+	- Non-deterministik (fix med TTCAN)
+
+
+8: TT-Ethernet:
+- Principle
+	- Standard = non-critical setup
+
+- Safety critical
+	- Double noder og double bus.

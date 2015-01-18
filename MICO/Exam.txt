@@ -3,11 +3,16 @@
 - Define briefly (non)determinism via (non)deterministic finite automata
 	- Determinisme: Du ved hvilket stadie du vil være i ved alle udfald
 	- Non-Determinisme: Du kan stå i flere stadier ved samme output
+		- Figur Slide 12
 
 - Explain (non)determinism versus dead-line guarantees in real-time systems
 	- Dealine: Du skal have udført en opgave til en bestemt tid
+		- Hard: Kritisk at misse (i et fly)
+		- Firm: Det er ikke så godt (car painting bliver dårlig)
+		- Soft: Træls (Skype hakker lidt)
 	- Garanti, hvis du har determinisme
 	- Måske når du det ved non-determinisme
+	- ET er ikke deterministisk
 	- Deadline kan misses eller aldrig nåes, hvis der bruges:
 		- Flertrådet processor
 		- Globale variabler
@@ -20,34 +25,73 @@
 dead-line guarantees in real-time systems
 	- CSMA/CD: Carrier Sense Multiple Access with Collision Detection
 		- Bruges, da kun ét modul har adgang til mediet adgangen
+			- Figur af netværk
 		- Send, når ingen andre gør
 		- Alle kan se alt data
 		- Detekter transmision med Network Interface Card (NIC)
 			- Filtrer hvem der skal se hvad
 		- Collision, hvis begge sender på samme tid
+			- Mål high voltage på medium
 			- Broadcast jam-signal og alle stopper med at sende.
-!			- Hvordan virker denne?
 	- Medium monopolization:
 		- Hvis én node bliver ved med at sende og andre ikke kan komme til
 		- A og B sender og A laver Back-Off
 			- B sender mere og A må holde tilbage endnu
 			- B stopper, men skal så sende mere, og først nu forsøger A, som må holde tilbage.
+			- Backoff efter c \in [1: c_max]
+			 Uniform for [0, ..., 2^c - 1]
 	- Svært at bruge CSMA/CD til determinism, pga. Back-Off algoritmen
 	- Tids-kritiske pakker vil måske stå tilbage for ikke-tids-kritiske
 		- Kan undgåes med full duplex, hvor man kan sende begge veje på samme tid.
 
 
+3: Real-time
+- Micro
+- latency
+	- Store'n forward
+	- Corruption -> latency -> ingen deadlines
+- EtherCat
+
+
+4: DDS
+- Det er middleware, som giver dig QoS filtre og du kan snakke 
+
+5: TTA og TTP
+1:
+- Host app samler data. 
+	- Send til CNI'en
+- TTP controller holder CNI opdateret, modtage og sende beskeder.
+- CNI kan tilgå beskederne
+	- Skal separere host fra kommunikation.
+	- Styrer MEDL
+- MEDL har besked om det er ind eller ud besked
+- Guardians: 
+	- Sidder foran hver node
+	- Skriv kun når node skal noget
+	- Forhindrer egen node i Babling Idiot
+- Composability (slide 7)
+	- Independent node dev (Stable), constructive integrate, replication (failt Tolerant)
+	- Udvikel udafhæigt af hinanden
+	- Skal virke i et system
+	- Hvis N-node system og der tilføjes endnu én, skal det hele stadig virke
+	- Skal kunne blive fault tolerant og skal kunne replikeres
+- TTPA er scaled down uden fault tolerance
+- Lav latency, lav delay variation
+- Alle enheder har en clock, der synkroniserer i forhold til tidsplanen (medium der sendes over)
+	- Laves fra MEDL
+		- Se også om de andre lever
+
 7: 
 CAN bus: (Controller Area Network)
-- CAN A og CAN b 11/29 bits (identifier).
+- CAN A og CAN b 11/29 bits (identifier). 2024 frames / 512 mio frames
 - Moduler, forbundet i et netværk
 - Langsomt over 50 m (<= 1 Mbit/s)
 	- Bitrate (Mbit/s) < 60/Lmax(m)
 - Distribueres nemt - mange leverandører
-- Bruger CSMA/CA (Carrier Sence Multiple Access / Colission Acoidance)
+- Bruger CSMA/CA (Carrier Sence Multiple Access / Colission Avoidance)
 - Event Triggered
 - Data Link Layer og Physical layer
-	- Data LL: Lav frame, timing og error handling.
+	- Data LL: Lav frame, timing og error handling, tranfer, request
 	- Physical: Det der sender.
 - Bruger en Message Identifier som flere kan læse
 - Transporter 8 bytes (send flere beskeder hvsi der er brug for det)
@@ -100,12 +144,14 @@ Pros & Cons:
 	- Mega hurtigt: Gbps
 	- Mange enheder
 	- Deterministisk
+		- Har QoS
 	- Bruges i NASA' Orion rumskib
+	- Payoad: 1500 bytes
 	- Kan bruges med standard ethernet controllers
-		- Best-Effeort (standard)
-		- TT: send i skema
+		- Best-Effort (standard)
+		- TT: send i slots / skema
 	- Switch:
-		- Standard = non-critical setup
+		- Standard = non-critical setup (BE)
 			- Bruger Store-and-forward paradigm (læs pakke og checksum / drop korruptet pakker).
 		- TT-E'er (critical)
 			- Cut-through paradigm:
@@ -120,6 +166,7 @@ Pros & Cons:
 
 - Safety critical TT-system:
 	- Min. 2 TT-E switche
+	- Safety critical Controllers (2 porte ud)
 	- Guardians for switch/bus protection (ligger rundt om switch)
 		- Har sin egen fault-tolerant clock synk
 		- Kender TT skemaet 
@@ -139,7 +186,6 @@ Pros & Cons:
 - TTE vs TPP and FlexRay
 	- Når der bruges mange noder
 	- Når der skal sende meget data hurtigt
-	- Når der skal være protection på TE
 	- Når afstande blive store (+50 m)
 
 - Pros and Cons:
@@ -147,8 +193,8 @@ Pros & Cons:
 		- Kan snakke med ikke-TT hosts
 		- Store afstande
 		- Meget hurtigt
-		- Både ET og TT
-		- 
+		- Både ET, TT, std. ethernet
+		- PTP, IEEE 1588
 	- Cons:
 		- Udvikles kun af TTTech 
 		- Helt sikkert dyrt

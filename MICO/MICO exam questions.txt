@@ -11,7 +11,7 @@ Print screenshot eller slides.
 	- Hvornår
 	- problemer den løser
 	- Hvad bruges det til (scenarier)
-	- EN lille tegning med et netværk
+	- En lille tegning med et netværk
 	- Lidt om klok (master/boundary)
 - Fortæl om matmatikken
 - Benyt DDS prototype for at sige - "tadaa - sådan her"
@@ -72,7 +72,7 @@ Print screenshot eller slides.
 7. CAN og TTCAN
 	1. identifier, collision og hvem der vinder, transmisionshastighed på en wire
 	2. 
-	3. Hvorfor bruge TTCAN mod CAN
+	3. Hvorfor bruge TTCAN med CAN
 	4. 
 
 

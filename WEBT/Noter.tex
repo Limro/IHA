@@ -1,0 +1,66 @@
+HTTP protokol:
+- Send request, forvent en URL og få response i form af HTML
+- Ligger i Applikationslaget (på transport -- TCP/UDP, på internet -- IP, på netværk -- Ethernet)
+	- IP, Internet protocol
+		- Pakker til IP, som sende imod (men ikke checker om det når frem til) en adresse
+	- TCP, Transmission Control Protocol
+		- Bygger oven på IP
+		- Streams er en abstraktion
+			- Luk den når du er færdig
+		- Sørger for ,at data kommer frem
+		- Socket, endestation for alt dette
+			- Har en IP og et portnummer
+	- HTTP
+		- Bygger oven på TCP
+		- Send forspørgelse og få svar
+		- Clear readable text:
+			Metoden (GET/POST) + path + version
+			(Headerlines): 
+				- Nøgle med værdi (forventer google.com) pga flere websider pr server
+				- Hvilken agent?
+				- Accepter type svar
+				- Hvilket sprog (i prioritet)
+				- Hvilken encoding forstår man
+			Svar:
+				- Status linje, men returntype (200 OK = her kommer svar)
+				- Timestamp
+				- Hvilken server kom det fra
+				- Mere sluder
+				- Linjeskift
+				- HTML fil (husk, det er en stream), også kaldet response body
+		- Status koder
+			- 2xx: gik godt
+			- 3xx: jo, men se andet sted
+			- 4xx: client har klokket i det
+			- 5xx: Server fejlede
+		- Authentication er indbygget:
+			- Kun IP'er
+			- Lav en form med username/password
+			- Brug Basic Auth (det samme, men server retuernere 401 - hvem er du?)
+				- Næste request til server "krypteres" (ikke rigtig kryptering) så med Basic
+		- Cache control om data må gemmes og hvor længe
+		- Persistent connection kan genbruges
+		- Man kan ikke vide, at det er den samme der laver to requests
+		- Cookies er en udvidelse af HTTP protokollen med MEGET lidt data
+			- SessionID mm.
+				- Set-Cookie: ...
+		- Nul sikkerhed
+			- Andre kan ikke læse og ændre i data med SSL/TLS
+				- Secure Socket Layer og Transport Layer Security (nyere)
+				- Ligger sig imellem HTTP og TCP ved at skrice https://...
+			- Auth, hvem er i den anden ende
+			- 
+
+
+
+
+XML:
+- SImple typer er en beskrivelse i XML skema med unicode strings
+- Well formed: Start og slut elementer på det hele
+- Valid: Overholder en skema-beskrivelse
+
+
+JDOM:
+- Modelering af XML
+- Ændrer java-objekter ændrer på XML-filen
+- JDOM har well-formed XML når man arbejder med det

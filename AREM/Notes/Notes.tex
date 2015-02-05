@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\include{Preamble}
+
+\begin{document}
+
+\section{Lektion 1 -- tirsdag}
+
+\begin{itemize}
+	\item Husk, hvis deadline ikke nåes, så fejler systemet.
+	\item[] Eksempel nævnt: Pacemaker.
+	\item Slide AREAM1-Basic, page 9 -- vigtig.
+	\item Slide AREAM1-Basic, page 10: en periode er fra start til start.
+	\item Slide AREAM1-Basic, page 13: Det er worst case scenariet - alle if-else.
+	\item Burst events (slide 16), er det værste, fordi de kommer så tæt på hinanden.
+	\item Hvis du laver flags, skal du have state machine!
+	\item UML kan give nogle meget advanceret state machines.
+	\item Preemptive (slide 18) kan give deadlocks!
+\end{itemize}
+
+
+
+\section{Lektion 2 -- fredag}
+
+Hvorfor have arkitektur:
+\begin{itemize}
+	\item Scalability.
+	\item Maintainability.
+	\item Reliability.
+	\item Reducerer tid det tager at udvikle medium+ systemer.
+	\item Arktiktur for systemer bruge SYSML (og ikke UML).
+	\item Lav arkitektur langt tid før påbegyndelse af implementering -- Husk Kamstrup
+\end{itemize}
+
+Generelt:
+\begin{itemize}
+	\item Arkitektur giver automatisk visse features:
+	\begin{itemize}
+		\item Enkapsling
+		\item Overblik
+	\end{itemize}
+	\item Frameworks vælges næsten ud fra arkitekturen
+	\item Ved brug af CAN-bus, kommer mange $\mu$-controllers med et CAN-bus interface.
+	\item Brug flere $\mu$-C'er til input fra bruger/andet udstyr og til signal processering.
+	\begin{itemize}
+		\item I FPGA'er bruges gerne soft cores sammen med digital hardware. 
+		\item FPGA'er er dyre, men ikke i forhold til meget udstyr. De kan dog også bruges som udvikling, da hardwaren kan programmeres.
+	\end{itemize}
+
+	\item Der er forskellige niveauer / levels, som arktekturen bevæger sig på (Slide 19 -- ArkitektureUML)
+
+
+	\item Forskellige mmensker er interesseret i forskellige Views i `4+1'-modellen.
+\end{itemize}
+
+
+\section{Lektion 3 -- tirsdag}
+
+State machine
+\begin{itemize}
+	\item For klasser og State Machines, STM, er der et 1 - 0..1 forhold.
+	\item Hver STM har et State diagram (/State chart)
+	\item Hver STM kan have flere diagrams (1 - 1..*)
+	\item Mealy Machine: Output baseret på input og nuværende stadie.
+	\item Moore Machine: Output baseres på nuværende stadie.
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

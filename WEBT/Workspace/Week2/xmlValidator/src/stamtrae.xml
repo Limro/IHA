@@ -1,0 +1,77 @@
+<person name="John Doe" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="stamtrae.xsd">
+	<!-- <uncle></uncle> -->
+
+  <father>
+    <person name="John Doe's father">
+      <father>
+        <person name="John Doe's father's father">
+          <father>
+            <person name="John Doe's father's father's father">
+              <father/>
+              <mother/>
+            </person>
+          </father>
+          <mother>
+            <person name="John Doe's father's father's mother">
+              <father/>
+              <mother/>
+            </person>
+          </mother>
+        </person>
+      </father>
+      <mother>
+        <person name="John Doe's father's mother">
+          <father>
+            <person name="John Doe's father's mother's father">
+              <father/>
+              <mother/>
+            </person>
+          </father>
+          <mother>
+            <person name="John Doe's father's mother's mother">
+              <father/>
+              <mother/>
+            </person>
+          </mother>
+        </person>
+      </mother>
+    </person>
+  </father>
+  <mother>
+    <person name="John Doe's mother">
+      <father>
+        <person name="John Doe's mother's father">
+          <father>
+            <person name="John Doe's mother's father's father">
+              <father/>
+              <mother/>
+            </person>
+          </father>
+          <mother>
+            <person name="John Doe's mother's father's mother">
+              <father/>
+              <mother/>
+            </person>
+          </mother>
+        </person>
+      </father>
+      <mother>
+        <person name="John Doe's mother's mother">
+          <father>
+            <person name="John Doe's mother's mother's father">
+              <father/>
+              <mother/>
+            </person>
+          </father>
+          <mother>
+            <person name="John Doe's mother's mother's mother">
+              <father/>
+              <mother/>
+            </person>
+          </mother>
+        </person>
+      </mother>
+    </person>
+  </mother>
+</person>
+

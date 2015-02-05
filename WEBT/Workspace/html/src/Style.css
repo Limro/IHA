@@ -1,0 +1,25 @@
+body {
+	background-color: #ffffff;
+}
+
+h1 {
+	color:red;
+	font-style: italic; 
+}
+
+p.Announcer {
+	background-color: red; 
+}
+
+img {
+	width: 50%; 
+	height: 50%;
+}
+
+tr.Header {
+	font-weight: bold;
+}
+
+td {
+   border: 1px solid black;
+}

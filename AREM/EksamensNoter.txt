@@ -1,0 +1,126 @@
+Questions:
+
+Q1:
+	- Hvis slide 48.
+	- Forskellige modeller:
+		- 4 + 1:
+			- Logical: Classes, interface, packages
+			- Implementation: Layers, files, components
+			- Process: Tasks, processors, tråde
+			- Deployment: Hvordan hænger netværket sammen
+
+		- Douglass - BPD's Five views
+			- Deployment: det samme som 4+1
+			- Concurrency & Resource: Det samme som 
+			- Safety & Reliability: Viser hvad der validere hvad og hvorfor det er sikkert
+			- 
+
+	- Different views fordi:
+		- Use Case: 			Kunden
+		- Deployment: 		Kunden, Project manager
+		- Process: 				Project manager
+		- Implementation: Project manager, Udviklere
+		- Logical: 				Udviklere
+
+	- Et view er en dokumentation for sit arbejde
+
+	- Slide 54 på A.A.UML
+
+
+
+Q2:
+	- Pipes & filters er en style:
+		- Pipe sender data
+			- FIFO kø, Pub/Sub, Observer pattern
+		- Filters processerer det
+			- 
+
+	- Pipes & filters: Continuous (Process control)
+	- Event-based: Discret
+		- Slide 12.
+			- Strategy: Interface kan udskifte implementation på run-time
+			- Observer: Kan fortælle andre, at nu er der ny data (hvis de subscriber)
+			- State: Kør hurtig eller langsom
+			- 
+
+	- Two part:
+		- Event-based: Discret
+		- Continous 
+	- Brug: 
+		- 
+		- Tråde: (brug slide 17, ASATPM)
+			- Continuerlige: Læs input, beregn, skriv output
+			- Diskrete: Skrift mode (realtime/simulation), stop/start continuerlig - Event0
+
+
+
+
+Q3:
+	- Channels og Pipes & Filters 
+		- Meget det samme
+		- Flere channels fra sammen unit til anden unit
+		- Channel pattern kan udstille data, som bliver sendt igennem pipes undervejs.
+
+
+	... Her mangler!
+
+
+
+	Q4: 
+		- Active object
+			- En client skal kunne tilgå en anden tråds metoder, som var det sin egen tråds metoder.
+
+			1. Client kalder bestemt metode på Proxy
+			2. Proxy opretter Future og fortæller Client "her er Future - kald fra den når du skal have resultat"
+			3. Proxy opretter konkret implementation af Method Request
+			4. Proxy fortæller Scheduler, at der er skal udføres en Method Request
+			5. Dette indsættes som opgave for Activation List (AL)
+			6. Scheduler sættes i gang (Dispatch()) og spørger Method Request, om den er klar
+			7. Dette returneres og Scheduler fortæller AL, at denne opgave skal fjernes fra "todo"-listen.
+			8. Scheduler starter Method Request, som starter den reele implementation i Servant
+			9. Når Servant er færdig returneres dette til Future
+			10. Client kan hente resultatet fra Future.
+
+			- En normal tråd starter en funktion, men skal *på et tidspunkt* vente på, at den er færdig.
+
+		- Leader/Follower: Taxi eksempel
+			- Thread-Manager holder styr på alle threads
+
+
+			- LF har en masse tråde, der kan køre synkront
+			- AO har én tråd der kører uafhængigt af clienten
+			- I LF skal clienten fortælle hvad der skal ske
+			- I AO skal clienten blot sige "start" og "giv mig resultat".
+
+
+Q5:
+	- Monitor:
+		- Flere tråde vil gerne til, kun én får lov.
+		- Den første får mutex, laver noget, men laver et wait()
+		- Nu kan andre få mutex og lave deres arbejde og release lock.
+		- Når de er færdige kaldes Monitor Condition's notify(), så den første kan færdiggøre og få sin lås.
+
+		- Scoping locking idiom
+			- Lav en klasse, der i constructure tager lås og i destructure frigiver lås
+			- Dette forhindrer at låsen går tabt.
+			- Guard oprettes med reference til monitor (der tillader Lock() og UnLock())
+
+	- Guarded Call Pattern
+		- To tråde med forskellig prioritet vil stadig blocke hinanden med en mutex
+		- Når tråden med høj prioritet får nøglen standses tråden med lav priritet HELT
+
+
+Q6: 
+	- Priority Inversion Problem:
+		- Prioritet kan få den højeste prioritet (slide 5/41)
+		- Dette er unbounded og kan for evigt være blocket.
+		- Tegn diagram på tavlen med 3 tasks og en resource
+
+	- Priority Inheritance pattern:
+		- Hvis en tråd med low prio har lock og tråd med high prio vil tilgå lock, elevates low til high, så den ikke forstyres.
+
+	- Highest Locker Pattern:
+		- Strategy 1:
+			- Den hæves til "samme resource prio + 1" så snart den begynder at bruge den, ikke efter andre forsøger at tilgå den.
+		- Strategy 2:
+			- Den hæves først +1, når andre forsøger at tilgå samme resource.

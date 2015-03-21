@@ -1,0 +1,13 @@
+W7 slide:
+- Safety:
+	- Accident: Ulykke med mennesker
+	- Losses: Ting der går i stykker
+
+- Alt skal have redundans, ellers er det unsafe
+
+- (9) Man kan have en switch på et system, som frakobler én del og bruger en anden.
+- (10) Man kan ikke designe sig ud af alt, og fejlen kan også komme derfra
+- (fig. 9-2) Open = ingen feedback. Closed = med feedback (monitoring)
+- (fig 9.4) Backup channels bruger blot et andet system, det lukker ikke det eksisterende. Det er gerne helt magen til
+- (25) Heterogene redundans bruger eks. forskellige inputsensorer og forskellige filtre
+- (27) Monitor channels skal kører på seperate µC'er.

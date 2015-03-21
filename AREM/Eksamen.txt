@@ -1,0 +1,94 @@
+Eksamens noter:
+- State mechanism
+	- Meget vigtig og kan modelere næsten alt
+	- Det skulle være muligt modelere det ud fra patterns alene i nogle tools
+		- Rapsohdy og C++ gør det samme i denne sammenhæng
+	- GoF fortæller ikke hvordan man bruger de meget specifikke patterns:
+		- Parallel
+		- Hieracical
+	- Concurrency
+		- RMA
+			- Brug en reel teknik (RMS) til at analysere dit system for, hvor vigtige de enkelte processor skal være
+			- Brug Sporadic Server
+		- Resource Patterns
+			- Priority inversion problem (inheritance, locker...)
+			- Use mutex to protect resources
+		- Active Object
+		- Leader Follower (pool of threads)
+		- Half Sync/Half Async
+- Memory Pattern
+	- Man kan ikke blot kode C#/Java stil. Der skal rydes op!
+
+- Architecture style
+	- Pipes and filters
+
+- Architectural patterns
+- Design patterns
+	- GoF
+		- State
+		- Singleton
+		- Command (kombinere med state)
+			- Husk memory pattern her!
+		- Strategy
+		- (Template)
+	- Idioms
+		- Counted pointer pattern
+
+
+Brug white board / 1-2 slides / medbring papir
+Q1: Architecture views (W1)
+	- 4+1
+	- Nokia model
+	- Hofmeister
+	- Douglass
+	- Why several views
+		- Each has its own stakeholders (proj manager, ...)
+
+	- Gå igennem de forskellige: hvad tilføjer de og til hvor?
+	- En måde at dokumentere sit arbejde på
+
+Q2: Architecture styles + Two part model (W2)
+	- Pipes and filters
+
+	- Discrete / continuos level
+	- Threads
+	- Hvor er main state machine
+
+Q3: Patterns (W3)
+	- ...
+
+	- Recursive is GoF pattern *?* med Composite
+
+Q4: Concurrency (W4)
+	- Active Object: Kald sker async med et objekt, hvor man tager en tråd fra en kø
+	- Altså et command pattern
+
+	- ...
+
+Q5: Resource Patterns (W5)
+	- Guard mutex lock
+	- Vent i en monitor, uden at blocke
+
+	- Guarded Call: Seperation med Tråd1 og -2, som kan kalde hinanden. Husk at protecte
+	- Snak om dette - Finn er glad for det!
+
+Q6: Priority (W5)
+	- Man itererer en tråds prioritet til den der vil have tråde (eller arver)
+
+	- ...
+
+Q7: RMA (W6)
+	- ...
+
+	- Deadline kan være lig med eller mindre end. Er den så scheduable? Hvis ikke - hvor skal man så tune koden? (Optimer eller hav en længere deadline)
+
+Q8: Memory (W7)
+	- Initier alt først og ikke on-the-fly (ingen command pattern)
+
+	- Man kan oprette på runtime her
+
+Q9: Design (W1-7)
+	- Don't new shit all the time
+
+	- GoF patterns
+

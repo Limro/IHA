@@ -124,3 +124,91 @@ Q6:
 			- Den hæves til "samme resource prio + 1" så snart den begynder at bruge den, ikke efter andre forsøger at tilgå den.
 		- Strategy 2:
 			- Den hæves først +1, når andre forsøger at tilgå samme resource.
+
+
+
+Q7:
+	- RMA (Rate Monotonic Analysis):
+		- Antag at:
+			- Én CPU
+			- Alle tasks er periodisk (kommer igen og igen) og deadline på slutning af perioderne
+			- Context switching time = 0
+			- Ingen data dependencies mellem tasks
+		- RM Algorithm:
+			- Hvis følgende er gældende mødes deadline:
+				- sum(Ci / Ti) <= U(n)		-> Ci = worst case Execution time (WCE)
+				- U(n) = n* (root(2,n)-1) -> Utilization bound
+			- Hvis lavere prioritet kan blocke højere (shared resource:
+				- Btotal = max(Ci/Ti)			-> Blocking time
+				- sum(Ci / Ti) + Btotal <= U(n)
+				- U(n) = n* (root(2,n)-1)
+
+	- Kortere deadline:
+		- Der skal nu også tages højde for arrival time
+		- Slide med formler, måske også en tabel
+
+
+Q8:
+	- Undgå at bruge heap med følgende pattern:
+	- Static Allocation Pattern:
+		- Opret alle objekter ved initialization med constructoren med subclasses
+	
+	- Pool Allocation Pattern
+		- Opret en masse objekter ved init og brug af dem løbende.
+		- Husk at returnere dem til rensning
+
+	- Fixed Sized Buffer Pattern:
+		- Lav nogle bestemte chunk-størrelser af data, som kan skrive på heapen.
+		- Hvis man vil have data på heapen, skal de bruge en chunk
+		- Chunks har en klar opdeling på heapen.
+
+
+Q9: 
+	- Style:
+		- 2 part ()
+			- 3 tråde:
+				- Continuous (modtager input)
+				- Discrete (Har Simulated og RealTimeLoop)
+				- Main 
+				- EmbeededSystemX laver Active Object med scheduler
+
+	- Patterns:
+		- State 
+			- Interface med flere konkrete implementationer
+			- Skift imellem states pga. ændringer
+			- Nogle implementeringer kender hinanden med 'friend' den ene vej og aggregation den anden vej.
+		- Command 
+			- Interface med execute() kommando. 
+			- Bruges i EmbeddedSystemX
+		- Active Object 
+			- Main kalder ind i EmbeddedSystemX
+			- Vi har ingen future, da vi ikke har returværdier
+		- Five layer ()
+			- Abstrakt OS til mutex, tråde mm varierer
+		- Strategy 
+			- Skriv output til log, console... - vælg strategi
+		- Monitor 
+			- Tillader 'wait()' og midlertidig frigivelse af mutex - Conditional.cpp
+			- Kaldes fra SynchronisationQueue
+		- Guarded call 
+			- Smart pointer destruction - Guard.cpp
+		- Singleton 
+			- Alle states - getInstance()
+
+		- State fordele:
+			- Nem at bruge med hierakisk states maskiner, og ned at udvide
+			- Alt logik
+		- State ulemper: 
+			- State giver mange små klasser, da den hele tiden skal kaldes og oprette commands
+
+		- Løsning: 
+			- Brug Smart Pointer til at nedlægge commands
+			- Brug Garbage Collection til at rydde op efter commands
+			- Brug Pool Allocation, så 
+
+
+
+
+
+	- Hierachical 
+		- States med substates - ready() er substate a Operational() - change_State()

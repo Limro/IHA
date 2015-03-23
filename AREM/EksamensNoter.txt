@@ -2,6 +2,8 @@ Questions:
 
 Q1:
 	- Hvis slide 48.
+	- Man har views, da én tegning sjældent beskriver nok.
+		- De samme mennesker forstår heller ikke de samme tegninger.
 	- Forskellige modeller:
 		- 4 + 1:
 			- Logical: Classes, interface, packages
@@ -14,6 +16,14 @@ Q1:
 			- Concurrency & Resource: Det samme som 
 			- Safety & Reliability: Viser hvad der validere hvad og hvorfor det er sikkert
 			- 
+
+	- Iterativ model:
+		- Vælg én use case
+		- OO analyser den og lav model
+		- Brug views til at finde løsninger
+		- Find patterns til implementering
+		- Indarbejd løsning i view model
+		- Opdater model
 
 	- Different views fordi:
 		- Use Case: 			Kunden
@@ -33,42 +43,55 @@ Q2:
 		- Pipe sender data
 			- FIFO kø, Pub/Sub, Observer pattern
 		- Filters processerer det
-			- 
+		- Filters kan udskiftes
+		- Filters kan loop med feedback til andre filtre
 
+	- Alternativ: Batch sequential 
+		- Tager det hele ind, proceser det og giver output
+
+	- Two part, Tråde: (brug slide 17, ASATPM):
+		- Event-based: Discret
+			- Skift mode (realtime/simulation), stop/start continuerlig - Event
+		- Continous
+			- Læs input, beregn, skriv output
+		
 	- Pipes & filters: Continuous (Process control)
 	- Event-based: Discret
 		- Slide 12.
 			- Strategy: Interface kan udskifte implementation på run-time
 			- Observer: Kan fortælle andre, at nu er der ny data (hvis de subscriber)
 			- State: Kør hurtig eller langsom
-			- 
-
-	- Two part:
-		- Event-based: Discret
-		- Continous 
-	- Brug: 
-		- 
-		- Tråde: (brug slide 17, ASATPM)
-			- Continuerlige: Læs input, beregn, skriv output
-			- Diskrete: Skrift mode (realtime/simulation), stop/start continuerlig - Event0
 
 
 
 
 Q3:
 	- Channels og Pipes & Filters 
+			- Slide 4
 		- Meget det samme
 		- Flere channels fra sammen unit til anden unit
 		- Channel pattern kan udstille data, som bliver sendt igennem pipes undervejs.
 
+		- Kan give redudans til større systemer 
 
-	... Her mangler!
+
+	- Hierachical Control vs Recursive Containment
+		- Recursive containment: 
+			- Babushka dukke af subsystems
+			- Tag billede på månen
+		- Hierachical control: System med subsystem
+			- Slide 35
+			- Skift opløsning af billede fra månen
+			- Valider hver use case for at validere det overordnede system
+			- Control interface, på hvert led nedefter til configuration
+			- Function interface, der kalder funktioner
 
 
 
 	Q4: 
 		- Active object
-			- En client skal kunne tilgå en anden tråds metoder, som var det sin egen tråds metoder.
+				- Slide 6, ActiveObject
+			- En client kan starte en tråd og tilgå den som var det normale metoder.
 
 			1. Client kalder bestemt metode på Proxy
 			2. Proxy opretter Future og fortæller Client "her er Future - kald fra den når du skal have resultat"
@@ -87,7 +110,7 @@ Q3:
 			- Thread-Manager holder styr på alle threads
 
 
-			- LF har en masse tråde, der kan køre synkront
+			- LF har en masse tråde, der kan køre asynkront
 			- AO har én tråd der kører uafhængigt af clienten
 			- I LF skal clienten fortælle hvad der skal ske
 			- I AO skal clienten blot sige "start" og "giv mig resultat".
@@ -96,18 +119,26 @@ Q3:
 Q5:
 	- Monitor:
 		- Flere tråde vil gerne til, kun én får lov.
-		- Den første får mutex, laver noget, men laver et wait()
+		- Den første får *mutex*, laver noget, men laver et wait()
 		- Nu kan andre få mutex og lave deres arbejde og release lock.
 		- Når de er færdige kaldes Monitor Condition's notify(), så den første kan færdiggøre og få sin lås.
 
+		- Vis slide 8 + 10
+
 		- Scoping locking idiom
+			Skriv funktion til 
 			- Lav en klasse, der i constructure tager lås og i destructure frigiver lås
 			- Dette forhindrer at låsen går tabt.
 			- Guard oprettes med reference til monitor (der tillader Lock() og UnLock())
 
+		- Ulempe:
+			- Svær at neste til anden monitor
+			- Svært at arve
+			- Scalability er begrænset
+
 	- Guarded Call Pattern
 		- To tråde med forskellig prioritet vil stadig blocke hinanden med en mutex
-		- Når tråden med høj prioritet får nøglen standses tråden med lav priritet HELT
+		- Når tråden med høj prioritet får nøglen, standses tråden med lav priritet HELT.
 
 
 Q6: 
@@ -118,8 +149,11 @@ Q6:
 
 	- Priority Inheritance pattern:
 		- Hvis en tråd med low prio har lock og tråd med high prio vil tilgå lock, elevates low til high, så den ikke forstyres.
+		- Tegn 3 tasks og 2 resources
 
 	- Highest Locker Pattern:
+		- Priority ceiling
+			- Højeste prioritet af dem der tilgår samme resource
 		- Strategy 1:
 			- Den hæves til "samme resource prio + 1" så snart den begynder at bruge den, ikke efter andre forsøger at tilgå den.
 		- Strategy 2:
@@ -129,6 +163,7 @@ Q6:
 
 Q7:
 	- RMA (Rate Monotonic Analysis):
+		- Kan forskellige tasks nå at blive scheduleret?
 		- Antag at:
 			- Én CPU
 			- Alle tasks er periodisk (kommer igen og igen) og deadline på slutning af perioderne
@@ -136,7 +171,7 @@ Q7:
 			- Ingen data dependencies mellem tasks
 		- RM Algorithm:
 			- Hvis følgende er gældende mødes deadline:
-				- sum(Ci / Ti) <= U(n)		-> Ci = worst case Execution time (WCE)
+				- sum(Ci / Ti) <= U(n)		-> Ci = Worst Case Execution time (WCE)
 				- U(n) = n* (root(2,n)-1) -> Utilization bound
 			- Hvis lavere prioritet kan blocke højere (shared resource:
 				- Btotal = max(Ci/Ti)			-> Blocking time
@@ -147,13 +182,27 @@ Q7:
 		- Der skal nu også tages højde for arrival time
 		- Slide med formler, måske også en tabel
 
+		- Hn = perioder er højre Di
+		- H1 = perioder lig eller mindre end Di (deadline)
+
 
 Q8:
 	- Undgå at bruge heap med følgende pattern:
+		- Ulemper:
+			- Du skal vide hvor mange objekter du skal bruge
+			- 
+		- Fordele:
+			- Spar tid på oprettelse af objekter
+			- Du slipper for defragtmenting
+
+
 	- Static Allocation Pattern:
 		- Opret alle objekter ved initialization med constructoren med subclasses
+		- Opret mængden af objekter fra start (husk alle sammen)
+
+
 	
-	- Pool Allocation Pattern
+	- Pooled Allocation Pattern
 		- Opret en masse objekter ved init og brug af dem løbende.
 		- Husk at returnere dem til rensning
 
@@ -164,11 +213,12 @@ Q8:
 
 
 Q9: 
+	Diagram
 	- Style:
 		- 2 part ()
 			- 3 tråde:
 				- Continuous (modtager input)
-				- Discrete (Har Simulated og RealTimeLoop)
+				%- Discrete (Har Simulated og RealTimeLoop)
 				- Main 
 				- EmbeededSystemX laver Active Object med scheduler
 
@@ -180,17 +230,24 @@ Q9:
 		- Command 
 			- Interface med execute() kommando. 
 			- Bruges i EmbeddedSystemX
+			- Alle de states der ligger i kanten
 		- Active Object 
 			- Main kalder ind i EmbeddedSystemX
 			- Vi har ingen future, da vi ikke har returværdier
-		- Five layer ()
-			- Abstrakt OS til mutex, tråde mm varierer
+		- Five layer pattern
+			- AbstractOS til mutex, tråde mm varierer
+			- AbstractHW til forskellige platforme
+			- GUI 
+			- Discrete og Continous
 		- Strategy 
+			- Fra RealTimeLoop til SimulatedRealTimeLoop
 			- Skriv output til log, console... - vælg strategi
 		- Monitor 
 			- Tillader 'wait()' og midlertidig frigivelse af mutex - Conditional.cpp
 			- Kaldes fra SynchronisationQueue
 		- Guarded call 
+			- Skift strategy
+			- Ligger i alle states
 			- Smart pointer destruction - Guard.cpp
 		- Singleton 
 			- Alle states - getInstance()
@@ -199,16 +256,14 @@ Q9:
 			- Nem at bruge med hierakisk states maskiner, og ned at udvide
 			- Alt logik
 		- State ulemper: 
-			- State giver mange små klasser, da den hele tiden skal kaldes og oprette commands
-
-		- Løsning: 
-			- Brug Smart Pointer til at nedlægge commands
-			- Brug Garbage Collection til at rydde op efter commands
-			- Brug Pool Allocation, så 
-
-
-
-
+			- Svært at overskue, men med commands er det nemmere.
+			- State giver mange små klasser, da den hele tiden skal kaldes og oprette *commands*, hvilket kan give memory leaks.
+				- Løsning: 
+					- Brug Smart Pointer til at nedlægge commands,
+					- Brug Garbage Collection til at rydde op efter commands,
+					- Brug Pool Allocation, så commands kunne bruges hurtigere.
 
 	- Hierachical 
 		- States med substates - ready() er substate a Operational() - change_State()
+	- Parallel state machine:
+		- Modes er i én slags state, mens simulated/realtime er i sit eget state. De kan derfor skiftes uafhænigt af hinanden.

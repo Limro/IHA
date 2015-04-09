@@ -43,7 +43,7 @@ CAN: 			Baseret på det ID, der sendes ud (11 bit eller 29 bit)
 TT-CAN:			Et timeslot (For TT) eller et ID (for ET, der ikke skal sende noget)
 TT-Ethernet:	Timeslot eller broadcast
 
-Coupling(C)/Decoupled(D) i Spare(S)/Time(T)/Flow(F):
+Coupling(C)/Decoupled(D) i Space(S)/Time(T)/Flow(F):
 RMI: 			C: STF
 DDS: 			D: STF
 TTP/FlexRay:	D: SF (sender er F), C: S, ukendt modtager

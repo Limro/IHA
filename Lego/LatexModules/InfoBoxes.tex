@@ -1,0 +1,14 @@
+\usepackage{tcolorbox}
+
+% -------------------------------------------------
+% Create a box for theorems
+% -------------------------------------------------
+% \begin{theo}[titel] %[title] is optional
+% tekst
+% \end{theo}
+% -------------------------------------------------
+\newenvironment{theo}[1][Vigtigt]{%
+\begin{tcolorbox}[colback=green!5,colframe=green!40!black,title=\textbf{#1}]
+}{%
+\end{tcolorbox}
+}

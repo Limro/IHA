@@ -1,0 +1,144 @@
+Sensor node:
+- 3 karakterisika:
+	- Sensor (få data)
+	- Precesses (behandel det)
+	- Kommuniker til andre
+- 5 store komponenter:
+	- Sensor /aktuator
+	- Controller (Styresystem og apps)
+	- Power supply (alt bruger strøm)
+	- Memory (internal/externaly)
+	- Comm. device (radio ex.)
+- Power problem
+	- Batterier bliver ringere
+	- Genopladlige batterier er ikke lige så gode som "primary batteries"
+	- Man skal kunne beregne, om ens enhed har nok power i sit batteri.
+
+	- Brug enheden smart
+		- Lad den sove og spare strøm
+		- Kombiner med energy harvesting (solar/shake/heat difference)
+
+	- Med sleep kan man spare power. Men det kræver energi og tid at vågne
+
+	- Slide 8 for TelosB Mote
+
+	- Det koster mere at sende en byte, end at processere den byte og sende nogle bits i stedet
+
+- Shunt: (slide 9-10)
+	Power consumption: Pmote(t) = Umote(t) * Imote(t)
+
+- Man skal have billige, low-evergy devices
+	- Radio er meget simplere end at gå på et stort netværk
+	- Power management er alpha omega
+	- Compute > transmit data
+
+_____________________________________________________________________-
+
+- Forskellige sensorer og protokoller
+	- Begrænset energi / proces power / memory
+	- Noderne er utilregnelige
+- Når enheder deplayes har man aldrig en detaljeret network plan, da man ikke vil gøre det på hver enhed.
+- Pga. environment er der fejl og error rate i den trådløse overførsel.
+	- Temperatur i eks. i asfalt
+
+- Optimization goals
+	- QoS ønskes. Find selv ud af, hvilke der ønskes (ikke statisk)
+	- Man skal være energieffiktiv
+		- livstid / pr. sending
+	- Skalerbarhed
+	- Robustness
+
+Design principper:
+	- Distributed organization
+	 	- MAC protokol
+	 	- Network Layer
+	 	- Hvilke Optimization goals hjælper man her?
+	- In-Network
+		...
+	- Adaptive fidelity
+		- Hvilke Optimization goal kan det hjælpe
+	- Data-centricity
+		...
+
+	- Hvilke design principper arbejder sammen?
+
+- MAC
+	- Collision Avoidance
+	- Energy Efficiency
+	- Scalability
+
+	- Energy probs
+		- Collision 
+			- Mest vigtig
+		- Overhearing
+		- Idle listning
+		- protocol overhead
+
+- Contention based MAC
+	- CSMA(/CA)
+	- SMAC
+		- Hvordan laver den sleeping og listning?
+		- Hvordan vedligholdes organiseringen?
+		- Hvorfor lave message passing?
+	- BMAC (basseret på CSMA)
+		- Clear Channnel Assessment (CCA)
+			- Outliy detection
+			- Estimer noise flow
+			...
+		- Low power listening (LPL)
+			- Hvorfor
+			- Pros/Cons
+
+- Link layer
+	- Error control
+		- ARQ (3 slags)
+		- FEC ...
+		- ARQ vs. FEC
+			- Pros/Cons
+			- Hvornår fortrækker man hvad?
+		- Hvad gør pakke størrelse og transmission power
+			- Send i lang tid
+			- Sende langt
+			- Sende med ARQ/FEC
+
+Data centric network
+	- SPIN
+		- One-shot interaction
+
+	- Directed diffusion
+		- Gentages...
+		- En design filosofi
+		- Hvad er Interest?
+		- Hvad er Gradient?
+
+	- Sammenlign dem
+
+- Data aggregation
+	- Hvorfor kan vi og hvorfor vil vi?
+		- Koallasion mellem data
+		- Energy / memory / netværk opbygning (network conjection)
+		- Det kan gøres i 3 lag
+			- Lagre det bedre
+			- Gør i aggregation functions
+			- På den path man sender det
+				- Blot svært
+	- Pros/Cons
+
+- Transport layer
+	- Der skal laves en protokol for wireless sensor network (PCB kan ikke bruges...)
+	- Pump slowly, fetch quickly
+		...
+	- Event-to-sink
+		- Opdater hvor tit der sendes
+		...
+	- Congestion
+		...
+
+- Physical layer
+	- Intet direkte spørgsmål, men kend til RSS, path loss, modulations
+
+
+
+__________________________
+
+Max 5 keywords pr. question

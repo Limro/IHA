@@ -64,7 +64,7 @@ What are the optimization goals of WSN?
 What are the basic design principles in WSN? 
 Give one or two examples which can reflect the design principles.
 
-Optimizations goals:
+	Optimizations goals:
 	- QoS er ønsket. Men det er ikke statiske ønsker - de skal tilpasses hvert system
 		- Eksempel
 	- Man skal være energieffiktiv
@@ -74,7 +74,7 @@ Optimizations goals:
 		- Bliver ved med at virke
 		- Går ikke fysisk i stykker?
 
-Design principles:
+	Design principles:
 	- Distribuerede organization
 		- MAC-protokol (collision avoidance, energy efficeincy, scalability)
 		- Network layer (...)
@@ -335,7 +335,7 @@ What is the difference between PSFQ and ESRT?
 	- Should someone miss a packet, ask for packet in time gap.
 	- Send NACK when sequence number is missing to upstream(s)
 		- Resend if no response
-	ESRT (Event-toSonk Reliability Transport):
+	ESRT (Event-to-Sink Reliability Transport):
 	- Samples are send with frequence of f
 	- This number should be more than expected. The closer the better
 	- When data has been received, a new f is calculated and broadcasted with high power.

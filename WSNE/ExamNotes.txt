@@ -1,0 +1,345 @@
+Q1: 
+Explain the architecture and primary tasks of a WSN node including the main HW sub-components characteristics and energy details. 
+How can the energy consumption be optimized by operation? 
+Give examples.
+
+- Lave/modtage målinger, behandle dem og sende resultatet videre
+	Komponenter:
+	- Sensor / aktuator
+		- Temperatur
+		- Motor
+		- Knapper
+		- Sonar
+		- Fugtighed
+		- Motion (PIR)
+		- Strain
+	- Controller (Styresystem og apps)
+		- Laver alle operationer
+		- Tænder og slukker for sensorer
+	- Power supply (alt bruger strøm)
+		- Batteri
+		- Ekstra tilkobling af energy harvesting kan forlænge levetid
+	- Memory (internal/externaly)
+		- Relativt langsomt at skrive til.
+		- Meget dyrt, energimæssigt, at skrive til.
+	- Comm. device (radio ex.)
+		- CC1101 fra Texas Instrument
+		- Er meget dyr at bruge. Både modtage og sende.
+		- Tager længere tid at sende ét bit, end at processere ét bit.
+- Dyrt og langsomt at sende/modtage. Komprimer data og send dette i stedet.
+	- Rapport siger 35% energibesparelse på 4-bit komprimering og 15% på 2-bit.
+	- Send færre gange. Det at starte senderen/modtageren koster
+		- Send i store pakker
+	- Sleep og tænd på en timer eller duty cycle (1% aktiv, 99% sleep)
+
+
+Q2: 
+Describe the possible energy sources for WSN nodes including energy harvesting. 
+What are the pro and cons of the different sources? 
+Explain how the energy drawn from the energy source(s) can be measured and calculated. 
+Give examples of ways to extend the life-time of a (primary) battery based node.
+
+- Batteries (lithium, alkaline, rechargeable lithium)
+	- Bliver dårligere med tiden
+	- Genopladlige skal recharges oftere
+- Harvest / Scavenging
+	- Solar
+		- God til statisk omgivelser. Svær at flytte. Kræver sol
+	- Heat difference (Pyro electric and Thermo electric)
+		- Deploy in forests and wait for a fire. Then data will come.
+		- Deploy as a buble on the water with a black surface. Sun will heat up the top site while water will cool the bottom side.
+	- Shaking (Piezo electric)
+		- Smart watch.
+		- IoT material on you body.
+	- Waves (hydralic pumps)
+		- Make a weather station at sea.
+	- Wind (turbine)
+		- Local weather stations
+- Brug shunt til at måle tilbageværende power på enheden.
+
+
+
+Q3: 
+What are the optimization goals of WSN? 
+What are the basic design principles in WSN? 
+Give one or two examples which can reflect the design principles.
+
+Optimizations goals:
+	- QoS er ønsket. Men det er ikke statiske ønsker - de skal tilpasses hvert system
+		- Eksempel
+	- Man skal være energieffiktiv
+		- Livstid eller pr. sending
+	- Skalerbarhed
+	- Robustness
+		- Bliver ved med at virke
+		- Går ikke fysisk i stykker?
+
+Design principles:
+	- Distribuerede organization
+		- MAC-protokol (collision avoidance, energy efficeincy, scalability)
+		- Network layer (...)
+		- Optimization goals: skalerbart, Robusthed (nye enheder bryder ikke opsætning med IP)
+	- In-Network processing
+		- Send mindre ved at komprimere
+	- Adaptive fidelity  and accuracy
+		-  The quality (fidelity) of the answer can be traded against battery lifetime, network bandwidth, or number of active sensors.
+		- Big plus on energy efficiency
+	- Data-centricity
+		- Eksempel: skovbrand, og man er ligeglad med hvem, blot data om hvor varmt der er.
+		- Decoupler identiteter
+		- Decoupler tid (brugbart for events)
+		- Burde give bedre performance og energy effeciency.
+		- Skulle skalere bedre, da noderne kun bekymrer sig om naboerne.
+	- Examples:
+		- Forest fire. 
+			- Scalable, Data-centricity, energy efficient
+		- Smart phones on a network
+			- Scalability, QoS (data transfer)
+
+
+
+Q4: 
+What are the main energy issues in WSN MAC? 
+Describe how SMAC works. 
+Explain how SMAC tackles the energy issues in its design.
+	- Collision Avoidance
+	- Energy Efficiency
+	- Scalability
+
+	- Energy probs
+		- Collision 
+			- Mest vigtig
+		- Overhearing
+		- Idle listning
+		- protocol overhead
+
+	Problems:
+	- Mange noder tæt
+	- Change for collision er høj
+	- Du kører på batteri
+	- Noder der tænder og slukker æder meget energi
+	- Begrænset processor kraft
+	- Hvis du sender for stort overhead, spilder du energi
+	- Synkroniseringsproblemer giver ekstra kommnikation
+	- Enheder snakker i munden på hinanden
+		- RTS (Request to send): må jeg sende til dig? (Sender|receiver|packet size)
+		- CTS (Clear to send): jep, kom du bare
+		- DATA ...
+		- (N)ACK (Achknowledgement): Alt modtager
+		- NAV (Network allocationvector): jeg venter lige
+
+	SMAC:
+	- Sover, hvis det ikke er dén der sendes til
+	- Vågner på timer, når der kunne være nogle der ville den noget
+		- Timer er application dependent (men ens for alle noder)
+	- Kræver en SYNC-pakke sendes rundt (Sender node ID | next sleep time).
+	- Lytter på SYNC, RTS eller CTS
+	- Hver node har et table med naboerne
+	- Procedure:
+		- Ingen siger noget
+		- En node vælger random en nabo og sender en SYNC pakke (node hedder Synchronizer)
+		- Hvis en node modtager før eget skema sende, bliver den Follower og broadcaster eget skema ved næste skemalagte tid.
+		- Hvis en node motager efter den har sendt, merger den med hvad den har (eller blot tager bruger hvis der ingen naboer var).
+	- I større netværk, kan nogle noder se andre, som ikke kan se hinaden. De bruger mere strøm.
+
+
+
+
+
+Q5: 
+What are the main energy issues in WSN MAC? 
+Clear channel assessment (CCA) and low power listening (LPL) are the two highlight features of BMAC. 
+Explain how CCA and LPL work in BMAC.
+
+	Problems:
+	- Mange noder tæt
+	- Change for collision er høj
+	- Du kører på batteri
+	- Noder der tænder og slukker æder meget energi
+	- Begrænset processor kraft
+	- Hvis du sender for stort overhead, spilder du energi
+	- Synkroniseringsproblemer giver ekstra kommnikation
+	- Enheder snakker i munden på hinanden
+		- RTS (Request to send): må jeg sende til dig? (Sender|receiver|packet size)
+		- CTS (Clear to send): jep, kom du bare
+		- DATA ...
+		- (N)ACK (Achknowledgement): Alt modtager
+		- NAV (Network allocationvector): jeg venter lige
+
+	Clear channel assessment (CCA) and low power listening (LPL):
+	- Der er altid støj
+	- CCA måler en gennemsnitsstøj og laver et noise-floor
+		- Når dette noise-floor regostreres er der idle
+		- Noise-floor optages lige efter en packet er sendt eller ingen gyldig data er modtaget.
+			- Tag én sample og konstater noise-floor
+			- Lav outlieer detection med RSSI (bedre)
+				- Én sample med mindre energy => clear channel
+				- Fem sample uden mindre energy => busy channel
+	- LPL
+		- Minimer listening cost
+		- Vågn op og lyt
+			- Sov igen efter pakke modtaget
+			- Efter en timer løber ud (uden at modtage data)
+		- Hvis preamble af pakke matcher channel checking period, er der ikke brug synkronisering
+		- Beregn et noise-floor
+		- Preamble tid *skal* være længere end samplingsperioden.
+			- Nu vides hvornår en pakke sendes
+		- Hvis intervallet mellem samples er for småt => energy wated oon idle listening
+		- For stor => energy wasted on transmissions
+
+	- Pros:
+		- AC er optionelt
+		- Ingen message passing
+		- lytter meget kort tid
+		- Har ikke brug for scheduled synchronization
+		- Koden fylder mindre.
+	-Cons:
+		- Har ikke CA
+		- Ingen overhearing avoidance
+		- Meget lange preamble transmissioner
+		
+		
+
+
+
+
+Q6: 
+Explain the basic two approaches for error control in WSNs. 
+What are the pros and cons of each approach? 
+What are the tradeoffs between FEC, ARQ and transmission power?
+
+	- Error control i link layer
+		- ARQ
+			- Header of payload
+			- Checksum (CRC)
+			- Stop-and-wait
+				- Send og vent på svar
+			- Go-back-N:
+				- Send N pakker og hold i buffer
+				- Hvis ikke ACK, sende dem igen
+			- Selective repeat:
+				- Send løbende og modtag pakkenr. der mangler, og send kun dette.
+		- Forward error control (FEC)
+			- Extra redundancy i apkker
+			- Encryption: Reed-solomin codes (RS) og Bise-Chaudhuri-Hocquenghem (BCH)
+				- The higher BCH, the lower signal to noise ratio (SNR)
+		- Error resiliency
+	- Pros:
+		ARQ:
+			- Alt kommer med over.
+			- Der skal ikke bruges meget regnekraft
+			- Hvis der sker fejl er det nemt at få den corruptede pakke igen
+		FEC:
+			- Skal ikke have feedback
+			- Jo flere redudante bit, lo lavere fejlchange
+	- Cons:
+		ARQ:
+			- ACK tit
+			- Timer skal vente på, om besked er modtaget
+		FEC:
+			- Kræver processor kraft
+			- Redudant data sendes (konstant overhead)
+			- Ikke nem at tilpasse til ændrende kanal karakteristik.
+- Transmission power
+	- Jo mere power, jo bedre modtagelse, jo færre gensendelser
+	- Jo mere power, jo kortere levetid
+	- Jo mere power, jo mere interference.
+
+
+
+
+Q7:
+Explain the difference of networking protocols in WSNs comparing with other networks. 
+Explain how directed diffusion work and its difference from SPIN.
+
+	Protocols:
+	- Flooding: Broadcast everything you receive (not seen before)
+	- Gossip: Same as Flooding, but only forward with some probability
+		- Both can give an overlap
+		- Resource blindness
+		- Energy inefficient
+	- Energy-efficient unicast (best path for energy)
+		- What uses minimum power
+		- Which path has the most power
+		- Combining the two
+	- BIP (Broadcast incremental power)
+		- Hvor lidt power skal bruges for at nå ud til alle, inklusiv jumps
+		- Tells how much power is needed for each unit to retrieve data
+Directed Diffusion vs SPIN:
+	SPIN:
+	- Omvendt pub/sub. Når data er tilgængelig spørger de på den
+	- ADV (Data advertisement): du har data til rådighed
+	- REQ: Send et request for data med meta-data
+		- Alle dem, der er interesseret i data fra ADV'en
+	- DATA: Meget større end ADV og REQ
+	- SPIN-PP: Point-to-point
+	- SPIN-EC: -|- + Har et low-energy threshold for, hvornår de aktiveres
+	- SPIN-BC: Forsøger at spare sit eget REQ og venter random på, at andre har sendt det.
+	- SPIN-RL: -|- + reliability. Spørger efter data, hvis ikke det kommer inden for time limit.
+	
+	Directed Diffusion
+	- Publish/subscribe
+		- Virker modsat SPIN. Source sender når den har data.
+		- Interest: user wants
+		- Event: Data ready to send
+		- Gradient: receiving and interest
+		- Hver node her interest cache
+		- Ved modtagelse af interest gemmes gradient mod interest noden (med en duration)
+			- Interest videresendes til neighbors (ala flooding)
+
+
+
+
+
+
+
+Q8: 
+Explain why data aggregation is used in WSN. 
+Explain how data aggregation works and the relation between data aggregation and networking in WSN.
+
+	Why:
+	- Sinks whats much data, not single points
+	- Data fusion can provide better results than raw data points.
+	- You want to save energy by not sending as far and as many times.
+	- Memory and energy efficient (less traffic load)
+	- Scales both sinks and sensors
+	- Requires design
+		- If min/max is returned, a single failed node can be devastating
+
+	How:
+	- Save a lot of data, send it in one go / Store mean and variance and send that
+		- No duplicates, send max or min
+	- Find optimal number of aggregation points (to collect data)
+	- Algorithms:
+		- Opportunistic: aggregate when possible
+		- Center at Nearest Source (CNS): nearst source is aggregation point
+		- Shortest Paths Tree (SPT): send through shortest path
+		- Greedy incremental tree (GIT): recursive select closest source to the tree
+
+	Network in general:
+	- Got data, send data
+	- Will not collect data unless asking for it
+
+
+
+Q9: 
+Why TCP is not suitable for transport layer in WSN? 
+Explain how PSFQ and ESRT work? 
+What is the difference between PSFQ and ESRT?
+	No TCP:
+	- 20 bytes overhead
+	- Require no less (perfect reliability)
+	- Just sends data - doesn't know about redundancy and correlatation or what's inside the packets
+	PSFQ (Pump Slow, Fetch Quickly):
+	- Broadcast packets with big time gap.
+	- Should someone miss a packet, ask for packet in time gap.
+	- Send NACK when sequence number is missing to upstream(s)
+		- Resend if no response
+	ESRT (Event-toSonk Reliability Transport):
+	- Samples are send with frequence of f
+	- This number should be more than expected. The closer the better
+	- When data has been received, a new f is calculated and broadcasted with high power.
+	Difference:
+	- PSFQ broadcast data slow and will get everything send over time
+	- ESRT needs enough data to ensure reliability
+		- Willbroadcast how often Source shall send to get enough data.

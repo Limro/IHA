@@ -1,0 +1,36 @@
+\usepackage[left=2cm,right=2cm,top=2.5cm,bottom=2cm]{geometry}
+
+\linespread{1.5}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.8mm}}
+
+%Tekst i fotter
+\usepackage{lastpage} %Finds last page number
+\usepackage{xspace} %Inserts necesary space bestween the page number, the dash and the total pagenumber
+\newcommand{\footerText}{\thepage\xspace /\pageref{LastPage}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[l]{}
+\fancyhead[c]{TIWSNE report}
+\fancyhead[r]{}
+\fancyfoot[l]{}
+\fancyfoot[c]{\footerText}
+\fancyfoot[r]{}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{15pt}
+
+\fancypagestyle{firststyle}
+{
+	\fancyhf{} % Clear header and footer
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+
+\usepackage{titlesec}
+% http://tex.stackexchange.com/questions/53338/reducing-spacing-after-headings
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}

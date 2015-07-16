@@ -1,0 +1,244 @@
+%!TEX root = Main.tex
+\section{Method}
+
+% Analysis (hvor du skriver om hvordan du vil undersøge behov og udfordringer)
+% Design (hvor du skriver hvilke metoder du vil bruge til at designe)
+% Evaluation (hvor du skriver hvordan du vil teste den resulterende funktionsprototype)
+
+\subsection{Analysis}
+
+The false-positive filter can only be build successfully, if it can be validated as actual functional in a scenario.
+For this study a Shimmer unit\cite{Shimmer} will be used, since this can be programmed to be a fall detector, and a Carebed\fxnote{Reference to CareBed} will be able to detect when a person is in bed.
+But gaining data from hardware is hard to test. 
+Letting software fake the input can therefore be designed to provide this data, allowing seamless integration for the hardware tests when a prototype is ready to be tested.
+
+When the Shimmer is activated and sends an event of a fall, the system shall look for whether the CareBed has send any events of a person being in bed within the last ten seconds.
+Should this scenario be, the probability of the person actually falling be reduced tremendiously, since the person is in their bed, and not fallen on the floor.
+If the Shimmer is actiavted and the CareBed has no records of a person being in the bed, the system shall give a high probability of a fall occurring.
+
+\subsection{Design}
+
+The CAALHP already contains events which are send around in the system; read, modified, and resend.
+But the architecture of them does not suite the needs for this service.
+Therefore a new type of events must be created to let the service know what is actually send.
+The two sensors this project use, the Shimmer and the CareBed, can tell if you are in bed or not, or if you have fallen.
+But the sensor will not be sending the same type of data, and other sensors, which will be added in future projects, will very likely send its own different data as well.
+Therefore a base type is created with two different inherited classes, a basic and an advanced -- both able to send a list with their own data, but also send either a probability of actual occurrence, since the data could indicate whether it is a 'maybe', or send a simple 'did'/'did not' happen.
+The data structure for this can be seen in \codeTitle \ref{lst:BaseEvent}.
+
+\begin{lstlisting}[caption=The BaseEvent class with inherited Basic and Advanced class, style=Code-C++, label=lst:BaseEvent]
+public abstract class BaseEvent : Event
+{
+	public List<int> Data;
+	public dynamic Condition;
+	public string TimeStamp;
+
+	[BsonId] 
+	public Guid Id;
+
+	[BsonConstructor]
+	protected BaseEvent()
+	{
+		CallerProcessId = 0;
+		Data = new List<int>();
+		Condition = 0;
+		TimeStamp = DateTime.Now.ToString();
+		Id = Guid.NewGuid();
+	}
+}
+
+public abstract class Basic : BaseEvent
+{
+	[BsonConstructor]
+	protected Basic() {}
+}
+
+public abstract class Advanced : BaseEvent
+{
+	[BsonConstructor]
+	protected Advanced() {}
+}
+\end{lstlisting}
+
+
+When data is received, stored and ready to be handled, a fall events must be a fall event, and not just an advanced event, since this actually said nothing of what happened.
+Therefore an additional inherited class is created from both the basic and the advance class, to categorize the event as a fall event or as a bed event.
+Now the faker services and the real services will be presented as a specific type, and additional services could easily add their own types of events, as seen in \codeTitle \ref{lst:Events}.
+
+\begin{lstlisting}[caption=Inherited classes of the Basic and Advance class., style=Code-C++, label=lst:Events]
+public abstract class FallEvent : Advanced
+{
+	[BsonConstructor]
+	protected FallEvent() {}
+}
+
+public abstract class BedEvent : Basic
+{
+	[BsonConstructor]
+	protected BedEvent() {}
+}
+
+public class CareBed : BedEvent
+{
+	[BsonConstructor]
+	public CareBed() {}
+}
+
+public class Shimmer : FallEvent
+{
+	[BsonConstructor]
+	public Shimmer() {}
+}
+\end{lstlisting}
+
+All data must to be stored for the system to read.
+If the system will only be able to detect what happens when a Context Client\cite{JCAF} is online, potential safety warning will never be send (or send falsely).
+Storing events in a database as they occur, which can handle all types of events, is crucial for the functionality of the service.
+Because the data type the database must register can vary from event to event, it is important the database can handle different data types in the same collection.
+Since picking the most optimal database was not part of the project, the popular MongoDB\cite{MongoDB-ref} was chosen.
+It did, however, bring its own problems along the way, since it was upgraded from version 1.10 to 2.0 in the beginning of April\cite{MongoDB-update} and the documentation and help on sites as Stackoverflow.com was quite limited.
+However that database was, when finally understood, rather easy to navigate through and test on.
+
+MongoDB requires only that it knows what the type is before it is inserted.
+This can be handled when the service is started, as seen in the method \code{ListenToEvents(\dots)} in \codeTitle \ref{lst:ListenToEvents}.
+When the service is initialized, the developer will specify which events to subscribe to.
+By creating a new instance of all the types wanted in \code{SubscribeToAllEvents} the service will be notified each time an event of the specified type is send through, and will register the type inside MongoDB.
+
+\begin{lstlisting}[caption=Registering classes from the EventAnalyzer, style=Code-C++, label=lst:ListenToEvents]
+public class EventAnalyser : IServiceCAALHPContract, IEventAnalyser
+{
+	public void Initialize(IServiceHostCAALHPContract hostObj, int processId)
+	{
+		Host = hostObj;
+		_processId = processId;
+
+		SubscribeToAllEvents();
+	}
+
+	private void SubscribeToAllEvents()
+	{
+		ListenToEvents(new DummyFall());
+		ListenToEvents(new DummyBed());
+		ListenToEvents(new Shimmer());
+		ListenToEvents(new CareBed());
+
+		RegisterHelper.Instance.AddAffection(typeof(FallEvent), typeof(BedEvent), 10);
+	}
+
+	private void ListenToEvents(BaseEvent type, string assemblyName = "EventTypes")
+	{
+		var genericInfo = EventHelper.GetFullyQualifiedNameSpace(SerializationType.Json,
+			type.GetType(), assemblyName);
+		Host.Host.SubscribeToEvents(genericInfo, _processId);
+
+		RegisterHelper.RegisterNewClass(type);
+	}
+}
+\end{lstlisting}
+
+When registering new events, the developer can specify for the \code{EventAnalyzer}, how much and event will be affected by another event.
+Multiple event can be affected by multiple events.
+Creating a dictionary of all the event that can be affect (\code{key}), where each entry can be another type with affection value (\code{value}) can be expressed as here:
+
+\begin{lstlisting}[style=Code-C++]
+public Dictionary<Type, Dictionary<Type, int>> AffectionTable;
+\end{lstlisting}
+
+This can give a huge tree with affection values as the following example:
+\vspace{-15pt}
+\begin{verbatim}
++ Shimmer
+  - DummyBed = 10
+  - CareBed = 12
++ DummyFall
+  - DummyBed = 23
+  - CareBed = 24
+...
+\end{verbatim}
+\vspace{-10pt}
+Much like a database lookup, but without the need of specifying index, the algorithm that determines false-positives can look for events affecting an incoming event.
+To look for these event the method in \codeTitle \ref{lst:EventsAffectingIt} can be invoked.
+This will look for both concrete types and the super class of these.
+This also mean, that the developers can insure the code will work in the future, when new concrete implementations of events are added to the system.
+Should someone create another type of bed sensor, the system can subscribe to it, as in \codeTitle \ref{lst:ListenToEvents}.
+
+\begin{lstlisting}[caption=Find affection based on input event, style=Code-C++, label=lst:EventsAffectingIt]
+public Dictionary<Type, int> EventsAffectingIt(BaseEvent newEvent)
+{
+	var affects = new Dictionary<Type, int>();
+
+	if (RegisterHelper.Instance.AffectionTable.ContainsKey(newEvent.GetType())
+		|| RegisterHelper.Instance.AffectionTable.ContainsKey(newEvent.GetType().BaseType))
+	{
+		var tmp =
+			RegisterHelper.Instance.AffectionTable.Where(
+				x => x.Key == newEvent.GetType() || x.Key == newEvent.GetType().BaseType);
+
+		foreach (var innerPair in tmp.SelectMany(pair => pair.Value))
+		{
+			affects.Add(innerPair.Key, innerPair.Value);
+		}
+	}
+
+	return affects;
+}
+\end{lstlisting}
+
+When new events are inserted into the MongoDB, the actual analysis of the event starts, as shown in \codeTitle \ref{lst:AnalyseEvents}.
+The first element in the database will be popped (removed), checked for which events affect it, whether any of those have occurred previously within a specified time period (as shown in \codeTitle \ref{lst:Time}), and should any return a affection value, it will be calculated for the probability property, \code{Condition}.
+
+\begin{lstlisting}[caption=Analyzing an event, style=Code-C++, label=lst:AnalyseEvents]
+public void AnalyseEvents()
+{
+	var newEvent = _eventDatabase.PopNewEventDocument();
+	while (newEvent != null)
+	{
+		//<What event, time span to look back>
+		var affectingEvents = EventsAffectingIt(newEvent);
+		foreach (var affectingEvent in affectingEvents)
+		{
+			var eventFound = ReadPreviousEventDB(affectingEvent.Key, affectingEvent.Value);
+
+			newEvent.Condition = ProbabilityAffection(newEvent, eventFound);
+		}
+
+		_eventDatabase.PublishConclusion(newEvent);
+		
+		newEvent = _eventDatabase.PopNewEventDocument();
+	}
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Events within a given time period lookup, style=Code-C++, label=lst:Time]
+public List<BaseEvent> ReadPreviousEventDB(Type typeToLookfor, int timeToLookBack)
+{
+	var res = new List<BaseEvent>();
+	var latestsEvents = _eventDatabase.GetAllLatestSubTypeDocuments(typeToLookfor).Result;
+
+	foreach (var latest in latestsEvents)
+	{
+		if (DateTime.Parse(latest.TimeStamp).AddSeconds(timeToLookBack) > DateTime.Now)
+		{
+			res.Add(latest);
+		}
+	}
+	return res;
+}
+\end{lstlisting}
+
+When all events (that can) have affected a new event, it is published as the latest event event, which means erasing the last event from this sensor and inserting this, and publish this along all events that occurred.
+These two databases should be free for all other monitors and services to use.
+
+\subsection{Evaluation}
+
+To test the software is working as expected, the method of Test-Driven Development, TDD, can be used to test all layers of the application.
+This will also allow better debugging of the service, instead of debugging the entire application.
+
+Output from the tests are no better than what is expected of it.
+To ensure a thorough test of the code, all methods had to fail at least ones. 
+Doing this will ensure at least some of all exceptions that could be thrown, will be caught and handled, and the tests will not get confirmation biased\cite{LessWrongBias}. 
+
+When the tests of the code is completed, testing the application as a whole shall be performed to see, if the expected result with the hardware is found.
+First simple tests to check whether an event is send, then debugged for whether the data send is what is expected, and test that the events comes all the way through the system.
+Next is a series of combinations, of when one unit was activated compared to the other.
+

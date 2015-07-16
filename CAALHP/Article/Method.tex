@@ -1,0 +1,109 @@
+%!TEX root = Main.tex
+\section{Method}
+
+% Analysis (hvor du skriver om hvordan du vil undersøge behov og udfordringer)
+% Design (hvor du skriver hvilke metoder du vil bruge til at designe)
+% Evaluation (hvor du skriver hvordan du vil teste den resulterende funktionsprototype)
+
+\vspace{-10pt}
+\subsection{Analysis}
+\vspace{-15pt}
+
+The false-positive filter can only be build successfully, if it can be validated as actual functional in a scenario.
+For this study a Shimmer unit\cite{Shimmer} will be used, since this can be programmed to be a fall detector, and a Carebed\fxnote{Reference to CareBed} will be able to detect when a person is in bed.
+But gaining data from hardware is hard to test -- software to fake the input can therefore be designed to provide this data, allowing seamless integration for the hardware tests when a prototype is ready to be tested.
+
+When the Shimmer is activate and sends an event of a fall, the system shall look for whether the CareBed has send any events of a person being in bed within the last ten seconds.
+Should this scenario be, the probability of the person actually falling be reduced tremendiously, since the person is in their bed, and not fallen on the floor.
+If the Shimmer is actiavted and the CareBed has no records of a person being in the bed, the system shall give a high probability of a fall occurring.
+
+\vspace{-10pt}
+\subsection{Design}
+\vspace{-15pt}
+
+The CAALHP already contains events which are send around in the system; read, modified, and resend.
+But the architecture of them does not suite the needs for this service.
+Therefore a new type of events must be created to let the service know what is actually send.
+The two sensors this project use, the Shimmer and the CareBed, can tell if you are in bed or not, or if you have fallen.
+But the sensor will not be sending the same type of data, and other sensors, which will be added in future projects, will very likely send its own different data as well.
+Therefore a base type is created with two different inherited classes, a basic and an advanced -- both able to send a list with their own data, but also send either a probability of actual occurrence, since the data could indicate whether it is a 'maybe', or send a simple 'did'/'did not' happen.
+
+When data is received, stored and ready to be handled, a fall events must be a fall event, and not just an advanced event, since this actually said nothing of what happened.
+Therefore an additional inherited class is created from both the basic and the advance class, to categorize the event as a fall event or as a bed event.
+Now the faker services and the real services will be presented as a specific type, and additional services could easily add their own types of events.
+
+All data must to be stored for the system to read.
+If the system will only be able to detect what happens when a Context Client\cite{JCAF} is online, potential safety warning will never be send (or send falsely).
+Storing events in a database as they occur, which can handle all types of events, is crucial for the functionality of the service.
+
+The algorithm that determines false-positives has to know what to look for.
+Adding events to be subscribed on will not be enough, since each event will be acting differently based on which events comes into the system and in which order.
+Therefore an affection list must to be made, where each new event can list, what type of events will affect it, and how much it will be affected by it.
+When all events (that can) have affected a new event, it is published as the latest event event, which means erasing the last event from this sensor and inserting this, and publish this along all events that occurred.
+These two databases should be free for all other monitors and services to use.
+
+\vspace{-10pt}
+\subsection{Evaluation}
+\vspace{-15pt}
+
+To test the software is working as expected, the method of Test-Driven Development, TDD, can be used to test all layers of the application.
+This will also allow better debugging of the service, instead of debugging the entire application.
+
+Output from the tests are no better than what is expected of it.
+To ensure a thorough test of the code, all methods had to fail at least ones. 
+Doing this will ensure at least some of all exceptions that could be thrown, will be caught and handled, and the tests will not get confirmation biased\cite{LessWrongBias}. 
+
+When the tests of the code is completed, testing the application as a whole shall be performed to see, if the expected result with the hardware is found.
+First simple tests to check whether an event is send, then debugged for whether the data send is what is expected, and test that the events comes all the way through the system.
+Next is a series of combinations, of when one unit was activated compared to the other.
+
+
+
+% Designing the service for this required some considerations;
+% First of all the service had to be an add-on to the existing system.
+% This meant it would be running along the existing system, and debugging through a large system one has no knowledge of is not easy.
+% To come around this, the art of Test-Driven Development, TDD, proved very useful, since this allow the system to be tested without starting the rest of the application.
+
+% Thirdly, when testing the system, it became unpractical needing to shake the Shimmer unit or getting in/out the bed to see if events would transmit through the system.
+% This was made easier with a 'faker service'\cite{BB-ShimmerFaker}\cite{BB-CareBedFaker}, which allowed to send the events a real device would send, and send it whenever needed.
+% The faker services would be implemented just as a real service for a driver would be implemented, but instead of reading a webservice or bluetooth connection, it would read a console input with predefined events to send (in/out of bed, high/low probability of fall).
+
+% Fourthly, all data had to be stored for the system to read.
+% If the system would only be able to detect what happen when a Context Client\cite{JCAF} was online, potential safety warning would never be send (or send falsely).
+% Storing events as they occurred in a database, which could handle all types of events, was crucial for the functionality of the service.
+% Therefore a database of some sort was needed to store this in. 
+% Unfortunately, the events stored would never always be of the same type all the way, so SQL-databases was not an option.
+% Since most optimal database was not part of the project, the popular MongoDB\cite{MongoDB-ref} was chosen.
+% It did, however, bring its own problems along the way, since it was upgraded from version 1.10 to 2.0 in the beginning of April\cite{MongoDB-update} and the documentation and help on sites as Stackoverflow.com was quite limited.
+% However that database was, when finally understood, rather easy to navigate through and test on.
+
+% Fifthly, the algorithm that determined false-positives had to know what to look for.
+% Adding the event to events to be subscribed on would not be enough, since each event would be acting differently to based on which events came into the system.
+% Therefore an affection list had to be made, where each new event could list, what type of events would affect it, and how much it would effect it.
+
+% The theory of the project is easy to understand for humans.
+% Seeing someone lying in bed rules out an actual fall, but we only know this because we can see what happens and we know the occurrence of the bed event is true and the fall event is false.
+% But because the CAALHP does not have eyes that looks everywhere, it only knows of the incoming events.
+% Making a proof of concept was therefore crucial for the theory to stick.
+% Each time a new event is detected the service must evaluate whether this event is a false-positive or not.
+
+% The first task is therefore to figure out if the event is something affected by previous events of any sort.
+% And only events listed in the affection list, which also have affections tied to them, will be be further analyzed before being published.
+
+% When a list of all events that affects the new event, each of them are looked for in a database of what occurred previously, and only in the timespan allowed to look for them.
+% Each found event earlier will then affect the probability of the new event actually happening.
+% A simple formula to calculate the probability is shown here, but several alternative algorithms exists to do just that, as will be mentioned in the discussion section.
+% \begin{align*}
+% prob &= oldProb \cdot \dfrac{100 - (condition \cdot plausibilityFactor)}{100} \\
+% prob &= 90 \cdot \dfrac{100 - (50 \cdot 0.5)}{100} = 67.5\%
+% \end{align*}
+% The formula can be explained from inside out:
+% \\
+% First, the \texttt{condition} is how much the developers meant for the new event to be affected by the existing event.
+% Second, the \texttt{plausibleFactor} is a static value (in this case 0.5) that prevents events from zeroing a probability.
+% Third, this value is converted to a percentage of affection, in this example 0.75 and multiplied onto the \texttt{oldProbability}.
+% \\
+% This is done for each event that effects the event.
+
+% When all events have affected the event, it is published as the latest event event, which means erasing the last event from this sensor and inserting this, and publish this along all events that occurred.
+% These two databases are public for all other monitors and services to use.

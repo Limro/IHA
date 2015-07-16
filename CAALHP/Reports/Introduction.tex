@@ -1,0 +1,18 @@
+%!TEX root = Main.tex
+\section{Introduction}
+
+This paper is written based on a Research \& Development project for Aarhus University's Engineering Department.
+The project is attempting to handling the problem of detecting a false-positive from sensors, when they obviously does not happen, but the given sensor will trigger a critical alarm.
+The case taken in the project is based on a patient wearing a fall detector, and a bed with a 'in-bed' detector.
+Should said patient lie down on the bed and somehow trigger the fall detector, both the fall detector and the 'in-bed' detector will send events of occurrence. 
+But lying down in bed is not a fall, so the system should be able to recognize this as a false-positive from the fall detector.
+
+For elder people, one fear of being alone is what will happen if they fall and cannot get up by them self\cite{bell2000characteristics}.
+Some nursing homes and sheltered housings have installed sensors of various forms\cite{Tun-Loft} to detect e.g. a fall in the building and alert personal should a fall occur. 
+But sensors that detects falls can be error-prone\cite{bardram2008context} and provide false-positives, which will trigger events that calls for personal to help.
+This is most unwanted and should be possible to avoid using data from other sensors, to help determine whether the signal is a false-positive or not.
+
+This paper presents the work from a study for a service that will assist in doing just that.
+The aim is to evaluate a feasibility prototype of such a false-positive filter, that will analyze incoming data from various sensors, and thereby determine a probability of false-positive events, based on custom user credentials of what should influent the decision.
+
+It will also present the findings of commercial providers' sensors to nursing homes and sheltered housings, how well they will be able to integrate with the service, and whether they pricewise are recommendable for government installation in health care related projects.

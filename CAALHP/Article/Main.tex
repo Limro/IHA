@@ -1,31 +1,36 @@
-\documentclass[jou]{apa6}
+\documentclass[jou, noextraspace]{apa6}
 
 \input{Preamble}
 
+
 %BibLatex
-\usepackage[style=ieee, sortcites=true, sorting=nyt, backend=biber]{biblatex} 
+\usepackage[style=ieee, sortcites=false, backend=biber, block=ragged]{biblatex} 
 \DeclareLanguageMapping{american}{american-ieee} %BibLatex mapping
 \addbibresource{References.bib}
 
-\title{False-positive filter in the CAAALHP}
-\shorttitle{}
+\bibsetup{
+	\setcounter{abbrvpenalty}{0}
+	\setcounter{highnamepenalty}{0}
+	\setcounter{lownamepenalty}{0}
+}
+
+% \usepackage{breakcites}
+
+\title{False-Positive Filter in Context-Aware Applications}
+\shorttitle{False-Positive Filter in Context-Aware Applications}
 
 \author{Rasmus Bækgaard}
+\journal{Aarhus University}
+\volume{\today}
 
 \affiliation{Aarhus University}
 
 \leftheader{Bækgaard}
+\date{\today}
 
-% Abstract:
-% - Background (brug for CAS)
-% - Hvad skete der
-% - Der blev brugt en method
-% - Results
+\input{Abstract}
 
-\abstract{This paper introduces the reader to considerations and guidelines of how a false-positive filter can created and implemented in the Common Ambient Assisted Living Homecare Platform, CAALHP.
-The paper will present its findings of an actual implementation for this system, and suggest ways of improving the implementation for others, who wishes make a similar filter.}
-
-\keywords{CAALHP, False-positive filter} %shown after abstract
+\keywords{Fall detection, Context Aware, sensors, Ambient Assisted Living, Pervasive computing, False-positive filter} %shown after abstract
 
 \date{\today}
 
@@ -33,81 +38,30 @@ The paper will present its findings of an actual implementation for this system,
 
 \maketitle
 
-\section{Introduction}
-This paper is written based on a Research and Development project for Aarhus University's Engineer Department.
-The project is handling the problem of detecting a false-positive of sensors, when they obviously does not happen, and the given sensor will trigger a critical alarm.
-The case taken in the project is based on a patient wearing a fall detector, and a bed with a 'in-bed' detector.
-Should said patient lie down on the bed and somehow trigger the fall detector, both the fall detector and the 'in-bed' detector will send events of occurrence. 
-But lying down in bed is not a fall, so the system should be able to recognize this as a false-positive from the fall detector.
+\input{Introduction}
 
-To ensure that this can be implemented to an existing system, it's important not to rewrite code, but add to it.
-One technique to use is a Context-Awareness system, like e.g. the Java Context-Awareness Framework\fxnote{reference til JCAF}, JCAF.
-The JCAF is built upon layers to ensure functionality and responsibility is divided to those who should handle it, allowing devices monitoring service by to subscribe to them, letting services subscribe to devices and publish them to monitors.
-Another context framework implementing this technique, is the Context Toolkit\fxnote{reference til Toolkit}, which consist of several types of class, including \texttt{interpreters} to convert context to higher level information, and \texttt{discoverers} to register capabilities in the framework.
+\input{Purpose}
 
-By using an object oriented model, a service for CAALHP (written in C\#) will be able to use inheritance, objects, encapsulations, and more to represent the data retrieved from the sensor and present them to monitors or other services, much as show on Figure \fxnote{Insert picture of JCAF, slide 35.}.
-The service will be automatically added to the CAALHP with context discoverers.
+\input{Method}
+
+\input{Results}
+
+\input{Discussion}
 
 
+% Artikel:
+% - Lagdeling
+% - Måden at sende beskeder (Carestore's beskedmekanisme -> afkobloing)
+% - Context, heirarki, gemt i service
+% - Hvordan deles op, hvem beslutter
 
-
-
-Artikel:
-- Lagdeling
-- Måden at sende beskeder (Carestore's beskedmekanisme -> afkobloing)
-- Context, heirarki, gemt i service
-- Hvordan deles op, hvem beslutter
-
-
-\section{Purpose}
-- At skabe leightweight system
-
-\section{method}
-- Proof of concept
-- Udvikles en evalueringsprototype
-	- CareBed og Shimmer tester, at det virker
-
-\section{Results}
-- Arkitektur
-- Fesibility study
-	- Lavet og testet (hvordan) - det giver kvalitet
-
-\section{Diskussion}
-- Hvad er godt
-- Hvad kan JCAF
-- Hvad mangler
-- Hvad skal gøres bedre
-
-
-% \begin{figure}[ht!]
-% \centering
-% \includegraphics[width=0.5\textwidth]{cameraman}
-% \end{figure}
-
-% \newpage
-% \include{Abstract}
-
-% \tableofcontents 	% Table of Contents
-% \listoffixmes 	%See LatexModule 
-
-% \newpage
-
-% Main contribution & main challenges & lessons
-
-% \include{Introduction}
-% \include{Theory}
-% \include{Implementation}
-% \include{Test_Results}
-% \include{Conclusion}
 
 % \newpage	
 % \appendix
 
 % \bibliographystyle{ieeetr}
-% \bibliography{Referencer}
-% \printbibliography
-
-% \input{AppendixList}
+% \vspace{-5pt}
+\printbibliography
 
 
 \end{document}

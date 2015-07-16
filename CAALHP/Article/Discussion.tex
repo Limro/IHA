@@ -1,0 +1,70 @@
+%!TEX root = Main.tex
+\vspace{-5pt}
+\section{Discussion}
+\vspace{-5pt}
+
+The filter works as first intended.
+Events are handled real-time, in a separate process, and it is scalable.
+Adding new concrete events and types of events is easy, storing them uses the exact same call the current does, and retrieving likewise.
+The architecture of the service is implemented as intended with the requirements.
+The actual implementation of probability calculations can be changed to another and better model.
+
+The current model list all events that affects the incoming event, and each of them are searched for in a database for previously occurrence, and only in the timespan.
+Each found event will then affect the probability of the new event actually happening.
+The formula to calculate the probability is shown here:
+\begin{align*}
+prob &= oldProb \cdot \dfrac{100 - (condition \cdot plausibilityFactor)}{100} \\
+prob &= 90 \cdot \dfrac{100 - (50 \cdot 0.5)}{100} = 67.5\%
+\end{align*}
+First, the \texttt{condition} is how much the developers meant for the new event to be affected by the existing event.
+Second, the \texttt{plausibleFactor} is a static value (in this case 0.5) that prevents events from zeroing a probability.
+Third, this value is converted to a percentage of affection, in this example 0.75 and multiplied onto the \texttt{oldProbability}.
+\\
+This is done for each event that effects the event.
+
+This is not the best method of calculating the new probability of events.
+A better option would be a Bayesian Network\cite{MicrosoftBayesian}, which at the first glance the current model could look a bit like it, but far from is.
+With a Bayesian Network the model will be able avoid overfitting, improve affection values, and combine prior data for better calculations.
+A third options is using a Kalman Filter\cite{welch2006introduction}, to look at previous events, and recursively calculates a new probability.
+When more sensors and more affections get added the weight of previous events should scale better than the current model.
+
+The filter can also be improved further by making the super class of the events more generic.
+The current implementation uses a list of \texttt{int} and a \texttt{dynamic} for probability.
+However, a smarter approach would be making the list either a \texttt{double} or just a \texttt{float} to allow decimal numbers for the data set.
+This would allow the Shimmer unit to send its raw data to be calculated in multiple ways and heighten the affection from a static value to a more dynamic calculation.
+It would also allow the CareBed to send the actual weight of the person in the bed to the system, which other services and monitors could subscribe and use.
+
+% Adding new event to the filter is equally easy, since the filter will both register the event to look for with the CAALHP and register it in MongoDB in the same call.
+% Specifying how the filter should affect the new event, or others should be affected is a single line, and can be added with the concrete type but also the general type for the event.
+
+% I diskussionen er det mere relevant at forholde sig til hvilke andre ting der kan gøres for at forbedre kvaliteten af dit filter. Bayesian networks, ANN, Kalmar, m.v. 
+
+% But simply because the filter works as intended does not mean that the final outcome is perfect, nor that the process to get there was done in the smartest way.
+% The major component, that took time was getting MongoDB to work, and understand why it only worked half the time.
+% After MongoDB switched from synchronous calls to asynchronous calls, a lot of methods changed names, which meant finding help was more than the regular challenge -- now, close to nobody, had asked the question for a problem with the new API, and the new documentation was still being written and rewritten.
+% This meant that those examples MongoDB's website offered could change, both location and structure of dissemination.
+% Most of the examples MongoDB's website offered was also written for people who knew what they were doing. 
+% This meant that more than halfway through the project I realized I didn't have to convert my objects to \texttt{Bson}, store it, read it, convert it back to my own object's type, but could simply insert my own object, and pull it right back out.
+
+% Another area that coursed trouble was the TTD aspect for MongoDB. 
+% When I ran all test by them self they all flagged green.
+% But when they were all run together only the first would succeed. 
+% Good clues were provided to what was actually wrong, but others with similar problems all had a "oh, I solved it" response and/or never said anything useful regarding their solution.
+% Having another person who had tried MongoDB would greatly have improved the time it took to finish this project.
+
+% Other frameworks were considered instead of MongoDB -- \texttt{db4o}\cite{db4o} was considered switching to, since its calls where simple and the project needed simple operations.
+% \texttt{NDatabase} was another option quickly considered, but ultimately ditched due to sunk-cost fallacy.
+% Both of these frameworks might, in hindsight, have been a better choice given the circumstances.
+% The filter performs no hard sorting, needs no caching, or containing lots of subdocuments with more subdocuments in.
+
+% Another area worth looking at will be the algorithm to handle the new probability of occurring events.
+% The current algorithm is static and will apply half the weight intended, because multiple events could potential affect the new event.
+% But the math could be changed to fit the actual weight, and letting a more generic version of decision.
+% Instead of applying the weight based on what happened within a certain time frame, it might be better to apply a function that tells how important previous event are based on the time since they occurred.
+
+% A third thing, which the overall filter lacks, is what happens if the order of the events come into the wrong order.
+% If a fall is detected first and no bed event has been detected, it will trigger an alarm.
+% But if the bed event comes in after 2 seconds, the alarm will not be stopped.
+% A solution to this could be to wait for  \textit{x} seconds before making actual decisions -- but how long should it wait? 
+% 2 / 5 / 10 seconds?
+% This could be solved by stating the update period for each sensor, e.g. the bed sensor triggers each 2000 millisecond, and therefore all events depending on this must wait this time before making their decision.
